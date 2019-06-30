@@ -1,0 +1,6 @@
+In Raspbian, open LXTerminal and input these commands to install
+sudo apt-get install mercurial python-gtk2 python-glade2 python-rsvg
+hg clone https://acdet.kilnhg.com/Code/Repositories/Group/python-sim
+
+To run:
+python python-sim/sim.py

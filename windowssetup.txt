@@ -1,0 +1,9 @@
+32-bit python 2.7.x interpreter
+    be sure to add python.exe to the system path
+pygtk all-in-one installer for 2.7.x
+    add pyrsvg
+    add glade ui designer if you want to make UI elements with a drag-and-drop tool
+mercurial
+pyserial for 2.7.x
+arduino IDE
+extract voices.zip from google drive into this folder

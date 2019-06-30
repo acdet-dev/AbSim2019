@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   width="434"
+   height="550"
+   id="svg2"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="pancreas_slightly_down.svg"
+   inkscape:export-filename="C:\Users\ruffin\Documents\python-sim\html\dummy_imitation.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <metadata
+     id="metadata99">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1094"
+     inkscape:window-height="917"
+     id="namedview97"
+     showgrid="false"
+     inkscape:zoom="1.7163637"
+     inkscape:cx="62.528553"
+     inkscape:cy="199.24119"
+     inkscape:window-x="1191"
+     inkscape:window-y="185"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer6" />
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient5001">
+      <stop
+         id="stop5003"
+         style="stop-color:#000000;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop5005"
+         style="stop-color:#000000;stop-opacity:0"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       x1="110.95771"
+       y1="160.82611"
+       x2="122.82659"
+       y2="159.8968"
+       id="linearGradient5023"
+       xlink:href="#linearGradient5001"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       x1="110.95771"
+       y1="160.82611"
+       x2="122.82659"
+       y2="159.8968"
+       id="linearGradient5035"
+       xlink:href="#linearGradient5001"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       id="filter3835"
+       x="-0.41583293"
+       width="1.8316659"
+       y="-0.62962634"
+       height="2.2592527">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="5.4564301"
+         id="feGaussianBlur3837" />
+    </filter>
+  </defs>
+  <g
+     id="layer1" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="pancreas"
+     style="display:inline">
+    <rect
+       style="fill:#ffff00;stroke:#ffff00;stroke-width:1.21214819000000000;display:inline;fill-opacity:1;opacity:0.4;filter:url(#filter3835)"
+       id="ugi-7"
+       class="ailment"
+       width="31.492052"
+       height="20.798737"
+       x="186.70659"
+       y="241.67952"
+       ry="10.399368"
+       rx="15.746026" />
+  </g>
+</svg>
