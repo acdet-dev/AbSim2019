@@ -74,6 +74,7 @@ if os.path.exists(app_data + '\\AbSimBeta\\i18n'):
 # Reset the locale to system default.
 locale.setlocale(locale.LC_ALL, '')
 
+
 def locale_tab():
     locale_table = [
       ('af', 'ZA', 'UTF-8', 'Afrikaans', 'South Africa', '1252'),
@@ -170,8 +171,9 @@ def locale_tab():
     #}
     return win2iso_full, iso2win_full, win2iso_loc, iso2win_loc, win2iso_lang, iso2win_lang, iso2win_enc, win2iso_enc
 
+
 def _detect_windows_locale(win2iso_full, iso2win_full, win2iso_loc, iso2win_loc,
-win2iso_lang, iso2win_lang, iso2win_enc, win2iso_enc):
+    win2iso_lang, iso2win_lang, iso2win_enc, win2iso_enc):
     """
     Attempt to detect the locale from Windows O/S.
     """
@@ -179,7 +181,6 @@ win2iso_lang, iso2win_lang, iso2win_enc, win2iso_enc):
     test = locale.getlocale(locale.LC_ALL)
 
     wfull = locale.getlocale(locale.LC_ALL)[0]
-
 
     parts = wfull.split('_')
     wlang = parts[0]
@@ -189,7 +190,7 @@ win2iso_lang, iso2win_lang, iso2win_enc, win2iso_enc):
 
     result = [(key, value) for key, value in win2iso_full.items() if key.startswith(wlang)]
 
-    #try except blocks to get locale_tab mappings
+    # try except blocks to get locale_tab mappings
     try:
         full = result[0][0].split('_') #Japanese_Japan
         wloc = full[1]  # Japan
@@ -263,7 +264,7 @@ win2iso_lang, iso2win_lang, iso2win_enc, win2iso_enc):
                             return locale_preferences
 
 
-#somehow link to _get_locale_configs() function?
+# somehow link to _get_locale_configs() function?
 win2iso_full, iso2win_full, win2iso_loc, iso2win_loc, win2iso_lang, iso2win_lang, iso2win_enc, win2iso_enc = locale_tab()
 
 locale_preferences = _detect_windows_locale(win2iso_full, iso2win_full, win2iso_loc, iso2win_loc, win2iso_lang, iso2win_lang, iso2win_enc, win2iso_enc)
@@ -303,7 +304,9 @@ def _gen_locale_re():
     mo_re_str =  locale_domain + r'-' + locale_re_str + r'\.mo$'
     return re.compile(po_re_str), re.compile(mo_re_str), re.compile(locale_re_str)
 
+
 po_re, mo_re, lo_re = _gen_locale_re()
+
 
 def get_locale_options():
     """
@@ -338,6 +341,7 @@ def get_locale_options():
       options.append( (' Automatic', None))
     return options
 
+
 def _list_mo():
     """
     List locale info for all MO translation binary files under the i18n directory of the source tree.
@@ -364,11 +368,11 @@ def _list_mo():
                     f))
     return mo_list
 
+
 def _list_po():
     """
     List locale info for all PO translation source files in the i18n directory of the source tree.
     """
-
     #source = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
     i18n = os.path.join(source, 'i18n')
     po_list = []
@@ -389,6 +393,7 @@ def _list_po():
             os.path.join(i18n,f)))
     return po_list
 
+
 def _parse_locale_iso_spec(spec):
     """
     Parse an ISO locale specification into components.
@@ -402,6 +407,7 @@ def _parse_locale_iso_spec(spec):
         return( g.get('language', None), g.get('country',  None), g.get('encoding', None) )
     else:
         raise TypeError
+
 
 def _expand_iso_spec(spec):
     language, country, encoding = spec[0], spec[1], spec[2]
@@ -420,6 +426,7 @@ def _expand_iso_spec(spec):
         specs.append(windows_language)
 
     return specs
+
 
 def set_locale(loc_prefs):
     logging.debug("Attempting to set locale to" + repr(loc_prefs))
@@ -481,6 +488,7 @@ def set_locale(loc_prefs):
     logging.debug("i18ntrans:339:LANG")
     return translator
 
+
 def regenerate_locales_handler(popup):
     #needs this to work?
     """
@@ -518,40 +526,6 @@ def regenerate_locales_handler(popup):
     #    subprocess.call(os.path.join(gettext_dir, 'pygettext.py'), po[4])
     popup("Available PO files: " + ", ".join(po[4] for po in pos) + ". Results:\n"+report)
 
-def regenerate_locales():
-    #needs this to work?
-    """
-    Handler for "Regenerate Locales" option.
-    Attempts to use the Python library's gettext utilities to generate MO files from all Ab-Sim PO files.
-    This requires the gettext scripts to be available and in the right place, which may be version and
-    platform dependent.
-    Reports result in a pop-up window.
-    """
-    i18n_tools = os.path.join(source, 'Tools')
-    i18n = os.path.join(i18n_tools, 'i18n')
-
-    msgfmt = os.path.join(i18n, 'msgfmt.py')
-    pos = sorted(_list_po())
-    if not os.path.exists(msgfmt):
-        report = "Cannot find 'msgfmt.py' executable in search path ( %s ).\n" % i18n_tools
-    else:
-        report = ""
-        for po in pos:
-          try:
-            mo_dir = os.path.join(source, 'i18n', po[1], 'LC_MESSAGES')
-            mo = os.path.join(mo_dir, 'ab_sim.mo')
-            if not os.path.exists(mo_dir):
-                os.makedirs(mo_dir)
-            if os.path.exists(mo):
-                os.remove(mo)
-
-            result = subprocess.check_output(['python', msgfmt, '-o', mo, po[4]])
-            report += result.decode()
-            report += '\n%s - Successful' % po[1]
-          except:
-            report += "\nMSGFMT subprocess failed (%s)" % repr(sys.exc_info())
-          if len(report) > 200:
-              report = '...\n' + report[-200:]
 
 def _new_loc_prefs(loc_prefs, win2iso_full, iso2win_full, win2iso_loc, iso2win_loc,
 win2iso_lang, iso2win_lang, iso2win_enc, win2iso_enc):
@@ -576,6 +550,7 @@ win2iso_lang, iso2win_lang, iso2win_enc, win2iso_enc):
     logging.debug("i18ntrans:235:Detected Locale Preferences: " + repr(locale_preferences))
     return locale_preferences
 
+
 def set_menu_locale(loc_prefs):
     i18n = os.path.join(source, 'i18n')
 
@@ -584,6 +559,7 @@ def set_menu_locale(loc_prefs):
 
     translator2 = t.gettext
     return translator2
+
 
 def set_locale_handler(lbl, loc, popup):
     global translator
@@ -600,7 +576,9 @@ def set_locale_handler(lbl, loc, popup):
 
     return translator
 
+
 translator = set_locale(locale_preferences)
+
 
 def _(s):
     return translator(s)

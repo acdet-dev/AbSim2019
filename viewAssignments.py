@@ -20,6 +20,7 @@ import random
 from Levenshtein import distance
 
 import gi
+
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GLib, Pango
 
@@ -91,7 +92,7 @@ class ViewAssignments(Gtk.Window):
         self.notebook.set_tab_pos(Gtk.POS_LEFT)
         self.notebook.connect('switch-page', self.reset_active_page)
 
-        #destroy signal for window
+        # destroy signal for window
         self.destroy_signal_handler = self.connect('destroy', Gtk.main_quit)
 
         # Baseline Assessment
@@ -131,7 +132,7 @@ class ViewAssignments(Gtk.Window):
 
         self.show_all()
 
-        #connect signals
+        # connect signals
         self.do_not_touch = donottouch.DoNotTouchWarning(self.state_watcher)
         self.attach_new_case_observer(self.do_not_touch.restart)
         self.attach_new_case_observer(self.guarding.new_case_selected)
@@ -142,7 +143,7 @@ class ViewAssignments(Gtk.Window):
         self.state_watcher.connect('sensor_pad_disconnected', self.show_disconnection_warning)
         self.state_watcher.connect('sensor_pad_connected', self.hide_disconnection_warning)
 
-        #Always do this one last
+        # Always do this one last
         # This means the case will be readable on the main window
         # but people will still know not to strip the belts.
         if hasattr(self.port_settings, 'cnc_port'):
@@ -427,24 +428,44 @@ class ViewTests(Gtk.HBox):
             self.parent.ab_flag = False
 
         if self.parent.baselineFlag:
-            self.parent.baselineFlag = False
+            page1 = self.parent.view_resources['notebook'].get_nth_page(0)
+            page2 = self.parent.view_resources['notebook'].get_nth_page(2)
+            page3 = self.parent.view_resources['notebook'].get_nth_page(3)
+            page = self.parent.view_resources['notebook'].get_nth_page(1)
 
+            page1.hide()
+            page2.hide()
+            page3.hide()
+            page.show()
             if 'notebook' in self.view_resources:
                 self.view_resources['notebook'].set_current_page(1)
-
                 self.parent.new_case_observer.alert('none n')
         else:
             if len(self.parent.cases) > 0:
-                self.parent.ab_flag = False
+                page1 = self.parent.view_resources['notebook'].get_nth_page(0)
+                page2 = self.parent.view_resources['notebook'].get_nth_page(1)
+                page3 = self.parent.view_resources['notebook'].get_nth_page(3)
+                page = self.parent.view_resources['notebook'].get_nth_page(2)
 
+                page1.hide()
+                page2.hide()
+                page3.hide()
+                page.show()
                 if 'notebook' in self.view_resources:
                     self.view_resources['notebook'].set_current_page(2)
-                    self.parent.new_case_observer.alert(cases[0])
+                    self.parent.new_case_observer.alert(self.parent.cases[0])
 
             elif self.parent.ddx_cases and len(self.parent.ddx_cases) > 0:
                 # transition to new window
-                self.parent.ddx_flag = False
+                page1 = self.parent.view_resources['notebook'].get_nth_page(0)
+                page2 = self.parent.view_resources['notebook'].get_nth_page(1)
+                page3 = self.parent.view_resources['notebook'].get_nth_page(2)
+                page = self.parent.view_resources['notebook'].get_nth_page(3)
 
+                page1.hide()
+                page2.hide()
+                page3.hide()
+                page.show()
                 if 'notebook' in self.view_resources:
                     self.view_resources['notebook'].set_current_page(3)
 
@@ -463,7 +484,6 @@ class ViewTests(Gtk.HBox):
                             secondary_text=_(u'You may take another exam if you have '
                                              u'more to take.'))
                 self.parent.return_home()
-
 
     def begin_exam(self, widget):
         # query exam model by one exam title to give AbSim machine commands.
@@ -495,8 +515,8 @@ class BaselineTest(Gtk.HBox):
         timestr = time.strftime("%Y%m%d-%H%M%S")
         state_percents = CoverageAnalyzer().analyze(saved_exam_pressurepoints)
         self.parent.baselinemodel.save_to_db(self.parent.exam_title, self.parent.password, state_percents['up'],
-                                      state_percents['slightly_down'], state_percents['down'],
-                                      state_percents['too_hard'], saved_exam_pressurepoints, timestr)
+                                             state_percents['slightly_down'], state_percents['down'],
+                                             state_percents['too_hard'], saved_exam_pressurepoints, timestr)
 
     def ok_selection(self, signal):
         saved_exam_pressurepoints = self.parent.view_resources['pressurepoints']
@@ -505,16 +525,32 @@ class BaselineTest(Gtk.HBox):
         self.save_exam(saved_exam_pressurepoints)
 
         if len(self.parent.cases) > 0:
-            self.parent.ab_flag = False
+            page1 = self.parent.view_resources['notebook'].get_nth_page(0)
+            page2 = self.parent.view_resources['notebook'].get_nth_page(1)
+            page3 = self.parent.view_resources['notebook'].get_nth_page(3)
+            page = self.parent.view_resources['notebook'].get_nth_page(2)
+
+            page1.hide()
+            page2.hide()
+            page3.hide()
+            page.show()
             if 'notebook' in self.parent.view_resources:
                 self.parent.view_resources['notebook'].set_current_page(2)
-    
+
             self.parent.new_case_observer.alert(self.parent.cases[0])
         elif self.parent.ddx_cases and len(self.parent.ddx_cases) > 0:
-            self.parent.ddx_flag = False
+            page1 = self.parent.view_resources['notebook'].get_nth_page(0)
+            page2 = self.parent.view_resources['notebook'].get_nth_page(1)
+            page3 = self.parent.view_resources['notebook'].get_nth_page(2)
+            page = self.parent.view_resources['notebook'].get_nth_page(3)
+
+            page1.hide()
+            page2.hide()
+            page3.hide()
+            page.show()
             if 'notebook' in self.parent.view_resources:
                 self.parent.view_resources['notebook'].set_current_page(3)
-    
+
             # add case vignette to scroller
             current_text, ail_key, block = self.parent.ddx_exam.get_vignette()
             self.parent.ddx_exam.case_text_buffer.new_case(current_text)
@@ -524,7 +560,7 @@ class BaselineTest(Gtk.HBox):
             self.parent.new_case_observer.alert(ail_key)
 
             self.parent.new_case_block_observer.alert(ail_key, block)
-    
+
         else:
             sim_message(self.parent, info_string=_(u'Exam Finished.'),
                         secondary_text=_(u'You may take another exam if you have '
@@ -565,6 +601,7 @@ class BaselineTest(Gtk.HBox):
         return baseline_vbox
 
     def reset_page(self):
+
         return
 
 
@@ -590,9 +627,16 @@ class CaseExam(Gtk.HBox):
         self.show()
 
     def report_score(self, score):
-        if self.parent.ddx_flag:
-            self.parent.ddx_flag = False
+        if len(self.parent.ddx_cases) > 0:
+            page1 = self.parent.view_resources['notebook'].get_nth_page(0)
+            page2 = self.parent.view_resources['notebook'].get_nth_page(1)
+            page3 = self.parent.view_resources['notebook'].get_nth_page(2)
+            page = self.parent.view_resources['notebook'].get_nth_page(3)
 
+            page1.hide()
+            page2.hide()
+            page3.hide()
+            page.show()
             if 'notebook' in self.parent.view_resources:
                 self.parent.view_resources['notebook'].set_current_page(3)
 
@@ -611,7 +655,7 @@ class CaseExam(Gtk.HBox):
             if len(self.parent.answer_list) > 0 and len(self.parent.ddx_answer_list) > 0:
                 self.parent.num = self.parent.num + self.parent.ddx_num
                 self.parent.den = self.parent.den + self.parent.ddx_den
-                score = self.parent.num/self.parent.den
+                score = self.parent.num / self.parent.den
 
             elif len(self.parent.answer_list) > 0 and len(self.parent.ddx_answer_list) == 0:
                 score = score
@@ -627,7 +671,8 @@ class CaseExam(Gtk.HBox):
             timestr = time.strftime("%Y%m%d-%H%M%S")
 
             # save score data to db
-            exam_data.save_to_db(self.parent.password, self.parent.exam_title, score, self.parent.num, self.parent.den, timestr)
+            exam_data.save_to_db(self.parent.password, self.parent.exam_title, score, self.parent.num, self.parent.den,
+                                 timestr)
 
             self.parent.return_home()
 
@@ -643,7 +688,7 @@ class CaseExam(Gtk.HBox):
                     self.parent.new_case_observer.alert(self.parent.cases[0])
                 except IndexError:
                     # if len(self.ddx_cases) > 0:
-                    score = self.parent.num/self.parent.den
+                    score = self.parent.num / self.parent.den
                     self.report_score(score)
                     pass
             elif distance(self.current_case, self.parent.cases[0]) < 4:
@@ -655,7 +700,7 @@ class CaseExam(Gtk.HBox):
                     self.parent.new_case_observer.alert(self.parent.cases[0])
                 except IndexError:
 
-                    score = self.parent.num/self.parent.den
+                    score = self.parent.num / self.parent.den
                     self.report_score(score)
                     pass
             else:
@@ -664,7 +709,7 @@ class CaseExam(Gtk.HBox):
                 try:
                     self.parent.new_case_observer.alert(self.parent.cases[0])
                 except IndexError:
-                    score = self.parent.num/self.parent.den
+                    score = self.parent.num / self.parent.den
                     self.report_score(score)
                     pass
         else:
@@ -786,7 +831,9 @@ class CaseExam(Gtk.HBox):
         self.current_case = model.get(iter, 1)[0]
 
     def reset_page(self):
+
         return
+
 
 class DdxExam(Gtk.HBox):
     def __init__(self, parent):
@@ -923,7 +970,7 @@ class DdxExam(Gtk.HBox):
         self.ddx_view_scroller.add(self.ddx_view_tree)
         self.ddx_view_scroller.set_policy(Gtk.POLICY_NEVER, Gtk.POLICY_AUTOMATIC)
 
-        #get measurements for screen size request
+        # get measurements for screen size request
         s_w = Gdk.screen_width()
         s_h = Gdk.screen_height()
         width, height = screen_sizer(s_w, s_h, old_width=800, old_height=400)
@@ -976,4 +1023,5 @@ class DdxExam(Gtk.HBox):
         self.current_case = model.get(iter, 1)[0]
 
     def reset_page(self):
+
         return

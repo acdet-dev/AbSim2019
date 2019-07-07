@@ -467,8 +467,8 @@ class AssignedAssessment(Gtk.Window):
                             secondary_text=_(u'You may take another exam if you have '
                                              u'more to take.'))
                 self.return_home()
-            #logging.debug('exam finished')
-            #sim_message(self, info_string=_(u'Exam Load Failure'), secondary_text=_(u'AbSim received empty exam list.'))
+            # logging.debug('exam finished')
+            # sim_message(self, info_string=_(u'Exam Load Failure'), secondary_text=_(u'AbSim received empty exam list.'))
 
     def reset_page(self):
         iter_root = self.case_selector_tree.get_model().get_iter_first()
@@ -653,7 +653,6 @@ class AssignedAssessment(Gtk.Window):
         tv.expand_all()
         tv.connect('cursor-changed', self.on_tree_selected)
         return tv
-    
 
     def on_tree_selected(self, treeview):
         selection = treeview.get_selection()

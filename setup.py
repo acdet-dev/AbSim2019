@@ -26,7 +26,9 @@ def find_data_files(source,target,patterns):
                 ret.setdefault(path,[]).append(filename)
     return sorted(ret.items())
 
-site_dir = site.getsitepackages()[1] 
+
+site_dir = site.getsitepackages()[1]
+
 include_dll_path = os.path.join(site_dir, "gnome") 
 
 gtk_dirs_to_include = ['etc', 'lib\\gtk-3.0', 'lib\\girepository-1.0', 'lib\\gio', 'lib\\gdk-pixbuf-2.0', 'share\\glib-2.0', 'share\\fonts', 'share\\icons', 'share\\themes\\Default', 'share\\themes\\HighContrast'] 
@@ -42,8 +44,7 @@ for dll in os.listdir(include_dll_path):
 for dll in gtk_dlls: 
     shutil.copy(dll, cdir) 
 
-os.makedirs('C:\\Python34\\sim\\dist\\Tools\\i18n')
-os.makedirs('C:\\Python34\\sim\\dist\\lib')
+os.makedirs('C:\\Users\\Steve\\PycharmProjects\\AbSim2019\\dist\\lib')
 
 shutil.copytree('voices', os.path.join('dist', 'voices'))
 shutil.copytree('i18n', os.path.join('dist', 'i18n'))
@@ -60,10 +61,7 @@ shutil.copy('abMenu.xml', 'dist')
 shutil.copy('tare.json', 'dist')
 shutil.copy('sensitivity.json', 'dist')
 shutil.copy('C:\\Python34\\absim\\python-sim\\lib\\libxml2-2.dll', 'dist\\lib')
-shutil.copy('C:\\Python34\\Tools\\i18n\\msgfmt.py', 'dist\\Tools\\i18n')
-shutil.copy('C:\\Python34\\sim\\Tools\\i18n\\python.exe', 'dist\\Tools\\i18n')
 # Special files for distribution
-
 
 img = [
     os.path.join('img', 'no_x.png'),
@@ -117,7 +115,6 @@ setup(windows=['defineUser.py'], options={
     } 
   },
 
-
   data_files=find_data_files('data','',[
     'img/*',
     'html/*',
@@ -126,12 +123,7 @@ setup(windows=['defineUser.py'], options={
     'icon.ico',
     'locale.json',
     'cnc_adjustments.json'
-
-
     ]))
-
-
-
 
 dest_dir = os.path.join(cdir, 'dist') 
 
@@ -139,8 +131,7 @@ if not os.path.exists(dest_dir):
     os.makedirs(dest_dir)
 
 for dll in tmp_dlls: 
-    shutil.copy(dll, dest_dir) 
-    #sos.remove(dll) 
+    shutil.copy(dll, dest_dir)
 
-for d  in gtk_dirs_to_include: 
+for d in gtk_dirs_to_include:
     shutil.copytree(os.path.join('C:\\Python34\\Lib\\site-packages', "gnome", d), os.path.join(dest_dir, d))

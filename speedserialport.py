@@ -10,9 +10,10 @@ def foo():
 def dotime():
     t = timeit.Timer("foo()", setup="")
     time = t.timeit(500)
-    print "took %fs\n" % (time,)
+    print("took %fs\n" % (time,))
 
-import __builtin__
-__builtin__.__dict__.update(locals())
+
+import builtins
+builtins.__dict__.update(locals())
 
 dotime()

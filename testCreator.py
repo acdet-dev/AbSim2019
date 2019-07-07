@@ -209,12 +209,16 @@ class TestCreator(Gtk.HBox):
 
         exam_model.save_to_db(self.parent, exam_name, case_string, title_string, timestr)
 
+        # clear checked buttons
         if len(self.button_list) > 0:
             for b in self.button_list:
                 b.set_active(False)
         if len(self.ddx_box.button_list) > 0:
             for ddx_b in self.ddx_box.button_list:
                 ddx_b.set_active(False)
+
+        # clear text box
+        self.exam_id_entry.set_text('')
 
         self.case_list = []
         self.title_list = []
