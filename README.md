@@ -1,10 +1,10 @@
-# AbSim2018
-code for abdominal simulator by ACDET
+# AbSim2019
+This repository contains code for companion software for a mechanical abdominal simulator.
 
-For a variety of reasons, it will be really hard to include all dependencies and packages for this project here.
+The code is primarily written in Python, leveraging Arduino firmware for activating the hardware components.
 
-For starters, I began building this project in Windows on Msys2 with Python3 and Gtk+3. After completing the simulator software, I then desired to make an installer executable that could be distrubted to customers. Long story short, Python under Msys2 could not work with any of the top Python compiling packages out there (PyInstaller, Py2Exe, CxFreeze).
+I have added the virtual environment (venv) for this project to the repo so that one can have all project dependencies when they clone the repository. The reason I did this is because the project uses dependencies that cannot easily be installed through pip or any other Python package manager. The virtual environment points to a specific version of Python that one must have installed in order to run the code. The reason for the specific version is because the project uses a Windows Gtk3 runtime environment that requires this version of Python to work.
 
-In Windows, on the other hand, I knew that all of these worked with Python, so I moved the project out of Msys2. Doing so meant that I would have to download Gtk and other dependencies again and set them up in my virtual environment for the project. This proved challenging. I finally found an installer for a run-time environment of GTK3: https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases I had to go back to Python 3.4 in my windows environment for this to work. I also had to get an older version of MSVC to compile with Python 3.4. Once I did all that, the project worked fine, and I was able to compile the scripts to an executable and then create an installer.
+You can find the version of Python here: https://www.python.org/downloads/release/python-341/
 
-The project does not use many external packages beyond those included with Gtk and gi repository. Other than those though, it does make use of PySerial, Sqlite3, and LevenshteinDistance.
+Please download the 32-bit version.
