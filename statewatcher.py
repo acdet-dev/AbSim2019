@@ -189,7 +189,6 @@ class StateWatcher (GObject.GObject):
         self.emit('any_device_busy', 'now')
 
     def alert_if_all_devices_are_idle(self):
-
         need_tensioner_idle = self.tensioner_is_connected
         need_cnc_idle = self.cnc_is_connected
 

@@ -48,6 +48,7 @@ class Sensors(threading.Thread):
         self._stop = threading.Event()
 
         self.state_watcher = state_watcher
+        self.connect_signals()
 
         if port is not None:
             self.port = port
@@ -66,6 +67,10 @@ class Sensors(threading.Thread):
             logging.debug('failed to reconnect pressure pad. Stopping device thread')
             self.stop()
 
+    def connect_signals(self):
+        self.state_watcher.connect('all_devices_idle', self.idle)
+        # self.state_watcher.connect('any_device_busy', self.restart)
+
     def connect(self):
         try:
             time.sleep(1)
@@ -74,6 +79,13 @@ class Sensors(threading.Thread):
             self.state_watcher.sensor_pad_connected()
         except serial.serialutil.SerialException:
             logging.debug('could not connect sensor pad')
+
+    def idle(self, event, widget):
+        try:
+            time.sleep(.5)
+            self.port.reset_input_buffer()
+        except serial.serialutil.SerialException:
+            pass
 
     def run(self):
         while not self.stopped():
@@ -86,6 +98,7 @@ class Sensors(threading.Thread):
                 self.command = 0
                 try:
                     self.command = self.command_queue.get(True, 0.01)
+                    print(self.command)
                 except:
                     pass  # no-op
                 if self.command:
@@ -155,16 +168,18 @@ class Sensors(threading.Thread):
                             in_byte = None
                     else:
                         logging.debug("Timed out trying to find pressure pad frame beginning.")
-                        # FIXME: raising strings is deprecated syntax (should be Exception)
-                        raise 'pressure_pad_connection'
+                        self.state_watcher.sensor_pad_disconnected()
+                        self.stop()
                     looped = looped + 1
             else:
                 logging.debug("Timed out trying to find pressure pad frame beginning.")
-                raise 'pressure_pad_connection'
+                self.state_watcher.sensor_pad_disconnected()
+                self.stop()
 
             if looped > 288:
                 logging.debug("Looping way too much to find frame beginning. Problem.")
-                raise 'pressure_pad_connection'
+                self.state_watcher.sensor_pad_disconnected()
+                self.stop()
 
     def frame_ending_is_there(self):
         edge_finder = array.array('B')
@@ -228,7 +243,6 @@ def list_serial_ports():
 def look_for_device(device_id):
     # Accepts one-letter strings of G, B, P, or T.
     ports = build_platform_port_list()
-    #print([str(port) for port in ports])
     patterns = {
         'G': 'Grbl',
         'P': 'P',
@@ -266,6 +280,6 @@ def build_platform_port_list():
         ports = glob.glob('/dev/tty.*')
 
     else:
-        raise EnvironmentError('Unsupported platform')
+        ports = None
 
     return ports
