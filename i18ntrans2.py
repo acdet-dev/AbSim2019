@@ -66,7 +66,6 @@ source = os.getcwd()
 app_data = os.getenv('LOCALAPPDATA')
 if not os.path.exists(app_data + '\\AbSimBeta\\i18n'):
     shutil.copytree(os.path.join(source, 'i18n'), app_data + '\\AbSimBeta\\i18n')
-    shutil.copytree(os.path.join(source, 'Tools'), app_data + '\\AbSimBeta\\Tools')
 
 if os.path.exists(app_data + '\\AbSimBeta\\i18n'):
     source = app_data + '\\AbSimBeta'
@@ -487,44 +486,6 @@ def set_locale(loc_prefs):
     os.environ['LANG'] = loc
     logging.debug("i18ntrans:339:LANG")
     return translator
-
-
-def regenerate_locales_handler(popup):
-    #needs this to work?
-    """
-    Handler for "Regenerate Locales" option.
-    Attempts to use the Python library's gettext utilities to generate MO files from all Ab-Sim PO files.
-    This requires the gettext scripts to be available and in the right place, which may be version and
-    platform dependent.
-    Reports result in a pop-up window.
-    """
-    i18n_tools = source + '\\Tools\\i18n'
-    python = os.path.join(i18n_tools, 'python.exe')
-    msgfmt = os.path.join(i18n_tools, 'msgfmt.py')
-    #logging.debug(msgfmt)
-    pos = sorted(_list_po())
-    if not os.path.exists(msgfmt):
-        report = "Cannot find 'msgfmt.py' executable in search path ( %s ).\n" % i18n_tools
-    else:
-        report = ""
-        for po in pos:
-          try:
-            mo_dir = os.path.join(source, 'i18n', po[1], 'LC_MESSAGES')
-            mo = os.path.join(mo_dir, 'ab_sim.mo')
-            if not os.path.exists(mo_dir):
-                os.makedirs(mo_dir)
-            if os.path.exists(mo):
-                os.remove(mo)
-
-            result = subprocess.check_output([python, msgfmt, '-o', mo, po[4]])
-            report += result.decode()
-            report += '\n%s - Successful' % po[1]
-          except:
-            report += "\nMSGFMT subprocess failed (%s)" % repr(sys.exc_info())
-          if len(report) > 200:
-              report = '...\n' + report[-200:]
-    #    subprocess.call(os.path.join(gettext_dir, 'pygettext.py'), po[4])
-    popup("Available PO files: " + ", ".join(po[4] for po in pos) + ". Results:\n"+report)
 
 
 def _new_loc_prefs(loc_prefs, win2iso_full, iso2win_full, win2iso_loc, iso2win_loc,
