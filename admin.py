@@ -215,10 +215,8 @@ class SensitivityInterface(Gtk.HBox):
         try:
             self.parent.sounds.stop_sound_player()
             self.parent.port_settings.stop_devices()
-            logging.debug('stopping devices')
-
-        except:
-            logging.debug('no ports to close')
+        except AttributeError:
+            logging.debug('attributes necessary for stopping sounds not made yet')
 
         UserType('faculty', self.parent.name, self.parent.password)
         splash_screen.hide()

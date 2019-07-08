@@ -132,6 +132,10 @@ class ViewAssignments(Gtk.Window):
 
         self.show_all()
 
+        self.notebook.get_nth_page(1).hide()
+        self.notebook.get_nth_page(2).hide()
+        self.notebook.get_nth_page(3).hide()
+
         # connect signals
         self.do_not_touch = donottouch.DoNotTouchWarning(self.state_watcher)
         self.attach_new_case_observer(self.do_not_touch.restart)
@@ -216,24 +220,9 @@ class ViewAssignments(Gtk.Window):
 
         return exam_info
 
-    def setup_transfer(self):
-        self.splash_screen = splashscreen.SplashScreen()
-        self.splash_screen.show_all()
-        while Gtk.events_pending():
-            Gtk.main_iteration()
-
-    def close_menu(self):
-        self.handler_block(self.destroy_signal_handler)
-        self.destroy()
-
-    def finish_transfer(self):
-        self.splash_screen.hide()
-        self.close_menu()
-
     def return_home(self, optional=''):
         import defineUser
         import dbmigrator
-        import splashscreen
 
         splash_screen = splashscreen.SplashScreen()
         splash_screen.show_all()
@@ -247,10 +236,8 @@ class ViewAssignments(Gtk.Window):
         try:
             self.sounds.stop_sound_player()
             self.port_settings.stop_devices()
-            logging.debug('stopping devices')
-
-        except:
-            logging.debug('no ports to close')
+        except AttributeError:
+            logging.debug('attributes necessary for stopping devices not made yet')
 
         defineUser.DefineUser()
         splash_screen.hide()
@@ -360,7 +347,7 @@ class ViewTests(Gtk.HBox):
         label_text = random_rel['vignette']
         ailment_key = random_rel['ailment']
 
-        return label_text, ailment_key
+        return label_text, ailment_key, random_rel
 
     def get_exam_info(self, flag, key):
         import exammodel
@@ -660,7 +647,7 @@ class CaseExam(Gtk.HBox):
             elif len(self.parent.answer_list) > 0 and len(self.parent.ddx_answer_list) == 0:
                 score = score
 
-            elif len(self.parenrt.ddx_answer_list) > 0 and len(self.parent.answer_list) == 0:
+            elif len(self.parent.ddx_answer_list) > 0 and len(self.parent.answer_list) == 0:
                 score = score
                 self.parent.num = self.parent.ddx_num
                 self.parent.den = self.parent.ddx_den

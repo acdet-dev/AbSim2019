@@ -84,7 +84,7 @@ class Sensors(threading.Thread):
         try:
             time.sleep(.5)
             self.port.reset_input_buffer()
-        except serial.serialutil.SerialException:
+        except (serial.serialutil.SerialException, AttributeError):
             pass
 
     def run(self):

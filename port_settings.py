@@ -138,7 +138,7 @@ class PortSettings:
         self.cnc_queue.put('home')
 
     def stop_devices(self):
-        ##fix this block
+        # fix this block
         if self.state_watcher.bladder_is_connected:
             self.bladder_thread.bladder_home_stop()
             logging.debug('stopping bladder')
@@ -151,6 +151,3 @@ class PortSettings:
         if self.state_watcher.sensor_pad_is_connected:
             self.sensors_thread.serial_home_stop()
             logging.debug('stopping sensor')
-
-        else:
-            logging.debug('no ports to close')

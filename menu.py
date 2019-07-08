@@ -156,15 +156,15 @@ class MenuBar():
         try:
             self.sounds.stop_sound_player()
             self.port_settings.stop_devices()
-            logging.debug('stopping devices')
-
         except AttributeError:
-            logging.debug('no ports to close')
+            logging.debug('attributes necessary for stopping devices not made yet')
 
+        splash_screen.hide()
         Gtk.main_quit()
 
     def on_home_click(self, widget):
         import defineUser
+
         splash_screen = splashscreen.SplashScreen()
         splash_screen.show_all()
 
@@ -174,14 +174,11 @@ class MenuBar():
         # Perform DB migration to make sure we have the newest version
         dbmigrator.DBMigrator()
 
-        logging.debug('stopping sounds')
         try:
             self.sounds.stop_sound_player()
             self.port_settings.stop_devices()
-            logging.debug('stopping devices')
-
         except AttributeError:
-            logging.debug('no ports to close')
+            logging.debug('attributes necessary for stopping devices not made yet')
 
         defineUser.DefineUser()
         splash_screen.hide()
