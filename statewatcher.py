@@ -176,10 +176,9 @@ class StateWatcher (GObject.GObject):
         try:
             if not self.tensioner_device_is_idle:
                 self.tensioner_device_is_idle = True
-                
+
                 self.alert_if_all_devices_are_idle()
         except AttributeError:
-            
             self.tensioner_device_is_idle = True
             self.alert_if_all_devices_are_idle()
 
