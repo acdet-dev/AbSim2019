@@ -170,6 +170,9 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
                                       'Time Completed': exam[6]} for exam in self.exams)
                     sim_message(self, info_string=_(u'Exam Data Exported!'),
                                 secondary_text=_(u"A CSV file with exam data was created in AbSim's directory."))
+
+                    self.baseline.export()
+
                     self.clear_data()
 
                 except TypeError:
@@ -338,6 +341,29 @@ class ViewBaselineAssessments(Gtk.HBox):
         self.create_columns(treeView)
         self.add(vbox)
         self.show_all()
+
+    def export(self):
+        ##write data to pandas dataframe and then csv file
+        import os
+        import csv
+
+        c_dir = os.getenv('LOCALAPPDATA') + '\\AbSimBeta'
+
+        if len(self.exams) > 0:
+            with open(c_dir + '\\baseline_data.csv', 'w+', newline='') as outcsv:
+                writer = csv.DictWriter(outcsv, fieldnames=['Student ID', "Exam ID", "Not Palpated", "Light Palpation",
+                                                            "Deep Palpation", "Too Deep", "Time Completed"])
+                writer.writeheader()
+                try:
+                    writer.writerows({'Student ID': exam[1], 'Exam ID': exam[0], 'Not Palpated': exam[2],
+                                      'Light Palpation': exam[3], 'Deep Palpation': exam[4], 'Too Deep': exam[5],
+                                      'Time Completed': exam[7]} for exam in self.exams)
+                    sim_message(self, info_string=_(u'Exam Data Exported!'),
+                                secondary_text=_(u"A CSV file with exam data was created in AbSim's directory."))
+                except TypeError:
+                    pass
+        else:
+            logging.debug('Could not get exam info because no exams exist.')
 
     def create_model(self):
         store = Gtk.ListStore(str, str, str, str, str, str, str)
