@@ -80,6 +80,7 @@ class SerialBladder(threading.Thread):
         try:
             if len(self.remembered_commands_since_clear) > 0:
                 self.port.write((self.commands[command]).encode())
+                self.state_watcher.bladder_is_busy()
             else:
                 self.port.write((self.commands[command]).encode())
         except serial.serialutil.SerialException as e:

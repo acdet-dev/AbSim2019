@@ -69,7 +69,6 @@ class CNC(threading.Thread):
         else:
             logging.debug('no port on startup')
 
-
     def disconnect(self):
         try:
             logging.debug('disconnecting from ports')

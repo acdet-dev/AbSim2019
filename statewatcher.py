@@ -40,6 +40,11 @@ class StateWatcher (GObject.GObject):
             GObject.TYPE_NONE,
             (GObject.TYPE_STRING,)
         ),
+        'bladder_busy': (
+            GObject.SIGNAL_RUN_FIRST,
+            GObject.TYPE_NONE,
+            (GObject.TYPE_STRING,)
+        ),
         'sensor_pad_disconnected': (
             GObject.SIGNAL_RUN_FIRST,
             GObject.TYPE_NONE,
@@ -96,6 +101,8 @@ class StateWatcher (GObject.GObject):
         self.cnc_is_connected = False
         self.tensioner_is_connected = False
         self.bladder_is_connected = False
+        self.threading_timer = 1.0
+        self.connect_signals()
 
     def cnc_is_idle(self):
         self.cnc_device_is_idle = True
@@ -144,7 +151,7 @@ class StateWatcher (GObject.GObject):
 
     def bladder_is_busy(self):
         self.bladder_device_is_idle = False
-        #self.emit('any_device_busy', 'now')
+        self.emit('bladder_busy', 'now')
 
     def bladder_disconnected(self):
         if self.bladder_is_connected:
@@ -187,6 +194,13 @@ class StateWatcher (GObject.GObject):
         
         self.emit('any_device_busy', 'now')
 
+    def idle(self):
+        self.threading_timer = 5.0
+
+    def connect_signals(self):
+        self.connect('bladder_busy', self.idle)
+        # self.state_watcher.connect('any_device_busy', self.restart)
+
     def alert_if_all_devices_are_idle(self):
         need_tensioner_idle = self.tensioner_is_connected
         need_cnc_idle = self.cnc_is_connected
@@ -202,5 +216,6 @@ class StateWatcher (GObject.GObject):
             cnc_ready = True
 
         if tensioner_ready and cnc_ready:
-            t = threading.Timer(5.0, self.emit, ['all_devices_idle', 'now'])
+            print(self.threading_timer)
+            t = threading.Timer(self.threading_timer, self.emit, ['all_devices_idle', 'now'])
             t.start()
