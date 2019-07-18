@@ -160,14 +160,16 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         if len(self.exams) > 0:
             with open(c_dir + '\\exam_data.csv', 'w+', newline='') as outcsv:
                 writer = csv.DictWriter(outcsv, fieldnames=['Student ID', "Exam ID", "Score", "Correct", "Total",
-                                                            "Time Completed"])
+                                                            "Answers", "Chosen", "Time Completed"])
                 writer.writeheader()
                 try:
                     writer.writerows({'Student ID': exam[0], 'Exam ID': exam[1], 'Score': exam[2], 'Correct': exam[3],
-                                      'Total': exam[4], 'Time Completed': exam[5]} for exam in self.exams)
+                                      'Total': exam[4],
+                                      'Answers': [i.split('-')[0].split(': ')[1] for i in exam[5].split('+')],
+                                      'Chosen': [i.split('-')[1].split(': ')[1] for i in exam[5].split('+')],
+                                      'Time Completed': exam[6]} for exam in self.exams)
                     sim_message(self, info_string=_(u'Exam Data Exported!'),
                                 secondary_text=_(u"A CSV file with exam data was created in AbSim's directory."))
-
                     self.clear_data()
 
                 except TypeError:
@@ -236,7 +238,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
 
         if self.exams:
             for exam in self.exams:
-                store.append([exam[0], exam[1], exam[2], exam[3], exam[4], exam[5]])
+                store.append([exam[0], exam[1], exam[2], exam[3], exam[4], exam[6]])
 
         else:
             logging.debug('No exams returned')
@@ -339,8 +341,8 @@ class ViewBaselineAssessments(Gtk.HBox):
 
     def create_model(self):
         store = Gtk.ListStore(str, str, str, str, str, str, str)
-        exams = self.coverage_assessment_model.get_all()
-        for exam in exams:
+        self.exams = self.coverage_assessment_model.get_all()
+        for exam in self.exams:
             store.append([exam[1], exam[0], exam[2], exam[3], exam[4], exam[5], exam[7]])
         return store
 

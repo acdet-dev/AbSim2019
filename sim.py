@@ -7,6 +7,7 @@ import splashscreen
 import filechooser
 import viewPerformance
 import menu
+import testCreator
 
 import gi
 gi.require_version('Gtk', '3.0')
@@ -64,7 +65,7 @@ class UserType(Gtk.Window, menu.MenuBar):
         button_table.attach(config_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
 
         config_explanation = Gtk.Label()
-        label_text = _(u"Customize Sensor and Create Exams")
+        label_text = _(u"Customize Sensor Pad Pressure Settings")
         label_pre_mark = construct_markup(label_text, font_size=20)
         config_explanation.set_markup(label_pre_mark)
         button_table.attach(config_explanation, 1, 2, 0, 1)
@@ -79,9 +80,19 @@ class UserType(Gtk.Window, menu.MenuBar):
         class_explanation.set_markup(label_pre_mark)
         button_table.attach(class_explanation, 1, 2, 1, 2)
 
+        create_button = self.build_button(_(u"Create Exams"))
+        create_button.connect('clicked', self.create_exams)
+        button_table.attach(create_button, 0, 1, 2, 3, xoptions=False, yoptions=False)
+
+        create_explanation = Gtk.Label()
+        label_text = _(u"Construct and Assign Custom Exams")
+        label_pre_mark = construct_markup(label_text, font_size=20)
+        create_explanation.set_markup(label_pre_mark)
+        button_table.attach(create_explanation, 1, 2, 3, 4)
+
         score_button = self.build_button(_(u"View Student Performance"))
         score_button.connect('clicked', self.view_performance)
-        button_table.attach(score_button, 0, 1, 2, 3, xoptions=False, yoptions=False)
+        button_table.attach(score_button, 0, 1, 3, 4, xoptions=False, yoptions=False)
 
         score_explanation = Gtk.Label()
         label_text = _(u"View Student Scores on Assigned Exams")
@@ -218,6 +229,11 @@ class UserType(Gtk.Window, menu.MenuBar):
         self.setup_transfer()
         filechooser.FileChooserWindow()
         self.finish_file_transfer()
+
+    def create_exams(self, widget):
+        self.setup_transfer()
+        testCreator.TestCreator(self.name, self.password)
+        self.finish_transfer()
 
     def view_performance(self, widget):
         self.setup_transfer()

@@ -51,6 +51,10 @@ class Admin(Gtk.Window, menu.MenuBar):
             'new_case_block_observer': self.new_case_block,
             'notebook': self.notebook,
             'port_settings': self.port_settings,
+            'name': self.name,
+            'password': self.password,
+            'sounds': self.sounds,
+            'window': self,
         }
 
         #make window
@@ -70,13 +74,9 @@ class Admin(Gtk.Window, menu.MenuBar):
 
         # Pressure Sensitivity Adjustment
         sensitivity_label = simLabels.MilestoneNameLabel(_(u"Pressure") + "\n" + _(u"Sensitivity"))
-        settings_box = SensitivityInterface(self.view_resources, self)
+        settings_box = SensitivityInterface(self.view_resources)
         settings_box.show()
-        exam_label = simLabels.MilestoneNameLabel(_(u"Exam") + "\n" + _(u"Creation"))
-        exam_box = testCreator.TestCreator(self.name, self.password, self)
-        exam_box.show()
         self.notebook.append_page(settings_box, sensitivity_label)
-        self.notebook.append_page(exam_box, exam_label)
         self.notebook.show()
 
         #make boxes for packing and adding to window
@@ -152,13 +152,12 @@ class Admin(Gtk.Window, menu.MenuBar):
 
 
 class SensitivityInterface(Gtk.HBox):
-    def __init__(self, view_resources, parent):
+    def __init__(self, view_resources):
         super(SensitivityInterface, self).__init__()
-
-        self.parent = parent
-        self.sensitivity_settings = pressurepoints.SensitivitySettings(view_resources['pressurepoints'])
-        self.cnc_adjuster = CNCAdjustmentInterface(view_resources['port_settings'])
-        self.tensioner_adjustment = TensionerAdjustmentInterface(view_resources['port_settings'])
+        self.view_resources = view_resources
+        self.sensitivity_settings = pressurepoints.SensitivitySettings(self.view_resources['pressurepoints'])
+        self.cnc_adjuster = CNCAdjustmentInterface(self.view_resources['port_settings'])
+        self.tensioner_adjustment = TensionerAdjustmentInterface(self.view_resources['port_settings'])
 
         #build home button
         self.button_table = Gtk.Table(rows=1, columns=1, homogeneous=True)
@@ -213,14 +212,14 @@ class SensitivityInterface(Gtk.HBox):
         dbmigrator.DBMigrator()
 
         try:
-            self.parent.sounds.stop_sound_player()
-            self.parent.port_settings.stop_devices()
+            self.view_resources['sounds'].stop_sound_player()
+            self.view_resources['port_settings'].stop_devices()
         except AttributeError:
             logging.debug('attributes necessary for stopping sounds not made yet')
 
-        UserType('faculty', self.parent.name, self.parent.password)
+        UserType('faculty', self.view_resources['name'], self.view_resources['password'])
         splash_screen.hide()
-        self.parent.destroy()
+        self.view_resources['window'].destroy()
         Gtk.main()
 
     def reset_page(self):

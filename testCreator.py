@@ -2,49 +2,62 @@
 import gi
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gdk, GLib, GObject, Pango
+from gi.repository import Gtk
 
-import time, logging, random
+import time, logging
 
 from simLabels import construct_markup
 from cases import Cases
 from i18ntrans2 import _
 
 
-class TestCreator(Gtk.HBox):
+class TestCreator(Gtk.Window):
     '''test making window. Allows faculty to create and assign tests'''
 
-    def __init__(self, name, password, parent):
-        super(TestCreator, self).__init__(False, 2)
+    def __init__(self, name, password):
+
+        #make window
+        Gtk.Window.__init__(self, title="AbSim Exam Creator")
+        self.set_icon_from_file('icon.ico')
+        self.maximize()
+
+        # intialize passed class variables
         self.name = name
         self.password = password
-        self.parent = parent
         self.current_case = 'none n'
 
+        # initialize class variables
         self.button_list = []
         self.case_list = []
         self.title_list = []
         self.case_dict = Cases().pretty_ailment_names
 
+        # create instance objects of different exam selectors
         self.ddx_box = DdxExam()
         self.ddx_box.show_all()
 
         self.baseline = BaselineExam()
         self.baseline.show_all()
 
+        # create empty boxes to pack view elements to
+        self.hbox = Gtk.HBox()
         assignment_box = Gtk.VBox()
 
+        # build interface
         builder_box = self.build_interface(assignment_box)
-
         builder_box.show_all()
 
-        self.pack_start(builder_box, False, False, 0)
+        # widget packing statements
+        self.hbox.pack_start(builder_box, False, False, 0)
+        self.hbox.pack_start(Gtk.VSeparator(), False, False, 20)
+        self.hbox.pack_start(self.ddx_box, False, False, 10)
+        self.hbox.show_all()
 
-        self.pack_start(Gtk.VSeparator(), False, False, 20)
+        # add all packed elements to window
+        self.add(self.hbox)
+        self.show()
 
-        self.pack_start(self.ddx_box, False, False, 10)
-
-        self.show_all()
+        self.destroy_signal_handler = self.connect("destroy", Gtk.main_quit)
 
     def build_check_button(self, label_text):
         button = Gtk.CheckButton.new()
@@ -165,16 +178,16 @@ class TestCreator(Gtk.HBox):
         dbmigrator.DBMigrator()
 
         try:
-            self.parent.sounds.stop_sound_player()
-            self.parent.port_settings.stop_devices()
+            self.sounds.stop_sound_player()
+            self.port_settings.stop_devices()
             logging.debug('stopping devices')
 
         except:
             logging.debug('no ports to close')
 
-        UserType('faculty', self.parent.name, self.parent.password)
+        UserType('faculty', self.name, self.password)
         splash_screen.hide()
-        self.parent.destroy()
+        self.destroy()
         Gtk.main()
 
     def add_to_exam(self, choice):
@@ -207,7 +220,7 @@ class TestCreator(Gtk.HBox):
         case_string = '+'.join(self.case_list)
         title_string = '+'.join(self.title_list)
 
-        exam_model.save_to_db(self.parent, exam_name, case_string, title_string, timestr)
+        exam_model.save_to_db(self, exam_name, case_string, title_string, timestr)
 
         # clear checked buttons
         if len(self.button_list) > 0:

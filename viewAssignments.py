@@ -50,6 +50,10 @@ class ViewAssignments(Gtk.Window):
         self.text_dict = {}
         self.answer_list = []
         self.ddx_answer_list = []
+        self.student_answer_list = []
+        self.student_ddx_list = []
+        self.untouched = []
+        self.untouched_ddx = []
         self.baselinemodel = None
         self.exam_title = None
 
@@ -387,13 +391,14 @@ class ViewTests(Gtk.HBox):
         self.parent.ddx_indices = [i for i, x in enumerate(self.parent.title_list) if 'ddx_' in x]
         try:
             self.parent.ddx_cases = [self.parent.cases[j] for j in self.parent.ddx_indices]
-            random.shuffle(self.parent.ddx_cases, random.random)
             for k in self.parent.ddx_cases:
                 self.parent.cases.remove(k)
         except IndexError:
             logging.debug('no ddx exams given')
 
         if self.parent.ddx_cases and len(self.parent.ddx_cases) > 0:
+            self.parent.untouched_ddx.extend(self.parent.ddx_cases)
+            random.shuffle(self.parent.ddx_cases, random.random)
             self.parent.ddx_flag = True
             self.parent.ddx_num = 0
             self.parent.ddx_score = 0
@@ -405,6 +410,7 @@ class ViewTests(Gtk.HBox):
 
         # find abnormality items
         if len(self.parent.cases) > 0:
+            self.parent.untouched.extend(self.parent.cases)
             self.parent.ab_flag = True
             random.shuffle(self.parent.cases, random.random)
             self.parent.den = len(self.parent.cases)
@@ -653,13 +659,27 @@ class CaseExam(Gtk.HBox):
                 self.parent.den = self.parent.ddx_den
 
             # alert score
+            ind_list = [self.parent.answer_list.index(elem) for elem in self.parent.untouched]
+            ans_ind_list = [x for y, x in sorted(zip(ind_list, self.parent.answer_list))]
+            stu_ind_list = [x for y, x in sorted(zip(ind_list, self.parent.student_answer_list))]
+            correct_chosen = ['correct: ' + x + '-' + 'chosen: ' + y for x, y in zip(ans_ind_list, stu_ind_list)]
+
+            ddx_ind_list = [self.parent.ddx_answer_list.index(elem) for elem in self.parent.untouched_ddx]
+            ans_ddx_ind_list = [x for y, x in sorted(zip(ddx_ind_list, self.parent.ddx_answer_list))]
+            stu_ddx_ind_list = [x for y, x in sorted(zip(ddx_ind_list, self.parent.student_ddx_list))]
+            ddx_correct_chosen = ['correct: ' + x + '-' + 'chosen: ' + y for x, y in zip(ans_ddx_ind_list, stu_ddx_ind_list)]
+
+            correct_chosen.extend(ddx_correct_chosen)
+
             sim_message(self.parent, info_string=_(u'Exam Finished.'),
                         secondary_text=_(u'You may take another exam if you have more to take.'))
             timestr = time.strftime("%Y%m%d-%H%M%S")
 
+            correct_chosen_string = '+'.join(correct_chosen)
+
             # save score data to db
             exam_data.save_to_db(self.parent.password, self.parent.exam_title, score, self.parent.num, self.parent.den,
-                                 timestr)
+                                 correct_chosen_string, timestr)
 
             self.parent.return_home()
 
@@ -669,6 +689,8 @@ class CaseExam(Gtk.HBox):
 
             if distance(self.current_case, self.parent.cases[0]) < 1:
                 self.parent.answer_list.append(self.parent.cases[0])
+                # add student answers to their own list
+                self.parent.student_answer_list.append(self.current_case)
                 self.parent.cases.pop(0)
                 self.parent.num += 1
                 try:
@@ -680,6 +702,8 @@ class CaseExam(Gtk.HBox):
                     pass
             elif distance(self.current_case, self.parent.cases[0]) < 4:
                 self.parent.answer_list.append(self.parent.cases[0])
+                # add student answers to their own list
+                self.parent.student_answer_list.append(self.current_case)
                 self.parent.cases.pop(0)
                 self.parent.num += .5
 
@@ -692,6 +716,8 @@ class CaseExam(Gtk.HBox):
                     pass
             else:
                 self.parent.answer_list.append(self.parent.cases[0])
+                # add student answers to their own list
+                self.parent.student_answer_list.append(self.current_case)
                 self.parent.cases.pop(0)
                 try:
                     self.parent.new_case_observer.alert(self.parent.cases[0])
@@ -699,6 +725,7 @@ class CaseExam(Gtk.HBox):
                     score = self.parent.num / self.parent.den
                     self.report_score(score)
                     pass
+
         else:
             sim_message(self.parent, info_string=_(u'Exam Finished.'),
                         secondary_text=_(u'You may take another exam if you have '
@@ -865,6 +892,8 @@ class DdxExam(Gtk.HBox):
         if len(self.parent.ddx_cases) > 0:
             if distance(self.current_case, self.parent.ddx_cases[0].split('ddx_')[0]) < 1:
                 self.parent.ddx_answer_list.append(self.parent.ddx_cases[0])
+                # add student answers to their own list
+                self.parent.student_ddx_list.append(self.current_case)
                 self.parent.ddx_cases.pop(0)
                 self.parent.ddx_num += 1
                 try:
@@ -883,6 +912,8 @@ class DdxExam(Gtk.HBox):
 
             else:
                 self.parent.ddx_answer_list.append(self.parent.ddx_cases[0])
+                # add student answers to their own list
+                self.parent.student_ddx_list.append(self.current_case)
                 self.parent.ddx_cases.pop(0)
                 try:
                     # add case vignette to scroller
@@ -897,6 +928,7 @@ class DdxExam(Gtk.HBox):
                 except IndexError:
                     score = self.parent.ddx_num / self.parent.ddx_den
                     self.parent.case_exam.report_score(score)
+
         else:
             sim_message(self.parent, info_string=_(u'Exam Finished.'),
                         secondary_text=_(u'You may take another exam if you have '

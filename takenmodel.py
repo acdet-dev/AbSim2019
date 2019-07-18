@@ -20,7 +20,7 @@ class TakenModel:
             pass
             logging.debug('AbSim could not create taken exams database table.')
 
-    def save_to_db(self, student_id, exam_title, score, correct, total, timein):
+    def save_to_db(self, student_id, exam_title, score, correct, total, answers, timein):
         db_conn = self.connect()
         db_conn.text_factory = str
         c = db_conn.cursor()
@@ -31,16 +31,17 @@ class TakenModel:
         score text NOT NULL,
         correct text NOT NULL,
         total text NOT NULL,
+        answers text NOT NULL,
         timein text NOT NULL);"""
 
         self.create_table(db_conn, sql_create_assessed_table)
 
         stmt = '''
             INSERT INTO assessed
-            (student_id, exam_title, score, correct, total, timein)
-            VALUES (?, ?, ?, ?, ?, ?)
+            (student_id, exam_title, score, correct, total, answers, timein)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
         '''
-        c.execute(stmt, (student_id, exam_title, score, correct, total, timein))
+        c.execute(stmt, (student_id, exam_title, score, correct, total, answers, timein))
         try:
             db_conn.commit()
             logging.debug('taken exams db updated')
@@ -68,7 +69,7 @@ class TakenModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT student_id, exam_title, score, correct, total, timein
+            SELECT student_id, exam_title, score, correct, total, answers, timein
             FROM assessed
         '''
         try:
@@ -93,7 +94,7 @@ class TakenModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT student_id, exam_title, score, correct, total, timein
+            SELECT student_id, exam_title, score, correct, total, answers, timein
             FROM assessed
             WHERE student_id=?
         '''
