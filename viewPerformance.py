@@ -158,28 +158,49 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         c_dir = os.getenv('LOCALAPPDATA') + '\\AbSimBeta'
 
         if len(self.exams) > 0:
-            with open(c_dir + '\\exam_data.csv', 'w+', newline='') as outcsv:
-                writer = csv.DictWriter(outcsv, fieldnames=['Student ID', "Exam ID", "Score", "Correct", "Total",
-                                                            "Answers", "Chosen", "Time Completed"])
-                writer.writeheader()
-                try:
-                    writer.writerows({'Student ID': exam[0], 'Exam ID': exam[1], 'Score': exam[2], 'Correct': exam[3],
-                                      'Total': exam[4],
-                                      'Answers': [i.split('-')[0].split(': ')[1] for i in exam[5].split('+')],
-                                      'Chosen': [i.split('-')[1].split(': ')[1] for i in exam[5].split('+')],
-                                      'Time Completed': exam[6]} for exam in self.exams)
-                    sim_message(self, info_string=_(u'Exam Data Exported!'),
-                                secondary_text=_(u"A CSV file with exam data was created in AbSim's directory."))
+            fields = ['Student ID', 'Exam ID', 'Score', 'Correct', 'Total']
+            try:
+                added = len(self.exams[0][5].split('+'))
 
-                    self.baseline.export()
+                for i in range(1, added + 1):
+                    fields.append('answer_' + str(i))
+                    fields.append('chosen_' + str(i))
 
-                    self.clear_data()
+            except IndexError:
+                pass
 
-                except TypeError:
-                    logging.debug('Could not get exam info because no exams exist.')
+            fields.append('Time Completed')
 
-                    sim_message(self, info_string=_(u'Exam Data NOT Exported!'),
-                                secondary_text=_(u'An error occurred preventing the exportation.'))
+            outcsv = csv.writer(open(c_dir + '\\' + self.exams[0][1] + '_exam_data.csv', 'w+', newline=''))
+            outcsv.writerow(fields)
+
+            try:
+                for exam in self.exams:
+                    temp = list()
+                    temp.append(exam[0])
+                    temp.append(exam[1])
+                    temp.append(exam[2])
+                    temp.append(exam[3])
+                    temp.append(exam[4])
+                    for ans in exam[5].split('+'):
+                        temp.append(ans.split('-')[0].split(': ')[1])
+                        temp.append(ans.split('-')[1].split(': ')[1])
+                    temp.append(exam[6])
+
+                    outcsv.writerow(temp)
+
+                sim_message(self, info_string=_(u'Exam Data Exported!'),
+                            secondary_text=_(u"A CSV file with exam data was created in AbSim's directory."))
+
+                self.baseline.export()
+
+                self.clear_data()
+
+            except TypeError:
+                logging.debug('Could not get exam info because no exams exist.')
+
+                sim_message(self, info_string=_(u'Exam Data NOT Exported!'),
+                            secondary_text=_(u'An error occurred preventing the exportation.'))
 
         else:
             logging.debug('Could not get exam info because no exams exist.')
@@ -350,7 +371,7 @@ class ViewBaselineAssessments(Gtk.HBox):
         c_dir = os.getenv('LOCALAPPDATA') + '\\AbSimBeta'
 
         if len(self.exams) > 0:
-            with open(c_dir + '\\baseline_data.csv', 'w+', newline='') as outcsv:
+            with open(c_dir + '\\' + self.exams[0][0] + '_baseline_data.csv', 'w+', newline='') as outcsv:
                 writer = csv.DictWriter(outcsv, fieldnames=['Student ID', "Exam ID", "Not Palpated", "Light Palpation",
                                                             "Deep Palpation", "Too Deep", "Time Completed"])
                 writer.writeheader()
