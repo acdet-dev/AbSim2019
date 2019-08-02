@@ -1,0 +1,55 @@
+import logging
+
+
+class ExamParser():
+    def __init__(self, flag, title):
+        self.flag = flag
+        self.title = title
+
+    def get_exam_info(self, flag, key):
+        import exammodel
+        if flag == 'all':
+            exam_model = exammodel.ExamModel()
+
+            exam_info = exam_model.get_all(key)
+
+        else:
+            exam_model = exammodel.ExamModel()
+
+            exam_info = exam_model.get_by_exam_id(key)
+
+        return exam_info
+
+    def parse_exam_info(self, case_list):
+        # find out what is on exam
+        if len(case_list) > 1:
+            case_list_comm = case_list[0].split('+')
+            case_title_list = case_list[1].split('+')
+        else:
+            case_list_comm = case_list[0]
+            case_title_list = case_list[1]
+
+        # check for baseline
+        if 'Baseline' in case_title_list:
+            case_list_comm.pop(0)
+            case_title_list.pop(0)
+            import baselinemodel
+            baseline_model = baselinemodel.BaselineModel()
+            baseline_flag = True
+
+        else:
+            baseline_model = ''
+            baseline_flag = False
+
+        # find ddx items
+        ddx_indices =\
+            [i for i, x in enumerate(case_title_list) if 'ddx_' in x]
+        try:
+            ddx_cases = \
+                [case_list_comm[j] for j in ddx_indices]
+            for k in ddx_cases:
+                case_list_comm.remove(k)
+        except IndexError:
+            logging.debug('no ddx exams given')
+
+        return case_list_comm, case_title_list, baseline_model, baseline_flag, ddx_cases

@@ -16,14 +16,14 @@ class FileChooserWindow(Gtk.Window):
 
         self.on_file_clicked()
 
-    def save_info(self, user_name, student_id):
+    def save_info(self, last, first, student_id):
         import studentmodel
         # i18n - Time string left as-is
         timestr = time.strftime("%Y%m%d-%H%M%S")
         student_id = str(student_id)
         self.student_model = studentmodel.StudentModel()
 
-        self.student_model.save_to_db(user_name, student_id, timestr)
+        self.student_model.save_to_db(last, first, student_id, timestr)
 
     def on_file_clicked(self):
         from messages import sim_message
@@ -39,7 +39,7 @@ class FileChooserWindow(Gtk.Window):
             with open(dialog.get_filename(), encoding='utf-8') as csvfile:
                 readCSV = csv.reader(csvfile, delimiter=',')
                 for row in readCSV:
-                    self.save_info(row[0], row[1])
+                    self.save_info(row[0], row[1], row[2])
 
             sim_message(self, info_string=_(u'Class Uploaded Successfully'), secondary_text=_(u'Students may now '
                                                                                               u'login to view exams '

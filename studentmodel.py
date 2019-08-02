@@ -23,23 +23,24 @@ class StudentModel:
             logging.debug('could not create table for database file')
             pass
 
-    def save_to_db(self, user_name, student_id, time_in):
+    def save_to_db(self, user_last, user_first, student_id, timestr):
         db_conn = self.connect()
         db_conn.text_factory = str
         c = db_conn.cursor()
 
         sql_create_student_table = """CREATE TABLE IF NOT EXISTS student (
-        user_name text NOT NULL,
+        user_last text NOT NULL,
+        user_first text NOT NULL,
         student_id text NOT NULL);"""
 
         self.create_table(db_conn, sql_create_student_table)
 
         stmt = '''
             INSERT INTO student
-            (user_name, student_id)
-            VALUES (?, ?)
+            (user_last, user_first, student_id)
+            VALUES (?, ?, ?)
         '''
-        c.execute(stmt, (user_name, student_id))
+        c.execute(stmt, (user_last, user_first, student_id))
         try:
             db_conn.commit()
             logging.debug('db updated')
@@ -53,7 +54,7 @@ class StudentModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT user_name, student_id
+            SELECT user_last, user_first, student_id
             FROM student
         '''
         try:
@@ -75,7 +76,7 @@ class StudentModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT user_name, student_id
+            SELECT user_last, user_first, student_id
             FROM student
             WHERE student_id=?
         '''
@@ -86,11 +87,12 @@ class StudentModel:
 
             student = [list(elem) for elem in row]
 
-            user_name = student[0][0]
-            student_id = student[0][1]
+            user_last = student[0][0]
+            user_first = student[0][1]
+            student_id = student[0][2]
 
             db_conn.close()
-            return user_name, student_id
+            return user_last, user_first, student_id
 
         except Exception as e:
             logging.debug('could not get student by id entered.')

@@ -36,12 +36,14 @@ class BaselineModel:
             pass
         db_conn.close()
 
-    def save_to_db(self, exam_name, student_id, not_up, up, down, hard, coverage, time_in):
+    def save_to_db(self, last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, time_in):
         db_conn = self.connect()
         db_conn.text_factory = str
         c = db_conn.cursor()
 
         sql_create_exam_table = """CREATE TABLE IF NOT EXISTS baseline (
+        last_name text NOT NULL,
+        first_name text NOT NULL,
         exam_name text NOT NULL,
         student_id text NOT NULL,
         not_up text NOT NULL,
@@ -55,15 +57,16 @@ class BaselineModel:
 
         stmt = '''
             INSERT INTO baseline
-            (exam_name, student_id, not_up, up, down, hard, coverage, time_in)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            (last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, time_in)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         '''
         with open(app_data_path + 'prot2', 'wb') as pfile:
             pickled_coverage = pickle.dump(coverage, pfile, protocol=None)
             # try
         with open(app_data_path + 'prot2', 'rb') as pfile:
             pickled_coverage = pfile.read()
-            c.execute(stmt, (exam_name, student_id, not_up, up, down, hard, sqlite3.Binary(pickled_coverage), time_in))
+            c.execute(stmt, (last_name, first_name, exam_name, student_id, not_up, up, down, hard,
+                             sqlite3.Binary(pickled_coverage), time_in))
 
             try:
                 db_conn.commit()
@@ -78,7 +81,7 @@ class BaselineModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT exam_name, student_id, not_up, up, down, hard, coverage, time_in
+            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, time_in
             FROM baseline
         '''
         try:
@@ -98,7 +101,7 @@ class BaselineModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT exam_name, student_id, not_up, up, down, hard, coverage, time_in
+            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, time_in
             FROM baseline
             WHERE exam_name=? AND student_id=?
         '''
@@ -107,7 +110,7 @@ class BaselineModel:
         row = c.fetchone()
         # logging.debug(row)
         exam = [elem for elem in row]
-        exam[6] = pickle.loads(row[6])
+        exam[8] = pickle.loads(row[8])
         db_conn.close()
 
         return exam
@@ -118,7 +121,7 @@ class BaselineModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT exam_name, student_id, not_up, up, down, hard, coverage, time_in
+            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, time_in
             FROM baseline
             WHERE student_id=?
         '''
