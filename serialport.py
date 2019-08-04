@@ -65,7 +65,7 @@ class Sensors(threading.Thread):
                 else:
                     i = i + 1
                     time.sleep(1)
-            if self.state_watcher.sensor_pad_is_connected:
+            if self.port is not None:
                 pass
             else:
                 logging.debug('failed to reconnect pressure pad. Stopping device thread')
