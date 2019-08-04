@@ -91,12 +91,11 @@ class Sensors(threading.Thread):
     def run(self):
         while not self.stopped():
             if hasattr(self, 'port') and self.port is not None:
-                self.read_from_port()
-                '''
-                except:
+                try:
+                    self.read_from_port()
+                except serial.SerialException:
                     logging.debug('Closing sensor port on try read command')
                     self.port.close()
-                    '''
                 self.command = 0
                 try:
                     self.command = self.command_queue.get(True, 0.01)
