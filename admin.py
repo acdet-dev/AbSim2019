@@ -157,7 +157,6 @@ class SensitivityInterface(Gtk.HBox):
         self.view_resources = view_resources
         self.sensitivity_settings = pressurepoints.SensitivitySettings(self.view_resources['pressurepoints'])
         self.cnc_adjuster = CNCAdjustmentInterface(self.view_resources['port_settings'])
-        self.tensioner_adjustment = TensionerAdjustmentInterface(self.view_resources['port_settings'])
 
         #build home button
         self.button_table = Gtk.Table(rows=1, columns=1, homogeneous=True)
@@ -171,8 +170,6 @@ class SensitivityInterface(Gtk.HBox):
         self.settings_vbox.pack_start(self.sensitivity_settings, False, False)
         self.settings_vbox.pack_start(Gtk.HSeparator(), False, False, 20)
         self.settings_vbox.pack_start(self.cnc_adjuster, False, False)
-        self.settings_vbox.pack_start(Gtk.HSeparator(), False, False, 20)
-        self.settings_vbox.pack_start(self.tensioner_adjustment, False, False, 0)
         self.settings_vbox.pack_start(Gtk.HSeparator(), False, False, 20)
         self.settings_vbox.pack_start(self.button_table_alignment, False, False, 0)
 
@@ -268,41 +265,3 @@ class CNCAdjustmentInterface(Gtk.VBox):
 
     def arrow_handler(self, widget, direction):
         self.port_settings.send_cnc_command(direction)
-
-
-class TensionerAdjustmentInterface(Gtk.VBox):
-    def __init__(self, port_settings):
-        super(TensionerAdjustmentInterface, self).__init__()
-        self.port_settings = port_settings
-
-        adjustment_label = Gtk.Label()
-        label_text = _(u"Base Abdomen Firmness")
-        label_pre = construct_markup(label_text, font_size=12)
-        adjustment_label.set_markup(label_pre)
-        self.pack_start(adjustment_label, False, False, 0)
-
-        button_alignment = Gtk.Alignment(xalign=0.5)
-        button_hbox = Gtk.HBox()
-        button_alignment.add(button_hbox)
-
-        minus_button = self.build_button(_(u"-"), 'decrease_tension')
-        button_hbox.pack_start(minus_button, False, False, 10)
-
-        plus_button = self.build_button(_(u"+"), 'increase_tension')
-        button_hbox.pack_start(plus_button, False, False, 10)
-
-        save_button = self.build_button(_(u"Save Tension"), 'save')
-        button_hbox.pack_start(save_button, False, False, 10)
-
-        self.pack_start(button_alignment, False, False, 0)
-
-        self.show_all()
-
-    def build_button(self, label_text, command_to_tensioner):
-        label = Gtk.Label()
-        label_pre = construct_markup(label_text, font_size=10)
-        label.set_markup(label_pre)
-        button = Gtk.Button()
-        button.add(label)
-        button.connect('clicked', self.port_settings.send_tensioner_command, command_to_tensioner)
-        return button

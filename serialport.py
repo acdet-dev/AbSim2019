@@ -10,6 +10,7 @@ import serial.tools.list_ports
 import observer
 import time
 import re
+import queue as Queue
 from gi.repository import GObject
 GObject.threads_init()
 
@@ -90,17 +91,17 @@ class Sensors(threading.Thread):
     def run(self):
         while not self.stopped():
             if hasattr(self, 'port') and self.port is not None:
-                try:
-                    self.read_from_port()
+                self.read_from_port()
+                '''
                 except:
                     logging.debug('Closing sensor port on try read command')
                     self.port.close()
+                    '''
                 self.command = 0
                 try:
                     self.command = self.command_queue.get(True, 0.01)
-                    print(self.command)
-                except:
-                    pass  # no-op
+                except Queue.Empty:
+                    pass
                 if self.command:
                     self.send_command(self.command)
             else:

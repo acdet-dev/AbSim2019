@@ -73,7 +73,6 @@ class SerialBladder(threading.Thread):
                     i = i + 1
                     time.sleep(1)
                 self.delay = True
-                
 
     def send_command(self, command):
         self.update_memorized_commands_since_clear(command)

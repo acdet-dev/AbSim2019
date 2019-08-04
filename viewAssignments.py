@@ -1007,6 +1007,7 @@ class DdxExam(Gtk.HBox):
         # Top level
 
         store.append(None, [_(u"Upper Gastrointestinal Etiology"), 'Upper Gastrointestinal Etiology'])
+        store.append(None, [_(u"Choledocolithiasis"), 'Choledocolithiasis'])
         store.append(None, [_(u"Pancreatitis"), 'Pancreatitis'])
         store.append(None, [_(u"Cholecystitis"), 'Cholecystitis'])
         store.append(None, [_(u"Mesenteric Infarction"), 'Mesenteric Infarction'])

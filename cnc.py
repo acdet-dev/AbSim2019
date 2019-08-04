@@ -160,16 +160,7 @@ class CNC(threading.Thread):
         logging.debug('home_stop called!')
         self.stop()
         self.last_location_sent = 'none'
-        try:
-            self.send_command(self.gcodes.get('home'))
-            time.sleep(3)
-            self.alert_when_idle(True)
-        except (OSError, serial.SerialException):
-            logging.debug('could not write to port')
-            pass
-
         self.disconnect()
-        time.sleep(5)
 
     def get_adjusted_location_gcode(self, command_name):
         # create dict

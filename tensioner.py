@@ -141,7 +141,6 @@ class Tensioner(threading.Thread):
             time.sleep(1)
         self.state_watcher.tensioner_is_idle()
 
-
     def tensioner_home_stop(self):
         self.delay = True
         logging.debug('tensioner home stop called')
