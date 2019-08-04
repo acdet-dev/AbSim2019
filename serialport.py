@@ -65,8 +65,11 @@ class Sensors(threading.Thread):
                 else:
                     i = i + 1
                     time.sleep(1)
-            logging.debug('failed to reconnect pressure pad. Stopping device thread')
-            self.stop()
+            if self.state_watcher.sensor_pad_is_connected:
+                pass
+            else:
+                logging.debug('failed to reconnect pressure pad. Stopping device thread')
+                self.stop()
 
     def connect_signals(self):
         self.state_watcher.connect('all_devices_idle', self.idle)
