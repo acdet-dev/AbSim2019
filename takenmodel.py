@@ -110,3 +110,26 @@ class TakenModel:
         except Exception:
             logging.debug('Could not get assessment by score_id.')
             pass
+
+    def get_by_exam_id(self, key):
+
+        db_conn = self.connect()
+        c = db_conn.cursor()
+
+        stmt = '''
+            SELECT student_id, exam_title, score, correct, total, answers, timein
+            FROM assessed
+            WHERE exam_title=?
+        '''
+        try:
+            # trying to match with datatype not string!
+            c.execute(stmt, (key,))
+            row = c.fetchall()
+            assessed = [list(elem) for elem in row]
+            logging.debug('Got assessment by score_id!')
+            db_conn.close()
+            return assessed
+
+        except Exception:
+            logging.debug('Could not get assessment by score_id.')
+            pass

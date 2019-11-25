@@ -15,6 +15,7 @@ from simLabels import construct_markup, font_size, screen_sizer
 import sounds
 import donottouch
 import takenmodel
+import examParser
 import logging
 import random
 from Levenshtein import distance
@@ -27,9 +28,10 @@ from gi.repository import Gtk, Gdk, GLib, Pango
 
 class ViewAssignments(Gtk.Window):
 
-    def __init__(self, name, password):
+    def __init__(self, last, first, password):
         # initialize inherited variables
-        self.name = name
+        self.last = last
+        self.first = first
         self.password = password
         self.exam_info = self.exams_left()
 
@@ -57,6 +59,35 @@ class ViewAssignments(Gtk.Window):
         self.baselinemodel = None
         self.exam_title = None
 
+        self.exam_resources = {
+            'last': self.last,
+            'first': self.first,
+            'password': self.password,
+            'exam_info': self.exam_info,
+            'ab_flag': self.ab_flag,
+            'baseline_flag': self.baselineFlag,
+            'ddx_flag': self.ddx_flag,
+            'ab_score': self.score,
+            'ab_num': self.num,
+            'ab_den': self.den,
+            'ddx_score': self.ddx_score,
+            'ddx_num': self.ddx_num,
+            'ddx_den': self.ddx_den,
+            'case_list': self.cases,
+            'case_title_list': self.title_list,
+            'ddx_indices': self.ddx_indices,
+            'ddx_cases': self.ddx_cases,
+            'text_dict': self.text_dict,
+            'ab_answer_list': self.answer_list,
+            'ddx_answer_list': self.ddx_answer_list,
+            'student_answer_list': self.student_answer_list,
+            'student_ddx_list': self.student_ddx_list,
+            'untouched': self.untouched,
+            'untouched_ddx': self.untouched_ddx,
+            'baseline_model': self.baselinemodel,
+            'exam_title': self.exam_title,
+        }
+
         # Build all the objects that talk to each other
         self.new_selected_case = observer.Observer()
         self.ailments = ailments.Ailments()
@@ -79,6 +110,7 @@ class ViewAssignments(Gtk.Window):
             'new_case_observer': self.new_selected_case,
             'new_case_block_observer': self.new_case_block,
             'notebook': self.notebook,
+            'window': self,
         }
 
         # make window
@@ -100,25 +132,25 @@ class ViewAssignments(Gtk.Window):
         self.destroy_signal_handler = self.connect('destroy', Gtk.main_quit)
 
         # Baseline Assessment
-        self.baseline = BaselineTest(self)
+        self.baseline = BaselineTest(self.exam_resources, self.view_resources)
         self.baseline.set_property('border-width', 15)
         baseline_label = simLabels.MilestoneNameLabel(_(u"Baseline Exam"))
         self.notebook.append_page(self.baseline, baseline_label)
 
         # Case Assessment
-        self.case_exam = CaseExam(self)
+        self.case_exam = CaseExam(self.exam_resources, self.view_resources)
         self.case_exam.set_property('border-width', 15)
         case_exam_label = simLabels.MilestoneNameLabel(_(u"Abnormality Exam"))
         self.notebook.append_page(self.case_exam, case_exam_label)
 
         # DDX Assessment
-        self.ddx_exam = DdxExam(self)
+        self.ddx_exam = DdxExam(self.exam_resources, self.view_resources)
         self.ddx_exam.set_property('border-width', 15)
         ddx_exam_label = simLabels.MilestoneNameLabel(_(u"Ddx Exam"))
         self.notebook.append_page(self.ddx_exam, ddx_exam_label)
 
         # View Tests
-        self.view_tests = ViewTests(self.name, self.password, self.exam_info, self.view_resources, self)
+        self.view_tests = ViewTests(self.exam_resources, self.view_resources)
         self.view_tests.set_property('border-width', 15)
         view_tests_label = simLabels.MilestoneNameLabel(_(u"View Tests"))
         self.notebook.prepend_page(self.view_tests, view_tests_label)
@@ -250,14 +282,11 @@ class ViewAssignments(Gtk.Window):
 
 
 class ViewTests(Gtk.HBox):
-    def __init__(self, user_name, user_id, exam_info, view_resources, parent):
+    def __init__(self, exam_resources, view_resources):
         super(ViewTests, self).__init__(False, 2)
 
-        self.user_name = user_name
-        self.user_id = user_id
-        self.exam_info = exam_info
+        self.exam_resources = exam_resources
         self.view_resources = view_resources
-        self.parent = parent
 
         # build interface
         built_box = self.build_interface()
@@ -275,8 +304,8 @@ class ViewTests(Gtk.HBox):
 
         store = Gtk.ListStore(str)
 
-        for i in range(0, len(self.exam_info)):
-            treeiter = store.append([self.exam_info[i][0].decode()])
+        for i in range(0, len(self.exam_resources['exam_info'])):
+            treeiter = store.append([self.exam_resources['exam_info'][i][0].decode()])
 
         tv = Gtk.TreeView(store)
 
@@ -296,7 +325,7 @@ class ViewTests(Gtk.HBox):
         selection = treeview.get_selection()
         (model, iter) = selection.get_selected()
 
-        self.parent.exam_title = model.get(iter, 0)[0]
+        self.exam_resources['exam_title'] = model.get(iter, 0)[0]
 
     def build_interface(self):
         box = Gtk.VBox()
@@ -324,7 +353,7 @@ class ViewTests(Gtk.HBox):
         button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
 
         left_button = self.build_button(_(u"Return"))
-        left_button.connect('clicked', self.parent.return_home)
+        left_button.connect('clicked', self.view_resources['window'].return_home)
         button_table.attach(left_button, 1, 2, 0, 1, xoptions=False, yoptions=False)
 
         return button_table
@@ -340,10 +369,10 @@ class ViewTests(Gtk.HBox):
 
     def get_vignette(self):
         # find ddx_list label_info
-        ddx_list = self.parent.text_dict.cases.get(525, [])
+        ddx_list = self.exam_resources['text_dict'].cases.get(525, [])
         indices = [i for i, x in enumerate(ddx_list)]
 
-        relevant = [ddx_list[j] for j in indices if ddx_list[j][0]['ddx_name'] == self.parent.ddx_cases[0]]
+        relevant = [ddx_list[j] for j in indices if ddx_list[j][0]['ddx_name'] == self.exam_resources['ddx_cases'][0]]
 
         rand_index = random.randint(0, len(relevant[0]) - 1)
         random_rel = relevant[0][rand_index]
@@ -353,78 +382,33 @@ class ViewTests(Gtk.HBox):
 
         return label_text, ailment_key, random_rel
 
-    def get_exam_info(self, flag, key):
-        import exammodel
-        if flag == 'all':
-            exam_model = exammodel.ExamModel()
+    def build_exam_view(self):
 
-            exam_info = exam_model.get_all(key)
-
-        else:
-            exam_model = exammodel.ExamModel()
-
-            exam_info = exam_model.get_by_exam_id(key)
-
-        return exam_info
-
-    def parse_exam_info(self, case_list):
-        # find out what is on exam
-        if len(case_list) > 1:
-            self.parent.cases = case_list[0].split('+')
-            self.parent.title_list = case_list[1].split('+')
-        else:
-            self.parent.cases = case_list[0]
-            self.parent.title_list = case_list[1]
-
-        # check for baseline
-        if 'Baseline' in self.parent.title_list:
-            self.parent.cases.pop(0)
-            self.parent.title_list.pop(0)
-            import baselinemodel
-            self.parent.baselinemodel = baselinemodel.BaselineModel()
-            self.parent.baselineFlag = True
+        if self.exam_resources['ddx_cases'] and len(self.exam_resources['ddx_cases']) > 0:
+            self.exam_resources['untouched_ddx'].extend(self.exam_resources['ddx_cases'])
+            random.shuffle(self.exam_resources['ddx_cases'], random.random)
+            self.exam_resources['ddx_flag'] = True
+            self.exam_resources['ddx_den'] = len(self.exam_resources['ddx_cases'])
+            self.exam_resources['text_dict'] = casetext.CaseText()
 
         else:
-            self.parent.baselineFlag = False
-
-        # find ddx items
-        self.parent.ddx_indices = [i for i, x in enumerate(self.parent.title_list) if 'ddx_' in x]
-        try:
-            self.parent.ddx_cases = [self.parent.cases[j] for j in self.parent.ddx_indices]
-            for k in self.parent.ddx_cases:
-                self.parent.cases.remove(k)
-        except IndexError:
-            logging.debug('no ddx exams given')
-
-        if self.parent.ddx_cases and len(self.parent.ddx_cases) > 0:
-            self.parent.untouched_ddx.extend(self.parent.ddx_cases)
-            random.shuffle(self.parent.ddx_cases, random.random)
-            self.parent.ddx_flag = True
-            self.parent.ddx_num = 0
-            self.parent.ddx_score = 0
-            self.parent.ddx_den = len(self.parent.ddx_cases)
-            self.parent.text_dict = casetext.CaseText()
-
-        else:
-            self.parent.ddx_flag = False
+            self.exam_resources['ddx_flag'] = False
 
         # find abnormality items
-        if len(self.parent.cases) > 0:
-            self.parent.untouched.extend(self.parent.cases)
-            self.parent.ab_flag = True
-            random.shuffle(self.parent.cases, random.random)
-            self.parent.den = len(self.parent.cases)
-            self.parent.num = 0
-            self.parent.score = 0
+        if len(self.exam_resources['case_list']) > 0:
+            self.exam_resources['untouched'].extend(self.exam_resources['case_list'])
+            self.exam_resources['ab_flag'] = True
+            random.shuffle(self.exam_resources['case_list'], random.random)
+            self.exam_resources['ab_den'] = len(self.exam_resources['case_list'])
 
         else:
-            self.parent.ab_flag = False
+            self.exam_resources['ab_flag'] = False
 
-        if self.parent.baselineFlag:
-            page1 = self.parent.view_resources['notebook'].get_nth_page(0)
-            page2 = self.parent.view_resources['notebook'].get_nth_page(2)
-            page3 = self.parent.view_resources['notebook'].get_nth_page(3)
-            page = self.parent.view_resources['notebook'].get_nth_page(1)
+        if self.exam_resources['baseline_flag']:
+            page1 = self.view_resources['notebook'].get_nth_page(0)
+            page2 = self.view_resources['notebook'].get_nth_page(2)
+            page3 = self.view_resources['notebook'].get_nth_page(3)
+            page = self.view_resources['notebook'].get_nth_page(1)
 
             page1.hide()
             page2.hide()
@@ -432,13 +416,13 @@ class ViewTests(Gtk.HBox):
             page.show()
             if 'notebook' in self.view_resources:
                 self.view_resources['notebook'].set_current_page(1)
-                self.parent.new_case_observer.alert('none n')
+                self.view_resources['new_case_observer'].alert('none n')
         else:
-            if len(self.parent.cases) > 0:
-                page1 = self.parent.view_resources['notebook'].get_nth_page(0)
-                page2 = self.parent.view_resources['notebook'].get_nth_page(1)
-                page3 = self.parent.view_resources['notebook'].get_nth_page(3)
-                page = self.parent.view_resources['notebook'].get_nth_page(2)
+            if len(self.exam_resources['case_list']) > 0:
+                page1 = self.view_resources['notebook'].get_nth_page(0)
+                page2 = self.view_resources['notebook'].get_nth_page(1)
+                page3 = self.view_resources['notebook'].get_nth_page(3)
+                page = self.view_resources['notebook'].get_nth_page(2)
 
                 page1.hide()
                 page2.hide()
@@ -446,14 +430,14 @@ class ViewTests(Gtk.HBox):
                 page.show()
                 if 'notebook' in self.view_resources:
                     self.view_resources['notebook'].set_current_page(2)
-                    self.parent.new_case_observer.alert(self.parent.cases[0])
+                    self.view_resources['new_case_observer'].alert(self.exam_resources['case_list'][0])
 
-            elif self.parent.ddx_cases and len(self.parent.ddx_cases) > 0:
+            elif self.exam_resources['ddx_cases'] and len(self.exam_resources['ddx_cases']) > 0:
                 # transition to new window
-                page1 = self.parent.view_resources['notebook'].get_nth_page(0)
-                page2 = self.parent.view_resources['notebook'].get_nth_page(1)
-                page3 = self.parent.view_resources['notebook'].get_nth_page(2)
-                page = self.parent.view_resources['notebook'].get_nth_page(3)
+                page1 = self.view_resources['notebook'].get_nth_page(0)
+                page2 = self.view_resources['notebook'].get_nth_page(1)
+                page3 = self.view_resources['notebook'].get_nth_page(2)
+                page = self.view_resources['notebook'].get_nth_page(3)
 
                 page1.hide()
                 page2.hide()
@@ -464,37 +448,42 @@ class ViewTests(Gtk.HBox):
 
                 # add case vignette to scroller
                 current_text, ail_key, block = self.get_vignette()
-                self.parent.ddx_exam.case_text_buffer.new_case(current_text)
-                self.parent.ddx_exam.case_text_scroller_vadjustment.set_value(0)
-                self.parent.ddx_exam.case_text_scroller.show_all()
+                self.view_resources['window'].ddx_exam.case_text_buffer.new_case(current_text)
+                self.view_resources['window'].ddx_exam.case_text_scroller_vadjustment.set_value(0)
+                self.view_resources['window'].ddx_exam.case_text_scroller.show_all()
 
-                self.parent.new_case_observer.alert(ail_key)
+                self.view_resources['new_case_observer'].alert(ail_key)
 
-                self.parent.new_case_block_observer.alert(ail_key, block)
+                self.view_resources['new_case_block_observer'].alert(ail_key, block)
 
             else:
-                sim_message(self.parent, info_string=_(u'Exam Not Found.'),
+                sim_message(self.view_resources['window'], info_string=_(u'Exam Not Found.'),
                             secondary_text=_(u'You may take another exam if you have '
                                              u'more to take.'))
-                self.parent.return_home()
+                self.view_resources['window'].return_home()
 
     def begin_exam(self, widget):
         # query exam model by one exam title to give AbSim machine commands.
-        case_info = self.get_exam_info(flag='one', key=self.parent.exam_title)
+        ep = examParser.ExamParser(flag='one', title=self.exam_resources['exam_title'])
+        case_info = ep.get_exam_info(ep.flag, ep.title)
         try:
-            self.parse_exam_info(case_info)
+            self.exam_resources['case_list'], self.exam_resources['case_title_list'],\
+                self.exam_resources['baseline_model'], self.exam_resources['baseline_flag'],\
+                self.exam_resources['ddx_cases'] = ep.parse_exam_info(case_info)
+            self.build_exam_view()
         except TypeError:
-            self.parent.return_home()
+            self.view_resources['window'].return_home()
 
     def reset_page(self):
         return
 
 
 class BaselineTest(Gtk.HBox):
-    def __init__(self, parent):
+    def __init__(self, exam_resources, view_resources):
         super(BaselineTest, self).__init__(False, 2)
 
-        self.parent = parent
+        self.exam_resources = exam_resources
+        self.view_resources = view_resources
 
         self.b_vbox = self.build_exam_interface()
         self.b_vbox.show_all()
@@ -507,58 +496,60 @@ class BaselineTest(Gtk.HBox):
         # i18n - Time string left as-is
         timestr = time.strftime("%Y%m%d-%H%M%S")
         state_percents = CoverageAnalyzer().analyze(saved_exam_pressurepoints)
-        self.parent.baselinemodel.save_to_db(self.parent.exam_title, self.parent.password, state_percents['up'],
-                                             state_percents['slightly_down'], state_percents['down'],
-                                             state_percents['too_hard'], saved_exam_pressurepoints, timestr)
+        self.exam_resources['baseline_model'].save_to_db(self.exam_resources['last'], self.exam_resources['first'],
+                                                         self.exam_resources['exam_title'],
+                                                         self.exam_resources['password'], state_percents['up'],
+                                                         state_percents['slightly_down'], state_percents['down'],
+                                                         state_percents['too_hard'], saved_exam_pressurepoints, timestr)
 
     def ok_selection(self, signal):
-        saved_exam_pressurepoints = self.parent.view_resources['pressurepoints']
+        saved_exam_pressurepoints = self.view_resources['pressurepoints']
         saved_exam_pressurepoints = copy.deepcopy(saved_exam_pressurepoints)
 
         self.save_exam(saved_exam_pressurepoints)
 
-        if len(self.parent.cases) > 0:
-            page1 = self.parent.view_resources['notebook'].get_nth_page(0)
-            page2 = self.parent.view_resources['notebook'].get_nth_page(1)
-            page3 = self.parent.view_resources['notebook'].get_nth_page(3)
-            page = self.parent.view_resources['notebook'].get_nth_page(2)
+        if len(self.exam_resources['case_list']) > 0:
+            page1 = self.view_resources['notebook'].get_nth_page(0)
+            page2 = self.view_resources['notebook'].get_nth_page(1)
+            page3 = self.view_resources['notebook'].get_nth_page(3)
+            page = self.view_resources['notebook'].get_nth_page(2)
 
             page1.hide()
             page2.hide()
             page3.hide()
             page.show()
-            if 'notebook' in self.parent.view_resources:
-                self.parent.view_resources['notebook'].set_current_page(2)
+            if 'notebook' in self.view_resources:
+                self.view_resources['notebook'].set_current_page(2)
 
-            self.parent.new_case_observer.alert(self.parent.cases[0])
-        elif self.parent.ddx_cases and len(self.parent.ddx_cases) > 0:
-            page1 = self.parent.view_resources['notebook'].get_nth_page(0)
-            page2 = self.parent.view_resources['notebook'].get_nth_page(1)
-            page3 = self.parent.view_resources['notebook'].get_nth_page(2)
-            page = self.parent.view_resources['notebook'].get_nth_page(3)
+            self.view_resources['new_case_observer'].alert(self.exam_resources['case_list'][0])
+        elif self.exam_resources['ddx_cases'] and len(self.exam_resources['ddx_cases']) > 0:
+            page1 = self.view_resources['notebook'].get_nth_page(0)
+            page2 = self.view_resources['notebook'].get_nth_page(1)
+            page3 = self.view_resources['notebook'].get_nth_page(2)
+            page = self.view_resources['notebook'].get_nth_page(3)
 
             page1.hide()
             page2.hide()
             page3.hide()
             page.show()
-            if 'notebook' in self.parent.view_resources:
-                self.parent.view_resources['notebook'].set_current_page(3)
+            if 'notebook' in self.view_resources:
+                self.view_resources['notebook'].set_current_page(3)
 
             # add case vignette to scroller
-            current_text, ail_key, block = self.parent.ddx_exam.get_vignette()
-            self.parent.ddx_exam.case_text_buffer.new_case(current_text)
-            self.parent.ddx_exam.case_text_scroller_vadjustment.set_value(0)
-            self.parent.ddx_exam.case_text_scroller.show_all()
+            current_text, ail_key, block = self.view_resources['window'].ddx_exam.get_vignette()
+            self.view_resources['window'].ddx_exam.case_text_buffer.new_case(current_text)
+            self.view_resources['window'].ddx_exam.case_text_scroller_vadjustment.set_value(0)
+            self.view_resources['window'].ddx_exam.case_text_scroller.show_all()
 
-            self.parent.new_case_observer.alert(ail_key)
+            self.view_resources['new_case_observer'].alert(ail_key)
 
-            self.parent.new_case_block_observer.alert(ail_key, block)
+            self.view_resources['new_case_block_observer'].alert(ail_key, block)
 
         else:
-            sim_message(self.parent, info_string=_(u'Exam Finished.'),
+            sim_message(self.view_resources['window'], info_string=_(u'Exam Finished.'),
                         secondary_text=_(u'You may take another exam if you have '
                                          u'more to take.'))
-            self.parent.return_home()
+            self.view_resources['window'].return_home()
 
     def build_button(self, label_text):
         button = Gtk.Button()
@@ -599,10 +590,11 @@ class BaselineTest(Gtk.HBox):
 
 
 class CaseExam(Gtk.HBox):
-    def __init__(self, parent):
+    def __init__(self, exam_resources, view_resources):
         super(CaseExam, self).__init__(False, 2)
 
-        self.parent = parent
+        self.exam_resources = exam_resources
+        self.view_resources = view_resources
 
         # Build Interface
         self.build_interface()
@@ -620,117 +612,128 @@ class CaseExam(Gtk.HBox):
         self.show()
 
     def report_score(self, score):
-        if len(self.parent.ddx_cases) > 0:
-            page1 = self.parent.view_resources['notebook'].get_nth_page(0)
-            page2 = self.parent.view_resources['notebook'].get_nth_page(1)
-            page3 = self.parent.view_resources['notebook'].get_nth_page(2)
-            page = self.parent.view_resources['notebook'].get_nth_page(3)
+        if len(self.exam_resources['ddx_cases']) > 0:
+            page1 = self.view_resources['notebook'].get_nth_page(0)
+            page2 = self.view_resources['notebook'].get_nth_page(1)
+            page3 = self.view_resources['notebook'].get_nth_page(2)
+            page = self.view_resources['notebook'].get_nth_page(3)
 
             page1.hide()
             page2.hide()
             page3.hide()
             page.show()
-            if 'notebook' in self.parent.view_resources:
-                self.parent.view_resources['notebook'].set_current_page(3)
+            if 'notebook' in self.view_resources:
+                self.view_resources['notebook'].set_current_page(3)
 
             # add case vignette to scroller
-            current_text, ail_key, block = self.parent.ddx_exam.get_vignette()
-            self.parent.ddx_exam.case_text_buffer.new_case(current_text)
-            self.parent.ddx_exam.case_text_scroller_vadjustment.set_value(0)
-            self.parent.ddx_exam.case_text_scroller.show_all()
+            current_text, ail_key, block = self.view_resources['window'].ddx_exam.get_vignette()
+            self.view_resources['window'].ddx_exam.case_text_buffer.new_case(current_text)
+            self.view_resources['window'].ddx_exam.case_text_scroller_vadjustment.set_value(0)
+            self.view_resources['window'].ddx_exam.case_text_scroller.show_all()
 
-            self.parent.new_case_observer.alert(ail_key)
+            self.view_resources['new_case_observer'].alert(ail_key)
 
-            self.parent.new_case_block_observer.alert(ail_key, block)
+            self.view_resources['new_case_block_observer'].alert(ail_key, block)
+
+            return
 
         else:
             exam_data = takenmodel.TakenModel()
-            if len(self.parent.answer_list) > 0 and len(self.parent.ddx_answer_list) > 0:
-                self.parent.num = self.parent.num + self.parent.ddx_num
-                self.parent.den = self.parent.den + self.parent.ddx_den
-                score = self.parent.num / self.parent.den
+            if len(self.exam_resources['ab_answer_list']) > 0 and len(self.exam_resources['ddx_answer_list']) > 0:
+                self.exam_resources['ab_num'] = self.exam_resources['ab_num'] + self.exam_resources['ddx_num']
+                self.exam_resources['ab_den'] = self.exam_resources['ab_den'] + self.exam_resources['ddx_den']
+                score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
 
-            elif len(self.parent.answer_list) > 0 and len(self.parent.ddx_answer_list) == 0:
+            elif len(self.exam_resources['ab_answer_list']) > 0 and len(self.exam_resources['ddx_answer_list']) == 0:
                 score = score
 
-            elif len(self.parent.ddx_answer_list) > 0 and len(self.parent.answer_list) == 0:
+            elif len(self.exam_resources['ddx_answer_list']) > 0 and len(self.exam_resources['ab_answer_list']) == 0:
                 score = score
-                self.parent.num = self.parent.ddx_num
-                self.parent.den = self.parent.ddx_den
+                self.exam_resources['ab_num'] = self.exam_resources['ddx_num']
+                self.exam_resources['ab_den'] = self.exam_resources['ddx_den']
 
             # alert score
-            ind_list = [self.parent.answer_list.index(elem) for elem in self.parent.untouched]
-            ans_ind_list = [x for y, x in sorted(zip(ind_list, self.parent.answer_list))]
-            stu_ind_list = [x for y, x in sorted(zip(ind_list, self.parent.student_answer_list))]
+            print(self.exam_resources['case_list'])
+            print(self.exam_resources['ddx_cases'])
+            print(self.exam_resources['untouched'])
+            print(self.exam_resources['untouched_ddx'])
+            print(self.exam_resources['ab_answer_list'])
+            print(self.exam_resources['ddx_answer_list'])
+            print(self.exam_resources['student_answer_list'])
+            print(self.exam_resources['student_ddx_list'])
+            ind_list = [self.exam_resources['ab_answer_list'].index(elem) for elem in self.exam_resources['untouched']]
+            ans_ind_list = [x for y, x in sorted(zip(ind_list, self.exam_resources['ab_answer_list']))]
+            stu_ind_list = [x for y, x in sorted(zip(ind_list, self.exam_resources['student_answer_list']))]
             correct_chosen = ['correct: ' + x + '-' + 'chosen: ' + y for x, y in zip(ans_ind_list, stu_ind_list)]
 
-            ddx_ind_list = [self.parent.ddx_answer_list.index(elem) for elem in self.parent.untouched_ddx]
-            ans_ddx_ind_list = [x for y, x in sorted(zip(ddx_ind_list, self.parent.ddx_answer_list))]
-            stu_ddx_ind_list = [x for y, x in sorted(zip(ddx_ind_list, self.parent.student_ddx_list))]
+            ddx_ind_list = [self.exam_resources['ddx_answer_list'].index(elem) for elem in self.exam_resources['untouched_ddx']]
+            ans_ddx_ind_list = [x for y, x in sorted(zip(ddx_ind_list, self.exam_resources['ddx_answer_list']))]
+            stu_ddx_ind_list = [x for y, x in sorted(zip(ddx_ind_list, self.exam_resources['student_ddx_list']))]
             ddx_correct_chosen = ['correct: ' + x + '-' + 'chosen: ' + y for x, y in zip(ans_ddx_ind_list, stu_ddx_ind_list)]
 
             correct_chosen.extend(ddx_correct_chosen)
 
-            sim_message(self.parent, info_string=_(u'Exam Finished.'),
+            sim_message(self.view_resources['window'], info_string=_(u'Exam Finished.'),
                         secondary_text=_(u'You may take another exam if you have more to take.'))
             timestr = time.strftime("%Y%m%d-%H%M%S")
 
             correct_chosen_string = '+'.join(correct_chosen)
 
             # save score data to db
-            exam_data.save_to_db(self.parent.password, self.parent.exam_title, score, self.parent.num, self.parent.den,
-                                 correct_chosen_string, timestr)
+            exam_data.save_to_db(self.exam_resources['password'], self.exam_resources['exam_title'], score,
+                                 self.exam_resources['ab_num'], self.exam_resources['ab_den'], correct_chosen_string,
+                                 timestr)
 
-            self.parent.return_home()
+            self.view_resources['window'].return_home()
 
     def make_selection(self, choice):
         # in here, we should be able to facilitate transition to other exam
-        if len(self.parent.cases) > 0:
+        if len(self.exam_resources['case_list']) > 0:
 
-            if distance(self.current_case, self.parent.cases[0]) < 1:
-                self.parent.answer_list.append(self.parent.cases[0])
+            if distance(self.current_case, self.exam_resources['case_list'][0]) < 1:
+                self.exam_resources['ab_answer_list'].append(self.exam_resources['case_list'][0])
                 # add student answers to their own list
-                self.parent.student_answer_list.append(self.current_case)
-                self.parent.cases.pop(0)
-                self.parent.num += 1
+                self.exam_resources['student_answer_list'].append(self.current_case)
+                self.exam_resources['case_list'].pop(0)
+                self.exam_resources['ab_num'] += 1
                 try:
-                    self.parent.new_case_observer.alert(self.parent.cases[0])
+                    self.view_resources['new_case_observer'].alert(self.exam_resources['case_list'][0])
                 except IndexError:
                     # if len(self.ddx_cases) > 0:
-                    score = self.parent.num / self.parent.den
+                    score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
                     self.report_score(score)
                     pass
-            elif distance(self.current_case, self.parent.cases[0]) < 4:
-                self.parent.answer_list.append(self.parent.cases[0])
+            elif distance(self.current_case, self.exam_resources['case_list'][0]) < 4:
+                self.exam_resources['ab_answer_list'].append(self.exam_resources['case_list'][0])
                 # add student answers to their own list
-                self.parent.student_answer_list.append(self.current_case)
-                self.parent.cases.pop(0)
-                self.parent.num += .5
+                self.exam_resources['student_answer_list'].append(self.current_case)
+                self.exam_resources['case_list'].pop(0)
+                self.exam_resources['ab_num'] += .5
 
                 try:
-                    self.parent.new_case_observer.alert(self.parent.cases[0])
+                    self.view_resources['new_case_observer'].alert(self.exam_resources['case_list'][0])
                 except IndexError:
 
-                    score = self.parent.num / self.parent.den
+                    score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
                     self.report_score(score)
                     pass
             else:
-                self.parent.answer_list.append(self.parent.cases[0])
+                self.exam_resources['ab_answer_list'].append(self.exam_resources['case_list'][0])
                 # add student answers to their own list
-                self.parent.student_answer_list.append(self.current_case)
-                self.parent.cases.pop(0)
+                self.exam_resources['student_answer_list'].append(self.current_case)
+                self.exam_resources['case_list'].pop(0)
                 try:
-                    self.parent.new_case_observer.alert(self.parent.cases[0])
+                    self.view_resources['new_case_observer'].alert(self.exam_resources['case_list'][0])
                 except IndexError:
-                    score = self.parent.num / self.parent.den
+                    score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
                     self.report_score(score)
                     pass
 
         else:
-            sim_message(self.parent, info_string=_(u'Exam Finished.'),
+            sim_message(self.view_resources['window'], info_string=_(u'Exam Finished.'),
                         secondary_text=_(u'You may take another exam if you have '
                                          u'more to take.'))
-            self.parent.return_home()
+            self.view_resources['window'].return_home()
             # logging.debug('exam finished')
             # sim_message(self, info_string=_(u'Exam Load Failure'),
             # secondary_text=_(u'AbSim received empty exam list.'))
@@ -850,10 +853,11 @@ class CaseExam(Gtk.HBox):
 
 
 class DdxExam(Gtk.HBox):
-    def __init__(self, parent):
+    def __init__(self, exam_resources, view_resources):
         super(DdxExam, self).__init__(False, 2)
 
-        self.parent = parent
+        self.exam_resources = exam_resources
+        self.view_resources = view_resources
 
         self.build_ddx_interface()
 
@@ -874,10 +878,10 @@ class DdxExam(Gtk.HBox):
 
     def get_vignette(self):
         # find ddx_list label_info
-        ddx_list = self.parent.text_dict.cases.get(525, [])
+        ddx_list = self.exam_resources['text_dict'].cases.get(525, [])
         indices = [i for i, x in enumerate(ddx_list)]
 
-        relevant = [ddx_list[j] for j in indices if ddx_list[j][0]['ddx_name'] == self.parent.ddx_cases[0]]
+        relevant = [ddx_list[j] for j in indices if ddx_list[j][0]['ddx_name'] == self.exam_resources['ddx_cases'][0]]
 
         rand_index = random.randint(0, len(relevant[0]) - 1)
         random_rel = relevant[0][rand_index]
@@ -889,13 +893,13 @@ class DdxExam(Gtk.HBox):
 
     def make_selection(self, choice):
         # in here, we should be able to facilitate transition to other exam
-        if len(self.parent.ddx_cases) > 0:
-            if distance(self.current_case, self.parent.ddx_cases[0].split('ddx_')[0]) < 1:
-                self.parent.ddx_answer_list.append(self.parent.ddx_cases[0])
+        if len(self.exam_resources['ddx_cases']) > 0:
+            if distance(self.current_case, self.exam_resources['ddx_cases'][0].split('ddx_')[0]) < 1:
+                self.exam_resources['ddx_answer_list'].append(self.exam_resources['ddx_cases'][0])
                 # add student answers to their own list
-                self.parent.student_ddx_list.append(self.current_case)
-                self.parent.ddx_cases.pop(0)
-                self.parent.ddx_num += 1
+                self.exam_resources['student_ddx_list'].append(self.current_case)
+                self.exam_resources['ddx_cases'].pop(0)
+                self.exam_resources['ddx_num'] += 1
                 try:
                     # add case vignette to scroller
                     current_text, ail_key, block = self.get_vignette()
@@ -903,18 +907,21 @@ class DdxExam(Gtk.HBox):
                     self.case_text_scroller_vadjustment.set_value(0)
                     self.case_text_scroller.show_all()
 
-                    self.parent.new_case_observer.alert(ail_key)
+                    self.view_resources['new_case_observer'].alert(ail_key)
 
-                    self.parent.new_case_block_observer.alert(ail_key, block)
+                    self.view_resources['new_case_block_observer'].alert(ail_key, block)
                 except IndexError:
-                    score = self.parent.ddx_num / self.parent.ddx_den
-                    self.parent.case_exam.report_score(score)
+                    score = self.exam_resources['ddx_num'] / self.exam_resources['ddx_den']
+
+                    # need our own score reporting in this class? or pass in a flag to write to correct
+                    # database
+                    self.view_resources['window'].case_exam.report_score(score)
 
             else:
-                self.parent.ddx_answer_list.append(self.parent.ddx_cases[0])
+                self.exam_resources['ddx_answer_list'].append(self.exam_resources['ddx_cases'][0])
                 # add student answers to their own list
-                self.parent.student_ddx_list.append(self.current_case)
-                self.parent.ddx_cases.pop(0)
+                self.exam_resources['student_ddx_list'].append(self.current_case)
+                self.exam_resources['ddx_cases'].pop(0)
                 try:
                     # add case vignette to scroller
                     current_text, ail_key, block = self.get_vignette()
@@ -922,18 +929,18 @@ class DdxExam(Gtk.HBox):
                     self.case_text_scroller_vadjustment.set_value(0)
                     self.case_text_scroller.show_all()
 
-                    self.parent.new_case_observer.alert(ail_key)
+                    self.view_resources['new_case_observer'].alert(ail_key)
 
-                    self.parent.new_case_block_observer.alert(ail_key, block)
+                    self.view_resources['new_case_block_observer'].alert(ail_key, block)
                 except IndexError:
-                    score = self.parent.ddx_num / self.parent.ddx_den
-                    self.parent.case_exam.report_score(score)
+                    score = self.exam_resources['ddx_num'] / self.exam_resources['ddx_den']
+                    self.view_resources['window'].case_exam.report_score(score)
 
         else:
-            sim_message(self.parent, info_string=_(u'Exam Finished.'),
+            sim_message(self.view_resources['window'], info_string=_(u'Exam Finished.'),
                         secondary_text=_(u'You may take another exam if you have '
                                          u'more to take.'))
-            self.parent.return_home()
+            self.view_resources['window'].return_home()
             # logging.debug('exam finished')
             # sim_message(self, info_string=_(u'Exam Load Failure'),
             # secondary_text=_(u'AbSim received empty exam list.'))
@@ -1007,7 +1014,7 @@ class DdxExam(Gtk.HBox):
         # Top level
 
         store.append(None, [_(u"Upper Gastrointestinal Etiology"), 'Upper Gastrointestinal Etiology'])
-        store.append(None, [_(u"Choledocolithiasis"), 'Choledocolithiasis'])
+        store.append(None, [_(u"Choledocolithiasis"), "Choledocolithiasis"])
         store.append(None, [_(u"Pancreatitis"), 'Pancreatitis'])
         store.append(None, [_(u"Cholecystitis"), 'Cholecystitis'])
         store.append(None, [_(u"Mesenteric Infarction"), 'Mesenteric Infarction'])

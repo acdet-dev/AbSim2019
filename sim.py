@@ -192,20 +192,18 @@ class UserType(Gtk.Window, menu.MenuBar):
         from simLogin import get_user_pw
         from messages import sim_message
 
-        credentials = get_user_pw(self, _(u"Please enter your user name and password"), _(u"Student Login"))
+        credentials = get_user_pw(self, _(u"Please enter your ID"), _(u"Student Login"), flag='initial')
         if credentials:
-            name = credentials[0]
-            password = credentials[1]
-            self.get_info(password)
+            self.get_info(credentials)
 
             if self.student:
 
                 try:
                     # distance(value, str(book['volumeInfo']['title']).lower()) <= 3]
-                    if distance(name, self.student[0]) < 1 and distance(password, self.student[1]) < 1:
+                    if distance(credentials, self.student[2]) < 1:
                         logging.debug('Beginning Exam')
                         self.setup_transfer()
-                        viewAssignments.ViewAssignments(name, password)
+                        viewAssignments.ViewAssignments(self.student[0], self.student[1], credentials)
                         self.finish_transfer()
                     else:
                         logging.debug('Not beginning exam. Login failure.')
