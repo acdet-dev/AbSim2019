@@ -635,50 +635,56 @@ class CaseExam(Gtk.HBox):
 
             self.view_resources['new_case_block_observer'].alert(ail_key, block)
 
-        else:
-            self.view_resources['window'].return_home()
-        # reconfigure this whole section!
-        '''
+            return
+
         else:
             exam_data = takenmodel.TakenModel()
-            if len(self.exam_resources['answer_list']) > 0 and len(self.exam_resources['ddx_answer_list']) > 0:
-                self.exam_resources['num'] = self.exam_resources['num'] + self.parent.ddx_num
-                self.parent.den = self.parent.den + self.parent.ddx_den
-                score = self.parent.num / self.parent.den
+            if len(self.exam_resources['ab_answer_list']) > 0 and len(self.exam_resources['ddx_answer_list']) > 0:
+                self.exam_resources['ab_num'] = self.exam_resources['ab_num'] + self.exam_resources['ddx_num']
+                self.exam_resources['ab_den'] = self.exam_resources['ab_den'] + self.exam_resources['ddx_den']
+                score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
 
-            elif len(self.parent.answer_list) > 0 and len(self.parent.ddx_answer_list) == 0:
+            elif len(self.exam_resources['ab_answer_list']) > 0 and len(self.exam_resources['ddx_answer_list']) == 0:
                 score = score
 
-            elif len(self.parent.ddx_answer_list) > 0 and len(self.parent.answer_list) == 0:
+            elif len(self.exam_resources['ddx_answer_list']) > 0 and len(self.exam_resources['ab_answer_list']) == 0:
                 score = score
-                self.parent.num = self.parent.ddx_num
-                self.parent.den = self.parent.ddx_den
+                self.exam_resources['ab_num'] = self.exam_resources['ddx_num']
+                self.exam_resources['ab_den'] = self.exam_resources['ddx_den']
 
             # alert score
-            ind_list = [self.parent.answer_list.index(elem) for elem in self.parent.untouched]
-            ans_ind_list = [x for y, x in sorted(zip(ind_list, self.parent.answer_list))]
-            stu_ind_list = [x for y, x in sorted(zip(ind_list, self.parent.student_answer_list))]
+            print(self.exam_resources['case_list'])
+            print(self.exam_resources['ddx_cases'])
+            print(self.exam_resources['untouched'])
+            print(self.exam_resources['untouched_ddx'])
+            print(self.exam_resources['ab_answer_list'])
+            print(self.exam_resources['ddx_answer_list'])
+            print(self.exam_resources['student_answer_list'])
+            print(self.exam_resources['student_ddx_list'])
+            ind_list = [self.exam_resources['ab_answer_list'].index(elem) for elem in self.exam_resources['untouched']]
+            ans_ind_list = [x for y, x in sorted(zip(ind_list, self.exam_resources['ab_answer_list']))]
+            stu_ind_list = [x for y, x in sorted(zip(ind_list, self.exam_resources['student_answer_list']))]
             correct_chosen = ['correct: ' + x + '-' + 'chosen: ' + y for x, y in zip(ans_ind_list, stu_ind_list)]
 
-            ddx_ind_list = [self.parent.ddx_answer_list.index(elem) for elem in self.parent.untouched_ddx]
-            ans_ddx_ind_list = [x for y, x in sorted(zip(ddx_ind_list, self.parent.ddx_answer_list))]
-            stu_ddx_ind_list = [x for y, x in sorted(zip(ddx_ind_list, self.parent.student_ddx_list))]
+            ddx_ind_list = [self.exam_resources['ddx_answer_list'].index(elem) for elem in self.exam_resources['untouched_ddx']]
+            ans_ddx_ind_list = [x for y, x in sorted(zip(ddx_ind_list, self.exam_resources['ddx_answer_list']))]
+            stu_ddx_ind_list = [x for y, x in sorted(zip(ddx_ind_list, self.exam_resources['student_ddx_list']))]
             ddx_correct_chosen = ['correct: ' + x + '-' + 'chosen: ' + y for x, y in zip(ans_ddx_ind_list, stu_ddx_ind_list)]
 
             correct_chosen.extend(ddx_correct_chosen)
 
-            sim_message(self.parent, info_string=_(u'Exam Finished.'),
+            sim_message(self.view_resources['window'], info_string=_(u'Exam Finished.'),
                         secondary_text=_(u'You may take another exam if you have more to take.'))
             timestr = time.strftime("%Y%m%d-%H%M%S")
 
             correct_chosen_string = '+'.join(correct_chosen)
 
             # save score data to db
-            exam_data.save_to_db(self.parent.password, self.parent.exam_title, score, self.parent.num, self.parent.den,
-                                 correct_chosen_string, timestr)
+            exam_data.save_to_db(self.exam_resources['password'], self.exam_resources['exam_title'], score,
+                                 self.exam_resources['ab_num'], self.exam_resources['ab_den'], correct_chosen_string,
+                                 timestr)
 
-            self.parent.return_home()
-            '''
+            self.view_resources['window'].return_home()
 
     def make_selection(self, choice):
         # in here, we should be able to facilitate transition to other exam
@@ -1008,6 +1014,7 @@ class DdxExam(Gtk.HBox):
         # Top level
 
         store.append(None, [_(u"Upper Gastrointestinal Etiology"), 'Upper Gastrointestinal Etiology'])
+        store.append(None, [_(u"Choledocolithiasis"), "Choledocolithiasis"])
         store.append(None, [_(u"Pancreatitis"), 'Pancreatitis'])
         store.append(None, [_(u"Cholecystitis"), 'Cholecystitis'])
         store.append(None, [_(u"Mesenteric Infarction"), 'Mesenteric Infarction'])

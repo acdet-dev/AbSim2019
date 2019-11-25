@@ -353,7 +353,7 @@ class AssignedAssessment(Gtk.Window):
         return baseline_vbox
 
     def report_score(self, score):
-
+        print('reporting happening')
         if not self.ab_flag and self.ddx_flag:
             self.ddx_flag = False
             self.case_view_scroller.hide()
@@ -395,7 +395,8 @@ class AssignedAssessment(Gtk.Window):
             self.return_home()
 
     def make_selection(self, choice):
-        ## in here, we should be able to facilitate transition to other exam
+        # in here, we should be able to facilitate transition to other exam
+        print(self.case_list)
         if len(self.case_list) > 0:
 
             if distance(self.current_case, self.case_list[0]) < 1:
@@ -552,6 +553,7 @@ class AssignedAssessment(Gtk.Window):
         # Top level
 
         store.append(None, [_(u"Upper Gastrointestinal Etiology"), 'Upper Gastrointestinal Etiology'])
+        store.append(None, [_(u"Choledocolithiasis"), "Choledocolithiasis"])
         store.append(None, [_(u"Pancreatitis"), 'Pancreatitis'])
         store.append(None, [_(u"Cholecystitis"), 'Cholecystitis'])
         store.append(None, [_(u"Mesenteric Infarction"), 'Mesenteric Infarction'])

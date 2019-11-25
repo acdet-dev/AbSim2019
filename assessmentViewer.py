@@ -106,7 +106,6 @@ class AbTest():
 
     def create_model(self):
         store = Gtk.ListStore(str, str, str, str, str, str)
-
         if self.exam:
             for exam in self.exam:
                 store.append([exam[0], exam[1], exam[2], exam[3], exam[4], exam[6]])
@@ -232,7 +231,7 @@ class ViewBaselineAssessments():
         store = Gtk.ListStore(str, str, str, str, str, str, str)
         self.exams = self.coverage_assessment_model.get_all()
         for exam in self.exams:
-            store.append([exam[1], exam[0], exam[2], exam[3], exam[4], exam[5], exam[7]])
+            store.append([exam[3], exam[2], exam[4], exam[5], exam[6], exam[7], exam[9]])
         return store
 
     def create_columns(self, treeView):
@@ -281,11 +280,11 @@ class ViewBaselineAssessments():
     def on_row_change(self, treeview):
         selection = treeview.get_selection()
         (model, iter) = selection.get_selected()
-        exam_id = model.get(iter, 2)[0]
-        student_id = model.get(iter, 3)[0]
+        exam_id = model.get(iter, 1)[0]
+        student_id = model.get(iter, 0)[0]
         exam = self.coverage_assessment_model.get_by_exam_student_id(exam_id, student_id)
         exam_view_resources = copy.copy(self.view_resources)
-        exam_view_resources['pressurepoints'] = exam[6]
+        exam_view_resources['pressurepoints'] = exam[8]
 
         if hasattr(self, 'coverage_view'):
             self.coverage_frame.remove(self.coverage_view)
@@ -293,5 +292,5 @@ class ViewBaselineAssessments():
         self.coverage_frame.add(self.coverage_view)
         self.coverage_frame.show_all()
 
-        location_objectives = self.location_coverage_analyzer.analyze(exam[6])
+        location_objectives = self.location_coverage_analyzer.analyze(exam[8])
         self.coverage_table.show_objective_performance(location_objectives)
