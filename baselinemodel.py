@@ -115,6 +115,29 @@ class BaselineModel:
 
         return exam
 
+    def get_by_exam_id(self, key):
+        db_conn = self.connect()
+        c = db_conn.cursor()
+        stmt = '''
+            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, time_in
+            FROM baseline
+            WHERE exam_name=?
+        '''
+        try:
+            c.execute(stmt, (key,))
+            tuple_list = c.fetchall()
+            exam_list = [list(elem) for elem in tuple_list]
+
+            return exam_list
+
+        except:
+            # i18n - logging.debug statement
+            logging.debug('Could not get all assessments')
+
+            return None
+
+        db_conn.close()
+
     def get_by_score_id(self, key):
 
         db_conn = self.connect()

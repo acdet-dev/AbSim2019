@@ -70,7 +70,7 @@ class DefineUser(Gtk.Window, MenuBar):
         button_table.attach(faculty_button, 0, 1, 1, 2, xoptions=False, yoptions=False)
 
         faculty_explanation = Gtk.Label()
-        label_text = _(u"Click here to configure AbSim and create exams")
+        label_text = _(u"Click here to configure AbSim and create assessments")
         label_pre_mark = construct_markup(label_text, font_size=20)
         faculty_explanation.set_markup(label_pre_mark)
         button_table.attach(faculty_explanation, 1, 2, 1, 2)
@@ -80,7 +80,7 @@ class DefineUser(Gtk.Window, MenuBar):
         button_table.attach(student_button, 0, 1, 2, 3, xoptions=False, yoptions=False)
 
         student_explanation = Gtk.Label()
-        label_text = _(u"Demonstrate proficiency in abdominal palpation through practice and exams")
+        label_text = _(u"Demonstrate proficiency in abdominal palpation through practice and assessments")
         label_pre_mark = construct_markup(label_text, font_size=20)
         student_explanation.set_markup(label_pre_mark)
         button_table.attach(student_explanation, 1, 3, 1, 6)

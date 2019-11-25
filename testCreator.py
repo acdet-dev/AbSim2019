@@ -17,7 +17,7 @@ class TestCreator(Gtk.Window):
     def __init__(self, name, password):
 
         #make window
-        Gtk.Window.__init__(self, title="AbSim Exam Creator")
+        Gtk.Window.__init__(self, title="AbSim Assessment Creator")
         self.set_icon_from_file('icon.ico')
         self.maximize()
 
@@ -112,7 +112,7 @@ class TestCreator(Gtk.Window):
 
         # add label above check option
         assessment_label = Gtk.Label()
-        label_text = _(u"Abnormality Detection Exam")
+        label_text = _(u"Abnormality Detection Assessment")
         label_pre = construct_markup(label_text, font_size=16)
         assessment_label.set_markup(label_pre)
 
@@ -125,7 +125,7 @@ class TestCreator(Gtk.Window):
         self.exam_id_entry = Gtk.Entry()
         self.exam_id_entry.set_max_length(220)
         self.exam_id_entry.set_width_chars(30)
-        self.exam_id_entry.set_placeholder_text(_(u"Input Exam Title"))
+        self.exam_id_entry.set_placeholder_text(_(u"Input Assessment Title"))
         eid_vbox.pack_start(self.exam_id_entry, False, False, 30)
         self.exam_id_entry.show()
 
@@ -145,7 +145,7 @@ class TestCreator(Gtk.Window):
         button_table.set_col_spacings(5)
         button_table.set_row_spacings(5)
 
-        right_button = self.build_button(_(u"Save Exam"))
+        right_button = self.build_button(_(u"Save Assessment"))
         right_button.connect('clicked', self.add_to_exam)
         button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
 
@@ -249,7 +249,7 @@ class BaselineExam(Gtk.VBox):
 
         #add label above check option
         assessment_label = Gtk.Label()
-        label_text = _(u"Baseline Exam")
+        label_text = _(u"Baseline Assessment")
         label_pre = construct_markup(label_text, font_size=16)
         assessment_label.set_markup(label_pre)
         self.pack_start(assessment_label, False, False, 0)
@@ -260,7 +260,7 @@ class BaselineExam(Gtk.VBox):
 
         self.button = Gtk.CheckButton.new()
         label = Gtk.Label()
-        label_text = _(u"Add Baseline Exam?")
+        label_text = _(u"Add Baseline Assessment?")
         label_pre_mark = construct_markup(label_text, font_size=14)
         label.set_markup(label_pre_mark)
         label.set_padding(10, 10)
@@ -293,7 +293,7 @@ class DdxExam(Gtk.VBox):
 
         # add label above check option
         assessment_label = Gtk.Label()
-        label_text = _(u"Ddx Exam")
+        label_text = _(u"Ddx Assessment")
         label_pre = construct_markup(label_text, font_size=16)
         assessment_label.set_markup(label_pre)
         self.pack_start(assessment_label, False, False, 30)

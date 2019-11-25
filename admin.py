@@ -12,7 +12,6 @@ import sim
 import simLabels
 from simLabels import construct_markup, screen_sizer
 import abnormalitydetection
-import testCreator
 import sounds
 import donottouch
 from i18ntrans2 import _

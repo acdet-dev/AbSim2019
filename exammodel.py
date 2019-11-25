@@ -58,20 +58,20 @@ class ExamModel:
                 c.execute(stmt, (exam_name, case_list, title_list))
                 db_conn.commit()
                 logging.debug('exam db updated')
-                sim_message(win, info_string=_(u'Exam Saved Successfully!'),
+                sim_message(win, info_string=_(u'Assessment Saved Successfully!'),
                             secondary_text=_(
-                                u'Students may now take your exam.'))
+                                u'Students may now take your assessment.'))
             except:
                 logging.debug('Could not save assessment for exam')
-                sim_message(win, info_string=_(u'Exam Save Failure!'),
+                sim_message(win, info_string=_(u'Assessment Save Failure!'),
                             secondary_text=_(
-                                u'Could not save exam.'))
+                                u'Could not save assessment.'))
                 db_conn.rollback()
             db_conn.close()
 
         else:
-            sim_message(win, info_string=_(u'Exam Save Failure!'),
-                        secondary_text=_(u'Could not save exam because no exam title entered.'))
+            sim_message(win, info_string=_(u'Assessment Save Failure!'),
+                        secondary_text=_(u'Could not save assessment because no assessment title entered.'))
 
 
     def get_all(self, key):

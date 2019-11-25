@@ -134,25 +134,25 @@ class ViewAssignments(Gtk.Window):
         # Baseline Assessment
         self.baseline = BaselineTest(self.exam_resources, self.view_resources)
         self.baseline.set_property('border-width', 15)
-        baseline_label = simLabels.MilestoneNameLabel(_(u"Baseline Exam"))
+        baseline_label = simLabels.MilestoneNameLabel(_(u"Baseline Assessment"))
         self.notebook.append_page(self.baseline, baseline_label)
 
         # Case Assessment
         self.case_exam = CaseExam(self.exam_resources, self.view_resources)
         self.case_exam.set_property('border-width', 15)
-        case_exam_label = simLabels.MilestoneNameLabel(_(u"Abnormality Exam"))
+        case_exam_label = simLabels.MilestoneNameLabel(_(u"Abnormality Assessment"))
         self.notebook.append_page(self.case_exam, case_exam_label)
 
         # DDX Assessment
         self.ddx_exam = DdxExam(self.exam_resources, self.view_resources)
         self.ddx_exam.set_property('border-width', 15)
-        ddx_exam_label = simLabels.MilestoneNameLabel(_(u"Ddx Exam"))
+        ddx_exam_label = simLabels.MilestoneNameLabel(_(u"Ddx Assessment"))
         self.notebook.append_page(self.ddx_exam, ddx_exam_label)
 
         # View Tests
         self.view_tests = ViewTests(self.exam_resources, self.view_resources)
         self.view_tests.set_property('border-width', 15)
-        view_tests_label = simLabels.MilestoneNameLabel(_(u"View Tests"))
+        view_tests_label = simLabels.MilestoneNameLabel(_(u"View Assessments"))
         self.notebook.prepend_page(self.view_tests, view_tests_label)
 
         self.notebook.show()
@@ -314,7 +314,7 @@ class ViewTests(Gtk.HBox):
         self.cell = Gtk.CellRendererText()
         self.cell.set_property('font-desc', font)
 
-        tvcolumn = Gtk.TreeViewColumn(_(u"Exam Title"), self.cell)
+        tvcolumn = Gtk.TreeViewColumn(_(u"Assessment Title"), self.cell)
         tv.append_column(tvcolumn)
         tvcolumn.add_attribute(self.cell, 'text', 0)
         tv.expand_all()
@@ -348,7 +348,7 @@ class ViewTests(Gtk.HBox):
         button_table.set_col_spacings(5)
         button_table.set_row_spacings(5)
 
-        right_button = self.build_button(_(u"Begin Exam"))
+        right_button = self.build_button(_(u"Begin Assessment"))
         right_button.connect('clicked', self.begin_exam)
         button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
 
@@ -457,8 +457,8 @@ class ViewTests(Gtk.HBox):
                 self.view_resources['new_case_block_observer'].alert(ail_key, block)
 
             else:
-                sim_message(self.view_resources['window'], info_string=_(u'Exam Not Found.'),
-                            secondary_text=_(u'You may take another exam if you have '
+                sim_message(self.view_resources['window'], info_string=_(u'Assessment Not Found.'),
+                            secondary_text=_(u'You may take another assessment if you have '
                                              u'more to take.'))
                 self.view_resources['window'].return_home()
 
@@ -546,8 +546,8 @@ class BaselineTest(Gtk.HBox):
             self.view_resources['new_case_block_observer'].alert(ail_key, block)
 
         else:
-            sim_message(self.view_resources['window'], info_string=_(u'Exam Finished.'),
-                        secondary_text=_(u'You may take another exam if you have '
+            sim_message(self.view_resources['window'], info_string=_(u'Assessment Finished.'),
+                        secondary_text=_(u'You may take another assessment if you have '
                                          u'more to take.'))
             self.view_resources['window'].return_home()
 
@@ -563,7 +563,7 @@ class BaselineTest(Gtk.HBox):
     def build_exam_interface(self):
         # have to make a real ui screen instead...
         self.base_label = Gtk.Label()  # font = 20, bold, fgcolor = #1E9D1C
-        label_text = _(u"Perform a baseline exam and click 'OK' when finished.")
+        label_text = _(u"Perform a baseline assessment and click 'OK' when finished.")
         label_pre_mark = construct_markup(label_text, font_size=20, weight='bold')
         self.base_label.set_markup(label_pre_mark)
 
@@ -673,11 +673,12 @@ class CaseExam(Gtk.HBox):
 
             correct_chosen.extend(ddx_correct_chosen)
 
-            sim_message(self.view_resources['window'], info_string=_(u'Exam Finished.'),
-                        secondary_text=_(u'You may take another exam if you have more to take.'))
+            sim_message(self.view_resources['window'], info_string=_(u'Assessment Finished.'),
+                        secondary_text=_(u'You may take another assessment if you have more to take.'))
             timestr = time.strftime("%Y%m%d-%H%M%S")
 
             correct_chosen_string = '+'.join(correct_chosen)
+            print(correct_chosen_string)
 
             # save score data to db
             exam_data.save_to_db(self.exam_resources['password'], self.exam_resources['exam_title'], score,
@@ -730,8 +731,8 @@ class CaseExam(Gtk.HBox):
                     pass
 
         else:
-            sim_message(self.view_resources['window'], info_string=_(u'Exam Finished.'),
-                        secondary_text=_(u'You may take another exam if you have '
+            sim_message(self.view_resources['window'], info_string=_(u'Assessment Finished.'),
+                        secondary_text=_(u'You may take another assessment if you have '
                                          u'more to take.'))
             self.view_resources['window'].return_home()
             # logging.debug('exam finished')
@@ -937,8 +938,8 @@ class DdxExam(Gtk.HBox):
                     self.view_resources['window'].case_exam.report_score(score)
 
         else:
-            sim_message(self.view_resources['window'], info_string=_(u'Exam Finished.'),
-                        secondary_text=_(u'You may take another exam if you have '
+            sim_message(self.view_resources['window'], info_string=_(u'Assessment Finished.'),
+                        secondary_text=_(u'You may take another assessment if you have '
                                          u'more to take.'))
             self.view_resources['window'].return_home()
             # logging.debug('exam finished')

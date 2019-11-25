@@ -80,25 +80,25 @@ class UserType(Gtk.Window, menu.MenuBar):
         class_explanation.set_markup(label_pre_mark)
         button_table.attach(class_explanation, 1, 2, 1, 2)
 
-        create_button = self.build_button(_(u"Create Exams"))
+        create_button = self.build_button(_(u"Create Assessment"))
         create_button.connect('clicked', self.create_exams)
         button_table.attach(create_button, 0, 1, 2, 3, xoptions=False, yoptions=False)
 
         create_explanation = Gtk.Label()
-        label_text = _(u"Construct and Assign Custom Exams")
+        label_text = _(u"Construct and Assign Custom Assessments")
         label_pre_mark = construct_markup(label_text, font_size=20)
         create_explanation.set_markup(label_pre_mark)
-        button_table.attach(create_explanation, 1, 2, 3, 4)
+        button_table.attach(create_explanation, 1, 2, 2, 3)
 
         score_button = self.build_button(_(u"View Student Performance"))
         score_button.connect('clicked', self.view_performance)
         button_table.attach(score_button, 0, 1, 3, 4, xoptions=False, yoptions=False)
 
         score_explanation = Gtk.Label()
-        label_text = _(u"View Student Scores on Assigned Exams")
+        label_text = _(u"View Student Scores on Assigned Assessments")
         label_pre_mark = construct_markup(label_text, font_size=20)
         score_explanation.set_markup(label_pre_mark)
-        button_table.attach(score_explanation, 1, 2, 2, 3)
+        button_table.attach(score_explanation, 1, 2, 3, 4)
 
         self.add(widget)
         self.show_all()
@@ -135,7 +135,7 @@ class UserType(Gtk.Window, menu.MenuBar):
         button_table.attach(assigned_assessment_button, 0, 1, 1, 2, xoptions=False, yoptions=False)
 
         assigned_assessment_explanation = Gtk.Label()
-        label_text = _(u"Take Exams and Receive Feedback")
+        label_text = _(u"Take Assessments and Receive Feedback")
         label_pre_mark = construct_markup(label_text, font_size=20)
         assigned_assessment_explanation.set_markup(label_pre_mark)
         button_table.attach(assigned_assessment_explanation, 1, 2, 1, 2)

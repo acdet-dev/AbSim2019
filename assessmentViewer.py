@@ -29,7 +29,7 @@ class AssessmentViewer():
         self.exam = self.exam_info.get_by_exam_id(self.window_resources["exam_id"])
 
         if self.bases == 'yes':
-            vba = ViewBaselineAssessments()
+            vba = ViewBaselineAssessments(self.window_resources["exam_id"])
             self.window_resources['baseline'].add(vba.vbox)
             self.window_resources['baseline'].show_all()
         if self.cases == 'yes':
@@ -116,14 +116,14 @@ class AbTest():
 
     def create_columns(self, treeView):
         renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Assessment Title"), renderer_text, text=0)
+        column = Gtk.TreeViewColumn(_(u"Student ID"), renderer_text, text=0)
         column.set_sort_column_id(0)
         column.set_resizable(True)
         treeView.append_column(column)
 
         renderer_text = Gtk.CellRendererText()
         renderer_text.set_property('ellipsize', Pango.ELLIPSIZE_END)
-        column = Gtk.TreeViewColumn(_(u"Exam Title"), renderer_text, text=1)
+        column = Gtk.TreeViewColumn(_(u"Assessment Title"), renderer_text, text=1)
         column.set_sort_column_id(1)
         column.set_resizable(True)
         treeView.append_column(column)
@@ -157,10 +157,11 @@ class AbTest():
 
 
 class ViewBaselineAssessments():
-    def __init__(self):
+    def __init__(self, exam_id):
 
         self.coverage_assessment_model = baselinemodel.BaselineModel()
 
+        self.exam_id = exam_id
         self.new_selected_case = observer.Observer()
         self.ailments = ailments.Ailments()
         self.pressurepoints = pressurepoints.PressureList(self.new_selected_case)
@@ -229,7 +230,7 @@ class ViewBaselineAssessments():
 
     def create_model(self):
         store = Gtk.ListStore(str, str, str, str, str, str, str)
-        self.exams = self.coverage_assessment_model.get_all()
+        self.exams = self.coverage_assessment_model.get_by_exam_id(self.exam_id)
         for exam in self.exams:
             store.append([exam[3], exam[2], exam[4], exam[5], exam[6], exam[7], exam[9]])
         return store
@@ -242,7 +243,7 @@ class ViewBaselineAssessments():
         treeView.append_column(column)
 
         renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Exam Title"), renderer_text, text=1)
+        column = Gtk.TreeViewColumn(_(u"Assessment Title"), renderer_text, text=1)
         column.set_sort_column_id(1)
         column.set_resizable(True)
         treeView.append_column(column)
