@@ -36,7 +36,7 @@ class BaselineModel:
             pass
         db_conn.close()
 
-    def save_to_db(self, last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, time_in):
+    def save_to_db(self, last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in):
         db_conn = self.connect()
         db_conn.text_factory = str
         c = db_conn.cursor()
@@ -51,22 +51,23 @@ class BaselineModel:
         down text NOT NULL,
         hard text NOT NULL,
         coverage text NOT NULL,
+        et text NOT NULL,
         time_in text NOT NULL);"""
 
         self.create_table(db_conn, sql_create_exam_table)
 
         stmt = '''
             INSERT INTO baseline
-            (last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, time_in)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         '''
         with open(app_data_path + 'prot2', 'wb') as pfile:
-            pickled_coverage = pickle.dump(coverage, pfile, protocol=None)
+            pickle.dump(coverage, pfile, protocol=None)
             # try
         with open(app_data_path + 'prot2', 'rb') as pfile:
             pickled_coverage = pfile.read()
             c.execute(stmt, (last_name, first_name, exam_name, student_id, not_up, up, down, hard,
-                             sqlite3.Binary(pickled_coverage), time_in))
+                             sqlite3.Binary(pickled_coverage), et, time_in))
 
             try:
                 db_conn.commit()
@@ -81,7 +82,7 @@ class BaselineModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, time_in
+            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in
             FROM baseline
         '''
         try:
@@ -101,7 +102,7 @@ class BaselineModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, time_in
+            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in
             FROM baseline
             WHERE exam_name=? AND student_id=?
         '''
@@ -119,7 +120,7 @@ class BaselineModel:
         db_conn = self.connect()
         c = db_conn.cursor()
         stmt = '''
-            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, time_in
+            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in
             FROM baseline
             WHERE exam_name=?
         '''
@@ -144,7 +145,7 @@ class BaselineModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, time_in
+            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in
             FROM baseline
             WHERE student_id=?
         '''

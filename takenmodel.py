@@ -20,7 +20,7 @@ class TakenModel:
             pass
             logging.debug('AbSim could not create taken exams database table.')
 
-    def save_to_db(self, student_id, exam_title, score, correct, total, answers, timein):
+    def save_to_db(self, student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein):
         db_conn = self.connect()
         db_conn.text_factory = str
         c = db_conn.cursor()
@@ -28,20 +28,22 @@ class TakenModel:
         sql_create_assessed_table = """CREATE TABLE IF NOT EXISTS assessed (
         student_id text NOT NULL,
         exam_title text NOT NULL,
-        score text NOT NULL,
-        correct text NOT NULL,
-        total text NOT NULL,
-        answers text NOT NULL,
+        ab_score text NOT NULL,
+        ddx_score text NOT NULL,
+        ab_answers text NOT NULL,
+        ddx_answers text NOT NULL,
+        ab_et text NOT NULL,
+        ddx_et text NOT NULL,
         timein text NOT NULL);"""
 
         self.create_table(db_conn, sql_create_assessed_table)
 
         stmt = '''
             INSERT INTO assessed
-            (student_id, exam_title, score, correct, total, answers, timein)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            (student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         '''
-        c.execute(stmt, (student_id, exam_title, score, correct, total, answers, timein))
+        c.execute(stmt, (student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein))
         try:
             db_conn.commit()
             logging.debug('taken exams db updated')
@@ -69,7 +71,7 @@ class TakenModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT student_id, exam_title, score, correct, total, answers, timein
+            SELECT student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein
             FROM assessed
         '''
         try:
@@ -94,7 +96,7 @@ class TakenModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT student_id, exam_title, score, correct, total, answers, timein
+            SELECT student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein
             FROM assessed
             WHERE student_id=?
         '''
@@ -117,7 +119,7 @@ class TakenModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT student_id, exam_title, score, correct, total, answers, timein
+            SELECT student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein
             FROM assessed
             WHERE exam_title=?
         '''

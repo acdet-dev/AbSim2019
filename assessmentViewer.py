@@ -63,14 +63,14 @@ class AbTest():
         hbox.pack_start(ovbox, True, True, 0)
 
         # get database entries for treeview in scroller window
-        store = self.create_model()
+        store, ch_headers = self.create_model()
 
         treeView = Gtk.TreeView(store)
         treeView.connect('cursor-changed', self.on_row_change)
         treeView.set_rules_hint(True)
         sw.add(treeView)
 
-        self.create_columns(treeView)
+        self.create_columns(treeView, ch_headers)
 
         # Add navigation buttons
         self.button_tree = self.add_buttons()
@@ -104,17 +104,61 @@ class AbTest():
 
         return button_table
 
+    def chunkIt(self, seq, num):
+        avg = len(seq) / float(num)
+        out = []
+        last = 0.0
+
+        while last < len(seq):
+            out.append(seq[int(last):int(last+avg)])
+            last += avg
+
+        return out
+
+    def initListStore(self, ls):
+        types = []
+        for mot in ls:
+            types.append(type(mot))
+
+        lsstore = Gtk.ListStore()
+        lsstore.set_column_types(types)
+
+        return lsstore
+
     def create_model(self):
-        store = Gtk.ListStore(str, str, str, str, str, str)
         if self.exam:
+            store_list = []
+            answer_list = []
+            num = 0
             for exam in self.exam:
-                store.append([exam[0], exam[1], exam[2], exam[3], exam[4], exam[6]])
+                num += 1
+                store_list.extend([exam[0], exam[1], exam[2]])
+                c_c_list = exam[4].split('+')
+                for i in c_c_list:
+                    store_list.append(i.split('-')[1][8:])
+                    answer_list.append(i.split('-')[0][9:])
+                store_list.extend([exam[6], exam[8]])
+
+            # chunk listed data
+            chunked = self.chunkIt(store_list, num)
+            ch_ans = self.chunkIt(answer_list, num)
+            print(chunked)
+            print(ch_ans[0])
+
+            # initialize list store with custom exam data length
+            store = self.initListStore(chunked[0])
+
+            for ch in chunked:
+                store.append(ch)
 
         else:
             logging.debug('No exams returned')
-        return store
+            # also need to return one of answer_list to give column names
+        return store, ch_ans[0]
 
-    def create_columns(self, treeView):
+    def create_columns(self, treeView, headers):
+        """ need to add in iteration to put answers from assessment as row header with student answer value in cell """
+
         renderer_text = Gtk.CellRendererText()
         column = Gtk.TreeViewColumn(_(u"Student ID"), renderer_text, text=0)
         column.set_sort_column_id(0)
@@ -141,13 +185,13 @@ class AbTest():
         treeView.append_column(column)
 
         renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Total"), renderer_text, text=4)
+        column = Gtk.TreeViewColumn(_(u"Time Elapsed"), renderer_text, text=4)
         column.set_sort_column_id(4)
         column.set_resizable(True)
         treeView.append_column(column)
 
         renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Time Completed"), renderer_text, text=5)
+        column = Gtk.TreeViewColumn(_(u"Date Submitted"), renderer_text, text=5)
         column.set_sort_column_id(5)
         column.set_resizable(True)
         treeView.append_column(column)
@@ -229,10 +273,10 @@ class ViewBaselineAssessments():
             logging.debug('Could not get exam info because no exams exist.')
 
     def create_model(self):
-        store = Gtk.ListStore(str, str, str, str, str, str, str)
+        store = Gtk.ListStore(str, str, str, str, str, str, str, str)
         self.exams = self.coverage_assessment_model.get_by_exam_id(self.exam_id)
         for exam in self.exams:
-            store.append([exam[3], exam[2], exam[4], exam[5], exam[6], exam[7], exam[9]])
+            store.append([exam[3], exam[2], exam[4], exam[5], exam[6], exam[7], exam[9], exam[10]])
         return store
 
     def create_columns(self, treeView):
@@ -273,8 +317,14 @@ class ViewBaselineAssessments():
         treeView.append_column(column)
 
         renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Time Completed"), renderer_text, text=6)
+        column = Gtk.TreeViewColumn(_(u"Time Elapsed"), renderer_text, text=6)
         column.set_sort_column_id(6)
+        column.set_resizable(True)
+        treeView.append_column(column)
+
+        renderer_text = Gtk.CellRendererText()
+        column = Gtk.TreeViewColumn(_(u"Date Submitted"), renderer_text, text=7)
+        column.set_sort_column_id(7)
         column.set_resizable(True)
         treeView.append_column(column)
 

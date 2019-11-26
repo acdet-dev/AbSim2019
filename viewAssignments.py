@@ -86,6 +86,11 @@ class ViewAssignments(Gtk.Window):
             'untouched_ddx': self.untouched_ddx,
             'baseline_model': self.baselinemodel,
             'exam_title': self.exam_title,
+            'baseline_start': 0,
+            'ab_start': 0,
+            'ab_end': 0,
+            'ddx_start': 0,
+            'ddx_end': 0,
         }
 
         # Build all the objects that talk to each other
@@ -417,6 +422,9 @@ class ViewTests(Gtk.HBox):
             if 'notebook' in self.view_resources:
                 self.view_resources['notebook'].set_current_page(1)
                 self.view_resources['new_case_observer'].alert('none n')
+
+                self.exam_resources['baseline_start'] = time.time()
+
         else:
             if len(self.exam_resources['case_list']) > 0:
                 page1 = self.view_resources['notebook'].get_nth_page(0)
@@ -431,6 +439,8 @@ class ViewTests(Gtk.HBox):
                 if 'notebook' in self.view_resources:
                     self.view_resources['notebook'].set_current_page(2)
                     self.view_resources['new_case_observer'].alert(self.exam_resources['case_list'][0])
+
+                    self.exam_resources['ab_start'] = time.time()
 
             elif self.exam_resources['ddx_cases'] and len(self.exam_resources['ddx_cases']) > 0:
                 # transition to new window
@@ -455,6 +465,8 @@ class ViewTests(Gtk.HBox):
                 self.view_resources['new_case_observer'].alert(ail_key)
 
                 self.view_resources['new_case_block_observer'].alert(ail_key, block)
+
+                self.exam_resources['ddx_start'] = time.time()
 
             else:
                 sim_message(self.view_resources['window'], info_string=_(u'Assessment Not Found.'),
@@ -491,7 +503,7 @@ class BaselineTest(Gtk.HBox):
 
         self.show()
 
-    def save_exam(self, saved_exam_pressurepoints):
+    def save_exam(self, saved_exam_pressurepoints, et):
         from coverageassessment import CoverageAnalyzer
         # i18n - Time string left as-is
         timestr = time.strftime("%Y%m%d-%H%M%S")
@@ -500,13 +512,16 @@ class BaselineTest(Gtk.HBox):
                                                          self.exam_resources['exam_title'],
                                                          self.exam_resources['password'], state_percents['up'],
                                                          state_percents['slightly_down'], state_percents['down'],
-                                                         state_percents['too_hard'], saved_exam_pressurepoints, timestr)
+                                                         state_percents['too_hard'], saved_exam_pressurepoints, et,
+                                                         timestr)
 
     def ok_selection(self, signal):
+        et = time.time() - self.exam_resources['baseline_start']
+        print(et)
         saved_exam_pressurepoints = self.view_resources['pressurepoints']
         saved_exam_pressurepoints = copy.deepcopy(saved_exam_pressurepoints)
 
-        self.save_exam(saved_exam_pressurepoints)
+        self.save_exam(saved_exam_pressurepoints, et)
 
         if len(self.exam_resources['case_list']) > 0:
             page1 = self.view_resources['notebook'].get_nth_page(0)
@@ -522,6 +537,9 @@ class BaselineTest(Gtk.HBox):
                 self.view_resources['notebook'].set_current_page(2)
 
             self.view_resources['new_case_observer'].alert(self.exam_resources['case_list'][0])
+
+            self.exam_resources['ab_start'] = time.time()
+
         elif self.exam_resources['ddx_cases'] and len(self.exam_resources['ddx_cases']) > 0:
             page1 = self.view_resources['notebook'].get_nth_page(0)
             page2 = self.view_resources['notebook'].get_nth_page(1)
@@ -544,6 +562,8 @@ class BaselineTest(Gtk.HBox):
             self.view_resources['new_case_observer'].alert(ail_key)
 
             self.view_resources['new_case_block_observer'].alert(ail_key, block)
+
+            self.exam_resources['ddx_start'] = time.time()
 
         else:
             sim_message(self.view_resources['window'], info_string=_(u'Assessment Finished.'),
@@ -611,7 +631,9 @@ class CaseExam(Gtk.HBox):
         self.add(self.test_box)
         self.show()
 
-    def report_score(self, score):
+    def report_score(self, score, flag=''):
+        if flag == 'first_time':
+            self.exam_resources['ab_end'] = time.time() - self.exam_resources['ab_start']
         if len(self.exam_resources['ddx_cases']) > 0:
             page1 = self.view_resources['notebook'].get_nth_page(0)
             page2 = self.view_resources['notebook'].get_nth_page(1)
@@ -635,26 +657,33 @@ class CaseExam(Gtk.HBox):
 
             self.view_resources['new_case_block_observer'].alert(ail_key, block)
 
+            self.exam_resources['ddx_start'] = time.time()
+
             return
 
         else:
             exam_data = takenmodel.TakenModel()
             if len(self.exam_resources['ab_answer_list']) > 0 and len(self.exam_resources['ddx_answer_list']) > 0:
-                self.exam_resources['ab_num'] = self.exam_resources['ab_num'] + self.exam_resources['ddx_num']
-                self.exam_resources['ab_den'] = self.exam_resources['ab_den'] + self.exam_resources['ddx_den']
-                score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
+                self.exam_resources['ddx_end'] = time.time() - self.exam_resources['ddx_start']
+                # self.exam_resources['ab_num'] = self.exam_resources['ab_num'] + self.exam_resources['ddx_num']
+                # self.exam_resources['ab_den'] = self.exam_resources['ab_den'] + self.exam_resources['ddx_den']
+                ab_score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
+                ddx_score = self.exam_resources['ddx_num'] / self.exam_resources['ddx_den']
 
             elif len(self.exam_resources['ab_answer_list']) > 0 and len(self.exam_resources['ddx_answer_list']) == 0:
-                score = score
+                ab_score = score
+                ddx_score = 'null'
 
             elif len(self.exam_resources['ddx_answer_list']) > 0 and len(self.exam_resources['ab_answer_list']) == 0:
-                score = score
-                self.exam_resources['ab_num'] = self.exam_resources['ddx_num']
-                self.exam_resources['ab_den'] = self.exam_resources['ddx_den']
+                self.exam_resources['ddx_end'] = time.time() - self.exam_resources['ddx_start']
+                ddx_score = score
+                ab_score = 'null'
+                # self.exam_resources['ab_num'] = self.exam_resources['ddx_num']
+                # self.exam_resources['ab_den'] = self.exam_resources['ddx_den']
 
             # alert score
-            print(self.exam_resources['case_list'])
-            print(self.exam_resources['ddx_cases'])
+            print(self.exam_resources['ddx_end'])
+            print(self.exam_resources['ab_end'])
             print(self.exam_resources['untouched'])
             print(self.exam_resources['untouched_ddx'])
             print(self.exam_resources['ab_answer_list'])
@@ -664,26 +693,28 @@ class CaseExam(Gtk.HBox):
             ind_list = [self.exam_resources['ab_answer_list'].index(elem) for elem in self.exam_resources['untouched']]
             ans_ind_list = [x for y, x in sorted(zip(ind_list, self.exam_resources['ab_answer_list']))]
             stu_ind_list = [x for y, x in sorted(zip(ind_list, self.exam_resources['student_answer_list']))]
-            correct_chosen = ['correct: ' + x + '-' + 'chosen: ' + y for x, y in zip(ans_ind_list, stu_ind_list)]
+            ab_correct_chosen = ['correct: ' + x + '-' + 'chosen: ' + y for x, y in zip(ans_ind_list, stu_ind_list)]
 
             ddx_ind_list = [self.exam_resources['ddx_answer_list'].index(elem) for elem in self.exam_resources['untouched_ddx']]
             ans_ddx_ind_list = [x for y, x in sorted(zip(ddx_ind_list, self.exam_resources['ddx_answer_list']))]
             stu_ddx_ind_list = [x for y, x in sorted(zip(ddx_ind_list, self.exam_resources['student_ddx_list']))]
             ddx_correct_chosen = ['correct: ' + x + '-' + 'chosen: ' + y for x, y in zip(ans_ddx_ind_list, stu_ddx_ind_list)]
 
-            correct_chosen.extend(ddx_correct_chosen)
+            # correct_chosen.extend(ddx_correct_chosen)
 
             sim_message(self.view_resources['window'], info_string=_(u'Assessment Finished.'),
                         secondary_text=_(u'You may take another assessment if you have more to take.'))
             timestr = time.strftime("%Y%m%d-%H%M%S")
 
-            correct_chosen_string = '+'.join(correct_chosen)
-            print(correct_chosen_string)
+            ab_correct_chosen_string = '+'.join(ab_correct_chosen)
+            ddx_correct_chosen_string = '+'.join(ddx_correct_chosen)
+            print(ab_correct_chosen_string)
+            print(ddx_correct_chosen_string)
 
             # save score data to db
-            exam_data.save_to_db(self.exam_resources['password'], self.exam_resources['exam_title'], score,
-                                 self.exam_resources['ab_num'], self.exam_resources['ab_den'], correct_chosen_string,
-                                 timestr)
+            exam_data.save_to_db(self.exam_resources['password'], self.exam_resources['exam_title'], ab_score,
+                                 ddx_score, ab_correct_chosen_string, ddx_correct_chosen_string,
+                                 self.exam_resources['ab_end'], self.exam_resources['ddx_end'], timestr)
 
             self.view_resources['window'].return_home()
 
@@ -702,7 +733,7 @@ class CaseExam(Gtk.HBox):
                 except IndexError:
                     # if len(self.ddx_cases) > 0:
                     score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
-                    self.report_score(score)
+                    self.report_score(score, flag='first_time')
                     pass
             elif distance(self.current_case, self.exam_resources['case_list'][0]) < 4:
                 self.exam_resources['ab_answer_list'].append(self.exam_resources['case_list'][0])
@@ -716,7 +747,7 @@ class CaseExam(Gtk.HBox):
                 except IndexError:
 
                     score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
-                    self.report_score(score)
+                    self.report_score(score, flag='first_time')
                     pass
             else:
                 self.exam_resources['ab_answer_list'].append(self.exam_resources['case_list'][0])
@@ -727,7 +758,7 @@ class CaseExam(Gtk.HBox):
                     self.view_resources['new_case_observer'].alert(self.exam_resources['case_list'][0])
                 except IndexError:
                     score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
-                    self.report_score(score)
+                    self.report_score(score, flag='first_time')
                     pass
 
         else:
