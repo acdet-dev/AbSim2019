@@ -4,14 +4,11 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Pango
 
 import assessmentViewer
-import simLabels
 import examParser
 import menu
 from menu import *
 from i18ntrans2 import _
-import takenmodel
 import exammodel
-import baselinemodel
 import splashscreen
 
 
@@ -33,18 +30,18 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         self.baseline = ''
         self.ab = ''
         self.ddx = ''
+        self.notebook = Gtk.Notebook()
 
         self.window_resources = {
             "exam_id": self.exam_id,
             "baseline": self.baseline,
             "ab": self.ab,
             "ddx": self.ddx,
+            "notebook": self.notebook,
         }
 
         # build menu bar
         box = self.build_bar()
-
-        self.notebook = Gtk.Notebook()
 
         vbox = self.build_interface()
         base_vbox = Gtk.HBox(False, 2)
@@ -89,6 +86,9 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
 
         self.destroy_signal_handler = self.connect('destroy', Gtk.main_quit)
         self.notebook.set_current_page(0)
+        self.notebook.get_nth_page(1).hide()
+        self.notebook.get_nth_page(2).hide()
+        self.notebook.get_nth_page(3).hide()
 
     def build_interface(self):
         # make boxes to hold all info

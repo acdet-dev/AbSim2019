@@ -17,7 +17,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GLib, Pango
 
 
-class AssessmentViewer():
+class AssessmentViewer:
     """A class to handle vieswing the results of custom tests"""
     def __init__(self, window_resources, bases, cases, ddxs):
         self.window_resources = window_resources
@@ -28,24 +28,47 @@ class AssessmentViewer():
         self.exam_info = takenmodel.TakenModel()
         self.exam = self.exam_info.get_by_exam_id(self.window_resources["exam_id"])
 
+        # get pages and facilitate shift
+        page1 = self.window_resources['notebook'].get_nth_page(0)
+        page = self.window_resources['notebook'].get_nth_page(1)
+        page2 = self.window_resources['notebook'].get_nth_page(2)
+        page3 = self.window_resources['notebook'].get_nth_page(3)
+
+        page1.hide()
+        page.show()
+        page2.show()
+        page3.show()
+
         if self.bases == 'yes':
             vba = ViewBaselineAssessments(self.window_resources["exam_id"])
             self.window_resources['baseline'].add(vba.vbox)
             self.window_resources['baseline'].show_all()
+            self.window_resources['notebook'].set_current_page(1)
+        else:
+            page.hide()
         if self.cases == 'yes':
             ab = AbTest(self.exam)
             self.window_resources['ab'].add(ab.vbox)
             self.window_resources['ab'].show_all()
+            if self.bases != 'yes':
+                self.window_resources['notebook'].set_current_page(2)
+        else:
+            page2.hide()
         if self.ddxs == 'yes':
-            pass
+            ddx = DdxTest(self.exam)
+            self.window_resources['ddx'].add(ddx.vbox)
+            self.window_resources['ddx'].show_all()
+            if self.bases != 'yes' and self.cases != 'yes':
+                self.window_resources['notebook'].set_current_page(3)
+        else:
+            page3.hide()
 
 
-class AbTest():
-    def __init__(self, exam):
+class ViewsController:
+    def __init__(self, exam, flag):
 
         self.exam = exam
-
-        self.vbox = self.build_interface()
+        self.flag = flag
 
     def build_interface(self):
         # make boxes to hold all info
@@ -53,7 +76,7 @@ class AbTest():
         ovbox = Gtk.VBox(False, 8)
         hbox = Gtk.HBox()
 
-        # scroller window for all abnormality and ddx exams in queue
+        # scroller window for all ddx exams in queue
         sw = Gtk.ScrolledWindow()
         sw.set_shadow_type(Gtk.SHADOW_ETCHED_IN)
         sw.set_policy(Gtk.POLICY_AUTOMATIC, Gtk.POLICY_AUTOMATIC)
@@ -91,6 +114,9 @@ class AbTest():
         button.add(label)
         return button
 
+    def go_back(self, widget):
+        pass
+
     def add_buttons(self):
 
         button_table = Gtk.Table(rows=1, columns=1)
@@ -99,8 +125,12 @@ class AbTest():
         button_table.set_row_spacings(5)
 
         right_button = self.build_button(_(u"Export to Desktop"))
-        #right_button.connect('clicked', self.export)
+        # right_button.connect('clicked', self.export)
         button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
+
+        view_button = self.build_button(_(u"Return"))
+        view_button.connect('clicked', self.go_back)
+        button_table.attach(view_button, 1, 2, 0, 1, xoptions=False, yoptions=False)
 
         return button_table
 
@@ -110,12 +140,12 @@ class AbTest():
         last = 0.0
 
         while last < len(seq):
-            out.append(seq[int(last):int(last+avg)])
+            out.append(seq[int(last):int(last + avg)])
             last += avg
 
         return out
 
-    def initListStore(self, ls):
+    def init_list_store(self, ls):
         types = []
         for mot in ls:
             types.append(type(mot))
@@ -126,18 +156,33 @@ class AbTest():
         return lsstore
 
     def create_model(self):
+        from Levenshtein import distance
+
         if self.exam:
             store_list = []
             answer_list = []
             num = 0
             for exam in self.exam:
                 num += 1
-                store_list.extend([exam[0], exam[1], exam[2]])
-                c_c_list = exam[4].split('+')
+                if self.flag == 'ddx':
+                    store_list.extend([exam[0], exam[1], exam[3], exam[7], exam[8]])
+                    c_c_list = exam[5].split('+')
+                else:
+                    store_list.extend([exam[0], exam[1], exam[2], exam[6], exam[8]])
+                    c_c_list = exam[4].split('+')
                 for i in c_c_list:
-                    store_list.append(i.split('-')[1][8:])
-                    answer_list.append(i.split('-')[0][9:])
-                store_list.extend([exam[6], exam[8]])
+                    a = i.split('-')[1][8:]
+                    sa = i.split('-')[0][9:]
+
+                    if distance(a, sa) < 1:
+                        store_list.append('white')
+                    elif distance(a, sa) < 4:
+                        store_list.append('orange')
+                    else:
+                        store_list.append('red')
+
+                    store_list.append(a)
+                    answer_list.append(sa)
 
             # chunk listed data
             chunked = self.chunkIt(store_list, num)
@@ -146,15 +191,27 @@ class AbTest():
             print(ch_ans[0])
 
             # initialize list store with custom exam data length
-            store = self.initListStore(chunked[0])
+            store = self.init_list_store(chunked[0])
 
             for ch in chunked:
                 store.append(ch)
 
+            # also need to return one of answer_list to give column names
+            return store, ch_ans[0]
+
         else:
             logging.debug('No exams returned')
-            # also need to return one of answer_list to give column names
-        return store, ch_ans[0]
+
+            return '', ''
+
+    def iterate_headers(self, h, tv):
+        print(len(h))
+        for ind in range(0, len(h)):
+            renderer_text = Gtk.CellRendererText()
+            column = Gtk.TreeViewColumn(_(h[ind]), renderer_text, text=ind+6+ind, background=ind+5+ind)
+            column.set_sort_column_id(ind + 6 + ind)
+            column.set_resizable(True)
+            tv.append_column(column)
 
     def create_columns(self, treeView, headers):
         """ need to add in iteration to put answers from assessment as row header with student answer value in cell """
@@ -179,28 +236,39 @@ class AbTest():
         treeView.append_column(column)
 
         renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Correct"), renderer_text, text=3)
+        column = Gtk.TreeViewColumn(_(u"Time Elapsed"), renderer_text, text=3)
         column.set_sort_column_id(3)
         column.set_resizable(True)
         treeView.append_column(column)
 
         renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Time Elapsed"), renderer_text, text=4)
+        column = Gtk.TreeViewColumn(_(u"Date Submitted"), renderer_text, text=4)
         column.set_sort_column_id(4)
         column.set_resizable(True)
         treeView.append_column(column)
 
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Date Submitted"), renderer_text, text=5)
-        column.set_sort_column_id(5)
-        column.set_resizable(True)
-        treeView.append_column(column)
+        # add in function to iterate over list of answers to create headers and add values
+        self.iterate_headers(headers, treeView)
 
-    def on_row_change(self, widget):
-        pass
+    def on_row_change(self, tv):
+        tv.get_selection().unselect_all()
 
 
-class ViewBaselineAssessments():
+class DdxTest:
+    def __init__(self, exam):
+
+        self.exam = exam
+        self.vbox = ViewsController(self.exam, flag='ddx').build_interface()
+
+
+class AbTest:
+    def __init__(self, exam):
+
+        self.exam = exam
+        self.vbox = ViewsController(self.exam, flag='ab').build_interface()
+
+
+class ViewBaselineAssessments:
     def __init__(self, exam_id):
 
         self.coverage_assessment_model = baselinemodel.BaselineModel()
@@ -250,7 +318,7 @@ class ViewBaselineAssessments():
         self.create_columns(treeView)
 
     def export(self):
-        ##write data to pandas dataframe and then csv file
+        ##write data to csv file
         import os
         import csv
 

@@ -15,6 +15,7 @@ from gi.repository import Gtk, Gdk, GLib
 
 from Levenshtein import distance
 
+
 class UserType(Gtk.Window, menu.MenuBar):
     def __init__(self, usertype='', name='', password=''):
         self.usertype = usertype

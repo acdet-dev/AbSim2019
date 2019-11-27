@@ -691,13 +691,15 @@ class CaseExam(Gtk.HBox):
             print(self.exam_resources['student_answer_list'])
             print(self.exam_resources['student_ddx_list'])
             ind_list = [self.exam_resources['ab_answer_list'].index(elem) for elem in self.exam_resources['untouched']]
-            ans_ind_list = [x for y, x in sorted(zip(ind_list, self.exam_resources['ab_answer_list']))]
-            stu_ind_list = [x for y, x in sorted(zip(ind_list, self.exam_resources['student_answer_list']))]
+            print(ind_list)
+            ans_ind_list = [self.exam_resources['ab_answer_list'][i] for i in ind_list]
+            stu_ind_list = [self.exam_resources['student_answer_list'][i] for i in ind_list]
+            print(stu_ind_list)
             ab_correct_chosen = ['correct: ' + x + '-' + 'chosen: ' + y for x, y in zip(ans_ind_list, stu_ind_list)]
 
             ddx_ind_list = [self.exam_resources['ddx_answer_list'].index(elem) for elem in self.exam_resources['untouched_ddx']]
-            ans_ddx_ind_list = [x for y, x in sorted(zip(ddx_ind_list, self.exam_resources['ddx_answer_list']))]
-            stu_ddx_ind_list = [x for y, x in sorted(zip(ddx_ind_list, self.exam_resources['student_ddx_list']))]
+            ans_ddx_ind_list = [self.exam_resources['ddx_answer_list'][i] for i in ddx_ind_list]
+            stu_ddx_ind_list = [self.exam_resources['student_ddx_list'][i] for i in ddx_ind_list]
             ddx_correct_chosen = ['correct: ' + x + '-' + 'chosen: ' + y for x, y in zip(ans_ddx_ind_list, stu_ddx_ind_list)]
 
             # correct_chosen.extend(ddx_correct_chosen)
@@ -721,45 +723,33 @@ class CaseExam(Gtk.HBox):
     def make_selection(self, choice):
         # in here, we should be able to facilitate transition to other exam
         if len(self.exam_resources['case_list']) > 0:
-
+            print(self.current_case)
+            print(self.exam_resources['case_list'][0])
+            self.exam_resources['ab_answer_list'].append(self.exam_resources['case_list'][0])
+            # add student answers to their own list
+            self.exam_resources['student_answer_list'].append(self.current_case)
+            print(self.exam_resources['ab_answer_list'])
+            print(self.exam_resources['student_answer_list'])
             if distance(self.current_case, self.exam_resources['case_list'][0]) < 1:
-                self.exam_resources['ab_answer_list'].append(self.exam_resources['case_list'][0])
-                # add student answers to their own list
-                self.exam_resources['student_answer_list'].append(self.current_case)
-                self.exam_resources['case_list'].pop(0)
                 self.exam_resources['ab_num'] += 1
-                try:
-                    self.view_resources['new_case_observer'].alert(self.exam_resources['case_list'][0])
-                except IndexError:
-                    # if len(self.ddx_cases) > 0:
-                    score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
-                    self.report_score(score, flag='first_time')
-                    pass
+
             elif distance(self.current_case, self.exam_resources['case_list'][0]) < 4:
-                self.exam_resources['ab_answer_list'].append(self.exam_resources['case_list'][0])
-                # add student answers to their own list
-                self.exam_resources['student_answer_list'].append(self.current_case)
-                self.exam_resources['case_list'].pop(0)
                 self.exam_resources['ab_num'] += .5
 
-                try:
-                    self.view_resources['new_case_observer'].alert(self.exam_resources['case_list'][0])
-                except IndexError:
-
-                    score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
-                    self.report_score(score, flag='first_time')
-                    pass
             else:
-                self.exam_resources['ab_answer_list'].append(self.exam_resources['case_list'][0])
-                # add student answers to their own list
-                self.exam_resources['student_answer_list'].append(self.current_case)
-                self.exam_resources['case_list'].pop(0)
-                try:
-                    self.view_resources['new_case_observer'].alert(self.exam_resources['case_list'][0])
-                except IndexError:
-                    score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
-                    self.report_score(score, flag='first_time')
-                    pass
+                self.exam_resources['ab_num'] += 0
+
+            print(self.exam_resources['ab_num'])
+            # remove used case
+            self.exam_resources['case_list'].pop(0)
+
+            # pass new case if we have one
+            try:
+                self.view_resources['new_case_observer'].alert(self.exam_resources['case_list'][0])
+            except IndexError:
+                score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
+                self.report_score(score, flag='first_time')
+                pass
 
         else:
             sim_message(self.view_resources['window'], info_string=_(u'Assessment Finished.'),
@@ -926,47 +916,39 @@ class DdxExam(Gtk.HBox):
     def make_selection(self, choice):
         # in here, we should be able to facilitate transition to other exam
         if len(self.exam_resources['ddx_cases']) > 0:
+            print(self.current_case)
+            print(self.exam_resources['ddx_cases'][0])
+
+            self.exam_resources['ddx_answer_list'].append(self.exam_resources['ddx_cases'][0])
+            # add student answers to their own list
+            self.exam_resources['student_ddx_list'].append(self.current_case)
+
+            print(self.exam_resources['ddx_answer_list'])
+            print(self.exam_resources['student_ddx_list'])
+
             if distance(self.current_case, self.exam_resources['ddx_cases'][0].split('ddx_')[0]) < 1:
-                self.exam_resources['ddx_answer_list'].append(self.exam_resources['ddx_cases'][0])
-                # add student answers to their own list
-                self.exam_resources['student_ddx_list'].append(self.current_case)
-                self.exam_resources['ddx_cases'].pop(0)
                 self.exam_resources['ddx_num'] += 1
-                try:
-                    # add case vignette to scroller
-                    current_text, ail_key, block = self.get_vignette()
-                    self.case_text_buffer.new_case(current_text)
-                    self.case_text_scroller_vadjustment.set_value(0)
-                    self.case_text_scroller.show_all()
-
-                    self.view_resources['new_case_observer'].alert(ail_key)
-
-                    self.view_resources['new_case_block_observer'].alert(ail_key, block)
-                except IndexError:
-                    score = self.exam_resources['ddx_num'] / self.exam_resources['ddx_den']
-
-                    # need our own score reporting in this class? or pass in a flag to write to correct
-                    # database
-                    self.view_resources['window'].case_exam.report_score(score)
 
             else:
-                self.exam_resources['ddx_answer_list'].append(self.exam_resources['ddx_cases'][0])
-                # add student answers to their own list
-                self.exam_resources['student_ddx_list'].append(self.current_case)
-                self.exam_resources['ddx_cases'].pop(0)
-                try:
-                    # add case vignette to scroller
-                    current_text, ail_key, block = self.get_vignette()
-                    self.case_text_buffer.new_case(current_text)
-                    self.case_text_scroller_vadjustment.set_value(0)
-                    self.case_text_scroller.show_all()
+                self.exam_resources['ddx_num'] += 0
 
-                    self.view_resources['new_case_observer'].alert(ail_key)
+            self.exam_resources['ddx_cases'].pop(0)
 
-                    self.view_resources['new_case_block_observer'].alert(ail_key, block)
-                except IndexError:
-                    score = self.exam_resources['ddx_num'] / self.exam_resources['ddx_den']
-                    self.view_resources['window'].case_exam.report_score(score)
+            print(self.exam_resources['ddx_num'])
+
+            try:
+                # add case vignette to scroller
+                current_text, ail_key, block = self.get_vignette()
+                self.case_text_buffer.new_case(current_text)
+                self.case_text_scroller_vadjustment.set_value(0)
+                self.case_text_scroller.show_all()
+
+                self.view_resources['new_case_observer'].alert(ail_key)
+
+                self.view_resources['new_case_block_observer'].alert(ail_key, block)
+            except IndexError:
+                score = self.exam_resources['ddx_num'] / self.exam_resources['ddx_den']
+                self.view_resources['window'].case_exam.report_score(score)
 
         else:
             sim_message(self.view_resources['window'], info_string=_(u'Assessment Finished.'),
