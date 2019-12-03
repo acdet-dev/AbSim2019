@@ -517,7 +517,6 @@ class BaselineTest(Gtk.HBox):
 
     def ok_selection(self, signal):
         et = time.time() - self.exam_resources['baseline_start']
-        print(et)
         saved_exam_pressurepoints = self.view_resources['pressurepoints']
         saved_exam_pressurepoints = copy.deepcopy(saved_exam_pressurepoints)
 
@@ -682,19 +681,9 @@ class CaseExam(Gtk.HBox):
                 # self.exam_resources['ab_den'] = self.exam_resources['ddx_den']
 
             # alert score
-            print(self.exam_resources['ddx_end'])
-            print(self.exam_resources['ab_end'])
-            print(self.exam_resources['untouched'])
-            print(self.exam_resources['untouched_ddx'])
-            print(self.exam_resources['ab_answer_list'])
-            print(self.exam_resources['ddx_answer_list'])
-            print(self.exam_resources['student_answer_list'])
-            print(self.exam_resources['student_ddx_list'])
             ind_list = [self.exam_resources['ab_answer_list'].index(elem) for elem in self.exam_resources['untouched']]
-            print(ind_list)
             ans_ind_list = [self.exam_resources['ab_answer_list'][i] for i in ind_list]
             stu_ind_list = [self.exam_resources['student_answer_list'][i] for i in ind_list]
-            print(stu_ind_list)
             ab_correct_chosen = ['correct: ' + x + '-' + 'chosen: ' + y for x, y in zip(ans_ind_list, stu_ind_list)]
 
             ddx_ind_list = [self.exam_resources['ddx_answer_list'].index(elem) for elem in self.exam_resources['untouched_ddx']]
@@ -710,8 +699,6 @@ class CaseExam(Gtk.HBox):
 
             ab_correct_chosen_string = '+'.join(ab_correct_chosen)
             ddx_correct_chosen_string = '+'.join(ddx_correct_chosen)
-            print(ab_correct_chosen_string)
-            print(ddx_correct_chosen_string)
 
             # save score data to db
             exam_data.save_to_db(self.exam_resources['password'], self.exam_resources['exam_title'], ab_score,
@@ -723,13 +710,9 @@ class CaseExam(Gtk.HBox):
     def make_selection(self, choice):
         # in here, we should be able to facilitate transition to other exam
         if len(self.exam_resources['case_list']) > 0:
-            print(self.current_case)
-            print(self.exam_resources['case_list'][0])
             self.exam_resources['ab_answer_list'].append(self.exam_resources['case_list'][0])
             # add student answers to their own list
             self.exam_resources['student_answer_list'].append(self.current_case)
-            print(self.exam_resources['ab_answer_list'])
-            print(self.exam_resources['student_answer_list'])
             if distance(self.current_case, self.exam_resources['case_list'][0]) < 1:
                 self.exam_resources['ab_num'] += 1
 
@@ -739,7 +722,6 @@ class CaseExam(Gtk.HBox):
             else:
                 self.exam_resources['ab_num'] += 0
 
-            print(self.exam_resources['ab_num'])
             # remove used case
             self.exam_resources['case_list'].pop(0)
 
@@ -916,15 +898,10 @@ class DdxExam(Gtk.HBox):
     def make_selection(self, choice):
         # in here, we should be able to facilitate transition to other exam
         if len(self.exam_resources['ddx_cases']) > 0:
-            print(self.current_case)
-            print(self.exam_resources['ddx_cases'][0])
 
             self.exam_resources['ddx_answer_list'].append(self.exam_resources['ddx_cases'][0])
             # add student answers to their own list
             self.exam_resources['student_ddx_list'].append(self.current_case)
-
-            print(self.exam_resources['ddx_answer_list'])
-            print(self.exam_resources['student_ddx_list'])
 
             if distance(self.current_case, self.exam_resources['ddx_cases'][0].split('ddx_')[0]) < 1:
                 self.exam_resources['ddx_num'] += 1
@@ -933,8 +910,6 @@ class DdxExam(Gtk.HBox):
                 self.exam_resources['ddx_num'] += 0
 
             self.exam_resources['ddx_cases'].pop(0)
-
-            print(self.exam_resources['ddx_num'])
 
             try:
                 # add case vignette to scroller

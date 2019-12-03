@@ -47,7 +47,7 @@ class AssessmentViewer:
         else:
             page.hide()
         if self.cases == 'yes':
-            ab = AbTest(self.exam)
+            ab = AbTest(self.exam, page, page1, page2, page3)
             self.window_resources['ab'].add(ab.vbox)
             self.window_resources['ab'].show_all()
             if self.bases != 'yes':
@@ -55,7 +55,7 @@ class AssessmentViewer:
         else:
             page2.hide()
         if self.ddxs == 'yes':
-            ddx = DdxTest(self.exam)
+            ddx = DdxTest(self.exam, page, page1, page2, page3)
             self.window_resources['ddx'].add(ddx.vbox)
             self.window_resources['ddx'].show_all()
             if self.bases != 'yes' and self.cases != 'yes':
@@ -65,9 +65,13 @@ class AssessmentViewer:
 
 
 class ViewsController:
-    def __init__(self, exam, flag):
+    def __init__(self, exam, p, p1, p2, p3, flag):
 
         self.exam = exam
+        self.p = p
+        self.p1 = p1
+        self.p2 = p2
+        self.p3 = p3
         self.flag = flag
 
     def build_interface(self):
@@ -115,7 +119,19 @@ class ViewsController:
         return button
 
     def go_back(self, widget):
-        pass
+        self.p1.show()
+        self.p.hide()
+        self.p2.hide()
+        self.p3.hide()
+
+        for i in self.p.get_children():
+            self.p.remove(i)
+
+        for i in self.p2.get_children():
+            self.p2.remove(i)
+
+        for i in self.p3.get_children():
+            self.p3.remove(i)
 
     def add_buttons(self):
 
@@ -187,8 +203,6 @@ class ViewsController:
             # chunk listed data
             chunked = self.chunkIt(store_list, num)
             ch_ans = self.chunkIt(answer_list, num)
-            print(chunked)
-            print(ch_ans[0])
 
             # initialize list store with custom exam data length
             store = self.init_list_store(chunked[0])
@@ -205,7 +219,6 @@ class ViewsController:
             return '', ''
 
     def iterate_headers(self, h, tv):
-        print(len(h))
         for ind in range(0, len(h)):
             renderer_text = Gtk.CellRendererText()
             column = Gtk.TreeViewColumn(_(h[ind]), renderer_text, text=ind+6+ind, background=ind+5+ind)
@@ -255,17 +268,17 @@ class ViewsController:
 
 
 class DdxTest:
-    def __init__(self, exam):
+    def __init__(self, exam, p, p1, p2, p3):
 
         self.exam = exam
-        self.vbox = ViewsController(self.exam, flag='ddx').build_interface()
+        self.vbox = ViewsController(self.exam, p, p1, p2, p3, flag='ddx').build_interface()
 
 
 class AbTest:
-    def __init__(self, exam):
+    def __init__(self, exam, p, p1, p2, p3):
 
         self.exam = exam
-        self.vbox = ViewsController(self.exam, flag='ab').build_interface()
+        self.vbox = ViewsController(self.exam, p, p1, p2, p3, flag='ab').build_interface()
 
 
 class ViewBaselineAssessments:
