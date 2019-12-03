@@ -247,7 +247,7 @@ class ViewsController:
     def iterate_headers(self, h, tv):
         for ind in range(0, len(h)):
             renderer_text = Gtk.CellRendererText()
-            column = Gtk.TreeViewColumn(_(h[ind]), renderer_text, text=ind+6+ind, background=ind+5+ind)
+            column = Gtk.TreeViewColumn(h[ind], renderer_text, text=ind+6+ind, background=ind+5+ind)
             column.set_sort_column_id(ind + 6 + ind)
             column.set_resizable(True)
             tv.append_column(column)
