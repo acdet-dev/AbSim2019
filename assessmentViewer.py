@@ -150,6 +150,28 @@ class ViewsController:
 
         return button_table
 
+    def get_text(self, heads, flag):
+        """ Function to pre-allocate memory to strings for translation """
+        from cases import Cases
+        if flag == 'ab':
+            possible_ab = Cases().pretty_ailment_names
+            return [possible_ab[i] if i in possible_ab.keys() else i for i in heads]
+
+        if flag == 'ddx':
+            ddx_list = {
+                "Upper Gastrointestinal Etiology": _(u"Upper Gastrointestinal Etiology"),
+                "Choledocolithiasis": _(u"Choledocolithiasis"),
+                "Pancreatitis": _(u"Pancreatitis"),
+                "Cholecystitis": _(u"Cholecystitis"),
+                "Mesenteric Infarction": _(u"Mesenteric Infarction"),
+                "Small Bowel Obstruction": _(u"Small Bowel Obstruction"),
+                "Appendicitis": _(u"Appendicitis"),
+                "Diverticulitis": _(u"Diverticulitis"),
+                "Acute Enteritis": _(u"Acute Enteritis"),
+            }
+
+            return [ddx_list[i] if i in ddx_list.keys() else i for i in heads]
+
     def chunkIt(self, seq, num):
         avg = len(seq) / float(num)
         out = []
@@ -204,14 +226,18 @@ class ViewsController:
             chunked = self.chunkIt(store_list, num)
             ch_ans = self.chunkIt(answer_list, num)
 
+            # use pre-memory strings for translation purposes...
+            ch_ans = self.get_text(ch_ans[0], flag=self.flag)
+
             # initialize list store with custom exam data length
             store = self.init_list_store(chunked[0])
 
             for ch in chunked:
-                store.append(ch)
+                translated = self.get_text(ch, flag=self.flag)
+                store.append(translated)
 
             # also need to return one of answer_list to give column names
-            return store, ch_ans[0]
+            return store, ch_ans
 
         else:
             logging.debug('No exams returned')

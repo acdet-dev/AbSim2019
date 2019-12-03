@@ -11,7 +11,6 @@ import casetext
 from i18ntrans2 import _
 
 
-  
 class Cases:
     def __init__(self):
         self.command_list = {

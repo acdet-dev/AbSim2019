@@ -197,15 +197,15 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
                     case_list_comm, case_title_list, baseline_model, baseline_flag,\
                     ddx_cases = ep.parse_exam_info(case_info)
                     if baseline_flag:
-                        base = 'yes'
+                        base = _(u'yes')
                     else:
                         base = 'no'
                     if len(case_list_comm) > 0:
-                        cases = 'yes'
+                        cases = _(u'yes')
                     else:
                         cases = 'no'
                     if len(ddx_cases) > 0:
-                        ddx = 'yes'
+                        ddx = _(u'yes')
                     else:
                         ddx = 'no'
                     store.append([exam[0].decode('utf-8'), base, cases, ddx])
