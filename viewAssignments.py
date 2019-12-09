@@ -522,7 +522,7 @@ class BaselineTest(Gtk.HBox):
         saved_exam_pressurepoints = self.view_resources['pressurepoints']
         saved_exam_pressurepoints = copy.deepcopy(saved_exam_pressurepoints)
 
-        self.save_exam(saved_exam_pressurepoints, et)
+        self.save_exam(saved_exam_pressurepoints, round(et))
 
         if len(self.exam_resources['case_list']) > 0:
             page1 = self.view_resources['notebook'].get_nth_page(0)
@@ -705,7 +705,7 @@ class CaseExam(Gtk.HBox):
             # save score data to db
             exam_data.save_to_db(self.exam_resources['password'], self.exam_resources['exam_title'], ab_score,
                                  ddx_score, ab_correct_chosen_string, ddx_correct_chosen_string,
-                                 self.exam_resources['ab_end'], self.exam_resources['ddx_end'], timestr,
+                                 round(self.exam_resources['ab_end']), round(self.exam_resources['ddx_end']), timestr,
                                  self.exam_resources['section'])
 
             self.view_resources['window'].return_home()

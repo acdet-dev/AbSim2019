@@ -12,6 +12,8 @@ import takenmodel
 import baselinemodel
 import logging
 import gi
+from collections import OrderedDict
+from i18ntrans2 import _
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GLib, Pango
@@ -23,9 +25,9 @@ class AssessmentViewer:
 
         self.section = section
         self.window_resources = window_resources
-        self.bases = bases
-        self.cases = cases
-        self.ddxs = ddxs
+        self.window_resources['bases'] = bases
+        self.window_resources['cases'] = cases
+        self.window_resources['ddxs'] = ddxs
 
         self.exam_info = takenmodel.TakenModel()
         self.exam = self.exam_info.get_by_exam_section_id(self.section, self.window_resources["exam_id"])
@@ -43,26 +45,26 @@ class AssessmentViewer:
             page2.show()
             page3.show()
 
-            if self.bases == 'yes':
+            if self.window_resources['bases'] == 'yes':
                 vba = ViewBaselineAssessments(self.section, self.window_resources["exam_id"])
                 self.window_resources['baseline'].add(vba.vbox)
                 self.window_resources['baseline'].show_all()
                 self.window_resources['notebook'].set_current_page(1)
             else:
                 page.hide()
-            if self.cases == 'yes':
+            if self.window_resources['cases'] == 'yes':
                 ab = AbTest(self.exam, page, page1, page2, page3)
                 self.window_resources['ab'].add(ab.vbox)
                 self.window_resources['ab'].show_all()
-                if self.bases != 'yes':
+                if self.window_resources['bases'] != 'yes':
                     self.window_resources['notebook'].set_current_page(2)
             else:
                 page2.hide()
-            if self.ddxs == 'yes':
+            if self.window_resources['ddxs'] == 'yes':
                 ddx = DdxTest(self.exam, page, page1, page2, page3)
                 self.window_resources['ddx'].add(ddx.vbox)
                 self.window_resources['ddx'].show_all()
-                if self.bases != 'yes' and self.cases != 'yes':
+                if self.window_resources['bases'] != 'yes' and self.window_resources['cases'] != 'yes':
                     self.window_resources['notebook'].set_current_page(3)
             else:
                 page3.hide()
@@ -86,6 +88,9 @@ class ViewsController:
         self.p2 = p2
         self.p3 = p3
         self.flag = flag
+        self.header_list = []
+        self.data_list = []
+        self.final_data_list = []
 
     def build_interface(self):
         # make boxes to hold all info
@@ -146,6 +151,58 @@ class ViewsController:
         for i in self.p3.get_children():
             self.p3.remove(i)
 
+    def export(self, widget):
+        import os
+        import csv
+
+        c_dir = os.getenv('LOCALAPPDATA') + '\\AbSimBeta'
+
+        if len(self.exam) > 0:
+            if self.flag == 'ab':
+                with open(c_dir + '\\' + self.exam[0][1] + _(u'_abnormality_data.csv'), 'w+', newline='') as outcsv:
+                    heads = [_(u'Student ID'), _(u'Score'), _(u'Time Elapsed')]
+                    heads.extend(self.header_list)
+                    writer = csv.DictWriter(outcsv, fieldnames=heads)
+                    writer.writeheader()
+                    partial_dict = OrderedDict()
+                    for j in range(0, len(self.exam)):
+                        partial_dict[_(u'Student ID')] = self.exam[j][0]
+                        partial_dict[_(u'Score')] = self.exam[j][2]
+                        partial_dict[_(u'Time Elapsed')] = self.exam[j][6]
+                        for i in range(0, len(self.final_data_list)):
+                            partial_dict[list(self.final_data_list[i][j].keys())[0]] = list(self.final_data_list[i][j].values())[0]
+
+                        try:
+                            writer.writerow(partial_dict)
+                            sim_message(self, info_string=_(u"Exam Data Exported!"),
+                                        secondary_text=_(u"A CSV file with exam data was created in AbSim's directory."))
+                        except TypeError:
+                            pass
+
+            elif self.flag == 'ddx':
+                with open(c_dir + '\\' + self.exam[0][1] + _(u'_case_text_data.csv'), 'w+', newline='') as outcsv:
+                    heads = [_(u'Student ID'), _(u'Score'), _(u'Time Elapsed')]
+                    heads.extend(self.header_list)
+                    writer = csv.DictWriter(outcsv, fieldnames=heads)
+                    writer.writeheader()
+                    partial_dict = OrderedDict()
+                    for j in range(0, len(self.exam)):
+                        partial_dict[_(u'Student ID')] = self.exam[j][0]
+                        partial_dict[_(u'Score')] = self.exam[j][2]
+                        partial_dict[_(u'Time Elapsed')] = self.exam[j][7]
+                        for i in range(0, len(self.final_data_list)):
+                            partial_dict[list(self.final_data_list[i][j].keys())[0]] = list(self.final_data_list[i][j].values())[0]
+
+                        try:
+                            writer.writerow(partial_dict)
+                            sim_message(self, info_string=_(u"Exam Data Exported!"),
+                                        secondary_text=_(u"A CSV file with exam data was created in AbSim's directory."))
+                        except TypeError:
+                            pass
+
+        else:
+            logging.debug('Could not get exam info because no exams exist.')
+
     def add_buttons(self):
 
         button_table = Gtk.Table(rows=1, columns=1)
@@ -154,7 +211,7 @@ class ViewsController:
         button_table.set_row_spacings(5)
 
         right_button = self.build_button(_(u"Export to Desktop"))
-        # right_button.connect('clicked', self.export)
+        right_button.connect('clicked', self.export)
         button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
 
         view_button = self.build_button(_(u"Return"))
@@ -243,10 +300,12 @@ class ViewsController:
             ch_ans = self.get_text(ch_ans[0], flag=self.flag)
 
             # initialize list store with custom exam data length
+            self.header_list = ch_ans
             store = self.init_list_store(chunked[0])
 
             for ch in chunked:
                 translated = self.get_text(ch, flag=self.flag)
+                self.data_list.append(translated)
                 store.append(translated)
 
             # also need to return one of answer_list to give column names
@@ -259,6 +318,7 @@ class ViewsController:
 
     def iterate_headers(self, h, tv):
         for ind in range(0, len(h)):
+            self.final_data_list.append([{h[ind]: self.data_list[j][ind+6+ind]} for j in range(0, len(self.data_list))])
             renderer_text = Gtk.CellRendererText()
             column = Gtk.TreeViewColumn(h[ind], renderer_text, text=ind+6+ind, background=ind+5+ind)
             column.set_sort_column_id(ind + 6 + ind)
