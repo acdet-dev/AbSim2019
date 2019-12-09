@@ -23,12 +23,13 @@ class StudentModel:
             logging.debug('could not create table for database file')
             pass
 
-    def save_to_db(self, user_last, user_first, student_id, timestr):
+    def save_to_db(self, section, user_last, user_first, student_id, timestr):
         db_conn = self.connect()
         db_conn.text_factory = str
         c = db_conn.cursor()
 
         sql_create_student_table = """CREATE TABLE IF NOT EXISTS student (
+        section text NOT NULL,
         user_last text NOT NULL,
         user_first text NOT NULL,
         student_id text NOT NULL);"""
@@ -37,15 +38,15 @@ class StudentModel:
 
         stmt = '''
             INSERT INTO student
-            (user_last, user_first, student_id)
-            VALUES (?, ?, ?)
+            (section, user_last, user_first, student_id)
+            VALUES (?, ?, ?, ?)
         '''
-        c.execute(stmt, (user_last, user_first, student_id))
+        c.execute(stmt, (section, user_last, user_first, student_id))
         try:
             db_conn.commit()
             logging.debug('db updated')
         except:
-            logging.debug('Could not save student_info for ' + user_name)
+            logging.debug('Could not save student_info for ' + user_last)
             db_conn.rollback()
         db_conn.close()
 
@@ -54,7 +55,7 @@ class StudentModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT user_last, user_first, student_id
+            SELECT section, user_last, user_first, student_id
             FROM student
         '''
         try:
@@ -69,14 +70,14 @@ class StudentModel:
 
         return student_list
 
-    ##add loop to check for password and id in list of entries
+    # add loop to check for password and id in list of entries
 
     def get_by_student_id(self, key):
         db_conn = self.connect()
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT user_last, user_first, student_id
+            SELECT section, user_last, user_first, student_id
             FROM student
             WHERE student_id=?
         '''
@@ -87,12 +88,13 @@ class StudentModel:
 
             student = [list(elem) for elem in row]
 
-            user_last = student[0][0]
-            user_first = student[0][1]
-            student_id = student[0][2]
+            section = student[0][0]
+            user_last = student[0][1]
+            user_first = student[0][2]
+            student_id = student[0][3]
 
             db_conn.close()
-            return user_last, user_first, student_id
+            return section, user_last, user_first, student_id
 
         except Exception as e:
             logging.debug('could not get student by id entered.')

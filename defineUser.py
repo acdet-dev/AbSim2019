@@ -7,7 +7,7 @@ import dbmigrator
 from menu import MenuBar
 from simLabels import construct_markup
 from simLogin import get_user_pw
-from messages import sim_message
+from messages import sim_message, sim_login_message
 import facultyinfomodel
 
 from Levenshtein import distance
@@ -143,7 +143,7 @@ class DefineUser(Gtk.Window, MenuBar):
                     self.save_info(faculty_id.strip(), faculty_pw.strip())
 
                     sim_message(self, info_string=_(u"Faculty Added Successfully"),
-                                        secondary_text=_(u"Click Faculty to Login."))
+                                secondary_text=_(u"Click Faculty to Login."))
 
                 else:
                     sim_message(self, info_string=_(u"Faculty NOT Added"),
@@ -151,36 +151,42 @@ class DefineUser(Gtk.Window, MenuBar):
 
             else:
                 sim_message(self, info_string=_(u"Faculty NOT Added"),
-                                      secondary_text=_(u"Please Re-Enter the Initial Key."))
+                            secondary_text=_(u"Please Re-Enter the Initial Key."))
         else:
+            reset_string = ''
+
             credentials = get_user_pw(self, _(u"Please enter your user name and password"), _(u"Faculty Login"))
+
             try:
                 self.get_info(credentials[1])
 
                 if self.faculty:
                     try:
-                        # distance(value, str(book['volumeInfo']['title']).lower()) <= 3]
-
                         if distance(credentials[0], self.faculty[0].decode()) < 1 and distance(credentials[1],
-                                                                                     self.faculty[1].decode()) < 1:
+                                                                                    self.faculty[1].decode()) < 1:
                             self.setup_transfer()
                             UserType('faculty', credentials[0], credentials[1])
                             self.finish_transfer()
                         else:
-                            sim_message(self, info_string=_(u"Login Failed"),
-                                                  secondary_text=_(u"Username and Password do not match our records."))
+                            reset_string = sim_login_message(self, info_string=_(u"Login Failed"),
+                                        secondary_text=_(u"Username and Password do not match our records."))
                             pass
                     except TypeError as e:
                         pass
                 else:
-                    sim_message(self, info_string=_(u"Login Failed"),
-                                          secondary_text=_(u"Username and Password do not match our records."))
+                    reset_string = sim_login_message(self, info_string=_(u"Login Failed"),
+                                secondary_text=_(u"Username and Password do not match our records."))
                     pass
             except TypeError:
-                sim_message(self, info_string=_(u"Login Failed"),
+                reset_string = sim_login_message(self, info_string=_(u"Login Failed"),
                             secondary_text=_(u"No info provided or Cancel clicked."))
                 logging.debug('No info provided or Cancel received. No info to grab.')
                 pass
+            if reset_string == 'reset':
+                initial_key = get_user_pw(self, _(u"Please enter the AbSim's initial key to reset faculty login"),
+                                          _(u"AbSim Initial Key"), flag='initial')
+                if initial_key == '227462':
+                    self.faculty_model.drop_table()
 
     def student(self, widget):
         self.setup_transfer()

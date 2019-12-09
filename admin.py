@@ -155,7 +155,7 @@ class SensitivityInterface(Gtk.HBox):
         super(SensitivityInterface, self).__init__()
         self.view_resources = view_resources
         self.sensitivity_settings = pressurepoints.SensitivitySettings(self.view_resources['pressurepoints'])
-        self.cnc_adjuster = CNCAdjustmentInterface(self.view_resources['port_settings'])
+        #self.cnc_adjuster = CNCAdjustmentInterface(self.view_resources['port_settings'])
 
         #build home button
         self.button_table = Gtk.Table(rows=1, columns=1, homogeneous=True)
@@ -168,8 +168,8 @@ class SensitivityInterface(Gtk.HBox):
         self.settings_vbox = Gtk.VBox()
         self.settings_vbox.pack_start(self.sensitivity_settings, False, False)
         self.settings_vbox.pack_start(Gtk.HSeparator(), False, False, 20)
-        self.settings_vbox.pack_start(self.cnc_adjuster, False, False)
-        self.settings_vbox.pack_start(Gtk.HSeparator(), False, False, 20)
+        #self.settings_vbox.pack_start(self.cnc_adjuster, False, False)
+        #self.settings_vbox.pack_start(Gtk.HSeparator(), False, False, 20)
         self.settings_vbox.pack_start(self.button_table_alignment, False, False, 0)
 
         s_w = Gdk.screen_width()
@@ -219,7 +219,8 @@ class SensitivityInterface(Gtk.HBox):
         Gtk.main()
 
     def reset_page(self):
-        self.abnormality_detection.reset_page()
+        pass
+        #self.abnormality_detection.reset_page()
 
 
 class CNCAdjustmentInterface(Gtk.VBox):

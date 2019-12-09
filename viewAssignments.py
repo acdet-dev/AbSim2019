@@ -28,8 +28,9 @@ from gi.repository import Gtk, Gdk, GLib, Pango
 
 class ViewAssignments(Gtk.Window):
 
-    def __init__(self, last, first, password):
+    def __init__(self, section, last, first, password):
         # initialize inherited variables
+        self.section = section
         self.last = last
         self.first = first
         self.password = password
@@ -60,6 +61,7 @@ class ViewAssignments(Gtk.Window):
         self.exam_title = None
 
         self.exam_resources = {
+            'section': self.section,
             'last': self.last,
             'first': self.first,
             'password': self.password,
@@ -513,7 +515,7 @@ class BaselineTest(Gtk.HBox):
                                                          self.exam_resources['password'], state_percents['up'],
                                                          state_percents['slightly_down'], state_percents['down'],
                                                          state_percents['too_hard'], saved_exam_pressurepoints, et,
-                                                         timestr)
+                                                         timestr, self.exam_resources['section'])
 
     def ok_selection(self, signal):
         et = time.time() - self.exam_resources['baseline_start']
@@ -703,7 +705,8 @@ class CaseExam(Gtk.HBox):
             # save score data to db
             exam_data.save_to_db(self.exam_resources['password'], self.exam_resources['exam_title'], ab_score,
                                  ddx_score, ab_correct_chosen_string, ddx_correct_chosen_string,
-                                 self.exam_resources['ab_end'], self.exam_resources['ddx_end'], timestr)
+                                 self.exam_resources['ab_end'], self.exam_resources['ddx_end'], timestr,
+                                 self.exam_resources['section'])
 
             self.view_resources['window'].return_home()
 

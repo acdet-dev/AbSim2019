@@ -36,7 +36,8 @@ class BaselineModel:
             pass
         db_conn.close()
 
-    def save_to_db(self, last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in):
+    def save_to_db(self, last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in,
+                   section):
         db_conn = self.connect()
         db_conn.text_factory = str
         c = db_conn.cursor()
@@ -52,14 +53,15 @@ class BaselineModel:
         hard text NOT NULL,
         coverage text NOT NULL,
         et text NOT NULL,
-        time_in text NOT NULL);"""
+        time_in text NOT NULL,
+        section text NOT NULL);"""
 
         self.create_table(db_conn, sql_create_exam_table)
 
         stmt = '''
             INSERT INTO baseline
-            (last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in, section)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         '''
         with open(app_data_path + 'prot2', 'wb') as pfile:
             pickle.dump(coverage, pfile, protocol=None)
@@ -67,7 +69,7 @@ class BaselineModel:
         with open(app_data_path + 'prot2', 'rb') as pfile:
             pickled_coverage = pfile.read()
             c.execute(stmt, (last_name, first_name, exam_name, student_id, not_up, up, down, hard,
-                             sqlite3.Binary(pickled_coverage), et, time_in))
+                             sqlite3.Binary(pickled_coverage), et, time_in, section))
 
             try:
                 db_conn.commit()
@@ -82,7 +84,7 @@ class BaselineModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in
+            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in, section
             FROM baseline
         '''
         try:
@@ -102,7 +104,7 @@ class BaselineModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in
+            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in, section
             FROM baseline
             WHERE exam_name=? AND student_id=?
         '''
@@ -120,12 +122,35 @@ class BaselineModel:
         db_conn = self.connect()
         c = db_conn.cursor()
         stmt = '''
-            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in
+            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in, section
             FROM baseline
             WHERE exam_name=?
         '''
         try:
             c.execute(stmt, (key,))
+            tuple_list = c.fetchall()
+            exam_list = [list(elem) for elem in tuple_list]
+
+            return exam_list
+
+        except:
+            # i18n - logging.debug statement
+            logging.debug('Could not get all assessments')
+
+            return None
+
+        db_conn.close()
+
+    def get_by_exam_section_id(self, key1, key2):
+        db_conn = self.connect()
+        c = db_conn.cursor()
+        stmt = '''
+            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in, section
+            FROM baseline
+            WHERE section=? AND exam_name=?
+        '''
+        try:
+            c.execute(stmt, (key1, key2))
             tuple_list = c.fetchall()
             exam_list = [list(elem) for elem in tuple_list]
 
@@ -145,7 +170,7 @@ class BaselineModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in
+            SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in, section
             FROM baseline
             WHERE student_id=?
         '''

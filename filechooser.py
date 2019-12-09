@@ -8,6 +8,7 @@ import logging
 
 from i18ntrans2 import _
 
+
 class FileChooserWindow(Gtk.Window):
 
     def __init__(self):
@@ -16,17 +17,17 @@ class FileChooserWindow(Gtk.Window):
 
         self.on_file_clicked()
 
-    def save_info(self, last, first, student_id):
+    def save_info(self, section, last, first, student_id):
         import studentmodel
         # i18n - Time string left as-is
         timestr = time.strftime("%Y%m%d-%H%M%S")
         student_id = str(student_id)
         self.student_model = studentmodel.StudentModel()
 
-        self.student_model.save_to_db(last, first, student_id, timestr)
+        self.student_model.save_to_db(section, last, first, student_id, timestr)
 
     def on_file_clicked(self):
-        from messages import sim_message
+        from messages import sim_message, sim_class_message
         dialog = Gtk.FileChooserDialog(_(u"Please choose a file"), self,
             Gtk.FileChooserAction.OPEN,
             (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
@@ -36,10 +37,14 @@ class FileChooserWindow(Gtk.Window):
 
         response = dialog.run()
         if response == Gtk.ResponseType.OK:
+            s = sim_class_message(self, info_string=_(u'Class Section Name'), secondary_text=_(u'Provide AbSim a class '
+                                                                                               u'section identifier '
+                                                                                               u'(i.e. Section 1)'))
+
             with open(dialog.get_filename(), encoding='utf-8') as csvfile:
                 readCSV = csv.reader(csvfile, delimiter=',')
                 for row in readCSV:
-                    self.save_info(row[0], row[1], row[2])
+                    self.save_info(s, row[0], row[1], row[2])
 
             sim_message(self, info_string=_(u'Class Uploaded Successfully'), secondary_text=_(u'Students may now '
                                                                                               u'login to view exams '
@@ -52,20 +57,15 @@ class FileChooserWindow(Gtk.Window):
         dialog.destroy()
 
     def add_filters(self, dialog):
-        filter_text = Gtk.FileFilter()
-        filter_text.set_name("Text files")
-        filter_text.add_mime_type("text/plain")
-        dialog.add_filter(filter_text)
-
-        filter_py = Gtk.FileFilter()
-        filter_py.set_name("Python files")
-        filter_py.add_mime_type("text/x-python")
-        dialog.add_filter(filter_py)
-
         filter_any = Gtk.FileFilter()
         filter_any.set_name("Any files")
         filter_any.add_pattern("*")
         dialog.add_filter(filter_any)
+
+        filter_text = Gtk.FileFilter()
+        filter_text.set_name("Text files")
+        filter_text.add_mime_type("text/plain")
+        dialog.add_filter(filter_text)
 
     def on_folder_clicked(self, widget):
         dialog = Gtk.FileChooserDialog("Please choose a folder", self,

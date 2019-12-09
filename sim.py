@@ -201,10 +201,10 @@ class UserType(Gtk.Window, menu.MenuBar):
 
                 try:
                     # distance(value, str(book['volumeInfo']['title']).lower()) <= 3]
-                    if distance(credentials, self.student[2]) < 1:
+                    if distance(credentials, self.student[3]) < 1:
                         logging.debug('Beginning Exam')
                         self.setup_transfer()
-                        viewAssignments.ViewAssignments(self.student[0], self.student[1], credentials)
+                        viewAssignments.ViewAssignments(self.student[0], self.student[1], self.student[2], credentials)
                         self.finish_transfer()
                     else:
                         logging.debug('Not beginning exam. Login failure.')

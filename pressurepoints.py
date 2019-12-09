@@ -106,7 +106,8 @@ class PressureThresholds:
         self.config = config.Config(filename=filename)
         config_from_file = self.config.read_config()
 
-
+        # need to fix this to not have each init start processes...
+        # this will help with making threads reactive to changes.
 
         # Set defaults
         self._DEFAULT_SLIGHTLY_DOWN = 5

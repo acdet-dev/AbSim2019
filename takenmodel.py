@@ -20,7 +20,8 @@ class TakenModel:
             pass
             logging.debug('AbSim could not create taken exams database table.')
 
-    def save_to_db(self, student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein):
+    def save_to_db(self, student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein,
+                   section):
         db_conn = self.connect()
         db_conn.text_factory = str
         c = db_conn.cursor()
@@ -34,16 +35,18 @@ class TakenModel:
         ddx_answers text NOT NULL,
         ab_et text NOT NULL,
         ddx_et text NOT NULL,
-        timein text NOT NULL);"""
+        timein text NOT NULL,
+        section text NOT NULL);"""
 
         self.create_table(db_conn, sql_create_assessed_table)
 
         stmt = '''
             INSERT INTO assessed
-            (student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein, section)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         '''
-        c.execute(stmt, (student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein))
+        c.execute(stmt, (student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein,
+                         section))
         try:
             db_conn.commit()
             logging.debug('taken exams db updated')
@@ -71,7 +74,7 @@ class TakenModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein
+            SELECT student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein, section
             FROM assessed
         '''
         try:
@@ -96,7 +99,7 @@ class TakenModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein
+            SELECT student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein, section
             FROM assessed
             WHERE student_id=?
         '''
@@ -119,13 +122,36 @@ class TakenModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein
+            SELECT student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein, section
             FROM assessed
             WHERE exam_title=?
         '''
         try:
             # trying to match with datatype not string!
             c.execute(stmt, (key,))
+            row = c.fetchall()
+            assessed = [list(elem) for elem in row]
+            logging.debug('Got assessment by score_id!')
+            db_conn.close()
+            return assessed
+
+        except Exception:
+            logging.debug('Could not get assessment by score_id.')
+            pass
+
+    def get_by_exam_section_id(self, key1, key2):
+
+        db_conn = self.connect()
+        c = db_conn.cursor()
+
+        stmt = '''
+            SELECT student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein, section
+            FROM assessed
+            WHERE section=? AND exam_title=?
+        '''
+        try:
+            # trying to match with datatype not string!
+            c.execute(stmt, (key1, key2))
             row = c.fetchall()
             assessed = [list(elem) for elem in row]
             logging.debug('Got assessment by score_id!')

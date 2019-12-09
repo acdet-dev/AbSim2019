@@ -38,6 +38,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
             "ab": self.ab,
             "ddx": self.ddx,
             "notebook": self.notebook,
+            "window": self,
         }
 
         # build menu bar
@@ -175,7 +176,12 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
 
     def view(self, widget):
         # view highlighted exam's scores
-        assessmentViewer.AssessmentViewer(self.window_resources, self.bases, self.cases, self.ddxs)
+        from messages import sim_class_message
+
+        s = sim_class_message(self, info_string=_(u'Enter a Section'), secondary_text=_(u'Type section name to display '
+                                                                                        u'results for that section'))
+
+        assessmentViewer.AssessmentViewer(s, self.window_resources, self.bases, self.cases, self.ddxs)
 
     def go_back(self, widget):
         from sim import UserType

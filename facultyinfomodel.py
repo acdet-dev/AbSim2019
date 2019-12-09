@@ -47,7 +47,7 @@ class FacultyInfoModel:
         c.close()
         db_conn.close()
         
-    def get_all(self, key):
+    def get_all(self):
         db_conn = self.connect()
         c = db_conn.cursor()
         
@@ -119,3 +119,20 @@ class FacultyInfoModel:
         except Exception as e:
             logging.debug('AbSim could not get database entry:')
             pass
+
+    def drop_table(self):
+        db_conn = self.connect()
+        c = db_conn.cursor()
+
+        stmt = '''
+            DROP TABLE faculty_info
+        '''
+        c.execute(stmt)
+        # i18n - print statement
+        logging.debug('AbSim could not get all table entries.')
+
+        # commit delete
+        db_conn.commit()
+
+        c.close()
+        db_conn.close()

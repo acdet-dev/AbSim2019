@@ -19,14 +19,16 @@ from gi.repository import Gtk, Gdk, GLib, Pango
 
 class AssessmentViewer:
     """A class to handle vieswing the results of custom tests"""
-    def __init__(self, window_resources, bases, cases, ddxs):
+    def __init__(self, section, window_resources, bases, cases, ddxs):
+
+        self.section = section
         self.window_resources = window_resources
         self.bases = bases
         self.cases = cases
         self.ddxs = ddxs
 
         self.exam_info = takenmodel.TakenModel()
-        self.exam = self.exam_info.get_by_exam_id(self.window_resources["exam_id"])
+        self.exam = self.exam_info.get_by_exam_section_id(self.section, self.window_resources["exam_id"])
 
         # get pages and facilitate shift
         page1 = self.window_resources['notebook'].get_nth_page(0)
@@ -34,34 +36,45 @@ class AssessmentViewer:
         page2 = self.window_resources['notebook'].get_nth_page(2)
         page3 = self.window_resources['notebook'].get_nth_page(3)
 
-        page1.hide()
-        page.show()
-        page2.show()
-        page3.show()
+        if self.exam:
 
-        if self.bases == 'yes':
-            vba = ViewBaselineAssessments(self.window_resources["exam_id"])
-            self.window_resources['baseline'].add(vba.vbox)
-            self.window_resources['baseline'].show_all()
-            self.window_resources['notebook'].set_current_page(1)
+            page1.hide()
+            page.show()
+            page2.show()
+            page3.show()
+
+            if self.bases == 'yes':
+                vba = ViewBaselineAssessments(self.section, self.window_resources["exam_id"])
+                self.window_resources['baseline'].add(vba.vbox)
+                self.window_resources['baseline'].show_all()
+                self.window_resources['notebook'].set_current_page(1)
+            else:
+                page.hide()
+            if self.cases == 'yes':
+                ab = AbTest(self.exam, page, page1, page2, page3)
+                self.window_resources['ab'].add(ab.vbox)
+                self.window_resources['ab'].show_all()
+                if self.bases != 'yes':
+                    self.window_resources['notebook'].set_current_page(2)
+            else:
+                page2.hide()
+            if self.ddxs == 'yes':
+                ddx = DdxTest(self.exam, page, page1, page2, page3)
+                self.window_resources['ddx'].add(ddx.vbox)
+                self.window_resources['ddx'].show_all()
+                if self.bases != 'yes' and self.cases != 'yes':
+                    self.window_resources['notebook'].set_current_page(3)
+            else:
+                page3.hide()
+
         else:
+            page1.show()
             page.hide()
-        if self.cases == 'yes':
-            ab = AbTest(self.exam, page, page1, page2, page3)
-            self.window_resources['ab'].add(ab.vbox)
-            self.window_resources['ab'].show_all()
-            if self.bases != 'yes':
-                self.window_resources['notebook'].set_current_page(2)
-        else:
             page2.hide()
-        if self.ddxs == 'yes':
-            ddx = DdxTest(self.exam, page, page1, page2, page3)
-            self.window_resources['ddx'].add(ddx.vbox)
-            self.window_resources['ddx'].show_all()
-            if self.bases != 'yes' and self.cases != 'yes':
-                self.window_resources['notebook'].set_current_page(3)
-        else:
             page3.hide()
+
+            sim_message(self.window_resources['window'], info_string=_(u'No Assessments Taken'), secondary_text=
+                        _(u'Please check back when students have taken your assessment.'))
 
 
 class ViewsController:
@@ -261,12 +274,14 @@ class ViewsController:
         column.set_resizable(True)
         treeView.append_column(column)
 
+        '''
         renderer_text = Gtk.CellRendererText()
         renderer_text.set_property('ellipsize', Pango.ELLIPSIZE_END)
         column = Gtk.TreeViewColumn(_(u"Assessment Title"), renderer_text, text=1)
         column.set_sort_column_id(1)
         column.set_resizable(True)
         treeView.append_column(column)
+        '''
 
         renderer_text = Gtk.CellRendererText()
         column = Gtk.TreeViewColumn(_(u"Score"), renderer_text, text=2)
@@ -280,11 +295,13 @@ class ViewsController:
         column.set_resizable(True)
         treeView.append_column(column)
 
+        '''
         renderer_text = Gtk.CellRendererText()
         column = Gtk.TreeViewColumn(_(u"Date Submitted"), renderer_text, text=4)
         column.set_sort_column_id(4)
         column.set_resizable(True)
         treeView.append_column(column)
+        '''
 
         # add in function to iterate over list of answers to create headers and add values
         self.iterate_headers(headers, treeView)
@@ -308,10 +325,11 @@ class AbTest:
 
 
 class ViewBaselineAssessments:
-    def __init__(self, exam_id):
+    def __init__(self, section, exam_id):
 
         self.coverage_assessment_model = baselinemodel.BaselineModel()
 
+        self.section = section
         self.exam_id = exam_id
         self.new_selected_case = observer.Observer()
         self.ailments = ailments.Ailments()
@@ -381,7 +399,7 @@ class ViewBaselineAssessments:
 
     def create_model(self):
         store = Gtk.ListStore(str, str, str, str, str, str, str, str)
-        self.exams = self.coverage_assessment_model.get_by_exam_id(self.exam_id)
+        self.exams = self.coverage_assessment_model.get_by_exam_section_id(self.section, self.exam_id)
         for exam in self.exams:
             store.append([exam[3], exam[2], exam[4], exam[5], exam[6], exam[7], exam[9], exam[10]])
         return store
@@ -393,11 +411,13 @@ class ViewBaselineAssessments:
         column.set_resizable(True)
         treeView.append_column(column)
 
+        '''
         renderer_text = Gtk.CellRendererText()
         column = Gtk.TreeViewColumn(_(u"Assessment Title"), renderer_text, text=1)
         column.set_sort_column_id(1)
         column.set_resizable(True)
         treeView.append_column(column)
+        '''
 
         renderer_text = Gtk.CellRendererText()
         column = Gtk.TreeViewColumn(_(u"Not Palpated"), renderer_text, text=2)
@@ -429,11 +449,13 @@ class ViewBaselineAssessments:
         column.set_resizable(True)
         treeView.append_column(column)
 
+        '''
         renderer_text = Gtk.CellRendererText()
         column = Gtk.TreeViewColumn(_(u"Date Submitted"), renderer_text, text=7)
         column.set_sort_column_id(7)
         column.set_resizable(True)
         treeView.append_column(column)
+        '''
 
     def on_row_change(self, treeview):
         selection = treeview.get_selection()
