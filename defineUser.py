@@ -187,6 +187,8 @@ class DefineUser(Gtk.Window, MenuBar):
                                           _(u"AbSim Initial Key"), flag='initial')
                 if initial_key == '227462':
                     self.faculty_model.drop_table()
+                    sim_message(self, info_string=_(u'Faculty Login Data Deleted'),
+                                secondary_text=_(u'To add another faculty member, click "Faculty."'))
 
     def student(self, widget):
         self.setup_transfer()

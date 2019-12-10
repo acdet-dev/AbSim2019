@@ -153,22 +153,28 @@ class ViewsController:
 
     def export(self, widget):
         import os
+        import shutil
         import csv
 
+        # get absim current dir and desktop
         c_dir = os.getenv('LOCALAPPDATA') + '\\AbSimBeta'
+        desktop = os.getenv('USERPROFILE') + '\\Desktop'
+
+        # get headers as list to pass to writer
+        heads = [_(u'Student ID'), _(u'Score'), _(u'Time Elapsed')]
+        heads.extend(self.header_list)
 
         if len(self.exam) > 0:
             if self.flag == 'ab':
-                with open(c_dir + '\\' + self.exam[0][1] + _(u'_abnormality_data.csv'), 'w+', newline='') as outcsv:
-                    heads = [_(u'Student ID'), _(u'Score'), _(u'Time Elapsed')]
-                    heads.extend(self.header_list)
+                file_string = c_dir + '\\' + self.exam[0][1] + _(u'_abnormality_data.csv')
+                with open(file_string, 'w+', newline='') as outcsv:
                     writer = csv.DictWriter(outcsv, fieldnames=heads)
                     writer.writeheader()
                     partial_dict = OrderedDict()
                     for j in range(0, len(self.exam)):
-                        partial_dict[_(u'Student ID')] = self.exam[j][0]
-                        partial_dict[_(u'Score')] = self.exam[j][2]
-                        partial_dict[_(u'Time Elapsed')] = self.exam[j][6]
+                        partial_dict[heads[0]] = self.exam[j][0]
+                        partial_dict[heads[1]] = self.exam[j][2]
+                        partial_dict[heads[2]] = self.exam[j][6]
                         for i in range(0, len(self.final_data_list)):
                             partial_dict[list(self.final_data_list[i][j].keys())[0]] = list(self.final_data_list[i][j].values())[0]
 
@@ -178,18 +184,19 @@ class ViewsController:
                                         secondary_text=_(u"A CSV file with exam data was created in AbSim's directory."))
                         except TypeError:
                             pass
+
+                shutil.copy(file_string, desktop)
 
             elif self.flag == 'ddx':
-                with open(c_dir + '\\' + self.exam[0][1] + _(u'_case_text_data.csv'), 'w+', newline='') as outcsv:
-                    heads = [_(u'Student ID'), _(u'Score'), _(u'Time Elapsed')]
-                    heads.extend(self.header_list)
+                file_string = c_dir + '\\' + self.exam[0][1] + _(u'_case_text_data.csv')
+                with open(file_string, 'w+', newline='') as outcsv:
                     writer = csv.DictWriter(outcsv, fieldnames=heads)
                     writer.writeheader()
                     partial_dict = OrderedDict()
                     for j in range(0, len(self.exam)):
-                        partial_dict[_(u'Student ID')] = self.exam[j][0]
-                        partial_dict[_(u'Score')] = self.exam[j][2]
-                        partial_dict[_(u'Time Elapsed')] = self.exam[j][7]
+                        partial_dict[heads[0]] = self.exam[j][0]
+                        partial_dict[heads[1]] = self.exam[j][2]
+                        partial_dict[heads[2]] = self.exam[j][7]
                         for i in range(0, len(self.final_data_list)):
                             partial_dict[list(self.final_data_list[i][j].keys())[0]] = list(self.final_data_list[i][j].values())[0]
 
@@ -199,6 +206,8 @@ class ViewsController:
                                         secondary_text=_(u"A CSV file with exam data was created in AbSim's directory."))
                         except TypeError:
                             pass
+
+                shutil.copy(file_string, desktop)
 
         else:
             logging.debug('Could not get exam info because no exams exist.')
@@ -433,27 +442,39 @@ class ViewBaselineAssessments:
         sw.add(treeView)
 
         self.create_columns(treeView)
+        self.export()
 
     def export(self):
-        ##write data to csv file
+        # write data to csv file
         import os
+        import shutil
         import csv
 
+        # get relevant dirs
         c_dir = os.getenv('LOCALAPPDATA') + '\\AbSimBeta'
+        desktop = os.getenv('USERPROFILE') + '\\Desktop'
 
+        # create file string
+        file_string = c_dir + '\\' + self.exams[0][2] + _(u'_baseline_data.csv')
+
+        # create headers with translatable text
+        heads = [_(u'Student ID'), _(u"Not Palpated"), _(u"Light Palpation"), _(u"Deep Palpation"), _(u"Too Deep"),
+                 _(u"Time Elapsed")]
+
+        # check that we have exams to write
         if len(self.exams) > 0:
-            with open(c_dir + '\\' + self.exams[0][0] + '_baseline_data.csv', 'w+', newline='') as outcsv:
-                writer = csv.DictWriter(outcsv, fieldnames=['Student ID', "Exam ID", "Not Palpated", "Light Palpation",
-                                                            "Deep Palpation", "Too Deep", "Time Completed"])
+            with open(file_string, 'w+', newline='') as outcsv:
+                writer = csv.DictWriter(outcsv, fieldnames=heads)
                 writer.writeheader()
                 try:
-                    writer.writerows({'Student ID': exam[1], 'Exam ID': exam[0], 'Not Palpated': exam[2],
-                                      'Light Palpation': exam[3], 'Deep Palpation': exam[4], 'Too Deep': exam[5],
-                                      'Time Completed': exam[7]} for exam in self.exams)
+                    writer.writerows({heads[0]: exam[3], heads[1]: exam[4], heads[2]: exam[5], heads[3]: exam[6],
+                                      heads[4]: exam[7], heads[5]: exam[9]} for exam in self.exams)
                     sim_message(self, info_string=_(u'Exam Data Exported!'),
                                 secondary_text=_(u"A CSV file with exam data was created in AbSim's directory."))
                 except TypeError:
                     pass
+
+            shutil.copy(file_string, desktop)
         else:
             logging.debug('Could not get exam info because no exams exist.')
 
