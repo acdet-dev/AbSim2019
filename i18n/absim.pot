@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-12-03 15:36+Central Standard Time\n"
+"POT-Creation-Date: 2019-12-10 09:45+Central Standard Time\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,126 +39,139 @@ msgstr ""
 msgid "Return Home"
 msgstr ""
 
-#: admin.py:230
+#: admin.py:231
 msgid "Click the arrows to calibrate actuator"
 msgstr ""
 
-#: admin.py:231
+#: admin.py:232
 msgid "positioning for all ailments at once."
 msgstr ""
 
-#: assessmentViewer.py:143
-msgid "Export to Desktop"
+#: assessmentViewer.py:78
+msgid "No Assessments Taken"
 msgstr ""
 
-#: assessmentViewer.py:147 viewAssignments.py:360 viewPerformance.py:146
-msgid "Return"
+#: assessmentViewer.py:79
+msgid "Please check back when students have taken your assessment."
 msgstr ""
 
-#: assessmentViewer.py:162 casetext.py:40 casetext.py:61 casetext.py:81
-#: ddxpractice.py:24 prototypetext.py:20 testCreator.py:302
-#: viewAssignments.py:1005
-msgid "Upper Gastrointestinal Etiology"
-msgstr ""
-
-#: assessmentViewer.py:163 casetext.py:103 casetext.py:123 casetext.py:143
-#: ddxpractice.py:25 prototypetext.py:48 testCreator.py:303
-#: viewAssignments.py:1006
-msgid "Choledocolithiasis"
-msgstr ""
-
-#: assessmentViewer.py:164 casetext.py:165 casetext.py:185 casetext.py:205
-#: ddxpractice.py:26 prototypetext.py:71 testCreator.py:304
-#: viewAssignments.py:1007
-msgid "Pancreatitis"
-msgstr ""
-
-#: assessmentViewer.py:165 casetext.py:227 casetext.py:247 casetext.py:265
-#: casetext.py:285 ddxpractice.py:27 prototypetext.py:97 testCreator.py:305
-#: viewAssignments.py:1008
-msgid "Cholecystitis"
-msgstr ""
-
-#: assessmentViewer.py:166 casetext.py:308 casetext.py:328 casetext.py:347
-#: ddxpractice.py:28 prototypetext.py:119 testCreator.py:306
-#: viewAssignments.py:1009
-msgid "Mesenteric Infarction"
-msgstr ""
-
-#: assessmentViewer.py:167 casetext.py:370 casetext.py:391 casetext.py:412
-#: ddxpractice.py:29 prototypetext.py:146 testCreator.py:307
-#: viewAssignments.py:1010
-msgid "Small Bowel Obstruction"
-msgstr ""
-
-#: assessmentViewer.py:168 casetext.py:432 casetext.py:449 casetext.py:467
-#: casetext.py:485 ddxpractice.py:30 prototypetext.py:173 testCreator.py:308
-#: viewAssignments.py:1011
-msgid "Appendicitis"
-msgstr ""
-
-#: assessmentViewer.py:169 casetext.py:506 casetext.py:526 casetext.py:543
-#: ddxpractice.py:31 prototypetext.py:194 testCreator.py:309
-#: viewAssignments.py:1012
-msgid "Diverticulitis"
-msgstr ""
-
-#: assessmentViewer.py:170 casetext.py:566 casetext.py:585 casetext.py:604
-#: ddxpractice.py:32 prototypetext.py:215 testCreator.py:310
-#: viewAssignments.py:1013
-msgid "Acute Enteritis"
-msgstr ""
-
-#: assessmentViewer.py:259 assessmentViewer.py:391
+#: assessmentViewer.py:164 assessmentViewer.py:346 assessmentViewer.py:466
+#: assessmentViewer.py:499
 msgid "Student ID"
 msgstr ""
 
-#: assessmentViewer.py:266 assessmentViewer.py:397 viewAssignments.py:322
-#: viewPerformance.py:221
-msgid "Assessment Title"
-msgstr ""
-
-#: assessmentViewer.py:272
+#: assessmentViewer.py:164 assessmentViewer.py:361
 msgid "Score"
 msgstr ""
 
-#: assessmentViewer.py:278 assessmentViewer.py:427
+#: assessmentViewer.py:164 assessmentViewer.py:367 assessmentViewer.py:467
+#: assessmentViewer.py:537
 msgid "Time Elapsed"
 msgstr ""
 
-#: assessmentViewer.py:284 assessmentViewer.py:433
-msgid "Date Submitted"
+#: assessmentViewer.py:169
+msgid "_abnormality_data.csv"
 msgstr ""
 
-#: assessmentViewer.py:375
+#: assessmentViewer.py:183 assessmentViewer.py:207 assessmentViewer.py:477
 msgid "Exam Data Exported!"
 msgstr ""
 
-#: assessmentViewer.py:376
+#: assessmentViewer.py:184 assessmentViewer.py:208 assessmentViewer.py:478
 msgid "A CSV file with exam data was created in AbSim's directory."
 msgstr ""
 
-#: assessmentViewer.py:403
+#: assessmentViewer.py:193
+msgid "_case_text_data.csv"
+msgstr ""
+
+#: assessmentViewer.py:227
+msgid "Export to Desktop"
+msgstr ""
+
+#: assessmentViewer.py:231 viewAssignments.py:362 viewPerformance.py:147
+msgid "Return"
+msgstr ""
+
+#: assessmentViewer.py:246 casetext.py:40 casetext.py:61 casetext.py:81
+#: ddxpractice.py:24 prototypetext.py:20 testCreator.py:302
+#: viewAssignments.py:1008
+msgid "Upper Gastrointestinal Etiology"
+msgstr ""
+
+#: assessmentViewer.py:247 casetext.py:103 casetext.py:123 casetext.py:143
+#: ddxpractice.py:25 prototypetext.py:48 testCreator.py:303
+#: viewAssignments.py:1009
+msgid "Choledocolithiasis"
+msgstr ""
+
+#: assessmentViewer.py:248 casetext.py:165 casetext.py:185 casetext.py:205
+#: ddxpractice.py:26 prototypetext.py:71 testCreator.py:304
+#: viewAssignments.py:1010
+msgid "Pancreatitis"
+msgstr ""
+
+#: assessmentViewer.py:249 casetext.py:227 casetext.py:247 casetext.py:265
+#: casetext.py:285 ddxpractice.py:27 prototypetext.py:97 testCreator.py:305
+#: viewAssignments.py:1011
+msgid "Cholecystitis"
+msgstr ""
+
+#: assessmentViewer.py:250 casetext.py:308 casetext.py:328 casetext.py:347
+#: ddxpractice.py:28 prototypetext.py:119 testCreator.py:306
+#: viewAssignments.py:1012
+msgid "Mesenteric Infarction"
+msgstr ""
+
+#: assessmentViewer.py:251 casetext.py:370 casetext.py:391 casetext.py:412
+#: ddxpractice.py:29 prototypetext.py:146 testCreator.py:307
+#: viewAssignments.py:1013
+msgid "Small Bowel Obstruction"
+msgstr ""
+
+#: assessmentViewer.py:252 casetext.py:432 casetext.py:449 casetext.py:467
+#: casetext.py:485 ddxpractice.py:30 prototypetext.py:173 testCreator.py:308
+#: viewAssignments.py:1014
+msgid "Appendicitis"
+msgstr ""
+
+#: assessmentViewer.py:253 casetext.py:506 casetext.py:526 casetext.py:543
+#: ddxpractice.py:31 prototypetext.py:194 testCreator.py:309
+#: viewAssignments.py:1015
+msgid "Diverticulitis"
+msgstr ""
+
+#: assessmentViewer.py:254 casetext.py:566 casetext.py:585 casetext.py:604
+#: ddxpractice.py:32 prototypetext.py:215 testCreator.py:310
+#: viewAssignments.py:1016
+msgid "Acute Enteritis"
+msgstr ""
+
+#: assessmentViewer.py:463
+msgid "_baseline_data.csv"
+msgstr ""
+
+#: assessmentViewer.py:466 assessmentViewer.py:513
 msgid "Not Palpated"
 msgstr ""
 
-#: assessmentViewer.py:409 pressurepoints.py:185
+#: assessmentViewer.py:466 assessmentViewer.py:519 pressurepoints.py:186
 msgid "Light Palpation"
 msgstr ""
 
-#: assessmentViewer.py:415 pressurepoints.py:192
+#: assessmentViewer.py:466 assessmentViewer.py:525 pressurepoints.py:193
 msgid "Deep Palpation"
 msgstr ""
 
-#: assessmentViewer.py:421
+#: assessmentViewer.py:466 assessmentViewer.py:531
 msgid "Too Deep"
 msgstr ""
 
-#: cases.py:32 caseselector.py:23 selfpractice.py:252 viewAssignments.py:788
+#: cases.py:32 caseselector.py:23 selfpractice.py:252 viewAssignments.py:791
 msgid "No Abnormalities"
 msgstr ""
 
-#: cases.py:33 caseselector.py:26 selfpractice.py:264 viewAssignments.py:791
+#: cases.py:33 caseselector.py:26 selfpractice.py:264 viewAssignments.py:794
 msgid "Appendix Tenderness"
 msgstr ""
 
@@ -174,7 +187,7 @@ msgstr ""
 msgid "Appendix Tenderness with Guarding and Rebound Tenderness"
 msgstr ""
 
-#: cases.py:37 caseselector.py:32 viewAssignments.py:797
+#: cases.py:37 caseselector.py:32 viewAssignments.py:800
 msgid "Colon, Left Lower Tenderness"
 msgstr ""
 
@@ -182,7 +195,7 @@ msgstr ""
 msgid "Colon, Left Lower Tenderness with Guarding"
 msgstr ""
 
-#: cases.py:39 caseselector.py:36 selfpractice.py:268 viewAssignments.py:801
+#: cases.py:39 caseselector.py:36 selfpractice.py:268 viewAssignments.py:804
 msgid "Gallbladder Tenderness"
 msgstr ""
 
@@ -190,11 +203,11 @@ msgstr ""
 msgid "Gallbladder Tenderness with Guarding"
 msgstr ""
 
-#: cases.py:41 caseselector.py:40 selfpractice.py:269 viewAssignments.py:805
+#: cases.py:41 caseselector.py:40 selfpractice.py:269 viewAssignments.py:808
 msgid "Gastric Tenderness"
 msgstr ""
 
-#: cases.py:42 caseselector.py:43 viewAssignments.py:808
+#: cases.py:42 caseselector.py:43 viewAssignments.py:811
 msgid "Ovary, Left Tenderness"
 msgstr ""
 
@@ -202,7 +215,7 @@ msgstr ""
 msgid "Ovary, Left Tenderness with Guarding"
 msgstr ""
 
-#: cases.py:44 caseselector.py:47 viewAssignments.py:812
+#: cases.py:44 caseselector.py:47 viewAssignments.py:815
 msgid "Ovary, Right Tenderness"
 msgstr ""
 
@@ -210,41 +223,41 @@ msgstr ""
 msgid "Ovary, Right Tenderness with Guarding"
 msgstr ""
 
-#: cases.py:46 caseselector.py:51 viewAssignments.py:816
+#: cases.py:46 caseselector.py:51 viewAssignments.py:819
 msgid "Pancreas Tenderness"
 msgstr ""
 
-#: cases.py:47 caseselector.py:54 viewAssignments.py:819
+#: cases.py:47 caseselector.py:54 viewAssignments.py:822
 msgid "Urinary Bladder Tenderness"
 msgstr ""
 
-#: cases.py:48 caseselector.py:59 selfpractice.py:282 viewAssignments.py:824
+#: cases.py:48 caseselector.py:59 selfpractice.py:282 viewAssignments.py:827
 msgid "Hepatomegaly"
 msgstr ""
 
-#: cases.py:49 caseselector.py:60 selfpractice.py:282 viewAssignments.py:825
+#: cases.py:49 caseselector.py:60 selfpractice.py:282 viewAssignments.py:828
 msgid "Splenomegaly"
 msgstr ""
 
-#: cases.py:50 caseselector.py:61 selfpractice.py:283 viewAssignments.py:826
+#: cases.py:50 caseselector.py:61 selfpractice.py:283 viewAssignments.py:829
 msgid "Enlarged Urinary Bladder"
 msgstr ""
 
 #: caseselector.py:27 caseselector.py:33 caseselector.py:37 caseselector.py:44
-#: caseselector.py:48 viewAssignments.py:792 viewAssignments.py:798
-#: viewAssignments.py:802 viewAssignments.py:809 viewAssignments.py:813
+#: caseselector.py:48 viewAssignments.py:795 viewAssignments.py:801
+#: viewAssignments.py:805 viewAssignments.py:812 viewAssignments.py:816
 msgid "With Guarding"
 msgstr ""
 
-#: caseselector.py:28 viewAssignments.py:793
+#: caseselector.py:28 viewAssignments.py:796
 msgid "With Rebound Tenderness"
 msgstr ""
 
-#: caseselector.py:29 viewAssignments.py:794
+#: caseselector.py:29 viewAssignments.py:797
 msgid "With Guarding and Rebound Tenderness"
 msgstr ""
 
-#: caseselector.py:76 viewAssignments.py:841 viewAssignments.py:1028
+#: caseselector.py:76 viewAssignments.py:844 viewAssignments.py:1031
 msgid "Ailment"
 msgstr ""
 
@@ -685,7 +698,7 @@ msgstr ""
 msgid "Please enter the AbSim's initial key to add faculty login"
 msgstr ""
 
-#: defineUser.py:135
+#: defineUser.py:135 defineUser.py:187
 msgid "AbSim Initial Key"
 msgstr ""
 
@@ -713,24 +726,36 @@ msgstr ""
 msgid "Please Re-Enter the Initial Key."
 msgstr ""
 
-#: defineUser.py:156
+#: defineUser.py:158
 msgid "Faculty Login"
 msgstr ""
 
-#: defineUser.py:156
+#: defineUser.py:158
 msgid "Please enter your user name and password"
 msgstr ""
 
-#: defineUser.py:170 defineUser.py:176 defineUser.py:180 sim.py:211 sim.py:219
+#: defineUser.py:171 defineUser.py:177 defineUser.py:181 sim.py:211 sim.py:219
 msgid "Login Failed"
 msgstr ""
 
-#: defineUser.py:171 defineUser.py:177 sim.py:212 sim.py:220 sim.py:225
+#: defineUser.py:172 defineUser.py:178 sim.py:212 sim.py:220 sim.py:225
 msgid "Username and Password do not match our records."
 msgstr ""
 
-#: defineUser.py:181
+#: defineUser.py:182
 msgid "No info provided or Cancel clicked."
+msgstr ""
+
+#: defineUser.py:186
+msgid "Please enter the AbSim's initial key to reset faculty login"
+msgstr ""
+
+#: defineUser.py:190
+msgid "Faculty Login Data Deleted"
+msgstr ""
+
+#: defineUser.py:191
+msgid "To add another faculty member, click \"Faculty.\""
 msgstr ""
 
 #: depthtrainer.py:31
@@ -821,19 +846,27 @@ msgstr ""
 msgid "Could not save assessment because no assessment title entered."
 msgstr ""
 
-#: filechooser.py:14
+#: filechooser.py:15
 msgid "AbSim File Chooser"
 msgstr ""
 
-#: filechooser.py:30
+#: filechooser.py:31
 msgid "Please choose a file"
 msgstr ""
 
-#: filechooser.py:44
+#: filechooser.py:40
+msgid "Class Section Name"
+msgstr ""
+
+#: filechooser.py:40
+msgid "Provide AbSim a class section identifier (i.e. Section 1)"
+msgstr ""
+
+#: filechooser.py:49
 msgid "Class Uploaded Successfully"
 msgstr ""
 
-#: filechooser.py:44
+#: filechooser.py:49
 msgid "Students may now login to view exams you assign."
 msgstr ""
 
@@ -857,7 +890,7 @@ msgstr ""
 msgid "Locales"
 msgstr ""
 
-#: menu.py:241 testCreator.py:252 viewAssignments.py:142
+#: menu.py:241 viewAssignments.py:144
 msgid "Baseline Assessment"
 msgstr ""
 
@@ -885,7 +918,7 @@ msgstr ""
 msgid "Milestone 3:"
 msgstr ""
 
-#: menu.py:265 viewPerformance.py:69
+#: menu.py:265 viewPerformance.py:70
 msgid "Abnormality Detection"
 msgstr ""
 
@@ -913,15 +946,27 @@ msgstr ""
 msgid "with Hx/PE"
 msgstr ""
 
-#: pressurepoints.py:173
+#: messages.py:33
+msgid "Reset User Info?"
+msgstr ""
+
+#: messages.py:33
+msgid "Would you like to reset the user info provided?"
+msgstr ""
+
+#: messages.py:54
+msgid "Class Section"
+msgstr ""
+
+#: pressurepoints.py:174
 msgid "Tare / Zero Sensors"
 msgstr ""
 
-#: pressurepoints.py:178
+#: pressurepoints.py:179
 msgid "Save Sensitivity Settings"
 msgstr ""
 
-#: pressurepoints.py:199
+#: pressurepoints.py:200
 msgid "Too hard"
 msgstr ""
 
@@ -1461,7 +1506,7 @@ msgid "(this might take 30 seconds)"
 msgstr ""
 
 #: testCreator.py:115
-msgid "Abnormality Detection Assessment"
+msgid "2. Abnormality Detection Assessment"
 msgstr ""
 
 #: testCreator.py:128
@@ -1472,85 +1517,105 @@ msgstr ""
 msgid "Save Assessment"
 msgstr ""
 
+#: testCreator.py:252
+msgid "1. Baseline Assessment"
+msgstr ""
+
 #: testCreator.py:263
 msgid "Add Baseline Assessment?"
 msgstr ""
 
-#: testCreator.py:296 viewAssignments.py:154
-msgid "Ddx Assessment"
+#: testCreator.py:296
+msgid "3. Case Assessment"
 msgstr ""
 
-#: viewAssignments.py:122
+#: viewAssignments.py:124
 msgid "AbSim Assignment Viewer"
 msgstr ""
 
-#: viewAssignments.py:148
+#: viewAssignments.py:150
 msgid "Abnormality Assessment"
 msgstr ""
 
-#: viewAssignments.py:160
+#: viewAssignments.py:156
+msgid "Ddx Assessment"
+msgstr ""
+
+#: viewAssignments.py:162
 msgid "View Assessments"
 msgstr ""
 
-#: viewAssignments.py:356
+#: viewAssignments.py:324 viewPerformance.py:227
+msgid "Assessment Title"
+msgstr ""
+
+#: viewAssignments.py:358
 msgid "Begin Assessment"
 msgstr ""
 
-#: viewAssignments.py:472
+#: viewAssignments.py:474
 msgid "Assessment Not Found."
 msgstr ""
 
-#: viewAssignments.py:473 viewAssignments.py:569 viewAssignments.py:697
-#: viewAssignments.py:738 viewAssignments.py:930
+#: viewAssignments.py:475 viewAssignments.py:571 viewAssignments.py:699
+#: viewAssignments.py:741 viewAssignments.py:933
 msgid "You may take another assessment if you have more to take."
 msgstr ""
 
-#: viewAssignments.py:568 viewAssignments.py:696 viewAssignments.py:737
-#: viewAssignments.py:929
+#: viewAssignments.py:570 viewAssignments.py:698 viewAssignments.py:740
+#: viewAssignments.py:932
 msgid "Assessment Finished."
 msgstr ""
 
-#: viewAssignments.py:585
+#: viewAssignments.py:587
 msgid "Perform a baseline assessment and click 'OK' when finished."
 msgstr ""
 
-#: viewAssignments.py:594
+#: viewAssignments.py:596
 msgid "Ok"
 msgstr ""
 
-#: viewAssignments.py:761 viewAssignments.py:953
+#: viewAssignments.py:764 viewAssignments.py:956
 msgid "Make Selection"
 msgstr ""
 
-#: viewPerformance.py:57
+#: viewPerformance.py:58
 msgid "Select Assessment"
 msgstr ""
 
-#: viewPerformance.py:63
+#: viewPerformance.py:64
 msgid "Baseline Palpation"
 msgstr ""
 
-#: viewPerformance.py:75
+#: viewPerformance.py:76
 msgid "Case Diagnosis"
 msgstr ""
 
-#: viewPerformance.py:142
+#: viewPerformance.py:143
 msgid "View Exam"
 msgstr ""
 
-#: viewPerformance.py:200 viewPerformance.py:204 viewPerformance.py:208
+#: viewPerformance.py:181
+msgid "Enter a Section"
+msgstr ""
+
+#: viewPerformance.py:181
+msgid "Type section name to display results for that section"
+msgstr ""
+
+#: viewPerformance.py:206 viewPerformance.py:210 viewPerformance.py:214
 msgid "yes"
 msgstr ""
 
-#: viewPerformance.py:228
+#: viewPerformance.py:234
 msgid "Has Baseline?"
 msgstr ""
 
-#: viewPerformance.py:234
+#: viewPerformance.py:240
 msgid "Has Abnormality Detection?"
 msgstr ""
 
-#: viewPerformance.py:240
+#: viewPerformance.py:246
 msgid "Has Case Diagnosis?"
 msgstr ""
 
