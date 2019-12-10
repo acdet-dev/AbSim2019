@@ -22,7 +22,6 @@ from gi.repository import Gtk, Gdk, GLib, Pango
 class AssessmentViewer:
     """A class to handle vieswing the results of custom tests"""
     def __init__(self, section, window_resources, bases, cases, ddxs):
-
         self.section = section
         self.window_resources = window_resources
         self.window_resources['bases'] = bases
@@ -81,7 +80,6 @@ class AssessmentViewer:
 
 class ViewsController:
     def __init__(self, section, exam, p, p1, p2, p3, flag):
-
         self.section = section
         self.exam = exam
         self.p = p
@@ -386,17 +384,17 @@ class ViewsController:
 
 
 class DdxTest:
-    def __init__(self, exam, p, p1, p2, p3):
-
+    def __init__(self, section, exam, p, p1, p2, p3):
+        self.section = section
         self.exam = exam
-        self.vbox = ViewsController(self.exam, p, p1, p2, p3, flag='ddx').build_interface()
+        self.vbox = ViewsController(self.section, self.exam, p, p1, p2, p3, flag='ddx').build_interface()
 
 
 class AbTest:
-    def __init__(self, exam, p, p1, p2, p3):
-
+    def __init__(self, section, exam, p, p1, p2, p3):
+        self.section = section
         self.exam = exam
-        self.vbox = ViewsController(self.exam, p, p1, p2, p3, flag='ab').build_interface()
+        self.vbox = ViewsController(self.section, self.exam, p, p1, p2, p3, flag='ab').build_interface()
 
 
 class ViewBaselineAssessments:
