@@ -53,7 +53,7 @@ class AssessmentViewer:
             else:
                 page.hide()
             if self.window_resources['cases'] == 'yes':
-                ab = AbTest(self.exam, page, page1, page2, page3)
+                ab = AbTest(self.section, self.exam, page, page1, page2, page3)
                 self.window_resources['ab'].add(ab.vbox)
                 self.window_resources['ab'].show_all()
                 if self.window_resources['bases'] != 'yes':
@@ -61,7 +61,7 @@ class AssessmentViewer:
             else:
                 page2.hide()
             if self.window_resources['ddxs'] == 'yes':
-                ddx = DdxTest(self.exam, page, page1, page2, page3)
+                ddx = DdxTest(self.section, self.exam, page, page1, page2, page3)
                 self.window_resources['ddx'].add(ddx.vbox)
                 self.window_resources['ddx'].show_all()
                 if self.window_resources['bases'] != 'yes' and self.window_resources['cases'] != 'yes':
@@ -80,8 +80,9 @@ class AssessmentViewer:
 
 
 class ViewsController:
-    def __init__(self, exam, p, p1, p2, p3, flag):
+    def __init__(self, section, exam, p, p1, p2, p3, flag):
 
+        self.section = section
         self.exam = exam
         self.p = p
         self.p1 = p1
@@ -166,7 +167,7 @@ class ViewsController:
 
         if len(self.exam) > 0:
             if self.flag == 'ab':
-                file_string = c_dir + '\\' + self.exam[0][1] + _(u'_abnormality_data.csv')
+                file_string = c_dir + '\\' + self.section + self.exam[0][1] + _(u'_abnormality_data.csv')
                 with open(file_string, 'w+', newline='') as outcsv:
                     writer = csv.DictWriter(outcsv, fieldnames=heads)
                     writer.writeheader()
@@ -190,7 +191,7 @@ class ViewsController:
                     logging.debug("Cannot write to desktop")
 
             elif self.flag == 'ddx':
-                file_string = c_dir + '\\' + self.exam[0][1] + _(u'_case_text_data.csv')
+                file_string = c_dir + '\\' + self.section + self.exam[0][1] + _(u'_case_text_data.csv')
                 with open(file_string, 'w+', newline='') as outcsv:
                     writer = csv.DictWriter(outcsv, fieldnames=heads)
                     writer.writeheader()
@@ -460,7 +461,7 @@ class ViewBaselineAssessments:
         desktop = os.getenv('USERPROFILE') + '\\Desktop'
 
         # create file string
-        file_string = c_dir + '\\' + self.exams[0][2] + _(u'_baseline_data.csv')
+        file_string = c_dir + '\\' + self.section + self.exams[0][2] + _(u'_baseline_data.csv')
 
         # create headers with translatable text
         heads = [_(u'Student ID'), _(u"Not Palpated"), _(u"Light Palpation"), _(u"Deep Palpation"), _(u"Too Deep"),
@@ -483,7 +484,7 @@ class ViewBaselineAssessments:
                 shutil.copy(file_string, desktop)
             except PermissionError:
                 logging.debug("Cannot write to desktop")
-                
+
         else:
             logging.debug('Could not get exam info because no exams exist.')
 
