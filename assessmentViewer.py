@@ -184,8 +184,10 @@ class ViewsController:
                                         secondary_text=_(u"A CSV file with exam data was created in AbSim's directory."))
                         except TypeError:
                             pass
-
-                shutil.copy(file_string, desktop)
+                try:
+                    shutil.copy(file_string, desktop)
+                except PermissionError:
+                    logging.debug("Cannot write to desktop")
 
             elif self.flag == 'ddx':
                 file_string = c_dir + '\\' + self.exam[0][1] + _(u'_case_text_data.csv')
@@ -207,7 +209,10 @@ class ViewsController:
                         except TypeError:
                             pass
 
-                shutil.copy(file_string, desktop)
+                try:
+                    shutil.copy(file_string, desktop)
+                except PermissionError:
+                    logging.debug("Cannot write to desktop")
 
         else:
             logging.debug('Could not get exam info because no exams exist.')
@@ -474,7 +479,11 @@ class ViewBaselineAssessments:
                 except TypeError:
                     pass
 
-            shutil.copy(file_string, desktop)
+            try:
+                shutil.copy(file_string, desktop)
+            except PermissionError:
+                logging.debug("Cannot write to desktop")
+                
         else:
             logging.debug('Could not get exam info because no exams exist.')
 
