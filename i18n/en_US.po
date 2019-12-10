@@ -4,489 +4,841 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-12-10 09:44+Central Standard Time\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2019-12-10 09:45+Central Standard Time\n"
+"PO-Revision-Date: 2019-12-10 09:52-0600\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=cp1252\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-
+"X-Generator: Poedit 2.2.4\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en_US\n"
 
 #: abnormalitydetection.py:40
 msgid "You should now understand what a normal abdomen feels like."
-msgstr ""
+msgstr "You should now understand what a normal abdomen feels like."
 
 #: abnormalitydetection.py:41
-msgid "For this milestone, familiarize yourself with how these abnormalities feel. "
+msgid ""
+"For this milestone, familiarize yourself with how these abnormalities feel. "
 msgstr ""
+"For this milestone, familiarize yourself with how these abnormalities feel. "
 
 #: abnormalitydetection.py:42
 msgid "In the next step, you will identify them using touch and sound."
-msgstr ""
+msgstr "In the next step, you will identify them using touch and sound."
 
 #: admin.py:75
 msgid "Pressure"
-msgstr ""
+msgstr "Pressure"
 
 #: admin.py:75
 msgid "Sensitivity"
-msgstr ""
+msgstr "Sensitivity"
 
 #: admin.py:164 testCreator.py:152
 msgid "Return Home"
-msgstr ""
+msgstr "Return Home"
 
 #: admin.py:231
 msgid "Click the arrows to calibrate actuator"
-msgstr ""
+msgstr "Click the arrows to calibrate actuator"
 
 #: admin.py:232
 msgid "positioning for all ailments at once."
-msgstr ""
+msgstr "positioning for all ailments at once."
 
 #: assessmentViewer.py:78
 msgid "No Assessments Taken"
-msgstr ""
+msgstr "No Assessments Taken"
 
 #: assessmentViewer.py:79
 msgid "Please check back when students have taken your assessment."
-msgstr ""
+msgstr "Please check back when students have taken your assessment."
 
 #: assessmentViewer.py:164 assessmentViewer.py:346 assessmentViewer.py:466
 #: assessmentViewer.py:499
 msgid "Student ID"
-msgstr ""
+msgstr "Student ID"
 
 #: assessmentViewer.py:164 assessmentViewer.py:361
 msgid "Score"
-msgstr ""
+msgstr "Score"
 
 #: assessmentViewer.py:164 assessmentViewer.py:367 assessmentViewer.py:467
 #: assessmentViewer.py:537
 msgid "Time Elapsed"
-msgstr ""
+msgstr "Time Elapsed"
 
 #: assessmentViewer.py:169
 msgid "_abnormality_data.csv"
-msgstr ""
+msgstr "_abnormality_data.csv"
 
 #: assessmentViewer.py:183 assessmentViewer.py:207 assessmentViewer.py:477
 msgid "Exam Data Exported!"
-msgstr ""
+msgstr "Exam Data Exported!"
 
 #: assessmentViewer.py:184 assessmentViewer.py:208 assessmentViewer.py:478
 msgid "A CSV file with exam data was created in AbSim's directory."
-msgstr ""
+msgstr "A CSV file with exam data was created in AbSim's directory."
 
 #: assessmentViewer.py:193
 msgid "_case_text_data.csv"
-msgstr ""
+msgstr "_case_text_data.csv"
 
 #: assessmentViewer.py:227
 msgid "Export to Desktop"
-msgstr ""
+msgstr "Export to Desktop"
 
 #: assessmentViewer.py:231 viewAssignments.py:362 viewPerformance.py:147
 msgid "Return"
-msgstr ""
+msgstr "Return"
 
 #: assessmentViewer.py:246 casetext.py:40 casetext.py:61 casetext.py:81
 #: ddxpractice.py:24 prototypetext.py:20 testCreator.py:302
 #: viewAssignments.py:1008
 msgid "Upper Gastrointestinal Etiology"
-msgstr ""
+msgstr "Upper Gastrointestinal Etiology"
 
 #: assessmentViewer.py:247 casetext.py:103 casetext.py:123 casetext.py:143
 #: ddxpractice.py:25 prototypetext.py:48 testCreator.py:303
 #: viewAssignments.py:1009
 msgid "Choledocolithiasis"
-msgstr ""
+msgstr "Choledocolithiasis"
 
 #: assessmentViewer.py:248 casetext.py:165 casetext.py:185 casetext.py:205
 #: ddxpractice.py:26 prototypetext.py:71 testCreator.py:304
 #: viewAssignments.py:1010
 msgid "Pancreatitis"
-msgstr ""
+msgstr "Pancreatitis"
 
 #: assessmentViewer.py:249 casetext.py:227 casetext.py:247 casetext.py:265
 #: casetext.py:285 ddxpractice.py:27 prototypetext.py:97 testCreator.py:305
 #: viewAssignments.py:1011
 msgid "Cholecystitis"
-msgstr ""
+msgstr "Cholecystitis"
 
 #: assessmentViewer.py:250 casetext.py:308 casetext.py:328 casetext.py:347
 #: ddxpractice.py:28 prototypetext.py:119 testCreator.py:306
 #: viewAssignments.py:1012
 msgid "Mesenteric Infarction"
-msgstr ""
+msgstr "Mesenteric Infarction"
 
 #: assessmentViewer.py:251 casetext.py:370 casetext.py:391 casetext.py:412
 #: ddxpractice.py:29 prototypetext.py:146 testCreator.py:307
 #: viewAssignments.py:1013
 msgid "Small Bowel Obstruction"
-msgstr ""
+msgstr "Small Bowel Obstruction"
 
 #: assessmentViewer.py:252 casetext.py:432 casetext.py:449 casetext.py:467
 #: casetext.py:485 ddxpractice.py:30 prototypetext.py:173 testCreator.py:308
 #: viewAssignments.py:1014
 msgid "Appendicitis"
-msgstr ""
+msgstr "Appendicitis"
 
 #: assessmentViewer.py:253 casetext.py:506 casetext.py:526 casetext.py:543
 #: ddxpractice.py:31 prototypetext.py:194 testCreator.py:309
 #: viewAssignments.py:1015
 msgid "Diverticulitis"
-msgstr ""
+msgstr "Diverticulitis"
 
 #: assessmentViewer.py:254 casetext.py:566 casetext.py:585 casetext.py:604
 #: ddxpractice.py:32 prototypetext.py:215 testCreator.py:310
 #: viewAssignments.py:1016
 msgid "Acute Enteritis"
-msgstr ""
+msgstr "Acute Enteritis"
 
 #: assessmentViewer.py:463
 msgid "_baseline_data.csv"
-msgstr ""
+msgstr "_baseline_data.csv"
 
 #: assessmentViewer.py:466 assessmentViewer.py:513
 msgid "Not Palpated"
-msgstr ""
+msgstr "Not Palpated"
 
 #: assessmentViewer.py:466 assessmentViewer.py:519 pressurepoints.py:186
 msgid "Light Palpation"
-msgstr ""
+msgstr "Light Palpation"
 
 #: assessmentViewer.py:466 assessmentViewer.py:525 pressurepoints.py:193
 msgid "Deep Palpation"
-msgstr ""
+msgstr "Deep Palpation"
 
 #: assessmentViewer.py:466 assessmentViewer.py:531
 msgid "Too Deep"
-msgstr ""
+msgstr "Too Deep"
 
 #: cases.py:32 caseselector.py:23 selfpractice.py:252 viewAssignments.py:791
 msgid "No Abnormalities"
-msgstr ""
+msgstr "No Abnormalities"
 
 #: cases.py:33 caseselector.py:26 selfpractice.py:264 viewAssignments.py:794
 msgid "Appendix Tenderness"
-msgstr ""
+msgstr "Appendix Tenderness"
 
 #: cases.py:34
 msgid "Appendix Tenderness with Guarding"
-msgstr ""
+msgstr "Appendix Tenderness with Guarding"
 
 #: cases.py:35
 msgid "Appendix Tenderness with Rebound Tenderness"
-msgstr ""
+msgstr "Appendix Tenderness with Rebound Tenderness"
 
 #: cases.py:36
 msgid "Appendix Tenderness with Guarding and Rebound Tenderness"
-msgstr ""
+msgstr "Appendix Tenderness with Guarding and Rebound Tenderness"
 
 #: cases.py:37 caseselector.py:32 viewAssignments.py:800
 msgid "Colon, Left Lower Tenderness"
-msgstr ""
+msgstr "Colon, Left Lower Tenderness"
 
 #: cases.py:38
 msgid "Colon, Left Lower Tenderness with Guarding"
-msgstr ""
+msgstr "Colon, Left Lower Tenderness with Guarding"
 
 #: cases.py:39 caseselector.py:36 selfpractice.py:268 viewAssignments.py:804
 msgid "Gallbladder Tenderness"
-msgstr ""
+msgstr "Gallbladder Tenderness"
 
 #: cases.py:40
 msgid "Gallbladder Tenderness with Guarding"
-msgstr ""
+msgstr "Gallbladder Tenderness with Guarding"
 
 #: cases.py:41 caseselector.py:40 selfpractice.py:269 viewAssignments.py:808
 msgid "Gastric Tenderness"
-msgstr ""
+msgstr "Gastric Tenderness"
 
 #: cases.py:42 caseselector.py:43 viewAssignments.py:811
 msgid "Ovary, Left Tenderness"
-msgstr ""
+msgstr "Ovary, Left Tenderness"
 
 #: cases.py:43
 msgid "Ovary, Left Tenderness with Guarding"
-msgstr ""
+msgstr "Ovary, Left Tenderness with Guarding"
 
 #: cases.py:44 caseselector.py:47 viewAssignments.py:815
 msgid "Ovary, Right Tenderness"
-msgstr ""
+msgstr "Ovary, Right Tenderness"
 
 #: cases.py:45
 msgid "Ovary, Right Tenderness with Guarding"
-msgstr ""
+msgstr "Ovary, Right Tenderness with Guarding"
 
 #: cases.py:46 caseselector.py:51 viewAssignments.py:819
 msgid "Pancreas Tenderness"
-msgstr ""
+msgstr "Pancreas Tenderness"
 
 #: cases.py:47 caseselector.py:54 viewAssignments.py:822
 msgid "Urinary Bladder Tenderness"
-msgstr ""
+msgstr "Urinary Bladder Tenderness"
 
 #: cases.py:48 caseselector.py:59 selfpractice.py:282 viewAssignments.py:827
 msgid "Hepatomegaly"
-msgstr ""
+msgstr "Hepatomegaly"
 
 #: cases.py:49 caseselector.py:60 selfpractice.py:282 viewAssignments.py:828
 msgid "Splenomegaly"
-msgstr ""
+msgstr "Splenomegaly"
 
 #: cases.py:50 caseselector.py:61 selfpractice.py:283 viewAssignments.py:829
 msgid "Enlarged Urinary Bladder"
-msgstr ""
+msgstr "Enlarged Urinary Bladder"
 
 #: caseselector.py:27 caseselector.py:33 caseselector.py:37 caseselector.py:44
 #: caseselector.py:48 viewAssignments.py:795 viewAssignments.py:801
 #: viewAssignments.py:805 viewAssignments.py:812 viewAssignments.py:816
 msgid "With Guarding"
-msgstr ""
+msgstr "With Guarding"
 
 #: caseselector.py:28 viewAssignments.py:796
 msgid "With Rebound Tenderness"
-msgstr ""
+msgstr "With Rebound Tenderness"
 
 #: caseselector.py:29 viewAssignments.py:797
 msgid "With Guarding and Rebound Tenderness"
-msgstr ""
+msgstr "With Guarding and Rebound Tenderness"
 
 #: caseselector.py:76 viewAssignments.py:844 viewAssignments.py:1031
 msgid "Ailment"
 msgstr ""
 
 #: casetext.py:26
-msgid "HISTORY: A 54 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, mild in nature, a burning sensation, constant, progressive worsening over time, and ongoing for approximately 42 hours prior to presentation. The location is described as epigastric, radiating retrosternally, occurring after meals, and worsening with lying down. She describes the following associated findings: bloody emesis, decreased bowel movements, and prior episodes of similar pain. The patient's past medical history is unremarkable."
+msgid ""
+"HISTORY: A 54 year old female presents for an evaluation of abdominal pain. "
+"She describes the pain as acute in onset, mild in nature, a burning "
+"sensation, constant, progressive worsening over time, and ongoing for "
+"approximately 42 hours prior to presentation. The location is described as "
+"epigastric, radiating retrosternally, occurring after meals, and worsening "
+"with lying down. She describes the following associated findings: bloody "
+"emesis, decreased bowel movements, and prior episodes of similar pain. The "
+"patient's past medical history is unremarkable."
 msgstr ""
 
 #: casetext.py:34
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.4°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL "
+"SIGNS are remarkable for the following: temperature 36.4C. THORAX and LUNGS "
+"are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
+"AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:46
-msgid "HISTORY: A 51 year old male presents for an evaluation of abdominal pain. He describes the pain as acute in onset, moderate to severe, a burning sensation, constant, not worsening over time, and ongoing for approximately 6 hours prior to presentation. The location is described as epigastric, radiating retrosternally, occurring after meals, and worsening with lying down. He describes the following associated findings: episodes of abdominal fullness, bilious emesis, heartburn, and prior episodes of similar pain. The patient's past medical history is positive for the following: ongoing use of aspirin, and alcohol abuse."
+msgid ""
+"HISTORY: A 51 year old male presents for an evaluation of abdominal pain. He "
+"describes the pain as acute in onset, moderate to severe, a burning "
+"sensation, constant, not worsening over time, and ongoing for approximately "
+"6 hours prior to presentation. The location is described as epigastric, "
+"radiating retrosternally, occurring after meals, and worsening with lying "
+"down. He describes the following associated findings: episodes of abdominal "
+"fullness, bilious emesis, heartburn, and prior episodes of similar pain. The "
+"patient's past medical history is positive for the following: ongoing use of "
+"aspirin, and alcohol abuse."
 msgstr ""
 
 #: casetext.py:55
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.8°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who "
+"wants to remain very still. VITAL SIGNS are remarkable for the following: "
+"temperature 36.8C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/"
+"INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel "
+"sounds."
 msgstr ""
 
 #: casetext.py:67
-msgid "HISTORY: A 45 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, constant, not worsening over time, and ongoing for approximately 16 hours prior to presentation. The location is described as epigastric, radiating to the back in mid-line, occurring after meals, and worsening with lying down. He describes the following associated findings: feeling feverish, and acid reflux symptoms. The patient's past medical history is positive for the following: ongoing use of aspirin."
+msgid ""
+"HISTORY: A 45 year old male presents for an evaluation of abdominal pain. He "
+"describes the pain as gradual in onset, moderate to severe, constant, not "
+"worsening over time, and ongoing for approximately 16 hours prior to "
+"presentation. The location is described as epigastric, radiating to the back "
+"in mid-line, occurring after meals, and worsening with lying down. He "
+"describes the following associated findings: feeling feverish, and acid "
+"reflux symptoms. The patient's past medical history is positive for the "
+"following: ongoing use of aspirin."
 msgstr ""
 
 #: casetext.py:75 casetext.py:520
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.7°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who "
+"wants to remain very still. VITAL SIGNS are remarkable for the following: "
+"temperature 36.7C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/"
+"INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel "
+"sounds."
 msgstr ""
 
 #: casetext.py:90
-msgid "HISTORY: A 51 year old male presents for an evaluation of abdominal pain. He describes the pain as acute in onset, moderate to severe, constant, not worsening over time, and ongoing for approximately 8 hours prior to presentation. The location is described as right upper quadrant, and radiating to the scapula. He describes the following associated findings: dark urine. The patient's past medical history is positive for the following: a history of gallbladder stones."
+msgid ""
+"HISTORY: A 51 year old male presents for an evaluation of abdominal pain. He "
+"describes the pain as acute in onset, moderate to severe, constant, not "
+"worsening over time, and ongoing for approximately 8 hours prior to "
+"presentation. The location is described as right upper quadrant, and "
+"radiating to the scapula. He describes the following associated findings: "
+"dark urine. The patient's past medical history is positive for the "
+"following: a history of gallbladder stones."
 msgstr ""
 
 #: casetext.py:97
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.9°C, and tachycardia at 122. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: The patient's General Appearance reveals an "
+"uncomfortable patient constantly moving, and icteric conjunctiva. VITAL "
+"SIGNS are remarkable for the following: temperature 36.9C, and tachycardia "
+"at 122. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is "
+"unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:109
-msgid "HISTORY: A 52 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, colicky and intermittent, not worsening over time, and ongoing for approximately 6 hours prior to presentation. The location is described as right upper quadrant, and occurring after meals. She describes the following associated findings: dark urine, acholic stools, and feeling feverish. The patient's past medical history is positive for the following: a history of gallbladder stones."
+msgid ""
+"HISTORY: A 52 year old female presents for an evaluation of abdominal pain. "
+"She describes the pain as acute in onset, moderate to severe, colicky and "
+"intermittent, not worsening over time, and ongoing for approximately 6 hours "
+"prior to presentation. The location is described as right upper quadrant, "
+"and occurring after meals. She describes the following associated findings: "
+"dark urine, acholic stools, and feeling feverish. The patient's past medical "
+"history is positive for the following: a history of gallbladder stones."
 msgstr ""
 
 #: casetext.py:117
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.7°C, and tachycardia at 128. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: The patient's General Appearance reveals an "
+"uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the "
+"following: temperature 36.7C, and tachycardia at 128. THORAX and LUNGS are "
+"unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
+"AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:129
-msgid "HISTORY: A 51 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for approximately 10 hours prior to presentation. The location is described as right upper quadrant. She describes the following associated findings: dark urine. The patient's past medical history is positive for the following: a history of gallbladder stones."
+msgid ""
+"HISTORY: A 51 year old female presents for an evaluation of abdominal pain. "
+"She describes the pain as acute in onset, moderate to severe, colicky and "
+"intermittent, progressive worsening over time, and ongoing for approximately "
+"10 hours prior to presentation. The location is described as right upper "
+"quadrant. She describes the following associated findings: dark urine. The "
+"patient's past medical history is positive for the following: a history of "
+"gallbladder stones."
 msgstr ""
 
 #: casetext.py:136
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.6°C, and tachycardia at 117. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: The patient's General Appearance reveals an "
+"uncomfortable patient continually seeking a position of comfort, and icteric "
+"conjunctiva. VITAL SIGNS are remarkable for the following: temperature "
+"36.6C, and tachycardia at 117. THORAX and LUNGS are unremarkable. ABDOMINAL "
+"EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal "
+"bowel sounds."
 msgstr ""
 
 #: casetext.py:152
-msgid "HISTORY: A 29 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, constant, not worsening over time, and ongoing for less than 4 hours prior to presentation. The location is described as epigastric, and radiating to the back in mid-line. He describes the following associated findings: nausea and vomiting, and bilious emesis. The patient's past medical history is positive for the following: alcohol abuse."
+msgid ""
+"HISTORY: A 29 year old male presents for an evaluation of abdominal pain. He "
+"describes the pain as gradual in onset, moderate to severe, constant, not "
+"worsening over time, and ongoing for less than 4 hours prior to "
+"presentation. The location is described as epigastric, and radiating to the "
+"back in mid-line. He describes the following associated findings: nausea and "
+"vomiting, and bilious emesis. The patient's past medical history is positive "
+"for the following: alcohol abuse."
 msgstr ""
 
 #: casetext.py:159
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 37.4°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: The patient's General Appearance reveals an "
+"uncomfortable patient continually seeking a position of comfort. VITAL SIGNS "
+"are remarkable for the following: temperature 37.4C. THORAX and LUNGS are "
+"unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
+"AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:171
-msgid "HISTORY: A 26 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 8 hours prior to presentation. The location is described as epigastric, and radiating to the back in mid-line. She describes the following associated findings: nausea and vomiting, and bilious emesis. The patient's past medical history is positive for the following: a history of gallbladder stones, and alcohol use."
+msgid ""
+"HISTORY: A 26 year old female presents for an evaluation of abdominal pain. "
+"She describes the pain as acute in onset, moderate to severe, constant, "
+"progressive worsening over time, and ongoing for approximately 8 hours prior "
+"to presentation. The location is described as epigastric, and radiating to "
+"the back in mid-line. She describes the following associated findings: "
+"nausea and vomiting, and bilious emesis. The patient's past medical history "
+"is positive for the following: a history of gallbladder stones, and alcohol "
+"use."
 msgstr ""
 
 #: casetext.py:179
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.2°C, and tachycardia at 113. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: The patient's General Appearance reveals an "
+"uncomfortable patient frequently changing positions. VITAL SIGNS are "
+"remarkable for the following: temperature 38.2C, and tachycardia at 113. "
+"THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is "
+"unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:191
-msgid "HISTORY: A 33 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 11 hours prior to presentation. The location is described as epigastric, radiating to the back in mid-line, and occurring after meals. She describes the following associated findings: nausea and vomiting, and bilious emesis. The patient's past medical history is positive for the following: a history of gallbladder stones, and alcohol abuse."
+msgid ""
+"HISTORY: A 33 year old female presents for an evaluation of abdominal pain. "
+"She describes the pain as acute in onset, moderate to severe, constant, "
+"progressive worsening over time, and ongoing for approximately 11 hours "
+"prior to presentation. The location is described as epigastric, radiating to "
+"the back in mid-line, and occurring after meals. She describes the following "
+"associated findings: nausea and vomiting, and bilious emesis. The patient's "
+"past medical history is positive for the following: a history of gallbladder "
+"stones, and alcohol abuse."
 msgstr ""
 
 #: casetext.py:199
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.1°C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: The patient's General Appearance reveals an "
+"uncomfortable patient frequently changing positions. VITAL SIGNS are "
+"remarkable for the following: temperature 38.1C, and tachycardia at 114. "
+"THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is "
+"unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:214
-msgid "HISTORY: A 66 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for approximately 7 hours prior to presentation. The location is described as non-specific, and radiating to the scapula. She describes the following associated findings: feeling feverish. The patient's past medical history is positive for the following: a history of gallbladder stones."
+msgid ""
+"HISTORY: A 66 year old female presents for an evaluation of abdominal pain. "
+"She describes the pain as gradual in onset, moderate to severe, colicky and "
+"intermittent, progressive worsening over time, and ongoing for approximately "
+"7 hours prior to presentation. The location is described as non-specific, "
+"and radiating to the scapula. She describes the following associated "
+"findings: feeling feverish. The patient's past medical history is positive "
+"for the following: a history of gallbladder stones."
 msgstr ""
 
 #: casetext.py:221
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.6°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds. "
+msgid ""
+"PHYSICAL EXAMINATION: The patient's General Appearance reveals an "
+"uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the "
+"following: temperature 36.6C. THORAX and LUNGS are unremarkable. ABDOMINAL "
+"EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal "
+"bowel sounds. "
 msgstr ""
 
 #: casetext.py:233
-msgid "HISTORY: A 66 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for less than 3 hours prior to presentation. The location is described as right upper quadrant, and radiating to the scapula. She describes the following associated findings: nausea and vomiting, episodes of abdominal bloating, and prior episodes of similar pain. The patient's past medical history is positive for the following: 3 pregnancies."
+msgid ""
+"HISTORY: A 66 year old female presents for an evaluation of abdominal pain. "
+"She describes the pain as gradual in onset, moderate to severe, colicky and "
+"intermittent, progressive worsening over time, and ongoing for less than 3 "
+"hours prior to presentation. The location is described as right upper "
+"quadrant, and radiating to the scapula. She describes the following "
+"associated findings: nausea and vomiting, episodes of abdominal bloating, "
+"and prior episodes of similar pain. The patient's past medical history is "
+"positive for the following: 3 pregnancies."
 msgstr ""
 
 #: casetext.py:241
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 36.9°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: The patient's General Appearance reveals an "
+"uncomfortable patient frequently changing positions. VITAL SIGNS are "
+"remarkable for the following: temperature 36.9C. THORAX and LUNGS are "
+"unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
+"AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:253
-msgid "HISTORY: A 54 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for less than 2 hours prior to presentation. The location is described as right upper quadrant, and radiating to the scapula. She describes the following associated findings: prior episodes of similar pain. The patient's past medical history is unremarkable."
+msgid ""
+"HISTORY: A 54 year old female presents for an evaluation of abdominal pain. "
+"She describes the pain as gradual in onset, moderate to severe, colicky and "
+"intermittent, progressive worsening over time, and ongoing for less than 2 "
+"hours prior to presentation. The location is described as right upper "
+"quadrant, and radiating to the scapula. She describes the following "
+"associated findings: prior episodes of similar pain. The patient's past "
+"medical history is unremarkable."
 msgstr ""
 
 #: casetext.py:260
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL "
+"SIGNS are remarkable for the following: temperature 38.1C. THORAX and LUNGS "
+"are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
+"AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:271
-msgid "HISTORY: A 34 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, a burning sensation, colicky and intermittent, not worsening over time, and ongoing for approximately 6 hours prior to presentation. The location is described as right upper quadrant, radiating to the scapula, and occurring after meals. She describes the following associated findings: nausea and vomiting, feeling feverish, and prior episodes of similar pain. The patient's past medical history is positive for the following: cardiac irregularities, and 4 pregnancies."
+msgid ""
+"HISTORY: A 34 year old female presents for an evaluation of abdominal pain. "
+"She describes the pain as gradual in onset, moderate to severe, a burning "
+"sensation, colicky and intermittent, not worsening over time, and ongoing "
+"for approximately 6 hours prior to presentation. The location is described "
+"as right upper quadrant, radiating to the scapula, and occurring after "
+"meals. She describes the following associated findings: nausea and vomiting, "
+"feeling feverish, and prior episodes of similar pain. The patient's past "
+"medical history is positive for the following: cardiac irregularities, and 4 "
+"pregnancies."
 msgstr ""
 
 #: casetext.py:280
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.5°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL "
+"SIGNS are remarkable for the following: temperature 36.5C. THORAX and LUNGS "
+"are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
+"AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:294
-msgid "HISTORY: A 72 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, constant, progressive worsening over time, and ongoing for less than 4 hours prior to presentation. The location is described as peri-umbilical. She describes the following associated findings: decreased bowel movements. The patient's past medical history is positive for the following: cardiac irregularities."
+msgid ""
+"HISTORY: A 72 year old female presents for an evaluation of abdominal pain. "
+"She describes the pain as acute in onset, moderate to severe, constant, "
+"progressive worsening over time, and ongoing for less than 4 hours prior to "
+"presentation. The location is described as peri-umbilical. She describes the "
+"following associated findings: decreased bowel movements. The patient's past "
+"medical history is positive for the following: cardiac irregularities."
 msgstr ""
 
 #: casetext.py:301
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.5°C, tachycardia at 123, tachypnea at 26, and a blood pressure of 80 over 51. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
+msgid ""
+"PHYSICAL EXAMINATION: The patient's General Appearance reveals an "
+"uncomfortable patient constantly moving, and confusion. VITAL SIGNS are "
+"remarkable for the following: temperature 36.5C, tachycardia at 123, "
+"tachypnea at 26, and a blood pressure of 80 over 51. THORAX and LUNGS are "
+"unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
+"AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
 msgstr ""
 
 #: casetext.py:314
-msgid "HISTORY: A 74 year old male presents for an evaluation of abdominal pain. He describes the pain as acute in onset, moderate to severe, constant, progressive worsening over time, and ongoing for less than 5 hours prior to presentation. The location is described as peri-umbilical. He describes the following associated findings: decreased bowel movements. The patient's past medical history is positive for the following: cardiac irregularities."
+msgid ""
+"HISTORY: A 74 year old male presents for an evaluation of abdominal pain. He "
+"describes the pain as acute in onset, moderate to severe, constant, "
+"progressive worsening over time, and ongoing for less than 5 hours prior to "
+"presentation. The location is described as peri-umbilical. He describes the "
+"following associated findings: decreased bowel movements. The patient's past "
+"medical history is positive for the following: cardiac irregularities."
 msgstr ""
 
 #: casetext.py:321
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 38.2°C, tachycardia at 128, tachypnea at 24, and a blood pressure of 76 over 54. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
+msgid ""
+"PHYSICAL EXAMINATION: The patient's General Appearance reveals an "
+"uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the "
+"following: temperature 38.2C, tachycardia at 128, tachypnea at 24, and a "
+"blood pressure of 76 over 54. THORAX and LUNGS are unremarkable. ABDOMINAL "
+"EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased "
+"bowel sounds, and an abdominal bruit."
 msgstr ""
 
 #: casetext.py:334
-msgid "HISTORY: A 75 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 14 hours prior to presentation. The location is described as peri-umbilical, and radiating to the back in mid-line. She describes the following associated findings: decreased bowel movements. The patient's past medical history is positive for the following: cardiac irregularities."
+msgid ""
+"HISTORY: A 75 year old female presents for an evaluation of abdominal pain. "
+"She describes the pain as acute in onset, moderate to severe, constant, "
+"progressive worsening over time, and ongoing for approximately 14 hours "
+"prior to presentation. The location is described as peri-umbilical, and "
+"radiating to the back in mid-line. She describes the following associated "
+"findings: decreased bowel movements. The patient's past medical history is "
+"positive for the following: cardiac irregularities."
 msgstr ""
 
 #: casetext.py:341
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.9°C, tachycardia at 128, and tachypnea at 25. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: The patient's General Appearance reveals an "
+"uncomfortable patient constantly moving, and confusion. VITAL SIGNS are "
+"remarkable for the following: temperature 36.9C, tachycardia at 128, and "
+"tachypnea at 25. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/"
+"INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel "
+"sounds."
 msgstr ""
 
 #: casetext.py:356
-msgid "HISTORY: A 70 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for less than 3 hours prior to presentation. The location is described as peri-umbilical. He describes the following associated findings: nausea and vomiting, decreased bowel movements, episodes of abdominal bloating, and bilious emesis. The patient's past medical history is positive for the following: prior abdominal surgery, and a history of gallbladder stones."
+msgid ""
+"HISTORY: A 70 year old male presents for an evaluation of abdominal pain. He "
+"describes the pain as gradual in onset, moderate to severe, colicky and "
+"intermittent, progressive worsening over time, and ongoing for less than 3 "
+"hours prior to presentation. The location is described as peri-umbilical. He "
+"describes the following associated findings: nausea and vomiting, decreased "
+"bowel movements, episodes of abdominal bloating, and bilious emesis. The "
+"patient's past medical history is positive for the following: prior "
+"abdominal surgery, and a history of gallbladder stones."
 msgstr ""
 
 #: casetext.py:364
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals confusion. VITAL SIGNS are remarkable for the following: temperature 36.3°C, and tachypnea at 23. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: mild distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: The patient's General Appearance reveals confusion. "
+"VITAL SIGNS are remarkable for the following: temperature 36.3C, and "
+"tachypnea at 23. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/"
+"INSPECTION reveals: mild distention. ABDOMINAL AUSCULTATION reveals: "
+"increased bowel sounds."
 msgstr ""
 
 #: casetext.py:376
-msgid "HISTORY: A 66 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for less than 3 hours prior to presentation. The location is described as non-specific, and radiating to the back in mid-line. She describes the following associated findings: nausea and vomiting, decreased bowel movements, episodes of abdominal fullness, and bilious emesis. The patient's past medical history is positive for the following: prior abdominal surgery."
+msgid ""
+"HISTORY: A 66 year old female presents for an evaluation of abdominal pain. "
+"She describes the pain as gradual in onset, moderate to severe, colicky and "
+"intermittent, progressive worsening over time, and ongoing for less than 3 "
+"hours prior to presentation. The location is described as non-specific, and "
+"radiating to the back in mid-line. She describes the following associated "
+"findings: nausea and vomiting, decreased bowel movements, episodes of "
+"abdominal fullness, and bilious emesis. The patient's past medical history "
+"is positive for the following: prior abdominal surgery."
 msgstr ""
 
 #: casetext.py:384
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 36.3°C, and tachypnea at 26. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, and the presence of tympany."
+msgid ""
+"PHYSICAL EXAMINATION: The patient's General Appearance reveals an "
+"uncomfortable patient continually seeking a position of comfort. VITAL SIGNS "
+"are remarkable for the following: temperature 36.3C, and tachypnea at 26. "
+"THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: sight "
+"distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, and the "
+"presence of tympany."
 msgstr ""
 
 #: casetext.py:397
-msgid "HISTORY: A 70 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for less than 4 hours prior to presentation. The location is described as peri-umbilical. She describes the following associated findings: blood with bowel movement, decreased bowel movements, episodes of abdominal bloating, and bilious emesis. The patient's past medical history is positive for the following: prior abdominal surgery."
+msgid ""
+"HISTORY: A 70 year old female presents for an evaluation of abdominal pain. "
+"She describes the pain as gradual in onset, moderate to severe, constant, "
+"progressive worsening over time, and ongoing for less than 4 hours prior to "
+"presentation. The location is described as peri-umbilical. She describes the "
+"following associated findings: blood with bowel movement, decreased bowel "
+"movements, episodes of abdominal bloating, and bilious emesis. The patient's "
+"past medical history is positive for the following: prior abdominal surgery."
 msgstr ""
 
 #: casetext.py:405
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.1°C, tachycardia at 117, and tachypnea at 22. THORAX and LUNGS Decreased breath sounds are noted at the bases. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, the presence of tympany, and an abdominal bruit."
+msgid ""
+"PHYSICAL EXAMINATION: The patient's General Appearance reveals an "
+"uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the "
+"following: temperature 36.1C, tachycardia at 117, and tachypnea at 22. "
+"THORAX and LUNGS Decreased breath sounds are noted at the bases. ABDOMINAL "
+"EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: "
+"increased bowel sounds, the presence of tympany, and an abdominal bruit."
 msgstr ""
 
 #: casetext.py:421
-msgid "HISTORY: A 32 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 9 hours prior to presentation. The location is described as non-specific. She describes the following associated findings: nausea and vomiting. The patient's past medical history is unremarkable."
+msgid ""
+"HISTORY: A 32 year old female presents for an evaluation of abdominal pain. "
+"She describes the pain as gradual in onset, moderate to severe, constant, "
+"progressive worsening over time, and ongoing for approximately 9 hours prior "
+"to presentation. The location is described as non-specific. She describes "
+"the following associated findings: nausea and vomiting. The patient's past "
+"medical history is unremarkable."
 msgstr ""
 
 #: casetext.py:427
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.7°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL "
+"SIGNS are remarkable for the following: temperature 37.7C. THORAX and LUNGS "
+"are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
+"AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:438
-msgid "HISTORY: A 27 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 11 hours prior to presentation. The location is described as peri-umbilical. He describes the following associated findings: nausea and vomiting, anorexia, and feeling feverish. The patient's past medical history is unremarkable."
+msgid ""
+"HISTORY: A 27 year old male presents for an evaluation of abdominal pain. He "
+"describes the pain as gradual in onset, moderate to severe, constant, "
+"progressive worsening over time, and ongoing for approximately 11 hours "
+"prior to presentation. The location is described as peri-umbilical. He "
+"describes the following associated findings: nausea and vomiting, anorexia, "
+"and feeling feverish. The patient's past medical history is unremarkable."
 msgstr ""
 
 #: casetext.py:444
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL "
+"SIGNS are remarkable for the following: temperature 38.1C. THORAX and LUNGS "
+"are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
+"AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:455
-msgid "HISTORY: A 67 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 8 hours prior to presentation. The location is described as right lower quadrant. She describes the following associated findings: anorexia, and feeling feverish. The patient's past medical history is unremarkable."
+msgid ""
+"HISTORY: A 67 year old female presents for an evaluation of abdominal pain. "
+"She describes the pain as gradual in onset, moderate to severe, constant, "
+"progressive worsening over time, and ongoing for approximately 8 hours prior "
+"to presentation. The location is described as right lower quadrant. She "
+"describes the following associated findings: anorexia, and feeling feverish. "
+"The patient's past medical history is unremarkable."
 msgstr ""
 
 #: casetext.py:461
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 38.6°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who "
+"wants to remain very still. VITAL SIGNS are remarkable for the following: "
+"temperature 38.6C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/"
+"INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel "
+"sounds."
 msgstr ""
 
 #: casetext.py:473
-msgid "HISTORY: A 28 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, a burning sensation, constant, progressive worsening over time, and ongoing for approximately 36 hours prior to presentation. The location is described as right lower quadrant. He describes the following associated findings: nausea and vomiting, anorexia, feeling feverish, and heartburn. The patient's past medical history is unremarkable."
+msgid ""
+"HISTORY: A 28 year old male presents for an evaluation of abdominal pain. He "
+"describes the pain as gradual in onset, moderate to severe, a burning "
+"sensation, constant, progressive worsening over time, and ongoing for "
+"approximately 36 hours prior to presentation. The location is described as "
+"right lower quadrant. He describes the following associated findings: nausea "
+"and vomiting, anorexia, feeling feverish, and heartburn. The patient's past "
+"medical history is unremarkable."
 msgstr ""
 
 #: casetext.py:480
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL "
+"SIGNS are remarkable for the following: temperature 38C. THORAX and LUNGS "
+"are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
+"AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:494
-msgid "HISTORY: A 49 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 16 hours prior to presentation. The location is described as left lower quadrant, and worsening with defecation. He describes the following associated findings: decreased bowel movements, and prior episodes of similar pain. The patient's past medical history is unremarkable."
+msgid ""
+"HISTORY: A 49 year old male presents for an evaluation of abdominal pain. He "
+"describes the pain as gradual in onset, moderate to severe, constant, "
+"progressive worsening over time, and ongoing for approximately 16 hours "
+"prior to presentation. The location is described as left lower quadrant, and "
+"worsening with defecation. He describes the following associated findings: "
+"decreased bowel movements, and prior episodes of similar pain. The patient's "
+"past medical history is unremarkable."
 msgstr ""
 
 #: casetext.py:501
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.9°C, and tachycardia at 130. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL "
+"SIGNS are remarkable for the following: temperature 36.9C, and tachycardia "
+"at 130. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is "
+"unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:512
-msgid "HISTORY: A 67 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 16 hours prior to presentation. The location is described as peri-umbilical. He describes the following associated findings: blood with bowel movement, and feeling feverish. The patient's past medical history is positive for the following: ongoing use of aspirin, prior abdominal surgery, cardiac irregularities, a history of gallbladder stones, and alcohol abuse."
+msgid ""
+"HISTORY: A 67 year old male presents for an evaluation of abdominal pain. He "
+"describes the pain as gradual in onset, moderate to severe, constant, "
+"progressive worsening over time, and ongoing for approximately 16 hours "
+"prior to presentation. The location is described as peri-umbilical. He "
+"describes the following associated findings: blood with bowel movement, and "
+"feeling feverish. The patient's past medical history is positive for the "
+"following: ongoing use of aspirin, prior abdominal surgery, cardiac "
+"irregularities, a history of gallbladder stones, and alcohol abuse."
 msgstr ""
 
 #: casetext.py:532
-msgid "HISTORY: A 49 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 11 hours prior to presentation. The location is described as peri-umbilical. She describes the following associated findings: anorexia. The patient's past medical history is unremarkable."
+msgid ""
+"HISTORY: A 49 year old female presents for an evaluation of abdominal pain. "
+"She describes the pain as gradual in onset, moderate to severe, constant, "
+"progressive worsening over time, and ongoing for approximately 11 hours "
+"prior to presentation. The location is described as peri-umbilical. She "
+"describes the following associated findings: anorexia. The patient's past "
+"medical history is unremarkable."
 msgstr ""
 
 #: casetext.py:538
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.7°C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL "
+"SIGNS are remarkable for the following: temperature 36.7C, and tachycardia "
+"at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is "
+"unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:552
-msgid "HISTORY: A 49 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, mild in nature, colicky and intermittent, not worsening over time, and ongoing for approximately 48 hours prior to presentation. The location is described as peri-umbilical. She describes the following associated findings: nausea and vomiting, diarrhea, feeling feverish, and recent foreign travel. The patient's past medical history is positive for the following: ongoing use of non-steroidal medications, prior abdominal surgery, cardiac irregularities, a history of gallbladder stones, and alcohol use."
+msgid ""
+"HISTORY: A 49 year old female presents for an evaluation of abdominal pain. "
+"She describes the pain as gradual in onset, mild in nature, colicky and "
+"intermittent, not worsening over time, and ongoing for approximately 48 "
+"hours prior to presentation. The location is described as peri-umbilical. "
+"She describes the following associated findings: nausea and vomiting, "
+"diarrhea, feeling feverish, and recent foreign travel. The patient's past "
+"medical history is positive for the following: ongoing use of non-steroidal "
+"medications, prior abdominal surgery, cardiac irregularities, a history of "
+"gallbladder stones, and alcohol use."
 msgstr ""
 
 #: casetext.py:561
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.2°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL "
+"SIGNS are remarkable for the following: temperature 38.2C. THORAX and LUNGS "
+"are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
+"AUSCULTATION reveals: increased bowel sounds."
 msgstr ""
 
 #: casetext.py:572
-msgid "HISTORY: A 51 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, mild in nature, colicky and intermittent, not worsening over time, and ongoing for approximately 30 hours prior to presentation. The location is described as non-specific. He describes the following associated findings: nausea and vomiting, diarrhea, feeling feverish, and exposure to others with nausea and vomiting. The patient's past medical history is positive for the following: ongoing use of aspirin."
+msgid ""
+"HISTORY: A 51 year old male presents for an evaluation of abdominal pain. He "
+"describes the pain as gradual in onset, mild in nature, colicky and "
+"intermittent, not worsening over time, and ongoing for approximately 30 "
+"hours prior to presentation. The location is described as non-specific. He "
+"describes the following associated findings: nausea and vomiting, diarrhea, "
+"feeling feverish, and exposure to others with nausea and vomiting. The "
+"patient's past medical history is positive for the following: ongoing use of "
+"aspirin."
 msgstr ""
 
 #: casetext.py:580
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.6°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL "
+"SIGNS are remarkable for the following: temperature 38.6C. THORAX and LUNGS "
+"are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
+"AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:591
-msgid "HISTORY: A 33 year old male presents for an evaluation of abdominal pain. He describes the pain as acute in onset, mild in nature, colicky and intermittent, not worsening over time, and ongoing for approximately 36 hours prior to presentation. The location is described as epigastric. He describes the following associated findings: nausea and vomiting, diarrhea, blood with bowel movement, feeling feverish, a recent bad tasting meal, exposure to others with vomiting and diarrhea, and heartburn. The patient's past medical history is unremarkable."
+msgid ""
+"HISTORY: A 33 year old male presents for an evaluation of abdominal pain. He "
+"describes the pain as acute in onset, mild in nature, colicky and "
+"intermittent, not worsening over time, and ongoing for approximately 36 "
+"hours prior to presentation. The location is described as epigastric. He "
+"describes the following associated findings: nausea and vomiting, diarrhea, "
+"blood with bowel movement, feeling feverish, a recent bad tasting meal, "
+"exposure to others with vomiting and diarrhea, and heartburn. The patient's "
+"past medical history is unremarkable."
 msgstr ""
 
 #: casetext.py:599
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.8°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
+msgid ""
+"PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL "
+"SIGNS are remarkable for the following: temperature 37.8C. THORAX and LUNGS "
+"are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
+"AUSCULTATION reveals: increased bowel sounds."
 msgstr ""
 
 #: coverageassessment.py:44
@@ -518,7 +870,8 @@ msgid "Reveal completed exam"
 msgstr ""
 
 #: coverageassessment.py:151
-msgid "Now it's time to compare your pre-assessment to your skill after training."
+msgid ""
+"Now it's time to compare your pre-assessment to your skill after training."
 msgstr ""
 
 #: coverageassessment.py:182 coverageassessment.py:556
@@ -639,11 +992,15 @@ msgid "Distended Urinary Bladder"
 msgstr ""
 
 #: coveragetrainer.py:30
-msgid "Now that you can palpate to proper depth, practice covering the entire abdomen."
+msgid ""
+"Now that you can palpate to proper depth, practice covering the entire "
+"abdomen."
 msgstr ""
 
 #: coveragetrainer.py:31
-msgid "It's better to make several passes instead of covering each centimeter in one pass."
+msgid ""
+"It's better to make several passes instead of covering each centimeter in "
+"one pass."
 msgstr ""
 
 #: coveragetrainer.py:32
@@ -651,7 +1008,9 @@ msgid "Make several trips around the abdomen to get full coverage."
 msgstr ""
 
 #: coveragetrainer.py:33
-msgid "Especially ensure you check the marked locations, where abdominal abnormalities are most likely to occur."
+msgid ""
+"Especially ensure you check the marked locations, where abdominal "
+"abnormalities are most likely to occur."
 msgstr ""
 
 #: ddxpractice.py:69 selfpractice.py:85
@@ -691,7 +1050,9 @@ msgid "Student"
 msgstr ""
 
 #: defineUser.py:83
-msgid "Demonstrate proficiency in abdominal palpation through practice and assessments"
+msgid ""
+"Demonstrate proficiency in abdominal palpation through practice and "
+"assessments"
 msgstr ""
 
 #: defineUser.py:134
@@ -799,7 +1160,9 @@ msgid ", causing unnecessary pain, even in a patient with no abnormalities. "
 msgstr ""
 
 #: depthtrainer.py:42
-msgid "This can result in voluntary guarding for the rest of the exam, leading to confusing "
+msgid ""
+"This can result in voluntary guarding for the rest of the exam, leading to "
+"confusing "
 msgstr ""
 
 #: depthtrainer.py:43
@@ -1075,7 +1438,7 @@ msgstr ""
 #: prototypetext.py:43 prototypetext.py:65 prototypetext.py:93
 #: prototypetext.py:115 prototypetext.py:136 prototypetext.py:165
 #: prototypetext.py:209
-msgid "Temperature 36.1–37.8°C (97-100°F)"
+msgid "Temperature 36.137.8C (97-100F)"
 msgstr ""
 
 #: prototypetext.py:44 prototypetext.py:91 prototypetext.py:145
@@ -1250,7 +1613,7 @@ msgid "Tenderness in right lower quadrant"
 msgstr ""
 
 #: prototypetext.py:188 prototypetext.py:231
-msgid "Temperature elevation >37.5 and <38.3°C (99.5 to 100.9°F)"
+msgid "Temperature elevation >37.5 and <38.3C (99.5 to 100.9F)"
 msgstr ""
 
 #: prototypetext.py:192
@@ -1298,15 +1661,20 @@ msgid "Example prototype text for ddx {ddx} index {case_index}"
 msgstr ""
 
 #: selfpractice.py:64
-msgid "For this milestone, you will report the findings by feel and sound only."
+msgid ""
+"For this milestone, you will report the findings by feel and sound only."
 msgstr ""
 
 #: selfpractice.py:65
-msgid "When you select a finding, you will receive feedback and have a second chance to palpate."
+msgid ""
+"When you select a finding, you will receive feedback and have a second "
+"chance to palpate."
 msgstr ""
 
 #: selfpractice.py:66
-msgid "When you are confident in eliciting findings, we will integrate patient history and "
+msgid ""
+"When you are confident in eliciting findings, we will integrate patient "
+"history and "
 msgstr ""
 
 #: selfpractice.py:68
@@ -1314,7 +1682,8 @@ msgid "non-palpitory physical findings."
 msgstr ""
 
 #: selfpractice.py:101
-msgid "Before moving on, re-familiarize yourself with how this condition feels."
+msgid ""
+"Before moving on, re-familiarize yourself with how this condition feels."
 msgstr ""
 
 #: selfpractice.py:107
@@ -1482,7 +1851,9 @@ msgid "Login Failed!"
 msgstr ""
 
 #: simLabels.py:34
-msgid "Pressure pad is not connected! Please check the USB cable and turn off AbSim for five seconds."
+msgid ""
+"Pressure pad is not connected! Please check the USB cable and turn off AbSim "
+"for five seconds."
 msgstr ""
 
 #: simLogin.py:24 simLogin.py:49 simLogin.py:94
@@ -1618,4 +1989,3 @@ msgstr ""
 #: viewPerformance.py:246
 msgid "Has Case Diagnosis?"
 msgstr ""
-
