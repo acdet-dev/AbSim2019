@@ -205,15 +205,15 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
                     if baseline_flag:
                         base = _(u'yes')
                     else:
-                        base = 'no'
+                        base = _(u'no')
                     if len(case_list_comm) > 0:
                         cases = _(u'yes')
                     else:
-                        cases = 'no'
+                        cases = _(u'no')
                     if len(ddx_cases) > 0:
                         ddx = _(u'yes')
                     else:
-                        ddx = 'no'
+                        ddx = _(u'no')
                     store.append([exam[0].decode('utf-8'), base, cases, ddx])
                 except TypeError:
                     pass
