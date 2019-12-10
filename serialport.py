@@ -96,9 +96,11 @@ class Sensors(threading.Thread):
             if hasattr(self, 'port') and self.port is not None:
                 try:
                     self.read_from_port()
-                except serial.SerialException:
+                except serial.SerialException as e:
+                    logging.debug(e)
                     logging.debug('Closing sensor port on try read command')
                     self.port.close()
+                    self.port = None
                 self.command = 0
                 try:
                     self.command = self.command_queue.get(True, 0.01)
@@ -109,7 +111,7 @@ class Sensors(threading.Thread):
             else:
                 logging.debug('Sensor reconnect loop hit.')
                 self.reconnect()
-                if hasattr(self, 'port'):
+                if hasattr(self, 'port') and self.port is not None:
                     self.state_watcher.sensor_pad_connected()
                 else:
                     self.state_watcher.sensor_pad_disconnected()
