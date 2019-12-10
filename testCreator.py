@@ -112,7 +112,7 @@ class TestCreator(Gtk.Window):
 
         # add label above check option
         assessment_label = Gtk.Label()
-        label_text = _("<b>" + u"2. Abnormality Detection Assessment" + "</b>")
+        label_text = "<b>" + _(u"2. Abnormality Detection Assessment") + "</b>"
         label_pre = construct_markup(label_text, font_size=16)
         assessment_label.set_markup(label_pre)
 
@@ -249,7 +249,7 @@ class BaselineExam(Gtk.VBox):
 
         #add label above check option
         assessment_label = Gtk.Label()
-        label_text = _("<b>" + u"1. Baseline Assessment" + "</b>")
+        label_text = "<b>" + _(u"1. Baseline Assessment") + "</b>"
         label_pre = construct_markup(label_text, font_size=16)
         assessment_label.set_markup(label_pre)
         self.pack_start(assessment_label, False, False, 0)
@@ -293,7 +293,7 @@ class DdxExam(Gtk.VBox):
 
         # add label above check option
         assessment_label = Gtk.Label()
-        label_text = _("<b>" + u"3. Case Assessment" + "</b>")
+        label_text = "<b>" + _(u"3. Case Assessment") + "</b>"
         label_pre = construct_markup(label_text, font_size=16)
         assessment_label.set_markup(label_pre)
         self.pack_start(assessment_label, False, False, 30)
