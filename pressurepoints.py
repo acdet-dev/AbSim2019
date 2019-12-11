@@ -10,6 +10,7 @@ pygtkcompat.enable_gtk(version='3.0')
 import gtk
 import time
 import config
+from simLabels import construct_markup
 from i18ntrans2 import _
 
 
@@ -99,6 +100,7 @@ class TareValues():
             if tare_value > max_value:
                 return False
         return True
+
 
 class PressureThresholds:
     def __init__(self):
@@ -211,16 +213,35 @@ class SensitivitySettings(gtk.VBox):
         self.too_light_hscale.connect('change-value', self.too_light_threshold_moved)
         self.down_hscale.connect('change-value', self.down_threshold_moved)
         self.too_hard_hscale.connect('change-value', self.too_hard_threshold_moved)
-        
+
+        label = gtk.Label()
+        label_text = "<b>" + _(u"Sensitivity Configuration Interface") + "</b>" + "\n\n" + \
+                     _(u"Set pressure pad sensitivity thresholds:") + "\n\n" + _(u"(e.g. ") + \
+                     "<span foreground='gray' font_weight='bold'>" + _(u"light ") + "</span>" + _(u"from 5 - 14") + \
+                     "<span foreground='blue' font_weight='bold'>" + "\n" + _(u"deep ") + "</span>" + \
+                     _(u"from 15 - 54") + "<span foreground='red' font_weight='bold'>" + "\n" + _(u"too hard ") + \
+                     "</span>" + _(u"> 55).") + "\n\n" + \
+                     _(u'Click "Save Sensitivity Settings" to save your choices.') + \
+                     _(u"You may view the effects of your changes on the image to the right.") + "\n\n" + \
+                     _(u'If you notice "ghost" registers of pressure, click "Tare / Zero Sensors".')
+        label_pre_mark = construct_markup(label_text, font_size=14)
+        label.set_markup(label_pre_mark)
+        label.set_line_wrap(True)
+        # label.set_alignment(0, 0)
+        label.set_max_width_chars(50)
+
         self.vbox = gtk.VBox(False, 5)
+        button_hbox = gtk.HBox(False, 5)
+        button_hbox.pack_start(self.save_settings_alignment, False, False, 10)
+        button_hbox.pack_start(self.tare_button_alignment, False, False, 10)
+        self.pack_start(label, False, False, 20)
         self.pack_start(child=self.too_light_label, expand=False, fill=False, padding=0)
         self.pack_start(child=self.too_light_hscale, expand=False, fill=False, padding=0)
         self.pack_start(child=self.down_label, expand=False, fill=False, padding=0)
         self.pack_start(child=self.down_hscale, expand=False, fill=False, padding=0)
         self.pack_start(child=self.too_hard_label, expand=False, fill=False, padding=0)
         self.pack_start(child=self.too_hard_hscale, expand=False, fill=False, padding=0)
-        self.pack_start(child=self.save_settings_alignment, expand=False, fill=False, padding=5)
-        self.pack_start(child=self.tare_button_alignment, expand=False, fill=False, padding=5)
+        self.pack_start(child=button_hbox, expand=False, fill=False, padding=20)
         
         self.show_all()
         

@@ -159,7 +159,7 @@ class SensitivityInterface(Gtk.HBox):
 
         #build home button
         self.button_table = Gtk.Table(rows=1, columns=1, homogeneous=True)
-        self.button_table_alignment = Gtk.Alignment(xalign=0.5)
+        self.button_table_alignment = Gtk.Alignment(xalign=0.2)
 
         re_button = self.build_button(_(u"Return Home"))
         self.button_table.attach(re_button, 1, 2, 0, 1)
@@ -167,7 +167,7 @@ class SensitivityInterface(Gtk.HBox):
 
         self.settings_vbox = Gtk.VBox()
         self.settings_vbox.pack_start(self.sensitivity_settings, False, False)
-        self.settings_vbox.pack_start(Gtk.HSeparator(), False, False, 20)
+        self.settings_vbox.pack_start(Gtk.HSeparator(), False, False, 10)
         #self.settings_vbox.pack_start(self.cnc_adjuster, False, False)
         #self.settings_vbox.pack_start(Gtk.HSeparator(), False, False, 20)
         self.settings_vbox.pack_start(self.button_table_alignment, False, False, 0)
@@ -181,14 +181,14 @@ class SensitivityInterface(Gtk.HBox):
         self.abnormality_detection.label.hide()
         self.abnormality_detection.case_selector_scroller.hide()
 
-        self.pack_start(self.settings_vbox, False, False, 10)
-        self.pack_start(self.abnormality_detection, False, False, 10)
+        self.pack_start(self.settings_vbox, True, False, 10)
+        self.pack_start(self.abnormality_detection, True, False, 10)
 
         self.settings_vbox.show_all()
 
     def build_button(self, label_text):
         label = Gtk.Label()
-        label_pre = construct_markup(label_text, font_size=10)
+        label_pre = construct_markup(label_text, font_size=12)
         label.set_markup(label_pre)
         button = Gtk.Button()
         button.add(label)

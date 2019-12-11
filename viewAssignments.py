@@ -342,10 +342,26 @@ class ViewTests(Gtk.HBox):
         case_selector_scroller.set_policy(Gtk.POLICY_NEVER, Gtk.POLICY_AUTOMATIC)
         case_selector_scroller.set_size_request(450, 200)
 
+        label = Gtk.Label()
+        label_text = _(u"Welcome to AbSim's Assessment Interface") + "\n\n" +\
+                     _(u"Select an assessment and click 'Begin Assessment' when ready.")
+        label_pre_mark = construct_markup(label_text, font_size=16)
+        label.set_markup(label_pre_mark)
+        label.set_line_wrap(True)
+        label.set_alignment(0, 0)
+        label.set_max_width_chars(50)
+
         button_tree = self.add_buttons()
 
+        # construct horizontal box to place label to the left of box features
+        # pre_box = Gtk.HBox()
+
+        # pre_box.pack_start(label, False, False, 50)
+        box.pack_start(label, False, False, 20)
         box.pack_start(case_selector_scroller, True, True, 20)
+        box.pack_start(Gtk.HSeparator(), False, False, 40)
         box.pack_start(button_tree, True, True, 10)
+        # pre_box.pack_start(box, False, False, 20)
 
         return box
 
