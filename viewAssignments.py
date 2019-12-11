@@ -486,7 +486,8 @@ class ViewTests(Gtk.HBox):
                 self.exam_resources['ddx_cases'] = ep.parse_exam_info(case_info)
             self.build_exam_view()
         except TypeError:
-            self.view_resources['window'].return_home()
+            sim_message(self.view_resources['window'], info_string=_(u'Select Assessment'),
+                        secondary_text=_(u'Please select an assessment and click "Begin Assessment".'))
 
     def reset_page(self):
         return

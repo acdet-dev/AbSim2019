@@ -179,6 +179,7 @@ class SensitivityInterface(Gtk.HBox):
 
         self.abnormality_detection = abnormalitydetection.AbnormalityDetection(view_resources)
         self.abnormality_detection.label.hide()
+        self.abnormality_detection.case_selector_scroller.hide()
 
         self.pack_start(self.settings_vbox, False, False, 10)
         self.pack_start(self.abnormality_detection, False, False, 10)

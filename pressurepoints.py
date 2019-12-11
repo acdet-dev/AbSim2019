@@ -183,21 +183,25 @@ class SensitivitySettings(gtk.VBox):
         
         (slightly_down, down, too_hard) = pressure_thresholds.get_thresholds()
         
-        self.too_light_label = gtk.Label(_(u"Light Palpation"))
+        self.too_light_label = gtk.Label()
+        self.too_light_label.set_markup("<span foreground='gray' font_weight='bold'>" + _(u"Light Palpation") +
+                                        "</span>")
         self.too_light_hscale = gtk.HScale()
         self.too_light_hscale.set_digits(0)
         self.too_light_hscale.set_range(0, 255)
         self.too_light_hscale.set_value(slightly_down)
         self.too_light_hscale.set_property('round_digits', 3)
         
-        self.down_label = gtk.Label(_(u"Deep Palpation"))
+        self.down_label = gtk.Label()
+        self.down_label.set_markup("<span foreground='blue' font_weight='bold'>" + _(u"Deep Palpation") + "</span>")
         self.down_hscale = gtk.HScale()
         self.down_hscale.set_digits(0)
         self.down_hscale.set_range(0, 255)
         self.down_hscale.set_value(down)
         self.down_hscale.set_property('round_digits', 3)
         
-        self.too_hard_label = gtk.Label(_(u"Too hard"))
+        self.too_hard_label = gtk.Label()
+        self.too_hard_label.set_markup("<span foreground='red' font_weight='bold'>" + _(u"Too hard") + "</span>")
         self.too_hard_hscale = gtk.HScale()
         self.too_hard_hscale.set_digits(0)
         self.too_hard_hscale.set_range(0, 255)
