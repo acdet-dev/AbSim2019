@@ -24,7 +24,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GLib
 
-app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSimBeta'
+app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2019'
 
 
 class MenuBar():

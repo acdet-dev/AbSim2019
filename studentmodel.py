@@ -3,7 +3,7 @@ import os
 
 import sqlite3
 
-app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSimBeta'
+app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2019'
 
 
 class StudentModel:

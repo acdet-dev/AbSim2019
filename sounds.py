@@ -16,8 +16,6 @@ import copy
 from sim_constants import generic_sound_quests
 
 
-
-
 class Sounds:
     def __init__(self, state_watcher, pressurepoints, ailments, touchalerter):
         self.pressurepoints = pressurepoints

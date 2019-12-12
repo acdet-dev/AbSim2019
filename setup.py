@@ -3,6 +3,7 @@ import py2exe
 import sys, os, site, shutil
 import glob
 
+
 def find_data_files(source,target,patterns):
     """Locates the specified data-files and returns the matches
     in a data_files compatible format.
@@ -31,7 +32,9 @@ site_dir = site.getsitepackages()[1]
 
 include_dll_path = os.path.join(site_dir, "gnome") 
 
-gtk_dirs_to_include = ['etc', 'lib\\gtk-3.0', 'lib\\girepository-1.0', 'lib\\gio', 'lib\\gdk-pixbuf-2.0', 'share\\glib-2.0', 'share\\fonts', 'share\\icons', 'share\\themes\\Default', 'share\\themes\\HighContrast'] 
+gtk_dirs_to_include = ['etc', 'lib\\gtk-3.0', 'lib\\girepository-1.0', 'lib\\gio', 'lib\\gdk-pixbuf-2.0',
+                       'share\\glib-2.0', 'share\\fonts', 'share\\icons', 'share\\themes\\Default',
+                       'share\\themes\\HighContrast']
 
 gtk_dlls = [] 
 tmp_dlls = [] 

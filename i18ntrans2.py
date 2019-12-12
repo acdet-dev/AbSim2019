@@ -36,12 +36,12 @@ class MessageDialogWindow(Gtk.Window):
 path = os.getcwd()
 
 app_data = os.getenv('LOCALAPPDATA')
-if not os.path.exists(app_data + '\\AbSimBeta'):
-    os.mkdir(app_data + '\\AbSimBeta')
-    shutil.copy(path + '\\locale.json', app_data + '\\AbSimBeta\\locale.json')
-    shutil.copy(path + '\\tare.json', app_data + '\\AbSimBeta\\tare.json')
-    shutil.copy(path + '\\sensitivity.json', app_data + '\\AbSimBeta\\sensitivity.json')
-    shutil.copy(path + '\\cnc_adjustments.json', app_data + '\\AbSimBeta\\cnc_adjustments.json')
+if not os.path.exists(app_data + '\\AbSim2019'):
+    os.mkdir(app_data + '\\AbSim2019')
+    shutil.copy(path + '\\locale.json', app_data + '\\AbSim2019\\locale.json')
+    shutil.copy(path + '\\tare.json', app_data + '\\AbSim2019\\tare.json')
+    shutil.copy(path + '\\sensitivity.json', app_data + '\\AbSim2019\\sensitivity.json')
+    shutil.copy(path + '\\cnc_adjustments.json', app_data + '\\AbSim2019\\cnc_adjustments.json')
 
 loglevels = { 'CRITICAL': logging.CRITICAL,
               'ERROR': logging.ERROR,
@@ -50,7 +50,7 @@ loglevels = { 'CRITICAL': logging.CRITICAL,
               'DEBUG': logging.DEBUG}
 
 loglevel = os.getenv('ABSIMLOG', 'WARNING')
-logging.basicConfig(filename=app_data + '\\AbSimBeta\\log.txt', filemode='w', level=logging.DEBUG)
+logging.basicConfig(filename=app_data + '\\AbSim2019\\log.txt', filemode='w', level=logging.DEBUG)
 
 # Load our locale override setting (persistent from last run of program)
 locale_config = config.Config("locale.json")
@@ -64,11 +64,11 @@ logging.debug("We have i18n gettext directory: " + gettext_dir)
 # Introspect location of Ab-Sim source code:
 source = os.getcwd()
 app_data = os.getenv('LOCALAPPDATA')
-if not os.path.exists(app_data + '\\AbSimBeta\\i18n'):
-    shutil.copytree(os.path.join(source, 'i18n'), app_data + '\\AbSimBeta\\i18n')
+if not os.path.exists(app_data + '\\AbSim2019\\i18n'):
+    shutil.copytree(os.path.join(source, 'i18n'), app_data + '\\AbSim2019\\i18n')
 
-if os.path.exists(app_data + '\\AbSimBeta\\i18n'):
-    source = app_data + '\\AbSimBeta'
+if os.path.exists(app_data + '\\AbSim2019\\i18n'):
+    source = app_data + '\\AbSim2019'
 
 # Reset the locale to system default.
 locale.setlocale(locale.LC_ALL, '')

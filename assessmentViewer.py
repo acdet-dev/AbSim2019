@@ -156,7 +156,7 @@ class ViewsController:
         import csv
 
         # get absim current dir and desktop
-        c_dir = os.getenv('LOCALAPPDATA') + '\\AbSimBeta'
+        c_dir = os.getenv('LOCALAPPDATA') + '\\AbSim2019'
         desktop = os.getenv('USERPROFILE') + '\\Desktop'
 
         # get headers as list to pass to writer
@@ -455,7 +455,7 @@ class ViewBaselineAssessments:
         import csv
 
         # get relevant dirs
-        c_dir = os.getenv('LOCALAPPDATA') + '\\AbSimBeta'
+        c_dir = os.getenv('LOCALAPPDATA') + '\\AbSim2019'
         desktop = os.getenv('USERPROFILE') + '\\Desktop'
 
         # create file string
