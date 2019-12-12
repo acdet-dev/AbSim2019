@@ -5,6 +5,7 @@ import sqlite3
 
 app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2019'
 
+
 class TakenModel:
     def __init__(self, db_filename=app_data_path + '\\faculty_info.db'):
         self.db_filename = db_filename
