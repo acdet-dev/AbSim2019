@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-12-12 09:48+Central Standard Time\n"
+"POT-Creation-Date: 2019-12-12 10:54+Central Standard Time\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1019,7 +1019,7 @@ msgid "Click \"Save Sensitivity Settings\" to save your choices."
 msgstr ""
 
 #: pressurepoints.py:225
-msgid "You may view the effects of your changes on the image to the right."
+msgid " You may view the effects of your changes on the image to the right."
 msgstr ""
 
 #: pressurepoints.py:226

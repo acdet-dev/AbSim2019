@@ -5,6 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/i18n/ab_sim-en.po" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ab_sim-en.po" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/i18n/ab_sim.pot" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ab_sim.pot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/en/LC_MESSAGES/ab_sim.mo" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/en/LC_MESSAGES/ab_sim.mo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pressurepoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/pressurepoints.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/i18n/ab_sim-en.po">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="2416" column="10" lean-forward="true" selection-start-line="2416" selection-start-column="10" selection-end-line="2416" selection-end-column="10" />
+            <state relative-caret-position="179">
+              <caret line="1670" column="67" selection-start-line="1670" selection-start-column="67" selection-end-line="1670" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -84,6 +86,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pressurepoints.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="224" column="26" selection-start-line="224" selection-start-column="26" selection-end-line="224" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sounds.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
@@ -108,7 +119,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>print</find>
       <find>time</find>
       <find>ab_end</find>
       <find>_end</find>
@@ -138,6 +148,7 @@
       <find>attributes</find>
       <find>attribute</find>
       <find>home</find>
+      <find>you may</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -159,7 +170,6 @@
         <option value="$PROJECT_DIR$/testCreator.py" />
         <option value="$PROJECT_DIR$/viewPerformance.py" />
         <option value="$PROJECT_DIR$/viewAssignments.py" />
-        <option value="$PROJECT_DIR$/pressurepoints.py" />
         <option value="$PROJECT_DIR$/admin.py" />
         <option value="$PROJECT_DIR$/serialport.py" />
         <option value="$PROJECT_DIR$/messages.py" />
@@ -176,6 +186,7 @@
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/sounds.py" />
         <option value="$PROJECT_DIR$/takenmodel.py" />
+        <option value="$PROJECT_DIR$/pressurepoints.py" />
         <option value="$PROJECT_DIR$/i18n/ab_sim-en.po" />
       </list>
     </option>
@@ -188,10 +199,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1945" />
-    <option name="y" value="-9" />
-    <option name="width" value="1380" />
-    <option name="height" value="744" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -458,11 +469,18 @@
       <option name="project" value="LOCAL" />
       <updated>1576165233483</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Update i18n po">
+      <created>1576169314652</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1576169314652</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.112223394" />
@@ -526,7 +544,8 @@
     <MESSAGE value="Checked file cancel option." />
     <MESSAGE value="Change beta string to 2019" />
     <MESSAGE value="Changed spacing for formatting." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed spacing for formatting." />
+    <MESSAGE value="Update i18n po" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update i18n po" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/defineUser.py">
@@ -669,13 +688,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PKGBUILD">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pressurepoints.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="307" column="46" selection-start-line="307" selection-start-column="46" selection-end-line="307" selection-end-column="46" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/prototypetext.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -889,10 +901,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pressurepoints.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="224" column="26" selection-start-line="224" selection-start-column="26" selection-end-line="224" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/i18n/ab_sim-en.po">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="2416" column="10" lean-forward="true" selection-start-line="2416" selection-start-column="10" selection-end-line="2416" selection-end-column="10" />
+        <state relative-caret-position="179">
+          <caret line="1670" column="67" selection-start-line="1670" selection-start-column="67" selection-end-line="1670" selection-end-column="67" />
         </state>
       </provider>
     </entry>

@@ -222,7 +222,7 @@ class SensitivitySettings(gtk.VBox):
                      _(u"from 15 - 54") + "<span foreground='red' font_weight='bold'>" + "\n" + _(u"too hard ") + \
                      "</span>" + _(u"> 55).") + "\n\n" + \
                      _(u'Click "Save Sensitivity Settings" to save your choices.') + \
-                     _(u"You may view the effects of your changes on the image to the right.") + "\n\n" + \
+                     _(u" You may view the effects of your changes on the image to the right.") + "\n\n" + \
                      _(u'If you notice "ghost" registers of pressure, click "Tare / Zero Sensors".')
         label_pre_mark = construct_markup(label_text, font_size=14)
         label.set_markup(label_pre_mark)
