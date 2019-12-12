@@ -41,8 +41,9 @@ class StudentModel:
             (section, user_last, user_first, student_id)
             VALUES (?, ?, ?, ?)
         '''
-        c.execute(stmt, (section, user_last, user_first, student_id))
+
         try:
+            c.execute(stmt, (section, user_last, user_first, student_id))
             db_conn.commit()
             logging.debug('db updated')
         except:

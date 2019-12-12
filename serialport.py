@@ -98,8 +98,8 @@ class Sensors(threading.Thread):
                     self.read_from_port()
                 except serial.SerialException as e:
                     logging.debug(e)
-                    logging.debug('Closing sensor port on try read command')
-                    self.port.close()
+                    logging.debug('sensor port failing to read on try read command; setting to none')
+                    # self.port.close()
                     self.port = None
                 self.command = 0
                 try:

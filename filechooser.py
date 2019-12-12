@@ -40,16 +40,22 @@ class FileChooserWindow(Gtk.Window):
             s = sim_class_message(self, info_string=_(u'Class Section Name'), secondary_text=_(u'Provide AbSim a class '
                                                                                                u'section identifier '
                                                                                                u'(i.e. Section 1)'))
+            if s:
+                with open(dialog.get_filename(), encoding='utf-8') as csvfile:
+                    readCSV = csv.reader(csvfile, delimiter=',')
+                    for row in readCSV:
+                        self.save_info(s, row[0], row[1], row[2])
 
-            with open(dialog.get_filename(), encoding='utf-8') as csvfile:
-                readCSV = csv.reader(csvfile, delimiter=',')
-                for row in readCSV:
-                    self.save_info(s, row[0], row[1], row[2])
+                sim_message(self, info_string=_(u'Class Uploaded Successfully'), secondary_text=_(u'Students may now '
+                                                                                                  u'login to view '
+                                                                                                  u'exams you assign.'))
 
-            sim_message(self, info_string=_(u'Class Uploaded Successfully'), secondary_text=_(u'Students may now '
-                                                                                              u'login to view exams '
-                                                                                              u'you assign.'))
-            csvfile.close()
+                csvfile.close()
+
+            else:
+                sim_message(self, info_string=_(u'Class Upload Failed'), secondary_text=_(u'Section information '
+                                                                                          u'not provided.'))
+
             self.hide()
         elif response == Gtk.ResponseType.CANCEL:
             logging.debug("Cancel clicked")
