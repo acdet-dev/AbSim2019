@@ -43,139 +43,139 @@ msgstr "Sensitivity"
 msgid "Return Home"
 msgstr "Return Home"
 
-#: admin.py:231
+#: admin.py:232
 msgid "Click the arrows to calibrate actuator"
 msgstr "Click the arrows to calibrate actuator"
 
-#: admin.py:232
+#: admin.py:233
 msgid "positioning for all ailments at once."
 msgstr "positioning for all ailments at once."
 
-#: assessmentViewer.py:78
+#: assessmentViewer.py:77
 msgid "No Assessments Taken"
 msgstr "No Assessments Taken"
 
-#: assessmentViewer.py:79
+#: assessmentViewer.py:78
 msgid "Please check back when students have taken your assessment."
 msgstr "Please check back when students have taken your assessment."
 
-#: assessmentViewer.py:164 assessmentViewer.py:346 assessmentViewer.py:466
-#: assessmentViewer.py:499
+#: assessmentViewer.py:163 assessmentViewer.py:345 assessmentViewer.py:465
+#: assessmentViewer.py:498
 msgid "Student ID"
 msgstr "Student ID"
 
-#: assessmentViewer.py:164 assessmentViewer.py:361
+#: assessmentViewer.py:163 assessmentViewer.py:360
 msgid "Score"
 msgstr "Score"
 
-#: assessmentViewer.py:164 assessmentViewer.py:367 assessmentViewer.py:467
-#: assessmentViewer.py:537
+#: assessmentViewer.py:163 assessmentViewer.py:366 assessmentViewer.py:466
+#: assessmentViewer.py:536
 msgid "Time Elapsed"
 msgstr "Time Elapsed"
 
-#: assessmentViewer.py:169
+#: assessmentViewer.py:165
 msgid "_abnormality_data.csv"
 msgstr "_abnormality_data.csv"
 
-#: assessmentViewer.py:183 assessmentViewer.py:207 assessmentViewer.py:477
+#: assessmentViewer.py:182 assessmentViewer.py:206 assessmentViewer.py:476
 msgid "Exam Data Exported!"
 msgstr "Exam Data Exported!"
 
-#: assessmentViewer.py:184 assessmentViewer.py:208 assessmentViewer.py:478
+#: assessmentViewer.py:183 assessmentViewer.py:207 assessmentViewer.py:477
 msgid "A CSV file with exam data was created in AbSim's directory."
 msgstr "A CSV file with exam data was created in AbSim's directory."
 
-#: assessmentViewer.py:193
+#: assessmentViewer.py:192
 msgid "_case_text_data.csv"
 msgstr "_case_text_data.csv"
 
-#: assessmentViewer.py:227
+#: assessmentViewer.py:226
 msgid "Export to Desktop"
 msgstr "Export to Desktop"
 
-#: assessmentViewer.py:231 viewAssignments.py:362 viewPerformance.py:147
+#: assessmentViewer.py:230 viewAssignments.py:378 viewPerformance.py:147
 msgid "Return"
 msgstr "Return"
 
-#: assessmentViewer.py:246 casetext.py:40 casetext.py:61 casetext.py:81
+#: assessmentViewer.py:245 casetext.py:40 casetext.py:61 casetext.py:81
 #: ddxpractice.py:24 prototypetext.py:20 testCreator.py:302
-#: viewAssignments.py:1008
+#: viewAssignments.py:1025
 msgid "Upper Gastrointestinal Etiology"
 msgstr "Upper Gastrointestinal Etiology"
 
-#: assessmentViewer.py:247 casetext.py:103 casetext.py:123 casetext.py:143
+#: assessmentViewer.py:246 casetext.py:103 casetext.py:123 casetext.py:143
 #: ddxpractice.py:25 prototypetext.py:48 testCreator.py:303
-#: viewAssignments.py:1009
+#: viewAssignments.py:1026
 msgid "Choledocolithiasis"
 msgstr "Choledocolithiasis"
 
-#: assessmentViewer.py:248 casetext.py:165 casetext.py:185 casetext.py:205
+#: assessmentViewer.py:247 casetext.py:165 casetext.py:185 casetext.py:205
 #: ddxpractice.py:26 prototypetext.py:71 testCreator.py:304
-#: viewAssignments.py:1010
+#: viewAssignments.py:1027
 msgid "Pancreatitis"
 msgstr "Pancreatitis"
 
-#: assessmentViewer.py:249 casetext.py:227 casetext.py:247 casetext.py:265
+#: assessmentViewer.py:248 casetext.py:227 casetext.py:247 casetext.py:265
 #: casetext.py:285 ddxpractice.py:27 prototypetext.py:97 testCreator.py:305
-#: viewAssignments.py:1011
+#: viewAssignments.py:1028
 msgid "Cholecystitis"
 msgstr "Cholecystitis"
 
-#: assessmentViewer.py:250 casetext.py:308 casetext.py:328 casetext.py:347
+#: assessmentViewer.py:249 casetext.py:308 casetext.py:328 casetext.py:347
 #: ddxpractice.py:28 prototypetext.py:119 testCreator.py:306
-#: viewAssignments.py:1012
+#: viewAssignments.py:1029
 msgid "Mesenteric Infarction"
 msgstr "Mesenteric Infarction"
 
-#: assessmentViewer.py:251 casetext.py:370 casetext.py:391 casetext.py:412
+#: assessmentViewer.py:250 casetext.py:370 casetext.py:391 casetext.py:412
 #: ddxpractice.py:29 prototypetext.py:146 testCreator.py:307
-#: viewAssignments.py:1013
+#: viewAssignments.py:1030
 msgid "Small Bowel Obstruction"
 msgstr "Small Bowel Obstruction"
 
-#: assessmentViewer.py:252 casetext.py:432 casetext.py:449 casetext.py:467
+#: assessmentViewer.py:251 casetext.py:432 casetext.py:449 casetext.py:467
 #: casetext.py:485 ddxpractice.py:30 prototypetext.py:173 testCreator.py:308
-#: viewAssignments.py:1014
+#: viewAssignments.py:1031
 msgid "Appendicitis"
 msgstr "Appendicitis"
 
-#: assessmentViewer.py:253 casetext.py:506 casetext.py:526 casetext.py:543
+#: assessmentViewer.py:252 casetext.py:506 casetext.py:526 casetext.py:543
 #: ddxpractice.py:31 prototypetext.py:194 testCreator.py:309
-#: viewAssignments.py:1015
+#: viewAssignments.py:1032
 msgid "Diverticulitis"
 msgstr "Diverticulitis"
 
-#: assessmentViewer.py:254 casetext.py:566 casetext.py:585 casetext.py:604
+#: assessmentViewer.py:253 casetext.py:566 casetext.py:585 casetext.py:604
 #: ddxpractice.py:32 prototypetext.py:215 testCreator.py:310
-#: viewAssignments.py:1016
+#: viewAssignments.py:1033
 msgid "Acute Enteritis"
 msgstr "Acute Enteritis"
 
-#: assessmentViewer.py:463
+#: assessmentViewer.py:462
 msgid "_baseline_data.csv"
 msgstr "_baseline_data.csv"
 
-#: assessmentViewer.py:466 assessmentViewer.py:513
+#: assessmentViewer.py:465 assessmentViewer.py:512
 msgid "Not Palpated"
 msgstr "Not Palpated"
 
-#: assessmentViewer.py:466 assessmentViewer.py:519 pressurepoints.py:186
+#: assessmentViewer.py:465 assessmentViewer.py:518 pressurepoints.py:189
 msgid "Light Palpation"
 msgstr "Light Palpation"
 
-#: assessmentViewer.py:466 assessmentViewer.py:525 pressurepoints.py:193
+#: assessmentViewer.py:465 assessmentViewer.py:524 pressurepoints.py:198
 msgid "Deep Palpation"
 msgstr "Deep Palpation"
 
-#: assessmentViewer.py:466 assessmentViewer.py:531
+#: assessmentViewer.py:465 assessmentViewer.py:530
 msgid "Too Deep"
 msgstr "Too Deep"
 
-#: cases.py:32 caseselector.py:23 selfpractice.py:252 viewAssignments.py:791
+#: cases.py:32 caseselector.py:23 selfpractice.py:252 viewAssignments.py:808
 msgid "No Abnormalities"
 msgstr "No Abnormalities"
 
-#: cases.py:33 caseselector.py:26 selfpractice.py:264 viewAssignments.py:794
+#: cases.py:33 caseselector.py:26 selfpractice.py:264 viewAssignments.py:811
 msgid "Appendix Tenderness"
 msgstr "Appendix Tenderness"
 
@@ -191,7 +191,7 @@ msgstr "Appendix Tenderness with Rebound Tenderness"
 msgid "Appendix Tenderness with Guarding and Rebound Tenderness"
 msgstr "Appendix Tenderness with Guarding and Rebound Tenderness"
 
-#: cases.py:37 caseselector.py:32 viewAssignments.py:800
+#: cases.py:37 caseselector.py:32 viewAssignments.py:817
 msgid "Colon, Left Lower Tenderness"
 msgstr "Colon, Left Lower Tenderness"
 
@@ -199,7 +199,7 @@ msgstr "Colon, Left Lower Tenderness"
 msgid "Colon, Left Lower Tenderness with Guarding"
 msgstr "Colon, Left Lower Tenderness with Guarding"
 
-#: cases.py:39 caseselector.py:36 selfpractice.py:268 viewAssignments.py:804
+#: cases.py:39 caseselector.py:36 selfpractice.py:268 viewAssignments.py:821
 msgid "Gallbladder Tenderness"
 msgstr "Gallbladder Tenderness"
 
@@ -207,11 +207,11 @@ msgstr "Gallbladder Tenderness"
 msgid "Gallbladder Tenderness with Guarding"
 msgstr "Gallbladder Tenderness with Guarding"
 
-#: cases.py:41 caseselector.py:40 selfpractice.py:269 viewAssignments.py:808
+#: cases.py:41 caseselector.py:40 selfpractice.py:269 viewAssignments.py:825
 msgid "Gastric Tenderness"
 msgstr "Gastric Tenderness"
 
-#: cases.py:42 caseselector.py:43 viewAssignments.py:811
+#: cases.py:42 caseselector.py:43 viewAssignments.py:828
 msgid "Ovary, Left Tenderness"
 msgstr "Ovary, Left Tenderness"
 
@@ -219,7 +219,7 @@ msgstr "Ovary, Left Tenderness"
 msgid "Ovary, Left Tenderness with Guarding"
 msgstr "Ovary, Left Tenderness with Guarding"
 
-#: cases.py:44 caseselector.py:47 viewAssignments.py:815
+#: cases.py:44 caseselector.py:47 viewAssignments.py:832
 msgid "Ovary, Right Tenderness"
 msgstr "Ovary, Right Tenderness"
 
@@ -227,41 +227,41 @@ msgstr "Ovary, Right Tenderness"
 msgid "Ovary, Right Tenderness with Guarding"
 msgstr "Ovary, Right Tenderness with Guarding"
 
-#: cases.py:46 caseselector.py:51 viewAssignments.py:819
+#: cases.py:46 caseselector.py:51 viewAssignments.py:836
 msgid "Pancreas Tenderness"
 msgstr "Pancreas Tenderness"
 
-#: cases.py:47 caseselector.py:54 viewAssignments.py:822
+#: cases.py:47 caseselector.py:54 viewAssignments.py:839
 msgid "Urinary Bladder Tenderness"
 msgstr "Urinary Bladder Tenderness"
 
-#: cases.py:48 caseselector.py:59 selfpractice.py:282 viewAssignments.py:827
+#: cases.py:48 caseselector.py:59 selfpractice.py:282 viewAssignments.py:844
 msgid "Hepatomegaly"
 msgstr "Hepatomegaly"
 
-#: cases.py:49 caseselector.py:60 selfpractice.py:282 viewAssignments.py:828
+#: cases.py:49 caseselector.py:60 selfpractice.py:282 viewAssignments.py:845
 msgid "Splenomegaly"
 msgstr "Splenomegaly"
 
-#: cases.py:50 caseselector.py:61 selfpractice.py:283 viewAssignments.py:829
+#: cases.py:50 caseselector.py:61 selfpractice.py:283 viewAssignments.py:846
 msgid "Enlarged Urinary Bladder"
 msgstr "Enlarged Urinary Bladder"
 
 #: caseselector.py:27 caseselector.py:33 caseselector.py:37 caseselector.py:44
-#: caseselector.py:48 viewAssignments.py:795 viewAssignments.py:801
-#: viewAssignments.py:805 viewAssignments.py:812 viewAssignments.py:816
+#: caseselector.py:48 viewAssignments.py:812 viewAssignments.py:818
+#: viewAssignments.py:822 viewAssignments.py:829 viewAssignments.py:833
 msgid "With Guarding"
 msgstr "With Guarding"
 
-#: caseselector.py:28 viewAssignments.py:796
+#: caseselector.py:28 viewAssignments.py:813
 msgid "With Rebound Tenderness"
 msgstr "With Rebound Tenderness"
 
-#: caseselector.py:29 viewAssignments.py:797
+#: caseselector.py:29 viewAssignments.py:814
 msgid "With Guarding and Rebound Tenderness"
 msgstr "With Guarding and Rebound Tenderness"
 
-#: caseselector.py:76 viewAssignments.py:844 viewAssignments.py:1031
+#: caseselector.py:76 viewAssignments.py:861 viewAssignments.py:1048
 msgid "Ailment"
 msgstr "Ailment"
 
@@ -1592,6 +1592,14 @@ msgstr "Class Uploaded Successfully"
 msgid "Students may now login to view exams you assign."
 msgstr "Students may now login to view exams you assign."
 
+#: filechooser.py:56
+msgid "Class Upload Failed"
+msgstr "Class Upload Failed"
+
+#: filechooser.py:56
+msgid "Section information not provided."
+msgstr "Section information not provided."
+
 #: i18ntrans2.py:535
 msgid "New locale override "
 msgstr "New locale override "
@@ -1680,17 +1688,65 @@ msgstr "Would you like to reset the user info provided?"
 msgid "Class Section"
 msgstr "Class Section"
 
-#: pressurepoints.py:174
+#: pressurepoints.py:176
 msgid "Tare / Zero Sensors"
 msgstr "Tare / Zero Sensors"
 
-#: pressurepoints.py:179
+#: pressurepoints.py:181
 msgid "Save Sensitivity Settings"
 msgstr "Save Sensitivity Settings"
 
-#: pressurepoints.py:200
+#: pressurepoints.py:206
 msgid "Too hard"
 msgstr "Too hard"
+
+#: pressurepoints.py:218
+msgid "Sensitivity Configuration Interface"
+msgstr "Sensitivity Configuration Interface"
+
+#: pressurepoints.py:219
+msgid "(e.g. "
+msgstr "(e.g. "
+
+#: pressurepoints.py:219
+msgid "Set pressure pad sensitivity thresholds:"
+msgstr "Set pressure pad sensitivity thresholds:"
+
+#: pressurepoints.py:220
+msgid "from 5 - 14"
+msgstr "from 5 - 14"
+
+#: pressurepoints.py:220
+msgid "light "
+msgstr "light "
+
+#: pressurepoints.py:221
+msgid "deep "
+msgstr "deep "
+
+#: pressurepoints.py:222
+msgid "from 15 - 54"
+msgstr "from 15 - 54"
+
+#: pressurepoints.py:222
+msgid "too hard "
+msgstr "too hard "
+
+#: pressurepoints.py:223
+msgid "> 55)."
+msgstr "> 55)."
+
+#: pressurepoints.py:224
+msgid "Click \"Save Sensitivity Settings\" to save your choices."
+msgstr "Click \"Save Sensitivity Settings\" to save your choices."
+
+#: pressurepoints.py:225
+msgid "You may view the effects of your changes on the image to the right."
+msgstr "You may view the effects of your changes on the image to the right."
+
+#: pressurepoints.py:226
+msgid "If you notice \"ghost\" registers of pressure, click \"Tare / Zero Sensors\"."
+msgstr "If you notice \"ghost\" registers of pressure, click \"Tare / Zero Sensors\"."
 
 #: prototypetext.py:21 prototypetext.py:72 prototypetext.py:98
 #: prototypetext.py:120 prototypetext.py:147 prototypetext.py:174
@@ -2287,39 +2343,51 @@ msgstr "View Assessments"
 msgid "Assessment Title"
 msgstr "Assessment Title"
 
-#: viewAssignments.py:358
+#: viewAssignments.py:346
+msgid "Welcome to AbSim's Assessment Interface"
+msgstr "Welcome to AbSim's Assessment Interface"
+
+#: viewAssignments.py:347
+msgid "Select an assessment and click 'Begin Assessment' when ready."
+msgstr "Select an assessment and click 'Begin Assessment' when ready."
+
+#: viewAssignments.py:374
 msgid "Begin Assessment"
 msgstr "Begin Assessment"
 
-#: viewAssignments.py:474
+#: viewAssignments.py:490
 msgid "Assessment Not Found."
 msgstr "Assessment Not Found."
 
-#: viewAssignments.py:475 viewAssignments.py:571 viewAssignments.py:699
-#: viewAssignments.py:741 viewAssignments.py:933
+#: viewAssignments.py:491 viewAssignments.py:588 viewAssignments.py:716
+#: viewAssignments.py:758 viewAssignments.py:950
 msgid "You may take another assessment if you have more to take."
 msgstr "You may take another assessment if you have more to take."
 
-#: viewAssignments.py:570 viewAssignments.py:698 viewAssignments.py:740
-#: viewAssignments.py:932
+#: viewAssignments.py:505 viewPerformance.py:58
+msgid "Select Assessment"
+msgstr "Select Assessment"
+
+#: viewAssignments.py:506
+msgid "Please select an assessment and click \"Begin Assessment\"."
+msgstr "Please select an assessment and click \"Begin Assessment\"."
+
+#: viewAssignments.py:587 viewAssignments.py:715 viewAssignments.py:757
+#: viewAssignments.py:949
 msgid "Assessment Finished."
 msgstr "Assessment Finished."
 
-#: viewAssignments.py:587
+#: viewAssignments.py:504
 msgid "Perform a baseline assessment and click 'OK' when finished."
 msgstr "Perform a baseline assessment and click 'OK' when finished."
 
-#: viewAssignments.py:596
+#: viewAssignments.py:513
 msgid "Ok"
 msgstr "Ok"
 
-#: viewAssignments.py:764 viewAssignments.py:956
+#: viewAssignments.py:781 viewAssignments.py:973
 msgid "Make Selection"
 msgstr "Make Selection"
-
-#: viewPerformance.py:58
-msgid "Select Assessment"
-msgstr "Select Assessment"
 
 #: viewPerformance.py:64
 msgid "Baseline Palpation"
