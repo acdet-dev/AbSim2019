@@ -8,6 +8,7 @@ import glob
 import serial
 import serial.tools.list_ports
 import observer
+import time
 import queue as Queue
 from gi.repository import GObject
 GObject.threads_init()
