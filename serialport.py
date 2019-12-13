@@ -208,6 +208,7 @@ class Sensors(threading.Thread):
         else:
             self.port = None
 
+
 def list_serial_ports():
     """Lists serial ports
 
@@ -220,10 +221,9 @@ def list_serial_ports():
 
     result = {}
     for port in ports:
-        if "Arduino" in str(port):
+        if "Bluetooth" not in str(port):
             try:
-                str_port = re.findall(r'^COM\d+', str(port))
-                s_connection = serial.Serial(str_port[0], 38400, timeout=5)
+                s_connection = serial.Serial(port.device, 38400, timeout=1)
                 time.sleep(1)
                 initial_read = bytearray(s_connection.read(size=100))
 
@@ -240,7 +240,7 @@ def list_serial_ports():
                 # device_id = s_connection.read()
 
             except (OSError, serial.SerialException):
-                pass
+                logging.debug('Not connecting on first run. Will try reconnect.')
 
     return result
 
@@ -257,10 +257,9 @@ def look_for_device(device_id):
     pattern = patterns[device_id]
 
     for port in ports:
-        if "Arduino" in str(port):
+        if "Bluetooth" not in str(port):
             try:
-                str_port = re.findall(r'^COM\d+', str(port))
-                s_connection = serial.Serial(str_port[0], 38400, timeout=5)
+                s_connection = serial.Serial(port.device, 38400, timeout=1)
                 time.sleep(1)
                 initial_read = bytearray(s_connection.read(size=100))
 
@@ -270,7 +269,7 @@ def look_for_device(device_id):
                     s_connection.close()
 
             except (OSError, serial.SerialException):
-                pass
+                logging.info("Not connecting to device on reconnect")
 
 
 def build_platform_port_list():
