@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d7a6e5a-5cd6-4b6b-9c3f-28fcc3795056" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/serialport.py" beforeDir="false" afterPath="$PROJECT_DIR$/serialport.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/absim2019iss4.iss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absim2019installer.exe" beforeDir="false" afterPath="$PROJECT_DIR$/absim2019installer.exe" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +72,7 @@
         <entry file="file://$PROJECT_DIR$/port_settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-714">
-              <caret line="73" column="35" lean-forward="true" selection-start-line="73" selection-start-column="35" selection-end-line="73" selection-end-column="35" />
+              <caret line="73" column="35" selection-start-line="73" selection-start-column="35" selection-end-line="73" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -78,7 +80,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/serialport.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="-3395">
               <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
             </state>
           </provider>
@@ -196,10 +198,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1715" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1096" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -510,7 +512,21 @@
       <option name="project" value="LOCAL" />
       <updated>1576252238326</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Fix remove time import.">
+      <created>1576252290742</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1576252290742</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Add new dist">
+      <created>1576252427401</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1576252427401</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TodoView">
@@ -523,10 +539,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07903056" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11160714" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -537,7 +552,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.21668473" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32733223" />
       <window_info anchor="bottom" id="Python Console" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3289689" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -565,8 +580,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Finished process flow for exam viewing." />
-    <MESSAGE value="Made everything translatable in test feedback interface." />
     <MESSAGE value="Created pot file." />
     <MESSAGE value="Created a reset login logic; removed columns." />
     <MESSAGE value="Bolded test creation options." />
@@ -590,7 +603,9 @@
     <MESSAGE value="Add iss and exe and changes to iss" />
     <MESSAGE value="Change serial connection check." />
     <MESSAGE value="Remove unnecessary import" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove unnecessary import" />
+    <MESSAGE value="Fix remove time import." />
+    <MESSAGE value="Add new dist" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add new dist" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/defineUser.py">
@@ -946,13 +961,13 @@
     <entry file="file://$PROJECT_DIR$/port_settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-714">
-          <caret line="73" column="35" lean-forward="true" selection-start-line="73" selection-start-column="35" selection-end-line="73" selection-end-column="35" />
+          <caret line="73" column="35" selection-start-line="73" selection-start-column="35" selection-end-line="73" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/serialport.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="-3395">
           <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
         </state>
       </provider>
