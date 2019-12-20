@@ -236,24 +236,30 @@ class ViewsController:
     def get_text(self, heads, flag):
         """ Function to pre-allocate memory to strings for translation """
         from cases import Cases
+        from casetext import CaseText
         if flag == 'ab':
             possible_ab = Cases().pretty_ailment_names
             return [possible_ab[i] if i in possible_ab.keys() else i for i in heads]
 
         if flag == 'ddx':
-            ddx_list = {
-                "Upper Gastrointestinal Etiology": _(u"Upper Gastrointestinal Etiology"),
-                "Choledocolithiasis": _(u"Choledocolithiasis"),
-                "Pancreatitis": _(u"Pancreatitis"),
-                "Cholecystitis": _(u"Cholecystitis"),
-                "Mesenteric Infarction": _(u"Mesenteric Infarction"),
-                "Small Bowel Obstruction": _(u"Small Bowel Obstruction"),
-                "Appendicitis": _(u"Appendicitis"),
-                "Diverticulitis": _(u"Diverticulitis"),
-                "Acute Enteritis": _(u"Acute Enteritis"),
+            ddx_names = CaseText().cases.get(525, [])
+            ddx_list = []
+            for j in ddx_names:
+                temp = [i["ddx_name"] for i in j]
+                ddx_list.append(temp[0])
+            ddx_dict = {
+                "Upper Gastrointestinal Etiology": ddx_list[0],
+                "Choledocolithiasis": ddx_list[1],
+                "Pancreatitis": ddx_list[2],
+                "Cholecystitis": ddx_list[3],
+                "Mesenteric Infarction": ddx_list[4],
+                "Small Bowel Obstruction": ddx_list[5],
+                "Appendicitis": ddx_list[6],
+                "Diverticulitis": ddx_list[7],
+                "Acute Enteritis": ddx_list[8],
             }
 
-            return [ddx_list[i] if i in ddx_list.keys() else i for i in heads]
+            return [ddx_dict[i] if i in ddx_dict.keys() else i for i in heads]
 
     def chunkIt(self, seq, num):
         avg = len(seq) / float(num)

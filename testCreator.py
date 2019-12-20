@@ -8,6 +8,7 @@ import time, logging
 
 from simLabels import construct_markup
 from cases import Cases
+from casetext import CaseText
 from i18ntrans2 import _
 
 
@@ -17,7 +18,7 @@ class TestCreator(Gtk.Window):
     def __init__(self, name, password):
 
         #make window
-        Gtk.Window.__init__(self, title="AbSim Assessment Creator")
+        Gtk.Window.__init__(self, title=_(u"AbSim Assessment Creator"))
         self.set_icon_from_file('icon.ico')
         self.maximize()
 
@@ -298,17 +299,11 @@ class DdxExam(Gtk.VBox):
         assessment_label.set_markup(label_pre)
         self.pack_start(assessment_label, False, False, 30)
 
-        ddx_list = [
-            _(u"Upper Gastrointestinal Etiology"),
-            _(u"Choledocolithiasis"),
-            _(u"Pancreatitis"),
-            _(u"Cholecystitis"),
-            _(u"Mesenteric Infarction"),
-            _(u"Small Bowel Obstruction"),
-            _(u"Appendicitis"),
-            _(u"Diverticulitis"),
-            _(u"Acute Enteritis"),
-        ]
+        ddx_names = CaseText().cases.get(525, [])
+        ddx_list = []
+        for j in ddx_names:
+            temp = [i["ddx_name"] for i in j]
+            ddx_list.append(temp[0])
 
         ddx_answer_box = self.build_answer_box(ddx_list)
 

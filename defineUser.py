@@ -143,7 +143,11 @@ class DefineUser(Gtk.Window, MenuBar):
                     self.save_info(faculty_id.strip(), faculty_pw.strip())
 
                     sim_message(self, info_string=_(u"Faculty Added Successfully"),
-                                secondary_text=_(u"Click Faculty to Login."))
+                                secondary_text=_(u"Moving to faculty interface."))
+
+                    self.setup_transfer()
+                    UserType('faculty', credentials[0], credentials[1])
+                    self.finish_transfer()
 
                 else:
                     sim_message(self, info_string=_(u"Faculty NOT Added"),

@@ -8,6 +8,7 @@ import gtk
 import casetext
 import prototypetext
 import cases
+from casetext import CaseText
 import liveview
 from i18ntrans2 import _
 
@@ -20,17 +21,11 @@ class DDXPractice (gtk.HBox):
         self.view_resources = view_resources
         # We don't have any more spaces yet, so this will do for now
         self.space = 525
-        self.ddx_list = [
-            _(u"Upper Gastrointestinal Etiology"),
-            _(u"Choledocolithiasis"),
-            _(u"Pancreatitis"),
-            _(u"Cholecystitis"),
-            _(u"Mesenteric Infarction"),
-            _(u"Small Bowel Obstruction"),
-            _(u"Appendicitis"),
-            _(u"Diverticulitis"),
-            _(u"Acute Enteritis"),
-        ]
+        ddx_names = CaseText().cases.get(525, [])
+        self.ddx_list = []
+        for j in ddx_names:
+            temp = [i["ddx_name"] for i in j]
+            self.ddx_list.append(temp[0])
         
         self.live_view_frame = gtk.AspectFrame(label=None, xalign=0.5, yalign=0.5, ratio=0.789, obey_child=False)
         self.live_view = liveview.LiveView(self.live_view_frame, view_resources)

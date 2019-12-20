@@ -20,6 +20,7 @@ class CaseSelector:
         
         store = self.ddx_tree_store
         # Top level
+        # add pretty ailment names call
         store.append(None, [_(u"No Abnormalities"), 'none n'])
         store.append(None, [u"", 'none n'])
         

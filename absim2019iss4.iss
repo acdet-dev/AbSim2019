@@ -26,7 +26,7 @@ DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 OutputDir=C:\Users\Steve\PycharmProjects\AbSim2019
-OutputBaseFilename=AbSim2019Installer
+OutputBaseFilename=AbSim2019InstallerTestDriver
 SetupIconFile=C:\Users\Steve\PycharmProjects\AbSim2019\dist\icon.ico
 Password=absim2019
 Compression=lzma
@@ -43,6 +43,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "C:\Users\Steve\PycharmProjects\AbSim2019\dist\defineUser.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Steve\PycharmProjects\AbSim2019\dist\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#SourcePath}\{#MyAppIcoName}"; DestDir: "{app}"
+Source: "C:\Users\Steve\PycharmProjects\AbSim2019\dist\drivers\dpinst-x86.exe"; DestDir: "{app}\drivers"; DestName: dpinst.exe; Check: not IsWin64; Flags: ignoreversion
+Source: "C:\Users\Steve\PycharmProjects\AbSim2019\dist\drivers\dpinst-amd64.exe"; DestDir: "{app}\drivers"; DestName: dpinst.exe; Check: IsWin64; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -51,5 +53,6 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; \
     IconFileName: "{app}\{#MyAppIcoName}"; Tasks: desktopicon
 
 [Run]
+Filename: "{app}\drivers\dpinst.exe"; Parameters: "/A /LM";
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 

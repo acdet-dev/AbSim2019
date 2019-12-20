@@ -29,71 +29,6 @@ msgstr "For this milestone, familiarize yourself with how these abnormalities fe
 msgid "In the next step, you will identify them using touch and sound."
 msgstr "In the next step, you will identify them using touch and sound."
 
-#: admin.py:75
-msgid "Pressure"
-msgstr "Pressure"
-
-#: admin.py:75
-msgid "Sensitivity"
-msgstr "Sensitivity"
-
-#: admin.py:164 testCreator.py:152
-msgid "Return Home"
-msgstr "Return Home"
-
-#: admin.py:232
-msgid "Click the arrows to calibrate actuator"
-msgstr "Click the arrows to calibrate actuator"
-
-#: admin.py:233
-msgid "positioning for all ailments at once."
-msgstr "positioning for all ailments at once."
-
-#: assessmentViewer.py:77
-msgid "No Assessments Taken"
-msgstr "No Assessments Taken"
-
-#: assessmentViewer.py:78
-msgid "Please check back when students have taken your assessment."
-msgstr "Please check back when students have taken your assessment."
-
-#: assessmentViewer.py:163 assessmentViewer.py:345 assessmentViewer.py:465
-#: assessmentViewer.py:498
-msgid "Student ID"
-msgstr "Student ID"
-
-#: assessmentViewer.py:163 assessmentViewer.py:360
-msgid "Score"
-msgstr "Score"
-
-#: assessmentViewer.py:163 assessmentViewer.py:366 assessmentViewer.py:466
-#: assessmentViewer.py:536
-msgid "Time Elapsed"
-msgstr "Time Elapsed"
-
-#: assessmentViewer.py:165
-msgid "_abnormality_data.csv"
-msgstr "_abnormality_data.csv"
-
-#: assessmentViewer.py:182 assessmentViewer.py:206 assessmentViewer.py:476
-msgid "Exam Data Exported!"
-msgstr "Exam Data Exported!"
-
-#: assessmentViewer.py:183 assessmentViewer.py:207 assessmentViewer.py:477
-msgid "A CSV file with exam data was created in AbSim's directory."
-msgstr "A CSV file with exam data was created in AbSim's directory."
-
-#: assessmentViewer.py:192
-msgid "_case_text_data.csv"
-msgstr "_case_text_data.csv"
-
-#: assessmentViewer.py:226
-msgid "Export to Desktop"
-msgstr "Export to Desktop"
-
-#: assessmentViewer.py:230 viewAssignments.py:378 viewPerformance.py:147
-msgid "Return"
-msgstr "Return"
 
 #: assessmentViewer.py:245 casetext.py:40 casetext.py:61 casetext.py:81
 #: ddxpractice.py:24 prototypetext.py:20 testCreator.py:302 viewAssignments.py:1025
@@ -141,26 +76,6 @@ msgstr "Diverticulitis"
 #: ddxpractice.py:32 prototypetext.py:215 testCreator.py:310 viewAssignments.py:1033
 msgid "Acute Enteritis"
 msgstr "Acute Enteritis"
-
-#: assessmentViewer.py:462
-msgid "_baseline_data.csv"
-msgstr "_baseline_data.csv"
-
-#: assessmentViewer.py:465 assessmentViewer.py:512
-msgid "Not Palpated"
-msgstr "Not Palpated"
-
-#: assessmentViewer.py:465 assessmentViewer.py:518 pressurepoints.py:189
-msgid "Light Palpation"
-msgstr "Light Palpation"
-
-#: assessmentViewer.py:465 assessmentViewer.py:524 pressurepoints.py:198
-msgid "Deep Palpation"
-msgstr "Deep Palpation"
-
-#: assessmentViewer.py:465 assessmentViewer.py:530
-msgid "Too Deep"
-msgstr "Too Deep"
 
 #: cases.py:32 caseselector.py:23 selfpractice.py:252 viewAssignments.py:808
 msgid "No Abnormalities"
@@ -1317,91 +1232,7 @@ msgstr "Best diagnosis"
 msgid "below"
 msgstr "below"
 
-#: defineUser.py:57
-msgid "Welcome to Absim!"
-msgstr "Welcome to Absim!"
 
-#: defineUser.py:68
-msgid "Faculty"
-msgstr "Faculty"
-
-#: defineUser.py:73
-msgid "Click here to configure AbSim and create assessments"
-msgstr "Click here to configure AbSim and create assessments"
-
-#: defineUser.py:78
-msgid "Student"
-msgstr "Student"
-
-#: defineUser.py:83
-msgid ""
-"Demonstrate proficiency in abdominal palpation through practice and assessments"
-msgstr ""
-"Demonstrate proficiency in abdominal palpation through practice and assessments"
-
-#: defineUser.py:134
-msgid "Please enter the AbSim's initial key to add faculty login"
-msgstr "Please enter the AbSim's initial key to add faculty login"
-
-#: defineUser.py:135 defineUser.py:187
-msgid "AbSim Initial Key"
-msgstr "AbSim Initial Key"
-
-#: defineUser.py:137
-msgid "Add Faculty"
-msgstr "Add Faculty"
-
-#: defineUser.py:137
-msgid "Please enter a user name and password"
-msgstr "Please enter a user name and password"
-
-#: defineUser.py:145
-msgid "Faculty Added Successfully"
-msgstr "Faculty Added Successfully"
-
-#: defineUser.py:146
-msgid "Click Faculty to Login."
-msgstr "Click Faculty to Login."
-
-#: defineUser.py:149 defineUser.py:153
-msgid "Faculty NOT Added"
-msgstr "Faculty NOT Added"
-
-#: defineUser.py:150 defineUser.py:154
-msgid "Please Re-Enter the Initial Key."
-msgstr "Please Re-Enter the Initial Key."
-
-#: defineUser.py:158
-msgid "Faculty Login"
-msgstr "Faculty Login"
-
-#: defineUser.py:158
-msgid "Please enter your user name and password"
-msgstr "Please enter your user name and password"
-
-#: defineUser.py:171 defineUser.py:177 defineUser.py:181 sim.py:211 sim.py:219
-msgid "Login Failed"
-msgstr "Login Failed"
-
-#: defineUser.py:172 defineUser.py:178 sim.py:212 sim.py:220 sim.py:225
-msgid "Username and Password do not match our records."
-msgstr "Username and Password do not match our records."
-
-#: defineUser.py:182
-msgid "No info provided or Cancel clicked."
-msgstr "No info provided or Cancel clicked."
-
-#: defineUser.py:186
-msgid "Please enter the AbSim's initial key to reset faculty login"
-msgstr "Please enter the AbSim's initial key to reset faculty login"
-
-#: defineUser.py:190
-msgid "Faculty Login Data Deleted"
-msgstr "Faculty Login Data Deleted"
-
-#: defineUser.py:191
-msgid "To add another faculty member, click \"Faculty.\""
-msgstr "To add another faculty member, click \"Faculty.\""
 
 #: depthtrainer.py:31
 msgid "In this milestone, practice palpating to the correct depth."
@@ -1495,37 +1326,6 @@ msgstr "Could not save assessment."
 msgid "Could not save assessment because no assessment title entered."
 msgstr "Could not save assessment because no assessment title entered."
 
-#: filechooser.py:15
-msgid "AbSim File Chooser"
-msgstr "AbSim File Chooser"
-
-#: filechooser.py:31
-msgid "Please choose a file"
-msgstr "Please choose a file"
-
-#: filechooser.py:40
-msgid "Class Section Name"
-msgstr "Class Section Name"
-
-#: filechooser.py:40
-msgid "Provide AbSim a class section identifier (i.e. Section 1)"
-msgstr "Provide AbSim a class section identifier (i.e. Section 1)"
-
-#: filechooser.py:49
-msgid "Class Uploaded Successfully"
-msgstr "Class Uploaded Successfully"
-
-#: filechooser.py:49
-msgid "Students may now login to view exams you assign."
-msgstr "Students may now login to view exams you assign."
-
-#: filechooser.py:56
-msgid "Class Upload Failed"
-msgstr "Class Upload Failed"
-
-#: filechooser.py:56
-msgid "Section information not provided."
-msgstr "Section information not provided."
 
 #: i18ntrans2.py:535
 msgid "New locale override "
@@ -1615,65 +1415,6 @@ msgstr "Would you like to reset the user info provided?"
 msgid "Class Section"
 msgstr "Class Section"
 
-#: pressurepoints.py:176
-msgid "Tare / Zero Sensors"
-msgstr "Tare / Zero Sensors"
-
-#: pressurepoints.py:181
-msgid "Save Sensitivity Settings"
-msgstr "Save Sensitivity Settings"
-
-#: pressurepoints.py:206
-msgid "Too hard"
-msgstr "Too hard"
-
-#: pressurepoints.py:218
-msgid "Sensitivity Configuration Interface"
-msgstr "Sensitivity Configuration Interface"
-
-#: pressurepoints.py:219
-msgid "(e.g. "
-msgstr "(e.g. "
-
-#: pressurepoints.py:219
-msgid "Set pressure pad sensitivity thresholds:"
-msgstr "Set pressure pad sensitivity thresholds:"
-
-#: pressurepoints.py:220
-msgid "from 5 - 14"
-msgstr "from 5 - 14"
-
-#: pressurepoints.py:220
-msgid "light "
-msgstr "light "
-
-#: pressurepoints.py:221
-msgid "deep "
-msgstr "deep "
-
-#: pressurepoints.py:222
-msgid "from 15 - 54"
-msgstr "from 15 - 54"
-
-#: pressurepoints.py:222
-msgid "too hard "
-msgstr "too hard "
-
-#: pressurepoints.py:223
-msgid "> 55)."
-msgstr "> 55)."
-
-#: pressurepoints.py:224
-msgid "Click \"Save Sensitivity Settings\" to save your choices."
-msgstr "Click \"Save Sensitivity Settings\" to save your choices."
-
-#: pressurepoints.py:225
-msgid " You may view the effects of your changes on the image to the right."
-msgstr " You may view the effects of your changes on the image to the right."
-
-#: pressurepoints.py:226
-msgid "If you notice \"ghost\" registers of pressure, click \"Tare / Zero Sensors\"."
-msgstr "If you notice \"ghost\" registers of pressure, click \"Tare / Zero Sensors\"."
 
 #: prototypetext.py:21 prototypetext.py:72 prototypetext.py:98 prototypetext.py:120
 #: prototypetext.py:147 prototypetext.py:174 prototypetext.py:195 prototypetext.py:216
@@ -2118,42 +1859,6 @@ msgstr "Organ Enlargement"
 msgid "Organs"
 msgstr "Organs"
 
-#: sim.py:53 sim.py:113
-msgid "Welcome to AbSim!"
-msgstr "Welcome to AbSim!"
-
-#: sim.py:64
-msgid "Configure AbSim"
-msgstr "Configure AbSim"
-
-#: sim.py:69
-msgid "Customize Sensor Pad Pressure Settings"
-msgstr "Customize Sensor Pad Pressure Settings"
-
-#: sim.py:74
-msgid "Add Students"
-msgstr "Add Students"
-
-#: sim.py:79
-msgid "Provide AbSim Student Information"
-msgstr "Provide AbSim Student Information"
-
-#: sim.py:84
-msgid "Create Assessment"
-msgstr "Create Assessment"
-
-#: sim.py:89
-msgid "Construct and Assign Custom Assessments"
-msgstr "Construct and Assign Custom Assessments"
-
-#: sim.py:94 viewPerformance.py:19
-msgid "View Student Performance"
-msgstr "View Student Performance"
-
-#: sim.py:99
-msgid "View Student Scores on Assigned Assessments"
-msgstr "View Student Scores on Assigned Assessments"
-
 #: sim.py:124
 msgid "Self-directed Learning"
 msgstr "Self-directed Learning"
@@ -2210,29 +1915,7 @@ msgstr "AbSim is loading..."
 msgid "(this might take 30 seconds)"
 msgstr "(this might take 30 seconds)"
 
-#: testCreator.py:115
-msgid "2. Abnormality Detection Assessment"
-msgstr "2. Abnormality Detection Assessment"
 
-#: testCreator.py:128
-msgid "Input Assessment Title"
-msgstr "Input Assessment Title"
-
-#: testCreator.py:148
-msgid "Save Assessment"
-msgstr "Save Assessment"
-
-#: testCreator.py:252
-msgid "1. Baseline Assessment"
-msgstr "1. Baseline Assessment"
-
-#: testCreator.py:263
-msgid "Add Baseline Assessment?"
-msgstr "Add Baseline Assessment?"
-
-#: testCreator.py:296
-msgid "3. Case Assessment"
-msgstr "3. Case Assessment"
 
 #: viewAssignments.py:124
 msgid "AbSim Assignment Viewer"
@@ -2300,42 +1983,4 @@ msgstr "Ok"
 msgid "Make Selection"
 msgstr "Make Selection"
 
-#: viewPerformance.py:64
-msgid "Baseline Palpation"
-msgstr "Baseline Palpation"
 
-#: viewPerformance.py:76
-msgid "Case Diagnosis"
-msgstr "Case Diagnosis"
-
-#: viewPerformance.py:143
-msgid "View Exam"
-msgstr "View Assessment"
-
-#: viewPerformance.py:181
-msgid "Enter a Section"
-msgstr "Enter a Section"
-
-#: viewPerformance.py:181
-msgid "Type section name to display results for that section"
-msgstr "Type section name to display results for that section"
-
-#: viewPerformance.py:206 viewPerformance.py:210 viewPerformance.py:214
-msgid "yes"
-msgstr "yes"
-
-#: viewPerformance.py:208 viewPerformance.py:212 viewPerformance.py:216
-msgid "no"
-msgstr "no"
-
-#: viewPerformance.py:234
-msgid "Has Baseline?"
-msgstr "Has Baseline?"
-
-#: viewPerformance.py:240
-msgid "Has Abnormality Detection?"
-msgstr "Has Abnormality Detection?"
-
-#: viewPerformance.py:246
-msgid "Has Case Diagnosis?"
-msgstr "Has Case Diagnosis?"
