@@ -85,12 +85,14 @@ class AStringResources:
         elif self.identifier == "file_chooser":
             string_resources = {
                 "window_title": _(u"AbSim File Chooser"),  # use twice
-                "section_name_dialog": _(u"Class Section Name"),
-                "section_dialog_instructions": _(u"Provide AbSim a class section identifier (i.e. Section 1)."),
+                "section_title": _(u"Section"),  # add trailing space
                 "success_notification": _(u"Class Uploaded Successfully"),
                 "success_description": _(u"Students may now login to view exams you assign."),
                 "failure_notification": _(u"Class Upload Failed"),
-                "failure_description": _(u"Section information not provided.")
+                "failure_description": _(u"Section information not provided."),
+                "any_files": _(u"Any files"),
+                "text_files": _(u"Text files"),
+                "choose_folder": _(u"Please choose a folder")
             }
 
         elif self.identifier == "create_assessments":
