@@ -8,8 +8,9 @@ from i18ntrans2 import _
 
   
 class CaseSelector:
-    def __init__(self, new_case_observer):
+    def __init__(self, new_case_observer, flag=None):
         self.new_case_observer = new_case_observer
+        self.flag = flag
         self.current_case = 'none n'
         
     def build_ddx_tree(self):
@@ -93,4 +94,7 @@ class CaseSelector:
         (model, iter) = selection.get_selected()
         
         self.current_case = model.get(iter, 1)[0]
-        self.new_case_observer.alert(self.current_case)
+
+        if not self.flag:
+            print('happening')
+            self.new_case_observer.alert(self.current_case)

@@ -1,5 +1,4 @@
 import logging
-from i18ntrans2 import _
 import admin
 import viewAssignments
 from simLabels import construct_markup
@@ -8,6 +7,7 @@ import filechooser
 import viewPerformance
 import menu
 import testCreator
+from aStringResources import AStringResources
 
 import gi
 gi.require_version('Gtk', '3.0')
@@ -31,8 +31,10 @@ class UserType(Gtk.Window, menu.MenuBar):
         widget = self.build_logo(box)
 
         if self.usertype == 'student':
+            self.string_resources = AStringResources("sim_screen_student").get_by_identifier()
             self.add_buttons(widget)
         else:
+            self.string_resources = AStringResources("sim_screen_faculty").get_by_identifier()
             self.add_f_buttons(widget)
 
         self.destroy_signal_handler = self.connect('destroy', Gtk.main_quit)
@@ -46,14 +48,6 @@ class UserType(Gtk.Window, menu.MenuBar):
         return widget
 
     def add_f_buttons(self, widget):
-        use_label = Gtk.Label()
-                              # TRANSLATORS Be careful to keep 'size' and 'font' tags.
-                              # TRANSLATORS However, you can change the size of text with these by a small amount
-                              # TRANSLATORS to adjust for fitting text on screen.
-        label_text = _(u'Welcome to AbSim!')
-        label_pre_mark = construct_markup(label_text, font_size=24)
-        use_label.set_markup(label_pre_mark)
-        widget.pack_start(use_label, False, False, 0)
 
         button_table = Gtk.Table(rows=4, columns=2)
         button_table.set_border_width(50)
@@ -61,42 +55,42 @@ class UserType(Gtk.Window, menu.MenuBar):
         button_table.set_row_spacings(30)
         widget.pack_start(button_table, False, False, 10)       
 
-        config_button = self.build_button(_(u"Configure AbSim"))
+        config_button = self.build_button(self.string_resources["config_button"])
         config_button.connect('clicked', self.config)
         button_table.attach(config_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
 
         config_explanation = Gtk.Label()
-        label_text = _(u"Customize Sensor Pad Pressure Settings")
+        label_text = self.string_resources["config_description"]
         label_pre_mark = construct_markup(label_text, font_size=20)
         config_explanation.set_markup(label_pre_mark)
         button_table.attach(config_explanation, 1, 2, 0, 1)
 
-        class_button = self.build_button(_(u"Add Students"))
+        class_button = self.build_button(self.string_resources["add_students_button"])
         class_button.connect('clicked', self.add_class)
         button_table.attach(class_button, 0, 1, 1, 2, xoptions=False, yoptions=False)
 
         class_explanation = Gtk.Label()
-        label_text = _(u"Provide AbSim Student Information")
+        label_text = self.string_resources["add_students_description"]
         label_pre_mark = construct_markup(label_text, font_size=20)
         class_explanation.set_markup(label_pre_mark)
         button_table.attach(class_explanation, 1, 2, 1, 2)
 
-        create_button = self.build_button(_(u"Create Assessment"))
+        create_button = self.build_button(self.string_resources["create_button"])
         create_button.connect('clicked', self.create_exams)
         button_table.attach(create_button, 0, 1, 2, 3, xoptions=False, yoptions=False)
 
         create_explanation = Gtk.Label()
-        label_text = _(u"Construct and Assign Custom Assessments")
+        label_text = self.string_resources["create_description"]
         label_pre_mark = construct_markup(label_text, font_size=20)
         create_explanation.set_markup(label_pre_mark)
         button_table.attach(create_explanation, 1, 2, 2, 3)
 
-        score_button = self.build_button(_(u"View Student Performance"))
+        score_button = self.build_button(self.string_resources["view_button"])
         score_button.connect('clicked', self.view_performance)
         button_table.attach(score_button, 0, 1, 3, 4, xoptions=False, yoptions=False)
 
         score_explanation = Gtk.Label()
-        label_text = _(u"View Student Scores on Assigned Assessments")
+        label_text = self.string_resources["view_description"]
         label_pre_mark = construct_markup(label_text, font_size=20)
         score_explanation.set_markup(label_pre_mark)
         button_table.attach(score_explanation, 1, 2, 3, 4)
@@ -106,14 +100,6 @@ class UserType(Gtk.Window, menu.MenuBar):
         #box.show_all()
 
     def add_buttons(self, widget):
-        use_label = Gtk.Label()
-                              # TRANSLATORS Be careful to keep 'size' and 'font' tags.
-                              # TRANSLATORS However, you can change the size of text with these by a small amount
-                              # TRANSLATORS to adjust for fitting text on screen.
-        label_text = _(u"Welcome to AbSim!")
-        label_pre_mark = construct_markup(label_text, font_size=24)
-        use_label.set_markup(label_pre_mark)
-        widget.pack_start(use_label, False, False, 0)
 
         button_table = Gtk.Table(rows=4, columns=2)
         button_table.set_border_width(50)
@@ -121,22 +107,22 @@ class UserType(Gtk.Window, menu.MenuBar):
         button_table.set_row_spacings(30)
         widget.pack_start(button_table, False, False, 10)
 
-        instruction_button = self.build_button(_(u"Self-directed Learning"))
+        instruction_button = self.build_button(self.string_resources["self_learning_button"])
         instruction_button.connect('clicked', self.learning)
         button_table.attach(instruction_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
 
         instruction_explanation = Gtk.Label()
-        label_text = _(u"Learn and Practice Abdominal Palpation")
+        label_text = self.string_resources["self_description"]
         label_pre_mark = construct_markup(label_text, font_size=20)
         instruction_explanation.set_markup(label_pre_mark)
         button_table.attach(instruction_explanation, 1, 2, 0, 1)
 
-        assigned_assessment_button = self.build_button(_(u"View Assignments"))
+        assigned_assessment_button = self.build_button(self.string_resources["view_button"])
         assigned_assessment_button.connect('clicked', self.assigned_assessment)
         button_table.attach(assigned_assessment_button, 0, 1, 1, 2, xoptions=False, yoptions=False)
 
         assigned_assessment_explanation = Gtk.Label()
-        label_text = _(u"Take Assessments and Receive Feedback")
+        label_text = self.string_resources["view_description"]
         label_pre_mark = construct_markup(label_text, font_size=20)
         assigned_assessment_explanation.set_markup(label_pre_mark)
         button_table.attach(assigned_assessment_explanation, 1, 2, 1, 2)
@@ -193,7 +179,8 @@ class UserType(Gtk.Window, menu.MenuBar):
         from simLogin import get_user_pw
         from messages import sim_message
 
-        credentials = get_user_pw(self, _(u"Please enter your ID"), _(u"Student Login"), flag='initial')
+        credentials = get_user_pw(self, self.string_resources["request_id"], self.string_resources["login_window"],
+                                  flag='initial')
         if credentials:
             self.get_info(credentials)
 
@@ -208,21 +195,21 @@ class UserType(Gtk.Window, menu.MenuBar):
                         self.finish_transfer()
                     else:
                         logging.debug('Not beginning exam. Login failure.')
-                        sim_message(self, info_string=_(u"Login Failed"),
-                                              secondary_text=_(u"Username and Password do not match our records."))
+                        sim_message(self, info_string=self.string_resources["login_fail"],
+                                    secondary_text=self.string_resources["fail_description"])
                         pass
                 except TypeError as e:
                     logging.debug('No student found. Passing to login failure message.')
                     pass
             else:
                 logging.debug('No student in record.')
-                sim_message(self, info_string=_(u"Login Failed"),
-                                      secondary_text=_(u"Username and Password do not match our records."))
+                sim_message(self, info_string=self.string_resources["login_fail"],
+                            secondary_text=self.string_resources["fail_description"])
                 pass
 
         else:
-            sim_message(self, info_string=_(u'Login Failed!'),
-                                secondary_text=_(u'Username and Password do not match our records.'))
+            sim_message(self, info_string=self.string_resources["login_fail"],
+                        secondary_text=self.string_resources["fail_description"])
 
     def add_class(self, widget):
         self.setup_transfer()

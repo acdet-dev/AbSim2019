@@ -635,13 +635,13 @@ class CaseExam(Gtk.HBox):
         self.view_resources = view_resources
 
         # Build Interface
-        self.build_interface()
+        cvs = self.build_interface()
 
         self.test_box = Gtk.VBox()
 
         self.button_tree = self.add_buttons()
 
-        self.test_box.pack_start(self.case_view_scroller, True, True, 0)
+        self.test_box.pack_start(cvs, True, True, 0)
         self.test_box.pack_start(self.button_tree, False, False, 0)
         self.test_box.show_all()
 
@@ -730,13 +730,15 @@ class CaseExam(Gtk.HBox):
     def make_selection(self, choice):
         # in here, we should be able to facilitate transition to other exam
         if len(self.exam_resources['case_list']) > 0:
+            print(self.cs.current_case)
+            print(self.exam_resources['case_list'][0])
             self.exam_resources['ab_answer_list'].append(self.exam_resources['case_list'][0])
             # add student answers to their own list
-            self.exam_resources['student_answer_list'].append(self.current_case)
-            if distance(self.current_case, self.exam_resources['case_list'][0]) < 1:
+            self.exam_resources['student_answer_list'].append(self.cs.current_case)
+            if distance(self.cs.current_case, self.exam_resources['case_list'][0]) < 1:
                 self.exam_resources['ab_num'] += 1
 
-            elif distance(self.current_case, self.exam_resources['case_list'][0]) < 4:
+            elif distance(self.cs.current_case, self.exam_resources['case_list'][0]) < 4:
                 self.exam_resources['ab_num'] += .5
 
             else:
@@ -785,94 +787,24 @@ class CaseExam(Gtk.HBox):
         return button_table
 
     def build_interface(self):
-        self.case_view_tree = self.build_case_selector()
+        from caseselector import CaseSelector
 
-        self.case_view_scroller = Gtk.ScrolledWindow()
-        self.case_view_scroller.add(self.case_view_tree)
-        self.case_view_scroller.set_policy(Gtk.POLICY_NEVER, Gtk.POLICY_AUTOMATIC)
+        self.cs = CaseSelector(self.view_resources['new_case_observer'], flag='test')
+        case_view_tree = self.cs.build_ddx_tree()
+
+        case_view_scroller = Gtk.ScrolledWindow()
+        case_view_scroller.add(case_view_tree)
+        case_view_scroller.set_policy(Gtk.POLICY_NEVER, Gtk.POLICY_AUTOMATIC)
 
         # get measurements for screen size request
         s_w = Gdk.screen_width()
         s_h = Gdk.screen_height()
         width, height = screen_sizer(s_w, s_h, old_width=800, old_height=400)
-        self.case_view_scroller.set_size_request(width, height)
+        case_view_scroller.set_size_request(width, height)
 
-    def build_case_selector(self):
-        # Columns available to rows:
-        #   str: name visible in widget
-        #   str: text sent in signal
-        self.ddx_tree_store = Gtk.TreeStore(str, str)
-
-        store = self.ddx_tree_store
-        # Top level
-        store.append(None, [_(u"No Abnormalities"), 'none n'])
-        store.append(None, [u"", 'none n'])
-
-        store.append(None, [_(u"Appendix Tenderness"), 'appendix t'])
-        store.append(None, ["\t" + _(u"With Guarding"), 'appendix g'])
-        store.append(None, ["\t" + _(u"With Rebound Tenderness"), 'appendix r'])
-        store.append(None, ["\t" + _(u"With Guarding and Rebound Tenderness"), 'appendix gr'])
-        # store.append(appendix, [_(u"With Guarding and Pushback"), 'appendix gp'])
-
-        store.append(None, [_(u"Colon, Left Lower Tenderness"), 'colon t'])
-        store.append(None, ["\t" + _(u"With Guarding"), 'colon g'])
-        # store.append(colon, [_(u"With Guarding and Pushback"), 'colon gp'])
-
-        store.append(None, [_(u"Gallbladder Tenderness"), 'gallbladder t'])
-        store.append(None, ["\t" + _(u"With Guarding"), 'gallbladder g'])
-        # store.append(gallbladder, [_(u"With Guarding and Pushback"), 'gallbladder gp'])
-
-        store.append(None, [_(u"Gastric Tenderness"), 'ugi t'])
-        # store.append(ugi, [_(u"With Pushback"), 'ugi p'])
-
-        store.append(None, [_(u"Ovary, Left Tenderness"), 'ovary_left t'])
-        store.append(None, ["\t" + _(u"With Guarding"), 'ovary_left g'])
-        # store.append(ovary_left, [_(u"With Guarding and Pushback"), 'ovary_left gp'])
-
-        store.append(None, [_(u"Ovary, Right Tenderness"), 'ovary_right t'])
-        store.append(None, ["\t" + _(u"With Guarding"), 'ovary_right g'])
-        # store.append(ovary_right, [_(u"With Guarding and Pushback"), 'ovary_right gp'])
-
-        store.append(None, [_(u"Pancreas Tenderness"), 'pancreas t'])
-        # pancreas_gp = store.append(pancreas, [_(u"With Pushback"), 'pancreas gp'])
-
-        store.append(None, [_(u"Urinary Bladder Tenderness"), 'bladder t'])
-        # store.append(bladder, [_(u"With Pushback"), 'bladder p'])
-
-        store.append(None, [u"", 'none n'])
-
-        store.append(None, [_(u"Hepatomegaly"), 'hepatomegaly n'])
-        store.append(None, [_(u"Splenomegaly"), 'splenomegaly n'])
-        store.append(None, [_(u"Enlarged Urinary Bladder"), 'enlarged_bladder n'])
-
-        self.ddx_tree_view = Gtk.TreeView(self.ddx_tree_store)
-        tv = self.ddx_tree_view  # alias
-
-        # Set up font for display
-        s_size = Gdk.screen_width() * Gdk.screen_height()
-        if s_size < 1327104:
-            font_s = font_size(s_size, f_size=14)
-        else:
-            font_s = 14
-        font = Pango.FontDescription('normal ' + str(font_s))
-        self.cell = Gtk.CellRendererText()
-        self.cell.set_property('font-desc', font)
-
-        tvcolumn = Gtk.TreeViewColumn(_(u"Ailment"), self.cell)
-        tv.append_column(tvcolumn)
-        tvcolumn.add_attribute(self.cell, 'text', 0)
-        tv.expand_all()
-        tv.connect('cursor-changed', self.on_tree_selected)
-        return tv
-
-    def on_tree_selected(self, treeview):
-        selection = treeview.get_selection()
-        (model, iter) = selection.get_selected()
-
-        self.current_case = model.get(iter, 1)[0]
+        return case_view_scroller
 
     def reset_page(self):
-
         return
 
 
@@ -1014,6 +946,7 @@ class DdxExam(Gtk.HBox):
         self.build_case_text_view()
 
     def build_ddx_selector(self):
+        from casetext import CaseText
         # Columns available to rows:
         #   str: name visible in widget
         #   str: text sent in signal
@@ -1022,15 +955,21 @@ class DdxExam(Gtk.HBox):
         store = self.ddx_tree_store
         # Top level
 
-        store.append(None, [_(u"Upper Gastrointestinal Etiology"), 'Upper Gastrointestinal Etiology'])
-        store.append(None, [_(u"Choledocolithiasis"), "Choledocolithiasis"])
-        store.append(None, [_(u"Pancreatitis"), 'Pancreatitis'])
-        store.append(None, [_(u"Cholecystitis"), 'Cholecystitis'])
-        store.append(None, [_(u"Mesenteric Infarction"), 'Mesenteric Infarction'])
-        store.append(None, [_(u"Small Bowel Obstruction"), 'Small Bowel Obstruction'])
-        store.append(None, [_(u"Appendicitis"), 'Appendicitis'])
-        store.append(None, [_(u"Diverticulitis"), 'Diverticulitis'])
-        store.append(None, [_(u"Acute Enteritis"), 'Acute Enteritis'])
+        ddx_names = CaseText().cases.get(525, [])
+        ddx_list = []
+        for j in ddx_names:
+            temp = [i["ddx_name"] for i in j]
+            ddx_list.append(temp[0])
+
+        store.append(None, [ddx_list[0], 'Upper Gastrointestinal Etiology'])
+        store.append(None, [ddx_list[1], "Choledocolithiasis"])
+        store.append(None, [ddx_list[2], 'Pancreatitis'])
+        store.append(None, [ddx_list[3], 'Cholecystitis'])
+        store.append(None, [ddx_list[4], 'Mesenteric Infarction'])
+        store.append(None, [ddx_list[5], 'Small Bowel Obstruction'])
+        store.append(None, [ddx_list[6], 'Appendicitis'])
+        store.append(None, [ddx_list[7], 'Diverticulitis'])
+        store.append(None, [ddx_list[8], 'Acute Enteritis'])
 
         self.ddx_tree_view = Gtk.TreeView(self.ddx_tree_store)
         tv = self.ddx_tree_view  # alias

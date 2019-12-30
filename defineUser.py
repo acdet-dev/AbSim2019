@@ -1,5 +1,4 @@
 import logging
-from i18ntrans2 import _
 import time
 from sim import UserType
 import splashscreen
@@ -9,6 +8,7 @@ from simLabels import construct_markup
 from simLogin import get_user_pw
 from messages import sim_message, sim_login_message
 import facultyinfomodel
+from aStringResources import AStringResources
 
 from Levenshtein import distance
 import gi
@@ -22,6 +22,10 @@ class DefineUser(Gtk.Window, MenuBar):
         # Initiate Logging
 
         logging.debug('Welcome to AbSim!')
+
+        # initialize string resources
+        self.string_resources = AStringResources("initial").get_by_identifier()
+        self.login_resources = AStringResources("faculty_login").get_by_identifier()
 
         # Opening window for AbSim that allows faculty to create a profile and login.
         Gtk.Window.__init__(self, title="AbSim")
@@ -54,7 +58,7 @@ class DefineUser(Gtk.Window, MenuBar):
         # TRANSLATORS Be careful to keep 'size' and 'font' tags.
         # TRANSLATORS However, you can change the size of text with these by a small amount
         # TRANSLATORS to adjust for fitting text on screen.
-        label_text = _(u"Welcome to Absim!")
+        label_text = self.string_resources["welcome_text"]
         label_pre_mark = construct_markup(label_text, font_size=24)
         use_label.set_markup(label_pre_mark)
         widget.pack_start(use_label, False, False, 0)
@@ -65,22 +69,22 @@ class DefineUser(Gtk.Window, MenuBar):
         button_table.set_row_spacings(30)
         widget.pack_start(button_table, False, False, 10)
 
-        faculty_button = self.build_button(_(u"Faculty"))
+        faculty_button = self.build_button(self.string_resources["faculty_button"])
         faculty_button.connect('clicked', self.add_faculty)
         button_table.attach(faculty_button, 0, 1, 1, 2, xoptions=False, yoptions=False)
 
         faculty_explanation = Gtk.Label()
-        label_text = _(u"Click here to configure AbSim and create assessments")
+        label_text = self.string_resources["faculty_description"]
         label_pre_mark = construct_markup(label_text, font_size=20)
         faculty_explanation.set_markup(label_pre_mark)
         button_table.attach(faculty_explanation, 1, 2, 1, 2)
 
-        student_button = self.build_button(_(u"Student"))
+        student_button = self.build_button(self.string_resources["student_button"])
         student_button.connect('clicked', self.student)
         button_table.attach(student_button, 0, 1, 2, 3, xoptions=False, yoptions=False)
 
         student_explanation = Gtk.Label()
-        label_text = _(u"Demonstrate proficiency in abdominal palpation through practice and assessments")
+        label_text = self.string_resources["student_description"]
         label_pre_mark = construct_markup(label_text, font_size=20)
         student_explanation.set_markup(label_pre_mark)
         button_table.attach(student_explanation, 1, 3, 1, 6)
@@ -131,10 +135,11 @@ class DefineUser(Gtk.Window, MenuBar):
         flag = self.check_info()
         if flag == 'no':
 
-            initial_key = get_user_pw(self, _(u"Please enter the AbSim's initial key to add faculty login"),
-                                               _(u"AbSim Initial Key"), flag='initial')
+            initial_key = get_user_pw(self, self.login_resources["initial_key"],
+                                               self.login_resources["initial_window_title"], flag='initial')
             if initial_key == '227462':
-                credentials = get_user_pw(self, _(u"Please enter a user name and password"), _(u"Add Faculty"),
+                credentials = get_user_pw(self, self.login_resources["enter_faculty_info"],
+                                          self.login_resources["add_faculty_window_title"],
                                           flag='add')
 
                 if credentials:
@@ -142,57 +147,59 @@ class DefineUser(Gtk.Window, MenuBar):
                     faculty_pw = credentials[1].encode('utf-8')
                     self.save_info(faculty_id.strip(), faculty_pw.strip())
 
-                    sim_message(self, info_string=_(u"Faculty Added Successfully"),
-                                secondary_text=_(u"Moving to faculty interface."))
+                    sim_message(self, info_string=self.login_resources["add_success_notification"],
+                                secondary_text=self.login_resources["login_cleared"])
 
                     self.setup_transfer()
                     UserType('faculty', credentials[0], credentials[1])
                     self.finish_transfer()
 
                 else:
-                    sim_message(self, info_string=_(u"Faculty NOT Added"),
-                                secondary_text=_(u"Please Re-Enter the Initial Key."))
+                    sim_message(self, info_string=self.login_resources["add_fail_notification"],
+                                secondary_text=self.login_resources["restart_process"])
 
             else:
-                sim_message(self, info_string=_(u"Faculty NOT Added"),
-                            secondary_text=_(u"Please Re-Enter the Initial Key."))
+                sim_message(self, info_string=self.login_resources["add_fail_notification"],
+                            secondary_text=self.login_resources["restart_process"])
         else:
             reset_string = ''
 
-            credentials = get_user_pw(self, _(u"Please enter your user name and password"), _(u"Faculty Login"))
+            credentials = get_user_pw(self, self.login_resources["login_instructions"],
+                                      self.login_resources["login_dialog_title"])
 
             try:
                 self.get_info(credentials[1])
 
                 if self.faculty:
                     try:
-                        if distance(credentials[0], self.faculty[0].decode()) < 1 and distance(credentials[1],
-                                                                                    self.faculty[1].decode()) < 1:
+                        if distance(credentials[0], self.faculty[0].decode()) < 1 \
+                                and distance(credentials[1], self.faculty[1].decode()) < 1:
                             self.setup_transfer()
                             UserType('faculty', credentials[0], credentials[1])
                             self.finish_transfer()
                         else:
-                            reset_string = sim_login_message(self, info_string=_(u"Login Failed"),
-                                        secondary_text=_(u"Username and Password do not match our records."))
+                            reset_string = sim_login_message(self,
+                                                             info_string=self.login_resources["login_fail_note"],
+                                                             secondary_text=self.login_resources["login_failed_1"])
                             pass
                     except TypeError as e:
                         pass
                 else:
-                    reset_string = sim_login_message(self, info_string=_(u"Login Failed"),
-                                secondary_text=_(u"Username and Password do not match our records."))
+                    reset_string = sim_login_message(self, info_string=self.login_resources["login_fail_note"],
+                                                     secondary_text=self.login_resources["login_failed_1"])
                     pass
             except TypeError:
-                reset_string = sim_login_message(self, info_string=_(u"Login Failed"),
-                            secondary_text=_(u"No info provided or Cancel clicked."))
+                reset_string = sim_login_message(self, info_string=self.login_resources["login_fail_note"],
+                                                 secondary_text=self.login_resources["login_failed_2"])
                 logging.debug('No info provided or Cancel received. No info to grab.')
                 pass
             if reset_string == 'reset':
-                initial_key = get_user_pw(self, _(u"Please enter the AbSim's initial key to reset faculty login"),
-                                          _(u"AbSim Initial Key"), flag='initial')
+                initial_key = get_user_pw(self, self.login_resources["reset_instructions"],
+                                          self.login_resources["initial_window_title"], flag='initial')
                 if initial_key == '227462':
                     self.faculty_model.drop_table()
-                    sim_message(self, info_string=_(u'Faculty Login Data Deleted'),
-                                secondary_text=_(u'To add another faculty member, click "Faculty."'))
+                    sim_message(self, info_string=self.login_resources["data_deletion_notification"],
+                                secondary_text=self.login_resources["data_deletion_instructions"])
 
     def student(self, widget):
         self.setup_transfer()

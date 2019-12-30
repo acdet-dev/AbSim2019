@@ -464,7 +464,7 @@ def set_locale(loc_prefs):
         logging.debug("i18ntrans:316:('ab_sim'). Done.")
         #cloc = locale.getlocale(locale.LC_ALL)
     except locale.Error:
-        simlog.gatherlogs("simLog.txt", "i18ntrans:319:Unable to bind text domain for Glade UI.")
+        logging.debug("i18ntrans:319:Unable to bind text domain for Glade UI.")
         logging.debug("i18ntrans:320:Some on-screen messages will not be translated.")
 
     # To maximize compatibility, try permutations of ISO and Windows locales to
@@ -523,7 +523,11 @@ def set_menu_locale(loc_prefs):
 
 
 def set_locale_handler(lbl, loc, popup):
+    from aStringResources import AStringResources
     global translator
+
+    string_resources = AStringResources("i18n_trans").get_by_identifier()
+
     locale_config.set_default("override", loc) #from _list_mo()
     locale_config.write_config({"override":loc})
     if loc is None:
@@ -532,8 +536,8 @@ def set_locale_handler(lbl, loc, popup):
     locale_preferences = _new_loc_prefs(loc, win2iso_full, iso2win_full, win2iso_loc, iso2win_loc, win2iso_lang, iso2win_lang, iso2win_enc, win2iso_enc)
 
     translator = set_locale(locale_preferences)
-    popup(_(u"New locale override ") + "({lbl}/{loc})".format(lbl=lbl, loc=loc)
-    + _(u" will take effect after restarting the program."))
+    popup(string_resources["message_1"] + " " + "({lbl}/{loc})".format(lbl=lbl, loc=loc)
+          + " " + string_resources["message_2"])
 
     return translator
 

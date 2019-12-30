@@ -11,7 +11,7 @@ import gtk
 import time
 import config
 from simLabels import construct_markup
-from i18ntrans2 import _
+from aStringResources import AStringResources
 
 
 class PressureList:
@@ -168,17 +168,18 @@ class PressureThresholds:
 class SensitivitySettings(gtk.VBox):
     def __init__(self, pressure_list):
         gtk.VBox.__init__(self)
-        
+
+        self.string_resources = AStringResources("sensitivity", back_flag=True, label_flag=True).get_by_identifier()
         self.pressure_list = pressure_list
         pressure_thresholds = pressure_list.pressure_thresholds
         self.pressure_thresholds = pressure_thresholds
         
-        self.tare_button = gtk.Button(label=_(u"Tare / Zero Sensors"))
+        self.tare_button = gtk.Button(label=self.string_resources["tare_zero_button"])
         self.tare_button.connect('pressed', self.tare_button_pressed)
         self.tare_button_alignment = gtk.Alignment(xalign=0.5)
         self.tare_button_alignment.add(self.tare_button)
         
-        self.save_settings_button = gtk.Button(label=_(u"Save Sensitivity Settings"))
+        self.save_settings_button = gtk.Button(label=self.string_resources["save_button"])
         self.save_settings_button.connect('pressed', self.pressure_thresholds.save_thresholds_as_default)
         self.save_settings_alignment = gtk.Alignment(xalign=0.5)
         self.save_settings_alignment.add(self.save_settings_button)
@@ -186,7 +187,8 @@ class SensitivitySettings(gtk.VBox):
         (slightly_down, down, too_hard) = pressure_thresholds.get_thresholds()
         
         self.too_light_label = gtk.Label()
-        self.too_light_label.set_markup("<span foreground='gray' font_weight='bold'>" + _(u"Light Palpation") +
+        self.too_light_label.set_markup("<span foreground='gray' font_weight='bold'>" +
+                                        self.string_resources["light_label"] +
                                         "</span>")
         self.too_light_hscale = gtk.HScale()
         self.too_light_hscale.set_digits(0)
@@ -195,7 +197,8 @@ class SensitivitySettings(gtk.VBox):
         self.too_light_hscale.set_property('round_digits', 3)
         
         self.down_label = gtk.Label()
-        self.down_label.set_markup("<span foreground='blue' font_weight='bold'>" + _(u"Deep Palpation") + "</span>")
+        self.down_label.set_markup("<span foreground='blue' font_weight='bold'>" +
+                                   self.string_resources["deep_label"] + "</span>")
         self.down_hscale = gtk.HScale()
         self.down_hscale.set_digits(0)
         self.down_hscale.set_range(0, 255)
@@ -203,7 +206,8 @@ class SensitivitySettings(gtk.VBox):
         self.down_hscale.set_property('round_digits', 3)
         
         self.too_hard_label = gtk.Label()
-        self.too_hard_label.set_markup("<span foreground='red' font_weight='bold'>" + _(u"Too hard") + "</span>")
+        self.too_hard_label.set_markup("<span foreground='red' font_weight='bold'>" +
+                                       self.string_resources["too_deep_label"] + "</span>")
         self.too_hard_hscale = gtk.HScale()
         self.too_hard_hscale.set_digits(0)
         self.too_hard_hscale.set_range(0, 255)
@@ -215,15 +219,17 @@ class SensitivitySettings(gtk.VBox):
         self.too_hard_hscale.connect('change-value', self.too_hard_threshold_moved)
 
         label = gtk.Label()
-        label_text = "<b>" + _(u"Sensitivity Configuration Interface") + "</b>" + "\n\n" + \
-                     _(u"Set pressure pad sensitivity thresholds:") + "\n\n" + _(u"(e.g. ") + \
-                     "<span foreground='gray' font_weight='bold'>" + _(u"light ") + "</span>" + _(u"from 5 - 14") + \
-                     "<span foreground='blue' font_weight='bold'>" + "\n" + _(u"deep ") + "</span>" + \
-                     _(u"from 15 - 54") + "<span foreground='red' font_weight='bold'>" + "\n" + _(u"too hard ") + \
-                     "</span>" + _(u"> 55).") + "\n\n" + \
-                     _(u'Click "Save Sensitivity Settings" to save your choices.') + \
-                     _(u" You may view the effects of your changes on the image to the right.") + "\n\n" + \
-                     _(u'If you notice "ghost" registers of pressure, click "Tare / Zero Sensors".')
+        label_text = "<b>" + self.string_resources["screen_title"] + "</b>" + "\n\n" + \
+                     self.string_resources["screen_description"] + "\n\n" + self.string_resources["clarity_helper_1"] +\
+                     " " + "<span foreground='gray' font_weight='bold'>" + self.string_resources["clarity_helper_2"] +\
+                     " " + "</span>" + self.string_resources["clarity_helper_3"] + " " +\
+                     "<span foreground='blue' font_weight='bold'>" + "\n" + self.string_resources["clarity_helper_4"] +\
+                     " " + "</span>" + self.string_resources["clarity_helper_5"] + " " +\
+                     "<span foreground='red' font_weight='bold'>" + "\n" + self.string_resources["clarity_helper_6"] +\
+                     " " + "</span>" + self.string_resources["clarity_helper_7"] + "\n\n" +\
+                     self.string_resources["save_settings_instructions_1"] + " " +\
+                     self.string_resources["save_settings_instructions_2"] + "\n\n" +\
+                     self.string_resources["ghost_string"]
         label_pre_mark = construct_markup(label_text, font_size=14)
         label.set_markup(label_pre_mark)
         label.set_line_wrap(True)

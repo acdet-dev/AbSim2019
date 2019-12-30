@@ -14,7 +14,7 @@ from simLabels import construct_markup, screen_sizer
 import abnormalitydetection
 import sounds
 import donottouch
-from i18ntrans2 import _
+from aStringResources import AStringResources
 
 import gi
 gi.require_version('Gtk', '3.0')
@@ -35,7 +35,7 @@ class Admin(Gtk.Window, menu.MenuBar):
         self.touch_alerter = donottouch.TouchAlerter(self.state_watcher, self.pressurepoints)
         self.current_case = 'none n'
         self.port_settings = port_settings.PortSettings(self, self.state_watcher, self.touch_alerter)
-
+        self.string_resources = AStringResources("config_screen").get_by_identifier()
         self.new_case_block = observer.Observer()
         self.sounds = sounds.Sounds(self.state_watcher, self.pressurepoints, self.ailments, self.touch_alerter)
 
@@ -57,7 +57,7 @@ class Admin(Gtk.Window, menu.MenuBar):
         }
 
         #make window
-        Gtk.Window.__init__(self, title="AbSim Configuration")
+        Gtk.Window.__init__(self, title=self.string_resources["window_title"])
         self.set_icon_from_file('icon.ico')
         self.maximize()
 
@@ -72,7 +72,8 @@ class Admin(Gtk.Window, menu.MenuBar):
         self.notebook.connect("switch-page", self.reset_active_page)
 
         # Pressure Sensitivity Adjustment
-        sensitivity_label = simLabels.MilestoneNameLabel(_(u"Pressure") + "\n" + _(u"Sensitivity"))
+        sensitivity_label = simLabels.MilestoneNameLabel(self.string_resources["notebook_first_line"] + "\n" +
+                                                         self.string_resources["notebook_second_line"])
         settings_box = SensitivityInterface(self.view_resources)
         settings_box.show()
         self.notebook.append_page(settings_box, sensitivity_label)
@@ -155,21 +156,21 @@ class SensitivityInterface(Gtk.HBox):
         super(SensitivityInterface, self).__init__()
         self.view_resources = view_resources
         self.sensitivity_settings = pressurepoints.SensitivitySettings(self.view_resources['pressurepoints'])
-        #self.cnc_adjuster = CNCAdjustmentInterface(self.view_resources['port_settings'])
+        # self.cnc_adjuster = CNCAdjustmentInterface(self.view_resources['port_settings'])
 
-        #build home button
+        # build home button
         self.button_table = Gtk.Table(rows=1, columns=1, homogeneous=True)
         self.button_table_alignment = Gtk.Alignment(xalign=0.2)
 
-        re_button = self.build_button(_(u"Return Home"))
+        re_button = self.build_button(self.sensitivity_settings.string_resources["back_button"])
         self.button_table.attach(re_button, 1, 2, 0, 1)
         self.button_table_alignment.add(self.button_table)
 
         self.settings_vbox = Gtk.VBox()
         self.settings_vbox.pack_start(self.sensitivity_settings, False, False)
         self.settings_vbox.pack_start(Gtk.HSeparator(), False, False, 10)
-        #self.settings_vbox.pack_start(self.cnc_adjuster, False, False)
-        #self.settings_vbox.pack_start(Gtk.HSeparator(), False, False, 20)
+        # self.settings_vbox.pack_start(self.cnc_adjuster, False, False)
+        # self.settings_vbox.pack_start(Gtk.HSeparator(), False, False, 20)
         self.settings_vbox.pack_start(self.button_table_alignment, False, False, 0)
 
         s_w = Gdk.screen_width()
@@ -221,7 +222,7 @@ class SensitivityInterface(Gtk.HBox):
 
     def reset_page(self):
         pass
-        #self.abnormality_detection.reset_page()
+        # self.abnormality_detection.reset_page()
 
 
 class CNCAdjustmentInterface(Gtk.VBox):
@@ -229,11 +230,13 @@ class CNCAdjustmentInterface(Gtk.VBox):
         super(CNCAdjustmentInterface, self).__init__()
         self.port_settings = port_settings
 
+        '''
         adjustment_label = Gtk.Label(_(u"Click the arrows to calibrate actuator") + "\n" +
                                      _(u"positioning for all ailments at once."))
         adjustment_label.set_line_wrap(False)
         adjustment_label_alignment = Gtk.Alignment(xalign=0.5)
         adjustment_label_alignment.add(adjustment_label)
+        '''
 
         self.arrow_table = Gtk.Table(rows=3, columns=3, homogeneous=True)
         self.arrow_table_alignment = Gtk.Alignment(xalign=0.5)
@@ -252,7 +255,7 @@ class CNCAdjustmentInterface(Gtk.VBox):
         self.arrow_table.attach(right_button, 2, 3, 1, 2)
 
         self.arrow_table_alignment.add(self.arrow_table)
-        self.pack_start(adjustment_label_alignment, False, False, 0)
+        # self.pack_start(adjustment_label_alignment, False, False, 0)
         self.pack_start(self.arrow_table_alignment, False, False, 20)
         self.show_all()
 
