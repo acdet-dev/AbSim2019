@@ -13,8 +13,7 @@ import baselinemodel
 import logging
 import gi
 from collections import OrderedDict
-from i18ntrans2 import _
-
+from aStringResources import AStringResources
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GLib, Pango
 
@@ -24,6 +23,8 @@ class AssessmentViewer:
     def __init__(self, section, window_resources, bases, cases, ddxs):
         self.section = section
         self.window_resources = window_resources
+        self.string_resources = AStringResources("assessment_viewer", back_flag=True,
+                                                 label_flag=True).get_by_identifier()
         self.window_resources['bases'] = bases
         self.window_resources['cases'] = cases
         self.window_resources['ddxs'] = ddxs
@@ -45,14 +46,14 @@ class AssessmentViewer:
             page3.show()
 
             if self.window_resources['bases'] == 'yes':
-                vba = ViewBaselineAssessments(self.section, self.window_resources["exam_id"])
+                vba = ViewBaselineAssessments(self.section, self.window_resources["exam_id"], self.string_resources)
                 self.window_resources['baseline'].add(vba.vbox)
                 self.window_resources['baseline'].show_all()
                 self.window_resources['notebook'].set_current_page(1)
             else:
                 page.hide()
             if self.window_resources['cases'] == 'yes':
-                ab = AbTest(self.section, self.exam, page, page1, page2, page3)
+                ab = AbTest(self.section, self.exam, page, page1, page2, page3, self.string_resources)
                 self.window_resources['ab'].add(ab.vbox)
                 self.window_resources['ab'].show_all()
                 if self.window_resources['bases'] != 'yes':
@@ -60,7 +61,7 @@ class AssessmentViewer:
             else:
                 page2.hide()
             if self.window_resources['ddxs'] == 'yes':
-                ddx = DdxTest(self.section, self.exam, page, page1, page2, page3)
+                ddx = DdxTest(self.section, self.exam, page, page1, page2, page3, self.string_resources)
                 self.window_resources['ddx'].add(ddx.vbox)
                 self.window_resources['ddx'].show_all()
                 if self.window_resources['bases'] != 'yes' and self.window_resources['cases'] != 'yes':
@@ -74,12 +75,12 @@ class AssessmentViewer:
             page2.hide()
             page3.hide()
 
-            sim_message(self.window_resources['window'], info_string=_(u'No Assessments Taken'), secondary_text=
-                        _(u'Please check back when students have taken your assessment.'))
+            sim_message(self.window_resources['window'], info_string=self.string_resources["failure_title"],
+                        secondary_text=self.string_resources["failure_description"])
 
 
 class ViewsController:
-    def __init__(self, section, exam, p, p1, p2, p3, flag):
+    def __init__(self, section, exam, p, p1, p2, p3, sr, flag):
         self.section = section
         self.exam = exam
         self.p = p
@@ -87,6 +88,7 @@ class ViewsController:
         self.p2 = p2
         self.p3 = p3
         self.flag = flag
+        self.string_resources = sr
         self.header_list = []
         self.data_list = []
         self.final_data_list = []
@@ -160,12 +162,13 @@ class ViewsController:
         desktop = os.getenv('USERPROFILE') + '\\Desktop'
 
         # get headers as list to pass to writer
-        heads = [_(u'Student ID'), _(u'Score'), _(u'Time Elapsed')]
+        heads = [self.string_resources["column_header_1"], self.string_resources["column_header_2"],
+                 self.string_resources["column_header_3"]]
         heads.extend(self.header_list)
 
         if len(self.exam) > 0:
             if self.flag == 'ab':
-                file_string = c_dir + '\\' + self.section + self.exam[0][1] + _(u'_abnormality_data.csv')
+                file_string = c_dir + '\\' + self.section + self.exam[0][1] + '_abnormality_data.csv'
                 with open(file_string, 'w+', newline='') as outcsv:
                     writer = csv.DictWriter(outcsv, fieldnames=heads)
                     writer.writeheader()
@@ -179,8 +182,8 @@ class ViewsController:
 
                         try:
                             writer.writerow(partial_dict)
-                            sim_message(self, info_string=_(u"Exam Data Exported!"),
-                                        secondary_text=_(u"A CSV file with exam data was created in AbSim's directory."))
+                            sim_message(self, info_string=self.string_resources["export_title"],
+                                        secondary_text=self.string_resources["export_description"])
                         except TypeError:
                             pass
                 try:
@@ -189,7 +192,7 @@ class ViewsController:
                     logging.debug("Cannot write to desktop")
 
             elif self.flag == 'ddx':
-                file_string = c_dir + '\\' + self.section + self.exam[0][1] + _(u'_case_text_data.csv')
+                file_string = c_dir + '\\' + self.section + self.exam[0][1] + '_case_text_data.csv'
                 with open(file_string, 'w+', newline='') as outcsv:
                     writer = csv.DictWriter(outcsv, fieldnames=heads)
                     writer.writeheader()
@@ -203,8 +206,8 @@ class ViewsController:
 
                         try:
                             writer.writerow(partial_dict)
-                            sim_message(self, info_string=_(u"Exam Data Exported!"),
-                                        secondary_text=_(u"A CSV file with exam data was created in AbSim's directory."))
+                            sim_message(self, info_string=self.string_resources["export_title"],
+                                        secondary_text=self.string_resources["export_description"])
                         except TypeError:
                             pass
 
@@ -223,11 +226,11 @@ class ViewsController:
         button_table.set_col_spacings(5)
         button_table.set_row_spacings(5)
 
-        right_button = self.build_button(_(u"Export to Desktop"))
+        right_button = self.build_button(self.string_resources["export_button_text"])
         right_button.connect('clicked', self.export)
         button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
 
-        view_button = self.build_button(_(u"Return"))
+        view_button = self.build_button(self.string_resources["back_button"])
         view_button.connect('clicked', self.go_back)
         button_table.attach(view_button, 1, 2, 0, 1, xoptions=False, yoptions=False)
 
@@ -348,7 +351,7 @@ class ViewsController:
         """ need to add in iteration to put answers from assessment as row header with student answer value in cell """
 
         renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Student ID"), renderer_text, text=0)
+        column = Gtk.TreeViewColumn(self.string_resources["column_header_1"], renderer_text, text=0)
         column.set_sort_column_id(0)
         column.set_resizable(True)
         treeView.append_column(column)
@@ -363,13 +366,13 @@ class ViewsController:
         '''
 
         renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Score"), renderer_text, text=2)
+        column = Gtk.TreeViewColumn(self.string_resources["column_header_2"], renderer_text, text=2)
         column.set_sort_column_id(2)
         column.set_resizable(True)
         treeView.append_column(column)
 
         renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Time Elapsed"), renderer_text, text=3)
+        column = Gtk.TreeViewColumn(self.string_resources["column_header_3"], renderer_text, text=3)
         column.set_sort_column_id(3)
         column.set_resizable(True)
         treeView.append_column(column)
@@ -390,24 +393,28 @@ class ViewsController:
 
 
 class DdxTest:
-    def __init__(self, section, exam, p, p1, p2, p3):
+    def __init__(self, section, exam, p, p1, p2, p3, sr):
         self.section = section
         self.exam = exam
-        self.vbox = ViewsController(self.section, self.exam, p, p1, p2, p3, flag='ddx').build_interface()
+        self.string_resources = sr
+        self.vbox = ViewsController(self.section, self.exam, p, p1, p2, p3,
+                                    self.string_resources, flag='ddx').build_interface()
 
 
 class AbTest:
-    def __init__(self, section, exam, p, p1, p2, p3):
+    def __init__(self, section, exam, p, p1, p2, p3, sr):
         self.section = section
         self.exam = exam
-        self.vbox = ViewsController(self.section, self.exam, p, p1, p2, p3, flag='ab').build_interface()
+        self.string_resources = sr
+        self.vbox = ViewsController(self.section, self.exam, p, p1, p2, p3,
+                                    self.string_resources, flag='ab').build_interface()
 
 
 class ViewBaselineAssessments:
-    def __init__(self, section, exam_id):
+    def __init__(self, section, exam_id, sr):
 
         self.coverage_assessment_model = baselinemodel.BaselineModel()
-
+        self.string_resources = sr
         self.section = section
         self.exam_id = exam_id
         self.new_selected_case = observer.Observer()
@@ -465,11 +472,13 @@ class ViewBaselineAssessments:
         desktop = os.getenv('USERPROFILE') + '\\Desktop'
 
         # create file string
-        file_string = c_dir + '\\' + self.section + self.exams[0][2] + _(u'_baseline_data.csv')
+        file_string = c_dir + '\\' + self.section + self.exams[0][2] + '_baseline_data.csv'
 
         # create headers with translatable text
-        heads = [_(u'Student ID'), _(u"Not Palpated"), _(u"Light Palpation"), _(u"Deep Palpation"), _(u"Too Deep"),
-                 _(u"Time Elapsed")]
+        heads = [self.string_resources["column_header_1"], self.string_resources["not_label"],
+                 self.string_resources["light_label"], self.string_resources["deep_label"],
+                 self.string_resources["too_deep_label"],
+                 self.string_resources["column_header_3"]]
 
         # check that we have exams to write
         if len(self.exams) > 0:
@@ -479,8 +488,8 @@ class ViewBaselineAssessments:
                 try:
                     writer.writerows({heads[0]: exam[3], heads[1]: exam[4], heads[2]: exam[5], heads[3]: exam[6],
                                       heads[4]: exam[7], heads[5]: exam[9]} for exam in self.exams)
-                    sim_message(self, info_string=_(u'Exam Data Exported!'),
-                                secondary_text=_(u"A CSV file with exam data was created in AbSim's directory."))
+                    sim_message(self, info_string=self.string_resources["export_title"],
+                                secondary_text=self.string_resources["export_description"])
                 except TypeError:
                     pass
 
@@ -501,7 +510,7 @@ class ViewBaselineAssessments:
 
     def create_columns(self, treeView):
         renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Student ID"), renderer_text, text=0)
+        column = Gtk.TreeViewColumn(self.string_resources["column_header_1"], renderer_text, text=0)
         column.set_sort_column_id(0)
         column.set_resizable(True)
         treeView.append_column(column)
@@ -515,31 +524,31 @@ class ViewBaselineAssessments:
         '''
 
         renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Not Palpated"), renderer_text, text=2)
+        column = Gtk.TreeViewColumn(self.string_resources["not_label"], renderer_text, text=2)
         column.set_sort_column_id(2)
         column.set_resizable(True)
         treeView.append_column(column)
 
         renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Light Palpation"), renderer_text, text=3)
+        column = Gtk.TreeViewColumn(self.string_resources["light_label"], renderer_text, text=3)
         column.set_sort_column_id(3)
         column.set_resizable(True)
         treeView.append_column(column)
 
         renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Deep Palpation"), renderer_text, text=4)
+        column = Gtk.TreeViewColumn(self.string_resources["deep_label"], renderer_text, text=4)
         column.set_sort_column_id(4)
         column.set_resizable(True)
         treeView.append_column(column)
 
         renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Too Deep"), renderer_text, text=5)
+        column = Gtk.TreeViewColumn(self.string_resources["too_deep_label"], renderer_text, text=5)
         column.set_sort_column_id(5)
         column.set_resizable(True)
         treeView.append_column(column)
 
         renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Time Elapsed"), renderer_text, text=6)
+        column = Gtk.TreeViewColumn(self.string_resources["column_header_3"], renderer_text, text=6)
         column.set_sort_column_id(6)
         column.set_resizable(True)
         treeView.append_column(column)

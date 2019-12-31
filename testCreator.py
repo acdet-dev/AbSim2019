@@ -9,7 +9,7 @@ import time, logging
 from simLabels import construct_markup
 from cases import Cases
 from casetext import CaseText
-from i18ntrans2 import _
+from aStringResources import AStringResources
 
 
 class TestCreator(Gtk.Window):
@@ -17,8 +17,11 @@ class TestCreator(Gtk.Window):
 
     def __init__(self, name, password):
 
-        #make window
-        Gtk.Window.__init__(self, title=_(u"AbSim Assessment Creator"))
+        # initialize string resources
+        self.string_resources = AStringResources("create_assessments", back_flag=True).get_by_identifier()
+
+        # make window
+        Gtk.Window.__init__(self, title=self.string_resources["window_title"])
         self.set_icon_from_file('icon.ico')
         self.maximize()
 
@@ -34,10 +37,10 @@ class TestCreator(Gtk.Window):
         self.case_dict = Cases().pretty_ailment_names
 
         # create instance objects of different exam selectors
-        self.ddx_box = DdxExam()
+        self.ddx_box = DdxExam(self.string_resources)
         self.ddx_box.show_all()
 
-        self.baseline = BaselineExam()
+        self.baseline = BaselineExam(self.string_resources)
         self.baseline.show_all()
 
         # create empty boxes to pack view elements to
@@ -113,7 +116,7 @@ class TestCreator(Gtk.Window):
 
         # add label above check option
         assessment_label = Gtk.Label()
-        label_text = "<b>" + _(u"2. Abnormality Detection Assessment") + "</b>"
+        label_text = "<b>" + self.string_resources["option_2_title"] + "</b>"
         label_pre = construct_markup(label_text, font_size=16)
         assessment_label.set_markup(label_pre)
 
@@ -126,7 +129,7 @@ class TestCreator(Gtk.Window):
         self.exam_id_entry = Gtk.Entry()
         self.exam_id_entry.set_max_length(220)
         self.exam_id_entry.set_width_chars(30)
-        self.exam_id_entry.set_placeholder_text(_(u"Input Assessment Title"))
+        self.exam_id_entry.set_placeholder_text(self.string_resources["input_title_entry"])
         eid_vbox.pack_start(self.exam_id_entry, False, False, 30)
         self.exam_id_entry.show()
 
@@ -146,11 +149,11 @@ class TestCreator(Gtk.Window):
         button_table.set_col_spacings(5)
         button_table.set_row_spacings(5)
 
-        right_button = self.build_button(_(u"Save Assessment"))
+        right_button = self.build_button(self.string_resources["save_button"])
         right_button.connect('clicked', self.add_to_exam)
         button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
 
-        left_button = self.build_button(_(u"Return Home"))
+        left_button = self.build_button(self.string_resources["back_button"])
         left_button.connect('clicked', self.return_home)
         button_table.attach(left_button, 1, 2, 0, 1, xoptions=False, yoptions=False)
 
@@ -242,26 +245,29 @@ class TestCreator(Gtk.Window):
 
 
 class BaselineExam(Gtk.VBox):
-    def __init__(self):
+    def __init__(self, string_resources):
         super(BaselineExam, self).__init__()
+
+        # initialize passed string resources
+        self.string_resources = string_resources
 
         # set baseline flag
         self.baseline_flag = False
 
-        #add label above check option
+        # add label above check option
         assessment_label = Gtk.Label()
-        label_text = "<b>" + _(u"1. Baseline Assessment") + "</b>"
+        label_text = "<b>" + self.string_resources["option_1_title"] + "</b>"
         label_pre = construct_markup(label_text, font_size=16)
         assessment_label.set_markup(label_pre)
         self.pack_start(assessment_label, False, False, 0)
 
-        #add check button option
+        # add check button option
         button_table = Gtk.Table(rows=1, columns=1, homogeneous=True)
         button_table_alignment = Gtk.Alignment(xalign=0.35)
 
         self.button = Gtk.CheckButton.new()
         label = Gtk.Label()
-        label_text = _(u"Add Baseline Assessment?")
+        label_text = self.string_resources["option_1"]
         label_pre_mark = construct_markup(label_text, font_size=14)
         label.set_markup(label_pre_mark)
         label.set_padding(10, 10)
@@ -270,7 +276,7 @@ class BaselineExam(Gtk.VBox):
         button_table.attach(self.button, 1, 2, 0, 1)
         button_table_alignment.add(button_table)
 
-        #final packing
+        # final packing
         self.pack_start(button_table_alignment, False, False, 0)
 
     def on_button_toggled(self, button):
@@ -284,8 +290,10 @@ class BaselineExam(Gtk.VBox):
 
 
 class DdxExam(Gtk.VBox):
-    def __init__(self):
+    def __init__(self, string_resources):
         super(DdxExam, self).__init__()
+
+        self.string_resources = string_resources
 
         # create empty list for exam building
         self.ddx_case_list = []
@@ -294,7 +302,7 @@ class DdxExam(Gtk.VBox):
 
         # add label above check option
         assessment_label = Gtk.Label()
-        label_text = "<b>" + _(u"3. Case Assessment") + "</b>"
+        label_text = "<b>" + self.string_resources["option_3_title"] + "</b>"
         label_pre = construct_markup(label_text, font_size=16)
         assessment_label.set_markup(label_pre)
         self.pack_start(assessment_label, False, False, 30)

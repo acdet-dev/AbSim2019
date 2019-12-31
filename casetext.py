@@ -648,7 +648,7 @@ class CaseText:
 class CaseTextBuffer(Gtk.TextBuffer):
     def __init__(self):
         Gtk.TextBuffer.__init__(self)
-        #apply text sizer here
+        # apply text sizer here
         s_size = Gdk.screen_width() * Gdk.screen_height()
         if s_size < 1327104:
             font_s = font_size(s_size, f_size=16)

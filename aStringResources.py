@@ -108,6 +108,7 @@ class AStringResources:
 
         elif self.identifier == "view_performance":
             string_resources = {
+                "window_title": _(u"View Student Performance"),
                 "notebook_tab_1": _(u"Assessments"),
                 "column_header": _(u"Assessment Title"),
                 "notebook_tab_2": _(u"Baseline Palpation"),
@@ -118,6 +119,9 @@ class AStringResources:
                 "choose_title": _(u"Choose Section(s)"),
                 "choose_description": _(u"Select section name(s) to display results for that (those) section(s)."),
                 "results_button": _(u"Results"),
+                "baseline_text": _(u"Baseline Assessment: "),
+                "ab_text": _(u"Abnormality Detection: "),
+                "ddx_text": _(u"Case Diagnosis: ")
                 # add more for added processes
             }
 

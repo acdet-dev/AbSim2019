@@ -73,7 +73,6 @@ class ExamModel:
             sim_message(win, info_string=_(u'Assessment Save Failure!'),
                         secondary_text=_(u'Could not save assessment because no assessment title entered.'))
 
-
     def get_all(self, key):
         db_conn = self.connect()
         c = db_conn.cursor()
@@ -94,7 +93,7 @@ class ExamModel:
 
         return exam_list
 
-    ##add loop to check for password and id in list of entries
+    # add loop to check for password and id in list of entries
 
     def get_by_exam_id(self, key):
         db_conn = self.connect()

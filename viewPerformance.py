@@ -7,16 +7,20 @@ import assessmentViewer
 import examParser
 import menu
 from menu import *
-from i18ntrans2 import _
+from aStringResources import AStringResources
 import exammodel
 import splashscreen
+from casetext import CaseTextBuffer
 
 
 class ViewPerformance(Gtk.Window, menu.MenuBar):
     def __init__(self, name, password):
 
+        # initialize string resources
+        self.string_resources = AStringResources("view_performance", back_flag=True).get_by_identifier()
+
         # Make window
-        Gtk.Window.__init__(self, title=_(u"View Student Performance"))
+        Gtk.Window.__init__(self, title=self.string_resources["window_title"])
         self.set_icon_from_file('icon.ico')
         self.maximize()
 
@@ -31,6 +35,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         self.ab = ''
         self.ddx = ''
         self.notebook = Gtk.Notebook()
+        self.tb = CaseTextBuffer()
 
         self.window_resources = {
             "exam_id": self.exam_id,
@@ -55,25 +60,25 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         # first selection notebook tab
         self.abDDX = vbox
         self.abDDX.set_property('border-width', 15)
-        abDDX_label = simLabels.MilestoneNameLabel(_(u"Select Assessment"))
+        abDDX_label = simLabels.MilestoneNameLabel(self.string_resources["notebook_tab_1"])
         self.notebook.append_page(self.abDDX, abDDX_label)
 
         # baseline exam notebook tab
         self.window_resources['baseline'] = base_vbox
         self.window_resources['baseline'].set_property('border-width', 15)
-        baseline_label = simLabels.MilestoneNameLabel(_(u"Baseline Palpation"))
+        baseline_label = simLabels.MilestoneNameLabel(self.string_resources["notebook_tab_2"])
         self.notebook.append_page(self.window_resources['baseline'], baseline_label)
 
         # ab exam notebook tab
         self.window_resources['ab'] = ab_vbox
         self.window_resources['ab'].set_property('border-width', 15)
-        ab_label = simLabels.MilestoneNameLabel(_(u"Abnormality Detection"))
+        ab_label = simLabels.MilestoneNameLabel(self.string_resources["notebook_tab_3"])
         self.notebook.append_page(self.window_resources['ab'], ab_label)
 
         # ddx exam notebook tab
         self.window_resources['ddx'] = ddx_vbox
         self.window_resources['ddx'].set_property('border-width', 15)
-        ddx_label = simLabels.MilestoneNameLabel(_(u"Case Diagnosis"))
+        ddx_label = simLabels.MilestoneNameLabel(self.string_resources["notebook_tab_4"])
         self.notebook.append_page(self.window_resources['ddx'], ddx_label)
 
         # add vbox as widget to window
@@ -92,6 +97,8 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         self.notebook.get_nth_page(3).hide()
 
     def build_interface(self):
+        from simLabels import screen_sizer
+
         # make boxes to hold all info
         vbox = Gtk.VBox(False, 8)
         ovbox = Gtk.VBox(False, 8)
@@ -104,7 +111,28 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
 
         # pack scroller box to an h box
         ovbox.pack_start(sw, True, True, 0)
-        hbox.pack_start(ovbox, True, True, 0)
+        hbox.pack_start(ovbox, True, True, 10)
+
+        # text is not editable and wraps between words
+        text_view = Gtk.TextView(buffer=self.tb)
+        text_view.set_editable(False)
+        text_view.set_wrap_mode(Gtk.WRAP_WORD)
+
+        # get adjusted width
+        screen_width = Gtk.gdk.screen_width()
+        screen_height = Gtk.gdk.screen_height()
+
+        width, height = screen_sizer(screen_width, screen_height, old_width=400, old_height=500)
+
+        text_scroller = Gtk.ScrolledWindow()
+        text_scroller.set_property('hscrollbar-policy', Gtk.POLICY_AUTOMATIC)
+        text_scroller.set_property('vscrollbar-policy', Gtk.POLICY_AUTOMATIC)
+        text_scroller.set_size_request(width, height)
+        text_scroller.set_property('border-width', 1)
+        text_scroller.add(text_view)
+        # text_scroller_vadjustment = text_scroller.get_vadjustment()
+
+        hbox.pack_start(text_scroller, False, False, 10)
 
         # get database entries for treeview in scroller window
         store = self.create_model()
@@ -135,18 +163,22 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
 
     def add_buttons(self):
 
-        button_table = Gtk.Table(rows=2, columns=2)
+        button_table = Gtk.Table(rows=4, columns=2)
         button_table.set_border_width(20)
         button_table.set_col_spacings(5)
         button_table.set_row_spacings(5)
 
-        right_button = self.build_button(_(u"View Exam"))
-        right_button.connect('clicked', self.view)
-        button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
+        assign_button = self.build_button(self.string_resources["assign_button"])
+        assign_button.connect('clicked', self.assign)
+        button_table.attach(assign_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
 
-        view_button = self.build_button(_(u"Return"))
-        view_button.connect('clicked', self.go_back)
-        button_table.attach(view_button, 1, 2, 0, 1, xoptions=False, yoptions=False)
+        results_button = self.build_button(self.string_resources["results_button"])
+        results_button.connect('clicked', self.results)
+        button_table.attach(results_button, 1, 2, 0, 1, xoptions=False, yoptions=False)
+
+        back_button = self.build_button(self.string_resources["back_button"])
+        back_button.connect('clicked', self.go_back)
+        button_table.attach(back_button, 2, 3, 0, 1, xoptions=False, yoptions=False)
 
         return button_table
 
@@ -174,12 +206,16 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         self.splash_screen.hide()
         self.close_menu()
 
-    def view(self, widget):
+    def assign(self, widget):
+        """ Assign highlighted exam to section(s) of students """
+        return
+
+    def results(self, widget):
         # view highlighted exam's scores
         from messages import sim_class_message
 
-        s = sim_class_message(self, info_string=_(u'Enter a Section'), secondary_text=_(u'Type section name to display '
-                                                                                        u'results for that section'))
+        s = sim_class_message(self, info_string=self.string_resources["choose_title"],
+                              secondary_text=self.string_resources["choose_description"])
 
         assessmentViewer.AssessmentViewer(s, self.window_resources, self.bases, self.cases, self.ddxs)
 
@@ -190,7 +226,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         self.finish_transfer()
 
     def create_model(self):
-        store = Gtk.ListStore(str, str, str, str)
+        store = Gtk.ListStore(str, str, str, str, str, str)
         self.exam_info = exammodel.ExamModel()
         self.exams = self.exam_info.get_all(key='check')
 
@@ -203,18 +239,19 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
                     case_list_comm, case_title_list, baseline_model, baseline_flag,\
                     ddx_cases = ep.parse_exam_info(case_info)
                     if baseline_flag:
-                        base = _(u'yes')
+                        base = 'yes'
                     else:
-                        base = _(u'no')
+                        base = 'no'
                     if len(case_list_comm) > 0:
-                        cases = _(u'yes')
+                        cases = 'yes'
                     else:
-                        cases = _(u'no')
+                        cases = 'no'
                     if len(ddx_cases) > 0:
-                        ddx = _(u'yes')
+                        ddx = 'yes'
                     else:
-                        ddx = _(u'no')
-                    store.append([exam[0].decode('utf-8'), base, cases, ddx])
+                        ddx = 'no'
+                    store.append([exam[0].decode('utf-8'), base, cases, ddx, "-".join(case_title_list),
+                                  ", ".join(ddx_cases)])
                 except TypeError:
                     pass
 
@@ -222,29 +259,27 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
             logging.debug('No assessments returned')
         return store
 
+    def parse_assessments(self, case, ddx):
+        base = self.bases
+
+        if base == "yes":
+            base_string = u"\u2713"
+        else:
+            base_string = ""
+
+        cases = case.split("-")
+        just_cases = [i for i in cases if "ddx_" not in i]
+
+        text = self.string_resources["baseline_text"] + base_string + "\n\n" +\
+               self.string_resources["ab_text"] + "\n" + ", ".join(just_cases) + "\n\n" +\
+               self.string_resources["ddx_text"] + "\n" + ddx
+
+        return text
+
     def create_columns(self, treeView):
         renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Assessment Title"), renderer_text, text=0)
+        column = Gtk.TreeViewColumn(self.string_resources["column_header"], renderer_text, text=0)
         column.set_sort_column_id(0)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        renderer_text = Gtk.CellRendererText()
-        renderer_text.set_property('ellipsize', Pango.ELLIPSIZE_END)
-        column = Gtk.TreeViewColumn(_(u"Has Baseline?"), renderer_text, text=1)
-        column.set_sort_column_id(1)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Has Abnormality Detection?"), renderer_text, text=2)
-        column.set_sort_column_id(2)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Has Case Diagnosis?"), renderer_text, text=3)
-        column.set_sort_column_id(3)
         column.set_resizable(True)
         treeView.append_column(column)
 
@@ -255,3 +290,8 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         self.bases = model.get(iter, 1)[0]
         self.cases = model.get(iter, 2)[0]
         self.ddxs = model.get(iter, 3)[0]
+        case_title_list = model.get(iter, 4)[0]
+        ddx_cases = model.get(iter, 5)[0]
+
+        new_text = self.parse_assessments(case_title_list, ddx_cases)
+        self.tb.new_case(new_text)
