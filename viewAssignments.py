@@ -730,8 +730,6 @@ class CaseExam(Gtk.HBox):
     def make_selection(self, choice):
         # in here, we should be able to facilitate transition to other exam
         if len(self.exam_resources['case_list']) > 0:
-            print(self.cs.current_case)
-            print(self.exam_resources['case_list'][0])
             self.exam_resources['ab_answer_list'].append(self.exam_resources['case_list'][0])
             # add student answers to their own list
             self.exam_resources['student_answer_list'].append(self.cs.current_case)
@@ -849,42 +847,46 @@ class DdxExam(Gtk.HBox):
 
     def make_selection(self, choice):
         # in here, we should be able to facilitate transition to other exam
-        if len(self.exam_resources['ddx_cases']) > 0:
+        if hasattr(self, "current_case"):
+            if len(self.exam_resources['ddx_cases']) > 0:
 
-            self.exam_resources['ddx_answer_list'].append(self.exam_resources['ddx_cases'][0])
-            # add student answers to their own list
-            self.exam_resources['student_ddx_list'].append(self.current_case)
+                self.exam_resources['ddx_answer_list'].append(self.exam_resources['ddx_cases'][0])
+                # add student answers to their own list
+                self.exam_resources['student_ddx_list'].append(self.current_case)
 
-            if distance(self.current_case, self.exam_resources['ddx_cases'][0].split('ddx_')[0]) < 1:
-                self.exam_resources['ddx_num'] += 1
+                if distance(self.current_case, self.exam_resources['ddx_cases'][0].split('ddx_')[0]) < 1:
+                    self.exam_resources['ddx_num'] += 1
+
+                else:
+                    self.exam_resources['ddx_num'] += 0
+
+                self.exam_resources['ddx_cases'].pop(0)
+
+                try:
+                    # add case vignette to scroller
+                    current_text, ail_key, block = self.get_vignette()
+                    self.case_text_buffer.new_case(current_text)
+                    self.case_text_scroller_vadjustment.set_value(0)
+                    self.case_text_scroller.show_all()
+
+                    self.view_resources['new_case_observer'].alert(ail_key)
+
+                    self.view_resources['new_case_block_observer'].alert(ail_key, block)
+                except IndexError:
+                    score = self.exam_resources['ddx_num'] / self.exam_resources['ddx_den']
+                    self.view_resources['window'].case_exam.report_score(score)
 
             else:
-                self.exam_resources['ddx_num'] += 0
-
-            self.exam_resources['ddx_cases'].pop(0)
-
-            try:
-                # add case vignette to scroller
-                current_text, ail_key, block = self.get_vignette()
-                self.case_text_buffer.new_case(current_text)
-                self.case_text_scroller_vadjustment.set_value(0)
-                self.case_text_scroller.show_all()
-
-                self.view_resources['new_case_observer'].alert(ail_key)
-
-                self.view_resources['new_case_block_observer'].alert(ail_key, block)
-            except IndexError:
-                score = self.exam_resources['ddx_num'] / self.exam_resources['ddx_den']
-                self.view_resources['window'].case_exam.report_score(score)
-
+                sim_message(self.view_resources['window'], info_string=_(u'Assessment Finished'),
+                            secondary_text=_(u'You may take another assessment if you have '
+                                             u'more to take.'))
+                self.view_resources['window'].return_home()
+                # logging.debug('exam finished')
+                # sim_message(self, info_string=_(u'Exam Load Failure'),
+                # secondary_text=_(u'AbSim received empty exam list.'))
         else:
-            sim_message(self.view_resources['window'], info_string=_(u'Assessment Finished.'),
-                        secondary_text=_(u'You may take another assessment if you have '
-                                         u'more to take.'))
-            self.view_resources['window'].return_home()
-            # logging.debug('exam finished')
-            # sim_message(self, info_string=_(u'Exam Load Failure'),
-            # secondary_text=_(u'AbSim received empty exam list.'))
+            sim_message(self.view_resources['window'], info_string=_(u"No Selection"),
+                        secondary_text=_(u"Please select a case."))
 
     def build_button(self, label_text):
         button = Gtk.Button()
@@ -962,7 +964,7 @@ class DdxExam(Gtk.HBox):
             ddx_list.append(temp[0])
 
         store.append(None, [ddx_list[0], 'Upper Gastrointestinal Etiology'])
-        store.append(None, [ddx_list[1], "Choledocolithiasis"])
+        store.append(None, [ddx_list[1], 'Choledocolithiasis'])
         store.append(None, [ddx_list[2], 'Pancreatitis'])
         store.append(None, [ddx_list[3], 'Cholecystitis'])
         store.append(None, [ddx_list[4], 'Mesenteric Infarction'])

@@ -38,7 +38,7 @@ def sim_login_message(parent, info_string, secondary_text):
         return None
 
 
-def sim_class_message(parent, info_string, secondary_text):
+def sim_class_message(parent, b_tree, sec_name, info_string, secondary_text):
     # Returns user input as a string or None
     # If user does not input text it returns None, NOT AN EMPTY STRING.
     dialogWindow = Gtk.MessageDialog(parent,
@@ -50,18 +50,15 @@ def sim_class_message(parent, info_string, secondary_text):
     dialogWindow.set_title(info_string)
 
     dialogBox = dialogWindow.get_content_area()
-    userEntry = Gtk.Entry()
-    userEntry.set_placeholder_text(_(u'Class Section'))
-    userEntry.set_visibility(True)
-    userEntry.set_size_request(250, 0)
-    dialogBox.pack_end(userEntry, False, False, 0)
+    dialogBox.pack_end(b_tree, False, False, 0)
+
+    section = sec_name
 
     dialogWindow.show_all()
     response = dialogWindow.run()
-    section = userEntry.get_text()
-    dialogWindow.destroy()
-    if (response == Gtk.ResponseType.OK) and (section != ''):
 
+    dialogWindow.destroy()
+    if (response == Gtk.ResponseType.OK) and (len(section) > 0):
         return section
     else:
         return None

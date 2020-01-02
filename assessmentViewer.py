@@ -30,7 +30,16 @@ class AssessmentViewer:
         self.window_resources['ddxs'] = ddxs
 
         self.exam_info = takenmodel.TakenModel()
-        self.exam = self.exam_info.get_by_exam_section_id(self.section, self.window_resources["exam_id"])
+
+        self.exam_list = []
+
+        try:
+            for s in section:
+                self.exam_list.extend(self.exam_info.get_by_exam_section_id(s, self.window_resources["exam_id"]))
+
+            self.exam = list(filter(None, self.exam_list))
+        except TypeError:
+            self.exam = None
 
         # get pages and facilitate shift
         page1 = self.window_resources['notebook'].get_nth_page(0)
@@ -472,7 +481,7 @@ class ViewBaselineAssessments:
         desktop = os.getenv('USERPROFILE') + '\\Desktop'
 
         # create file string
-        file_string = c_dir + '\\' + self.section + self.exams[0][2] + '_baseline_data.csv'
+        file_string = c_dir + '\\' + '_'.join(self.section) + self.exams[0][2] + '_baseline_data.csv'
 
         # create headers with translatable text
         heads = [self.string_resources["column_header_1"], self.string_resources["not_label"],

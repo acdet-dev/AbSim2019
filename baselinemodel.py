@@ -149,20 +149,20 @@ class BaselineModel:
             FROM baseline
             WHERE section=? AND exam_name=?
         '''
-        try:
-            c.execute(stmt, (key1, key2))
-            tuple_list = c.fetchall()
-            exam_list = [list(elem) for elem in tuple_list]
+        exam_list = []
+        for key in key1:
+            try:
+                c.execute(stmt, (key, key2))
+                tuple_list = c.fetchall()
+                exam_list.extend([list(elem) for elem in tuple_list])
 
-            return exam_list
-
-        except:
-            # i18n - logging.debug statement
-            logging.debug('Could not get all assessments')
-
-            return None
+            except:
+                # i18n - logging.debug statement
+                logging.debug('Could not get all assessments')
 
         db_conn.close()
+
+        return exam_list
 
     def get_by_score_id(self, key):
 

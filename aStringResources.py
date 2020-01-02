@@ -121,8 +121,13 @@ class AStringResources:
                 "results_button": _(u"Results"),
                 "baseline_text": _(u"Baseline Assessment: "),
                 "ab_text": _(u"Abnormality Detection: "),
-                "ddx_text": _(u"Case Diagnosis: ")
-                # add more for added processes
+                "ddx_text": _(u"Case Diagnosis: "),
+                "base_text": _(u"Select assessment to view items assigned."),
+                "info_string": _(u"No Section(s) Selected"),
+                "secondary": _(u"Please select section(s) to view student performance."),
+                "section_helper": _(u"Section"),  # add trailing space
+                "no_students_error": _(u"No Sections Exist"),
+                "please_add": _(u"Please add students in previous screen.")
             }
 
         elif self.identifier == "assessment_viewer":

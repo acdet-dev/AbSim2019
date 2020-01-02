@@ -10,7 +10,6 @@ class StudentModel:
     def __init__(self, db_filename=app_data_path + '\\faculty_info.db'):
         self.db_filename = db_filename
 
-
     def connect(self):
         return sqlite3.connect(self.db_filename)
 
