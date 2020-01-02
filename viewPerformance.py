@@ -36,6 +36,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         self.ddx = ''
         self.notebook = Gtk.Notebook()
         self.tb = CaseTextBuffer()
+        self.sec_name = []
 
         self.window_resources = {
             "exam_id": self.exam_id,
@@ -130,6 +131,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         text_scroller.set_size_request(width, height)
         text_scroller.set_property('border-width', 1)
         text_scroller.add(text_view)
+        self.tb.new_case(self.string_resources["base_text"])
         # text_scroller_vadjustment = text_scroller.get_vadjustment()
 
         hbox.pack_start(text_scroller, False, False, 10)
@@ -192,6 +194,45 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         button.add(label)
         return button
 
+    def build_check_button(self, label_text):
+        from simLabels import construct_markup
+
+        button = Gtk.CheckButton.new()
+        label = Gtk.Label()
+        label_pre_mark = construct_markup(label_text, font_size=14)
+        label.set_markup(label_pre_mark)
+        label.set_padding(10, 10)
+        button.add(label)
+        button.connect("toggled", self.on_button_toggled, label_text)
+
+        return button
+
+    def build_button_tree(self, sec_nums):
+        check_button_box = Gtk.HBox()
+
+        for num in sec_nums:
+            button = self.build_check_button(num, )
+            check_button_box.pack_start(button, False, False, 0)
+
+        return check_button_box
+
+    def on_button_toggled(self, button, name):
+        if button.get_active():
+            self.sec_name.append(name)
+        else:
+            self.sec_name.remove(name)
+
+    def get_number_sections(self):
+        """ function to return unique sections of students """
+        from studentmodel import StudentModel
+
+        sm = StudentModel()
+        students = sm.get_all(key="check")
+
+        unique_sections = list(set([i[0] for i in students]))
+
+        return sorted(unique_sections)
+
     def setup_transfer(self):
         self.splash_screen = splashscreen.SplashScreen()
         self.splash_screen.show_all()
@@ -206,18 +247,45 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         self.splash_screen.hide()
         self.close_menu()
 
+    def get_sections(self):
+        section_numbers = self.get_number_sections()
+        if len(section_numbers) > 0:
+            button_tree = self.build_button_tree(section_numbers)
+
+            return button_tree
+
+        else:
+            return None
+
     def assign(self, widget):
         """ Assign highlighted exam to section(s) of students """
         return
 
     def results(self, widget):
         # view highlighted exam's scores
-        from messages import sim_class_message
+        from messages import sim_class_message, sim_message
 
-        s = sim_class_message(self, info_string=self.string_resources["choose_title"],
-                              secondary_text=self.string_resources["choose_description"])
+        bt = self.get_sections()
 
-        assessmentViewer.AssessmentViewer(s, self.window_resources, self.bases, self.cases, self.ddxs)
+        self.sec_name = []
+
+        if bt:
+
+            s = sim_class_message(self,
+                                  bt,
+                                  self.sec_name,
+                                  info_string=self.string_resources["choose_title"],
+                                  secondary_text=self.string_resources["choose_description"])
+
+            if s:
+                assessmentViewer.AssessmentViewer(sorted(s), self.window_resources, self.bases, self.cases, self.ddxs)
+            else:
+                sim_message(self, info_string=self.string_resources["info_string"],
+                            secondary_text=self.string_resources["secondary"])
+
+        else:
+            sim_message(self, info_string=self.string_resources["no_students_error"],
+                        secondary_text=self.string_resources["please_add"])
 
     def go_back(self, widget):
         from sim import UserType
