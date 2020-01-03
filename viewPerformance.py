@@ -9,6 +9,7 @@ import menu
 from menu import *
 from aStringResources import AStringResources
 import exammodel
+from takenmodel import TakenModel
 import splashscreen
 from casetext import CaseTextBuffer
 from messages import sim_class_message, sim_message
@@ -38,6 +39,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         self.notebook = Gtk.Notebook()
         self.tb = CaseTextBuffer()
         self.sec_name = []
+        self.no_exams_flag = False
 
         self.window_resources = {
             "exam_id": self.exam_id,
@@ -179,9 +181,13 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         results_button.connect('clicked', self.results)
         button_table.attach(results_button, 1, 2, 0, 1, xoptions=False, yoptions=False)
 
+        delete_button = self.build_button(self.string_resources["delete_button"])
+        delete_button.connect('clicked', self.delete)
+        button_table.attach(delete_button, 2, 3, 0, 1, xoptions=False, yoptions=False)
+
         back_button = self.build_button(self.string_resources["back_button"])
         back_button.connect('clicked', self.go_back)
-        button_table.attach(back_button, 2, 3, 0, 1, xoptions=False, yoptions=False)
+        button_table.attach(back_button, 3, 4, 0, 1, xoptions=False, yoptions=False)
 
         return button_table
 
@@ -200,7 +206,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
 
         button = Gtk.CheckButton.new()
         label = Gtk.Label()
-        label_pre_mark = construct_markup(label_text, font_size=10)
+        label_pre_mark = construct_markup(label_text, font_size=12)
         label.set_markup(label_pre_mark)
         label.set_padding(5, 5)
         button.add(label)
@@ -265,63 +271,121 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         # initialize db model
         tt = ToTake()
 
+        # initialize a flag for return value
+        a_flag = False
+
         # write assessment title and sec_string to db iteratively
         for sec in sections:
-            tt.save_to_db(self.window_resources["exam_id"], sec)
+            # check in loop to see that not already assigned
+            result = tt.get_by_section_exam_id(key1=sec, key2=self.window_resources["exam_id"])
+            if len(result) > 0:
+                sim_message(self, info_string=self.string_resources["already_assigned"],
+                            secondary_text=self.string_resources["already_description"])
+            else:
+                tt.save_to_db(self.window_resources["exam_id"], sec)
+                a_flag = True
 
-        return
+        return a_flag
 
     def assign(self, widget):
         """ Assign highlighted exam to section(s) of students """
-
-        # call get sections
-        bt = self.get_sections()
-
-        self.sec_name = []
-
-        if bt:
-
-            s = sim_class_message(self,
-                                  bt,
-                                  self.sec_name,
-                                  info_string=self.string_resources["choose_title"],
-                                  secondary_text=self.string_resources["choose_description"])
-
-            if s:
-                self.assign_to_students_by_section(s)
-            else:
-                sim_message(self, info_string=self.string_resources["info_string"],
-                            secondary_text=self.string_resources["secondary"])
+        if self.no_exams_flag:
+            sim_message(self, info_string=self.string_resources["no_data"],
+                        secondary_text=self.string_resources["no_data_message"])
 
         else:
-            sim_message(self, info_string=self.string_resources["no_students_error"],
-                        secondary_text=self.string_resources["please_add"])
+            # call get sections
+            bt = self.get_sections()
+
+            self.sec_name = []
+
+            if bt:
+
+                s = sim_class_message(self,
+                                      bt,
+                                      self.sec_name,
+                                      info_string=self.string_resources["choose_title"],
+                                      secondary_text=self.string_resources["choose_sections"])
+
+                if s:
+                    assigned_flag = self.assign_to_students_by_section(s)
+
+                    if assigned_flag:
+                        sim_message(self, info_string=self.string_resources["assigned"],
+                                    secondary_text=self.string_resources["assigned_description"])
+                        self.setup_transfer()
+                        ViewPerformance(self.name, self.password)
+                        self.finish_transfer()
+
+                else:
+                    sim_message(self, info_string=self.string_resources["info_string"],
+                                secondary_text=self.string_resources["secondary"])
+
+            else:
+                sim_message(self, info_string=self.string_resources["no_students_error"],
+                            secondary_text=self.string_resources["please_add"])
 
         return
 
     def results(self, widget):
-        # view highlighted exam's scores
-        bt = self.get_sections()
-
-        self.sec_name = []
-
-        if bt:
-
-            s = sim_class_message(self,
-                                  bt,
-                                  self.sec_name,
-                                  info_string=self.string_resources["choose_title"],
-                                  secondary_text=self.string_resources["choose_description"])
-
-            if s:
-                assessmentViewer.AssessmentViewer(sorted(s), self.window_resources, self.bases, self.cases, self.ddxs)
-            else:
-                sim_message(self, info_string=self.string_resources["info_string"],
-                            secondary_text=self.string_resources["secondary"])
+        if self.no_exams_flag:
+            sim_message(self, info_string=self.string_resources["no_data"],
+                        secondary_text=self.string_resources["no_data_message"])
 
         else:
-            sim_message(self, info_string=self.string_resources["no_students_error"],
-                        secondary_text=self.string_resources["please_add"])
+            # view highlighted exam's scores
+            bt = self.get_sections()
+
+            self.sec_name = []
+
+            if bt:
+
+                s = sim_class_message(self,
+                                      bt,
+                                      self.sec_name,
+                                      info_string=self.string_resources["choose_title"],
+                                      secondary_text=self.string_resources["choose_description"])
+
+                if s:
+                    assessmentViewer.AssessmentViewer(sorted(s), self.window_resources, self.bases, self.cases, self.ddxs)
+                else:
+                    sim_message(self, info_string=self.string_resources["info_string"],
+                                secondary_text=self.string_resources["secondary"])
+
+            else:
+                sim_message(self, info_string=self.string_resources["no_students_error"],
+                            secondary_text=self.string_resources["please_add"])
+
+    def delete(self, widget):
+        if self.no_exams_flag:
+            sim_message(self, info_string=self.string_resources["no_data"],
+                        secondary_text=self.string_resources["no_data_message"])
+
+        else:
+
+            from totake import ToTake
+            from messages import sim_reset_dialogue
+
+            tt = ToTake()
+            tm = TakenModel()
+
+            yes_no = sim_reset_dialogue(self, info_string=self.string_resources["warning"],
+                                        secondary_text=self.string_resources["warning_message"])
+
+            if yes_no == "reset":
+
+                # execute delete statements
+                self.exam_info.delete_by_exam_id(key=self.window_resources["exam_id"])
+                tt.delete_by_exam_id(key=self.window_resources["exam_id"])
+                tm.delete_rows(key=self.window_resources["exam_id"])
+
+                self.setup_transfer()
+                ViewPerformance(self.name, self.password)
+                self.finish_transfer()
+
+            else:
+                sim_message(self, info_string=self.string_resources["no_delete"],
+                            secondary_text=self.string_resources["no_delete_message"])
 
     def go_back(self, widget):
         from sim import UserType
@@ -329,8 +393,40 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         UserType('faculty', self.name, self.password)
         self.finish_transfer()
 
+    def check_taken(self, sections, title):
+        tm = TakenModel()
+
+        t = []
+        for section in sections:
+            t.extend(tm.get_by_exam_section_id(section, title))
+
+        return len(t)
+
+    def check_students(self, sections):
+        """ method to return number of students taken out of total students assigned assessment """
+        from studentmodel import StudentModel
+        import itertools
+        from functools import partial
+        from operator import ne
+
+        s = []
+        for section in sections:
+            s.extend(StudentModel().get_by_section(section))
+
+        merged = list(itertools.chain.from_iterable(s))
+
+        if "" in merged:
+            merged = list(filter(partial(ne, ""), merged))
+
+        if "ID" in merged:
+            merged = list(filter(partial(ne, "ID"), merged))
+
+        denominator = len(merged)
+
+        return denominator
+
     def create_model(self):
-        store = Gtk.ListStore(str, str, str, str, str, str, str)
+        store = Gtk.ListStore(str, str, str, str, str, str, str, str)
         self.exam_info = exammodel.ExamModel()
         self.exams = self.exam_info.get_all(key='check')
 
@@ -340,6 +436,16 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
                 ep = examParser.ExamParser(flag='one', title=exam[0].decode('utf-8'))
                 case_info = ep.get_exam_info(ep.flag, ep.title)
                 a_t = sorted(ep.get_assigned_to())
+
+                # check number of students
+                num_students = self.check_students(a_t)
+
+                # check number of taken
+                num_taken = self.check_taken(a_t, ep.title)
+
+                # write string to print
+                completed_string = str(num_taken) + "/" + str(num_students)
+
                 case_list_comm, case_title_list, baseline_model, baseline_flag,\
                     ddx_cases = ep.parse_exam_info(case_info)
                 if baseline_flag:
@@ -355,9 +461,10 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
                 else:
                     ddx = 'no'
                 store.append([exam[0].decode('utf-8'), base, cases, ddx, "-".join(case_title_list),
-                              ", ".join(ddx_cases), ", ".join(a_t)])
+                              "\n".join(ddx_cases), ", ".join(a_t), completed_string])
         else:
             logging.debug('No assessments returned')
+            self.no_exams_flag = True
         return store
 
     def parse_assessments(self, case, ddx):
@@ -372,7 +479,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         just_cases = [i for i in cases if "ddx_" not in i]
 
         text = self.string_resources["baseline_text"] + base_string + "\n\n" +\
-               self.string_resources["ab_text"] + "\n" + ", ".join(just_cases) + "\n\n" +\
+               self.string_resources["ab_text"] + "\n" + "\n".join(just_cases) + "\n\n" +\
                self.string_resources["ddx_text"] + "\n" + ddx
 
         return text
@@ -390,6 +497,12 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         column.set_resizable(True)
         treeView.append_column(column)
 
+        renderer_text = Gtk.CellRendererText()
+        column = Gtk.TreeViewColumn(self.string_resources["column_header_3"], renderer_text, text=7)
+        column.set_sort_column_id(7)
+        column.set_resizable(True)
+        treeView.append_column(column)
+
     def on_row_change(self, treeview):
         selection = treeview.get_selection()
         (model, iter) = selection.get_selected()
@@ -400,6 +513,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         case_title_list = model.get(iter, 4)[0]
         ddx_cases = model.get(iter, 5)[0]
         assigned_string = model.get(iter, 6)[0]
+        complete_string = model.get(iter, 7)[0]
 
         new_text = self.parse_assessments(case_title_list, ddx_cases)
         self.tb.new_case(new_text)

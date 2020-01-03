@@ -60,6 +60,20 @@ class ToTake:
 
         db_conn.close()
 
+    def delete_by_exam_id(self, key):
+        db_conn = self.connect()
+        c = db_conn.cursor()
+        droptablestatement = "DELETE FROM to_take WHERE assessment_title=?"
+
+        try:
+            c.execute(droptablestatement, (key,))
+            db_conn.commit()
+        except sqlite3.InterfaceError as e:
+            logging.debug(e)
+            pass
+
+        db_conn.close()
+
     def get_all(self, key):
         db_conn = self.connect()
         c = db_conn.cursor()
@@ -119,3 +133,20 @@ class ToTake:
 
         db_conn.close()
         return assigned
+
+    def get_by_section_exam_id(self, key1, key2):
+        db_conn = self.connect()
+        c = db_conn.cursor()
+
+        stmt = '''
+            SELECT assessment_title
+            FROM to_take
+            WHERE section_string=? AND assessment_title=?
+        '''
+        # trying to match with datatype not string!
+        c.execute(stmt, (key1, key2))
+        row = c.fetchall()
+        assessed = [list(elem) for elem in row]
+        logging.debug('Got assessment by score_id!')
+        db_conn.close()
+        return assessed

@@ -99,3 +99,25 @@ class StudentModel:
         except Exception as e:
             logging.debug('could not get student by id entered.')
             pass
+
+    def get_by_section(self, key):
+        db_conn = self.connect()
+        c = db_conn.cursor()
+
+        stmt = '''
+            SELECT student_id
+            FROM student
+            WHERE section=?
+        '''
+        try:
+            # trying to match with datatype not string!
+            c.execute(stmt, (key,))
+            row = c.fetchall()
+
+            student = [list(elem) for elem in row]
+            db_conn.close()
+            return student
+
+        except sqlite3.InterfaceError as e:
+            logging.debug(e)
+            pass

@@ -49,10 +49,10 @@ class AStringResources:
                 "config_description": _(u"Customize Sensor Pad Pressure Settings"),
                 "add_students_button": _(u"Add Students"),
                 "add_students_description": _(u"Provide AbSim Student Information"),
-                "create_button": _(u"Create Assessment"),
-                "create_description": _(u"Construct and Assign Custom Assessments"),
-                "view_button": _(u"View Student Performance"),
-                "view_description": _(u"View Student Scores on Assigned Assessments")
+                "create_button": _(u"Create Assessments"),
+                "create_description": _(u"Construct Custom Assessments"),
+                "view_button": _(u"View Assessments"),
+                "view_description": _(u"View Results and Assign Assessments")
             }
 
         elif self.identifier == "config_screen":
@@ -108,17 +108,20 @@ class AStringResources:
 
         elif self.identifier == "view_performance":
             string_resources = {
-                "window_title": _(u"View Student Performance"),
+                "window_title": _(u"View Assessments"),
                 "notebook_tab_1": _(u"Assessments"),
                 "column_header": _(u"Assessment Title"),
                 "column_header_2": _(u"Assigned To"),
+                "column_header_3": _(u"Completed"),
                 "notebook_tab_2": _(u"Baseline Palpation"),
                 "notebook_tab_3": _(u"Abnormality Detection"),
                 "notebook_tab_4": _(u"Case Diagnosis"),
                 "view_button": _(u"View"),
                 "assign_button": _(u"Assign"),
+                "delete_button": _(u"Delete"),
                 "choose_title": _(u"Choose Section(s)"),
                 "choose_description": _(u"Select section name(s) to display results for that (those) section(s)."),
+                "choose_sections": _(u"Select section name(s) to which to assign assessment."),
                 "results_button": _(u"Results"),
                 "baseline_text": _(u"Baseline Assessment: "),
                 "ab_text": _(u"Abnormality Detection: "),
@@ -128,7 +131,17 @@ class AStringResources:
                 "secondary": _(u"Please select section(s) to view student performance."),
                 "section_helper": _(u"Section"),  # add trailing space
                 "no_students_error": _(u"No Sections Exist"),
-                "please_add": _(u"Please add students in previous screen.")
+                "please_add": _(u"Please add students in previous screen."),
+                "warning": _(u"Delete Assessment"),
+                "warning_message": _(u"Are you sure you wish to delete the selected assessment?"),
+                "no_delete": _(u"Assessment Not Deleted"),
+                "no_delete_message": _(u"AbSim will not delete assessment and associated data."),
+                "no_data": _(u"Assessment Data Not Found"),
+                "no_data_message": _(u"Please check back when students have taken assessments."),
+                "assigned": _(u"Assessment Assignment Successful"),
+                "assigned_description": _(u"Students in section(s) assigned may take this assessment."),
+                "already_assigned": _(u"Assessment Already Assigned"),
+                "already_description": _(u"The chosen section is already assigned this assessment.")
             }
 
         elif self.identifier == "exam_model":
