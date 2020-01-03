@@ -293,6 +293,10 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
             sim_message(self, info_string=self.string_resources["no_data"],
                         secondary_text=self.string_resources["no_data_message"])
 
+        elif self.window_resources["exam_id"] == '':
+            sim_message(self, info_string=self.string_resources["no_assessment_selected"],
+                        secondary_text=self.string_resources["no_assess_description"])
+
         else:
             # call get sections
             bt = self.get_sections()
@@ -332,6 +336,10 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
             sim_message(self, info_string=self.string_resources["no_data"],
                         secondary_text=self.string_resources["no_data_message"])
 
+        elif self.window_resources["exam_id"] == '':
+            sim_message(self, info_string=self.string_resources["no_assessment_selected"],
+                        secondary_text=self.string_resources["no_assess_description"])
+
         else:
             # view highlighted exam's scores
             bt = self.get_sections()
@@ -360,6 +368,10 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         if self.no_exams_flag:
             sim_message(self, info_string=self.string_resources["no_data"],
                         secondary_text=self.string_resources["no_data_message"])
+
+        elif self.window_resources["exam_id"] == '':
+            sim_message(self, info_string=self.string_resources["no_assessment_selected"],
+                        secondary_text=self.string_resources["no_assess_description"])
 
         else:
 
@@ -433,7 +445,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         if self.exams:
             for exam in self.exams:
                 # query exam model by one exam title to give AbSim machine commands.
-                ep = examParser.ExamParser(flag='one', title=exam[0].decode('utf-8'))
+                ep = examParser.ExamParser(flag='one', title=exam[0])
                 case_info = ep.get_exam_info(ep.flag, ep.title)
                 a_t = sorted(ep.get_assigned_to())
 
@@ -460,7 +472,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
                     ddx = 'yes'
                 else:
                     ddx = 'no'
-                store.append([exam[0].decode('utf-8'), base, cases, ddx, "-".join(case_title_list),
+                store.append([exam[0], base, cases, ddx, "-".join(case_title_list),
                               "\n".join(ddx_cases), ", ".join(a_t), completed_string])
         else:
             logging.debug('No assessments returned')

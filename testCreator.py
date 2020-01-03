@@ -5,7 +5,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
 import time, logging
-
+import exammodel as e
 from simLabels import construct_markup
 from cases import Cases
 from casetext import CaseText
@@ -125,15 +125,6 @@ class TestCreator(Gtk.Window):
 
         button_tree = self.add_buttons()
 
-        eid_vbox = Gtk.VBox()
-        self.exam_id_entry = Gtk.Entry()
-        self.exam_id_entry.set_max_length(220)
-        self.exam_id_entry.set_width_chars(30)
-        self.exam_id_entry.set_placeholder_text(self.string_resources["input_title_entry"])
-        eid_vbox.pack_start(self.exam_id_entry, False, False, 30)
-        self.exam_id_entry.show()
-
-        save_exam_box.pack_start(eid_vbox, False, False, 20)
         save_exam_box.pack_start(button_tree, False, False, 0)
 
         box.pack_start(self.baseline, False, False, 10)
@@ -195,8 +186,6 @@ class TestCreator(Gtk.Window):
         Gtk.main()
 
     def add_to_exam(self, choice):
-        import exammodel as e
-
         exam_model = e.ExamModel()
 
         if self.baseline.baseline_flag:
@@ -223,7 +212,11 @@ class TestCreator(Gtk.Window):
 
         if len(self.title_list) > 0:
             timestr = time.strftime("%Y%m%d-%H%M%S")
-            exam_name = self.exam_id_entry.get_text().encode('utf-8')
+            exam_num = self.get_number_exams(exam_model)
+            if exam_num < 1:
+                exam_name = self.string_resources["assess_string"] + "_1"
+            else:
+                exam_name = self.string_resources["assess_string"] + "_" + str(exam_num + 1)
             case_string = '+'.join(self.case_list)
             title_string = '+'.join(self.title_list)
 
@@ -240,11 +233,13 @@ class TestCreator(Gtk.Window):
             for ddx_b in self.ddx_box.button_list:
                 ddx_b.set_active(False)
 
-        # clear text box
-        self.exam_id_entry.set_text('')
-
         self.case_list = []
         self.title_list = []
+
+    def get_number_exams(self, em):
+        exam_info = em.get_all(key="check")
+
+        return len(exam_info)
 
     def reset_page(self):
         pass

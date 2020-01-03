@@ -104,6 +104,7 @@ class AStringResources:
                 "option_3_title": _(u"3. Case Assessment"),
                 "input_title_entry": _(u"Input Assessment Title"),
                 "save_button": _(u"Save Assessment"),
+                "assess_string": _(u"Assessment"),  # add trailing space
             }
 
         elif self.identifier == "view_performance":
@@ -141,7 +142,9 @@ class AStringResources:
                 "assigned": _(u"Assessment Assignment Successful"),
                 "assigned_description": _(u"Students in section(s) assigned may take this assessment."),
                 "already_assigned": _(u"Assessment Already Assigned"),
-                "already_description": _(u"The chosen section is already assigned this assessment.")
+                "already_description": _(u"The chosen section is already assigned this assessment."),
+                "no_assessment_selected": _(u"No Assessment Selected"),
+                "no_assess_description": _(u"Please select an assessment to assign, view results, or delete.")
             }
 
         elif self.identifier == "exam_model":

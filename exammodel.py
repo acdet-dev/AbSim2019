@@ -106,7 +106,7 @@ class ExamModel:
         '''
         try:
             # trying to match with datatype not string!
-            c.execute(stmt, (key.encode(),))
+            c.execute(stmt, (key,))
             row = c.fetchall()
             faculty = [list(elem) for elem in row]
             title = faculty[0][0]
