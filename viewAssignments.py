@@ -34,6 +34,7 @@ class ViewAssignments(Gtk.Window):
         self.last = last
         self.first = first
         self.password = password
+        self.exam_title = self.check_exam_by_section()
         self.exam_info = self.exams_left()
 
         # build parent objects for child classes to save to
@@ -230,6 +231,13 @@ class ViewAssignments(Gtk.Window):
     def hide_disconnection_warning(self, signal_source):
         GLib.idle_add(self.disconnection_warning.hide)
 
+    def check_exam_by_section(self):
+        """ function to populate tree widget with assigned assessments """
+        from totake import ToTake
+        tt = ToTake().get_by_section_id(key=self.section)
+
+        return tt
+
     def exams_left(self):
         # function to only show what exams a student has not taken, to prevent retaking for higher score.
         import exammodel
@@ -238,7 +246,9 @@ class ViewAssignments(Gtk.Window):
 
         exam_model = exammodel.ExamModel()
 
-        exam_info = exam_model.get_all(key='check')
+        exam_info = []
+        for title in self.exam_title:
+            exam_info.append(list(exam_model.get_by_exam_id(key=title[0])))
 
         taken_model = takenmodel.TakenModel()
 
@@ -257,9 +267,6 @@ class ViewAssignments(Gtk.Window):
                 for j in exam_info:
                     if baseline_list[i][0].encode() in j:
                         exam_info.remove(j)
-
-        else:
-            exam_info = exam_info
 
         return exam_info
 

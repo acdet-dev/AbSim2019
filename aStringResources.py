@@ -111,6 +111,7 @@ class AStringResources:
                 "window_title": _(u"View Student Performance"),
                 "notebook_tab_1": _(u"Assessments"),
                 "column_header": _(u"Assessment Title"),
+                "column_header_2": _(u"Assigned To"),
                 "notebook_tab_2": _(u"Baseline Palpation"),
                 "notebook_tab_3": _(u"Abnormality Detection"),
                 "notebook_tab_4": _(u"Case Diagnosis"),

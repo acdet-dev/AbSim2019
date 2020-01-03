@@ -100,7 +100,7 @@ class ExamModel:
         c = db_conn.cursor()
 
         stmt = '''
-            SELECT case_list, title_list
+            SELECT exam_name, case_list, title_list
             FROM exam
             WHERE exam_name=?
         '''
@@ -109,10 +109,11 @@ class ExamModel:
             c.execute(stmt, (key.encode(),))
             row = c.fetchall()
             faculty = [list(elem) for elem in row]
-            case_info = faculty[0][0]
-            title_info = faculty[0][1]
+            title = faculty[0][0]
+            case_info = faculty[0][1]
+            title_info = faculty[0][2]
             db_conn.close()
-            return case_info, title_info
+            return title, case_info, title_info
 
         except Exception as e:
             logging.debug('Could not get exams by exam_name')

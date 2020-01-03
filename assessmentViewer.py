@@ -19,7 +19,7 @@ from gi.repository import Gtk, Gdk, GLib, Pango
 
 
 class AssessmentViewer:
-    """A class to handle vieswing the results of custom tests"""
+    """A class to handle viewing the results of custom tests"""
     def __init__(self, section, window_resources, bases, cases, ddxs):
         self.section = section
         self.window_resources = window_resources
@@ -177,7 +177,7 @@ class ViewsController:
 
         if len(self.exam) > 0:
             if self.flag == 'ab':
-                file_string = c_dir + '\\' + self.section + self.exam[0][1] + '_abnormality_data.csv'
+                file_string = c_dir + '\\' + '_'.join(self.section) + self.exam[0][1] + '_abnormality_data.csv'
                 with open(file_string, 'w+', newline='') as outcsv:
                     writer = csv.DictWriter(outcsv, fieldnames=heads)
                     writer.writeheader()
@@ -201,7 +201,7 @@ class ViewsController:
                     logging.debug("Cannot write to desktop")
 
             elif self.flag == 'ddx':
-                file_string = c_dir + '\\' + self.section + self.exam[0][1] + '_case_text_data.csv'
+                file_string = c_dir + '\\' + '_'.join(self.section) + self.exam[0][1] + '_case_text_data.csv'
                 with open(file_string, 'w+', newline='') as outcsv:
                     writer = csv.DictWriter(outcsv, fieldnames=heads)
                     writer.writeheader()

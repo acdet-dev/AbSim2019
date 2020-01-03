@@ -6,6 +6,14 @@ class ExamParser():
         self.flag = flag
         self.title = title
 
+    def get_assigned_to(self):
+        from totake import ToTake
+
+        tt = ToTake()
+        assigned_to = tt.get_by_exam_id(self.title)
+
+        return assigned_to
+
     def get_exam_info(self, flag, key):
         import exammodel
         if flag == 'all':
@@ -23,11 +31,11 @@ class ExamParser():
     def parse_exam_info(self, case_list):
         # find out what is on exam
         if len(case_list) > 1:
-            case_list_comm = case_list[0].split('+')
-            case_title_list = case_list[1].split('+')
+            case_list_comm = case_list[1].split('+')
+            case_title_list = case_list[2].split('+')
         else:
-            case_list_comm = case_list[0]
-            case_title_list = case_list[1]
+            case_list_comm = case_list[1]
+            case_title_list = case_list[2]
 
         # check for baseline
         if 'Baseline' in case_title_list:

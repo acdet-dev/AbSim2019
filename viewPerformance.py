@@ -11,6 +11,7 @@ from aStringResources import AStringResources
 import exammodel
 import splashscreen
 from casetext import CaseTextBuffer
+from messages import sim_class_message, sim_message
 
 
 class ViewPerformance(Gtk.Window, menu.MenuBar):
@@ -199,19 +200,19 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
 
         button = Gtk.CheckButton.new()
         label = Gtk.Label()
-        label_pre_mark = construct_markup(label_text, font_size=14)
+        label_pre_mark = construct_markup(label_text, font_size=10)
         label.set_markup(label_pre_mark)
-        label.set_padding(10, 10)
+        label.set_padding(5, 5)
         button.add(label)
         button.connect("toggled", self.on_button_toggled, label_text)
 
         return button
 
     def build_button_tree(self, sec_nums):
-        check_button_box = Gtk.HBox()
+        check_button_box = Gtk.VBox()
 
         for num in sec_nums:
-            button = self.build_check_button(num, )
+            button = self.build_check_button(num)
             check_button_box.pack_start(button, False, False, 0)
 
         return check_button_box
@@ -257,14 +258,49 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         else:
             return None
 
+    def assign_to_students_by_section(self, sections):
+        """ function to write to_take strings to database for test taking """
+        from totake import ToTake
+
+        # initialize db model
+        tt = ToTake()
+
+        # write assessment title and sec_string to db iteratively
+        for sec in sections:
+            tt.save_to_db(self.window_resources["exam_id"], sec)
+
+        return
+
     def assign(self, widget):
         """ Assign highlighted exam to section(s) of students """
+
+        # call get sections
+        bt = self.get_sections()
+
+        self.sec_name = []
+
+        if bt:
+
+            s = sim_class_message(self,
+                                  bt,
+                                  self.sec_name,
+                                  info_string=self.string_resources["choose_title"],
+                                  secondary_text=self.string_resources["choose_description"])
+
+            if s:
+                self.assign_to_students_by_section(s)
+            else:
+                sim_message(self, info_string=self.string_resources["info_string"],
+                            secondary_text=self.string_resources["secondary"])
+
+        else:
+            sim_message(self, info_string=self.string_resources["no_students_error"],
+                        secondary_text=self.string_resources["please_add"])
+
         return
 
     def results(self, widget):
         # view highlighted exam's scores
-        from messages import sim_class_message, sim_message
-
         bt = self.get_sections()
 
         self.sec_name = []
@@ -294,7 +330,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         self.finish_transfer()
 
     def create_model(self):
-        store = Gtk.ListStore(str, str, str, str, str, str)
+        store = Gtk.ListStore(str, str, str, str, str, str, str)
         self.exam_info = exammodel.ExamModel()
         self.exams = self.exam_info.get_all(key='check')
 
@@ -303,26 +339,23 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
                 # query exam model by one exam title to give AbSim machine commands.
                 ep = examParser.ExamParser(flag='one', title=exam[0].decode('utf-8'))
                 case_info = ep.get_exam_info(ep.flag, ep.title)
-                try:
-                    case_list_comm, case_title_list, baseline_model, baseline_flag,\
+                a_t = sorted(ep.get_assigned_to())
+                case_list_comm, case_title_list, baseline_model, baseline_flag,\
                     ddx_cases = ep.parse_exam_info(case_info)
-                    if baseline_flag:
-                        base = 'yes'
-                    else:
-                        base = 'no'
-                    if len(case_list_comm) > 0:
-                        cases = 'yes'
-                    else:
-                        cases = 'no'
-                    if len(ddx_cases) > 0:
-                        ddx = 'yes'
-                    else:
-                        ddx = 'no'
-                    store.append([exam[0].decode('utf-8'), base, cases, ddx, "-".join(case_title_list),
-                                  ", ".join(ddx_cases)])
-                except TypeError:
-                    pass
-
+                if baseline_flag:
+                    base = 'yes'
+                else:
+                    base = 'no'
+                if len(case_list_comm) > 0:
+                    cases = 'yes'
+                else:
+                    cases = 'no'
+                if len(ddx_cases) > 0:
+                    ddx = 'yes'
+                else:
+                    ddx = 'no'
+                store.append([exam[0].decode('utf-8'), base, cases, ddx, "-".join(case_title_list),
+                              ", ".join(ddx_cases), ", ".join(a_t)])
         else:
             logging.debug('No assessments returned')
         return store
@@ -351,6 +384,12 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         column.set_resizable(True)
         treeView.append_column(column)
 
+        renderer_text = Gtk.CellRendererText()
+        column = Gtk.TreeViewColumn(self.string_resources["column_header_2"], renderer_text, text=6)
+        column.set_sort_column_id(6)
+        column.set_resizable(True)
+        treeView.append_column(column)
+
     def on_row_change(self, treeview):
         selection = treeview.get_selection()
         (model, iter) = selection.get_selected()
@@ -360,6 +399,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         self.ddxs = model.get(iter, 3)[0]
         case_title_list = model.get(iter, 4)[0]
         ddx_cases = model.get(iter, 5)[0]
+        assigned_string = model.get(iter, 6)[0]
 
         new_text = self.parse_assessments(case_title_list, ddx_cases)
         self.tb.new_case(new_text)
