@@ -131,6 +131,15 @@ class AStringResources:
                 "please_add": _(u"Please add students in previous screen.")
             }
 
+        elif self.identifier == "exam_model":
+            string_resources = {
+                "success": _(u"Assessment Saved Successfully"),
+                "success_explanation": _(u"Students may now take your assessment."),
+                "failure": _(u"Assessment Save Failure"),
+                "failure_explanation_1": _(u"Could not save assessment."),
+                "failure_explanation_2": _(u"Could not save assessment because no assessment title entered.")
+            }
+
         elif self.identifier == "assessment_viewer":
             string_resources = {
                 "failure_title": _(u"No Assessments Taken"),

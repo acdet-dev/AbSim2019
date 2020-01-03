@@ -1,6 +1,7 @@
 import logging
 import os
 import sqlite3
+from aStringResources import AStringResources
 
 app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2019'
 
@@ -8,6 +9,7 @@ app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2019'
 class ExamModel:
     def __init__(self, db_filename=app_data_path + '\\faculty_info.db'):
         self.db_filename = db_filename
+        self.string_resources = AStringResources("exam_model").get_by_identifier()
 
     def connect(self):
         return sqlite3.connect(self.db_filename)
@@ -58,20 +60,18 @@ class ExamModel:
                 c.execute(stmt, (exam_name, case_list, title_list))
                 db_conn.commit()
                 logging.debug('exam db updated')
-                sim_message(win, info_string=_(u'Assessment Saved Successfully!'),
-                            secondary_text=_(
-                                u'Students may now take your assessment.'))
-            except:
-                logging.debug('Could not save assessment for exam')
-                sim_message(win, info_string=_(u'Assessment Save Failure!'),
-                            secondary_text=_(
-                                u'Could not save assessment.'))
+                sim_message(win, info_string=self.string_resources["success"],
+                            secondary_text=self.string_resources["success_explanation"])
+            except sqlite3.InterfaceError as e:
+                logging.debug(e)
+                sim_message(win, info_string=self.string_resources["failure"],
+                            secondary_text=self.string_resources["failure_explanation_1"])
                 db_conn.rollback()
             db_conn.close()
 
         else:
-            sim_message(win, info_string=_(u'Assessment Save Failure!'),
-                        secondary_text=_(u'Could not save assessment because no assessment title entered.'))
+            sim_message(win, info_string=self.string_resources["failure"],
+                        secondary_text=self.string_resources["failure_explanation_2"])
 
     def get_all(self, key):
         db_conn = self.connect()

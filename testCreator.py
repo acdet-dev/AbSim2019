@@ -195,6 +195,10 @@ class TestCreator(Gtk.Window):
         Gtk.main()
 
     def add_to_exam(self, choice):
+        import exammodel as e
+
+        exam_model = e.ExamModel()
+
         if self.baseline.baseline_flag:
             self.baseline.button.set_active(False)
             try:
@@ -217,14 +221,16 @@ class TestCreator(Gtk.Window):
             self.case_list.extend(self.ddx_box.ddx_case_list)
             self.title_list.extend(self.ddx_box.ddx_title_list)
 
-        import exammodel as e
-        timestr = time.strftime("%Y%m%d-%H%M%S")
-        exam_model = e.ExamModel()
-        exam_name = self.exam_id_entry.get_text().encode('utf-8')
-        case_string = '+'.join(self.case_list)
-        title_string = '+'.join(self.title_list)
+        if len(self.title_list) > 0:
+            timestr = time.strftime("%Y%m%d-%H%M%S")
+            exam_name = self.exam_id_entry.get_text().encode('utf-8')
+            case_string = '+'.join(self.case_list)
+            title_string = '+'.join(self.title_list)
 
-        exam_model.save_to_db(self, exam_name, case_string, title_string, timestr)
+            exam_model.save_to_db(self, exam_name, case_string, title_string, timestr)
+
+        else:
+            exam_model.save_to_db(self, "NA", self.case_list, self.title_list, "NA")
 
         # clear checked buttons
         if len(self.button_list) > 0:
