@@ -3,7 +3,7 @@ import admin
 import viewAssignments
 from simLabels import construct_markup
 import splashscreen
-import filechooser
+import managestudents
 import viewPerformance
 import menu
 import testCreator
@@ -213,8 +213,8 @@ class UserType(Gtk.Window, menu.MenuBar):
 
     def add_class(self, widget):
         self.setup_transfer()
-        filechooser.FileChooserWindow()
-        self.finish_file_transfer()
+        managestudents.ManageStudents(self.name, self.password)
+        self.finish_transfer()
 
     def create_exams(self, widget):
         self.setup_transfer()

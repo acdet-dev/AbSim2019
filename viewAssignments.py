@@ -319,7 +319,7 @@ class ViewTests(Gtk.HBox):
         store = Gtk.ListStore(str)
 
         for i in range(0, len(self.exam_resources['exam_info'])):
-            treeiter = store.append([self.exam_resources['exam_info'][i][0].decode()])
+            treeiter = store.append([self.exam_resources['exam_info'][i][0]])
 
         tv = Gtk.TreeView(store)
 

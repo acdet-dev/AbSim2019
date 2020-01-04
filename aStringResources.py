@@ -82,6 +82,19 @@ class AStringResources:
                 "save_button": _(u"Save Sensitivity Settings"),
             }
 
+        elif self.identifier == "manage_students":
+            string_resources = {
+                "window_title": _(u"Manage Student Info"),
+                "notebook_tab_1": _(u"Instructions"),
+                "label_header": _(u"Loading Student Information"),
+                "label_text_1": _(u"AbSim is set up to parse comma-separated variable files (.csv)."),
+                "label_text_2": _(u"Please provide AbSim a .csv file with headers as shown below."),
+                "label_text_3": _(u"If using Microsoft Excel, make sure to save your spreadsheet as a .csv file"),
+                "label_text_4": _(u"(preferably in UTF-8 encoding)."),
+                "label_text_5": _(u'When you are ready, click "Upload" to provide AbSim your .csv file.'),
+                "button_text": _(u"Upload")
+            }
+
         elif self.identifier == "file_chooser":
             string_resources = {
                 "window_title": _(u"AbSim File Chooser"),  # use twice
