@@ -25,7 +25,7 @@ class FileChooserWindow(Gtk.Window):
         student_model.save_to_db(section, last, first, student_id, timestr)
 
     def on_file_clicked(self):
-        from messages import sim_message, sim_class_message
+        from messages import sim_message
         dialog = Gtk.FileChooserDialog(self.string_resources["window_title"], self,
             Gtk.FileChooserAction.OPEN,
             (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
@@ -43,7 +43,8 @@ class FileChooserWindow(Gtk.Window):
                 section_list = []
                 for i in current_students:
                     section_list.append(i[0])
-                s = self.string_resources["section_title"] + " " + str(len(set(section_list)) + 1)
+                secs = [int(i.split(' ')[1]) for i in list(set(section_list))]
+                s = self.string_resources["section_title"] + " " + str(max(secs) + 1)
             if s:
                 with open(dialog.get_filename(), encoding='utf-8') as csvfile:
                     readCSV = csv.reader(csvfile, delimiter=',')

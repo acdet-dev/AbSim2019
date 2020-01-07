@@ -121,3 +121,52 @@ class StudentModel:
         except sqlite3.InterfaceError as e:
             logging.debug(e)
             pass
+
+    def get_all_by_section(self, key):
+        db_conn = self.connect()
+        c = db_conn.cursor()
+
+        stmt = '''
+            SELECT user_last, user_first, student_id
+            FROM student
+            WHERE section=?
+        '''
+        try:
+            # trying to match with datatype not string!
+            c.execute(stmt, (key,))
+            row = c.fetchall()
+
+            student = [list(elem) for elem in row]
+            db_conn.close()
+            return student
+
+        except sqlite3.InterfaceError as e:
+            logging.debug(e)
+            pass
+
+    def delete_by_section(self, key):
+        db_conn = self.connect()
+        c = db_conn.cursor()
+
+        stmt = "DELETE FROM student WHERE section=?"
+
+        try:
+            c.execute(stmt, (key,))
+            db_conn.commit()
+        except sqlite3.InterfaceError:
+            logging.debug('Could not delete student data table row.')
+            pass
+        db_conn.close()
+
+    def delete_by_student_id(self, key):
+        db_conn = self.connect()
+        c = db_conn.cursor()
+        stmt = "DELETE FROM student WHERE student_id=?"
+
+        try:
+            c.execute(stmt, (key,))
+            db_conn.commit()
+        except sqlite3.InterfaceError:
+            logging.debug('Could not delete student data table row.')
+            pass
+        db_conn.close()

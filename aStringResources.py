@@ -13,7 +13,7 @@ class AStringResources:
         if self.identifier == "initial":
 
             string_resources = {
-                "welcome_text": _(u"Welcome to AbSim!"),
+                "welcome_text": _(u"Welcome to AbSim"),
                 "faculty_button": _(u"Faculty"),
                 "faculty_description": _(u"Click here to configure AbSim and create assessments"),
                 "student_button": _(u"Student"),
@@ -47,7 +47,7 @@ class AStringResources:
             string_resources = {
                 "config_button": _(u"Configure AbSim"),
                 "config_description": _(u"Customize Sensor Pad Pressure Settings"),
-                "add_students_button": _(u"Add Students"),
+                "add_students_button": _(u"Manage Students"),
                 "add_students_description": _(u"Provide AbSim Student Information"),
                 "create_button": _(u"Create Assessments"),
                 "create_description": _(u"Construct Custom Assessments"),
@@ -86,13 +86,32 @@ class AStringResources:
             string_resources = {
                 "window_title": _(u"Manage Student Info"),
                 "notebook_tab_1": _(u"Instructions"),
+                "notebook_tab_2": _(u"Manage Sections"),
                 "label_header": _(u"Loading Student Information"),
                 "label_text_1": _(u"AbSim is set up to parse comma-separated variable files (.csv)."),
                 "label_text_2": _(u"Please provide AbSim a .csv file with headers as shown below."),
                 "label_text_3": _(u"If using Microsoft Excel, make sure to save your spreadsheet as a .csv file"),
                 "label_text_4": _(u"(preferably in UTF-8 encoding)."),
                 "label_text_5": _(u'When you are ready, click "Upload" to provide AbSim your .csv file.'),
-                "button_text": _(u"Upload")
+                "button_text": _(u"Upload"),
+                "view_button": _(u"View"),
+                "delete_button": _(u"Delete"),
+                "back_button": _(u"Go Back"),
+                "column_header": _(u"Section"),
+                "column_header_2": _(u"Number of Students"),
+                "column_header_3": _(u"Last Name"),
+                "column_header_4": _(u"First Name"),
+                "column_header_5": _(u"ID"),
+                "no_data": _(u"Section Data Not Found"),
+                "no_data_message": _(u"Please check back when you have entered section data."),
+                "no_section_selected": _(u"No Section Selected"),
+                "no_section_description": _(u"Please select a section to view, edit, and delete information."),
+                "no_student_selected": _(u"No Student Selected"),
+                "no_student_description": _(u"Please select a student to view, edit, and delete information."),
+                "warning": _(u"Delete Information"),
+                "warning_message": _(u"Are you sure you wish to delete the selected information?"),
+                "no_delete": _(u"Information Not Deleted"),
+                "no_delete_message": _(u"AbSim will not delete information and associated data."),
             }
 
         elif self.identifier == "file_chooser":
@@ -176,8 +195,10 @@ class AStringResources:
                 "column_header_1": _(u"Student ID"),
                 "column_header_2": _(u"Score"),
                 "column_header_3": _(u"Time Elapsed"),
-                "export_title": _(u"Exam Data Exported"),
-                "export_description": _(u"A CSV file with exam data was created in AbSim's directory."),
+                "export_title": _(u"Assessment Data Exported"),
+                "export_description": _(u"A CSV file with assessment data was created in AbSim's directory."),
+                "export_failure": _(u"Assessment Data Not Exported"),
+                "export_fail_description": _(u"Something went wrong."),
                 "export_button_text": _(u"Export to Desktop")
             }
 

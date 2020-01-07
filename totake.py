@@ -17,7 +17,7 @@ class ToTake:
         try:
             c = conn.cursor()
             c.execute(create_table_sql)
-        except Exception:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError):
             pass
             logging.debug('AbSim could not create to take exams database table.')
 
@@ -41,7 +41,7 @@ class ToTake:
         try:
             db_conn.commit()
             logging.debug('taken exams db updated')
-        except:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError) as e:
             logging.debug('Could not save assess info')
             db_conn.rollback()
         db_conn.close()
@@ -54,7 +54,7 @@ class ToTake:
         try:
             c.execute(droptablestatement, (key,))
             db_conn.commit()
-        except Exception:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError) as e:
             logging.debug('Failed to delete taken exam info.')
             pass
 
@@ -68,7 +68,7 @@ class ToTake:
         try:
             c.execute(droptablestatement, (key,))
             db_conn.commit()
-        except sqlite3.InterfaceError as e:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError) as e:
             logging.debug(e)
             pass
 
@@ -89,12 +89,12 @@ class ToTake:
             db_conn.close()
             return assessed_list
 
-        except Exception:
+        except (sqlite3.OperationalError, sqlite3.InterfaceError) as e:
             # i18n - print statement
             logging.debug('Could not get all assessments')
             assessed_list = []
             db_conn.close()
-            return None
+            return assessed_list
 
     # add loop to check for password and id in list of entries
 
@@ -109,10 +109,14 @@ class ToTake:
             WHERE section_string=?
         '''
         # trying to match with datatype not string!
-        c.execute(stmt, (key,))
-        row = c.fetchall()
-        assessed = [list(elem) for elem in row]
-        logging.debug('Got assessment by score_id!')
+        try:
+            c.execute(stmt, (key,))
+            row = c.fetchall()
+            assessed = [list(elem) for elem in row]
+            logging.debug('Got assessment by score_id!')
+        except sqlite3.OperationalError as e:
+            logging.debug(e)
+            assessed = []
         db_conn.close()
         return assessed
 
@@ -126,10 +130,13 @@ class ToTake:
             FROM to_take
             WHERE assessment_title=?
         '''
-
-        c.execute(stmt, (key,))
-        row = c.fetchall()
-        assigned = [list(elem)[0] for elem in row]
+        try:
+            c.execute(stmt, (key,))
+            row = c.fetchall()
+            assigned = [list(elem)[0] for elem in row]
+        except (sqlite3.OperationalError, sqlite3.InterfaceError) as e:
+            logging.debug(e)
+            assigned = []
 
         db_conn.close()
         return assigned
@@ -144,9 +151,13 @@ class ToTake:
             WHERE section_string=? AND assessment_title=?
         '''
         # trying to match with datatype not string!
-        c.execute(stmt, (key1, key2))
-        row = c.fetchall()
-        assessed = [list(elem) for elem in row]
-        logging.debug('Got assessment by score_id!')
+        try:
+            c.execute(stmt, (key1, key2))
+            row = c.fetchall()
+            assessed = [list(elem) for elem in row]
+            logging.debug('Got assessment by score_id!')
+        except (sqlite3.InterfaceError, sqlite3.OperationalError) as e:
+            logging.debug(e)
+            assessed = []
         db_conn.close()
         return assessed

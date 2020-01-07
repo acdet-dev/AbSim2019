@@ -355,7 +355,8 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
                                       secondary_text=self.string_resources["choose_description"])
 
                 if s:
-                    assessmentViewer.AssessmentViewer(sorted(s), self.window_resources, self.bases, self.cases, self.ddxs)
+                    assessmentViewer.AssessmentViewer(sorted(s), self.window_resources, self.bases, self.cases,
+                                                      self.ddxs)
                 else:
                     sim_message(self, info_string=self.string_resources["info_string"],
                                 secondary_text=self.string_resources["secondary"])
@@ -473,7 +474,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
                 else:
                     ddx = 'no'
                 store.append([exam[0], base, cases, ddx, "-".join(case_title_list),
-                              "\n".join(ddx_cases), ", ".join(a_t), completed_string])
+                              u"\n".join(ddx_cases), ", ".join(a_t), completed_string])
         else:
             logging.debug('No assessments returned')
             self.no_exams_flag = True
@@ -491,7 +492,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         just_cases = [i for i in cases if "ddx_" not in i]
 
         text = self.string_resources["baseline_text"] + base_string + "\n\n" +\
-               self.string_resources["ab_text"] + "\n" + "\n".join(just_cases) + "\n\n" +\
+               self.string_resources["ab_text"] + "\n" + u"\n".join(just_cases) + "\n\n" +\
                self.string_resources["ddx_text"] + "\n" + ddx
 
         return text

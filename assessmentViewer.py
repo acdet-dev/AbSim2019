@@ -55,14 +55,16 @@ class AssessmentViewer:
             page3.show()
 
             if self.window_resources['bases'] == 'yes':
-                vba = ViewBaselineAssessments(self.section, self.window_resources["exam_id"], self.string_resources)
+                vba = ViewBaselineAssessments(self.section, self.window_resources["exam_id"], self.string_resources,
+                                              self.window_resources["window"])
                 self.window_resources['baseline'].add(vba.vbox)
                 self.window_resources['baseline'].show_all()
                 self.window_resources['notebook'].set_current_page(1)
             else:
                 page.hide()
             if self.window_resources['cases'] == 'yes':
-                ab = AbTest(self.section, self.exam, page, page1, page2, page3, self.string_resources)
+                ab = AbTest(self.section, self.exam, page, page1, page2, page3, self.string_resources,
+                            self.window_resources["window"])
                 self.window_resources['ab'].add(ab.vbox)
                 self.window_resources['ab'].show_all()
                 if self.window_resources['bases'] != 'yes':
@@ -70,7 +72,8 @@ class AssessmentViewer:
             else:
                 page2.hide()
             if self.window_resources['ddxs'] == 'yes':
-                ddx = DdxTest(self.section, self.exam, page, page1, page2, page3, self.string_resources)
+                ddx = DdxTest(self.section, self.exam, page, page1, page2, page3, self.string_resources,
+                              self.window_resources["window"])
                 self.window_resources['ddx'].add(ddx.vbox)
                 self.window_resources['ddx'].show_all()
                 if self.window_resources['bases'] != 'yes' and self.window_resources['cases'] != 'yes':
@@ -89,13 +92,14 @@ class AssessmentViewer:
 
 
 class ViewsController:
-    def __init__(self, section, exam, p, p1, p2, p3, sr, flag):
+    def __init__(self, section, exam, p, p1, p2, p3, sr, window, flag):
         self.section = section
         self.exam = exam
         self.p = p
         self.p1 = p1
         self.p2 = p2
         self.p3 = p3
+        self.window = window
         self.flag = flag
         self.string_resources = sr
         self.header_list = []
@@ -182,19 +186,20 @@ class ViewsController:
                     writer = csv.DictWriter(outcsv, fieldnames=heads)
                     writer.writeheader()
                     partial_dict = OrderedDict()
-                    for j in range(0, len(self.exam)):
-                        partial_dict[heads[0]] = self.exam[j][0]
-                        partial_dict[heads[1]] = self.exam[j][2]
-                        partial_dict[heads[2]] = self.exam[j][6]
-                        for i in range(0, len(self.final_data_list)):
-                            partial_dict[list(self.final_data_list[i][j].keys())[0]] = list(self.final_data_list[i][j].values())[0]
-
-                        try:
+                    try:
+                        for j in range(0, len(self.exam)):
+                            partial_dict[heads[0]] = self.exam[j][0]
+                            partial_dict[heads[1]] = self.exam[j][2]
+                            partial_dict[heads[2]] = self.exam[j][6]
+                            for i in range(0, len(self.final_data_list)):
+                                partial_dict[list(self.final_data_list[i][j].keys())[0]] =\
+                                    list(self.final_data_list[i][j].values())[0]
                             writer.writerow(partial_dict)
-                            sim_message(self, info_string=self.string_resources["export_title"],
-                                        secondary_text=self.string_resources["export_description"])
-                        except TypeError:
-                            pass
+                        sim_message(self.window, info_string=self.string_resources["export_title"],
+                                    secondary_text=self.string_resources["export_description"])
+                    except TypeError:
+                        sim_message(self.window, info_string=self.string_resources["export_failure"],
+                                    secondary_text=self.string_resources["export_fail_description"])
                 try:
                     shutil.copy(file_string, desktop)
                 except PermissionError:
@@ -206,20 +211,21 @@ class ViewsController:
                     writer = csv.DictWriter(outcsv, fieldnames=heads)
                     writer.writeheader()
                     partial_dict = OrderedDict()
-                    for j in range(0, len(self.exam)):
-                        partial_dict[heads[0]] = self.exam[j][0]
-                        partial_dict[heads[1]] = self.exam[j][2]
-                        partial_dict[heads[2]] = self.exam[j][7]
-                        for i in range(0, len(self.final_data_list)):
-                            partial_dict[list(self.final_data_list[i][j].keys())[0]] = list(self.final_data_list[i][j].values())[0]
-
-                        try:
+                    try:
+                        for j in range(0, len(self.exam)):
+                            print(self.exam[j])
+                            partial_dict[heads[0]] = self.exam[j][0]
+                            partial_dict[heads[1]] = self.exam[j][3]
+                            partial_dict[heads[2]] = self.exam[j][7]
+                            for i in range(0, len(self.final_data_list)):
+                                partial_dict[list(self.final_data_list[i][j].keys())[0]] =\
+                                    list(self.final_data_list[i][j].values())[0]
                             writer.writerow(partial_dict)
-                            sim_message(self, info_string=self.string_resources["export_title"],
-                                        secondary_text=self.string_resources["export_description"])
-                        except TypeError:
-                            pass
-
+                        sim_message(self.window, info_string=self.string_resources["export_title"],
+                                    secondary_text=self.string_resources["export_description"])
+                    except TypeError:
+                        sim_message(self.window, info_string=self.string_resources["export_failure"],
+                                    secondary_text=self.string_resources["export_fail_description"])
                 try:
                     shutil.copy(file_string, desktop)
                 except PermissionError:
@@ -402,30 +408,33 @@ class ViewsController:
 
 
 class DdxTest:
-    def __init__(self, section, exam, p, p1, p2, p3, sr):
+    def __init__(self, section, exam, p, p1, p2, p3, sr, window):
         self.section = section
         self.exam = exam
         self.string_resources = sr
+        self.window = window
         self.vbox = ViewsController(self.section, self.exam, p, p1, p2, p3,
-                                    self.string_resources, flag='ddx').build_interface()
+                                    self.string_resources, self.window, flag='ddx').build_interface()
 
 
 class AbTest:
-    def __init__(self, section, exam, p, p1, p2, p3, sr):
+    def __init__(self, section, exam, p, p1, p2, p3, sr, window):
         self.section = section
         self.exam = exam
         self.string_resources = sr
+        self.window = window
         self.vbox = ViewsController(self.section, self.exam, p, p1, p2, p3,
-                                    self.string_resources, flag='ab').build_interface()
+                                    self.string_resources, self.window, flag='ab').build_interface()
 
 
 class ViewBaselineAssessments:
-    def __init__(self, section, exam_id, sr):
+    def __init__(self, section, exam_id, sr, window):
 
         self.coverage_assessment_model = baselinemodel.BaselineModel()
         self.string_resources = sr
         self.section = section
         self.exam_id = exam_id
+        self.window = window
         self.new_selected_case = observer.Observer()
         self.ailments = ailments.Ailments()
         self.pressurepoints = pressurepoints.PressureList(self.new_selected_case)
@@ -468,7 +477,7 @@ class ViewBaselineAssessments:
         sw.add(treeView)
 
         self.create_columns(treeView)
-        self.export()
+        # self.export()
 
     def export(self):
         # write data to csv file
@@ -497,7 +506,7 @@ class ViewBaselineAssessments:
                 try:
                     writer.writerows({heads[0]: exam[3], heads[1]: exam[4], heads[2]: exam[5], heads[3]: exam[6],
                                       heads[4]: exam[7], heads[5]: exam[9]} for exam in self.exams)
-                    sim_message(self, info_string=self.string_resources["export_title"],
+                    sim_message(self.window, info_string=self.string_resources["export_title"],
                                 secondary_text=self.string_resources["export_description"])
                 except TypeError:
                     pass

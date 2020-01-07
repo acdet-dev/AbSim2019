@@ -157,8 +157,9 @@ class TakenModel:
             assessed = [list(elem) for elem in row]
             logging.debug('Got assessment by score_id!')
             db_conn.close()
-            return assessed
 
         except Exception:
             logging.debug('Could not get assessment by score_id.')
-            pass
+            assessed = []
+
+        return assessed

@@ -30,7 +30,7 @@ class ExamModel:
         stmt = "DELETE FROM exam WHERE exam_name=?"
 
         try:
-            c.execute(stmt, (key.encode(),))
+            c.execute(stmt, (key,))
             db_conn.commit()
         except Exception:
             logging.debug('Could not delete exam data table row.')

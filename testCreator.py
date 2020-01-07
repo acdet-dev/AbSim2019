@@ -213,10 +213,11 @@ class TestCreator(Gtk.Window):
         if len(self.title_list) > 0:
             timestr = time.strftime("%Y%m%d-%H%M%S")
             exam_num = self.get_number_exams(exam_model)
-            if exam_num < 1:
+            nums = [int(i.split('_')[1]) for i in exam_num]
+            if len(exam_num) < 1:
                 exam_name = self.string_resources["assess_string"] + "_1"
             else:
-                exam_name = self.string_resources["assess_string"] + "_" + str(exam_num + 1)
+                exam_name = self.string_resources["assess_string"] + "_" + str(max(nums) + 1)
             case_string = '+'.join(self.case_list)
             title_string = '+'.join(self.title_list)
 
@@ -238,8 +239,7 @@ class TestCreator(Gtk.Window):
 
     def get_number_exams(self, em):
         exam_info = em.get_all(key="check")
-
-        return len(exam_info)
+        return [a[0] for a in exam_info]
 
     def reset_page(self):
         pass
