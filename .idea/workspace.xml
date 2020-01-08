@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d7a6e5a-5cd6-4b6b-9c3f-28fcc3795056" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aStringResources.py" beforeDir="false" afterPath="$PROJECT_DIR$/aStringResources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/donottouch.py" beforeDir="false" afterPath="$PROJECT_DIR$/donottouch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/i18ntrans2.py" beforeDir="false" afterPath="$PROJECT_DIR$/i18ntrans2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/messages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simLabels.py" beforeDir="false" afterPath="$PROJECT_DIR$/simLabels.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simLogin.py" beforeDir="false" afterPath="$PROJECT_DIR$/simLogin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/splashscreen.py" beforeDir="false" afterPath="$PROJECT_DIR$/splashscreen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absim_string.pot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ab_sim-en.po" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ab_sim-en.po" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ab_sim.pot" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ab_sim.pot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/en/LC_MESSAGES/ab_sim.mo" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/en/LC_MESSAGES/ab_sim.mo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewPerformance.py" beforeDir="false" afterPath="$PROJECT_DIR$/viewPerformance.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,6 +18,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/viewPerformance.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="146">
+              <caret line="486" column="34" selection-start-line="486" selection-start-column="34" selection-end-line="486" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/i18n/ab_sim.pot">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="422" column="27" selection-start-line="422" selection-start-column="7" selection-end-line="422" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/selfpractice.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -42,7 +60,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exammodel.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="527">
@@ -57,8 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aStringResources.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="35" column="53" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="53" />
+            <state relative-caret-position="117">
+              <caret line="140" column="51" lean-forward="true" selection-start-line="140" selection-start-column="51" selection-end-line="140" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -91,30 +109,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/donottouch.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="28" lean-forward="true" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simLabels.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <folding>
                 <element signature="e#1#46#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/splashscreen.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -130,10 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>screen_size</find>
-      <find>export</find>
-      <find>sim_screen_student</find>
-      <find>Go Back</find>
       <find>viewTests</find>
       <find>back_button</find>
       <find>baselineTest</find>
@@ -160,6 +156,10 @@
       <find>would you like to</find>
       <find>please enter you</find>
       <find>login_instructions</find>
+      <find>&quot;Section&quot;</find>
+      <find>upload</find>
+      <find>\b &quot;</find>
+      <find>baseline assessment:</find>
     </findStrings>
     <replaceStrings>
       <replace>self.window_resources['section']</replace>
@@ -200,7 +200,6 @@
         <option value="$PROJECT_DIR$/studentmodel.py" />
         <option value="$PROJECT_DIR$/exammodel.py" />
         <option value="$PROJECT_DIR$/totake.py" />
-        <option value="$PROJECT_DIR$/viewPerformance.py" />
         <option value="$PROJECT_DIR$/takenmodel.py" />
         <option value="$PROJECT_DIR$/testCreator.py" />
         <option value="$PROJECT_DIR$/filechooser.py" />
@@ -216,13 +215,15 @@
         <option value="$PROJECT_DIR$/selfpractice.py" />
         <option value="$PROJECT_DIR$/ddxpractice.py" />
         <option value="$PROJECT_DIR$/splashscreen.py" />
-        <option value="$PROJECT_DIR$/aStringResources.py" />
         <option value="$PROJECT_DIR$/simLabels.py" />
         <option value="$PROJECT_DIR$/donottouch.py" />
         <option value="$PROJECT_DIR$/i18ntrans2.py" />
         <option value="$PROJECT_DIR$/simLogin.py" />
         <option value="$PROJECT_DIR$/messages.py" />
         <option value="$PROJECT_DIR$/defineUser.py" />
+        <option value="$PROJECT_DIR$/aStringResources.py" />
+        <option value="$PROJECT_DIR$/viewPerformance.py" />
+        <option value="$PROJECT_DIR$/absim_string.pot" />
       </list>
     </option>
   </component>
@@ -245,6 +246,24 @@
             <path>
               <item name="AbSim2019" type="b2602c69:ProjectViewProjectNode" />
               <item name="AbSim2019" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AbSim2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AbSim2019" type="462c0819:PsiDirectoryNode" />
+              <item name="i18n" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AbSim2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AbSim2019" type="462c0819:PsiDirectoryNode" />
+              <item name="i18n" type="462c0819:PsiDirectoryNode" />
+              <item name="en" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AbSim2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AbSim2019" type="462c0819:PsiDirectoryNode" />
+              <item name="i18n" type="462c0819:PsiDirectoryNode" />
+              <item name="en" type="462c0819:PsiDirectoryNode" />
+              <item name="LC_MESSAGES" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -317,13 +336,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561933260794</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Redid venv. Should work as long as a user has python 3.4.1 installed (32-bit).">
-      <created>1561934034361</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1561934034361</updated>
     </task>
     <task id="LOCAL-00002" summary="Changed ui text. Configured db saving and views.">
       <created>1574722977585</created>
@@ -661,7 +673,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578506791507</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Strings finally done!">
+      <created>1578508664187</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1578508664188</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TodoView">
@@ -674,15 +693,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07165437" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10119048" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.16359697" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.16202946" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -690,7 +708,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.2156013" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32569557" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -716,7 +734,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Change beta string to 2019" />
     <MESSAGE value="Changed spacing for formatting." />
     <MESSAGE value="Update i18n po" />
     <MESSAGE value="Finalize i18n po and mo." />
@@ -741,7 +758,8 @@
     <MESSAGE value="manage students done. Time to finish strings" />
     <MESSAGE value="Strings through view assignments and menu" />
     <MESSAGE value="Strings done through all screens." />
-    <option name="LAST_COMMIT_MESSAGE" value="Strings done through all screens." />
+    <MESSAGE value="Strings finally done!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Strings finally done!" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/tare.json">
@@ -756,11 +774,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/windowssetup.txt">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/i18n/ab_sim.pot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51" />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/statewatcher.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -936,13 +949,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viewPerformance.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="458" column="39" selection-start-line="458" selection-start-column="34" selection-end-line="458" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assessmentViewer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-180">
@@ -1010,9 +1016,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/absim_strings">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/absim_string.pot">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/ddxpractice.py">
@@ -1089,13 +1092,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aStringResources.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="35" column="53" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/defineUser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1113,6 +1109,34 @@
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/absim_string.pot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="1799" column="23" lean-forward="true" selection-start-line="1799" selection-start-column="23" selection-end-line="1799" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aStringResources.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="140" column="51" lean-forward="true" selection-start-line="140" selection-start-column="51" selection-end-line="140" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewPerformance.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="486" column="34" selection-start-line="486" selection-start-column="34" selection-end-line="486" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/i18n/ab_sim.pot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="422" column="27" selection-start-line="422" selection-start-column="7" selection-end-line="422" selection-end-column="27" />
         </state>
       </provider>
     </entry>

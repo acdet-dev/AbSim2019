@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-12-12 10:54+Central Standard Time\n"
+"POT-Creation-Date: 2020-01-08 12:50+Central Standard Time\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,163 +15,1139 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 
 
-#: abnormalitydetection.py:40
-msgid "You should now understand what a normal abdomen feels like."
+#: aStringResources.py:16
+msgid "Welcome to AbSim"
 msgstr ""
 
-#: abnormalitydetection.py:41
-msgid "For this milestone, familiarize yourself with how these abnormalities feel. "
+#: aStringResources.py:17
+msgid "Faculty"
 msgstr ""
 
-#: abnormalitydetection.py:42
-msgid "In the next step, you will identify them using touch and sound."
+#: aStringResources.py:18
+msgid "Click here to configure AbSim and create assessments"
 msgstr ""
 
-#: admin.py:75
+#: aStringResources.py:19
+msgid "Student"
+msgstr ""
+
+#: aStringResources.py:20
+msgid "Demonstrate proficiency in abdominal palpation through practice and assessments"
+msgstr ""
+
+#: aStringResources.py:27
+msgid "Please enter the AbSim's initial key to add faculty login."
+msgstr ""
+
+#: aStringResources.py:28
+msgid "AbSim Initial Key"
+msgstr ""
+
+#: aStringResources.py:29
+msgid "Add Faculty"
+msgstr ""
+
+#: aStringResources.py:30
+msgid "Please enter a user name and password."
+msgstr ""
+
+#: aStringResources.py:31
+msgid "Faculty Added Successfully"
+msgstr ""
+
+#: aStringResources.py:32
+msgid "Moving to faculty interface."
+msgstr ""
+
+#: aStringResources.py:33
+msgid "Faculty NOT Added"
+msgstr ""
+
+#: aStringResources.py:34
+msgid "Please Re-Enter the Initial Key."
+msgstr ""
+
+#: aStringResources.py:35
+msgid "Faculty Login"
+msgstr ""
+
+#: aStringResources.py:36
+msgid "Please enter your user name and password."
+msgstr ""
+
+#: aStringResources.py:37 aStringResources.py:212
+msgid "Login Failed"
+msgstr ""
+
+#: aStringResources.py:38
+msgid "Username and Password do not match our records."
+msgstr ""
+
+#: aStringResources.py:39
+msgid "No info provided or Cancel clicked."
+msgstr ""
+
+#: aStringResources.py:40
+msgid "Please enter the AbSim's initial key to reset faculty login."
+msgstr ""
+
+#: aStringResources.py:41
+msgid "Faculty Login Data Deleted"
+msgstr ""
+
+#: aStringResources.py:42
+msgid "To add another faculty member, click \"Faculty.\""
+msgstr ""
+
+#: aStringResources.py:48
+msgid "Configure AbSim"
+msgstr ""
+
+#: aStringResources.py:49
+msgid "Customize Sensor Pad Pressure Settings"
+msgstr ""
+
+#: aStringResources.py:50
+msgid "Manage Students"
+msgstr ""
+
+#: aStringResources.py:51
+msgid "Provide AbSim Student Information"
+msgstr ""
+
+#: aStringResources.py:52
+msgid "Create Assessments"
+msgstr ""
+
+#: aStringResources.py:53
+msgid "Construct Custom Assessments"
+msgstr ""
+
+#: aStringResources.py:54 aStringResources.py:143 aStringResources.py:222
+msgid "View Assessments"
+msgstr ""
+
+#: aStringResources.py:55
+msgid "View Results and Assign Assessments"
+msgstr ""
+
+#: aStringResources.py:61
+msgid "AbSim Configuration"
+msgstr ""
+
+#: aStringResources.py:62
 msgid "Pressure"
 msgstr ""
 
-#: admin.py:75
+#: aStringResources.py:63
 msgid "Sensitivity"
 msgstr ""
 
-#: admin.py:164 testCreator.py:152
-msgid "Return Home"
+#: aStringResources.py:68
+msgid "Sensitivity Configuration Interface"
 msgstr ""
 
-#: admin.py:232
-msgid "Click the arrows to calibrate actuator"
+#: aStringResources.py:69
+msgid "Set pressure pad sensitivity thresholds:"
 msgstr ""
 
-#: admin.py:233
-msgid "positioning for all ailments at once."
+#: aStringResources.py:70
+msgid "(e.g."
 msgstr ""
 
-#: assessmentViewer.py:77
+#: aStringResources.py:71
+msgid "light"
+msgstr ""
+
+#: aStringResources.py:72
+msgid "from 5 - 14"
+msgstr ""
+
+#: aStringResources.py:73
+msgid "deep"
+msgstr ""
+
+#: aStringResources.py:74
+msgid "from 15 - 54"
+msgstr ""
+
+#: aStringResources.py:75
+msgid "too deep"
+msgstr ""
+
+#: aStringResources.py:76
+msgid "> 55)."
+msgstr ""
+
+#: aStringResources.py:77
+msgid "Click \"Save Sensitivity Settings\" to save your choices."
+msgstr ""
+
+#: aStringResources.py:78
+msgid "You may view the effects of your changes on the image to the right."
+msgstr ""
+
+#: aStringResources.py:80
+msgid "If you notice \"ghost\" registers of pressure, click \"Tare / Zero Sensors\"."
+msgstr ""
+
+#: aStringResources.py:81
+msgid "Tare / Zero Sensors"
+msgstr ""
+
+#: aStringResources.py:82
+msgid "Save Sensitivity Settings"
+msgstr ""
+
+#: aStringResources.py:87
+msgid "Manage Student Info"
+msgstr ""
+
+#: aStringResources.py:88
+msgid "Instructions"
+msgstr ""
+
+#: aStringResources.py:89
+msgid "Manage Sections"
+msgstr ""
+
+#: aStringResources.py:90
+msgid "Loading Student Information"
+msgstr ""
+
+#: aStringResources.py:91
+msgid "AbSim is set up to parse comma-separated variable files (.csv)."
+msgstr ""
+
+#: aStringResources.py:92
+msgid "Please provide AbSim a .csv file with headers as shown below."
+msgstr ""
+
+#: aStringResources.py:93
+msgid "If using Microsoft Excel, make sure to save your spreadsheet as a .csv file"
+msgstr ""
+
+#: aStringResources.py:94
+msgid "(preferably in UTF-8 encoding)."
+msgstr ""
+
+#: aStringResources.py:95
+msgid "When you are ready, click \"Upload\" to provide AbSim your .csv file."
+msgstr ""
+
+#: aStringResources.py:96
+msgid "Upload"
+msgstr ""
+
+#: aStringResources.py:97 aStringResources.py:151
+msgid "View"
+msgstr ""
+
+#: aStringResources.py:98 aStringResources.py:153
+msgid "Delete"
+msgstr ""
+
+#: aStringResources.py:99 aStringResources.py:119 aStringResources.py:164
+msgid "Section"
+msgstr ""
+
+#: aStringResources.py:100
+msgid "Number of Students"
+msgstr ""
+
+#: aStringResources.py:101
+msgid "Last Name"
+msgstr ""
+
+#: aStringResources.py:102
+msgid "First Name"
+msgstr ""
+
+#: aStringResources.py:103
+msgid "ID"
+msgstr ""
+
+#: aStringResources.py:104
+msgid "Section Data Not Found"
+msgstr ""
+
+#: aStringResources.py:105
+msgid "Please check back when you have entered section data."
+msgstr ""
+
+#: aStringResources.py:106
+msgid "No Section Selected"
+msgstr ""
+
+#: aStringResources.py:107
+msgid "Please select a section to view, edit, and delete information."
+msgstr ""
+
+#: aStringResources.py:108
+msgid "No Student Selected"
+msgstr ""
+
+#: aStringResources.py:109
+msgid "Please select a student to view, edit, and delete information."
+msgstr ""
+
+#: aStringResources.py:110
+msgid "Delete Information"
+msgstr ""
+
+#: aStringResources.py:111
+msgid "Are you sure you wish to delete the selected information?"
+msgstr ""
+
+#: aStringResources.py:112
+msgid "Information Not Deleted"
+msgstr ""
+
+#: aStringResources.py:113
+msgid "AbSim will not delete information and associated data."
+msgstr ""
+
+#: aStringResources.py:118
+msgid "AbSim File Chooser"
+msgstr ""
+
+#: aStringResources.py:120
+msgid "Class Uploaded Successfully"
+msgstr ""
+
+#: aStringResources.py:121
+msgid "Students may now login to view exams you assign."
+msgstr ""
+
+#: aStringResources.py:122
+msgid "Class Upload Failed"
+msgstr ""
+
+#: aStringResources.py:123
+msgid "Section information not provided."
+msgstr ""
+
+#: aStringResources.py:124
+msgid "Any files"
+msgstr ""
+
+#: aStringResources.py:125
+msgid "Text files"
+msgstr ""
+
+#: aStringResources.py:126
+msgid "Please choose a folder"
+msgstr ""
+
+#: aStringResources.py:131
+msgid "AbSim Assessment Creator"
+msgstr ""
+
+#: aStringResources.py:132
+msgid "1. Baseline Assessment"
+msgstr ""
+
+#: aStringResources.py:133
+msgid "Add Baseline Assessment?"
+msgstr ""
+
+#: aStringResources.py:134
+msgid "2. Abnormality Detection Assessment"
+msgstr ""
+
+#: aStringResources.py:135
+msgid "3. Case Assessment"
+msgstr ""
+
+#: aStringResources.py:136
+msgid "Input Assessment Title"
+msgstr ""
+
+#: aStringResources.py:137
+msgid "Save Assessment"
+msgstr ""
+
+#: aStringResources.py:138
+msgid "Assessment"
+msgstr ""
+
+#: aStringResources.py:144
+msgid "Assessments"
+msgstr ""
+
+#: aStringResources.py:145 aStringResources.py:223
+msgid "Assessment Title"
+msgstr ""
+
+#: aStringResources.py:146
+msgid "Assigned To"
+msgstr ""
+
+#: aStringResources.py:147
+msgid "Completed"
+msgstr ""
+
+#: aStringResources.py:148
+msgid "Baseline Palpation"
+msgstr ""
+
+#: aStringResources.py:149 aStringResources.py:251
+msgid "Abnormality Detection"
+msgstr ""
+
+#: aStringResources.py:150
+msgid "Case Diagnosis"
+msgstr ""
+
+#: aStringResources.py:152
+msgid "Assign"
+msgstr ""
+
+#: aStringResources.py:154
+msgid "Choose Section(s)"
+msgstr ""
+
+#: aStringResources.py:155
+msgid "Select section name(s) to display results for that (those) section(s)."
+msgstr ""
+
+#: aStringResources.py:156
+msgid "Select section name(s) to which to assign assessment."
+msgstr ""
+
+#: aStringResources.py:157
+msgid "Results"
+msgstr ""
+
+#: aStringResources.py:158
+msgid "Baseline Assessment:"
+msgstr ""
+
+#: aStringResources.py:159
+msgid "Abnormality Detection:"
+msgstr ""
+
+#: aStringResources.py:160
+msgid "Case Diagnosis:"
+msgstr ""
+
+#: aStringResources.py:161
+msgid "Select assessment to view items assigned."
+msgstr ""
+
+#: aStringResources.py:162
+msgid "No Section(s) Selected"
+msgstr ""
+
+#: aStringResources.py:163
+msgid "Please select section(s) to view student performance."
+msgstr ""
+
+#: aStringResources.py:165
+msgid "No Sections Exist"
+msgstr ""
+
+#: aStringResources.py:166
+msgid "Please add students in previous screen."
+msgstr ""
+
+#: aStringResources.py:167
+msgid "Delete Assessment"
+msgstr ""
+
+#: aStringResources.py:168
+msgid "Are you sure you wish to delete the selected assessment?"
+msgstr ""
+
+#: aStringResources.py:169
+msgid "Assessment Not Deleted"
+msgstr ""
+
+#: aStringResources.py:170
+msgid "AbSim will not delete assessment and associated data."
+msgstr ""
+
+#: aStringResources.py:171
+msgid "Assessment Data Not Found"
+msgstr ""
+
+#: aStringResources.py:172
+msgid "Please check back when students have taken assessments."
+msgstr ""
+
+#: aStringResources.py:173
+msgid "Assessment Assignment Successful"
+msgstr ""
+
+#: aStringResources.py:174
+msgid "Students in section(s) assigned may take this assessment."
+msgstr ""
+
+#: aStringResources.py:175
+msgid "Assessment Already Assigned"
+msgstr ""
+
+#: aStringResources.py:176
+msgid "The chosen section is already assigned this assessment."
+msgstr ""
+
+#: aStringResources.py:177
+msgid "No Assessment Selected"
+msgstr ""
+
+#: aStringResources.py:178
+msgid "Please select an assessment to assign, view results, or delete."
+msgstr ""
+
+#: aStringResources.py:183
+msgid "Assessment Saved Successfully"
+msgstr ""
+
+#: aStringResources.py:184 aStringResources.py:399
+msgid "Students may now take your assessment."
+msgstr ""
+
+#: aStringResources.py:185
+msgid "Assessment Save Failure"
+msgstr ""
+
+#: aStringResources.py:186 aStringResources.py:401
+msgid "Could not save assessment."
+msgstr ""
+
+#: aStringResources.py:187 aStringResources.py:402
+msgid "Could not save assessment because no assessment title entered."
+msgstr ""
+
+#: aStringResources.py:192
 msgid "No Assessments Taken"
 msgstr ""
 
-#: assessmentViewer.py:78
+#: aStringResources.py:193
 msgid "Please check back when students have taken your assessment."
 msgstr ""
 
-#: assessmentViewer.py:163 assessmentViewer.py:345 assessmentViewer.py:465
-#: assessmentViewer.py:498
+#: aStringResources.py:194
 msgid "Student ID"
 msgstr ""
 
-#: assessmentViewer.py:163 assessmentViewer.py:360
+#: aStringResources.py:195
 msgid "Score"
 msgstr ""
 
-#: assessmentViewer.py:163 assessmentViewer.py:366 assessmentViewer.py:466
-#: assessmentViewer.py:536
+#: aStringResources.py:196
 msgid "Time Elapsed"
 msgstr ""
 
-#: assessmentViewer.py:168
-msgid "_abnormality_data.csv"
+#: aStringResources.py:197
+msgid "Assessment Data Exported"
 msgstr ""
 
-#: assessmentViewer.py:182 assessmentViewer.py:206 assessmentViewer.py:476
-msgid "Exam Data Exported!"
+#: aStringResources.py:198
+msgid "A CSV file with assessment data was created in AbSim's directory."
 msgstr ""
 
-#: assessmentViewer.py:183 assessmentViewer.py:207 assessmentViewer.py:477
-msgid "A CSV file with exam data was created in AbSim's directory."
+#: aStringResources.py:199
+msgid "Assessment Data Not Exported"
 msgstr ""
 
-#: assessmentViewer.py:192
-msgid "_case_text_data.csv"
+#: aStringResources.py:200
+msgid "Something went wrong."
 msgstr ""
 
-#: assessmentViewer.py:226
+#: aStringResources.py:201
 msgid "Export to Desktop"
 msgstr ""
 
-#: assessmentViewer.py:230 viewAssignments.py:378 viewPerformance.py:147
-msgid "Return"
+#: aStringResources.py:206
+msgid "Self-directed Learning"
 msgstr ""
 
-#: assessmentViewer.py:245 casetext.py:40 casetext.py:61 casetext.py:81
-#: ddxpractice.py:24 prototypetext.py:20 testCreator.py:302
-#: viewAssignments.py:1025
-msgid "Upper Gastrointestinal Etiology"
+#: aStringResources.py:207
+msgid "Learn and Practice Abdominal Palpation"
 msgstr ""
 
-#: assessmentViewer.py:246 casetext.py:103 casetext.py:123 casetext.py:143
-#: ddxpractice.py:25 prototypetext.py:48 testCreator.py:303
-#: viewAssignments.py:1026
-msgid "Choledocolithiasis"
+#: aStringResources.py:208
+msgid "View Assignments"
 msgstr ""
 
-#: assessmentViewer.py:247 casetext.py:165 casetext.py:185 casetext.py:205
-#: ddxpractice.py:26 prototypetext.py:71 testCreator.py:304
-#: viewAssignments.py:1027
-msgid "Pancreatitis"
+#: aStringResources.py:209
+msgid "Take Assigned Assessments"
 msgstr ""
 
-#: assessmentViewer.py:248 casetext.py:227 casetext.py:247 casetext.py:265
-#: casetext.py:285 ddxpractice.py:27 prototypetext.py:97 testCreator.py:305
-#: viewAssignments.py:1028
-msgid "Cholecystitis"
+#: aStringResources.py:210
+msgid "Please enter your ID"
 msgstr ""
 
-#: assessmentViewer.py:249 casetext.py:308 casetext.py:328 casetext.py:347
-#: ddxpractice.py:28 prototypetext.py:119 testCreator.py:306
-#: viewAssignments.py:1029
-msgid "Mesenteric Infarction"
+#: aStringResources.py:211
+msgid "Student Login"
 msgstr ""
 
-#: assessmentViewer.py:250 casetext.py:370 casetext.py:391 casetext.py:412
-#: ddxpractice.py:29 prototypetext.py:146 testCreator.py:307
-#: viewAssignments.py:1030
-msgid "Small Bowel Obstruction"
+#: aStringResources.py:213
+msgid "Entered ID does not match our records."
 msgstr ""
 
-#: assessmentViewer.py:251 casetext.py:432 casetext.py:449 casetext.py:467
-#: casetext.py:485 ddxpractice.py:30 prototypetext.py:173 testCreator.py:308
-#: viewAssignments.py:1031
-msgid "Appendicitis"
+#: aStringResources.py:218
+msgid "AbSim Assignment Viewer"
 msgstr ""
 
-#: assessmentViewer.py:252 casetext.py:506 casetext.py:526 casetext.py:543
-#: ddxpractice.py:31 prototypetext.py:194 testCreator.py:309
-#: viewAssignments.py:1032
-msgid "Diverticulitis"
+#: aStringResources.py:219
+msgid "Abnormality Assessment"
 msgstr ""
 
-#: assessmentViewer.py:253 casetext.py:566 casetext.py:585 casetext.py:604
-#: ddxpractice.py:32 prototypetext.py:215 testCreator.py:310
-#: viewAssignments.py:1033
-msgid "Acute Enteritis"
+#: aStringResources.py:220
+msgid "Case Text Assessment"
 msgstr ""
 
-#: assessmentViewer.py:462
-msgid "_baseline_data.csv"
+#: aStringResources.py:221 aStringResources.py:244
+msgid "Baseline Assessment"
 msgstr ""
 
-#: assessmentViewer.py:465 assessmentViewer.py:512
-msgid "Not Palpated"
+#: aStringResources.py:224 caseselector.py:78
+msgid "Ailment"
 msgstr ""
 
-#: assessmentViewer.py:465 assessmentViewer.py:518 pressurepoints.py:189
-msgid "Light Palpation"
+#: aStringResources.py:225
+msgid "Welcome to AbSim's Assessment Interface"
 msgstr ""
 
-#: assessmentViewer.py:465 assessmentViewer.py:524 pressurepoints.py:198
-msgid "Deep Palpation"
+#: aStringResources.py:226
+msgid "Select an assessment and click \"Begin Assessment\" when ready."
 msgstr ""
 
-#: assessmentViewer.py:465 assessmentViewer.py:530
-msgid "Too Deep"
+#: aStringResources.py:227
+msgid "Begin Assessment"
 msgstr ""
 
-#: cases.py:32 caseselector.py:23 selfpractice.py:252 viewAssignments.py:808
+#: aStringResources.py:228
+msgid "Assessment Not Found."
+msgstr ""
+
+#: aStringResources.py:229
+msgid "You may take another assessment if you have more to take."
+msgstr ""
+
+#: aStringResources.py:230
+msgid "Select Assessment"
+msgstr ""
+
+#: aStringResources.py:231
+msgid "Please select an assessment and click \"Begin Assessment\"."
+msgstr ""
+
+#: aStringResources.py:232
+msgid "Assessment Finished"
+msgstr ""
+
+#: aStringResources.py:233
+msgid "Perform a baseline assessment and click 'OK' when finished."
+msgstr ""
+
+#: aStringResources.py:234
+msgid "Ok"
+msgstr ""
+
+#: aStringResources.py:235
+msgid "Make Selection"
+msgstr ""
+
+#: aStringResources.py:236
+msgid "No Selection"
+msgstr ""
+
+#: aStringResources.py:237
+msgid "Please select a case."
+msgstr ""
+
+#: aStringResources.py:242
+msgid "Home"
+msgstr ""
+
+#: aStringResources.py:243
+msgid "System Language"
+msgstr ""
+
+#: aStringResources.py:245
+msgid "Milestone 1:"
+msgstr ""
+
+#: aStringResources.py:246
+msgid "Depth of Palpation"
+msgstr ""
+
+#: aStringResources.py:247
+msgid "Milestone 2:"
+msgstr ""
+
+#: aStringResources.py:248
+msgid "Surface Area Coverage"
+msgstr ""
+
+#: aStringResources.py:249
+msgid "Comparative Assessment"
+msgstr ""
+
+#: aStringResources.py:250
+msgid "Milestone 3:"
+msgstr ""
+
+#: aStringResources.py:252
+msgid "Milestone 4:"
+msgstr ""
+
+#: aStringResources.py:253
+msgid "Self-Assessment with"
+msgstr ""
+
+#: aStringResources.py:254
+msgid "Random Ailments"
+msgstr ""
+
+#: aStringResources.py:255
+msgid "Milestone 5:"
+msgstr ""
+
+#: aStringResources.py:256
+msgid "Diagnosis Integration"
+msgstr ""
+
+#: aStringResources.py:257
+msgid "with Hx/PE"
+msgstr ""
+
+#: aStringResources.py:263
+msgid "Welcome!"
+msgstr ""
+
+#: aStringResources.py:264
+msgid "AbSim will train you on abdominal palpation, a key skill to"
+msgstr ""
+
+#: aStringResources.py:265
+msgid "assess patients complaining of abdominal pain."
+msgstr ""
+
+#: aStringResources.py:266
+msgid "When you are ready, perform an abdominal exam."
+msgstr ""
+
+#: aStringResources.py:267
+msgid "Click the button when you're done."
+msgstr ""
+
+#: aStringResources.py:268
+msgid "Reveal completed exam"
+msgstr ""
+
+#: aStringResources.py:269
+msgid "Appendix Region"
+msgstr ""
+
+#: aStringResources.py:270
+msgid "Colon Region"
+msgstr ""
+
+#: aStringResources.py:271
+msgid "Gallbladder Region"
+msgstr ""
+
+#: aStringResources.py:272
+msgid "Gastric/Epigastric Region"
+msgstr ""
+
+#: aStringResources.py:273
+msgid "Left Ovary Region"
+msgstr ""
+
+#: aStringResources.py:274
+msgid "Right Ovary Region"
+msgstr ""
+
+#: aStringResources.py:275
+msgid "Pancreatic Region"
+msgstr ""
+
+#: aStringResources.py:276
+msgid "Normal Urinary Bladder"
+msgstr ""
+
+#: aStringResources.py:277
+msgid "Liver Region"
+msgstr ""
+
+#: aStringResources.py:278
+msgid "Splenic Region"
+msgstr ""
+
+#: aStringResources.py:279
+msgid "Distended Urinary Bladder"
+msgstr ""
+
+#: aStringResources.py:280
+msgid "You may now proceed to Milestone 1"
+msgstr ""
+
+#: aStringResources.py:281
+msgid "Now it's time to compare your pre-assessment to your skill after training."
+msgstr ""
+
+#: aStringResources.py:282
+msgid "Pre-Assessment Coverage"
+msgstr ""
+
+#: aStringResources.py:283
+msgid "Post-Assessment Coverage"
+msgstr ""
+
+#: aStringResources.py:284
+msgid "Proceed to Abnormality Detection"
+msgstr ""
+
+#: aStringResources.py:285
+msgid "Coverage Visualization"
+msgstr ""
+
+#: aStringResources.py:286
+msgid "Detailed Comparison"
+msgstr ""
+
+#: aStringResources.py:287
+msgid "Location Analysis"
+msgstr ""
+
+#: aStringResources.py:288
+msgid "not palpated"
+msgstr ""
+
+#: aStringResources.py:289
+msgid "lightly palpated"
+msgstr ""
+
+#: aStringResources.py:290
+msgid "deeply palpated"
+msgstr ""
+
+#: aStringResources.py:291
+msgid "too hard"
+msgstr ""
+
+#: aStringResources.py:296
+msgid "In this milestone, practice palpating to the correct depth."
+msgstr ""
+
+#: aStringResources.py:297
+msgid "Gray circles indicate"
+msgstr ""
+
+#: aStringResources.py:298
+msgid "appropriate for beginning an abdominal exam,"
+msgstr ""
+
+#: aStringResources.py:299
+msgid "but insufficient to detect significant abdominal disorders."
+msgstr ""
+
+#: aStringResources.py:300
+msgid "Blue circles indicate"
+msgstr ""
+
+#: aStringResources.py:301
+msgid "good for detecting serious disorders of the abdomen."
+msgstr ""
+
+#: aStringResources.py:302
+msgid "Red circles indicate"
+msgstr ""
+
+#: aStringResources.py:303
+msgid "causing unnecessary pain, even in a patient with no abnormalities."
+msgstr ""
+
+#: aStringResources.py:304
+msgid "This can result in voluntary guarding for the rest of the exam, leading to"
+msgstr ""
+
+#: aStringResources.py:305
+msgid "confusing findings."
+msgstr ""
+
+#: aStringResources.py:306
+msgid "Instructors may adjust pressure sensitivity in the"
+msgstr ""
+
+#: aStringResources.py:307
+msgid "Settings > Pressure Sensitivity"
+msgstr ""
+
+#: aStringResources.py:308
+msgid "menu."
+msgstr ""
+
+#: aStringResources.py:313
+msgid "Now that you can palpate to proper depth, practice covering the entire abdomen."
+msgstr ""
+
+#: aStringResources.py:314
+msgid "It's better to make several passes instead of covering each centimeter in one pass."
+msgstr ""
+
+#: aStringResources.py:316
+msgid "Make several trips around the abdomen to get full coverage."
+msgstr ""
+
+#: aStringResources.py:317
+msgid "Especially ensure you check the marked locations, where abdominal abnormalities are most likely to occur."
+msgstr ""
+
+#: aStringResources.py:323
+msgid "You should now understand what a normal abdomen feels like."
+msgstr ""
+
+#: aStringResources.py:324
+msgid "For this milestone, familiarize yourself with how these abnormalities feel."
+msgstr ""
+
+#: aStringResources.py:325
+msgid "In the next step, you will identify them using touch and sound."
+msgstr ""
+
+#: aStringResources.py:330
+msgid "For this milestone, you will report the findings by feel and sound only."
+msgstr ""
+
+#: aStringResources.py:331
+msgid "When you select a finding, you will receive feedback and have a second chance to palpate."
+msgstr ""
+
+#: aStringResources.py:333
+msgid "When you are confident in eliciting findings, we will integrate patient history and non-palpitory physical findings."
+msgstr ""
+
+#: aStringResources.py:335
+msgid "Before moving on, re-familiarize yourself with how this condition feels."
+msgstr ""
+
+#: aStringResources.py:336
+msgid "Correct"
+msgstr ""
+
+#: aStringResources.py:337
+msgid "Incorrect"
+msgstr ""
+
+#: aStringResources.py:338
+msgid "You selected:"
+msgstr ""
+
+#: aStringResources.py:339
+msgid "Correct selection:"
+msgstr ""
+
+#: aStringResources.py:340
+msgid "Unremarkable Abdomen"
+msgstr ""
+
+#: aStringResources.py:341 cases.py:32 caseselector.py:25
 msgid "No Abnormalities"
 msgstr ""
 
-#: cases.py:33 caseselector.py:26 selfpractice.py:264 viewAssignments.py:811
+#: aStringResources.py:342
+msgid "Appendix"
+msgstr ""
+
+#: aStringResources.py:343
+msgid "Tenderness"
+msgstr ""
+
+#: aStringResources.py:344
+msgid "Appendix Tenderness + Guarding"
+msgstr ""
+
+#: aStringResources.py:345
+msgid "Appendix Tenderness + Rebound Tenderness"
+msgstr ""
+
+#: aStringResources.py:346
+msgid "Appendix Tenderness + Guarding + Rebound Tenderness"
+msgstr ""
+
+#: aStringResources.py:347
+msgid "Bladder"
+msgstr ""
+
+#: aStringResources.py:348
+msgid "Bladder Tenderness"
+msgstr ""
+
+#: aStringResources.py:349
+msgid "Colon"
+msgstr ""
+
+#: aStringResources.py:350
+msgid "Colon Tenderness"
+msgstr ""
+
+#: aStringResources.py:351
+msgid "Colon Tenderness + Guarding"
+msgstr ""
+
+#: aStringResources.py:352
+msgid "Gallbladder"
+msgstr ""
+
+#: aStringResources.py:353
+msgid "Gallbladder Tenderness + Guarding"
+msgstr ""
+
+#: aStringResources.py:354
+msgid "Gastric"
+msgstr ""
+
+#: aStringResources.py:355 cases.py:41 caseselector.py:42
+msgid "Gastric Tenderness"
+msgstr ""
+
+#: aStringResources.py:356
+msgid "Ovary, Left"
+msgstr ""
+
+#: aStringResources.py:357
+msgid "Ovary, Left + Guarding"
+msgstr ""
+
+#: aStringResources.py:358
+msgid "Ovary, Right"
+msgstr ""
+
+#: aStringResources.py:359
+msgid "Ovary, Right + Guarding"
+msgstr ""
+
+#: aStringResources.py:360
+msgid "Pancreas"
+msgstr ""
+
+#: aStringResources.py:361
+msgid "Organ Enlargement"
+msgstr ""
+
+#: aStringResources.py:362
+msgid "Organs"
+msgstr ""
+
+#: aStringResources.py:363 aStringResources.py:375
+msgid "Next Case"
+msgstr ""
+
+#: aStringResources.py:364 cases.py:48 caseselector.py:61
+msgid "Hepatomegaly"
+msgstr ""
+
+#: aStringResources.py:365 cases.py:49 caseselector.py:62
+msgid "Splenomegaly"
+msgstr ""
+
+#: aStringResources.py:366 cases.py:50 caseselector.py:63
+msgid "Enlarged Urinary Bladder"
+msgstr ""
+
+#: aStringResources.py:371
+msgid "You chose the"
+msgstr ""
+
+#: aStringResources.py:372
+msgid "best diagnosis"
+msgstr ""
+
+#: aStringResources.py:373
+msgid "Best diagnosis"
+msgstr ""
+
+#: aStringResources.py:374
+msgid "below"
+msgstr ""
+
+#: aStringResources.py:380
+msgid "AbSim is loading..."
+msgstr ""
+
+#: aStringResources.py:381
+msgid "(this might take 30 seconds)"
+msgstr ""
+
+#: aStringResources.py:386
+msgid "Pressure pad is not connected! Please check the USB cable, close software, and turn off AbSim for five seconds."
+msgstr ""
+
+#: aStringResources.py:392
+msgid "Setting up new case."
+msgstr ""
+
+#: aStringResources.py:393
+msgid "DO NOT TOUCH!"
+msgstr ""
+
+#: aStringResources.py:398
+msgid "Assessment Saved Successfully!"
+msgstr ""
+
+#: aStringResources.py:400
+msgid "Assessment Save Failure!"
+msgstr ""
+
+#: aStringResources.py:407
+msgid "New locale override"
+msgstr ""
+
+#: aStringResources.py:408
+msgid "will take effect after restarting the program."
+msgstr ""
+
+#: aStringResources.py:413
+msgid "Reset User Info?"
+msgstr ""
+
+#: aStringResources.py:414
+msgid "Would you like to reset the user info provided?"
+msgstr ""
+
+#: aStringResources.py:419
+msgid "Password"
+msgstr ""
+
+#: aStringResources.py:420
+msgid "User Name"
+msgstr ""
+
+#: aStringResources.py:421
+msgid "User Entry"
+msgstr ""
+
+#: aStringResources.py:426
+msgid "Go Back"
+msgstr ""
+
+#: aStringResources.py:429
+msgid "Palpation"
+msgstr ""
+
+#: aStringResources.py:430
+msgid "Not Palpated"
+msgstr ""
+
+#: aStringResources.py:431
+msgid "Light Palpation"
+msgstr ""
+
+#: aStringResources.py:432
+msgid "Deep Palpation"
+msgstr ""
+
+#: aStringResources.py:433
+msgid "Too Deep"
+msgstr ""
+
+#: cases.py:33 caseselector.py:28
 msgid "Appendix Tenderness"
 msgstr ""
 
@@ -187,7 +1163,7 @@ msgstr ""
 msgid "Appendix Tenderness with Guarding and Rebound Tenderness"
 msgstr ""
 
-#: cases.py:37 caseselector.py:32 viewAssignments.py:817
+#: cases.py:37 caseselector.py:34
 msgid "Colon, Left Lower Tenderness"
 msgstr ""
 
@@ -195,7 +1171,7 @@ msgstr ""
 msgid "Colon, Left Lower Tenderness with Guarding"
 msgstr ""
 
-#: cases.py:39 caseselector.py:36 selfpractice.py:268 viewAssignments.py:821
+#: cases.py:39 caseselector.py:38
 msgid "Gallbladder Tenderness"
 msgstr ""
 
@@ -203,11 +1179,7 @@ msgstr ""
 msgid "Gallbladder Tenderness with Guarding"
 msgstr ""
 
-#: cases.py:41 caseselector.py:40 selfpractice.py:269 viewAssignments.py:825
-msgid "Gastric Tenderness"
-msgstr ""
-
-#: cases.py:42 caseselector.py:43 viewAssignments.py:828
+#: cases.py:42 caseselector.py:45
 msgid "Ovary, Left Tenderness"
 msgstr ""
 
@@ -215,7 +1187,7 @@ msgstr ""
 msgid "Ovary, Left Tenderness with Guarding"
 msgstr ""
 
-#: cases.py:44 caseselector.py:47 viewAssignments.py:832
+#: cases.py:44 caseselector.py:49
 msgid "Ovary, Right Tenderness"
 msgstr ""
 
@@ -223,42 +1195,25 @@ msgstr ""
 msgid "Ovary, Right Tenderness with Guarding"
 msgstr ""
 
-#: cases.py:46 caseselector.py:51 viewAssignments.py:836
+#: cases.py:46 caseselector.py:53
 msgid "Pancreas Tenderness"
 msgstr ""
 
-#: cases.py:47 caseselector.py:54 viewAssignments.py:839
+#: cases.py:47 caseselector.py:56
 msgid "Urinary Bladder Tenderness"
 msgstr ""
 
-#: cases.py:48 caseselector.py:59 selfpractice.py:282 viewAssignments.py:844
-msgid "Hepatomegaly"
-msgstr ""
-
-#: cases.py:49 caseselector.py:60 selfpractice.py:282 viewAssignments.py:845
-msgid "Splenomegaly"
-msgstr ""
-
-#: cases.py:50 caseselector.py:61 selfpractice.py:283 viewAssignments.py:846
-msgid "Enlarged Urinary Bladder"
-msgstr ""
-
-#: caseselector.py:27 caseselector.py:33 caseselector.py:37 caseselector.py:44
-#: caseselector.py:48 viewAssignments.py:812 viewAssignments.py:818
-#: viewAssignments.py:822 viewAssignments.py:829 viewAssignments.py:833
+#: caseselector.py:29 caseselector.py:35 caseselector.py:39 caseselector.py:46
+#: caseselector.py:50
 msgid "With Guarding"
 msgstr ""
 
-#: caseselector.py:28 viewAssignments.py:813
+#: caseselector.py:30
 msgid "With Rebound Tenderness"
 msgstr ""
 
-#: caseselector.py:29 viewAssignments.py:814
+#: caseselector.py:31
 msgid "With Guarding and Rebound Tenderness"
-msgstr ""
-
-#: caseselector.py:76 viewAssignments.py:861 viewAssignments.py:1048
-msgid "Ailment"
 msgstr ""
 
 #: casetext.py:26
@@ -266,7 +1221,11 @@ msgid "HISTORY: A 54 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:34
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.4°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.4ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgstr ""
+
+#: casetext.py:40 casetext.py:61 casetext.py:81 prototypetext.py:20
+msgid "Upper Gastrointestinal Etiology"
 msgstr ""
 
 #: casetext.py:46
@@ -274,7 +1233,7 @@ msgid "HISTORY: A 51 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:55
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.8°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.8ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:67
@@ -282,7 +1241,7 @@ msgid "HISTORY: A 45 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:75 casetext.py:520
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.7°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.7ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:90
@@ -290,7 +1249,11 @@ msgid "HISTORY: A 51 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:97
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.9°C, and tachycardia at 122. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.9ï¿½C, and tachycardia at 122. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgstr ""
+
+#: casetext.py:103 casetext.py:123 casetext.py:143 prototypetext.py:48
+msgid "Choledocolithiasis"
 msgstr ""
 
 #: casetext.py:109
@@ -298,7 +1261,7 @@ msgid "HISTORY: A 52 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:117
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.7°C, and tachycardia at 128. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.7ï¿½C, and tachycardia at 128. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:129
@@ -306,7 +1269,7 @@ msgid "HISTORY: A 51 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:136
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.6°C, and tachycardia at 117. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.6ï¿½C, and tachycardia at 117. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:152
@@ -314,7 +1277,11 @@ msgid "HISTORY: A 29 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:159
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 37.4°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 37.4ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgstr ""
+
+#: casetext.py:165 casetext.py:185 casetext.py:205 prototypetext.py:71
+msgid "Pancreatitis"
 msgstr ""
 
 #: casetext.py:171
@@ -322,7 +1289,7 @@ msgid "HISTORY: A 26 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:179
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.2°C, and tachycardia at 113. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.2ï¿½C, and tachycardia at 113. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:191
@@ -330,7 +1297,7 @@ msgid "HISTORY: A 33 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:199
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.1°C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.1ï¿½C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:214
@@ -338,7 +1305,12 @@ msgid "HISTORY: A 66 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:221
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.6°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds. "
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.6ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds. "
+msgstr ""
+
+#: casetext.py:227 casetext.py:247 casetext.py:265 casetext.py:285
+#: prototypetext.py:97
+msgid "Cholecystitis"
 msgstr ""
 
 #: casetext.py:233
@@ -346,7 +1318,7 @@ msgid "HISTORY: A 66 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:241
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 36.9°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 36.9ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:253
@@ -354,7 +1326,7 @@ msgid "HISTORY: A 54 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:260
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:271
@@ -362,7 +1334,7 @@ msgid "HISTORY: A 34 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:280
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.5°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.5ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:294
@@ -370,7 +1342,11 @@ msgid "HISTORY: A 72 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:301
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.5°C, tachycardia at 123, tachypnea at 26, and a blood pressure of 80 over 51. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.5ï¿½C, tachycardia at 123, tachypnea at 26, and a blood pressure of 80 over 51. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
+msgstr ""
+
+#: casetext.py:308 casetext.py:328 casetext.py:347 prototypetext.py:119
+msgid "Mesenteric Infarction"
 msgstr ""
 
 #: casetext.py:314
@@ -378,7 +1354,7 @@ msgid "HISTORY: A 74 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:321
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 38.2°C, tachycardia at 128, tachypnea at 24, and a blood pressure of 76 over 54. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 38.2ï¿½C, tachycardia at 128, tachypnea at 24, and a blood pressure of 76 over 54. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
 msgstr ""
 
 #: casetext.py:334
@@ -386,7 +1362,7 @@ msgid "HISTORY: A 75 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:341
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.9°C, tachycardia at 128, and tachypnea at 25. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.9ï¿½C, tachycardia at 128, and tachypnea at 25. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:356
@@ -394,7 +1370,11 @@ msgid "HISTORY: A 70 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:364
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals confusion. VITAL SIGNS are remarkable for the following: temperature 36.3°C, and tachypnea at 23. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: mild distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals confusion. VITAL SIGNS are remarkable for the following: temperature 36.3ï¿½C, and tachypnea at 23. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: mild distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
+msgstr ""
+
+#: casetext.py:370 casetext.py:391 casetext.py:412 prototypetext.py:146
+msgid "Small Bowel Obstruction"
 msgstr ""
 
 #: casetext.py:376
@@ -402,7 +1382,7 @@ msgid "HISTORY: A 66 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:384
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 36.3°C, and tachypnea at 26. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, and the presence of tympany."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 36.3ï¿½C, and tachypnea at 26. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, and the presence of tympany."
 msgstr ""
 
 #: casetext.py:397
@@ -410,7 +1390,7 @@ msgid "HISTORY: A 70 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:405
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.1°C, tachycardia at 117, and tachypnea at 22. THORAX and LUNGS Decreased breath sounds are noted at the bases. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, the presence of tympany, and an abdominal bruit."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.1ï¿½C, tachycardia at 117, and tachypnea at 22. THORAX and LUNGS Decreased breath sounds are noted at the bases. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, the presence of tympany, and an abdominal bruit."
 msgstr ""
 
 #: casetext.py:421
@@ -418,7 +1398,12 @@ msgid "HISTORY: A 32 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:427
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.7°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.7ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgstr ""
+
+#: casetext.py:432 casetext.py:449 casetext.py:467 casetext.py:485
+#: prototypetext.py:173
+msgid "Appendicitis"
 msgstr ""
 
 #: casetext.py:438
@@ -426,7 +1411,7 @@ msgid "HISTORY: A 27 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:444
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:455
@@ -434,7 +1419,7 @@ msgid "HISTORY: A 67 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:461
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 38.6°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 38.6ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:473
@@ -442,7 +1427,7 @@ msgid "HISTORY: A 28 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:480
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:494
@@ -450,7 +1435,11 @@ msgid "HISTORY: A 49 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:501
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.9°C, and tachycardia at 130. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.9ï¿½C, and tachycardia at 130. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgstr ""
+
+#: casetext.py:506 casetext.py:526 casetext.py:543 prototypetext.py:194
+msgid "Diverticulitis"
 msgstr ""
 
 #: casetext.py:512
@@ -462,7 +1451,7 @@ msgid "HISTORY: A 49 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:538
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.7°C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.7ï¿½C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:552
@@ -470,7 +1459,11 @@ msgid "HISTORY: A 49 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:561
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.2°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.2ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
+msgstr ""
+
+#: casetext.py:566 casetext.py:585 casetext.py:604 prototypetext.py:215
+msgid "Acute Enteritis"
 msgstr ""
 
 #: casetext.py:572
@@ -478,7 +1471,7 @@ msgid "HISTORY: A 51 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:580
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.6°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.6ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:591
@@ -486,544 +1479,7 @@ msgid "HISTORY: A 33 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:599
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.8°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
-msgstr ""
-
-#: coverageassessment.py:44
-msgid "AbSim will train you on abdominal palpation, a key skill to "
-msgstr ""
-
-#: coverageassessment.py:44
-msgid "Welcome!"
-msgstr ""
-
-#: coverageassessment.py:45
-msgid "assess patients complaining of abdominal pain."
-msgstr ""
-
-#: coverageassessment.py:46 coverageassessment.py:152
-msgid "When you are ready, perform an abdominal exam."
-msgstr ""
-
-#: coverageassessment.py:47 coverageassessment.py:153
-msgid "Click the button when you're done."
-msgstr ""
-
-#: coverageassessment.py:54
-msgid "You may now proceed to Milestone 1"
-msgstr ""
-
-#: coverageassessment.py:62 coverageassessment.py:161
-msgid "Reveal completed exam"
-msgstr ""
-
-#: coverageassessment.py:151
-msgid "Now it's time to compare your pre-assessment to your skill after training."
-msgstr ""
-
-#: coverageassessment.py:182 coverageassessment.py:556
-msgid "Pre-Assessment Coverage"
-msgstr ""
-
-#: coverageassessment.py:201 coverageassessment.py:566
-msgid "Post-Assessment Coverage"
-msgstr ""
-
-#: coverageassessment.py:224
-msgid "Proceed to Abnormality Detection"
-msgstr ""
-
-#: coverageassessment.py:241
-msgid "Coverage Visualization"
-msgstr ""
-
-#: coverageassessment.py:247
-msgid "Detailed Comparison"
-msgstr ""
-
-#: coverageassessment.py:253
-msgid "Location Analysis"
-msgstr ""
-
-#: coverageassessment.py:384
-msgid "not palpated"
-msgstr ""
-
-#: coverageassessment.py:385
-msgid "lightly palpated"
-msgstr ""
-
-#: coverageassessment.py:386
-msgid "deeply palpated"
-msgstr ""
-
-#: coverageassessment.py:387
-msgid "too hard"
-msgstr ""
-
-#: coverageassessment.py:484
-msgid "Light palpation"
-msgstr ""
-
-#: coverageassessment.py:485
-msgid "Deep palpation"
-msgstr ""
-
-#: coverageassessment.py:486
-msgid "Palpation too deep"
-msgstr ""
-
-#: coverageassessment.py:591 coverageassessment.py:592
-#: coverageassessment.py:594 coverageassessment.py:595
-msgid "palpation"
-msgstr ""
-
-#: coverageassessment.py:591 coverageassessment.py:594
-msgid "Light"
-msgstr ""
-
-#: coverageassessment.py:592 coverageassessment.py:595
-msgid "Deep"
-msgstr ""
-
-#: coverageassessment.py:593 coverageassessment.py:596
-msgid "Palpation"
-msgstr ""
-
-#: coverageassessment.py:593 coverageassessment.py:596 depthtrainer.py:40
-msgid "too deep"
-msgstr ""
-
-#: coverageassessment.py:642
-msgid "Appendix Region"
-msgstr ""
-
-#: coverageassessment.py:643
-msgid "Colon Region"
-msgstr ""
-
-#: coverageassessment.py:644
-msgid "Gallbladder Region"
-msgstr ""
-
-#: coverageassessment.py:645
-msgid "Gastric/Epigastric Region"
-msgstr ""
-
-#: coverageassessment.py:646
-msgid "Left Ovary Region"
-msgstr ""
-
-#: coverageassessment.py:647
-msgid "Right Ovary Region"
-msgstr ""
-
-#: coverageassessment.py:648
-msgid "Pancreatic Region"
-msgstr ""
-
-#: coverageassessment.py:649
-msgid "Normal Urinary Bladder"
-msgstr ""
-
-#: coverageassessment.py:650
-msgid "Liver Region"
-msgstr ""
-
-#: coverageassessment.py:651
-msgid "Splenic Region"
-msgstr ""
-
-#: coverageassessment.py:652
-msgid "Distended Urinary Bladder"
-msgstr ""
-
-#: coveragetrainer.py:30
-msgid "Now that you can palpate to proper depth, practice covering the entire abdomen."
-msgstr ""
-
-#: coveragetrainer.py:31
-msgid "It's better to make several passes instead of covering each centimeter in one pass."
-msgstr ""
-
-#: coveragetrainer.py:32
-msgid "Make several trips around the abdomen to get full coverage."
-msgstr ""
-
-#: coveragetrainer.py:33
-msgid "Especially ensure you check the marked locations, where abdominal abnormalities are most likely to occur."
-msgstr ""
-
-#: ddxpractice.py:69 selfpractice.py:85
-msgid "Next Case"
-msgstr ""
-
-#: ddxpractice.py:84
-msgid "You chose the"
-msgstr ""
-
-#: ddxpractice.py:84
-msgid "best diagnosis"
-msgstr ""
-
-#: ddxpractice.py:90
-msgid "Best diagnosis"
-msgstr ""
-
-#: ddxpractice.py:90
-msgid "below"
-msgstr ""
-
-#: defineUser.py:57
-msgid "Welcome to Absim!"
-msgstr ""
-
-#: defineUser.py:68
-msgid "Faculty"
-msgstr ""
-
-#: defineUser.py:73
-msgid "Click here to configure AbSim and create assessments"
-msgstr ""
-
-#: defineUser.py:78
-msgid "Student"
-msgstr ""
-
-#: defineUser.py:83
-msgid "Demonstrate proficiency in abdominal palpation through practice and assessments"
-msgstr ""
-
-#: defineUser.py:134
-msgid "Please enter the AbSim's initial key to add faculty login"
-msgstr ""
-
-#: defineUser.py:135 defineUser.py:187
-msgid "AbSim Initial Key"
-msgstr ""
-
-#: defineUser.py:137
-msgid "Add Faculty"
-msgstr ""
-
-#: defineUser.py:137
-msgid "Please enter a user name and password"
-msgstr ""
-
-#: defineUser.py:145
-msgid "Faculty Added Successfully"
-msgstr ""
-
-#: defineUser.py:146
-msgid "Click Faculty to Login."
-msgstr ""
-
-#: defineUser.py:149 defineUser.py:153
-msgid "Faculty NOT Added"
-msgstr ""
-
-#: defineUser.py:150 defineUser.py:154
-msgid "Please Re-Enter the Initial Key."
-msgstr ""
-
-#: defineUser.py:158
-msgid "Faculty Login"
-msgstr ""
-
-#: defineUser.py:158
-msgid "Please enter your user name and password"
-msgstr ""
-
-#: defineUser.py:171 defineUser.py:177 defineUser.py:181 sim.py:211 sim.py:219
-msgid "Login Failed"
-msgstr ""
-
-#: defineUser.py:172 defineUser.py:178 sim.py:212 sim.py:220 sim.py:225
-msgid "Username and Password do not match our records."
-msgstr ""
-
-#: defineUser.py:182
-msgid "No info provided or Cancel clicked."
-msgstr ""
-
-#: defineUser.py:186
-msgid "Please enter the AbSim's initial key to reset faculty login"
-msgstr ""
-
-#: defineUser.py:190
-msgid "Faculty Login Data Deleted"
-msgstr ""
-
-#: defineUser.py:191
-msgid "To add another faculty member, click \"Faculty.\""
-msgstr ""
-
-#: depthtrainer.py:31
-msgid "In this milestone, practice palpating to the correct depth."
-msgstr ""
-
-#: depthtrainer.py:33
-msgid " Gray circles indicate "
-msgstr ""
-
-#: depthtrainer.py:34
-msgid ", appropriate for beginning an abdominal exam, "
-msgstr ""
-
-#: depthtrainer.py:34
-msgid "light palpation"
-msgstr ""
-
-#: depthtrainer.py:35
-msgid "but insufficient to detect significant abdominal disorders."
-msgstr ""
-
-#: depthtrainer.py:36
-msgid " Blue circles indicate "
-msgstr ""
-
-#: depthtrainer.py:37
-msgid "deep palpation"
-msgstr ""
-
-#: depthtrainer.py:38
-msgid ", good for detecting serious disorders of the abdomen."
-msgstr ""
-
-#: depthtrainer.py:39
-msgid " Red circles indicate "
-msgstr ""
-
-#: depthtrainer.py:41
-msgid ", causing unnecessary pain, even in a patient with no abnormalities. "
-msgstr ""
-
-#: depthtrainer.py:42
-msgid "This can result in voluntary guarding for the rest of the exam, leading to confusing "
-msgstr ""
-
-#: depthtrainer.py:43
-msgid "Instructors may adjust pressure sensitivity in the "
-msgstr ""
-
-#: depthtrainer.py:43
-msgid "findings."
-msgstr ""
-
-#: depthtrainer.py:44
-msgid " menu."
-msgstr ""
-
-#: depthtrainer.py:44
-msgid "Settings > Pressure Sensitivity"
-msgstr ""
-
-#: donottouch.py:25
-msgid "Setting up new case."
-msgstr ""
-
-#: donottouch.py:26
-msgid "DO NOT TOUCH!"
-msgstr ""
-
-#: exammodel.py:61
-msgid "Assessment Saved Successfully!"
-msgstr ""
-
-#: exammodel.py:62
-msgid "Students may now take your assessment."
-msgstr ""
-
-#: exammodel.py:66 exammodel.py:73
-msgid "Assessment Save Failure!"
-msgstr ""
-
-#: exammodel.py:67
-msgid "Could not save assessment."
-msgstr ""
-
-#: exammodel.py:74
-msgid "Could not save assessment because no assessment title entered."
-msgstr ""
-
-#: filechooser.py:15
-msgid "AbSim File Chooser"
-msgstr ""
-
-#: filechooser.py:31
-msgid "Please choose a file"
-msgstr ""
-
-#: filechooser.py:40
-msgid "Class Section Name"
-msgstr ""
-
-#: filechooser.py:40
-msgid "Provide AbSim a class section identifier (i.e. Section 1)"
-msgstr ""
-
-#: filechooser.py:49
-msgid "Class Uploaded Successfully"
-msgstr ""
-
-#: filechooser.py:49
-msgid "Students may now login to view exams you assign."
-msgstr ""
-
-#: filechooser.py:56
-msgid "Class Upload Failed"
-msgstr ""
-
-#: filechooser.py:56
-msgid "Section information not provided."
-msgstr ""
-
-#: i18ntrans2.py:535
-msgid "New locale override "
-msgstr ""
-
-#: i18ntrans2.py:536
-msgid " will take effect after restarting the program."
-msgstr ""
-
-#: menu.py:92 menu.py:226 splashscreen.py:14
-msgid "AbSim"
-msgstr ""
-
-#: menu.py:94
-msgid "Home"
-msgstr ""
-
-#: menu.py:98
-msgid "Locales"
-msgstr ""
-
-#: menu.py:241 viewAssignments.py:144
-msgid "Baseline Assessment"
-msgstr ""
-
-#: menu.py:247
-msgid "Depth of Palpation"
-msgstr ""
-
-#: menu.py:247
-msgid "Milestone 1:"
-msgstr ""
-
-#: menu.py:253
-msgid "Milestone 2:"
-msgstr ""
-
-#: menu.py:253
-msgid "Surface Area Coverage"
-msgstr ""
-
-#: menu.py:259
-msgid "Comparative Assessment"
-msgstr ""
-
-#: menu.py:265
-msgid "Milestone 3:"
-msgstr ""
-
-#: menu.py:265 viewPerformance.py:70
-msgid "Abnormality Detection"
-msgstr ""
-
-#: menu.py:271
-msgid "Milestone 4:"
-msgstr ""
-
-#: menu.py:272
-msgid "Random Ailments"
-msgstr ""
-
-#: menu.py:272
-msgid "Self-Assessment with"
-msgstr ""
-
-#: menu.py:278
-msgid "Diagnosis Integration"
-msgstr ""
-
-#: menu.py:278
-msgid "Milestone 5:"
-msgstr ""
-
-#: menu.py:279
-msgid "with Hx/PE"
-msgstr ""
-
-#: messages.py:33
-msgid "Reset User Info?"
-msgstr ""
-
-#: messages.py:33
-msgid "Would you like to reset the user info provided?"
-msgstr ""
-
-#: messages.py:54
-msgid "Class Section"
-msgstr ""
-
-#: pressurepoints.py:176
-msgid "Tare / Zero Sensors"
-msgstr ""
-
-#: pressurepoints.py:181
-msgid "Save Sensitivity Settings"
-msgstr ""
-
-#: pressurepoints.py:206
-msgid "Too hard"
-msgstr ""
-
-#: pressurepoints.py:218
-msgid "Sensitivity Configuration Interface"
-msgstr ""
-
-#: pressurepoints.py:219
-msgid "(e.g. "
-msgstr ""
-
-#: pressurepoints.py:219
-msgid "Set pressure pad sensitivity thresholds:"
-msgstr ""
-
-#: pressurepoints.py:220
-msgid "from 5 - 14"
-msgstr ""
-
-#: pressurepoints.py:220
-msgid "light "
-msgstr ""
-
-#: pressurepoints.py:221
-msgid "deep "
-msgstr ""
-
-#: pressurepoints.py:222
-msgid "from 15 - 54"
-msgstr ""
-
-#: pressurepoints.py:222
-msgid "too hard "
-msgstr ""
-
-#: pressurepoints.py:223
-msgid "> 55)."
-msgstr ""
-
-#: pressurepoints.py:224
-msgid "Click \"Save Sensitivity Settings\" to save your choices."
-msgstr ""
-
-#: pressurepoints.py:225
-msgid " You may view the effects of your changes on the image to the right."
-msgstr ""
-
-#: pressurepoints.py:226
-msgid "If you notice \"ghost\" registers of pressure, click \"Tare / Zero Sensors\"."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.8ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
 msgstr ""
 
 #: prototypetext.py:21 prototypetext.py:72 prototypetext.py:98
@@ -1131,7 +1587,7 @@ msgstr ""
 #: prototypetext.py:43 prototypetext.py:65 prototypetext.py:93
 #: prototypetext.py:115 prototypetext.py:136 prototypetext.py:165
 #: prototypetext.py:209
-msgid "Temperature 36.1–37.8°C (97-100°F)"
+msgid "Temperature 36.1ï¿½37.8ï¿½C (97-100ï¿½F)"
 msgstr ""
 
 #: prototypetext.py:44 prototypetext.py:91 prototypetext.py:145
@@ -1306,7 +1762,7 @@ msgid "Tenderness in right lower quadrant"
 msgstr ""
 
 #: prototypetext.py:188 prototypetext.py:231
-msgid "Temperature elevation >37.5 and <38.3°C (99.5 to 100.9°F)"
+msgid "Temperature elevation >37.5 and <38.3ï¿½C (99.5 to 100.9ï¿½F)"
 msgstr ""
 
 #: prototypetext.py:192
@@ -1351,343 +1807,5 @@ msgstr ""
 
 #: prototypetext.py:243
 msgid "Example prototype text for ddx {ddx} index {case_index}"
-msgstr ""
-
-#: selfpractice.py:64
-msgid "For this milestone, you will report the findings by feel and sound only."
-msgstr ""
-
-#: selfpractice.py:65
-msgid "When you select a finding, you will receive feedback and have a second chance to palpate."
-msgstr ""
-
-#: selfpractice.py:66
-msgid "When you are confident in eliciting findings, we will integrate patient history and "
-msgstr ""
-
-#: selfpractice.py:68
-msgid "non-palpitory physical findings."
-msgstr ""
-
-#: selfpractice.py:101
-msgid "Before moving on, re-familiarize yourself with how this condition feels."
-msgstr ""
-
-#: selfpractice.py:107
-msgid "Correct"
-msgstr ""
-
-#: selfpractice.py:112
-msgid "Incorrect"
-msgstr ""
-
-#: selfpractice.py:233
-msgid "You selected:"
-msgstr ""
-
-#: selfpractice.py:234
-msgid "Correct selection:"
-msgstr ""
-
-#: selfpractice.py:252
-msgid "Unremarkable Abdomen"
-msgstr ""
-
-#: selfpractice.py:264
-msgid "Appendix"
-msgstr ""
-
-#: selfpractice.py:264
-msgid "Tenderness"
-msgstr ""
-
-#: selfpractice.py:265
-msgid "Appendix Tenderness + Guarding"
-msgstr ""
-
-#: selfpractice.py:265
-msgid "Appendix Tenderness + Rebound Tenderness"
-msgstr ""
-
-#: selfpractice.py:266
-msgid "Appendix Tenderness + Guarding + Rebound Tenderness"
-msgstr ""
-
-#: selfpractice.py:266
-msgid "Bladder"
-msgstr ""
-
-#: selfpractice.py:267
-msgid "Bladder Tenderness"
-msgstr ""
-
-#: selfpractice.py:267
-msgid "Colon"
-msgstr ""
-
-#: selfpractice.py:267
-msgid "Colon Tenderness"
-msgstr ""
-
-#: selfpractice.py:268
-msgid "Colon Tenderness + Guarding"
-msgstr ""
-
-#: selfpractice.py:268
-msgid "Gallbladder"
-msgstr ""
-
-#: selfpractice.py:269
-msgid "Gallbladder Tenderness + Guarding"
-msgstr ""
-
-#: selfpractice.py:269
-msgid "Gastric"
-msgstr ""
-
-#: selfpractice.py:270
-msgid "Ovary, Left"
-msgstr ""
-
-#: selfpractice.py:270
-msgid "Ovary, Left + Guarding"
-msgstr ""
-
-#: selfpractice.py:270 selfpractice.py:271
-msgid "Ovary, Right"
-msgstr ""
-
-#: selfpractice.py:271
-msgid "Ovary, Right + Guarding"
-msgstr ""
-
-#: selfpractice.py:271
-msgid "Pancreas"
-msgstr ""
-
-#: selfpractice.py:282
-msgid "Organ Enlargement"
-msgstr ""
-
-#: selfpractice.py:282
-msgid "Organs"
-msgstr ""
-
-#: sim.py:53 sim.py:113
-msgid "Welcome to AbSim!"
-msgstr ""
-
-#: sim.py:64
-msgid "Configure AbSim"
-msgstr ""
-
-#: sim.py:69
-msgid "Customize Sensor Pad Pressure Settings"
-msgstr ""
-
-#: sim.py:74
-msgid "Add Students"
-msgstr ""
-
-#: sim.py:79
-msgid "Provide AbSim Student Information"
-msgstr ""
-
-#: sim.py:84
-msgid "Create Assessment"
-msgstr ""
-
-#: sim.py:89
-msgid "Construct and Assign Custom Assessments"
-msgstr ""
-
-#: sim.py:94 viewPerformance.py:19
-msgid "View Student Performance"
-msgstr ""
-
-#: sim.py:99
-msgid "View Student Scores on Assigned Assessments"
-msgstr ""
-
-#: sim.py:124
-msgid "Self-directed Learning"
-msgstr ""
-
-#: sim.py:129
-msgid "Learn and Practice Abdominal Palpation"
-msgstr ""
-
-#: sim.py:134
-msgid "View Assignments"
-msgstr ""
-
-#: sim.py:139
-msgid "Take Assessments and Receive Feedback"
-msgstr ""
-
-#: sim.py:196
-msgid "Please enter your ID"
-msgstr ""
-
-#: sim.py:196
-msgid "Student Login"
-msgstr ""
-
-#: sim.py:224
-msgid "Login Failed!"
-msgstr ""
-
-#: simLabels.py:34
-msgid "Pressure pad is not connected! Please check the USB cable and turn off AbSim for five seconds."
-msgstr ""
-
-#: simLogin.py:24 simLogin.py:49 simLogin.py:94
-msgid "Password"
-msgstr ""
-
-#: simLogin.py:44 simLogin.py:89
-msgid "User Name"
-msgstr ""
-
-#: simLogin.py:70
-msgid "User Entry"
-msgstr ""
-
-#: splashscreen.py:19
-msgid "AbSim is loading..."
-msgstr ""
-
-#: splashscreen.py:20
-msgid "(this might take 30 seconds)"
-msgstr ""
-
-#: testCreator.py:115
-msgid "2. Abnormality Detection Assessment"
-msgstr ""
-
-#: testCreator.py:128
-msgid "Input Assessment Title"
-msgstr ""
-
-#: testCreator.py:148
-msgid "Save Assessment"
-msgstr ""
-
-#: testCreator.py:252
-msgid "1. Baseline Assessment"
-msgstr ""
-
-#: testCreator.py:263
-msgid "Add Baseline Assessment?"
-msgstr ""
-
-#: testCreator.py:296
-msgid "3. Case Assessment"
-msgstr ""
-
-#: viewAssignments.py:124
-msgid "AbSim Assignment Viewer"
-msgstr ""
-
-#: viewAssignments.py:150
-msgid "Abnormality Assessment"
-msgstr ""
-
-#: viewAssignments.py:156
-msgid "Ddx Assessment"
-msgstr ""
-
-#: viewAssignments.py:162
-msgid "View Assessments"
-msgstr ""
-
-#: viewAssignments.py:324 viewPerformance.py:227
-msgid "Assessment Title"
-msgstr ""
-
-#: viewAssignments.py:346
-msgid "Welcome to AbSim's Assessment Interface"
-msgstr ""
-
-#: viewAssignments.py:347
-msgid "Select an assessment and click 'Begin Assessment' when ready."
-msgstr ""
-
-#: viewAssignments.py:374
-msgid "Begin Assessment"
-msgstr ""
-
-#: viewAssignments.py:490
-msgid "Assessment Not Found."
-msgstr ""
-
-#: viewAssignments.py:491 viewAssignments.py:588 viewAssignments.py:716
-#: viewAssignments.py:758 viewAssignments.py:950
-msgid "You may take another assessment if you have more to take."
-msgstr ""
-
-#: viewAssignments.py:505 viewPerformance.py:58
-msgid "Select Assessment"
-msgstr ""
-
-#: viewAssignments.py:506
-msgid "Please select an assessment and click \"Begin Assessment\"."
-msgstr ""
-
-#: viewAssignments.py:587 viewAssignments.py:715 viewAssignments.py:757
-#: viewAssignments.py:949
-msgid "Assessment Finished."
-msgstr ""
-
-#: viewAssignments.py:604
-msgid "Perform a baseline assessment and click 'OK' when finished."
-msgstr ""
-
-#: viewAssignments.py:613
-msgid "Ok"
-msgstr ""
-
-#: viewAssignments.py:781 viewAssignments.py:973
-msgid "Make Selection"
-msgstr ""
-
-#: viewPerformance.py:64
-msgid "Baseline Palpation"
-msgstr ""
-
-#: viewPerformance.py:76
-msgid "Case Diagnosis"
-msgstr ""
-
-#: viewPerformance.py:143
-msgid "View Exam"
-msgstr ""
-
-#: viewPerformance.py:181
-msgid "Enter a Section"
-msgstr ""
-
-#: viewPerformance.py:181
-msgid "Type section name to display results for that section"
-msgstr ""
-
-#: viewPerformance.py:206 viewPerformance.py:210 viewPerformance.py:214
-msgid "yes"
-msgstr ""
-
-#: viewPerformance.py:208 viewPerformance.py:212 viewPerformance.py:216
-msgid "no"
-msgstr ""
-
-#: viewPerformance.py:234
-msgid "Has Baseline?"
-msgstr ""
-
-#: viewPerformance.py:240
-msgid "Has Abnormality Detection?"
-msgstr ""
-
-#: viewPerformance.py:246
-msgid "Has Case Diagnosis?"
 msgstr ""
 

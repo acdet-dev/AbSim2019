@@ -491,7 +491,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         cases = case.split("-")
         just_cases = [i for i in cases if "ddx_" not in i]
 
-        text = self.string_resources["baseline_text"] + base_string + "\n\n" +\
+        text = self.string_resources["baseline_text"] + " " + base_string + "\n\n" +\
                self.string_resources["ab_text"] + "\n" + u"\n".join(just_cases) + "\n\n" +\
                self.string_resources["ddx_text"] + "\n" + ddx
 
