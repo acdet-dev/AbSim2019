@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d7a6e5a-5cd6-4b6b-9c3f-28fcc3795056" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/i18n/ab_sim-ja.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/i18n/ja/LC_MESSAGES/ab_sim.mo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/caseselector.py" beforeDir="false" afterPath="$PROJECT_DIR$/caseselector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ab_sim-ja.po" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ab_sim-ja.po" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ja/LC_MESSAGES/ab_sim.mo" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ja/LC_MESSAGES/ab_sim.mo" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/viewPerformance.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1398">
-              <caret line="530" column="40" selection-start-line="530" selection-start-column="30" selection-end-line="530" selection-end-column="40" />
+            <state relative-caret-position="72">
+              <caret line="467" column="43" lean-forward="true" selection-start-line="467" selection-start-column="43" selection-end-line="467" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -27,17 +26,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aStringResources.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="98" column="40" lean-forward="true" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
+            <state relative-caret-position="274">
+              <caret line="143" column="52" selection-start-line="143" selection-start-column="52" selection-end-line="143" selection-end-column="52" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/filechooser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+            <state relative-caret-position="170">
+              <caret line="40" column="58" selection-start-line="40" selection-start-column="58" selection-end-line="40" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -45,8 +44,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/managestudents.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="403" column="30" selection-start-line="403" selection-start-column="30" selection-end-line="403" selection-end-column="30" />
+            <state relative-caret-position="406">
+              <caret line="403" column="33" selection-start-line="403" selection-start-column="33" selection-end-line="403" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -54,8 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testCreator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="217" column="28" lean-forward="true" selection-start-line="217" selection-start-column="28" selection-end-line="217" selection-end-column="69" />
+            <state relative-caret-position="307">
+              <caret line="217" column="28" lean-forward="true" selection-start-line="217" selection-start-column="28" selection-end-line="217" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -80,7 +79,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>i18ntrans2</find>
       <find>baseline Assessment</find>
       <find>not_</find>
       <find>too deep</find>
@@ -109,6 +107,7 @@
       <find>user_name</find>
       <find>section</find>
       <find>manage</find>
+      <find>view_performance</find>
       <find>assessment</find>
     </findStrings>
     <replaceStrings>
@@ -166,14 +165,14 @@
         <option value="$PROJECT_DIR$/simLogin.py" />
         <option value="$PROJECT_DIR$/messages.py" />
         <option value="$PROJECT_DIR$/defineUser.py" />
-        <option value="$PROJECT_DIR$/viewPerformance.py" />
         <option value="$PROJECT_DIR$/absim_string.pot" />
         <option value="$PROJECT_DIR$/caseselector.py" />
         <option value="$PROJECT_DIR$/i18ntrans2.py" />
         <option value="$PROJECT_DIR$/aStringResources.py" />
-        <option value="$PROJECT_DIR$/testCreator.py" />
         <option value="$PROJECT_DIR$/managestudents.py" />
+        <option value="$PROJECT_DIR$/testCreator.py" />
         <option value="$PROJECT_DIR$/filechooser.py" />
+        <option value="$PROJECT_DIR$/viewPerformance.py" />
       </list>
     </option>
   </component>
@@ -268,13 +267,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561933260794</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Changed SQL statements and began logic work on views.">
-      <created>1574794038628</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1574794038628</updated>
     </task>
     <task id="LOCAL-00004" summary="Updated views; added color response!">
       <created>1574882239730</created>
@@ -612,7 +604,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578513153875</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Added more translations.">
+      <created>1578522398619</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1578522398621</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TodoView">
@@ -628,12 +627,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.07165437" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.07165437" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.10725894" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.10725894" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -647,27 +646,26 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.124255955" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07165437" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3289689" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.10725894" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32827735" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.14402619" />
-      <window_info anchor="bottom" id="Python Console" order="9" weight="0.3289689" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3289689" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Python Console" order="9" weight="0.32936078" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32502708" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update i18n po" />
     <MESSAGE value="Finalize i18n po and mo." />
     <MESSAGE value="Adding dist to git." />
     <MESSAGE value="Added iss and exe" />
@@ -692,7 +690,8 @@
     <MESSAGE value="Strings done through all screens." />
     <MESSAGE value="Strings finally done!" />
     <MESSAGE value="Translation complete." />
-    <option name="LAST_COMMIT_MESSAGE" value="Translation complete." />
+    <MESSAGE value="Added more translations." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more translations." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/tare.json">
@@ -1035,36 +1034,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/aStringResources.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="98" column="40" lean-forward="true" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viewPerformance.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1398">
-          <caret line="530" column="40" selection-start-line="530" selection-start-column="30" selection-end-line="530" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testCreator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="217" column="28" lean-forward="true" selection-start-line="217" selection-start-column="28" selection-end-line="217" selection-end-column="69" />
+        <state relative-caret-position="274">
+          <caret line="143" column="52" selection-start-line="143" selection-start-column="52" selection-end-line="143" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/managestudents.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="403" column="30" selection-start-line="403" selection-start-column="30" selection-end-line="403" selection-end-column="30" />
+        <state relative-caret-position="406">
+          <caret line="403" column="33" selection-start-line="403" selection-start-column="33" selection-end-line="403" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testCreator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="217" column="28" lean-forward="true" selection-start-line="217" selection-start-column="28" selection-end-line="217" selection-end-column="66" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/filechooser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+        <state relative-caret-position="170">
+          <caret line="40" column="58" selection-start-line="40" selection-start-column="58" selection-end-line="40" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewPerformance.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="467" column="43" lean-forward="true" selection-start-line="467" selection-start-column="43" selection-end-line="467" selection-end-column="43" />
         </state>
       </provider>
     </entry>

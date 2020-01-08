@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-01-08 12:50+Central Standard Time\n"
-"PO-Revision-Date: 2020-01-08 16:13-0600\n"
+"PO-Revision-Date: 2020-01-08 16:41-0600\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -383,7 +383,7 @@ msgstr ""
 
 #: aStringResources.py:145 aStringResources.py:223
 msgid "Assessment Title"
-msgstr ""
+msgstr "アセスメン アセスメ"
 
 #: aStringResources.py:146
 msgid "Assigned To"
