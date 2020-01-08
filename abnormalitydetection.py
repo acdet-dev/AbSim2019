@@ -3,7 +3,7 @@
 import caseselector
 import liveview
 from simLabels import construct_markup, screen_sizer
-from i18ntrans2 import _
+from aStringResources import AStringResources
 
 from gi import pygtkcompat
 pygtkcompat.enable()
@@ -17,6 +17,7 @@ class AbnormalityDetection (gtk.HBox):
         super(AbnormalityDetection, self).__init__(False, 2)
 
         self.view_resources = view_resources
+        self.string_resources = AStringResources("abnormality_detection").get_by_identifier()
         self.live_view_frame = gtk.AspectFrame(
             label=None, xalign=0.5, yalign=0.5, ratio=0.789, obey_child=False)
         self.live_view = liveview.LiveView(self.live_view_frame, view_resources)
@@ -37,9 +38,8 @@ class AbnormalityDetection (gtk.HBox):
         self.case_selector_scroller.set_size_request(w, h)
 
         self.label = gtk.Label(u" ")
-        label_text = _(u"You should now understand what a normal abdomen feels like.") + "\n\n" \
-                     + _(u"For this milestone, familiarize yourself with how these abnormalities feel. ") \
-                     + _(u"In the next step, you will identify them using touch and sound.")
+        label_text = self.string_resources["instruction_a"] + "\n\n" + self.string_resources["instruction_b"] +\
+                     self.string_resources["instruction_c"]
         self.label_pre_mark = construct_markup(label_text, font_size=16)
         self.label.set_markup(self.label_pre_mark)
         self.label.set_line_wrap(True)

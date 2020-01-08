@@ -5,7 +5,7 @@ pygtkcompat.enable()
 pygtkcompat.enable_gtk(version='3.0')
 import gtk
 import liveview
-from i18ntrans2 import _
+from aStringResources import AStringResources
 from simLabels import screen_sizer, construct_markup
 
 
@@ -16,6 +16,7 @@ class DepthTrainer (gtk.HBox):
         
         self.live_view_frame = gtk.AspectFrame(label=None, xalign=0.5, yalign=0.5, ratio=0.789, obey_child=False)
         self.view_resources = view_resources
+        self.string_resources = AStringResources("depth_trainer", label_flag=True).get_by_identifier()
         
         self.depth_trainer_view = liveview.LiveView(self.live_view_frame, view_resources)
         self.live_view_frame.add(self.depth_trainer_view)
@@ -28,20 +29,22 @@ class DepthTrainer (gtk.HBox):
         self.live_view_frame.set_size_request(width, height)
 
         self.label = gtk.Label()  # font = 16
-        label_text = _(u"In this milestone, practice palpating to the correct depth.") + "\n\n" \
-                         + "<span foreground='gray' font_weight='bold'>\u25CF</span>" \
-                         + _(u" Gray circles indicate ") + "<span foreground='gray' font_weight='bold'>" \
-                         + _(u"light palpation") + "</span>" + _(u", appropriate for beginning an abdominal exam, ") \
-                         + _(u"but insufficient to detect significant abdominal disorders.") + "\n\n" \
-                         + "<span foreground='blue' font_weight='bold'>\u25CF</span>" + _(u" Blue circles indicate ") \
-                         + "<span foreground='blue' font_weight='bold'>" + _(u"deep palpation") + "</span>" \
-                         + _(u", good for detecting serious disorders of the abdomen.") + "\n\n" \
-                         + "<span foreground='red' font_weight='bold'>\u25CF</span>" + _(u" Red circles indicate ") \
-                         + "<span foreground='red' font_weight='bold'>" + _(u"too deep") + "</span>" \
-                         + _(u", causing unnecessary pain, even in a patient with no abnormalities. ") \
-                         + _(u"This can result in voluntary guarding for the rest of the exam, leading to confusing ") \
-                         + _(u"findings.") + "\n\n" + _(u"Instructors may adjust pressure sensitivity in the ") \
-                         + "<span font_weight='bold'>" + _(u"Settings > Pressure Sensitivity") + "</span>" + _(" menu.")
+        label_text = self.string_resources["instruction_text"] + "\n\n" +\
+                     "<span foreground='gray' font_weight='bold'>\u25CF</span>" + " " +\
+                     self.string_resources["gray_circles"] + " " + "<span foreground='gray' font_weight='bold'>" +\
+                     self.string_resources["light_label"] + "</span>" + ", " +\
+                     self.string_resources["gray_explanation"] + " " + self.string_resources["gray_explanation_2"] +\
+                     "\n\n" + "<span foreground='blue' font_weight='bold'>\u25CF</span>" + " " +\
+                     self.string_resources["blue_circles"] + " " + "<span foreground='blue' font_weight='bold'>" +\
+                     self.string_resources["deep_label"] + "</span>" + ", " +\
+                     self.string_resources["blue_explanation"] + "\n\n" +\
+                     "<span foreground='red' font_weight='bold'>\u25CF</span>" + " " +\
+                     self.string_resources["red_circles"] + " " + "<span foreground='red' font_weight='bold'>" +\
+                     self.string_resources["too_deep_label"] + "</span>" + ", " +\
+                     self.string_resources["red_explanation"] + " " + self.string_resources["red_ex_2"] + " " +\
+                     self.string_resources["red_ex_3"] + "\n\n" + self.string_resources["sense_adjust"] + " " +\
+                     "<span font_weight='bold'>" + self.string_resources["sense_adjust_2"] + "</span>" + " " +\
+                     self.string_resources["sense_adjust_3"]
         label_pre_mark = construct_markup(label_text, font_size=16)
         self.label.set_markup(label_pre_mark)
         self.label.set_line_wrap(True)

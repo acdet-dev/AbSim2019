@@ -10,7 +10,7 @@ import prototypetext
 import cases
 from casetext import CaseText
 import liveview
-from i18ntrans2 import _
+from aStringResources import AStringResources
 
 
 class DDXPractice (gtk.HBox):
@@ -19,6 +19,7 @@ class DDXPractice (gtk.HBox):
         super(DDXPractice, self).__init__(False, 2)
 
         self.view_resources = view_resources
+        self.string_resources = AStringResources("ddx_practice").get_by_identifier()
         # We don't have any more spaces yet, so this will do for now
         self.space = 525
         ddx_names = CaseText().cases.get(525, [])
@@ -59,9 +60,9 @@ class DDXPractice (gtk.HBox):
         
         self.ddx_question_interface_vbox = self.builder.get_object('ddx_question_interface')
         self.ddx_answer_box = self.build_answer_box(self.ddx_list)
-        
+
         next_case_label = gtk.Label()  # font = 20, weight = bold
-        label_text = _(u"Next Case")
+        label_text = self.string_resources["next_button"]
         label_pre_mark = construct_markup(label_text, font_size=20, weight='bold')
         next_case_label.set_markup(label_pre_mark)
         next_case_label.show()
@@ -76,13 +77,13 @@ class DDXPractice (gtk.HBox):
         self.pack_start(self.live_view_frame, False, False, 0)
         
         self.correct_label = gtk.Label()  # font = 20, bold, fgcolor = #1E9D1C
-        label_text = _(u"You chose the") + "\n" + _(u"best diagnosis")
+        label_text = self.string_resources["choice_string_1"] + "\n" + self.string_resources["choice_string_2"]
         label_pre_mark = construct_markup(label_text, font_size=20, weight='bold', fgcolor='#1E9D1C')
         self.correct_label.set_markup(label_pre_mark)
         
         self.incorrect_label = gtk.Label()  # font 20, bold, #000000
         self.incorrect_label.set_justify(gtk.JUSTIFY_CENTER)
-        label_text = _(u"Best diagnosis") + "\n" + _(u"below")
+        label_text = self.string_resources["best_1"] + "\n" + self.string_resources["best_2"]
         label_pre_mark = construct_markup(label_text, font_size=20, weight='bold', fgcolor='#000000')
         self.incorrect_label.set_markup(label_pre_mark)
         
@@ -207,7 +208,7 @@ class DDXPractice (gtk.HBox):
         self.ddx_answer_box.hide()
 
         # Show correctness
-        if(correct):
+        if correct:
             self.correct_label.show()
         else:
             self.incorrect_label.show()

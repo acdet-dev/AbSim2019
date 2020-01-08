@@ -12,7 +12,9 @@ import sim_constants
 import copy
 import os
 from simLabels import construct_markup, screen_sizer
-from i18ntrans2 import _
+from aStringResources import AStringResources
+
+string_resources = AStringResources("coverage_assessment", label_flag=True).get_by_identifier()
 
     
 class CoveragePreAssessment (gtk.VBox):
@@ -41,17 +43,16 @@ class CoveragePreAssessment (gtk.VBox):
         self.pre_assessment_coverage_frame.set_size_request(width, height)
 
         self.intro_label = gtk.Label(u" ") #16 point font
-        label_text = _(u"Welcome!") + "\n\n" + _(u"AbSim will train you on abdominal palpation, a key skill to ") \
-                     + _(u"assess patients complaining of abdominal pain.") + "\n\n" + "<span weight='bold'>" \
-                     + _(u"When you are ready, perform an abdominal exam.") + "</span>\n\n" \
-                     + _(u"Click the button when you're done.")
+        label_text = string_resources["welcome_string_a"] + "\n\n" + string_resources["welcome_string_b"] +\
+                     " " + string_resources["welcome_string_c"] + "\n\n" + "<span weight='bold'>" \
+                     + string_resources["ready_string"] + "</span>\n\n" + string_resources["click_string"]
         label_pre_mark = construct_markup(label_text, font_size=16)
         self.intro_label.set_markup(label_pre_mark)
         self.intro_label.set_line_wrap(True)
         self.intro_label.set_alignment(0, 0)
-        
+
         self.finished_label = gtk.Label(u" ") #16 point font
-        label_text = _(u"You may now proceed to Milestone 1")
+        label_text = string_resources["proceed_text"]
         label_pre_mark = construct_markup(label_text, font_size=16)
         self.finished_label.set_markup(label_pre_mark)
         self.finished_label.set_line_wrap(True)
@@ -59,7 +60,7 @@ class CoveragePreAssessment (gtk.VBox):
         
         self.finished_button = gtk.Button()
         finished_button_label = gtk.Label(u" ") #12 point font
-        label_text = _(u"Reveal completed exam")
+        label_text = string_resources["reveal_button_string"]
         label_pre_mark = construct_markup(label_text, font_size=12)
         finished_button_label.set_markup(label_pre_mark)
         finished_button_label.show()
@@ -148,9 +149,8 @@ class CoveragePostAssessment(gtk.VBox):
         self.pressurepoints = view_resources['pressurepoints']
 
         self.intro_label = gtk.Label() #font = 16
-        label_text = _(u"Now it's time to compare your pre-assessment to your skill after training.") + "\n\n" \
-                     + "<span weight='bold'>" + _(u"When you are ready, perform an abdominal exam.") + "</span>\n\n" \
-                     + _(u"Click the button when you're done.")
+        label_text = string_resources["compare_text"] + "\n\n" + "<span weight='bold'>" +\
+                     string_resources["ready_string"] + "</span>\n\n" + string_resources["click_string"]
         label_pre_mark = construct_markup(label_text, font_size=16)
         self.intro_label.set_markup(label_pre_mark)
         self.intro_label.set_line_wrap(True)
@@ -158,7 +158,7 @@ class CoveragePostAssessment(gtk.VBox):
         
         self.finished_button = gtk.Button()
         finished_button_label = gtk.Label() #font = 16
-        label_text = _(u"Reveal completed exam")
+        label_text = string_resources["reveal_button_string"]
         label_pre_mark = construct_markup(label_text, font_size=16)
         finished_button_label.set_markup(label_pre_mark)
         finished_button_label.show()
@@ -179,7 +179,7 @@ class CoveragePostAssessment(gtk.VBox):
         
         # Banner over image
         self.pre_label = gtk.Label() #16 font with bold weight
-        label_text = _(u"Pre-Assessment Coverage")
+        label_text = string_resources["pre_label"]
         label_pre_mark = construct_markup(label_text, font_size=16, weight='bold')
         self.pre_label.set_markup(label_pre_mark)
         self.pre_vbox.pack_start(self.pre_label, False, False, 0)
@@ -198,7 +198,7 @@ class CoveragePostAssessment(gtk.VBox):
         
         # Banner over image
         self.post_label = gtk.Label() #size 16, font weight bold
-        label_text = _(u"Post-Assessment Coverage")
+        label_text = string_resources["post_label"]
         label_pre_mark = construct_markup(label_text, font_size=16, weight='bold')
         self.post_label.set_markup(label_pre_mark)
         self.post_vbox.pack_start(self.post_label, False, False, 5)
@@ -221,7 +221,7 @@ class CoveragePostAssessment(gtk.VBox):
         
         self.new_learner_button = gtk.Button()
         new_learner_label = gtk.Label() #font = 16
-        label_text = _(u"Proceed to Abnormality Detection")
+        label_text = string_resources["proceed_button"]
         label_pre_mark = construct_markup(label_text, font_size=16)
         new_learner_label.set_markup(label_pre_mark)
         new_learner_label.set_padding(5, 5)
@@ -238,19 +238,19 @@ class CoveragePostAssessment(gtk.VBox):
         
         self.notebook = gtk.Notebook()
         self.coverage_vis_label = gtk.Label() #font = 16
-        label_text = _(u"Coverage Visualization")
+        label_text = string_resources["visual_label"]
         label_pre_mark = construct_markup(label_text, font_size=16)
         self.coverage_vis_label.set_markup(label_pre_mark)
         self.coverage_vis_label.set_padding(5, 5)
         self.coverage_vis_label.show()
         self.detailed_comparison_label = gtk.Label() #font = 16
-        label_text = _(u"Detailed Comparison")
+        label_text = string_resources["comparison_label"]
         label_pre_mark = construct_markup(label_text, font_size=16)
         self.detailed_comparison_label.set_markup(label_pre_mark)
         self.detailed_comparison_label.set_padding(5, 5)
         self.detailed_comparison_label.show()
         self.location_analysis_label = gtk.Label() #font = 16
-        label_text = _(u"Location Analysis")
+        label_text = string_resources["analysis_label"]
         label_pre_mark = construct_markup(label_text, font_size=16)
         self.location_analysis_label.set_markup(label_pre_mark)
         self.location_analysis_label.set_padding(5, 5)
@@ -283,7 +283,8 @@ class CoveragePostAssessment(gtk.VBox):
         
         post_assessment_coverage_view_resources = copy.copy(self.view_resources)
         post_assessment_coverage_view_resources['pressurepoints'] = self.saved_exam_pressurepoints
-        self.post_assessment_coverage_view = additiveview.AdditiveView(self.post_assessment_coverage_frame, post_assessment_coverage_view_resources, True)
+        self.post_assessment_coverage_view = additiveview.AdditiveView(self.post_assessment_coverage_frame,
+                                                                       post_assessment_coverage_view_resources, True)
         
         self.coverage_analyzer.fill_label_with_analysis(self.saved_exam_pressurepoints, self.post_analysis_label)
         
@@ -326,12 +327,14 @@ class CoveragePostAssessment(gtk.VBox):
         # Can assume self.pre_assessment.saved_exam_pressurepoints exists
         pre_assessment_coverage_view_resources = copy.copy(self.view_resources)
         pre_assessment_coverage_view_resources['pressurepoints'] = self.pre_assessment.saved_exam_pressurepoints
-        self.pre_assessment_coverage_view = additiveview.AdditiveView(self.pre_assessment_coverage_frame, pre_assessment_coverage_view_resources, True)
+        self.pre_assessment_coverage_view = additiveview.AdditiveView(self.pre_assessment_coverage_frame,
+                                                                      pre_assessment_coverage_view_resources, True)
         
         self.pre_assessment_coverage_frame.add(self.pre_assessment_coverage_view)
         self.pre_vbox.show()
         
-        self.coverage_analyzer.fill_label_with_analysis(self.pre_assessment.saved_exam_pressurepoints, self.pre_analysis_label)
+        self.coverage_analyzer.fill_label_with_analysis(self.pre_assessment.saved_exam_pressurepoints,
+                                                        self.pre_analysis_label)
         
         pre_location_analysis = self.location_coverage_analyzer.analyze(
             pre_assessment_coverage_view_resources['pressurepoints'])
@@ -379,14 +382,17 @@ class CoverageAnalyzer:
         return state_percents
 
     def fill_label_with_analysis(self, pressurepoints, label):
-        state_percents = self.analyze(pressurepoints) #font = 16
-        label_text = "<span foreground='black' background='white' font_weight='bold'>\u25CB</span> {up}% " \
-                    + _(u"not palpated") + "\n<span foreground='gray'>\u25CF</span> {slightly_down}% " \
-                    + _(u"lightly palpated") + "\n<span foreground='blue' font_weight='bold'>\u25CF</span> {down}% " \
-                    + _(u"deeply palpated") + "\n<span foreground='red' font_weight='bold'>\u25CF</span> {too_hard}% " \
-                    + _(u"too hard")
+        state_percents = self.analyze(pressurepoints)  # font = 16
+        label_text = "<span foreground='black' background='white' font_weight='bold'>\u25CB</span> {up}% " + \
+                     string_resources["not_label_lower"] + "\n<span foreground='gray'>\u25CF</span> {slightly_down}% "\
+                     + string_resources["lightly_label"] +\
+                     "\n<span foreground='blue' font_weight='bold'>\u25CF</span> {down}% " \
+                     + string_resources["deeply_label"] +\
+                     "\n<span foreground='red' font_weight='bold'>\u25CF</span> {too_hard}% " +\
+                     string_resources["too_hard"]
         label_pre_mark = construct_markup(label_text, font_size=16)
         label.set_markup(label_pre_mark.format(**state_percents))
+
 
 class LocationCoverageAnalyzer:
     def __init__(self):
@@ -412,7 +418,8 @@ class LocationCoverageAnalyzer:
 
         # Each should look like 'appendix': {'up': 0, 'slightly_down': 0, 'down': 0, 'too_hard': 0}
         self.location_state_counts_empty = {loc: copy.deepcopy(state_counts) for loc in self.locations}
-        self.location_objectives_empty = {loc: {'ailment_touched': False, 'depth_reached': False, 'too_hard': False} for loc in self.locations}
+        self.location_objectives_empty = {loc: {'ailment_touched': False, 'depth_reached': False, 'too_hard': False}
+                                          for loc in self.locations}
 
     def analyze(self, pressurepoints):
         pressure_list = pressurepoints.get_pressure_list()
@@ -481,9 +488,9 @@ class LocationCoverageAnalysisView(gtk.Table):
 
     def fill_objective_labels(self):
         objective_names = [
-            _(u"Light palpation"),
-            _(u"Deep palpation"),
-            _(u"Palpation too deep")
+            string_resources["light_label"],
+            string_resources["deep_label"],
+            string_resources["too_deep_label"]
         ]
         for x in range(0, 3):
             objective_label = CoverageLabel(objective_names[x])
@@ -553,7 +560,7 @@ class ComparativeLocationCoverageAnalysisView(gtk.Table):
         ]
         
         self.pre_label = gtk.Label() #font = 16 and bold
-        label_text = _(u"Pre-Assessment Coverage")
+        label_text = string_resources["pre_label"]
         label_pre_mark = construct_markup(label_text, font_size=16, weight='bold')
         self.pre_label.set_markup(label_pre_mark)
         self.attach(
@@ -563,7 +570,7 @@ class ComparativeLocationCoverageAnalysisView(gtk.Table):
         self.pre_label.show()
         
         self.post_label = gtk.Label() #font = 16 and bold
-        label_text = _(u"Post-Assessment Coverage")
+        label_text = string_resources["post_label"]
         label_pre_mark = construct_markup(label_text, font_size=16, weight='bold')
         self.post_label.set_markup(label_pre_mark)
         self.attach(
@@ -588,12 +595,12 @@ class ComparativeLocationCoverageAnalysisView(gtk.Table):
 
     def fill_objective_labels(self):
         objective_names = [
-            _(u"Light") + "\n" + _(u"palpation"),
-            _(u"Deep") + "\n" + _(u"palpation"),
-            _(u"Palpation") + "\n" + _(u"too deep"),
-            _(u"Light") + "\n" + _(u"palpation"),
-            _(u"Deep") + "\n" + _(u"palpation"),
-            _(u"Palpation") + "\n" + _(u"too deep"),
+            string_resources["light_label"].split(" ")[0] + "\n" + string_resources["light_label"].split(" ")[1],
+            string_resources["deep_label"].split(" ")[0] + "\n" + string_resources["deep_label"].split(" ")[1],
+            string_resources["too_deep_label"],
+            string_resources["light_label"].split(" ")[0] + "\n" + string_resources["light_label"].split(" ")[1],
+            string_resources["deep_label"].split(" ")[0] + "\n" + string_resources["deep_label"].split(" ")[1],
+            string_resources["too_deep_label"]
         ]
         for x in range(0, 6):
             objective_label = CoverageLabel(objective_names[x])
@@ -639,17 +646,17 @@ class CoverageLabel (gtk.Label):
     def __init__(self, ailment):
         super(CoverageLabel, self).__init__()
         locations = {
-            'appendix': _(u"Appendix Region"),
-            'colon': _(u"Colon Region"),
-            'gallbladder': _(u"Gallbladder Region"),
-            'ugi': _(u"Gastric/Epigastric Region"),
-            'ovary_left': _(u"Left Ovary Region"),
-            'ovary_right': _(u"Right Ovary Region"),
-            'pancreas': _(u"Pancreatic Region"),
-            'bladder': _(u"Normal Urinary Bladder"),
-            'hepatomegaly': _(u"Liver Region"),
-            'splenomegaly': _(u"Splenic Region"),
-            'enlarged_bladder': _(u"Distended Urinary Bladder"),
+            'appendix': string_resources["appendix_region"],
+            'colon': string_resources["colon_region"],
+            'gallbladder': string_resources["gallbladder_region"],
+            'ugi': string_resources["gastric_region"],
+            'ovary_left': string_resources["left_ovary_region"],
+            'ovary_right': string_resources["right_ovary_region"],
+            'pancreas': string_resources["pancreatic_region"],
+            'bladder': string_resources["normal_bladder"],
+            'hepatomegaly': string_resources["liver_region"],
+            'splenomegaly': string_resources["splenic_region"],
+            'enlarged_bladder': string_resources["distended_bladder"]
         }
 
         label_text = ''

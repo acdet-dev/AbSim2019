@@ -285,21 +285,22 @@ class AStringResources:
                 "visual_label": _(u"Coverage Visualization"),
                 "comparison_label": _(u"Detailed Comparison"),
                 "analysis_label": _(u"Location Analysis"),
-                "not_label": _(u"not palpated"),
+                "not_label_lower": _(u"not palpated"),
                 "lightly_label": _(u"lightly palpated"),
-                "deeply_label": _(u"deeply palpated")
+                "deeply_label": _(u"deeply palpated"),
+                "too_hard": _(u"too hard")
             }
 
         elif self.identifier == "depth_trainer":
             string_resources = {
                 "instruction_text": _(u"In this milestone, practice palpating to the correct depth."),
                 "gray_circles": _(u"Gray circles indicate"),  # add spaces before and after
-                "gray_explanation": _(u", appropriate for beginning an abdominal exam,"),  # add trailing space
+                "gray_explanation": _(u"appropriate for beginning an abdominal exam,"),  # add trailing space
                 "gray_explanation_2": _(u"but insufficient to detect significant abdominal disorders."),
                 "blue_circles": _(u"Blue circles indicate"),  # add spaces before and after
-                "blue_explanation": _(u", good for detecting serious disorders of the abdomen."),
+                "blue_explanation": _(u"good for detecting serious disorders of the abdomen."),
                 "red_circles": _(u"Red circles indicate"),  # add spaces before and after
-                "red_explanation": _(u", causing unnecessary pain, even in a patient with no abnormalities."),  # add t
+                "red_explanation": _(u"causing unnecessary pain, even in a patient with no abnormalities."),  # add t
                 "red_ex_2": _(u"This can result in voluntary guarding for the rest of the exam, leading to"),  # add t
                 "red_ex_3": _(u"confusing findings."),
                 "sense_adjust": _(u"Instructors may adjust pressure sensitivity in the"),  # add space
@@ -337,6 +338,7 @@ class AStringResources:
                 "chosen_label": _(u"You selected:"),
                 "correct_selection": _(u"Correct selection:"),
                 "none_label": _(u"Unremarkable Abdomen"),
+                "none_text": _(u"No Abnormalities"),
                 "appendix_label": _(u"Appendix"),
                 "tender_label": _(u"Tenderness"),
                 "app+g": _(u"Appendix Tenderness + Guarding"),
@@ -358,7 +360,10 @@ class AStringResources:
                 "pancreas": _(u"Pancreas"),
                 "organ_enlargement": _(u"Organ Enlargement"),
                 "organs": _(u"Organs"),
-
+                "next_label": _(u"Next Case"),
+                "hep": _(u"Hepatomegaly"),
+                "splen": _(u"Splenomegaly"),
+                "enlarged": _(u"Enlarged Urinary Bladder")
             }
 
         elif self.identifier == "ddx_practice":
@@ -367,6 +372,7 @@ class AStringResources:
                 "choice_string_2": _(u"best diagnosis"),
                 "best_1": _(u"Best diagnosis"),
                 "best_2": _(u"below"),
+                "next_button": _(u"Next Case")
             }
 
         elif self.identifier == "splash_screen":

@@ -10,7 +10,7 @@ import casetext
 import prototypetext
 import cases
 import questionmarkview
-from i18ntrans2 import _
+from aStringResources import AStringResources
 
 
 class SelfPractice(gtk.Box):
@@ -20,6 +20,8 @@ class SelfPractice(gtk.Box):
         super(SelfPractice, self).__init__(False, 2)
 
         self.set_homogeneous(False)
+
+        self.string_resources = AStringResources("self_practice").get_by_identifier()
 
         self.question_mark_view_frame = gtk.AspectFrame(label=None, xalign=0.5, yalign=0.5, ratio=0.789,
                                                         obey_child=False)
@@ -61,11 +63,8 @@ class SelfPractice(gtk.Box):
         # self.ddx_hbox = gtk.HBox()
 
         self.label = gtk.Label()
-        label_text = _(u"For this milestone, you will report the findings by feel and sound only.") + "\n\n" \
-                     + _(u"When you select a finding, you will receive feedback and have a second chance to palpate.") \
-                     + "\n\n" + _(
-            u"When you are confident in eliciting findings, we will integrate patient history and ") \
-                     + _(u"non-palpitory physical findings.")
+        label_text = self.string_resources["instruction_a"] + "\n\n" + self.string_resources["instruction_b"] +\
+                     "\n\n" + self.string_resources["instruction_c"]
         label_pre_mark = construct_markup(label_text, font_size=16)
         self.label.set_markup(label_pre_mark)
         self.label.set_line_wrap(True)
@@ -82,7 +81,7 @@ class SelfPractice(gtk.Box):
         self.build_chooser()
 
         next_case_label = gtk.Label()
-        label_text = _(u"Next Case")
+        label_text = self.string_resources["next_label"]
         label_pre_mark = construct_markup(label_text, font_size=20, weight='bold')
         next_case_label.set_markup(label_pre_mark)
         next_case_label.show()
@@ -98,18 +97,18 @@ class SelfPractice(gtk.Box):
         self.touch_again_label.set_alignment(0, 0)
         self.touch_again_label.set_width_chars(10)
         self.touch_again_label.set_line_wrap(True)
-        label_text = _(u"Before moving on, re-familiarize yourself with how this condition feels.")
+        label_text = self.string_resources["instruction_d"]
         label_pre_mark = construct_markup(label_text, font_size=16)
         self.touch_again_label.set_markup(label_pre_mark)
 
         # Now pack stuff we don't want seen until it's time
         self.correct_label = gtk.Label()
-        label_text = _(u"Correct")
+        label_text = self.string_resources["correct_label"]
         label_pre_mark = construct_markup(label_text, font_size=20, weight='bold', fgcolor='#1E9D1C')
         self.correct_label.set_markup(label_pre_mark)
 
         self.incorrect_label = gtk.Label()
-        label_text = _(u"Incorrect")
+        label_text = self.string_resources["incorrect_label"]
         label_pre_mark = construct_markup(label_text, font_size=20, weight='bold', fgcolor='#FF3333')
         self.incorrect_label.set_markup(label_pre_mark)
 
@@ -230,9 +229,9 @@ class SelfPractice(gtk.Box):
         self.label.hide()
 
     def set_correctness_text(self, given_ddx):
-        label_text = _(u"You selected:") + "\n{given_ddx}\n\n".format(
-            given_ddx=self.cases.pretty_ailment_names[given_ddx]) + _(u"Correct selection:") \
-                     + "\n{current_case}".format(current_case=self.cases.pretty_ailment_names[self.current_case])
+        label_text = self.string_resources["chosen_label"] + "\n{given_ddx}\n\n".format(
+            given_ddx=self.cases.pretty_ailment_names[given_ddx]) + self.string_resources["correct_selection"] +\
+                     "\n{current_case}".format(current_case=self.cases.pretty_ailment_names[self.current_case])
         label_pre_mark = construct_markup(label_text, font_size=28)
         self.you_chose_label.set_markup(label_pre_mark)
 
@@ -249,7 +248,8 @@ class SelfPractice(gtk.Box):
         self.ddx_question_interface.add(self.ddx_question_interface_vbox)
 
     def build_megaframe(self):
-        ua_frame_labels = [_(u'Unremarkable Abdomen'), _(u'Unremarkable Abdomen'), _(u'No Abnormalities')]
+        ua_frame_labels = [self.string_resources["none_label"], self.string_resources["none_label"],
+                           self.string_resources["none_text"]]
         font_specs = [(16, 'bold'), 14]
         ua_pre_mark_list = []
         for i in range(0, len(ua_frame_labels)):
@@ -261,14 +261,20 @@ class SelfPractice(gtk.Box):
 
             ua_pre_mark_list.append(ua_pre_mark)
 
-        tender_labels = [_(u'Tenderness'), _(u'Appendix'), _(u'Appendix Tenderness'),
-                         _(u'Appendix Tenderness + Rebound Tenderness'), _(u'Appendix Tenderness + Guarding'),
-                         _(u'Appendix Tenderness + Guarding + Rebound Tenderness'), _(u'Bladder'),
-                         _(u'Bladder Tenderness'), _(u'Colon'), _(u'Colon Tenderness'),
-                         _(u'Colon Tenderness + Guarding'), _(u'Gallbladder'), _(u'Gallbladder Tenderness'),
-                         _(u'Gallbladder Tenderness + Guarding'), _(u'Gastric'), _(u'Gastric Tenderness'),
-                         _(u'Ovary, Left'), _(u'Ovary, Left'), _(u'Ovary, Left + Guarding'), _(u'Ovary, Right'),
-                         _(u'Ovary, Right'), _(u'Ovary, Right + Guarding'), _(u'Pancreas'), _(u'Pancreas')]
+        tender_labels = [self.string_resources["tender_label"], self.string_resources["appendix_label"],
+                         self.string_resources["appendix_label"] + " " + self.string_resources["tender_label"],
+                         self.string_resources["app+r"], self.string_resources["app+g"],
+                         self.string_resources["app+g+r"], self.string_resources["bladder_label"],
+                         self.string_resources["bladder_t"], self.string_resources["colon_label"],
+                         self.string_resources["colon_t"], self.string_resources["colon_t+g"],
+                         self.string_resources["gallbladder_label"],
+                         self.string_resources["gallbladder_label"] + " " + self.string_resources["tender_label"],
+                         self.string_resources["gallbladder_t+g"], self.string_resources["gastric_label"],
+                         self.string_resources["gastric_t"], self.string_resources["ovary_left"],
+                         self.string_resources["ovary_left"], self.string_resources["ovary_left_g"],
+                         self.string_resources["ovary_right"], self.string_resources["ovary_right"],
+                         self.string_resources["ovary_right_g"],self.string_resources["pancreas"],
+                         self.string_resources["pancreas"]]
         tender_pre_mark_list = []
         for i in range(0, len(tender_labels)):
             if i == 0:
@@ -279,8 +285,9 @@ class SelfPractice(gtk.Box):
 
             tender_pre_mark_list.append(tender_pre)
 
-        enlarged_labels = [_(u'Organ Enlargement'), _(u'Organs'), _(u'Hepatomegaly'), _(u'Splenomegaly'),
-                           _(u'Enlarged Urinary Bladder')]
+        enlarged_labels = [self.string_resources["organ_enlargement"], self.string_resources["organs"],
+                           self.string_resources["hep"], self.string_resources["splen"],
+                           self.string_resources["enlarged"]]
         enlarged_pre_mark_list = []
         for i in range(0, len(enlarged_labels)):
             if i == 0:
