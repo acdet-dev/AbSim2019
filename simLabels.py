@@ -1,4 +1,4 @@
-from i18ntrans2 import _
+from aStringResources import AStringResources
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
@@ -30,9 +30,9 @@ class DisconnectWarning(Gtk.HBox):
         super(DisconnectWarning, self).__init__()
         image = Gtk.Image()
         image.set_from_stock(Gtk.STOCK_STOP, Gtk.ICON_SIZE_LARGE_TOOLBAR)
+        self.string_resources = AStringResources("sim_label").get_by_identifier()
         self.pack_start(image, False, False, 0)
-        disconnection_label = Gtk.Label(_(u"Pressure pad is not connected! Please check the USB cable and turn off "
-                                          u"AbSim for five seconds."))
+        disconnection_label = Gtk.Label(self.string_resources["disconnected_label"])
         self.pack_start(disconnection_label, False, False, 5)
 
 

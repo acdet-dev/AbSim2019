@@ -3,7 +3,9 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GLib
 
-from i18ntrans2 import _
+from aStringResources import AStringResources
+
+string_resources = AStringResources("simLogin").get_by_identifier()
 
 
 def get_user_pw(parent, message, title='', flag=None):
@@ -21,7 +23,7 @@ def get_user_pw(parent, message, title='', flag=None):
 
         dialogBox = dialogWindow.get_content_area()
         userEntry = Gtk.Entry()
-        userEntry.set_placeholder_text(_(u'Password'))
+        userEntry.set_placeholder_text(string_resources["password"])
         userEntry.set_visibility(False)
         userEntry.set_invisible_char("*")
         userEntry.set_size_request(250, 0)
@@ -41,12 +43,12 @@ def get_user_pw(parent, message, title='', flag=None):
 
         dialogBox = dialogWindow.get_content_area()
         userName = Gtk.Entry()
-        userName.set_placeholder_text(_(u'User Name'))
+        userName.set_placeholder_text(string_resources["user_name"])
         userName.set_visibility(True)
         userName.set_size_request(250, 0)
         dialogBox.pack_start(userName, False, False, 0)
         userEntry = Gtk.Entry()
-        userEntry.set_placeholder_text(_(u'Password'))
+        userEntry.set_placeholder_text(string_resources["password"])
         userEntry.set_visibility(False)
         userEntry.set_invisible_char("*")
         userEntry.set_size_request(250, 0)
@@ -67,7 +69,7 @@ def get_user_pw(parent, message, title='', flag=None):
 
         dialogBox = dialogWindow.get_content_area()
         userEntry = Gtk.Entry()
-        userEntry.set_placeholder_text(_(u'User Entry'))
+        userEntry.set_placeholder_text(string_resources["user_entry"])
         userEntry.set_visibility(True)
         userEntry.set_size_request(250, 0)
         dialogBox.pack_end(userEntry, False, False, 0)
@@ -86,12 +88,12 @@ def get_user_pw(parent, message, title='', flag=None):
 
         dialogBox = dialogWindow.get_content_area()
         userName = Gtk.Entry()
-        userName.set_placeholder_text(_(u'User Name'))
+        userName.set_placeholder_text(string_resources["user_name"])
         userName.set_visibility(True)
         userName.set_size_request(250, 0)
         dialogBox.pack_start(userName, False, False, 0)
         userEntry = Gtk.Entry()
-        userEntry.set_placeholder_text(_(u'Password'))
+        userEntry.set_placeholder_text(string_resources["password"])
         userEntry.set_visibility(False)
         userEntry.set_invisible_char("*")
         userEntry.set_size_request(250, 0)

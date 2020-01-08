@@ -264,9 +264,11 @@ def _detect_windows_locale(win2iso_full, iso2win_full, win2iso_loc, iso2win_loc,
 
 
 # somehow link to _get_locale_configs() function?
-win2iso_full, iso2win_full, win2iso_loc, iso2win_loc, win2iso_lang, iso2win_lang, iso2win_enc, win2iso_enc = locale_tab()
+win2iso_full, iso2win_full, win2iso_loc, iso2win_loc,win2iso_lang, iso2win_lang, iso2win_enc, win2iso_enc = \
+    locale_tab()
 
-locale_preferences = _detect_windows_locale(win2iso_full, iso2win_full, win2iso_loc, iso2win_loc, win2iso_lang, iso2win_lang, iso2win_enc, win2iso_enc)
+locale_preferences = _detect_windows_locale(win2iso_full, iso2win_full, win2iso_loc, iso2win_loc, win2iso_lang,
+                                            iso2win_lang, iso2win_enc, win2iso_enc)
 
 
 def _gen_locale_re():
@@ -533,7 +535,8 @@ def set_locale_handler(lbl, loc, popup):
     if loc is None:
         loc = 'None'
 
-    locale_preferences = _new_loc_prefs(loc, win2iso_full, iso2win_full, win2iso_loc, iso2win_loc, win2iso_lang, iso2win_lang, iso2win_enc, win2iso_enc)
+    locale_preferences = _new_loc_prefs(loc, win2iso_full, iso2win_full, win2iso_loc, iso2win_loc, win2iso_lang,
+                                        iso2win_lang, iso2win_enc, win2iso_enc)
 
     translator = set_locale(locale_preferences)
     popup(string_resources["message_1"] + " " + "({lbl}/{loc})".format(lbl=lbl, loc=loc)

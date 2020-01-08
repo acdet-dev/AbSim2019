@@ -24,15 +24,18 @@ def sim_reset_dialogue(parent, info_string, secondary_text):
 
 
 def sim_login_message(parent, info_string, secondary_text):
+    from aStringResources import AStringResources
+
+    string_resources = AStringResources("reset_messages").get_by_identifier()
+
     dialog = Gtk.MessageDialog(parent, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, info_string)
     dialog.format_secondary_text(secondary_text)
     response = dialog.run()
     dialog.destroy()
 
     if response == Gtk.ResponseType.OK:
-        text = sim_reset_dialogue(parent, info_string=_(u'Reset User Info?'), secondary_text=_(u'Would you like to '
-                                                                                               u'reset the user info '
-                                                                                               u'provided?'))
+        text = sim_reset_dialogue(parent, info_string=string_resources["reset"],
+                                  secondary_text=string_resources["reset_2"])
         return text
     else:
         return None

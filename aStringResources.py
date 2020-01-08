@@ -383,8 +383,8 @@ class AStringResources:
 
         elif self.identifier == "sim_label":
             string_resources = {
-                "disconnected_label": _(u"Pressure pad is not connected! Please check the USB cable and turn off "
-                                        u"AbSim for five seconds.")
+                "disconnected_label": _(u"Pressure pad is not connected! Please check the USB cable, close software, "
+                                        u"and turn off AbSim for five seconds.")
             }
 
         elif self.identifier == "dont_touch":

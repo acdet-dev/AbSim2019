@@ -5,13 +5,14 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, GLib, GObject
 import logging
-from i18ntrans2 import _
+from aStringResources import AStringResources
 
 
 class DoNotTouchWarning(Gtk.Window):
     def __init__(self, state_watcher):
         Gtk.Window.__init__(self)
         self.state_watcher = state_watcher
+        self.string_resources = AStringResources("dont_touch").get_by_identifier()
         self.connect_signals()
         self.set_title('AbSim')
         self.set_icon_from_file('icon.ico')
@@ -22,8 +23,9 @@ class DoNotTouchWarning(Gtk.Window):
 
         hbox = Gtk.HBox()
         touch_label = Gtk.Label()
-        touch_label.set_markup("<span font='16'>" + _(u"Setting up new case.") \
-                               + "</span>\n<span font='20' foreground='red'>" + _(u"DO NOT TOUCH!") + "</span>")
+        touch_label.set_markup("<span font='16'>" + self.string_resources["warning"] +
+                               "</span>\n<span font='20' foreground='red'>" + self.string_resources["warning_2"] +
+                               "</span>")
         self.spinner = Gtk.Spinner()
         self.spinner.start()
 
