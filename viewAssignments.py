@@ -1,4 +1,4 @@
-from i18ntrans2 import _
+from aStringResources import AStringResources
 import splashscreen
 from messages import sim_message
 import time
@@ -36,6 +36,7 @@ class ViewAssignments(Gtk.Window):
         self.password = password
         self.exam_title = self.check_exam_by_section()
         self.exam_info = self.exams_left()
+        self.string_resources = AStringResources("view_assignments", back_flag=True).get_by_identifier()
 
         # build parent objects for child classes to save to
         self.ab_flag = False
@@ -122,7 +123,7 @@ class ViewAssignments(Gtk.Window):
         }
 
         # make window
-        Gtk.Window.__init__(self, title=_(u"AbSim Assignment Viewer"))
+        Gtk.Window.__init__(self, title=self.string_resources["window_title"])
         self.set_icon_from_file('icon.ico')
         self.maximize()
 
@@ -140,27 +141,27 @@ class ViewAssignments(Gtk.Window):
         self.destroy_signal_handler = self.connect('destroy', Gtk.main_quit)
 
         # Baseline Assessment
-        self.baseline = BaselineTest(self.exam_resources, self.view_resources)
+        self.baseline = BaselineTest(self.exam_resources, self.view_resources, self.string_resources)
         self.baseline.set_property('border-width', 15)
-        baseline_label = simLabels.MilestoneNameLabel(_(u"Baseline Assessment"))
+        baseline_label = simLabels.MilestoneNameLabel(self.string_resources["baseline_option"])
         self.notebook.append_page(self.baseline, baseline_label)
 
         # Case Assessment
-        self.case_exam = CaseExam(self.exam_resources, self.view_resources)
+        self.case_exam = CaseExam(self.exam_resources, self.view_resources, self.string_resources)
         self.case_exam.set_property('border-width', 15)
-        case_exam_label = simLabels.MilestoneNameLabel(_(u"Abnormality Assessment"))
+        case_exam_label = simLabels.MilestoneNameLabel(self.string_resources["ab_option"])
         self.notebook.append_page(self.case_exam, case_exam_label)
 
         # DDX Assessment
-        self.ddx_exam = DdxExam(self.exam_resources, self.view_resources)
+        self.ddx_exam = DdxExam(self.exam_resources, self.view_resources, self.string_resources)
         self.ddx_exam.set_property('border-width', 15)
-        ddx_exam_label = simLabels.MilestoneNameLabel(_(u"Ddx Assessment"))
+        ddx_exam_label = simLabels.MilestoneNameLabel(self.string_resources["ddx_option"])
         self.notebook.append_page(self.ddx_exam, ddx_exam_label)
 
         # View Tests
-        self.view_tests = ViewTests(self.exam_resources, self.view_resources)
+        self.view_tests = ViewTests(self.exam_resources, self.view_resources, self.string_resources)
         self.view_tests.set_property('border-width', 15)
-        view_tests_label = simLabels.MilestoneNameLabel(_(u"View Assessments"))
+        view_tests_label = simLabels.MilestoneNameLabel(self.string_resources["view_option"])
         self.notebook.prepend_page(self.view_tests, view_tests_label)
 
         self.notebook.show()
@@ -296,11 +297,12 @@ class ViewAssignments(Gtk.Window):
 
 
 class ViewTests(Gtk.HBox):
-    def __init__(self, exam_resources, view_resources):
+    def __init__(self, exam_resources, view_resources, sr):
         super(ViewTests, self).__init__(False, 2)
 
         self.exam_resources = exam_resources
         self.view_resources = view_resources
+        self.string_resources = sr
 
         # build interface
         built_box = self.build_interface()
@@ -328,7 +330,7 @@ class ViewTests(Gtk.HBox):
         self.cell = Gtk.CellRendererText()
         self.cell.set_property('font-desc', font)
 
-        tvcolumn = Gtk.TreeViewColumn(_(u"Assessment Title"), self.cell)
+        tvcolumn = Gtk.TreeViewColumn(self.string_resources["column_header"], self.cell)
         tv.append_column(tvcolumn)
         tvcolumn.add_attribute(self.cell, 'text', 0)
         tv.expand_all()
@@ -350,8 +352,8 @@ class ViewTests(Gtk.HBox):
         case_selector_scroller.set_size_request(450, 200)
 
         label = Gtk.Label()
-        label_text = _(u"Welcome to AbSim's Assessment Interface") + "\n\n" +\
-                     _(u"Select an assessment and click 'Begin Assessment' when ready.")
+        label_text = self.string_resources["welcome_string"] + "\n\n" +\
+                     self.string_resources["instruction_string"]
         label_pre_mark = construct_markup(label_text, font_size=16)
         label.set_markup(label_pre_mark)
         label.set_line_wrap(True)
@@ -378,11 +380,11 @@ class ViewTests(Gtk.HBox):
         button_table.set_col_spacings(5)
         button_table.set_row_spacings(5)
 
-        right_button = self.build_button(_(u"Begin Assessment"))
+        right_button = self.build_button(self.string_resources["begin_button"])
         right_button.connect('clicked', self.begin_exam)
         button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
 
-        left_button = self.build_button(_(u"Return"))
+        left_button = self.build_button(self.string_resources["back_button"])
         left_button.connect('clicked', self.view_resources['window'].return_home)
         button_table.attach(left_button, 1, 2, 0, 1, xoptions=False, yoptions=False)
 
@@ -391,7 +393,7 @@ class ViewTests(Gtk.HBox):
     def build_button(self, label_text):
         button = Gtk.Button()
         label = Gtk.Label()
-        label_pre_mark = construct_markup(label_text, font_size=20)
+        label_pre_mark = construct_markup(label_text, font_size=16)
         label.set_markup(label_pre_mark)
         label.set_padding(10, 10)
         button.add(label)
@@ -494,9 +496,8 @@ class ViewTests(Gtk.HBox):
                 self.exam_resources['ddx_start'] = time.time()
 
             else:
-                sim_message(self.view_resources['window'], info_string=_(u'Assessment Not Found.'),
-                            secondary_text=_(u'You may take another assessment if you have '
-                                             u'more to take.'))
+                sim_message(self.view_resources['window'], info_string=self.string_resources["no_assessment"],
+                            secondary_text=self.string_resources["finish_string"])
                 self.view_resources['window'].return_home()
 
     def begin_exam(self, widget):
@@ -509,19 +510,20 @@ class ViewTests(Gtk.HBox):
                 self.exam_resources['ddx_cases'] = ep.parse_exam_info(case_info)
             self.build_exam_view()
         except TypeError:
-            sim_message(self.view_resources['window'], info_string=_(u'Select Assessment'),
-                        secondary_text=_(u'Please select an assessment and click "Begin Assessment".'))
+            sim_message(self.view_resources['window'], info_string=self.string_resources["select_button"],
+                        secondary_text=self.string_resources["select_description"])
 
     def reset_page(self):
         return
 
 
 class BaselineTest(Gtk.HBox):
-    def __init__(self, exam_resources, view_resources):
+    def __init__(self, exam_resources, view_resources, sr):
         super(BaselineTest, self).__init__(False, 2)
 
         self.exam_resources = exam_resources
         self.view_resources = view_resources
+        self.string_resources = sr
 
         self.b_vbox = self.build_exam_interface()
         self.b_vbox.show_all()
@@ -591,9 +593,8 @@ class BaselineTest(Gtk.HBox):
             self.exam_resources['ddx_start'] = time.time()
 
         else:
-            sim_message(self.view_resources['window'], info_string=_(u'Assessment Finished.'),
-                        secondary_text=_(u'You may take another assessment if you have '
-                                         u'more to take.'))
+            sim_message(self.view_resources['window'], info_string=self.string_resources["finish_title"],
+                        secondary_text=self.string_resources["finish_string"])
             self.view_resources['window'].return_home()
 
     def build_button(self, label_text):
@@ -608,7 +609,7 @@ class BaselineTest(Gtk.HBox):
     def build_exam_interface(self):
         # have to make a real ui screen instead...
         self.base_label = Gtk.Label()  # font = 20, bold, fgcolor = #1E9D1C
-        label_text = _(u"Perform a baseline assessment and click 'OK' when finished.")
+        label_text = self.string_resources["baseline_text"]
         label_pre_mark = construct_markup(label_text, font_size=20, weight='bold')
         self.base_label.set_markup(label_pre_mark)
 
@@ -617,7 +618,7 @@ class BaselineTest(Gtk.HBox):
         button_table.set_col_spacings(5)
         button_table.set_row_spacings(5)
 
-        right_button = self.build_button(_(u"Ok"))
+        right_button = self.build_button(self.string_resources["ok_button"])
         right_button.connect('clicked', self.ok_selection)
         button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
 
@@ -635,11 +636,12 @@ class BaselineTest(Gtk.HBox):
 
 
 class CaseExam(Gtk.HBox):
-    def __init__(self, exam_resources, view_resources):
+    def __init__(self, exam_resources, view_resources, sr):
         super(CaseExam, self).__init__(False, 2)
 
         self.exam_resources = exam_resources
         self.view_resources = view_resources
+        self.string_resources = sr
 
         # Build Interface
         cvs = self.build_interface()
@@ -719,8 +721,8 @@ class CaseExam(Gtk.HBox):
 
             # correct_chosen.extend(ddx_correct_chosen)
 
-            sim_message(self.view_resources['window'], info_string=_(u'Assessment Finished.'),
-                        secondary_text=_(u'You may take another assessment if you have more to take.'))
+            sim_message(self.view_resources['window'], info_string=self.string_resources["finish_title"],
+                        secondary_text=self.string_resources["finish_string"])
             timestr = time.strftime("%Y%m%d-%H%M%S")
 
             ab_correct_chosen_string = '+'.join(ab_correct_chosen)
@@ -736,38 +738,41 @@ class CaseExam(Gtk.HBox):
 
     def make_selection(self, choice):
         # in here, we should be able to facilitate transition to other exam
-        if len(self.exam_resources['case_list']) > 0:
-            self.exam_resources['ab_answer_list'].append(self.exam_resources['case_list'][0])
-            # add student answers to their own list
-            self.exam_resources['student_answer_list'].append(self.cs.current_case)
-            if distance(self.cs.current_case, self.exam_resources['case_list'][0]) < 1:
-                self.exam_resources['ab_num'] += 1
+        if hasattr(self.cs, "current_case"):
+            if len(self.exam_resources['case_list']) > 0:
+                self.exam_resources['ab_answer_list'].append(self.exam_resources['case_list'][0])
+                # add student answers to their own list
+                self.exam_resources['student_answer_list'].append(self.cs.current_case)
+                if distance(self.cs.current_case, self.exam_resources['case_list'][0]) < 1:
+                    self.exam_resources['ab_num'] += 1
 
-            elif distance(self.cs.current_case, self.exam_resources['case_list'][0]) < 4:
-                self.exam_resources['ab_num'] += .5
+                elif distance(self.cs.current_case, self.exam_resources['case_list'][0]) < 4:
+                    self.exam_resources['ab_num'] += .5
+
+                else:
+                    self.exam_resources['ab_num'] += 0
+
+                # remove used case
+                self.exam_resources['case_list'].pop(0)
+
+                # pass new case if we have one
+                try:
+                    self.view_resources['new_case_observer'].alert(self.exam_resources['case_list'][0])
+                except IndexError:
+                    score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
+                    self.report_score(score, flag='first_time')
+                    pass
 
             else:
-                self.exam_resources['ab_num'] += 0
-
-            # remove used case
-            self.exam_resources['case_list'].pop(0)
-
-            # pass new case if we have one
-            try:
-                self.view_resources['new_case_observer'].alert(self.exam_resources['case_list'][0])
-            except IndexError:
-                score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
-                self.report_score(score, flag='first_time')
-                pass
-
+                sim_message(self.view_resources['window'], info_string=self.string_resources["finish_title"],
+                            secondary_text=self.string_resources["finish_string"])
+                self.view_resources['window'].return_home()
+                # logging.debug('exam finished')
+                # sim_message(self, info_string=_(u'Exam Load Failure'),
+                # secondary_text=_(u'AbSim received empty exam list.'))
         else:
-            sim_message(self.view_resources['window'], info_string=_(u'Assessment Finished.'),
-                        secondary_text=_(u'You may take another assessment if you have '
-                                         u'more to take.'))
-            self.view_resources['window'].return_home()
-            # logging.debug('exam finished')
-            # sim_message(self, info_string=_(u'Exam Load Failure'),
-            # secondary_text=_(u'AbSim received empty exam list.'))
+            sim_message(self.view_resources['window'], info_string=self.string_resources["no_selection"],
+                        secondary_text=self.string_resources["no_string"])
 
     def build_button(self, label_text):
         button = Gtk.Button()
@@ -785,7 +790,7 @@ class CaseExam(Gtk.HBox):
         button_table.set_col_spacings(5)
         button_table.set_row_spacings(5)
 
-        right_button = self.build_button(_(u"Make Selection"))
+        right_button = self.build_button(self.string_resources["make_selection_button"])
         right_button.connect('clicked', self.make_selection)
         button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
 
@@ -814,11 +819,12 @@ class CaseExam(Gtk.HBox):
 
 
 class DdxExam(Gtk.HBox):
-    def __init__(self, exam_resources, view_resources):
+    def __init__(self, exam_resources, view_resources, sr):
         super(DdxExam, self).__init__(False, 2)
 
         self.exam_resources = exam_resources
         self.view_resources = view_resources
+        self.string_resources = sr
 
         self.build_ddx_interface()
 
@@ -884,16 +890,15 @@ class DdxExam(Gtk.HBox):
                     self.view_resources['window'].case_exam.report_score(score)
 
             else:
-                sim_message(self.view_resources['window'], info_string=_(u'Assessment Finished'),
-                            secondary_text=_(u'You may take another assessment if you have '
-                                             u'more to take.'))
+                sim_message(self.view_resources['window'], info_string=self.string_resources["finish_title"],
+                            secondary_text=self.string_resources["finish_string"])
                 self.view_resources['window'].return_home()
                 # logging.debug('exam finished')
                 # sim_message(self, info_string=_(u'Exam Load Failure'),
                 # secondary_text=_(u'AbSim received empty exam list.'))
         else:
-            sim_message(self.view_resources['window'], info_string=_(u"No Selection"),
-                        secondary_text=_(u"Please select a case."))
+            sim_message(self.view_resources['window'], info_string=self.string_resources["no_selection"],
+                        secondary_text=self.string_resources["no_string"])
 
     def build_button(self, label_text):
         button = Gtk.Button()
@@ -911,7 +916,7 @@ class DdxExam(Gtk.HBox):
         button_table.set_col_spacings(5)
         button_table.set_row_spacings(5)
 
-        right_button = self.build_button(_(u"Make Selection"))
+        right_button = self.build_button(self.string_resources["make_selection_button"])
         right_button.connect('clicked', self.make_selection)
         button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
 
@@ -993,7 +998,7 @@ class DdxExam(Gtk.HBox):
         self.cell = Gtk.CellRendererText()
         self.cell.set_property('font-desc', font)
 
-        tvcolumn = Gtk.TreeViewColumn(_(u"Ailment"), self.cell)
+        tvcolumn = Gtk.TreeViewColumn(self.string_resources["column_header_2"], self.cell)
         tv.append_column(tvcolumn)
         tvcolumn.add_attribute(self.cell, 'text', 0)
         tv.expand_all()

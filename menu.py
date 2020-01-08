@@ -18,6 +18,7 @@ import selfpractice
 import donottouch
 import simLabels
 import i18ntrans2
+from aStringResources import AStringResources
 import os
 
 import gi
@@ -25,6 +26,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GLib
 
 app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2019'
+string_resources = AStringResources("menu").get_by_identifier()
 
 
 class MenuBar():
@@ -89,13 +91,13 @@ class MenuBar():
 
     def add_ab_menu_actions(self, action_group):
         action_group.add_actions([
-            ("AbMenu", None, _(u"AbSim")),
+            ("AbMenu", None, "AbSim"),
             ("AbQuit", Gtk.STOCK_QUIT, None, None, None, self.on_menu_ab_quit),
-            ("abHome", None, _(u"Home"), None, None, self.on_home_click)
+            ("abHome", None, string_resources["home"], None, None, self.on_home_click)
         ])
 
     def add_choices_menu_actions(self, action_group):
-        action_group.add_action(Gtk.Action("ChoicesMenu", _(u"Locales"), None,
+        action_group.add_action(Gtk.Action("ChoicesMenu", string_resources["locales"], None,
                                            None))
 
         ##Log i18n status
@@ -223,7 +225,7 @@ class MenuWindow(Gtk.Window, MenuBar):
         }
 
         # build window
-        Gtk.Window.__init__(self, title=_(u'AbSim'))
+        Gtk.Window.__init__(self, title="AbSim")
         self.set_icon_from_file('icon.ico')
         self.maximize()
 
@@ -238,45 +240,50 @@ class MenuWindow(Gtk.Window, MenuBar):
         # Pre-assessment
         self.pre_assessment = coverageassessment.CoveragePreAssessment(self.view_resources)
         self.pre_assessment.set_property('border-width', 15)
-        pre_assessment_label = simLabels.MilestoneNameLabel(_(u"Baseline Assessment"))
+        pre_assessment_label = simLabels.MilestoneNameLabel(string_resources["menu_tab_1"])
         self.notebook.append_page(self.pre_assessment, pre_assessment_label)
 
         # Milestone 1
         self.depth_trainer = depthtrainer.DepthTrainer(self.view_resources)
         self.depth_trainer.set_property('border-width', 15)
-        milestone_1_label = simLabels.MilestoneNameLabel(_(u"Milestone 1:") + "\n" + _(u"Depth of Palpation"))
+        milestone_1_label = simLabels.MilestoneNameLabel(string_resources["menu_tab_2a"] + "\n" +
+                                                         string_resources["menu_tab_2b"])
         self.notebook.append_page(self.depth_trainer, milestone_1_label)
 
         # Milestone 2
         self.coverage_trainer = coveragetrainer.CoverageTrainer(self.view_resources)
         self.coverage_trainer.set_property('border-width', 15)
-        milestone_2_label = simLabels.MilestoneNameLabel(_(u"Milestone 2:") + "\n" + _(u"Surface Area Coverage"))
+        milestone_2_label = simLabels.MilestoneNameLabel(string_resources["menu_tab_3a"] + "\n" +
+                                                         string_resources["menu_tab_3b"])
         self.notebook.append_page(self.coverage_trainer, milestone_2_label)
 
         # Post-assessment
         self.post_assessment = coverageassessment.CoveragePostAssessment(self.pre_assessment, self.view_resources)
         self.post_assessment.set_property('border-width', 15)
-        post_assessment_label = simLabels.MilestoneNameLabel(_(u"Comparative Assessment"))
+        post_assessment_label = simLabels.MilestoneNameLabel(string_resources["menu_tab_4"])
         self.notebook.append_page(self.post_assessment, post_assessment_label)
 
         # Milestone 3
         self.abnormality_detection = abnormalitydetection.AbnormalityDetection(self.view_resources)
         self.abnormality_detection.set_property('border-width', 15)
-        milestone_3_label = simLabels.MilestoneNameLabel(_(u"Milestone 3:") + "\n" + _(u"Abnormality Detection"))
+        milestone_3_label = simLabels.MilestoneNameLabel(string_resources["menu_tab_5a"] + "\n" +
+                                                         string_resources["menu_tab_5b"])
         self.notebook.append_page(self.abnormality_detection, milestone_3_label)
 
         # Milestone 4
         self.self_practice = selfpractice.SelfPractice(self.view_resources)
         self.self_practice.set_property('border-width', 15)
-        milestone_4_label = simLabels.MilestoneNameLabel(_(u"Milestone 4:") + "\n"
-                                                         + _(u"Self-Assessment with") + "\n" + _(u"Random Ailments"))
+        milestone_4_label = simLabels.MilestoneNameLabel(string_resources["menu_tab_6a"] + "\n"
+                                                         + string_resources["menu_tab_6b"] + "\n" +
+                                                         string_resources["menu_tab_6c"])
         self.notebook.append_page(self.self_practice, milestone_4_label)
 
         # Milestone 5
         self.ddx_practice = ddxpractice.DDXPractice(self.view_resources)
         self.ddx_practice.set_property('border-width', 15)
-        milestone_5_label = simLabels.MilestoneNameLabel(_(u"Milestone 5:") + "\n" + _(u"Diagnosis Integration") + "\n"
-                                                         + _(u"with Hx/PE"))
+        milestone_5_label = simLabels.MilestoneNameLabel(string_resources["menu_tab_7a"] + "\n" +
+                                                         string_resources["menu_tab_7b"] + "\n" +
+                                                         string_resources["menu_tab_7c"])
         self.notebook.append_page(self.ddx_practice, milestone_5_label)
 
         self.notebook.show()

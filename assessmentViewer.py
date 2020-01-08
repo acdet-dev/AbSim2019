@@ -213,7 +213,6 @@ class ViewsController:
                     partial_dict = OrderedDict()
                     try:
                         for j in range(0, len(self.exam)):
-                            print(self.exam[j])
                             partial_dict[heads[0]] = self.exam[j][0]
                             partial_dict[heads[1]] = self.exam[j][3]
                             partial_dict[heads[2]] = self.exam[j][7]

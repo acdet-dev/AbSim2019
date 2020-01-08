@@ -96,7 +96,6 @@ class AStringResources:
                 "button_text": _(u"Upload"),
                 "view_button": _(u"View"),
                 "delete_button": _(u"Delete"),
-                "back_button": _(u"Go Back"),
                 "column_header": _(u"Section"),
                 "column_header_2": _(u"Number of Students"),
                 "column_header_3": _(u"Last Name"),
@@ -222,6 +221,7 @@ class AStringResources:
                 "baseline_option": _(u"Baseline Assessment"),
                 "view_option": _(u"View Assessments"),
                 "column_header": _(u"Assessment Title"),
+                "column_header_2": _(u"Ailment"),
                 "welcome_string": _(u"Welcome to AbSim's Assessment Interface"),
                 "instruction_string": _(u'Select an assessment and click "Begin Assessment" when ready.'),
                 "begin_button": _(u"Begin Assessment"),
@@ -232,18 +232,15 @@ class AStringResources:
                 "finish_title": _(u"Assessment Finished"),
                 "baseline_text": _(u"Perform a baseline assessment and click 'OK' when finished."),
                 "ok_button": _(u"Ok"),
-                "make_selection_button": _(u"Make Selection")
+                "make_selection_button": _(u"Make Selection"),
+                "no_selection": _(u"No Selection"),
+                "no_string": _(u"Please select a case.")
             }
 
         elif self.identifier == "menu":
             string_resources = {
-                "home_quit_menu": _(u"AbSim"),
                 "home": _(u"Home"),
-                "locales": _(u"System Language")
-            }
-
-        elif self.identifier == "self_practice":
-            string_resources = {
+                "locales": _(u"System Language"),
                 "menu_tab_1": _(u"Baseline Assessment"),
                 "menu_tab_2a": _(u"Milestone 1:"),
                 "menu_tab_2b": _(u"Depth of Palpation"),

@@ -281,7 +281,7 @@ class ManagePage(Gtk.VBox):
         from simLabels import construct_markup
         button = Gtk.Button()
         label = Gtk.Label()
-        label_pre_mark = construct_markup(label_text, font_size=20)
+        label_pre_mark = construct_markup(label_text, font_size=16)
         label.set_markup(label_pre_mark)
         label.set_padding(10, 10)
         button.add(label)
