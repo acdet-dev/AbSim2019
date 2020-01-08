@@ -96,5 +96,4 @@ class CaseSelector:
         self.current_case = model.get(iter, 1)[0]
 
         if not self.flag:
-            print('happening')
             self.new_case_observer.alert(self.current_case)
