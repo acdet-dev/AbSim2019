@@ -260,13 +260,13 @@ class ViewAssignments(Gtk.Window):
         if taken_list:
             for i in range(0, len(taken_list)):
                 for j in exam_info:
-                    if taken_list[i][1].encode() in j:
+                    if taken_list[i][1] in j:
                         exam_info.remove(j)
 
         if baseline_list:
             for i in range(0, len(baseline_list)):
                 for j in exam_info:
-                    if baseline_list[i][0].encode() in j:
+                    if baseline_list[i][0] in j:
                         exam_info.remove(j)
 
         return exam_info

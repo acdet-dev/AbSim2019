@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-01-08 12:50+Central Standard Time\n"
+"POT-Creation-Date: 2020-01-08 16:55+Central Standard Time\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1100,7 +1100,7 @@ msgid "New locale override"
 msgstr ""
 
 #: aStringResources.py:408
-msgid "will take effect after restarting the program."
+msgid "will take effect after advancing to a new screen."
 msgstr ""
 
 #: aStringResources.py:413
@@ -1221,7 +1221,7 @@ msgid "HISTORY: A 54 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:34
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.4ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.4°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:40 casetext.py:61 casetext.py:81 prototypetext.py:20
@@ -1233,7 +1233,7 @@ msgid "HISTORY: A 51 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:55
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.8ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.8°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:67
@@ -1241,7 +1241,7 @@ msgid "HISTORY: A 45 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:75 casetext.py:520
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.7ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.7°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:90
@@ -1249,7 +1249,7 @@ msgid "HISTORY: A 51 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:97
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.9ï¿½C, and tachycardia at 122. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.9°C, and tachycardia at 122. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:103 casetext.py:123 casetext.py:143 prototypetext.py:48
@@ -1261,7 +1261,7 @@ msgid "HISTORY: A 52 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:117
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.7ï¿½C, and tachycardia at 128. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.7°C, and tachycardia at 128. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:129
@@ -1269,7 +1269,7 @@ msgid "HISTORY: A 51 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:136
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.6ï¿½C, and tachycardia at 117. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.6°C, and tachycardia at 117. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:152
@@ -1277,7 +1277,7 @@ msgid "HISTORY: A 29 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:159
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 37.4ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 37.4°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:165 casetext.py:185 casetext.py:205 prototypetext.py:71
@@ -1289,7 +1289,7 @@ msgid "HISTORY: A 26 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:179
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.2ï¿½C, and tachycardia at 113. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.2°C, and tachycardia at 113. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:191
@@ -1297,7 +1297,7 @@ msgid "HISTORY: A 33 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:199
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.1ï¿½C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.1°C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:214
@@ -1305,7 +1305,7 @@ msgid "HISTORY: A 66 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:221
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.6ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds. "
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.6°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds. "
 msgstr ""
 
 #: casetext.py:227 casetext.py:247 casetext.py:265 casetext.py:285
@@ -1318,7 +1318,7 @@ msgid "HISTORY: A 66 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:241
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 36.9ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 36.9°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:253
@@ -1326,7 +1326,7 @@ msgid "HISTORY: A 54 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:260
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:271
@@ -1334,7 +1334,7 @@ msgid "HISTORY: A 34 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:280
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.5ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.5°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:294
@@ -1342,7 +1342,7 @@ msgid "HISTORY: A 72 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:301
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.5ï¿½C, tachycardia at 123, tachypnea at 26, and a blood pressure of 80 over 51. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.5°C, tachycardia at 123, tachypnea at 26, and a blood pressure of 80 over 51. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
 msgstr ""
 
 #: casetext.py:308 casetext.py:328 casetext.py:347 prototypetext.py:119
@@ -1354,7 +1354,7 @@ msgid "HISTORY: A 74 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:321
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 38.2ï¿½C, tachycardia at 128, tachypnea at 24, and a blood pressure of 76 over 54. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 38.2°C, tachycardia at 128, tachypnea at 24, and a blood pressure of 76 over 54. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
 msgstr ""
 
 #: casetext.py:334
@@ -1362,7 +1362,7 @@ msgid "HISTORY: A 75 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:341
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.9ï¿½C, tachycardia at 128, and tachypnea at 25. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.9°C, tachycardia at 128, and tachypnea at 25. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:356
@@ -1370,7 +1370,7 @@ msgid "HISTORY: A 70 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:364
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals confusion. VITAL SIGNS are remarkable for the following: temperature 36.3ï¿½C, and tachypnea at 23. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: mild distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals confusion. VITAL SIGNS are remarkable for the following: temperature 36.3°C, and tachypnea at 23. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: mild distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
 msgstr ""
 
 #: casetext.py:370 casetext.py:391 casetext.py:412 prototypetext.py:146
@@ -1382,7 +1382,7 @@ msgid "HISTORY: A 66 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:384
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 36.3ï¿½C, and tachypnea at 26. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, and the presence of tympany."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 36.3°C, and tachypnea at 26. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, and the presence of tympany."
 msgstr ""
 
 #: casetext.py:397
@@ -1390,7 +1390,7 @@ msgid "HISTORY: A 70 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:405
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.1ï¿½C, tachycardia at 117, and tachypnea at 22. THORAX and LUNGS Decreased breath sounds are noted at the bases. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, the presence of tympany, and an abdominal bruit."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.1°C, tachycardia at 117, and tachypnea at 22. THORAX and LUNGS Decreased breath sounds are noted at the bases. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, the presence of tympany, and an abdominal bruit."
 msgstr ""
 
 #: casetext.py:421
@@ -1398,7 +1398,7 @@ msgid "HISTORY: A 32 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:427
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.7ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.7°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:432 casetext.py:449 casetext.py:467 casetext.py:485
@@ -1411,7 +1411,7 @@ msgid "HISTORY: A 27 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:444
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:455
@@ -1419,7 +1419,7 @@ msgid "HISTORY: A 67 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:461
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 38.6ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 38.6°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:473
@@ -1427,7 +1427,7 @@ msgid "HISTORY: A 28 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:480
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:494
@@ -1435,7 +1435,7 @@ msgid "HISTORY: A 49 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:501
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.9ï¿½C, and tachycardia at 130. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.9°C, and tachycardia at 130. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:506 casetext.py:526 casetext.py:543 prototypetext.py:194
@@ -1451,7 +1451,7 @@ msgid "HISTORY: A 49 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:538
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.7ï¿½C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.7°C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 msgstr ""
 
 #: casetext.py:552
@@ -1459,7 +1459,7 @@ msgid "HISTORY: A 49 year old female presents for an evaluation of abdominal pai
 msgstr ""
 
 #: casetext.py:561
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.2ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.2°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
 msgstr ""
 
 #: casetext.py:566 casetext.py:585 casetext.py:604 prototypetext.py:215
@@ -1471,7 +1471,7 @@ msgid "HISTORY: A 51 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:580
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.6ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.6°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 msgstr ""
 
 #: casetext.py:591
@@ -1479,7 +1479,7 @@ msgid "HISTORY: A 33 year old male presents for an evaluation of abdominal pain.
 msgstr ""
 
 #: casetext.py:599
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.8ï¿½C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.8°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
 msgstr ""
 
 #: prototypetext.py:21 prototypetext.py:72 prototypetext.py:98
@@ -1587,7 +1587,7 @@ msgstr ""
 #: prototypetext.py:43 prototypetext.py:65 prototypetext.py:93
 #: prototypetext.py:115 prototypetext.py:136 prototypetext.py:165
 #: prototypetext.py:209
-msgid "Temperature 36.1ï¿½37.8ï¿½C (97-100ï¿½F)"
+msgid "Temperature 36.1–37.8°C (97-100°F)"
 msgstr ""
 
 #: prototypetext.py:44 prototypetext.py:91 prototypetext.py:145
@@ -1762,7 +1762,7 @@ msgid "Tenderness in right lower quadrant"
 msgstr ""
 
 #: prototypetext.py:188 prototypetext.py:231
-msgid "Temperature elevation >37.5 and <38.3ï¿½C (99.5 to 100.9ï¿½F)"
+msgid "Temperature elevation >37.5 and <38.3°C (99.5 to 100.9°F)"
 msgstr ""
 
 #: prototypetext.py:192

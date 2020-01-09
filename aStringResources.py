@@ -101,6 +101,10 @@ class AStringResources:
                 "column_header_3": _(u"Last Name"),
                 "column_header_4": _(u"First Name"),
                 "column_header_5": _(u"ID"),
+                "column_header_6": _(u"Assessments Taken"),
+                "column_header_7": _(u"Abnormality Average"),
+                "column_header_8": _(u"Case Text Average"),
+                "na": _(u"NA"),
                 "no_data": _(u"Section Data Not Found"),
                 "no_data_message": _(u"Please check back when you have entered section data."),
                 "no_section_selected": _(u"No Section Selected"),
@@ -405,7 +409,7 @@ class AStringResources:
         elif self.identifier == "i18n_trans":
             string_resources = {
                 "message_1": _(u"New locale override"),  # add trailing space
-                "message_2": _(u"will take effect after restarting the program.")  # add leading space
+                "message_2": _(u"will take effect after advancing to a new screen.")  # add leading space
             }
 
         elif self.identifier == "reset_messages":

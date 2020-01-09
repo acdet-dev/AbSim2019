@@ -251,7 +251,7 @@ class ManagePage(Gtk.VBox):
         # Add navigation buttons
         button_tree = self.add_buttons()
 
-        hbox.pack_start(sw, True, True, 10)
+        hbox.pack_start(sw, False, False, 10)
         hbox.pack_start(sw2, True, True, 10)
 
         # pack all to vbox
@@ -302,9 +302,51 @@ class ManagePage(Gtk.VBox):
         self.splash_screen.hide()
         self.close_menu()
 
+    def get_score_info(self, students):
+        from takenmodel import TakenModel
+        from statistics import mean, StatisticsError
+
+        tm = TakenModel()
+
+        result = []
+
+        for s in students:
+            info = list(self.wr["student_info"].get_by_student_id(s))
+            scores = tm.get_by_score_id(s)
+            info.append(str(len(scores)))
+            # append each individual students' scores to list
+            ab_scores = []
+            ddx_scores = []
+
+            for score in scores:
+                if len(score) > 0:
+                    try:
+                        ab_scores.append(float(score[2]))
+                    except ValueError:
+                        pass
+                    try:
+                        ddx_scores.append(float(score[3]))
+                    except ValueError:
+                        pass
+
+            try:
+                print(ab_scores)
+                print(ddx_scores)
+                print(str(round(mean(ab_scores), 2)))
+                print(str(round(mean(ddx_scores),)))
+                info.append(str(round(mean(ab_scores), 2)))
+                info.append(str(round(mean(ddx_scores), 2)))
+            except StatisticsError:
+                info.append(self.string_resources["na"])
+                info.append(self.string_resources["na"])
+
+            result.append(info)
+
+        return result
+
     def update_view(self):
         s_list = self.check_students(self.wr["section_id"], den_flag=False)
-        info = [list(self.wr["student_info"].get_by_student_id(i)) for i in s_list]
+        info = self.get_score_info(s_list)
         self.wr["student_information"] = info
         self.wr["store2"].clear()
         new_store = self.create_model2()
@@ -365,10 +407,10 @@ class ManagePage(Gtk.VBox):
             return merged
 
     def create_model2(self):
-        store = Gtk.ListStore(str, str, str)
+        store = Gtk.ListStore(str, str, str, str, str, str)
 
         for info in self.wr["student_information"]:
-            store.append([info[1], info[2], info[3]])
+            store.append([info[1], info[2], info[3], info[4], info[5], info[6]])
 
         return store
 
@@ -388,6 +430,24 @@ class ManagePage(Gtk.VBox):
         renderer_text = Gtk.CellRendererText()
         column = Gtk.TreeViewColumn(self.string_resources["column_header_5"], renderer_text, text=2)
         column.set_sort_column_id(2)
+        column.set_resizable(True)
+        treeView.append_column(column)
+
+        renderer_text = Gtk.CellRendererText()
+        column = Gtk.TreeViewColumn(self.string_resources["column_header_6"], renderer_text, text=3)
+        column.set_sort_column_id(3)
+        column.set_resizable(True)
+        treeView.append_column(column)
+
+        renderer_text = Gtk.CellRendererText()
+        column = Gtk.TreeViewColumn(self.string_resources["column_header_7"], renderer_text, text=4)
+        column.set_sort_column_id(4)
+        column.set_resizable(True)
+        treeView.append_column(column)
+
+        renderer_text = Gtk.CellRendererText()
+        column = Gtk.TreeViewColumn(self.string_resources["column_header_8"], renderer_text, text=5)
+        column.set_sort_column_id(5)
         column.set_resizable(True)
         treeView.append_column(column)
 
