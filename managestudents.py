@@ -313,7 +313,11 @@ class ManagePage(Gtk.VBox):
         for s in students:
             info = list(self.wr["student_info"].get_by_student_id(s))
             scores = tm.get_by_score_id(s)
-            info.append(str(len(scores)))
+            if scores:
+                info.append(str(len(scores)))
+            else:
+                scores = []
+                info.append(str(len(scores)))
             # append each individual students' scores to list
             ab_scores = []
             ddx_scores = []
@@ -330,10 +334,6 @@ class ManagePage(Gtk.VBox):
                         pass
 
             try:
-                print(ab_scores)
-                print(ddx_scores)
-                print(str(round(mean(ab_scores), 2)))
-                print(str(round(mean(ddx_scores),)))
                 info.append(str(round(mean(ab_scores), 2)))
                 info.append(str(round(mean(ddx_scores), 2)))
             except StatisticsError:

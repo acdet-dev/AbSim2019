@@ -125,6 +125,8 @@ class AStringResources:
                 "success_description": _(u"Students may now login to view exams you assign."),
                 "failure_notification": _(u"Class Upload Failed"),
                 "failure_description": _(u"Section information not provided."),
+                "unicode_error": _(u"Encoding Error Encountered"),
+                "error_description": _(u"Please make sure to save your .csv file in UTF-8 encoding."),
                 "any_files": _(u"Any files"),
                 "text_files": _(u"Text files"),
                 "choose_folder": _(u"Please choose a folder")

@@ -11,7 +11,7 @@ class CaseSelector:
     def __init__(self, new_case_observer, flag=None):
         self.new_case_observer = new_case_observer
         self.flag = flag
-        self.current_case = 'none n'
+        # self.current_case = 'none n'
         
     def build_ddx_tree(self):
         # Columns available to rows:

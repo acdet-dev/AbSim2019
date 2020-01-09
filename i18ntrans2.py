@@ -63,13 +63,15 @@ logging.debug("We have i18n gettext directory: " + gettext_dir)
 
 # Introspect location of Ab-Sim source code:
 source = os.getcwd()
+
+'''
 app_data = os.getenv('LOCALAPPDATA')
 if not os.path.exists(app_data + '\\AbSim2019\\i18n'):
     shutil.copytree(os.path.join(source, 'i18n'), app_data + '\\AbSim2019\\i18n')
 
 if os.path.exists(app_data + '\\AbSim2019\\i18n'):
     source = app_data + '\\AbSim2019'
-
+'''
 # Reset the locale to system default.
 locale.setlocale(locale.LC_ALL, '')
 
