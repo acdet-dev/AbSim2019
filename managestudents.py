@@ -378,9 +378,9 @@ class ManagePage(Gtk.VBox):
         pass
 
     def go_back(self, widget):
-        from sim import UserType
+        from simFaculty import SimFaculty
         self.setup_transfer()
-        UserType('faculty', self.wr["name"], self.wr["password"])
+        SimFaculty('faculty', self.wr["name"], self.wr["password"])
         self.finish_transfer()
 
     def check_students(self, section, den_flag=True):

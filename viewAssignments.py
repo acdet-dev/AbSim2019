@@ -19,6 +19,7 @@ import examParser
 import logging
 import random
 from Levenshtein import distance
+from casetext import CaseTextBuffer
 
 import gi
 
@@ -86,6 +87,7 @@ class ViewAssignments(Gtk.Window):
             'ddx_answer_list': self.ddx_answer_list,
             'student_answer_list': self.student_answer_list,
             'student_ddx_list': self.student_ddx_list,
+            'header_list': [''],
             'untouched': self.untouched,
             'untouched_ddx': self.untouched_ddx,
             'baseline_model': self.baselinemodel,
@@ -303,6 +305,7 @@ class ViewTests(Gtk.HBox):
         self.exam_resources = exam_resources
         self.view_resources = view_resources
         self.string_resources = sr
+        self.tb = CaseTextBuffer()
 
         # build interface
         built_box = self.build_interface()
@@ -313,7 +316,8 @@ class ViewTests(Gtk.HBox):
 
         self.show()
 
-    def build_view_tree(self):
+    def build_view_tree(self, s_w, s_h):
+        from simLabels import font_size
 
         # Columns available to rows:
         #   str: name of exam
@@ -326,7 +330,10 @@ class ViewTests(Gtk.HBox):
         tv = Gtk.TreeView(store)
 
         # Set up font for display
-        font = Pango.FontDescription('normal 14')
+        screen_size = s_w * s_h
+        font_s = font_size(s_size=screen_size, f_size=14)
+        font_string = "normal " + str(font_s)
+        font = Pango.FontDescription(font_string)
         self.cell = Gtk.CellRendererText()
         self.cell.set_property('font-desc', font)
 
@@ -337,15 +344,69 @@ class ViewTests(Gtk.HBox):
         tv.connect('cursor-changed', self.on_tree_selected)
         return tv
 
+    def get_buffer_text(self):
+        # parse exam chosen by student
+        ep = examParser.ExamParser(flag='one', title=self.exam_resources["exam_title"])
+
+        # get info
+        case_info = ep.get_exam_info(ep.flag, ep.title)
+
+        # get info into individual lists
+        case_list_comm, case_title_list, baseline_model, baseline_flag, ddx_cases = ep.parse_exam_info(case_info)
+
+        if baseline_flag:
+            base = self.string_resources["base_description"]
+        else:
+            base = ''
+        if len(case_list_comm) > 0:
+            cases = self.string_resources["case_description"]
+        else:
+            cases = ''
+        if len(ddx_cases) > 0:
+            ddx = self.string_resources["ddx_description"]
+        else:
+            ddx = ''
+
+        return [base, cases, ddx]
+
     def on_tree_selected(self, treeview):
         selection = treeview.get_selection()
         (model, iter) = selection.get_selected()
 
         self.exam_resources['exam_title'] = model.get(iter, 0)[0]
 
+        # get buffer text
+        new_text = self.get_buffer_text()
+        i = 0
+        header_list = []
+        final_string = self.exam_resources["exam_title"] + " " + self.string_resources["final_string"] + ":\n\n"
+        for text in new_text:
+            if text != '':
+                i += 1
+                header_list.append(str(i) + ". " + text)
+                final_string += str(i) + ". " + text + "\n"
+
+        self.tb.new_case(final_string)
+        for header in header_list:
+            if "Baseline" in header:
+                self.view_resources["window"].baseline.tb.new_case(header)
+                # header_list.remove(header)
+            if "Identify" in header:
+                self.view_resources["window"].case_exam.tb.new_case(header + ": "
+                                                                    + self.string_resources["identify_helper"])
+                # header_list.remove(header)
+            if "Diagnosis" in header:
+                self.view_resources["window"].ddx_exam.tb.new_case(header + ": " + self.string_resources["text_helper"])
+                # header_list.remove(header)
+
     def build_interface(self):
+        # get adjusted width
+        screen_width = Gtk.gdk.screen_width()
+        screen_height = Gtk.gdk.screen_height()
+
+        # build box to return
         box = Gtk.VBox()
-        case_selector_tree = self.build_view_tree()
+        case_selector_tree = self.build_view_tree(screen_width, screen_height)
         case_selector_scroller = Gtk.ScrolledWindow()
         case_selector_scroller.add(case_selector_tree)
         case_selector_scroller.set_policy(Gtk.POLICY_NEVER, Gtk.POLICY_AUTOMATIC)
@@ -363,13 +424,32 @@ class ViewTests(Gtk.HBox):
         button_tree = self.add_buttons()
 
         # construct horizontal box to place label to the left of box features
-        # pre_box = Gtk.HBox()
+        pre_box = Gtk.HBox()
+
+        # text is not editable and wraps between words
+        text_view = Gtk.TextView(buffer=self.tb)
+        text_view.set_editable(False)
+        text_view.set_wrap_mode(Gtk.WRAP_WORD)
+
+        width, height = screen_sizer(screen_width, screen_height, old_width=300, old_height=300)
+
+        text_scroller = Gtk.ScrolledWindow()
+        text_scroller.set_property('hscrollbar-policy', Gtk.POLICY_AUTOMATIC)
+        text_scroller.set_property('vscrollbar-policy', Gtk.POLICY_AUTOMATIC)
+        text_scroller.set_size_request(width, height)
+        text_scroller.set_property('border-width', 1)
+        text_scroller.add(text_view)
+        self.tb.new_case(self.string_resources["base_text"])
+        # text_scroller_vadjustment = text_scroller.get_vadjustment()
+
+        pre_box.pack_start(case_selector_scroller, False, False, 10)
+        pre_box.pack_start(text_scroller, True, True, 10)
 
         # pre_box.pack_start(label, False, False, 50)
         box.pack_start(label, False, False, 20)
-        box.pack_start(case_selector_scroller, True, True, 20)
-        box.pack_start(Gtk.HSeparator(), False, False, 40)
-        box.pack_start(button_tree, True, True, 10)
+        box.pack_start(pre_box, False, False, 0)
+        box.pack_start(Gtk.HSeparator(), False, False, 10)
+        box.pack_start(button_tree, False, False, 10)
         # pre_box.pack_start(box, False, False, 20)
 
         return box
@@ -524,6 +604,7 @@ class BaselineTest(Gtk.HBox):
         self.exam_resources = exam_resources
         self.view_resources = view_resources
         self.string_resources = sr
+        self.tb = CaseTextBuffer()
 
         self.b_vbox = self.build_exam_interface()
         self.b_vbox.show_all()
@@ -607,7 +688,20 @@ class BaselineTest(Gtk.HBox):
         return button
 
     def build_exam_interface(self):
-        # have to make a real ui screen instead...
+        # get adjusted width
+        # screen_width = Gtk.gdk.screen_width()
+        # screen_height = Gtk.gdk.screen_height()
+
+        # text is not editable and wraps between words
+        text_view = Gtk.TextView(buffer=self.tb)
+        text_view.set_editable(False)
+        text_view.set_wrap_mode(Gtk.WRAP_WORD)
+
+        # width, height = screen_sizer(screen_width, screen_height, old_width=300, old_height=300)
+
+        self.tb.new_case(self.exam_resources["header_list"][0])
+        # text_scroller_vadjustment = text_scroller.get_vadjustment()
+
         self.base_label = Gtk.Label()  # font = 20, bold, fgcolor = #1E9D1C
         label_text = self.string_resources["baseline_text"]
         label_pre_mark = construct_markup(label_text, font_size=20, weight='bold')
@@ -625,6 +719,7 @@ class BaselineTest(Gtk.HBox):
         baseline_vbox = Gtk.VBox()
         button_table.show()
 
+        baseline_vbox.pack_start(text_view, False, False, 10)
         baseline_vbox.pack_start(self.base_label, True, True, 10)
         baseline_vbox.pack_start(button_table, False, False, 0)
 
@@ -642,14 +737,30 @@ class CaseExam(Gtk.HBox):
         self.exam_resources = exam_resources
         self.view_resources = view_resources
         self.string_resources = sr
+        self.tb = CaseTextBuffer()
 
         # Build Interface
         cvs = self.build_interface()
 
         self.test_box = Gtk.VBox()
 
+        # get adjusted width
+        # screen_width = Gtk.gdk.screen_width()
+        # screen_height = Gtk.gdk.screen_height()
+
+        # text is not editable and wraps between words
+        text_view = Gtk.TextView(buffer=self.tb)
+        text_view.set_editable(False)
+        text_view.set_wrap_mode(Gtk.WRAP_WORD)
+
+        # width, height = screen_sizer(screen_width, screen_height, old_width=300, old_height=300)
+
+        self.tb.new_case(self.exam_resources["header_list"][0])
+        # text_scroller_vadjustment = text_scroller.get_vadjustment()
+
         self.button_tree = self.add_buttons()
 
+        self.test_box.pack_start(text_view, False, False, 10)
         self.test_box.pack_start(cvs, True, True, 0)
         self.test_box.pack_start(self.button_tree, False, False, 0)
         self.test_box.show_all()
@@ -825,6 +936,7 @@ class DdxExam(Gtk.HBox):
         self.exam_resources = exam_resources
         self.view_resources = view_resources
         self.string_resources = sr
+        self.tb = CaseTextBuffer()
 
         self.build_ddx_interface()
 
@@ -836,6 +948,20 @@ class DdxExam(Gtk.HBox):
         self.hbox.pack_start(self.case_text_scroller, False, False, 10)
         self.hbox.pack_start(self.ddx_view_scroller, True, True, 0)
 
+        # get adjusted width
+        # screen_width = Gtk.gdk.screen_width()
+        # screen_height = Gtk.gdk.screen_height()
+
+        # text is not editable and wraps between words
+        text_view = Gtk.TextView(buffer=self.tb)
+        text_view.set_editable(False)
+        text_view.set_wrap_mode(Gtk.WRAP_WORD)
+
+        # width, height = screen_sizer(screen_width, screen_height, old_width=50, old_height=50)
+
+        self.tb.new_case(self.exam_resources["header_list"][0])
+
+        self.test_box.pack_start(text_view, False, False, 10)
         self.test_box.pack_start(self.hbox, False, False, 0)
         self.test_box.pack_start(self.button_tree, False, False, 0)
 

@@ -401,9 +401,9 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
                             secondary_text=self.string_resources["no_delete_message"])
 
     def go_back(self, widget):
-        from sim import UserType
+        from simFaculty import SimFaculty
         self.setup_transfer()
-        UserType('faculty', self.name, self.password)
+        SimFaculty('faculty', self.name, self.password)
         self.finish_transfer()
 
     def check_taken(self, sections, title):

@@ -160,7 +160,7 @@ class TestCreator(Gtk.Window):
         return button
 
     def return_home(self, widget):
-        from sim import UserType
+        from simFaculty import SimFaculty
         import dbmigrator, splashscreen
 
         splash_screen = splashscreen.SplashScreen()
@@ -180,7 +180,7 @@ class TestCreator(Gtk.Window):
         except:
             logging.debug('no ports to close')
 
-        UserType('faculty', self.name, self.password)
+        SimFaculty('faculty', self.name, self.password)
         splash_screen.hide()
         self.destroy()
         Gtk.main()

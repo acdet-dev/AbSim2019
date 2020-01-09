@@ -45,14 +45,21 @@ class AStringResources:
         elif self.identifier == "sim_screen_faculty":
 
             string_resources = {
-                "config_button": _(u"Configure AbSim"),
+                "config_button": _(u"Settings"),
                 "config_description": _(u"Customize Sensor Pad Pressure Settings"),
-                "add_students_button": _(u"Manage Students"),
-                "add_students_description": _(u"Provide AbSim Student Information"),
                 "create_button": _(u"Create Assessments"),
-                "create_description": _(u"Construct Custom Assessments"),
-                "view_button": _(u"View Assessments"),
-                "view_description": _(u"View Results and Assign Assessments")
+                "create_description": _(u"Create and Assign Assessments")
+            }
+
+        elif self.identifier == "sim_screen_faculty_2":
+
+            string_resources = {
+                "add_students_button": _(u"Enter Student Rosters"),
+                "add_students_description": _(u"Provide AbSim Student Information"),
+                "create_button": _(u"Add Assessments"),
+                "create_description": _(u"Select Test Items to Include on Assessments"),
+                "view_button": _(u"View and Assign Assessments"),  # preview exam
+                "view_description": _(u"View Created Assessments and Student Results")
             }
 
         elif self.identifier == "config_screen":
@@ -211,8 +218,8 @@ class AStringResources:
             string_resources = {
                 "self_learning_button": _(u"Self-directed Learning"),
                 "self_description": _(u"Learn and Practice Abdominal Palpation"),
-                "view_button": _(u"View Assignments"),
-                "view_description": _(u"Take Assigned Assessments"),
+                "view_button": _(u"Take Assigned Assessment"),
+                "view_description": _(u"Complete a variety assessments using AbSim"),
                 "request_id": _(u"Please enter your ID"),
                 "login_window": _(u"Student Login"),
                 "login_fail": _(u"Login Failed"),
@@ -237,8 +244,15 @@ class AStringResources:
                 "select_description": _(u'Please select an assessment and click "Begin Assessment".'),
                 "finish_title": _(u"Assessment Finished"),
                 "baseline_text": _(u"Perform a baseline assessment and click 'OK' when finished."),
+                "base_description": _(u"Baseline Evaluation"),
+                "case_description": _(u"Identify Condition"),
+                "ddx_description": _(u"Diagnosis with Case Vignette"),
+                "final_string": _(u"Contains"),
+                "base_text": _(u"Select an assessment to view associated test items."),
                 "ok_button": _(u"Ok"),
                 "make_selection_button": _(u"Make Selection"),
+                "identify_helper": _(u"Identifyy the condition associated with the test item(s)"),
+                "text_helper": _(u"view the case vignette, perform an exam, and enter your diagnosis for the case"),
                 "no_selection": _(u"No Selection"),
                 "no_string": _(u"Please select a case.")
             }
@@ -339,6 +353,7 @@ class AStringResources:
                 "instruction_c": _(u"When you are confident in eliciting findings, we will integrate patient "
                                    u"history and non-palpitory physical findings."),
                 "instruction_d": _(u"Before moving on, re-familiarize yourself with how this condition feels."),
+                # figure out spacing, font size, and packing
                 "correct_label": _(u"Correct"),
                 "incorrect_label": _(u"Incorrect"),
                 "chosen_label": _(u"You selected:"),
@@ -378,6 +393,8 @@ class AStringResources:
                 "choice_string_2": _(u"best diagnosis"),
                 "best_1": _(u"Best diagnosis"),
                 "best_2": _(u"below"),
+                # change to Incorrect
+                # Best diagnosis is:
                 "next_button": _(u"Next Case")
             }
 
