@@ -17,7 +17,7 @@ class BaselineModel:
         try:
             c = conn.cursor()
             c.execute(create_table_sql)
-        except Exception as e:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError) as e:
             pass
             logging.debug('Could not create baseline data table.')
 
@@ -31,9 +31,11 @@ class BaselineModel:
         try:
             c.execute(stmt, (key.encode(),))
             db_conn.commit()
-        except Exception:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError):
             logging.debug('Could not delete baseline data table row.')
-            pass
+            db_conn.rollback()
+
+        c.close()
         db_conn.close()
 
     def save_to_db(self, last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in,
@@ -74,9 +76,11 @@ class BaselineModel:
             try:
                 db_conn.commit()
                 logging.debug('db updated')
-            except:
+            except (sqlite3.InterfaceError, sqlite3.OperationalError):
                 logging.debug('Could not save assessment for ' + student_id + ' at ' + time_in)
                 db_conn.rollback()
+
+            c.close()
             db_conn.close()
 
     def get_all(self):
@@ -89,12 +93,15 @@ class BaselineModel:
         '''
         try:
             c.execute(stmt)
-        except:
+            tuple_list = c.fetchall()
+            exam_list = [list(elem) for elem in tuple_list]
+
+        except (sqlite3.InterfaceError, sqlite3.OperationalError):
             # i18n - logging.debug statement
             logging.debug('Could not get all assessments')
+            exam_list = []
 
-        tuple_list = c.fetchall()
-        exam_list = [list(elem) for elem in tuple_list]
+        c.close()
         db_conn.close()
 
         return exam_list
@@ -109,11 +116,17 @@ class BaselineModel:
             WHERE exam_name=? AND student_id=?
         '''
 
-        c.execute(stmt, (exam_id, student_id,))
-        row = c.fetchone()
-        # logging.debug(row)
-        exam = [elem for elem in row]
-        exam[8] = pickle.loads(row[8])
+        try:
+            c.execute(stmt, (exam_id, student_id,))
+            row = c.fetchone()
+            # logging.debug(row)
+            exam = [elem for elem in row]
+            exam[8] = pickle.loads(row[8])
+        except (IndexError, sqlite3.InterfaceError, sqlite3.OperationalError):
+            logging.debug("could not get by exam name and student id")
+            exam = []
+
+        c.close()
         db_conn.close()
 
         return exam
@@ -131,15 +144,15 @@ class BaselineModel:
             tuple_list = c.fetchall()
             exam_list = [list(elem) for elem in tuple_list]
 
-            return exam_list
-
-        except:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError):
             # i18n - logging.debug statement
             logging.debug('Could not get all assessments')
+            exam_list = []
 
-            return None
-
+        c.close()
         db_conn.close()
+
+        return exam_list
 
     def get_by_exam_section_id(self, key1, key2):
         db_conn = self.connect()
@@ -156,10 +169,11 @@ class BaselineModel:
                 tuple_list = c.fetchall()
                 exam_list.extend([list(elem) for elem in tuple_list])
 
-            except:
+            except (sqlite3.InterfaceError, sqlite3.OperationalError):
                 # i18n - logging.debug statement
                 logging.debug('Could not get all assessments')
 
+        c.close()
         db_conn.close()
 
         return exam_list
@@ -180,9 +194,12 @@ class BaselineModel:
             row = c.fetchall()
             baseline = [list(elem) for elem in row]
             logging.debug('Got assessment by score_id!')
-            db_conn.close()
-            return baseline
 
-        except Exception:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError):
             logging.debug('Could not get assessment by score_id.')
-            pass
+            baseline = []
+
+        c.close()
+        db_conn.close()
+
+        return baseline

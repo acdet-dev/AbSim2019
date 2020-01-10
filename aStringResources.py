@@ -47,7 +47,7 @@ class AStringResources:
             string_resources = {
                 "config_button": _(u"Settings"),
                 "config_description": _(u"Customize Sensor Pad Pressure Settings"),
-                "create_button": _(u"Create Assessments"),
+                "create_button": _(u"Assessments"),
                 "create_description": _(u"Create and Assign Assessments")
             }
 
@@ -56,7 +56,7 @@ class AStringResources:
             string_resources = {
                 "add_students_button": _(u"Enter Student Rosters"),
                 "add_students_description": _(u"Provide AbSim Student Information"),
-                "create_button": _(u"Add Assessments"),
+                "create_button": _(u"Create Assessments"),
                 "create_description": _(u"Select Test Items to Include on Assessments"),
                 "view_button": _(u"View and Assign Assessments"),  # preview exam
                 "view_description": _(u"View Created Assessments and Student Results")
@@ -251,7 +251,7 @@ class AStringResources:
                 "base_text": _(u"Select an assessment to view associated test items."),
                 "ok_button": _(u"Ok"),
                 "make_selection_button": _(u"Make Selection"),
-                "identify_helper": _(u"Identifyy the condition associated with the test item(s)"),
+                "identify_helper": _(u"Identify the condition associated with the test item(s)"),
                 "text_helper": _(u"view the case vignette, perform an exam, and enter your diagnosis for the case"),
                 "no_selection": _(u"No Selection"),
                 "no_string": _(u"Please select a case.")

@@ -44,6 +44,7 @@ class ToTake:
         except (sqlite3.InterfaceError, sqlite3.OperationalError) as e:
             logging.debug('Could not save assess info')
             db_conn.rollback()
+        c.close()
         db_conn.close()
 
     def delete_rows(self, key):
@@ -56,8 +57,9 @@ class ToTake:
             db_conn.commit()
         except (sqlite3.InterfaceError, sqlite3.OperationalError) as e:
             logging.debug('Failed to delete taken exam info.')
-            pass
+            db_conn.rollback()
 
+        c.close()
         db_conn.close()
 
     def delete_by_exam_id(self, key):
@@ -70,8 +72,9 @@ class ToTake:
             db_conn.commit()
         except (sqlite3.InterfaceError, sqlite3.OperationalError) as e:
             logging.debug(e)
-            pass
+            db_conn.rollback()
 
+        c.close()
         db_conn.close()
 
     def get_all(self, key):
@@ -86,17 +89,16 @@ class ToTake:
             c.execute(stmt)
             tuple_list = c.fetchall()
             assessed_list = [list(elem) for elem in tuple_list]
-            db_conn.close()
-            return assessed_list
 
         except (sqlite3.OperationalError, sqlite3.InterfaceError) as e:
             # i18n - print statement
             logging.debug('Could not get all assessments')
             assessed_list = []
-            db_conn.close()
-            return assessed_list
 
-    # add loop to check for password and id in list of entries
+        c.close()
+        db_conn.close()
+
+        return assessed_list
 
     def get_by_section_id(self, key):
 
@@ -117,6 +119,8 @@ class ToTake:
         except sqlite3.OperationalError as e:
             logging.debug(e)
             assessed = []
+
+        c.close()
         db_conn.close()
         return assessed
 
@@ -138,6 +142,7 @@ class ToTake:
             logging.debug(e)
             assigned = []
 
+        c.close()
         db_conn.close()
         return assigned
 
@@ -159,5 +164,7 @@ class ToTake:
         except (sqlite3.InterfaceError, sqlite3.OperationalError) as e:
             logging.debug(e)
             assessed = []
+
+        c.close()
         db_conn.close()
         return assessed

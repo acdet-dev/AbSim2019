@@ -17,7 +17,7 @@ class TakenModel:
         try:
             c = conn.cursor()
             c.execute(create_table_sql)
-        except Exception:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError):
             pass
             logging.debug('AbSim could not create taken exams database table.')
 
@@ -51,9 +51,11 @@ class TakenModel:
         try:
             db_conn.commit()
             logging.debug('taken exams db updated')
-        except:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError):
             logging.debug('Could not save assessment for ' + student_id + ' at ')
             db_conn.rollback()
+
+        c.close()
         db_conn.close()
 
     def delete_rows(self, key):
@@ -64,10 +66,11 @@ class TakenModel:
         try:
             c.execute(droptablestatement, (key,))
             db_conn.commit()
-        except Exception:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError):
             logging.debug('Failed to delete taken exam info.')
-            pass
+            db_conn.rollback()
 
+        c.close()
         db_conn.close()
 
     def get_all(self, key):
@@ -82,17 +85,15 @@ class TakenModel:
             c.execute(stmt)
             tuple_list = c.fetchall()
             assessed_list = [list(elem) for elem in tuple_list]
-            db_conn.close()
             return assessed_list
 
-        except Exception:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError):
             # i18n - print statement
             logging.debug('Could not get all assessments')
-            assessed_list = []
-            db_conn.close()
             return None
 
-    # add loop to check for password and id in list of entries
+        c.close()
+        db_conn.close()
 
     def get_by_score_id(self, key):
 
@@ -110,12 +111,15 @@ class TakenModel:
             row = c.fetchall()
             assessed = [list(elem) for elem in row]
             logging.debug('Got assessment by score_id!')
-            db_conn.close()
-            return assessed
 
-        except Exception:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError):
             logging.debug('Could not get assessment by score_id.')
-            pass
+            assessed = []
+
+        c.close()
+        db_conn.close()
+
+        return assessed
 
     def get_by_exam_id(self, key):
 
@@ -133,12 +137,15 @@ class TakenModel:
             row = c.fetchall()
             assessed = [list(elem) for elem in row]
             logging.debug('Got assessment by score_id!')
-            db_conn.close()
-            return assessed
 
-        except Exception:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError):
             logging.debug('Could not get assessment by score_id.')
-            pass
+            assessed = []
+
+        c.close()
+        db_conn.close()
+
+        return assessed
 
     def get_by_exam_section_id(self, key1, key2):
 
@@ -156,10 +163,12 @@ class TakenModel:
             row = c.fetchall()
             assessed = [list(elem) for elem in row]
             logging.debug('Got assessment by score_id!')
-            db_conn.close()
 
-        except Exception:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError):
             logging.debug('Could not get assessment by score_id.')
             assessed = []
+
+        c.close()
+        db_conn.close()
 
         return assessed

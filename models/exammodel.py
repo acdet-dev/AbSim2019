@@ -18,9 +18,9 @@ class ExamModel:
         try:
             c = conn.cursor()
             c.execute(create_table_sql)
-        except Exception as e:
-            pass
+        except (sqlite3.InterfaceError, sqlite3.OperationalError) as e:
             logging.debug('Could not create exam data table.')
+            logging.debug(e)
 
     def delete_by_exam_id(self, key):
 
@@ -32,9 +32,12 @@ class ExamModel:
         try:
             c.execute(stmt, (key,))
             db_conn.commit()
-        except Exception:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError) as e:
             logging.debug('Could not delete exam data table row.')
-            pass
+            logging.debug(e)
+            db_conn.rollback()
+
+        c.close()
         db_conn.close()
 
     def save_to_db(self, win, exam_name, case_list, title_list, time_in):
@@ -62,11 +65,12 @@ class ExamModel:
                 logging.debug('exam db updated')
                 sim_message(win, info_string=self.string_resources["success"],
                             secondary_text=self.string_resources["success_explanation"])
-            except sqlite3.InterfaceError as e:
+            except (sqlite3.InterfaceError, sqlite3.OperationalError) as e:
                 logging.debug(e)
                 sim_message(win, info_string=self.string_resources["failure"],
                             secondary_text=self.string_resources["failure_explanation_1"])
                 db_conn.rollback()
+            c.close()
             db_conn.close()
 
         else:
@@ -83,17 +87,17 @@ class ExamModel:
         '''
         try:
             c.execute(stmt)
-        except:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError) as e:
             # i18n - print statement
             logging.debug('Could not get all assessments')
+            logging.debug(e)
 
         tuple_list = c.fetchall()
         exam_list = [list(elem) for elem in tuple_list]
+        c.close()
         db_conn.close()
 
         return exam_list
-
-    # add loop to check for password and id in list of entries
 
     def get_by_exam_id(self, key):
         db_conn = self.connect()
@@ -112,9 +116,15 @@ class ExamModel:
             title = faculty[0][0]
             case_info = faculty[0][1]
             title_info = faculty[0][2]
-            db_conn.close()
-            return title, case_info, title_info
 
-        except Exception as e:
+        except (IndexError, sqlite3.InterfaceError, sqlite3.OperationalError) as e:
             logging.debug('Could not get exams by exam_name')
-            pass
+            logging.debug(e)
+            title = ''
+            case_info = ''
+            title_info = ''
+
+        c.close()
+        db_conn.close()
+
+        return title, case_info, title_info

@@ -18,7 +18,7 @@ class StudentModel:
             c = conn.cursor()
             c.execute(create_table_sql)
             logging.debug('Table created for database file.')
-        except Exception as e:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError) as e:
             logging.debug('could not create table for database file')
             pass
 
@@ -45,9 +45,10 @@ class StudentModel:
             c.execute(stmt, (section, user_last, user_first, student_id))
             db_conn.commit()
             logging.debug('db updated')
-        except:
+        except (sqlite3.InterfaceError, sqlite3.OperationalError):
             logging.debug('Could not save student_info for ' + user_last)
             db_conn.rollback()
+        c.close()
         db_conn.close()
 
     def get_all(self, key):
@@ -60,17 +61,18 @@ class StudentModel:
         '''
         try:
             c.execute(stmt)
-        except:
+            tuple_list = c.fetchall()
+            student_list = [list(elem) for elem in tuple_list]
+
+        except (sqlite3.InterfaceError, sqlite3.OperationalError):
             # i18n - print statement
             logging.debug('Could not get all assessments')
+            student_list = []
 
-        tuple_list = c.fetchall()
-        student_list = [list(elem) for elem in tuple_list]
+        c.close()
         db_conn.close()
 
         return student_list
-
-    # add loop to check for password and id in list of entries
 
     def get_by_student_id(self, key):
         db_conn = self.connect()
@@ -93,12 +95,18 @@ class StudentModel:
             user_first = student[0][2]
             student_id = student[0][3]
 
-            db_conn.close()
-            return section, user_last, user_first, student_id
-
-        except Exception as e:
+        except (IndexError, sqlite3.InterfaceError, sqlite3.OperationalError) as e:
             logging.debug('could not get student by id entered.')
-            pass
+            logging.debug(e)
+            section = ''
+            user_last = ''
+            user_first = ''
+            student_id = ''
+
+        c.close()
+        db_conn.close()
+
+        return section, user_last, user_first, student_id
 
     def get_by_section(self, key):
         db_conn = self.connect()
@@ -115,12 +123,15 @@ class StudentModel:
             row = c.fetchall()
 
             student = [list(elem) for elem in row]
-            db_conn.close()
-            return student
 
         except sqlite3.InterfaceError as e:
             logging.debug(e)
-            pass
+            student = []
+
+        c.close()
+        db_conn.close()
+
+        return student
 
     def get_all_by_section(self, key):
         db_conn = self.connect()
@@ -137,12 +148,15 @@ class StudentModel:
             row = c.fetchall()
 
             student = [list(elem) for elem in row]
-            db_conn.close()
-            return student
 
         except sqlite3.InterfaceError as e:
             logging.debug(e)
-            pass
+            student = []
+
+        c.close()
+        db_conn.close()
+
+        return student
 
     def delete_by_section(self, key):
         db_conn = self.connect()
@@ -155,7 +169,9 @@ class StudentModel:
             db_conn.commit()
         except sqlite3.InterfaceError:
             logging.debug('Could not delete student data table row.')
-            pass
+            db_conn.rollback()
+
+        c.close()
         db_conn.close()
 
     def delete_by_student_id(self, key):
@@ -168,5 +184,7 @@ class StudentModel:
             db_conn.commit()
         except sqlite3.InterfaceError:
             logging.debug('Could not delete student data table row.')
-            pass
+            db_conn.rollback()
+
+        c.close()
         db_conn.close()
