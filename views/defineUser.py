@@ -1,13 +1,12 @@
 import logging
 import time
 from views.sim import UserType
-import splashscreen
-from views.menu import MenuBar
-from simLabels import construct_markup
+from views.menuBar import MenuBar
+from views.buildWidgets import BuildWidgets
 from simLogin import get_user_pw
 from messages import sim_message, sim_login_message
 from models import facultyinfomodel
-from resources.aStringResources import AStringResources
+from aStringResources import AStringResources
 
 from Levenshtein import distance
 import gi
@@ -32,76 +31,30 @@ class DefineUser(Gtk.Window, MenuBar):
         self.maximize()
 
         # Using inherited build_bar method from MenuBar to add menu bar to window
-        box = self.build_bar()
+        widget = self.build_bar()
 
         # Let user know that menubar has been created and translations have gone smoothly
         logging.debug('i18n successful. Menu bar successfully created')
 
-        widget = self.build_logo(box)
+        # initialize widget building class
+        bw = BuildWidgets()
+        logo = bw.build_logo(img_string='img/acdet-logo.gif')
 
-        self.add_buttons(widget)
+        label = bw.build_label(label_text=self.string_resources["welcome_text"])
 
-    def build_logo(self, widget):
-        # Add logo to menu box widget
-        logo = Gtk.Image()
-
-        logo.set_from_file('img/acdet-logo.gif')
+        b_list = [self.string_resources["faculty_button"], self.string_resources["student_button"]]
+        d_list = [self.string_resources["faculty_description"], self.string_resources["student_description"]]
+        f_list = [self.add_faculty, self.student]
+        button_table = bw.add_buttons(button_list=b_list, description_list=d_list, functions=f_list)
 
         widget.pack_start(logo, False, False, 0)
-
-        return widget
-
-    def add_buttons(self, widget):
-        # add Student and Faculty Buttons
-        use_label = Gtk.Label()
-        # TRANSLATORS Be careful to keep 'size' and 'font' tags.
-        # TRANSLATORS However, you can change the size of text with these by a small amount
-        # TRANSLATORS to adjust for fitting text on screen.
-        label_text = self.string_resources["welcome_text"]
-        label_pre_mark = construct_markup(label_text, font_size=24)
-        use_label.set_markup(label_pre_mark)
-        widget.pack_start(use_label, False, False, 0)
-
-        button_table = Gtk.Table(rows=4, columns=2)
-        button_table.set_border_width(50)
-        button_table.set_col_spacings(30)
-        button_table.set_row_spacings(30)
-        widget.pack_start(button_table, False, False, 10)
-
-        faculty_button = self.build_button(self.string_resources["faculty_button"])
-        faculty_button.connect('clicked', self.add_faculty)
-        button_table.attach(faculty_button, 0, 1, 1, 2, xoptions=False, yoptions=False)
-
-        faculty_explanation = Gtk.Label()
-        label_text = self.string_resources["faculty_description"]
-        label_pre_mark = construct_markup(label_text, font_size=20)
-        faculty_explanation.set_markup(label_pre_mark)
-        button_table.attach(faculty_explanation, 1, 2, 1, 2)
-
-        student_button = self.build_button(self.string_resources["student_button"])
-        student_button.connect('clicked', self.student)
-        button_table.attach(student_button, 0, 1, 2, 3, xoptions=False, yoptions=False)
-
-        student_explanation = Gtk.Label()
-        label_text = self.string_resources["student_description"]
-        label_pre_mark = construct_markup(label_text, font_size=20)
-        student_explanation.set_markup(label_pre_mark)
-        button_table.attach(student_explanation, 1, 3, 1, 6)
-
-        self.add(widget)
-        self.show_all()
+        widget.pack_start(label, False, False, 10)
+        widget.pack_start(button_table, False, False, 0)
 
         self.destroy_signal_handler = self.connect('destroy', Gtk.main_quit)
 
-    def build_button(self, label_text):
-        button = Gtk.Button()
-        label = Gtk.Label()
-        lt = label_text
-        lt_pre_mark = construct_markup(lt, font_size=20)
-        label.set_markup(lt_pre_mark)
-        label.set_padding(10, 10)
-        button.add(label)
-        return button
+        self.add(widget)
+        self.show_all()
 
     def check_info(self):
         self.faculty_info = facultyinfomodel.FacultyInfoModel()
@@ -119,16 +72,6 @@ class DefineUser(Gtk.Window, MenuBar):
         self.faculty_model = facultyinfomodel.FacultyInfoModel()
 
         self.faculty_model.save_to_db(faculty_id, faculty_pw, timestr)
-
-    def setup_transfer(self):
-        self.splash_screen = splashscreen.SplashScreen()
-        self.splash_screen.show_all()
-        while Gtk.events_pending():
-            Gtk.main_iteration()
-
-    def finish_transfer(self):
-        self.splash_screen.hide()
-        self.close_menu()
 
     def add_faculty(self, widget):
         flag = self.check_info()
@@ -149,9 +92,7 @@ class DefineUser(Gtk.Window, MenuBar):
                     sim_message(self, info_string=self.login_resources["add_success_notification"],
                                 secondary_text=self.login_resources["login_cleared"])
 
-                    self.setup_transfer()
-                    UserType('faculty', credentials[0], credentials[1])
-                    self.finish_transfer()
+                    self.facilitate_transfer(user_type="faculty")
 
                 else:
                     sim_message(self, info_string=self.login_resources["add_fail_notification"],
@@ -173,9 +114,7 @@ class DefineUser(Gtk.Window, MenuBar):
                     try:
                         if distance(credentials[0], self.faculty[0].decode()) < 1 \
                                 and distance(credentials[1], self.faculty[1].decode()) < 1:
-                            self.setup_transfer()
-                            UserType('faculty', credentials[0], credentials[1])
-                            self.finish_transfer()
+                            self.facilitate_transfer(user_type="faculty")
                         else:
                             reset_string = sim_login_message(self,
                                                              info_string=self.login_resources["login_fail_note"],
@@ -201,10 +140,13 @@ class DefineUser(Gtk.Window, MenuBar):
                                 secondary_text=self.login_resources["data_deletion_instructions"])
 
     def student(self, widget):
-        self.setup_transfer()
-        UserType('student')
-        self.finish_transfer()
+        self.facilitate_transfer("student")
 
-    def close_menu(self):
-        self.handler_block(self.destroy_signal_handler)
-        self.destroy()
+    def facilitate_transfer(self, user_type=""):
+        from views.handleTransitions import HandleTransitions
+
+        ht = HandleTransitions(self)
+
+        ht.setup_transfer()
+        UserType(user_type)
+        ht.finish_transfer()

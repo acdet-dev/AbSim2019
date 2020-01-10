@@ -10,7 +10,7 @@ import prototypetext
 import cases
 from casetext import CaseText
 import liveview
-from resources.aStringResources import AStringResources
+from aStringResources import AStringResources
 
 
 class DDXPractice (gtk.HBox):

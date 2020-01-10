@@ -21,6 +21,12 @@ class AStringResources:
                                          u"assessments")
             }
 
+        elif self.identifier == "menu_bar":
+            string_resources = {
+                "home": _(u"Home"),
+                "locales": _(u"System Language")
+            }
+
         elif self.identifier == "faculty_login":
 
             string_resources = {
@@ -48,7 +54,7 @@ class AStringResources:
                 "config_button": _(u"Settings"),
                 "config_description": _(u"Customize Sensor Pad Pressure Settings"),
                 "create_button": _(u"Assessments"),
-                "create_description": _(u"Create and Assign Assessments")
+                "create_description": _(u"Create and Assign Assessments"),
             }
 
         elif self.identifier == "sim_screen_faculty_2":
@@ -59,7 +65,8 @@ class AStringResources:
                 "create_button": _(u"Create Assessments"),
                 "create_description": _(u"Select Test Items to Include on Assessments"),
                 "view_button": _(u"View and Assign Assessments"),  # preview exam
-                "view_description": _(u"View Created Assessments and Student Results")
+                "view_description": _(u"View Created Assessments and Student Results"),
+                "back_description": _(u"Return to Initial Faculty Screen")
             }
 
         elif self.identifier == "config_screen":
@@ -259,8 +266,6 @@ class AStringResources:
 
         elif self.identifier == "menu":
             string_resources = {
-                "home": _(u"Home"),
-                "locales": _(u"System Language"),
                 "menu_tab_1": _(u"Baseline Assessment"),
                 "menu_tab_2a": _(u"Milestone 1:"),
                 "menu_tab_2b": _(u"Depth of Palpation"),
@@ -352,7 +357,8 @@ class AStringResources:
                                    u"to palpate."),
                 "instruction_c": _(u"When you are confident in eliciting findings, we will integrate patient "
                                    u"history and non-palpitory physical findings."),
-                "instruction_d": _(u"Before moving on, re-familiarize yourself with how this condition feels."),
+                "instruction_d": _(u"Before moving on"),
+                "instruction_e": _(u"re-familiarize yourself with how this condition feels."),
                 # figure out spacing, font size, and packing
                 "correct_label": _(u"Correct"),
                 "incorrect_label": _(u"Incorrect"),

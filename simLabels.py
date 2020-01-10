@@ -1,4 +1,4 @@
-from resources.aStringResources import AStringResources
+from aStringResources import AStringResources
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
@@ -8,8 +8,8 @@ class MilestoneNameLabel(Gtk.Label):
     def __init__(self, text):
         super(MilestoneNameLabel, self).__init__()
         self.set_alignment(0, 0)
-        width = Gdk.screen_width()
-        height = Gdk.screen_height()
+        width = Gdk.Screen.get_default().get_width()
+        height = Gdk.Screen.get_default().get_height()
         screen_size = width * height
         font_size = int(screen_size / 82944)
         if font_size > 16:
@@ -37,8 +37,8 @@ class DisconnectWarning(Gtk.HBox):
 
 
 def construct_markup(lt, font_size=0, weight='', fgcolor=''):
-    width = Gdk.screen_width()
-    height = Gdk.screen_height()
+    width = Gdk.Screen.get_default().get_width()
+    height = Gdk.Screen.get_default().get_height()
     screen_size = width * height
     ratio = 1327104/font_size
     new_size = int(screen_size/ratio)

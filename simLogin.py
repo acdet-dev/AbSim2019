@@ -3,7 +3,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-from resources.aStringResources import AStringResources
+from aStringResources import AStringResources
 
 string_resources = AStringResources("simLogin").get_by_identifier()
 

@@ -7,23 +7,24 @@ import guarding
 import statewatcher
 import observer
 import port_settings
-from views import menu
+from views import menuBar
 import simLabels
 from simLabels import construct_markup, screen_sizer
 import abnormalitydetection
 import sounds
 import donottouch
-from resources.aStringResources import AStringResources
+from aStringResources import AStringResources
 
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GLib
 
 
-class Admin(Gtk.Window, menu.MenuBar):
+class Admin(Gtk.Window, menuBar.MenuBar):
     """Admin window. Controls administration of the sim."""
-    def __init__(self, name, password):
+    def __init__(self, user_type, name, password):
         # Build all the objects that talk to each other
+        self.user_type = user_type
         self.name = name
         self.password = password
         self.new_selected_case = observer.Observer()
@@ -49,10 +50,11 @@ class Admin(Gtk.Window, menu.MenuBar):
             'new_case_block_observer': self.new_case_block,
             'notebook': self.notebook,
             'port_settings': self.port_settings,
+            "user_type": self.user_type,
             'name': self.name,
             'password': self.password,
             'sounds': self.sounds,
-            'window': self,
+            'window': self
         }
 
         #make window
@@ -195,7 +197,7 @@ class SensitivityInterface(Gtk.HBox):
         return button
 
     def return_home(self, widget):
-        from views.simFaculty import SimFaculty
+        from views.sim import UserType
         import dbmigrator, splashscreen
 
         splash_screen = splashscreen.SplashScreen()
@@ -213,7 +215,7 @@ class SensitivityInterface(Gtk.HBox):
         except AttributeError:
             logging.debug('attributes necessary for stopping sounds not made yet')
 
-        SimFaculty('faculty', self.view_resources['name'], self.view_resources['password'])
+        UserType(self.view_resources["user_type"], self.view_resources['name'], self.view_resources['password'])
         splash_screen.hide()
         self.view_resources['window'].destroy()
         Gtk.main()

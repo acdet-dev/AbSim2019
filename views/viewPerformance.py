@@ -4,9 +4,9 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
 import examParser
-from views import menu, assessmentViewer
+from views import menu, assessmentViewer, menuBar
 from views.menu import *
-from resources.aStringResources import AStringResources
+from aStringResources import AStringResources
 from models import exammodel
 from models.takenmodel import TakenModel
 import splashscreen
@@ -14,8 +14,8 @@ from casetext import CaseTextBuffer
 from messages import sim_class_message, sim_message
 
 
-class ViewPerformance(Gtk.Window, menu.MenuBar):
-    def __init__(self, name, password):
+class ViewPerformance(Gtk.Window, menuBar.MenuBar):
+    def __init__(self, user_type, name, password):
 
         # initialize string resources
         self.string_resources = AStringResources("view_performance", back_flag=True).get_by_identifier()
@@ -26,6 +26,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
         self.maximize()
 
         # get class parameters
+        self.user_type = user_type
         self.name = name
         self.password = password
         self.exam_id = ''
@@ -402,7 +403,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
     def go_back(self, widget):
         from views.simFaculty import SimFaculty
         self.setup_transfer()
-        SimFaculty('faculty', self.name, self.password)
+        SimFaculty(self.user_type, self.name, self.password)
         self.finish_transfer()
 
     def check_taken(self, sections, title):

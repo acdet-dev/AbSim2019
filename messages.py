@@ -24,7 +24,7 @@ def sim_reset_dialogue(parent, info_string, secondary_text):
 
 
 def sim_login_message(parent, info_string, secondary_text):
-    from resources.aStringResources import AStringResources
+    from aStringResources import AStringResources
 
     string_resources = AStringResources("reset_messages").get_by_identifier()
 

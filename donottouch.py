@@ -5,7 +5,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, GObject
 import logging
-from resources.aStringResources import AStringResources
+from aStringResources import AStringResources
 
 
 class DoNotTouchWarning(Gtk.Window):

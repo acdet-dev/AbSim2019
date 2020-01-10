@@ -4,18 +4,19 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-import time, logging
+import time
 from models import exammodel as e
 from simLabels import construct_markup
 from cases import Cases
 from casetext import CaseText
-from resources.aStringResources import AStringResources
+from aStringResources import AStringResources
+from views.menuBar import MenuBar
 
 
-class TestCreator(Gtk.Window):
+class TestCreator(Gtk.Window, MenuBar):
     '''test making window. Allows faculty to create and assign tests'''
 
-    def __init__(self, name, password):
+    def __init__(self, user_type, name, password):
 
         # initialize string resources
         self.string_resources = AStringResources("create_assessments", back_flag=True).get_by_identifier()
@@ -26,6 +27,7 @@ class TestCreator(Gtk.Window):
         self.maximize()
 
         # intialize passed class variables
+        self.user_type = user_type
         self.name = name
         self.password = password
         self.current_case = 'none n'
@@ -51,15 +53,20 @@ class TestCreator(Gtk.Window):
         builder_box = self.build_interface(assignment_box)
         builder_box.show_all()
 
+        menu_bar = self.build_bar()
+        final_vbox = Gtk.VBox()
+        final_vbox.pack_start(menu_bar, False, False, 0)
+
         # widget packing statements
         self.hbox.pack_start(builder_box, False, False, 0)
         self.hbox.pack_start(Gtk.VSeparator(), False, False, 20)
         self.hbox.pack_start(self.ddx_box, False, False, 10)
-        self.hbox.show_all()
+
+        final_vbox.pack_start(self.hbox, False, False, 0)
 
         # add all packed elements to window
-        self.add(self.hbox)
-        self.show()
+        self.add(final_vbox)
+        self.show_all()
 
         self.destroy_signal_handler = self.connect("destroy", Gtk.main_quit)
 
@@ -159,31 +166,26 @@ class TestCreator(Gtk.Window):
         button.add(label)
         return button
 
-    def return_home(self, widget):
-        from views.simFaculty import SimFaculty
-        import dbmigrator, splashscreen
-
-        splash_screen = splashscreen.SplashScreen()
-        splash_screen.show_all()
-
+    def setup_transfer(self):
+        import splashscreen
+        self.splash_screen = splashscreen.SplashScreen()
+        self.splash_screen.show_all()
         while Gtk.events_pending():
             Gtk.main_iteration()
 
-        # Perform DB migration to make sure we have the newest version
-        dbmigrator.DBMigrator()
-
-        try:
-            self.sounds.stop_sound_player()
-            self.port_settings.stop_devices()
-            logging.debug('stopping devices')
-
-        except:
-            logging.debug('no ports to close')
-
-        SimFaculty('faculty', self.name, self.password)
-        splash_screen.hide()
+    def close_menu(self):
+        self.handler_block(self.destroy_signal_handler)
         self.destroy()
-        Gtk.main()
+
+    def finish_transfer(self):
+        self.splash_screen.hide()
+        self.close_menu()
+
+    def return_home(self, widget):
+        from views.simFaculty import SimFaculty
+        self.setup_transfer()
+        SimFaculty(self.user_type, self.name, self.password)
+        self.finish_transfer()
 
     def add_to_exam(self, choice):
         exam_model = e.ExamModel()

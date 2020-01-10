@@ -19,7 +19,7 @@ import logging
 import random
 from Levenshtein import distance
 from casetext import CaseTextBuffer
-from resources.aStringResources import AStringResources
+from aStringResources import AStringResources
 
 import gi
 
@@ -29,9 +29,10 @@ from gi.repository import Gtk, Gdk, GLib, Pango
 
 class ViewAssignments(Gtk.Window):
 
-    def __init__(self, section, last, first, password):
+    def __init__(self, user_type, section, last, first, password):
         # initialize inherited variables
         self.section = section
+        self.user_type = user_type
         self.last = last
         self.first = first
         self.password = password
@@ -271,7 +272,7 @@ class ViewAssignments(Gtk.Window):
         return exam_info
 
     def return_home(self, optional=''):
-        from views import defineUser
+        from views.sim import UserType
         import dbmigrator
 
         splash_screen = splashscreen.SplashScreen()
@@ -289,7 +290,7 @@ class ViewAssignments(Gtk.Window):
         except AttributeError:
             logging.debug('attributes necessary for stopping devices not made yet')
 
-        defineUser.DefineUser()
+        UserType(self.user_type)
         splash_screen.hide()
         self.destroy()
         Gtk.main()

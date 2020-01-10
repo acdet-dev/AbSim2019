@@ -10,7 +10,7 @@ import casetext
 import prototypetext
 import cases
 import questionmarkview
-from resources.aStringResources import AStringResources
+from aStringResources import AStringResources
 
 
 class SelfPractice(gtk.Box):
@@ -94,11 +94,10 @@ class SelfPractice(gtk.Box):
         self.you_chose_label.set_line_wrap(True)
 
         self.touch_again_label = gtk.Label()
-        self.touch_again_label.set_alignment(0, 0)
         self.touch_again_label.set_width_chars(10)
         self.touch_again_label.set_line_wrap(True)
-        label_text = self.string_resources["instruction_d"]
-        label_pre_mark = construct_markup(label_text, font_size=16)
+        label_text = self.string_resources["instruction_d"] + ",\n" + self.string_resources["instruction_e"]
+        label_pre_mark = construct_markup(label_text, font_size=28)
         self.touch_again_label.set_markup(label_pre_mark)
 
         # Now pack stuff we don't want seen until it's time

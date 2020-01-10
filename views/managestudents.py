@@ -3,17 +3,18 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GdkPixbuf
 
-from resources.aStringResources import AStringResources
-from views import menu
-from simLabels import construct_markup, MilestoneNameLabel, screen_sizer
+from aStringResources import AStringResources
+from views import menuBar, buildWidgets
+from simLabels import MilestoneNameLabel
 from messages import sim_message, sim_reset_dialogue
 import logging
 from models.studentmodel import StudentModel
 
 
-class ManageStudents(Gtk.Window, menu.MenuBar):
-    def __init__(self, name, password, current_page=0):
+class ManageStudents(Gtk.Window, menuBar.MenuBar):
+    def __init__(self, user_type, name, password, current_page=0):
 
+        self.user_type = user_type
         self.name = name
         self.password = password
         self.current_page = current_page
@@ -22,6 +23,7 @@ class ManageStudents(Gtk.Window, menu.MenuBar):
         self.string_resources = AStringResources("manage_students", back_flag=True).get_by_identifier()
         self.window_resources = {
             "window": self,
+            "user_type": self.user_type,
             "name": self.name,
             "password": self.password
         }
@@ -32,11 +34,11 @@ class ManageStudents(Gtk.Window, menu.MenuBar):
         self.maximize()
 
         # build menu bar to pack later
-        box = self.build_bar()
+        widget = self.build_bar()
 
         # build notebook object
         self.notebook = Gtk.Notebook()
-        self.notebook.set_tab_pos(Gtk.POS_LEFT)
+        self.notebook.set_tab_pos(0)
         self.notebook.connect('switch-page', self.reset_active_page)
         self.notebook.show()
 
@@ -44,6 +46,7 @@ class ManageStudents(Gtk.Window, menu.MenuBar):
 
         # build individual page objects
         second_page = ManagePage(self.string_resources, self.window_resources)
+
         # first notebook tab
         first_page = InstructionPage(self.string_resources, second_page)
         first_page.set_property('border-width', 15)
@@ -51,19 +54,14 @@ class ManageStudents(Gtk.Window, menu.MenuBar):
         self.notebook.append_page(first_page, first_page_label)
 
         # second notebook tab
-
         second_page.set_property('border-width', 15)
         second_page_label = MilestoneNameLabel(self.string_resources["notebook_tab_2"])
         self.notebook.append_page(second_page, second_page_label)
 
-        vbox = Gtk.VBox(False, 2)
-        vbox.pack_start(box, False, False, 0)
-        vbox.pack_start(self.notebook, True, True, 0)
+        widget.pack_start(self.notebook, True, True, 0)
 
-        self.add(vbox)
-        box.show_all()
-        self.show()
-        vbox.show()
+        self.add(widget)
+        self.show_all()
 
         self.destroy_signal_handler = self.connect('destroy', Gtk.main_quit)
 
@@ -88,81 +86,37 @@ class InstructionPage(Gtk.VBox):
         self.string_resources = string_resources
         self.mp = mp
 
-        label_1 = self.build_label(flag="part_one")
+        # initialize builder class
+        bw = buildWidgets.BuildWidgets()
 
-        ex_image_1 = self.build_logo(img_string="img/example_class.png")
-        ex_image_2 = self.build_logo(img_string="img/example_save.png")
-        # ex_image_3 = self.build_logo(img_string="img/example_csv.gif")
+        # build labels
+        label_text = "<b>" + self.string_resources["label_header"] + "</b>" + "\n\n" + \
+                     self.string_resources["label_text_1"] + "\n" + self.string_resources["label_text_2"] + "\n" + \
+                     self.string_resources["label_text_3"] + "\n" + self.string_resources["label_text_4"]
+        label_1 = bw.build_label(label_text, f_size=16, alignment=[0, 0])
+        label_2 = bw.build_label(self.string_resources["label_text_5"], f_size=16, alignment=[0, 0])
+
+        # build images
+        ex_image_1 = bw.build_logo(img_string="img/example_class.png")
+        ex_image_2 = bw.build_logo(img_string="img/example_save.png")
 
         # initialize box for packing images
         hbox = Gtk.HBox(False, 2)
 
         hbox.pack_start(ex_image_1, False, False, 40)
         hbox.pack_start(ex_image_2, False, False, 40)
-        # hbox.pack_start(ex_image_3, False, False, 10)
 
-        label_2 = self.build_label()
-
-        bt = self.add_button()
+        # initialize button table elements
+        b_list = [self.string_resources["button_text"], self.string_resources["back_button"]]
+        f_list = [self.upload, self.mp.go_back]
+        button_table = bw.add_horizontal_buttons(button_list=b_list, functions=f_list, f_size=16)
 
         self.pack_start(label_1, False, False, 20)
         self.pack_start(hbox, False, False, 20)
         self.pack_start(label_2, False, False, 20)
-        self.pack_start(bt, False, False, 0)
+        self.pack_start(button_table, False, False, 0)
 
         self.show_all()
-
-    def build_label(self, flag=""):
-        label = Gtk.Label(u" ")
-        if flag == "part_one":
-            label_text = "<b>" + self.string_resources["label_header"] + "</b>" + "\n\n" +\
-                         self.string_resources["label_text_1"] + "\n" + self.string_resources["label_text_2"] + "\n" +\
-                         self.string_resources["label_text_3"] + "\n" + self.string_resources["label_text_4"]
-        else:
-            label_text = self.string_resources["label_text_5"]
-        label_pre_mark = construct_markup(label_text, font_size=16)
-        label.set_markup(label_pre_mark)
-        label.set_line_wrap(True)
-        label.set_alignment(0, 0)
-        label.set_max_width_chars(50)
-
-        return label
-
-    def build_logo(self, img_string):
-        # get screen size
-        s_w = Gdk.screen_width()
-        s_h = Gdk.screen_height()
-        width, height = screen_sizer(s_w, s_h, old_width=450, old_height=325)
-
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(
-            filename=img_string,
-            width=width,
-            height=height,
-            preserve_aspect_ratio=True)
-        logo = Gtk.Image.new_from_pixbuf(pixbuf)
-
-        return logo
-
-    def add_button(self):
-        button_table = Gtk.Table(rows=1, columns=1)
-        button_table.set_border_width(20)
-        button_table.set_col_spacings(5)
-        button_table.set_row_spacings(5)
-
-        upload_button = self.build_button(self.string_resources["button_text"])
-        upload_button.connect('clicked', self.upload)
-        button_table.attach(upload_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
-
-        return button_table
-
-    def build_button(self, label_text):
-        button = Gtk.Button()
-        label = Gtk.Label()
-        label_pre_mark = construct_markup(label_text, font_size=16)
-        label.set_markup(label_pre_mark)
-        label.set_padding(10, 10)
-        button.add(label)
-        return button
 
     def upload(self, useless_param):
         from filechooser import FileChooserWindow
@@ -171,6 +125,9 @@ class InstructionPage(Gtk.VBox):
         new_store = self.mp.create_model()
         self.mp.no_sections_flag = False
         self.mp.treeView.set_model(new_store)
+
+    def go_back(self):
+        self.mp.go_back()
 
     def reset_page(self):
         pass
@@ -200,107 +157,49 @@ class ManagePage(Gtk.VBox):
         self.show_all()
 
     def build_interface(self):
-        from simLabels import screen_sizer
+        # initialize builder class
+        bw = buildWidgets.BuildWidgets()
 
         # make boxes to hold all info
         vbox = Gtk.VBox(False, 8)
         hbox = Gtk.HBox(False, 8)
 
-        # scroller window for all abnormality and ddx exams in queue
-        sw = Gtk.ScrolledWindow()
-        sw.set_shadow_type(Gtk.SHADOW_ETCHED_IN)
-        sw.set_policy(Gtk.POLICY_AUTOMATIC, Gtk.POLICY_AUTOMATIC)
-
-        # second scrolled window
-        sw2 = Gtk.ScrolledWindow()
-        sw2.set_shadow_type(Gtk.SHADOW_ETCHED_IN)
-        sw2.set_policy(Gtk.POLICY_AUTOMATIC, Gtk.POLICY_AUTOMATIC)
-
-        # get database entries for treeview in scroller window
+        # create stores
         self.store = self.create_model()
-
-        # second store
         self.wr["store2"] = self.create_model2()
 
-        # create tree views
-        self.treeView = Gtk.TreeView(self.store)
-        self.treeView.connect('cursor-changed', self.on_row_change)
-        self.treeView.set_rules_hint(True)
+        self.treeView = bw.build_tree_view(self.store, self.on_row_change)
+        self.wr["treeView2"] = bw.build_tree_view(self.wr["store2"], self.on_row_change2)
 
-        self.wr["treeView2"] = Gtk.TreeView(self.wr["store2"])
-        self.wr["treeView2"].connect('cursor-changed', self.on_row_change2)
-        self.wr["treeView2"].set_rules_hint(True)
+        sw = bw.create_scroller()
+        sw2 = bw.create_scroller()
 
         # add tree view to scrolled window
         sw.add(self.treeView)
         sw2.add(self.wr["treeView2"])
 
-        # get adjusted width
-        screen_width = Gtk.gdk.screen_width()
-        screen_height = Gtk.gdk.screen_height()
-        width, height = screen_sizer(screen_width, screen_height, old_width=400, old_height=600)
-
-        # allocate space to scroller
-        sw.set_size_request(width, height)
-        sw2.set_size_request(width, height)
-
         # create columns for tree view
-        self.create_columns(self.treeView)
-        self.create_columns2(self.wr["treeView2"])
+        column_header_list = [self.string_resources["column_header"], self.string_resources["column_header_2"]]
+        bw.create_columns(self.treeView, column_header_list)
 
-        # Add navigation buttons
-        button_tree = self.add_buttons()
+        column_header_list_2 = [self.string_resources["column_header_3"], self.string_resources["column_header_4"],
+                                self.string_resources["column_header_5"], self.string_resources["column_header_6"],
+                                self.string_resources["column_header_7"], self.string_resources["column_header_8"]]
+        bw.create_columns(self.wr["treeView2"], column_header_list_2)
+
+        # make lists of buttons
+        b_list = [self.string_resources["delete_button"], self.string_resources["back_button"]]
+        f_list = [self.delete, self.go_back]
+        button_table = bw.add_horizontal_buttons(button_list=b_list, functions=f_list, f_size=16)
 
         hbox.pack_start(sw, False, False, 10)
         hbox.pack_start(sw2, True, True, 10)
 
         # pack all to vbox
         vbox.pack_start(hbox, True, True, 0)
-        vbox.pack_start(button_tree, False, False, 0)
+        vbox.pack_start(button_table, False, False, 0)
 
         return vbox
-
-    def add_buttons(self):
-
-        button_table = Gtk.Table(rows=2, columns=1)
-        button_table.set_border_width(20)
-        button_table.set_col_spacings(5)
-        button_table.set_row_spacings(5)
-
-        delete_button = self.build_button(self.string_resources["delete_button"])
-        delete_button.connect('clicked', self.delete)
-        button_table.attach(delete_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
-
-        back_button = self.build_button(self.string_resources["back_button"])
-        back_button.connect('clicked', self.go_back)
-        button_table.attach(back_button, 1, 2, 0, 1, xoptions=False, yoptions=False)
-
-        return button_table
-
-    def build_button(self, label_text):
-        from simLabels import construct_markup
-        button = Gtk.Button()
-        label = Gtk.Label()
-        label_pre_mark = construct_markup(label_text, font_size=16)
-        label.set_markup(label_pre_mark)
-        label.set_padding(10, 10)
-        button.add(label)
-        return button
-
-    def setup_transfer(self):
-        import splashscreen
-        self.splash_screen = splashscreen.SplashScreen()
-        self.splash_screen.show_all()
-        while Gtk.events_pending():
-            Gtk.main_iteration()
-
-    def close_menu(self):
-        self.wr["window"].handler_block(self.wr["window"].destroy_signal_handler)
-        self.wr["window"].destroy()
-
-    def finish_transfer(self):
-        self.splash_screen.hide()
-        self.close_menu()
 
     def get_score_info(self, students):
         from models.takenmodel import TakenModel
@@ -368,20 +267,23 @@ class ManagePage(Gtk.VBox):
             if yes_no == "reset":
                 # execute delete statements
                 self.wr["student_info"].delete_by_section(key=self.wr["section_id"])
-                self.setup_transfer()
-                ManageStudents(self.wr["name"], self.wr["password"], current_page=1)
-                self.finish_transfer()
-
+                self.facilitate_transfer(ManageStudents, self.wr["user_type"], self.wr["name"], self.wr["password"], 1)
             else:
                 sim_message(self.wr["window"], info_string=self.string_resources["no_delete"],
                             secondary_text=self.string_resources["no_delete_message"])
         pass
 
+    def facilitate_transfer(self, new_window, *args):
+        from views.handleTransitions import HandleTransitions
+        ht = HandleTransitions(self.wr["window"])
+
+        ht.setup_transfer()
+        new_window(*args)
+        ht.finish_transfer()
+
     def go_back(self, widget):
         from views.simFaculty import SimFaculty
-        self.setup_transfer()
-        SimFaculty('faculty', self.wr["name"], self.wr["password"])
-        self.finish_transfer()
+        self.facilitate_transfer(SimFaculty, self.wr["user_type"], self.wr["name"], self.wr["password"])
 
     def check_students(self, section, den_flag=True):
         """ method to return number of students taken out of total students assigned assessment """
@@ -414,43 +316,6 @@ class ManagePage(Gtk.VBox):
 
         return store
 
-    def create_columns2(self, treeView):
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["column_header_3"], renderer_text, text=0)
-        column.set_sort_column_id(0)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["column_header_4"], renderer_text, text=1)
-        column.set_sort_column_id(1)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["column_header_5"], renderer_text, text=2)
-        column.set_sort_column_id(2)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["column_header_6"], renderer_text, text=3)
-        column.set_sort_column_id(3)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["column_header_7"], renderer_text, text=4)
-        column.set_sort_column_id(4)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["column_header_8"], renderer_text, text=5)
-        column.set_sort_column_id(5)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
     def create_model(self):
         store = Gtk.ListStore(str, str)
 
@@ -467,19 +332,6 @@ class ManagePage(Gtk.VBox):
             self.no_sections_flag = True
         return store
 
-    def create_columns(self, treeView):
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["column_header"], renderer_text, text=0)
-        column.set_sort_column_id(0)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["column_header_2"], renderer_text, text=1)
-        column.set_sort_column_id(1)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
     def on_row_change(self, treeview):
         selection = treeview.get_selection()
         (model, iter) = selection.get_selected()
@@ -495,4 +347,14 @@ class ManagePage(Gtk.VBox):
         selection.unselect_all()
 
     def reset_page(self):
-        pass
+        iter_root = self.treeView.get_model().get_iter_first()
+        tree_selection = self.treeView.get_selection()
+        tree_selection.unselect_all()
+        tree_selection.select_iter(iter_root)
+
+        try:
+            (model, iter) = tree_selection.get_selected()
+            self.wr["section_id"] = model.get(iter, 0)[0]
+            self.update_view()
+        except TypeError as e:
+            logging.debug(e)

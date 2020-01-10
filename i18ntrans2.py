@@ -527,7 +527,7 @@ def set_menu_locale(loc_prefs):
 
 
 def set_locale_handler(lbl, loc, popup):
-    from resources.aStringResources import AStringResources
+    from aStringResources import AStringResources
     global translator
 
     string_resources = AStringResources("i18n_trans").get_by_identifier()

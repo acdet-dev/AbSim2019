@@ -5,7 +5,7 @@ pygtkcompat.enable()
 pygtkcompat.enable_gtk(version='3.0')
 import gtk
 import liveview
-from resources.aStringResources import AStringResources
+from aStringResources import AStringResources
 from simLabels import screen_sizer, construct_markup
 
 
