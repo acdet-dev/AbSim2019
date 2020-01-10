@@ -1,14 +1,14 @@
 import gi
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Pango, Gdk, GdkPixbuf
+from gi.repository import Gtk, Gdk, GdkPixbuf
 
 from aStringResources import AStringResources
 import menu
 from simLabels import construct_markup, MilestoneNameLabel, screen_sizer
 from messages import sim_message, sim_reset_dialogue
 import logging
-from studentmodel import StudentModel
+from models.studentmodel import StudentModel
 
 
 class ManageStudents(Gtk.Window, menu.MenuBar):
@@ -303,7 +303,7 @@ class ManagePage(Gtk.VBox):
         self.close_menu()
 
     def get_score_info(self, students):
-        from takenmodel import TakenModel
+        from models.takenmodel import TakenModel
         from statistics import mean, StatisticsError
 
         tm = TakenModel()

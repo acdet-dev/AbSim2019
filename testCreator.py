@@ -5,7 +5,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
 import time, logging
-import exammodel as e
+from models import exammodel as e
 from simLabels import construct_markup
 from cases import Cases
 from casetext import CaseText

@@ -14,7 +14,7 @@ import simLabels
 from simLabels import construct_markup, font_size, screen_sizer
 import sounds
 import donottouch
-import takenmodel
+from models import takenmodel, baselinemodel, exammodel
 import examParser
 import logging
 import random
@@ -236,16 +236,13 @@ class ViewAssignments(Gtk.Window):
 
     def check_exam_by_section(self):
         """ function to populate tree widget with assigned assessments """
-        from totake import ToTake
+        from models.totake import ToTake
         tt = ToTake().get_by_section_id(key=self.section)
 
         return tt
 
     def exams_left(self):
         # function to only show what exams a student has not taken, to prevent retaking for higher score.
-        import exammodel
-        import takenmodel
-        import baselinemodel
 
         exam_model = exammodel.ExamModel()
 

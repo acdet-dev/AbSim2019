@@ -7,7 +7,7 @@ class ExamParser():
         self.title = title
 
     def get_assigned_to(self):
-        from totake import ToTake
+        from models.totake import ToTake
 
         tt = ToTake()
         assigned_to = tt.get_by_exam_id(self.title)
@@ -15,7 +15,7 @@ class ExamParser():
         return assigned_to
 
     def get_exam_info(self, flag, key):
-        import exammodel
+        from models import exammodel
         if flag == 'all':
             exam_model = exammodel.ExamModel()
 
@@ -41,7 +41,7 @@ class ExamParser():
         if 'Baseline' in case_title_list:
             case_list_comm.pop(0)
             case_title_list.pop(0)
-            import baselinemodel
+            from models import baselinemodel
             baseline_model = baselinemodel.BaselineModel()
             baseline_flag = True
 

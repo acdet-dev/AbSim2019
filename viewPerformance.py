@@ -1,15 +1,15 @@
 import gi
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Pango
+from gi.repository import Gtk
 
 import assessmentViewer
 import examParser
 import menu
 from menu import *
 from aStringResources import AStringResources
-import exammodel
-from takenmodel import TakenModel
+from models import exammodel
+from models.takenmodel import TakenModel
 import splashscreen
 from casetext import CaseTextBuffer
 from messages import sim_class_message, sim_message
@@ -231,7 +231,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
 
     def get_number_sections(self):
         """ function to return unique sections of students """
-        from studentmodel import StudentModel
+        from models.studentmodel import StudentModel
 
         sm = StudentModel()
         students = sm.get_all(key="check")
@@ -266,7 +266,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
 
     def assign_to_students_by_section(self, sections):
         """ function to write to_take strings to database for test taking """
-        from totake import ToTake
+        from models.totake import ToTake
 
         # initialize db model
         tt = ToTake()
@@ -376,7 +376,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
 
         else:
 
-            from totake import ToTake
+            from models.totake import ToTake
             from messages import sim_reset_dialogue
 
             tt = ToTake()
@@ -417,7 +417,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
 
     def check_students(self, sections):
         """ method to return number of students taken out of total students assigned assessment """
-        from studentmodel import StudentModel
+        from models.studentmodel import StudentModel
         import itertools
         from functools import partial
         from operator import ne

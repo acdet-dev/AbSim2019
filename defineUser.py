@@ -7,13 +7,13 @@ from menu import MenuBar
 from simLabels import construct_markup
 from simLogin import get_user_pw
 from messages import sim_message, sim_login_message
-import facultyinfomodel
+from models import facultyinfomodel
 from aStringResources import AStringResources
 
 from Levenshtein import distance
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gdk, GLib
+from gi.repository import Gtk
 
 
 class DefineUser(Gtk.Window, MenuBar):

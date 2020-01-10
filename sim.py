@@ -9,7 +9,7 @@ from aStringResources import AStringResources
 
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gdk, GLib
+from gi.repository import Gtk, Gdk
 
 from Levenshtein import distance
 
@@ -147,7 +147,7 @@ class UserType(Gtk.Window, menu.MenuBar):
         Gdk.threads_leave()
 
     def get_info(self, student_id):
-        import studentmodel
+        from models import studentmodel
 
         self.student_model = studentmodel.StudentModel()
         # self.allRows = self.faculty_model.get_all(faculty_pw)

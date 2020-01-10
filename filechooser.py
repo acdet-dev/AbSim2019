@@ -1,7 +1,7 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
-import studentmodel
+from models import studentmodel
 import time
 import csv
 import logging
