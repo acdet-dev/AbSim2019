@@ -7,18 +7,17 @@ import guarding
 import statewatcher
 import observer
 import port_settings
-import menu
-import sim
+from views import menu
 import simLabels
 from simLabels import construct_markup, screen_sizer
 import abnormalitydetection
 import sounds
 import donottouch
-from aStringResources import AStringResources
+from resources.aStringResources import AStringResources
 
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gdk, GLib, GObject
+from gi.repository import Gtk, Gdk, GLib
 
 
 class Admin(Gtk.Window, menu.MenuBar):
@@ -118,12 +117,11 @@ class Admin(Gtk.Window, menu.MenuBar):
         self.notebook.set_current_page(0)
 
     def change_user_type(self, widget):
-        sim.UserType()
         self.handler_block(self.destroy_signal_handler)
         self.destroy()
 
     def attach_new_case_observer(self, callback):
-        if self.state_watcher.sensor_pad_is_connected == True:
+        if self.state_watcher.sensor_pad_is_connected:
             self.new_selected_case.connect(callback)
 
     def reset_active_page(self, notebook, useless_param, page_num):
@@ -197,7 +195,7 @@ class SensitivityInterface(Gtk.HBox):
         return button
 
     def return_home(self, widget):
-        from sim import UserType
+        from views.simFaculty import SimFaculty
         import dbmigrator, splashscreen
 
         splash_screen = splashscreen.SplashScreen()
@@ -215,7 +213,7 @@ class SensitivityInterface(Gtk.HBox):
         except AttributeError:
             logging.debug('attributes necessary for stopping sounds not made yet')
 
-        UserType('faculty', self.view_resources['name'], self.view_resources['password'])
+        SimFaculty('faculty', self.view_resources['name'], self.view_resources['password'])
         splash_screen.hide()
         self.view_resources['window'].destroy()
         Gtk.main()

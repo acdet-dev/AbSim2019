@@ -6,8 +6,8 @@ VERBOSE = True  # For debugging messages.
 
 import gi
 gi.require_version('Gtk', '3.0')
-import gettext, inspect, os, locale, ctypes, re, subprocess, sys, shutil
-from gi.repository import Gtk, GLib
+import gettext, inspect, os, locale, ctypes, re, shutil
+from gi.repository import Gtk
 import iso639, iso3166
 import logging
 import config
@@ -527,7 +527,7 @@ def set_menu_locale(loc_prefs):
 
 
 def set_locale_handler(lbl, loc, popup):
-    from aStringResources import AStringResources
+    from resources.aStringResources import AStringResources
     global translator
 
     string_resources = AStringResources("i18n_trans").get_by_identifier()

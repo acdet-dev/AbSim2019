@@ -3,11 +3,10 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-import assessmentViewer
 import examParser
-import menu
-from menu import *
-from aStringResources import AStringResources
+from views import menu, assessmentViewer
+from views.menu import *
+from resources.aStringResources import AStringResources
 from models import exammodel
 from models.takenmodel import TakenModel
 import splashscreen
@@ -401,7 +400,7 @@ class ViewPerformance(Gtk.Window, menu.MenuBar):
                             secondary_text=self.string_resources["no_delete_message"])
 
     def go_back(self, widget):
-        from simFaculty import SimFaculty
+        from views.simFaculty import SimFaculty
         self.setup_transfer()
         SimFaculty('faculty', self.name, self.password)
         self.finish_transfer()

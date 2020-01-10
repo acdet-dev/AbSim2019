@@ -10,7 +10,7 @@ import casetext
 import prototypetext
 import cases
 import questionmarkview
-from aStringResources import AStringResources
+from resources.aStringResources import AStringResources
 
 
 class SelfPractice(gtk.Box):

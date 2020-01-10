@@ -1,4 +1,3 @@
-from aStringResources import AStringResources
 import splashscreen
 from messages import sim_message
 import time
@@ -20,6 +19,7 @@ import logging
 import random
 from Levenshtein import distance
 from casetext import CaseTextBuffer
+from resources.aStringResources import AStringResources
 
 import gi
 
@@ -271,7 +271,7 @@ class ViewAssignments(Gtk.Window):
         return exam_info
 
     def return_home(self, optional=''):
-        import defineUser
+        from views import defineUser
         import dbmigrator
 
         splash_screen = splashscreen.SplashScreen()

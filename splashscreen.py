@@ -3,9 +3,9 @@
 import gi
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, GLib, GObject, Gdk
+from gi.repository import Gtk
 
-from aStringResources import AStringResources
+from resources.aStringResources import AStringResources
 
 
 class SplashScreen(Gtk.Window):

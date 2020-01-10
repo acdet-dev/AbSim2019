@@ -1,14 +1,11 @@
-import viewPerformance
 from simLabels import construct_markup
 import splashscreen
-import testCreator
-import managestudents
-import menu
-from aStringResources import AStringResources
+from views import menu, viewPerformance, testCreator, managestudents
+from resources.aStringResources import AStringResources
 
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gdk, GLib
+from gi.repository import Gtk
 
 
 class SimFaculty(Gtk.Window, menu.MenuBar):

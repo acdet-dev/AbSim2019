@@ -1,7 +1,7 @@
 import logging
 import os
 import sqlite3
-from aStringResources import AStringResources
+from resources.aStringResources import AStringResources
 
 app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2019'
 

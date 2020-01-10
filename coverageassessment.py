@@ -12,7 +12,7 @@ import sim_constants
 import copy
 import os
 from simLabels import construct_markup, screen_sizer
-from aStringResources import AStringResources
+from resources.aStringResources import AStringResources
 
 string_resources = AStringResources("coverage_assessment", label_flag=True).get_by_identifier()
 

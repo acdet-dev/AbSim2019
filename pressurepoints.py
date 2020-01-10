@@ -11,7 +11,7 @@ import gtk
 import time
 import config
 from simLabels import construct_markup
-from aStringResources import AStringResources
+from resources.aStringResources import AStringResources
 
 
 class PressureList:

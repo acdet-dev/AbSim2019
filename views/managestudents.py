@@ -3,8 +3,8 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GdkPixbuf
 
-from aStringResources import AStringResources
-import menu
+from resources.aStringResources import AStringResources
+from views import menu
 from simLabels import construct_markup, MilestoneNameLabel, screen_sizer
 from messages import sim_message, sim_reset_dialogue
 import logging
@@ -378,7 +378,7 @@ class ManagePage(Gtk.VBox):
         pass
 
     def go_back(self, widget):
-        from simFaculty import SimFaculty
+        from views.simFaculty import SimFaculty
         self.setup_transfer()
         SimFaculty('faculty', self.wr["name"], self.wr["password"])
         self.finish_transfer()

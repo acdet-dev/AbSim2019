@@ -3,7 +3,7 @@
 import caseselector
 import liveview
 from simLabels import construct_markup, screen_sizer
-from aStringResources import AStringResources
+from resources.aStringResources import AStringResources
 
 from gi import pygtkcompat
 pygtkcompat.enable()

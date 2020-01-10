@@ -1,11 +1,8 @@
 import logging
-import admin
-import viewAssignments
+from views import viewAssignments, simFaculty, menu, admin
 from simLabels import construct_markup
 import splashscreen
-import simFaculty
-import menu
-from aStringResources import AStringResources
+from resources.aStringResources import AStringResources
 
 import gi
 gi.require_version('Gtk', '3.0')

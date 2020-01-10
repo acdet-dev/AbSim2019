@@ -12,7 +12,7 @@ from models import takenmodel, baselinemodel
 import logging
 import gi
 from collections import OrderedDict
-from aStringResources import AStringResources
+from resources.aStringResources import AStringResources
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 

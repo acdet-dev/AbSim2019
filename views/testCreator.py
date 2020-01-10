@@ -9,7 +9,7 @@ from models import exammodel as e
 from simLabels import construct_markup
 from cases import Cases
 from casetext import CaseText
-from aStringResources import AStringResources
+from resources.aStringResources import AStringResources
 
 
 class TestCreator(Gtk.Window):
@@ -160,7 +160,7 @@ class TestCreator(Gtk.Window):
         return button
 
     def return_home(self, widget):
-        from simFaculty import SimFaculty
+        from views.simFaculty import SimFaculty
         import dbmigrator, splashscreen
 
         splash_screen = splashscreen.SplashScreen()

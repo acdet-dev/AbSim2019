@@ -5,7 +5,7 @@ from models import studentmodel
 import time
 import csv
 import logging
-from aStringResources import AStringResources
+from resources.aStringResources import AStringResources
 
 
 class FileChooserWindow(Gtk.Window):

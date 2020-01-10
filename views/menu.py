@@ -18,12 +18,12 @@ import selfpractice
 import donottouch
 import simLabels
 import i18ntrans2
-from aStringResources import AStringResources
+from resources.aStringResources import AStringResources
 import os
 
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gdk, GLib
+from gi.repository import Gtk, GLib
 
 app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2019'
 string_resources = AStringResources("menu").get_by_identifier()
@@ -165,7 +165,7 @@ class MenuBar():
         Gtk.main_quit()
 
     def on_home_click(self, widget):
-        import defineUser
+        from views import defineUser
 
         splash_screen = splashscreen.SplashScreen()
         splash_screen.show_all()

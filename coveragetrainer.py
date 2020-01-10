@@ -5,7 +5,7 @@ pygtkcompat.enable()
 pygtkcompat.enable_gtk(version='3.0')
 import gtk
 import additiveview
-from aStringResources import AStringResources
+from resources.aStringResources import AStringResources
 from simLabels import construct_markup, screen_sizer
 
 

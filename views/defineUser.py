@@ -1,14 +1,13 @@
 import logging
 import time
-from sim import UserType
+from views.sim import UserType
 import splashscreen
-import dbmigrator
-from menu import MenuBar
+from views.menu import MenuBar
 from simLabels import construct_markup
 from simLogin import get_user_pw
 from messages import sim_message, sim_login_message
 from models import facultyinfomodel
-from aStringResources import AStringResources
+from resources.aStringResources import AStringResources
 
 from Levenshtein import distance
 import gi
@@ -209,18 +208,3 @@ class DefineUser(Gtk.Window, MenuBar):
     def close_menu(self):
         self.handler_block(self.destroy_signal_handler)
         self.destroy()
-
-
-if __name__ == '__main__':
-    splash_screen = splashscreen.SplashScreen()
-    splash_screen.show_all()
-
-    while Gtk.events_pending():
-        Gtk.main_iteration()
-
-    # Perform DB migration to make sure we have the newest version
-    dbmigrator.DBMigrator()
-
-    win = DefineUser()
-    splash_screen.hide()
-    Gtk.main()
