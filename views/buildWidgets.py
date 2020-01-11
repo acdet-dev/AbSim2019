@@ -111,6 +111,17 @@ class BuildWidgets:
         button.add(label)
         return button
 
+    def build_check_button(self, label_text, function, f_size, padding):
+        button = Gtk.CheckButton.new()
+        label = Gtk.Label()
+        label_pre_mark = construct_markup(label_text, font_size=f_size)
+        label.set_markup(label_pre_mark)
+        label.set_padding(padding[0], padding[1])
+        button.add(label)
+        button.connect("toggled", function, label_text)
+
+        return button
+
     def create_scroller(self):
         from simLabels import screen_sizer
         # scroller window for all abnormality and ddx exams in queue
@@ -128,6 +139,20 @@ class BuildWidgets:
 
         return sw
 
+    def create_text_view(self, width, height, bf):
+        text_view = Gtk.TextView(buffer=bf)
+        text_view.set_editable(False)
+        text_view.set_wrap_mode(2)
+
+        text_scroller = Gtk.ScrolledWindow()
+        text_scroller.set_property('hscrollbar-policy', 0)
+        text_scroller.set_property('vscrollbar-policy', 0)
+        text_scroller.set_size_request(width, height)
+        text_scroller.set_property('border-width', 1)
+        text_scroller.add(text_view)
+
+        return text_scroller
+
     def build_tree_view(self, store, row_change_function):
         # create tree views
         tv = Gtk.TreeView(store)
@@ -136,13 +161,21 @@ class BuildWidgets:
 
         return tv
 
-    def create_columns(self, treeView, h_list):
-        i = 0
-        for header in h_list:
-            renderer_text = Gtk.CellRendererText()
-            column = Gtk.TreeViewColumn(header, renderer_text, text=i)
-            column.set_sort_column_id(i)
-            column.set_resizable(True)
-            treeView.append_column(column)
+    def create_columns(self, treeView, h_list, custom_indices=[]):
+        if len(custom_indices) > 0:
+            for ind in range(0, len(h_list)):
+                renderer_text = Gtk.CellRendererText()
+                column = Gtk.TreeViewColumn(h_list[ind], renderer_text, text=custom_indices[ind])
+                column.set_sort_column_id(custom_indices[ind])
+                column.set_resizable(True)
+                treeView.append_column(column)
+        else:
+            i = 0
+            for header in h_list:
+                renderer_text = Gtk.CellRendererText()
+                column = Gtk.TreeViewColumn(header, renderer_text, text=i)
+                column.set_sort_column_id(i)
+                column.set_resizable(True)
+                treeView.append_column(column)
 
-            i += 1
+                i += 1

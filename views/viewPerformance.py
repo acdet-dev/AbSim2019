@@ -1,24 +1,28 @@
 import gi
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
+from gi.repository import Gtk, Gdk
 
+import logging
 import examParser
-from views import menu, assessmentViewer, menuBar
-from views.menu import *
+from views.menuBar import MenuBar
 from aStringResources import AStringResources
+from views.buildWidgets import BuildWidgets
 from models import exammodel
 from models.takenmodel import TakenModel
-import splashscreen
 from casetext import CaseTextBuffer
 from messages import sim_class_message, sim_message
+import simLabels
 
 
-class ViewPerformance(Gtk.Window, menuBar.MenuBar):
+class ViewPerformance(Gtk.Window, MenuBar):
     def __init__(self, user_type, name, password):
 
         # initialize string resources
         self.string_resources = AStringResources("view_performance", back_flag=True).get_by_identifier()
+
+        # initialize builder
+        self.bw = BuildWidgets()
 
         # Make window
         Gtk.Window.__init__(self, title=self.string_resources["window_title"])
@@ -59,7 +63,7 @@ class ViewPerformance(Gtk.Window, menuBar.MenuBar):
         ddx_vbox = Gtk.VBox(False, 2)
 
         # Build main notebook. Each tab represents an instructional phase.
-        self.notebook.set_tab_pos(Gtk.POS_LEFT)
+        self.notebook.set_tab_pos(0)
 
         # first selection notebook tab
         self.abDDX = vbox
@@ -103,122 +107,62 @@ class ViewPerformance(Gtk.Window, menuBar.MenuBar):
     def build_interface(self):
         from simLabels import screen_sizer
 
+        # get adjusted width
+        screen_width = Gdk.Screen.get_default().get_width()
+        screen_height = Gdk.Screen.get_default().get_height()
+
+        width, height = screen_sizer(screen_width, screen_height, old_width=400, old_height=500)
+
         # make boxes to hold all info
         vbox = Gtk.VBox(False, 8)
         ovbox = Gtk.VBox(False, 8)
         hbox = Gtk.HBox()
 
-        # scroller window for all abnormality and ddx exams in queue
-        sw = Gtk.ScrolledWindow()
-        sw.set_shadow_type(Gtk.SHADOW_ETCHED_IN)
-        sw.set_policy(Gtk.POLICY_AUTOMATIC, Gtk.POLICY_AUTOMATIC)
+        # create scroller
+        sw = self.bw.create_scroller()
 
         # pack scroller box to an h box
         ovbox.pack_start(sw, True, True, 0)
         hbox.pack_start(ovbox, True, True, 10)
 
-        # text is not editable and wraps between words
-        text_view = Gtk.TextView(buffer=self.tb)
-        text_view.set_editable(False)
-        text_view.set_wrap_mode(Gtk.WRAP_WORD)
+        # create text scroller with text view
+        text_scroller = self.bw.create_text_view(width, height, self.tb)
 
-        # get adjusted width
-        screen_width = Gtk.gdk.screen_width()
-        screen_height = Gtk.gdk.screen_height()
-
-        width, height = screen_sizer(screen_width, screen_height, old_width=400, old_height=500)
-
-        text_scroller = Gtk.ScrolledWindow()
-        text_scroller.set_property('hscrollbar-policy', Gtk.POLICY_AUTOMATIC)
-        text_scroller.set_property('vscrollbar-policy', Gtk.POLICY_AUTOMATIC)
-        text_scroller.set_size_request(width, height)
-        text_scroller.set_property('border-width', 1)
-        text_scroller.add(text_view)
         self.tb.new_case(self.string_resources["base_text"])
-        # text_scroller_vadjustment = text_scroller.get_vadjustment()
 
         hbox.pack_start(text_scroller, False, False, 10)
 
         # get database entries for treeview in scroller window
         store = self.create_model()
 
-        treeView = Gtk.TreeView(store)
-        treeView.connect('cursor-changed', self.on_row_change)
-        treeView.set_rules_hint(True)
-        sw.add(treeView)
+        # build treeview
+        tree_view = self.bw.build_tree_view(store, self.on_row_change)
 
-        self.create_columns(treeView)
+        # add tree view to sw
+        sw.add(tree_view)
+
+        # build list of headers
+        column_header_list = [self.string_resources["column_header"], self.string_resources["column_header_2"],
+                              self.string_resources["column_header_3"]]
+        self.bw.create_columns(tree_view, column_header_list, custom_indices=[0, 6, 7])
 
         # Add navigation buttons
-        self.button_tree = self.add_buttons()
+        b_list = [self.string_resources["assign_button"], self.string_resources["results_button"],
+                  self.string_resources["delete_button"], self.string_resources["back_button"]]
+        f_list = [self.assign, self.results, self.delete, self.go_back]
+        button_tree = self.bw.add_horizontal_buttons(b_list, f_list, f_size=16)
 
         # pack all to vbox
         vbox.pack_start(hbox, True, True, 0)
-        vbox.pack_start(self.button_tree, False, False, 0)
+        vbox.pack_start(button_tree, False, False, 0)
 
         return vbox
-
-    def build_logo(self, widget):
-        logo = Gtk.Image()
-        logo.set_from_file('img/acdet-logo.gif')
-
-        widget.pack_start(logo, False, False, 0)
-
-        return widget
-
-    def add_buttons(self):
-
-        button_table = Gtk.Table(rows=4, columns=2)
-        button_table.set_border_width(20)
-        button_table.set_col_spacings(5)
-        button_table.set_row_spacings(5)
-
-        assign_button = self.build_button(self.string_resources["assign_button"])
-        assign_button.connect('clicked', self.assign)
-        button_table.attach(assign_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
-
-        results_button = self.build_button(self.string_resources["results_button"])
-        results_button.connect('clicked', self.results)
-        button_table.attach(results_button, 1, 2, 0, 1, xoptions=False, yoptions=False)
-
-        delete_button = self.build_button(self.string_resources["delete_button"])
-        delete_button.connect('clicked', self.delete)
-        button_table.attach(delete_button, 2, 3, 0, 1, xoptions=False, yoptions=False)
-
-        back_button = self.build_button(self.string_resources["back_button"])
-        back_button.connect('clicked', self.go_back)
-        button_table.attach(back_button, 3, 4, 0, 1, xoptions=False, yoptions=False)
-
-        return button_table
-
-    def build_button(self, label_text):
-        from simLabels import construct_markup
-        button = Gtk.Button()
-        label = Gtk.Label()
-        label_pre_mark = construct_markup(label_text, font_size=20)
-        label.set_markup(label_pre_mark)
-        label.set_padding(10, 10)
-        button.add(label)
-        return button
-
-    def build_check_button(self, label_text):
-        from simLabels import construct_markup
-
-        button = Gtk.CheckButton.new()
-        label = Gtk.Label()
-        label_pre_mark = construct_markup(label_text, font_size=12)
-        label.set_markup(label_pre_mark)
-        label.set_padding(5, 5)
-        button.add(label)
-        button.connect("toggled", self.on_button_toggled, label_text)
-
-        return button
 
     def build_button_tree(self, sec_nums):
         check_button_box = Gtk.VBox()
 
         for num in sec_nums:
-            button = self.build_check_button(num)
+            button = self.bw.build_check_button(num, self.on_button_toggled, 12, [5, 5])
             check_button_box.pack_start(button, False, False, 0)
 
         return check_button_box
@@ -239,20 +183,6 @@ class ViewPerformance(Gtk.Window, menuBar.MenuBar):
         unique_sections = list(set([i[0] for i in students]))
 
         return sorted(unique_sections)
-
-    def setup_transfer(self):
-        self.splash_screen = splashscreen.SplashScreen()
-        self.splash_screen.show_all()
-        while Gtk.events_pending():
-            Gtk.main_iteration()
-
-    def close_menu(self):
-        self.handler_block(self.destroy_signal_handler)
-        self.destroy()
-
-    def finish_transfer(self):
-        self.splash_screen.hide()
-        self.close_menu()
 
     def get_sections(self):
         section_numbers = self.get_number_sections()
@@ -317,9 +247,7 @@ class ViewPerformance(Gtk.Window, menuBar.MenuBar):
                     if assigned_flag:
                         sim_message(self, info_string=self.string_resources["assigned"],
                                     secondary_text=self.string_resources["assigned_description"])
-                        self.setup_transfer()
-                        ViewPerformance(self.name, self.password)
-                        self.finish_transfer()
+                        self.facilitate_transfer(ViewPerformance, self.user_type, self.name, self.password)
 
                 else:
                     sim_message(self, info_string=self.string_resources["info_string"],
@@ -332,6 +260,7 @@ class ViewPerformance(Gtk.Window, menuBar.MenuBar):
         return
 
     def results(self, widget):
+        from views.assessmentViewer import AssessmentViewer
         if self.no_exams_flag:
             sim_message(self, info_string=self.string_resources["no_data"],
                         secondary_text=self.string_resources["no_data_message"])
@@ -355,8 +284,7 @@ class ViewPerformance(Gtk.Window, menuBar.MenuBar):
                                       secondary_text=self.string_resources["choose_description"])
 
                 if s:
-                    assessmentViewer.AssessmentViewer(sorted(s), self.window_resources, self.bases, self.cases,
-                                                      self.ddxs)
+                    AssessmentViewer(sorted(s), self.window_resources, self.bases, self.cases, self.ddxs)
                 else:
                     sim_message(self, info_string=self.string_resources["info_string"],
                                 secondary_text=self.string_resources["secondary"])
@@ -392,9 +320,7 @@ class ViewPerformance(Gtk.Window, menuBar.MenuBar):
                 tt.delete_by_exam_id(key=self.window_resources["exam_id"])
                 tm.delete_rows(key=self.window_resources["exam_id"])
 
-                self.setup_transfer()
-                ViewPerformance(self.name, self.password)
-                self.finish_transfer()
+                self.facilitate_transfer(ViewPerformance, self.user_type, self.name, self.password)
 
             else:
                 sim_message(self, info_string=self.string_resources["no_delete"],
@@ -402,9 +328,16 @@ class ViewPerformance(Gtk.Window, menuBar.MenuBar):
 
     def go_back(self, widget):
         from views.simFaculty import SimFaculty
-        self.setup_transfer()
-        SimFaculty(self.user_type, self.name, self.password)
-        self.finish_transfer()
+        self.facilitate_transfer(SimFaculty, self.user_type, self.name, self.password)
+
+    def facilitate_transfer(self, new_window, *args):
+        from views.handleTransitions import HandleTransitions
+
+        ht = HandleTransitions(self)
+
+        ht.setup_transfer()
+        new_window(*args)
+        ht.finish_transfer()
 
     def check_taken(self, sections, title):
         tm = TakenModel()
@@ -474,7 +407,7 @@ class ViewPerformance(Gtk.Window, menuBar.MenuBar):
                 else:
                     ddx = 'no'
                 store.append([exam[0], base, cases, ddx, "-".join(case_title_list),
-                              u"\n".join(ddx_cases), ", ".join(a_t), completed_string])
+                              "-".join(ddx_cases), ", ".join(a_t), completed_string])
         else:
             logging.debug('No assessments returned')
             self.no_exams_flag = True
@@ -489,32 +422,15 @@ class ViewPerformance(Gtk.Window, menuBar.MenuBar):
             base_string = ""
 
         cases = case.split("-")
-        just_cases = [i for i in cases if "ddx_" not in i]
+        just_cases = [u"\u2022" + i for i in cases if "ddx_" not in i]
+        ddx = ddx.split("-")
+        ddx = [u"\u2022" + i for i in ddx]
 
         text = self.string_resources["baseline_text"] + " " + base_string + "\n\n" +\
                self.string_resources["ab_text"] + "\n" + u"\n".join(just_cases) + "\n\n" +\
-               self.string_resources["ddx_text"] + "\n" + ddx
+               self.string_resources["ddx_text"] + "\n" + u"\n".join(ddx)
 
         return text
-
-    def create_columns(self, treeView):
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["column_header"], renderer_text, text=0)
-        column.set_sort_column_id(0)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["column_header_2"], renderer_text, text=6)
-        column.set_sort_column_id(6)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["column_header_3"], renderer_text, text=7)
-        column.set_sort_column_id(7)
-        column.set_resizable(True)
-        treeView.append_column(column)
 
     def on_row_change(self, treeview):
         selection = treeview.get_selection()

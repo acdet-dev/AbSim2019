@@ -6,11 +6,11 @@ from gi.repository import Gtk
 
 import time
 from models import exammodel as e
-from simLabels import construct_markup
 from cases import Cases
 from casetext import CaseText
 from aStringResources import AStringResources
 from views.menuBar import MenuBar
+from views.buildWidgets import BuildWidgets
 
 
 class TestCreator(Gtk.Window, MenuBar):
@@ -70,18 +70,7 @@ class TestCreator(Gtk.Window, MenuBar):
 
         self.destroy_signal_handler = self.connect("destroy", Gtk.main_quit)
 
-    def build_check_button(self, label_text):
-        button = Gtk.CheckButton.new()
-        label = Gtk.Label()
-        label_pre_mark = construct_markup(label_text, font_size=14)
-        label.set_markup(label_pre_mark)
-        label.set_padding(10, 10)
-        button.add(label)
-        button.connect("toggled", self.on_button_toggled, label_text)
-
-        return button
-
-    def add_check_buttons(self):
+    def add_check_buttons(self, builder):
 
         check_button_box = Gtk.HBox()
 
@@ -95,12 +84,14 @@ class TestCreator(Gtk.Window, MenuBar):
             'pancreas t', 'hepatomegaly n', 'splenomegaly n', 'enlarged_bladder n']
 
         for i in range(0, int(len(case_commands)/2)):
-            button = self.build_check_button(self.case_dict[case_commands[i]])
+            button = builder.build_check_button(self.case_dict[case_commands[i]], function=self.on_button_toggled,
+                                                f_size=14, padding=[10, 10])
             check_button_half.pack_start(button, False, False, 0)
             self.button_list.append(button)
 
         for j in range(int(len(case_commands)/2), int(len(case_commands))):
-            button2 = self.build_check_button(self.case_dict[case_commands[j]])
+            button2 = builder.build_check_button(self.case_dict[case_commands[j]], function=self.on_button_toggled,
+                                                 f_size=14, padding=[10, 10])
             check_button_o_half.pack_start(button2, False, False, 0)
             self.button_list.append(button2)
 
@@ -120,72 +111,39 @@ class TestCreator(Gtk.Window, MenuBar):
             self.title_list.remove(name)
 
     def build_interface(self, box):
+        #initialize builder class
+        bw = BuildWidgets()
 
-        # add label above check option
-        assessment_label = Gtk.Label()
-        label_text = "<b>" + self.string_resources["option_2_title"] + "</b>"
-        label_pre = construct_markup(label_text, font_size=16)
-        assessment_label.set_markup(label_pre)
+        lt = "<b>" + self.string_resources["option_2_title"] + "</b>"
 
-        check_button_box = self.add_check_buttons()
-        save_exam_box = Gtk.HBox()
+        assessment_label = bw.build_label(label_text=lt, f_size=16)
 
-        button_tree = self.add_buttons()
+        check_button_box = self.add_check_buttons(bw)
 
-        save_exam_box.pack_start(button_tree, False, False, 0)
+        # build button tree
+        b_list = [self.string_resources["save_button"], self.string_resources["back_button"]]
+        f_list = [self.add_to_exam, self.return_home]
+        button_tree = bw.add_horizontal_buttons(button_list=b_list, functions=f_list, f_size=16)
 
         box.pack_start(self.baseline, False, False, 10)
         box.pack_start(assessment_label, False, False, 10)
         box.pack_start(check_button_box, False, False, 20)
-        box.pack_start(save_exam_box, False, False, 10)
+        box.pack_start(button_tree, False, False, 10)
 
         return box
 
-    def add_buttons(self):
-        button_table = Gtk.Table(rows=2, columns=2)
-        button_table.set_border_width(20)
-        button_table.set_col_spacings(5)
-        button_table.set_row_spacings(5)
+    def facilitate_transfer(self, *args, new_window):
+        from views.handleTransitions import HandleTransitions
 
-        right_button = self.build_button(self.string_resources["save_button"])
-        right_button.connect('clicked', self.add_to_exam)
-        button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
+        ht = HandleTransitions(self)
 
-        left_button = self.build_button(self.string_resources["back_button"])
-        left_button.connect('clicked', self.return_home)
-        button_table.attach(left_button, 1, 2, 0, 1, xoptions=False, yoptions=False)
-
-        return button_table
-
-    def build_button(self, label_text):
-        button = Gtk.Button()
-        label = Gtk.Label()
-        label_pre_mark = construct_markup(label_text, font_size=16)
-        label.set_markup(label_pre_mark)
-        label.set_padding(10, 10)
-        button.add(label)
-        return button
-
-    def setup_transfer(self):
-        import splashscreen
-        self.splash_screen = splashscreen.SplashScreen()
-        self.splash_screen.show_all()
-        while Gtk.events_pending():
-            Gtk.main_iteration()
-
-    def close_menu(self):
-        self.handler_block(self.destroy_signal_handler)
-        self.destroy()
-
-    def finish_transfer(self):
-        self.splash_screen.hide()
-        self.close_menu()
+        ht.setup_transfer()
+        new_window(*args)
+        ht.finish_transfer()
 
     def return_home(self, widget):
         from views.simFaculty import SimFaculty
-        self.setup_transfer()
-        SimFaculty(self.user_type, self.name, self.password)
-        self.finish_transfer()
+        self.facilitate_transfer(self.user_type, self.name, self.password, new_window=SimFaculty)
 
     def add_to_exam(self, choice):
         exam_model = e.ExamModel()
@@ -257,32 +215,29 @@ class BaselineExam(Gtk.VBox):
         # set baseline flag
         self.baseline_flag = False
 
-        # add label above check option
-        assessment_label = Gtk.Label()
-        label_text = "<b>" + self.string_resources["option_1_title"] + "</b>"
-        label_pre = construct_markup(label_text, font_size=16)
-        assessment_label.set_markup(label_pre)
-        self.pack_start(assessment_label, False, False, 0)
+        # initialize builder class
+        bw = BuildWidgets()
+
+        # build label
+        lt = "<b>" + self.string_resources["option_1_title"] + "</b>"
+        baseline_label = bw.build_label(label_text=lt, f_size=16)
+        self.pack_start(baseline_label, False, False, 10)
 
         # add check button option
         button_table = Gtk.Table(rows=1, columns=1, homogeneous=True)
-        button_table_alignment = Gtk.Alignment(xalign=0.35)
+        button_table_alignment = Gtk.Alignment(xalign=.36)
 
-        self.button = Gtk.CheckButton.new()
-        label = Gtk.Label()
-        label_text = self.string_resources["option_1"]
-        label_pre_mark = construct_markup(label_text, font_size=14)
-        label.set_markup(label_pre_mark)
-        label.set_padding(10, 10)
-        self.button.add(label)
-        self.button.connect("toggled", self.on_button_toggled)
+        check_label_text = self.string_resources["option_1"]
+        self.button = bw.build_check_button(label_text=check_label_text, function=self.on_button_toggled, f_size=14,
+                                            padding=[10, 10])
+
         button_table.attach(self.button, 1, 2, 0, 1)
         button_table_alignment.add(button_table)
 
         # final packing
         self.pack_start(button_table_alignment, False, False, 0)
 
-    def on_button_toggled(self, button):
+    def on_button_toggled(self, button, name):
         if button.get_active():
             state = "on"
             self.baseline_flag = True
@@ -303,12 +258,13 @@ class DdxExam(Gtk.VBox):
         self.ddx_title_list = []
         self.button_list = []
 
-        # add label above check option
-        assessment_label = Gtk.Label()
-        label_text = "<b>" + self.string_resources["option_3_title"] + "</b>"
-        label_pre = construct_markup(label_text, font_size=16)
-        assessment_label.set_markup(label_pre)
-        self.pack_start(assessment_label, False, False, 30)
+        # initialize builder class
+        bw = BuildWidgets()
+
+        # build label
+        lt = "<b>" + self.string_resources["option_3_title"] + "</b>"
+        label = bw.build_label(label_text=lt, f_size=16)
+        self.pack_start(label, False, False, 10)
 
         ddx_names = CaseText().cases.get(525, [])
         ddx_list = []
@@ -316,25 +272,17 @@ class DdxExam(Gtk.VBox):
             temp = [i["ddx_name"] for i in j]
             ddx_list.append(temp[0])
 
-        ddx_answer_box = self.build_answer_box(ddx_list)
+        ddx_answer_box = self.build_answer_box(ddx_list, bw)
 
         self.pack_start(ddx_answer_box, False, False, 10)
 
-    def build_answer_box(self, ddx_list):
+    def build_answer_box(self, ddx_list, builder):
         answer_box = Gtk.VButtonBox()
-        answer_box.set_layout(Gtk.BUTTONBOX_START)
-        answer_box.set_spacing(20)
-
+        answer_box.set_layout(3)
+        answer_box.set_spacing(0)
         for i in range(0, len(ddx_list)):
-            button = Gtk.CheckButton.new()
-            button_label = Gtk.Label()  # font = 14
-            label_text = ddx_list[i]
-            label_pre_mark = construct_markup(label_text, font_size=14)
-            button_label.set_markup(label_pre_mark)
-            button_label.set_property('ypad', 5)
-            button.add(button_label)
-            # Using i+1 because the ddxes are numbered beginning with 1
-            button.connect('toggled', self.on_button_toggled, label_text)
+            button = builder.build_check_button(label_text=ddx_list[i], function=self.on_button_toggled,
+                                                f_size=14, padding=[10, 10])
             answer_box.add(button)
             self.button_list.append(button)
         return answer_box

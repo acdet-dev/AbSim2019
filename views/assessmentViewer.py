@@ -47,7 +47,6 @@ class AssessmentViewer:
         page3 = self.window_resources['notebook'].get_nth_page(3)
 
         if self.exam:
-
             page1.hide()
             page.show()
             page2.show()
