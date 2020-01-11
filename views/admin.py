@@ -7,7 +7,7 @@ import guarding
 import statewatcher
 import observer
 import port_settings
-from views import menuBar
+from views.menuBar import MenuBar
 import simLabels
 from simLabels import construct_markup, screen_sizer
 import abnormalitydetection
@@ -20,7 +20,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, GLib
 
 
-class Admin(Gtk.Window, menuBar.MenuBar):
+class Admin(Gtk.Window, MenuBar):
     """Admin window. Controls administration of the sim."""
     def __init__(self, user_type, name, password):
         # Build all the objects that talk to each other
@@ -57,19 +57,19 @@ class Admin(Gtk.Window, menuBar.MenuBar):
             'window': self
         }
 
-        #make window
+        # make window
         Gtk.Window.__init__(self, title=self.string_resources["window_title"])
         self.set_icon_from_file('icon.ico')
         self.maximize()
 
-        #make menubar
+        # make menubar
         box = self.build_bar()
 
         # Disconnection error message
         self.disconnection_warning = simLabels.DisconnectWarning()
 
         # Build main notebook. Each tab represents an instructional phase.
-        self.notebook.set_tab_pos(Gtk.POS_LEFT)
+        self.notebook.set_tab_pos(0)
         self.notebook.connect("switch-page", self.reset_active_page)
 
         # Pressure Sensitivity Adjustment
@@ -80,7 +80,7 @@ class Admin(Gtk.Window, menuBar.MenuBar):
         self.notebook.append_page(settings_box, sensitivity_label)
         self.notebook.show()
 
-        #make boxes for packing and adding to window
+        # make boxes for packing and adding to window
         vbox = Gtk.VBox(False, 2)
         vbox.pack_start(box, False, False, 0)
         vbox.pack_start(self.disconnection_warning, False, False, 0)
@@ -89,7 +89,6 @@ class Admin(Gtk.Window, menuBar.MenuBar):
 
         self.show()
         vbox.show()
-        #box.show_all()
 
         self.destroy_signal_handler = self.connect("destroy", Gtk.main_quit)
         self.do_not_touch = donottouch.DoNotTouchWarning(self.state_watcher)
@@ -154,6 +153,8 @@ class Admin(Gtk.Window, menuBar.MenuBar):
 class SensitivityInterface(Gtk.HBox):
     def __init__(self, view_resources):
         super(SensitivityInterface, self).__init__()
+        from views.buildWidgets import BuildWidgets
+
         self.view_resources = view_resources
         self.sensitivity_settings = pressurepoints.SensitivitySettings(self.view_resources['pressurepoints'])
         # self.cnc_adjuster = CNCAdjustmentInterface(self.view_resources['port_settings'])
@@ -162,7 +163,11 @@ class SensitivityInterface(Gtk.HBox):
         self.button_table = Gtk.Table(rows=1, columns=1, homogeneous=True)
         self.button_table_alignment = Gtk.Alignment(xalign=0.2)
 
-        re_button = self.build_button(self.sensitivity_settings.string_resources["back_button"])
+        # initialize builder
+        bw = BuildWidgets()
+
+        re_button = bw.build_button(self.sensitivity_settings.string_resources["back_button"], f_size=12)
+        re_button.connect('clicked', self.return_home)
         self.button_table.attach(re_button, 1, 2, 0, 1)
         self.button_table_alignment.add(self.button_table)
 
@@ -173,8 +178,8 @@ class SensitivityInterface(Gtk.HBox):
         # self.settings_vbox.pack_start(Gtk.HSeparator(), False, False, 20)
         self.settings_vbox.pack_start(self.button_table_alignment, False, False, 0)
 
-        s_w = Gdk.screen_width()
-        s_h = Gdk.screen_height()
+        s_w = Gdk.Screen.get_default().get_width()
+        s_h = Gdk.Screen.get_default().get_height()
         width, height = screen_sizer(s_w, s_h, old_width=450, old_height=200)
         self.settings_vbox.set_size_request(width, height)
 
@@ -187,24 +192,20 @@ class SensitivityInterface(Gtk.HBox):
 
         self.settings_vbox.show_all()
 
-    def build_button(self, label_text):
-        label = Gtk.Label()
-        label_pre = construct_markup(label_text, font_size=12)
-        label.set_markup(label_pre)
-        button = Gtk.Button()
-        button.add(label)
-        button.connect('clicked', self.return_home)
-        return button
-
     def return_home(self, widget):
         from views.sim import UserType
-        import dbmigrator, splashscreen
 
-        splash_screen = splashscreen.SplashScreen()
-        splash_screen.show_all()
+        self.facilitate_transfer(UserType, self.view_resources["user_type"], self.view_resources['name'],
+                                 self.view_resources['password'])
 
-        while Gtk.events_pending():
-            Gtk.main_iteration()
+    def facilitate_transfer(self, new_window, *args):
+        from views.handleTransitions import HandleTransitions
+        import dbmigrator
+
+        ht = HandleTransitions(self.view_resources["window"])
+
+        # setup transfer
+        ht.setup_transfer()
 
         # Perform DB migration to make sure we have the newest version
         dbmigrator.DBMigrator()
@@ -215,10 +216,10 @@ class SensitivityInterface(Gtk.HBox):
         except AttributeError:
             logging.debug('attributes necessary for stopping sounds not made yet')
 
-        UserType(self.view_resources["user_type"], self.view_resources['name'], self.view_resources['password'])
-        splash_screen.hide()
-        self.view_resources['window'].destroy()
-        Gtk.main()
+        new_window(*args)
+
+        # finish transfer
+        ht.finish_transfer()
 
     def reset_page(self):
         pass

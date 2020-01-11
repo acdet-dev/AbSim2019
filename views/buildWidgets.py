@@ -33,13 +33,13 @@ class BuildWidgets:
         # get screen size
         s_w = Gdk.Screen.get_default().get_width()
         s_h = Gdk.Screen.get_default().get_height()
-        width, height = screen_sizer(s_w, s_h, old_width=450, old_height=325)
+        width, height = screen_sizer(s_w, s_h, old_width=200, old_height=300)
 
         pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(
             filename=img_string,
             width=width,
             height=height,
-            preserve_aspect_ratio=True)
+            preserve_aspect_ratio=False)
         logo = Gtk.Image.new_from_pixbuf(pixbuf)
 
         return logo
@@ -122,7 +122,7 @@ class BuildWidgets:
 
         return button
 
-    def create_scroller(self):
+    def create_scroller(self, o_w=400, o_h=600):
         from simLabels import screen_sizer
         # scroller window for all abnormality and ddx exams in queue
         sw = Gtk.ScrolledWindow()
@@ -132,7 +132,7 @@ class BuildWidgets:
         # get adjusted width
         screen_width = Gdk.Screen.get_default().get_width()
         screen_height = Gdk.Screen.get_default().get_height()
-        width, height = screen_sizer(screen_width, screen_height, old_width=400, old_height=600)
+        width, height = screen_sizer(screen_width, screen_height, old_width=o_w, old_height=o_h)
 
         # allocate space to scroller
         sw.set_size_request(width, height)

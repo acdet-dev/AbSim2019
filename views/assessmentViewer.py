@@ -9,6 +9,7 @@ import copy
 import coverageassessment
 from messages import sim_message
 from models import takenmodel, baselinemodel
+from views.buildWidgets import BuildWidgets
 import logging
 import gi
 from collections import OrderedDict
@@ -27,6 +28,7 @@ class AssessmentViewer:
         self.window_resources['bases'] = bases
         self.window_resources['cases'] = cases
         self.window_resources['ddxs'] = ddxs
+        self.window_resources['bw'] = BuildWidgets()
 
         self.exam_info = takenmodel.TakenModel()
 
@@ -54,7 +56,7 @@ class AssessmentViewer:
 
             if self.window_resources['bases'] == 'yes':
                 vba = ViewBaselineAssessments(self.section, self.window_resources["exam_id"], self.string_resources,
-                                              self.window_resources["window"])
+                                              self.window_resources["window"], self.window_resources["bw"])
                 self.window_resources['baseline'].add(vba.vbox)
                 self.window_resources['baseline'].show_all()
                 self.window_resources['notebook'].set_current_page(1)
@@ -62,7 +64,7 @@ class AssessmentViewer:
                 page.hide()
             if self.window_resources['cases'] == 'yes':
                 ab = AbTest(self.section, self.exam, page, page1, page2, page3, self.string_resources,
-                            self.window_resources["window"])
+                            self.window_resources["window"], self.window_resources["bw"])
                 self.window_resources['ab'].add(ab.vbox)
                 self.window_resources['ab'].show_all()
                 if self.window_resources['bases'] != 'yes':
@@ -71,7 +73,7 @@ class AssessmentViewer:
                 page2.hide()
             if self.window_resources['ddxs'] == 'yes':
                 ddx = DdxTest(self.section, self.exam, page, page1, page2, page3, self.string_resources,
-                              self.window_resources["window"])
+                              self.window_resources["window"], self.window_resources["bw"])
                 self.window_resources['ddx'].add(ddx.vbox)
                 self.window_resources['ddx'].show_all()
                 if self.window_resources['bases'] != 'yes' and self.window_resources['cases'] != 'yes':
@@ -90,7 +92,7 @@ class AssessmentViewer:
 
 
 class ViewsController:
-    def __init__(self, section, exam, p, p1, p2, p3, sr, window, flag):
+    def __init__(self, section, exam, p, p1, p2, p3, sr, window, builder, flag):
         self.section = section
         self.exam = exam
         self.p = p
@@ -98,6 +100,7 @@ class ViewsController:
         self.p2 = p2
         self.p3 = p3
         self.window = window
+        self.builder = builder
         self.flag = flag
         self.string_resources = sr
         self.header_list = []
@@ -110,10 +113,8 @@ class ViewsController:
         ovbox = Gtk.VBox(False, 8)
         hbox = Gtk.HBox()
 
-        # scroller window for all ddx exams in queue
-        sw = Gtk.ScrolledWindow()
-        sw.set_shadow_type(Gtk.SHADOW_ETCHED_IN)
-        sw.set_policy(Gtk.POLICY_AUTOMATIC, Gtk.POLICY_AUTOMATIC)
+        # create scroller
+        sw = self.builder.create_scroller()
 
         # pack scroller box to an h box
         ovbox.pack_start(sw, True, True, 0)
@@ -122,31 +123,31 @@ class ViewsController:
         # get database entries for treeview in scroller window
         store, ch_headers = self.create_model()
 
-        treeView = Gtk.TreeView(store)
-        treeView.connect('cursor-changed', self.on_row_change)
-        treeView.set_rules_hint(True)
-        sw.add(treeView)
+        # build treeview
+        tree_view = self.builder.build_tree_view(store, self.on_row_change)
 
-        self.create_columns(treeView, ch_headers)
+        # add tree view to scrolled window
+        sw.add(tree_view)
+
+        # build list of headers
+        column_header_list = [self.string_resources["column_header_1"], self.string_resources["column_header_2"],
+                              self.string_resources["column_header_3"]]
+        self.builder.create_columns(tree_view, column_header_list, custom_indices=[0, 2, 3])
+
+        # add iterated headers to display test answers and colored cells
+        self.iterate_headers(ch_headers, tree_view)
 
         # Add navigation buttons
-        self.button_tree = self.add_buttons()
+        b_list = [self.string_resources["export_button_text"], self.string_resources["back_button"]]
+        f_list = [self.export, self.go_back]
+        f_size = 16
+        button_tree = self.builder.add_horizontal_buttons(b_list, f_list, f_size)
 
         # pack all to vbox
         vbox.pack_start(hbox, True, True, 0)
-        vbox.pack_start(self.button_tree, False, False, 0)
+        vbox.pack_start(button_tree, False, False, 0)
 
         return vbox
-
-    def build_button(self, label_text):
-        from simLabels import construct_markup
-        button = Gtk.Button()
-        label = Gtk.Label()
-        label_pre_mark = construct_markup(label_text, font_size=20)
-        label.set_markup(label_pre_mark)
-        label.set_padding(10, 10)
-        button.add(label)
-        return button
 
     def go_back(self, widget):
         self.p1.show()
@@ -230,23 +231,6 @@ class ViewsController:
 
         else:
             logging.debug('Could not get exam info because no exams exist.')
-
-    def add_buttons(self):
-
-        button_table = Gtk.Table(rows=1, columns=1)
-        button_table.set_border_width(20)
-        button_table.set_col_spacings(5)
-        button_table.set_row_spacings(5)
-
-        right_button = self.build_button(self.string_resources["export_button_text"])
-        right_button.connect('clicked', self.export)
-        button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
-
-        view_button = self.build_button(self.string_resources["back_button"])
-        view_button.connect('clicked', self.go_back)
-        button_table.attach(view_button, 1, 2, 0, 1, xoptions=False, yoptions=False)
-
-        return button_table
 
     def get_text(self, heads, flag):
         """ Function to pre-allocate memory to strings for translation """
@@ -359,79 +343,41 @@ class ViewsController:
             column.set_resizable(True)
             tv.append_column(column)
 
-    def create_columns(self, treeView, headers):
-        """ need to add in iteration to put answers from assessment as row header with student answer value in cell """
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["column_header_1"], renderer_text, text=0)
-        column.set_sort_column_id(0)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        '''
-        renderer_text = Gtk.CellRendererText()
-        renderer_text.set_property('ellipsize', Pango.ELLIPSIZE_END)
-        column = Gtk.TreeViewColumn(_(u"Assessment Title"), renderer_text, text=1)
-        column.set_sort_column_id(1)
-        column.set_resizable(True)
-        treeView.append_column(column)
-        '''
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["column_header_2"], renderer_text, text=2)
-        column.set_sort_column_id(2)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["column_header_3"], renderer_text, text=3)
-        column.set_sort_column_id(3)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        '''
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Date Submitted"), renderer_text, text=4)
-        column.set_sort_column_id(4)
-        column.set_resizable(True)
-        treeView.append_column(column)
-        '''
-
-        # add in function to iterate over list of answers to create headers and add values
-        self.iterate_headers(headers, treeView)
-
     def on_row_change(self, tv):
         tv.get_selection().unselect_all()
 
 
 class DdxTest:
-    def __init__(self, section, exam, p, p1, p2, p3, sr, window):
+    def __init__(self, section, exam, p, p1, p2, p3, sr, window, builder):
         self.section = section
         self.exam = exam
         self.string_resources = sr
         self.window = window
+        self.builder = builder
         self.vbox = ViewsController(self.section, self.exam, p, p1, p2, p3,
-                                    self.string_resources, self.window, flag='ddx').build_interface()
+                                    self.string_resources, self.window, self.builder, flag='ddx').build_interface()
 
 
 class AbTest:
-    def __init__(self, section, exam, p, p1, p2, p3, sr, window):
+    def __init__(self, section, exam, p, p1, p2, p3, sr, window, builder):
         self.section = section
         self.exam = exam
         self.string_resources = sr
         self.window = window
+        self.builder = builder
         self.vbox = ViewsController(self.section, self.exam, p, p1, p2, p3,
-                                    self.string_resources, self.window, flag='ab').build_interface()
+                                    self.string_resources, self.window, self.builder, flag='ab').build_interface()
 
 
 class ViewBaselineAssessments:
-    def __init__(self, section, exam_id, sr, window):
+    def __init__(self, section, exam_id, sr, window, builder):
 
         self.coverage_assessment_model = baselinemodel.BaselineModel()
         self.string_resources = sr
         self.section = section
         self.exam_id = exam_id
         self.window = window
+        self.builder = builder
         self.new_selected_case = observer.Observer()
         self.ailments = ailments.Ailments()
         self.pressurepoints = pressurepoints.PressureList(self.new_selected_case)
@@ -455,25 +401,38 @@ class ViewBaselineAssessments:
         ovbox = Gtk.VBox(False, 8)
         hbox = Gtk.HBox()
 
-        sw = Gtk.ScrolledWindow()
-        sw.set_shadow_type(Gtk.SHADOW_ETCHED_IN)
-        sw.set_policy(Gtk.POLICY_AUTOMATIC, Gtk.POLICY_AUTOMATIC)
+        # build scroller
+        sw = self.builder.create_scroller(o_w=200, o_h=200)
 
-        ovbox.pack_start(sw, True, True, 0)
+        ovbox.pack_start(sw, False, False, 0)
         ovbox.pack_start(self.coverage_frame, True, True, 10)
         hbox.pack_start(ovbox, True, True, 0)
         hbox.pack_start(self.coverage_table, True, True, 10)
 
         self.vbox.pack_start(hbox, True, True, 0)
 
+        # build store
         store = self.create_model()
 
-        treeView = Gtk.TreeView(store)
-        treeView.connect('cursor-changed', self.on_row_change)
-        treeView.set_rules_hint(True)
-        sw.add(treeView)
+        # build tree view
+        tree_view = self.builder.build_tree_view(store, self.on_row_change)
 
-        self.create_columns(treeView)
+        # add data tree to scroller
+        sw.add(tree_view)
+
+        # build columns with headers
+        header_list = [self.string_resources["column_header_1"], self.string_resources["not_label"],
+                       self.string_resources["light_label"], self.string_resources["deep_label"],
+                       self.string_resources["too_deep_label"], self.string_resources["column_header_3"]]
+        custom_indices = [0, 2, 3, 4, 5, 6]
+        self.builder.create_columns(tree_view, header_list, custom_indices)
+
+        iter_root = tree_view.get_model().get_iter_first()
+        tree_selection = tree_view.get_selection()
+        tree_selection.unselect_all()
+        tree_selection.select_iter(iter_root)
+        self.on_row_change(tree_view)
+
         # self.export()
 
     def export(self):
@@ -522,59 +481,6 @@ class ViewBaselineAssessments:
         for exam in self.exams:
             store.append([exam[3], exam[2], exam[4], exam[5], exam[6], exam[7], exam[9], exam[10]])
         return store
-
-    def create_columns(self, treeView):
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["column_header_1"], renderer_text, text=0)
-        column.set_sort_column_id(0)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        '''
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Assessment Title"), renderer_text, text=1)
-        column.set_sort_column_id(1)
-        column.set_resizable(True)
-        treeView.append_column(column)
-        '''
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["not_label"], renderer_text, text=2)
-        column.set_sort_column_id(2)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["light_label"], renderer_text, text=3)
-        column.set_sort_column_id(3)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["deep_label"], renderer_text, text=4)
-        column.set_sort_column_id(4)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["too_deep_label"], renderer_text, text=5)
-        column.set_sort_column_id(5)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(self.string_resources["column_header_3"], renderer_text, text=6)
-        column.set_sort_column_id(6)
-        column.set_resizable(True)
-        treeView.append_column(column)
-
-        '''
-        renderer_text = Gtk.CellRendererText()
-        column = Gtk.TreeViewColumn(_(u"Date Submitted"), renderer_text, text=7)
-        column.set_sort_column_id(7)
-        column.set_resizable(True)
-        treeView.append_column(column)
-        '''
 
     def on_row_change(self, treeview):
         selection = treeview.get_selection()

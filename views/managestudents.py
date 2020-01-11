@@ -111,9 +111,9 @@ class InstructionPage(Gtk.VBox):
         f_list = [self.upload, self.mp.go_back]
         button_table = bw.add_horizontal_buttons(button_list=b_list, functions=f_list, f_size=16)
 
-        self.pack_start(label_1, False, False, 20)
-        self.pack_start(hbox, False, False, 20)
-        self.pack_start(label_2, False, False, 20)
+        self.pack_start(label_1, False, False, 0)
+        self.pack_start(hbox, False, False, 0)
+        self.pack_start(label_2, False, False, 0)
         self.pack_start(button_table, False, False, 0)
 
         self.show_all()
