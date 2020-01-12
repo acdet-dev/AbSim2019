@@ -8,13 +8,19 @@ from simLabels import construct_markup, screen_sizer
 class BuildWidgets:
     def __init__(self):
         """Class to build and return main widgets for pages"""
+        # get screen width and height as class objects
+        self.width = Gdk.Screen.get_default().get_width()
+        self.height = Gdk.Screen.get_default().get_height()
 
-    def build_label(self, label_text, f_size=24, alignment=[]):
+    def build_label(self, label_text, f_size=24, alignment=[], weight=""):
         use_label = Gtk.Label()
         # TRANSLATORS Be careful to keep 'size' and 'font' tags.
         # TRANSLATORS However, you can change the size of text with these by a small amount
         # TRANSLATORS to adjust for fitting text on screen.
-        label_pre_mark = construct_markup(label_text, font_size=f_size)
+        if weight == "bold":
+            label_pre_mark = construct_markup(label_text, font_size=f_size, weight=weight)
+        else:
+            label_pre_mark = construct_markup(label_text, font_size=f_size)
         use_label.set_markup(label_pre_mark)
         if len(alignment) > 0:
             use_label.set_alignment(alignment[0], alignment[1])
@@ -31,14 +37,10 @@ class BuildWidgets:
 
     def build_pixbuf_logo(self, img_string):
         # get screen size
-        s_w = Gdk.Screen.get_default().get_width()
-        s_h = Gdk.Screen.get_default().get_height()
-        width, height = screen_sizer(s_w, s_h, old_width=200, old_height=300)
+        # width, height = screen_sizer(self.width, self.height, old_width=200, old_height=300)
 
         pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(
             filename=img_string,
-            width=width,
-            height=height,
             preserve_aspect_ratio=False)
         logo = Gtk.Image.new_from_pixbuf(pixbuf)
 
@@ -78,10 +80,10 @@ class BuildWidgets:
 
         return button_table
 
-    def add_horizontal_buttons(self, button_list=[], functions=[], f_size=20):
+    def add_horizontal_buttons(self, button_list=[], functions=[], f_size=20, border_width=20):
         # add buttons
         button_table = Gtk.Table(rows=1, columns=len(button_list))
-        button_table.set_border_width(20)
+        button_table.set_border_width(border_width)
         button_table.set_col_spacings(5)
         button_table.set_row_spacings(5)
 
@@ -123,35 +125,43 @@ class BuildWidgets:
         return button
 
     def create_scroller(self, o_w=400, o_h=600):
-        from simLabels import screen_sizer
         # scroller window for all abnormality and ddx exams in queue
         sw = Gtk.ScrolledWindow()
         sw.set_shadow_type(3)
         sw.set_policy(1, 1)
 
-        # get adjusted width
-        screen_width = Gdk.Screen.get_default().get_width()
-        screen_height = Gdk.Screen.get_default().get_height()
-        width, height = screen_sizer(screen_width, screen_height, old_width=o_w, old_height=o_h)
+        # get adjusted width and height
+        width, height = screen_sizer(self.width, self.height, o_w, o_h)
 
         # allocate space to scroller
         sw.set_size_request(width, height)
 
         return sw
 
-    def create_text_view(self, width, height, bf):
+    def create_text_scroller(self, o_w, o_h):
+        # get adjusted width and height
+        width, height = screen_sizer(self.width, self.height, o_w, o_h)
+
+        text_scroller = Gtk.ScrolledWindow()
+        # text_scroller.set_property('hscrollbar-policy', 0)
+        # text_scroller.set_property('vscrollbar-policy', 0)
+        text_scroller.set_policy(1, 1)
+        text_scroller.set_size_request(width, height)
+        # text_scroller.set_property('border-width', 1)
+
+        return text_scroller
+
+    def create_text_view(self, o_w, o_h, bf):
+        # get adjusted width and height
+        width, height = screen_sizer(self.width, self.height, o_w, o_h)
+
         text_view = Gtk.TextView(buffer=bf)
         text_view.set_editable(False)
         text_view.set_wrap_mode(2)
 
-        text_scroller = Gtk.ScrolledWindow()
-        text_scroller.set_property('hscrollbar-policy', 0)
-        text_scroller.set_property('vscrollbar-policy', 0)
-        text_scroller.set_size_request(width, height)
-        text_scroller.set_property('border-width', 1)
-        text_scroller.add(text_view)
+        text_view.set_size_request(width, height)
 
-        return text_scroller
+        return text_view
 
     def build_tree_view(self, store, row_change_function):
         # create tree views

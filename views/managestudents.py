@@ -81,6 +81,7 @@ class ManageStudents(Gtk.Window, menuBar.MenuBar):
 class InstructionPage(Gtk.VBox):
     def __init__(self, string_resources, mp):
         super(InstructionPage, self).__init__(False, 2)
+        from simLabels import screen_sizer
 
         # initialize passed string resources
         self.string_resources = string_resources
@@ -102,9 +103,8 @@ class InstructionPage(Gtk.VBox):
 
         # initialize box for packing images
         hbox = Gtk.HBox(False, 2)
-
-        hbox.pack_start(ex_image_1, False, False, 40)
-        hbox.pack_start(ex_image_2, False, False, 40)
+        hbox.pack_start(ex_image_1, False, False, 10)
+        hbox.pack_start(ex_image_2, False, False, 10)
 
         # initialize button table elements
         b_list = [self.string_resources["button_text"], self.string_resources["back_button"]]

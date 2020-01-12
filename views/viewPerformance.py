@@ -105,14 +105,6 @@ class ViewPerformance(Gtk.Window, MenuBar):
         self.notebook.get_nth_page(3).hide()
 
     def build_interface(self):
-        from simLabels import screen_sizer
-
-        # get adjusted width
-        screen_width = Gdk.Screen.get_default().get_width()
-        screen_height = Gdk.Screen.get_default().get_height()
-
-        width, height = screen_sizer(screen_width, screen_height, old_width=400, old_height=500)
-
         # make boxes to hold all info
         vbox = Gtk.VBox(False, 8)
         ovbox = Gtk.VBox(False, 8)
@@ -125,8 +117,12 @@ class ViewPerformance(Gtk.Window, MenuBar):
         ovbox.pack_start(sw, True, True, 0)
         hbox.pack_start(ovbox, True, True, 10)
 
+        # pass old width and height
+        o_w = 400
+        o_h = 500
+
         # create text scroller with text view
-        text_scroller = self.bw.create_text_view(width, height, self.tb)
+        text_scroller = self.bw.create_text_view(o_w, o_h, self.tb)
 
         self.tb.new_case(self.string_resources["base_text"])
 
@@ -421,13 +417,15 @@ class ViewPerformance(Gtk.Window, MenuBar):
         else:
             base_string = ""
 
-        cases = case.split("-")
-        just_cases = [u"\u2022" + i for i in cases if "ddx_" not in i]
-        ddx = ddx.split("-")
-        ddx = [u"\u2022" + i for i in ddx]
+        if len(case) > 0:
+            cases = case.split("-")
+            case = [u"\u2022" + i for i in cases if "ddx_" not in i]
+        if len(ddx) > 0:
+            ddx = ddx.split("-")
+            ddx = [u"\u2022" + i for i in ddx]
 
         text = self.string_resources["baseline_text"] + " " + base_string + "\n\n" +\
-               self.string_resources["ab_text"] + "\n" + u"\n".join(just_cases) + "\n\n" +\
+               self.string_resources["ab_text"] + "\n" + u"\n".join(case) + "\n\n" +\
                self.string_resources["ddx_text"] + "\n" + u"\n".join(ddx)
 
         return text

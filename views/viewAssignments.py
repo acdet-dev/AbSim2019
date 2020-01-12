@@ -1,4 +1,3 @@
-import splashscreen
 from messages import sim_message
 import time
 import ailments
@@ -20,6 +19,7 @@ import random
 from Levenshtein import distance
 from casetext import CaseTextBuffer
 from aStringResources import AStringResources
+from views.buildWidgets import BuildWidgets
 
 import gi
 
@@ -271,18 +271,12 @@ class ViewAssignments(Gtk.Window):
 
         return exam_info
 
-    def return_home(self, optional=''):
-        from views.sim import UserType
-        import dbmigrator
+    def facilitate_transfer(self, new_window):
+        from views.handleTransitions import HandleTransitions
 
-        splash_screen = splashscreen.SplashScreen()
-        splash_screen.show_all()
+        ht = HandleTransitions(self)
 
-        while Gtk.events_pending():
-            Gtk.main_iteration()
-
-        # Perform DB migration to make sure we have the newest version
-        dbmigrator.DBMigrator()
+        ht.setup_transfer()
 
         try:
             self.sounds.stop_sound_player()
@@ -290,10 +284,16 @@ class ViewAssignments(Gtk.Window):
         except AttributeError:
             logging.debug('attributes necessary for stopping devices not made yet')
 
-        UserType(self.user_type)
-        splash_screen.hide()
-        self.destroy()
-        Gtk.main()
+        new_window(self.user_type)
+
+        ht.finish_transfer()
+
+    def return_home(self, optional=''):
+        from views.sim import UserType
+        # import dbmigrator
+        self.facilitate_transfer(UserType)
+        # Perform DB migration to make sure we have the newest version
+        # dbmigrator.DBMigrator()
 
 
 class ViewTests(Gtk.HBox):
@@ -314,33 +314,16 @@ class ViewTests(Gtk.HBox):
 
         self.show()
 
-    def build_view_tree(self, s_w, s_h):
-        from simLabels import font_size
-
+    def create_store(self):
         # Columns available to rows:
         #   str: name of exam
 
         store = Gtk.ListStore(str)
 
         for i in range(0, len(self.exam_resources['exam_info'])):
-            treeiter = store.append([self.exam_resources['exam_info'][i][0]])
+            store.append([self.exam_resources['exam_info'][i][0]])
 
-        tv = Gtk.TreeView(store)
-
-        # Set up font for display
-        screen_size = s_w * s_h
-        font_s = font_size(s_size=screen_size, f_size=14)
-        font_string = "normal " + str(font_s)
-        font = Pango.FontDescription(font_string)
-        self.cell = Gtk.CellRendererText()
-        self.cell.set_property('font-desc', font)
-
-        tvcolumn = Gtk.TreeViewColumn(self.string_resources["column_header"], self.cell)
-        tv.append_column(tvcolumn)
-        tvcolumn.add_attribute(self.cell, 'text', 0)
-        tv.expand_all()
-        tv.connect('cursor-changed', self.on_tree_selected)
-        return tv
+        return store
 
     def get_buffer_text(self):
         # parse exam chosen by student
@@ -398,50 +381,49 @@ class ViewTests(Gtk.HBox):
                 # header_list.remove(header)
 
     def build_interface(self):
-        # get adjusted width
-        screen_width = Gtk.gdk.screen_width()
-        screen_height = Gtk.gdk.screen_height()
+        bw = BuildWidgets()
 
-        # build box to return
-        box = Gtk.VBox()
-        case_selector_tree = self.build_view_tree(screen_width, screen_height)
-        case_selector_scroller = Gtk.ScrolledWindow()
+        # create scroller tree view
+        case_selector_scroller = bw.create_scroller(o_w=450, o_h=450)
+
+        # create store
+        store = self.create_store()
+
+        # build tree view
+        case_selector_tree = bw.build_tree_view(store, self.on_tree_selected)
+
+        # add columns
+        bw.create_columns(case_selector_tree, [self.string_resources["column_header"]])
+
+        # add tree to scroller
         case_selector_scroller.add(case_selector_tree)
-        case_selector_scroller.set_policy(Gtk.POLICY_NEVER, Gtk.POLICY_AUTOMATIC)
-        case_selector_scroller.set_size_request(450, 200)
 
-        label = Gtk.Label()
+        # build label
         label_text = self.string_resources["welcome_string"] + "\n\n" +\
                      self.string_resources["instruction_string"]
-        label_pre_mark = construct_markup(label_text, font_size=16)
-        label.set_markup(label_pre_mark)
-        label.set_line_wrap(True)
-        label.set_alignment(0, 0)
+        label = bw.build_label(label_text=label_text, f_size=16, alignment=[0, 0])
         label.set_max_width_chars(50)
 
-        button_tree = self.add_buttons()
+        # build button tree
+        b_list = [self.string_resources["begin_button"], self.string_resources["back_button"]]
+        f_list = [self.begin_exam, self.view_resources['window'].return_home]
+        button_tree = bw.add_horizontal_buttons(button_list=b_list, functions=f_list, f_size=16)
+
+        # create text view
+        o_w = 300
+        o_h = 300
+        text_scroller = bw.create_text_view(o_w, o_h, self.tb)
+
+        self.tb.new_case(self.string_resources["base_text"])
 
         # construct horizontal box to place label to the left of box features
         pre_box = Gtk.HBox()
 
-        # text is not editable and wraps between words
-        text_view = Gtk.TextView(buffer=self.tb)
-        text_view.set_editable(False)
-        text_view.set_wrap_mode(Gtk.WRAP_WORD)
-
-        width, height = screen_sizer(screen_width, screen_height, old_width=300, old_height=300)
-
-        text_scroller = Gtk.ScrolledWindow()
-        text_scroller.set_property('hscrollbar-policy', Gtk.POLICY_AUTOMATIC)
-        text_scroller.set_property('vscrollbar-policy', Gtk.POLICY_AUTOMATIC)
-        text_scroller.set_size_request(width, height)
-        text_scroller.set_property('border-width', 1)
-        text_scroller.add(text_view)
-        self.tb.new_case(self.string_resources["base_text"])
-        # text_scroller_vadjustment = text_scroller.get_vadjustment()
-
         pre_box.pack_start(case_selector_scroller, False, False, 10)
-        pre_box.pack_start(text_scroller, True, True, 10)
+        pre_box.pack_start(text_scroller, False, False, 10)
+
+        # build box to return
+        box = Gtk.VBox()
 
         # pre_box.pack_start(label, False, False, 50)
         box.pack_start(label, False, False, 20)
@@ -451,31 +433,6 @@ class ViewTests(Gtk.HBox):
         # pre_box.pack_start(box, False, False, 20)
 
         return box
-
-    def add_buttons(self):
-        button_table = Gtk.Table(rows=2, columns=2)
-        button_table.set_border_width(20)
-        button_table.set_col_spacings(5)
-        button_table.set_row_spacings(5)
-
-        right_button = self.build_button(self.string_resources["begin_button"])
-        right_button.connect('clicked', self.begin_exam)
-        button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
-
-        left_button = self.build_button(self.string_resources["back_button"])
-        left_button.connect('clicked', self.view_resources['window'].return_home)
-        button_table.attach(left_button, 1, 2, 0, 1, xoptions=False, yoptions=False)
-
-        return button_table
-
-    def build_button(self, label_text):
-        button = Gtk.Button()
-        label = Gtk.Label()
-        label_pre_mark = construct_markup(label_text, font_size=16)
-        label.set_markup(label_pre_mark)
-        label.set_padding(10, 10)
-        button.add(label)
-        return button
 
     def get_vignette(self):
         # find ddx_list label_info
@@ -564,8 +521,8 @@ class ViewTests(Gtk.HBox):
                 # add case vignette to scroller
                 current_text, ail_key, block = self.get_vignette()
                 self.view_resources['window'].ddx_exam.case_text_buffer.new_case(current_text)
-                self.view_resources['window'].ddx_exam.case_text_scroller_vadjustment.set_value(0)
-                self.view_resources['window'].ddx_exam.case_text_scroller.show_all()
+                # self.view_resources['window'].ddx_exam.case_text_scroller_vadjustment.set_value(0)
+                # self.view_resources['window'].ddx_exam.case_text_scroller.show_all()
 
                 self.view_resources['new_case_observer'].alert(ail_key)
 
@@ -662,8 +619,8 @@ class BaselineTest(Gtk.HBox):
             # add case vignette to scroller
             current_text, ail_key, block = self.view_resources['window'].ddx_exam.get_vignette()
             self.view_resources['window'].ddx_exam.case_text_buffer.new_case(current_text)
-            self.view_resources['window'].ddx_exam.case_text_scroller_vadjustment.set_value(0)
-            self.view_resources['window'].ddx_exam.case_text_scroller.show_all()
+            # self.view_resources['window'].ddx_exam.case_text_scroller_vadjustment.set_value(0)
+            # self.view_resources['window'].ddx_exam.case_text_scroller.show_all()
 
             self.view_resources['new_case_observer'].alert(ail_key)
 
@@ -676,49 +633,33 @@ class BaselineTest(Gtk.HBox):
                         secondary_text=self.string_resources["finish_string"])
             self.view_resources['window'].return_home()
 
-    def build_button(self, label_text):
-        button = Gtk.Button()
-        label = Gtk.Label()
-        label_pre = construct_markup(label_text, font_size=20)
-        label.set_markup(label_pre)
-        label.set_padding(10, 10)
-        button.add(label)
-        return button
-
     def build_exam_interface(self):
-        # get adjusted width
-        # screen_width = Gtk.gdk.screen_width()
-        # screen_height = Gtk.gdk.screen_height()
+        # initialize vbox to pack everything at the end
+        baseline_vbox = Gtk.VBox(False, 2)
 
-        # text is not editable and wraps between words
-        text_view = Gtk.TextView(buffer=self.tb)
-        text_view.set_editable(False)
-        text_view.set_wrap_mode(Gtk.WRAP_WORD)
+        # initialize widget building class
+        bw = BuildWidgets()
 
-        # width, height = screen_sizer(screen_width, screen_height, old_width=300, old_height=300)
+        # create text view
+        # pass old width and height
+        o_w = 50
+        o_h = 50
+        text_view = bw.create_text_view(o_w, o_h, self.tb)
 
         self.tb.new_case(self.exam_resources["header_list"][0])
-        # text_scroller_vadjustment = text_scroller.get_vadjustment()
 
-        self.base_label = Gtk.Label()  # font = 20, bold, fgcolor = #1E9D1C
-        label_text = self.string_resources["baseline_text"]
-        label_pre_mark = construct_markup(label_text, font_size=20, weight='bold')
-        self.base_label.set_markup(label_pre_mark)
+        # build label
+        base_label = bw.build_label(label_text=self.string_resources["baseline_text"], f_size=20, weight="bold")
 
-        button_table = Gtk.Table(rows=2, columns=2)
-        button_table.set_border_width(10)
-        button_table.set_col_spacings(5)
-        button_table.set_row_spacings(5)
+        # build lists of button text and fuctions
+        b_list = [self.string_resources["ok_button"]]
+        f_list = [self.ok_selection]
 
-        right_button = self.build_button(self.string_resources["ok_button"])
-        right_button.connect('clicked', self.ok_selection)
-        button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
-
-        baseline_vbox = Gtk.VBox()
-        button_table.show()
+        # build button table
+        button_table = bw.add_horizontal_buttons(button_list=b_list, functions=f_list, f_size=20, border_width=10)
 
         baseline_vbox.pack_start(text_view, False, False, 10)
-        baseline_vbox.pack_start(self.base_label, True, True, 10)
+        baseline_vbox.pack_start(base_label, True, True, 10)
         baseline_vbox.pack_start(button_table, False, False, 0)
 
         return baseline_vbox
@@ -731,6 +672,10 @@ class BaselineTest(Gtk.HBox):
 class CaseExam(Gtk.HBox):
     def __init__(self, exam_resources, view_resources, sr):
         super(CaseExam, self).__init__(False, 2)
+        from caseselector import CaseSelector
+
+        # initialize instance of builder class
+        self.bw = BuildWidgets()
 
         self.exam_resources = exam_resources
         self.view_resources = view_resources
@@ -738,34 +683,28 @@ class CaseExam(Gtk.HBox):
         self.tb = CaseTextBuffer()
 
         # Build Interface
+        self.cs = CaseSelector(self.view_resources['new_case_observer'], flag='test')
         cvs = self.build_interface()
 
-        self.test_box = Gtk.VBox()
-
-        # get adjusted width
-        # screen_width = Gtk.gdk.screen_width()
-        # screen_height = Gtk.gdk.screen_height()
+        test_box = Gtk.VBox()
 
         # text is not editable and wraps between words
-        text_view = Gtk.TextView(buffer=self.tb)
-        text_view.set_editable(False)
-        text_view.set_wrap_mode(Gtk.WRAP_WORD)
-
-        # width, height = screen_sizer(screen_width, screen_height, old_width=300, old_height=300)
+        o_w = 50
+        o_h = 50
+        text_view = self.bw.create_text_view(o_w, o_h, self.tb)
 
         self.tb.new_case(self.exam_resources["header_list"][0])
-        # text_scroller_vadjustment = text_scroller.get_vadjustment()
 
-        self.button_tree = self.add_buttons()
+        b_list = [self.string_resources["make_selection_button"]]
+        f_list = [self.make_selection]
+        button_tree = self.bw.add_horizontal_buttons(button_list=b_list, functions=f_list, f_size=20)
 
-        self.test_box.pack_start(text_view, False, False, 10)
-        self.test_box.pack_start(cvs, True, True, 0)
-        self.test_box.pack_start(self.button_tree, False, False, 0)
-        self.test_box.show_all()
+        test_box.pack_start(text_view, False, False, 10)
+        test_box.pack_start(cvs, True, True, 10)
+        test_box.pack_start(button_tree, False, False, 0)
 
-        self.test_box.show_all()
-        self.add(self.test_box)
-        self.show()
+        self.add(test_box)
+        self.show_all()
 
     def report_score(self, score, flag=''):
         if flag == 'first_time':
@@ -786,8 +725,8 @@ class CaseExam(Gtk.HBox):
             # add case vignette to scroller
             current_text, ail_key, block = self.view_resources['window'].ddx_exam.get_vignette()
             self.view_resources['window'].ddx_exam.case_text_buffer.new_case(current_text)
-            self.view_resources['window'].ddx_exam.case_text_scroller_vadjustment.set_value(0)
-            self.view_resources['window'].ddx_exam.case_text_scroller.show_all()
+            # self.view_resources['window'].ddx_exam.case_text_scroller_vadjustment.set_value(0)
+            # self.view_resources['window'].ddx_exam.case_text_scroller.show_all()
 
             self.view_resources['new_case_observer'].alert(ail_key)
 
@@ -803,8 +742,8 @@ class CaseExam(Gtk.HBox):
                 self.exam_resources['ddx_end'] = time.time() - self.exam_resources['ddx_start']
                 # self.exam_resources['ab_num'] = self.exam_resources['ab_num'] + self.exam_resources['ddx_num']
                 # self.exam_resources['ab_den'] = self.exam_resources['ab_den'] + self.exam_resources['ddx_den']
-                ab_score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
-                ddx_score = self.exam_resources['ddx_num'] / self.exam_resources['ddx_den']
+                ab_score = (self.exam_resources['ab_num'] / self.exam_resources['ab_den']) * 100
+                ddx_score = (self.exam_resources['ddx_num'] / self.exam_resources['ddx_den']) * 100
 
             elif len(self.exam_resources['ab_answer_list']) > 0 and len(self.exam_resources['ddx_answer_list']) == 0:
                 ab_score = score
@@ -883,43 +822,13 @@ class CaseExam(Gtk.HBox):
             sim_message(self.view_resources['window'], info_string=self.string_resources["no_selection"],
                         secondary_text=self.string_resources["no_string"])
 
-    def build_button(self, label_text):
-        button = Gtk.Button()
-        label = Gtk.Label()
-        label_pre = construct_markup(label_text, font_size=20)
-        label.set_markup(label_pre)
-        label.set_padding(10, 10)
-        button.add(label)
-        return button
-
-    def add_buttons(self):
-
-        button_table = Gtk.Table(rows=2, columns=2)
-        button_table.set_border_width(10)
-        button_table.set_col_spacings(5)
-        button_table.set_row_spacings(5)
-
-        right_button = self.build_button(self.string_resources["make_selection_button"])
-        right_button.connect('clicked', self.make_selection)
-        button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
-
-        return button_table
-
     def build_interface(self):
-        from caseselector import CaseSelector
-
-        self.cs = CaseSelector(self.view_resources['new_case_observer'], flag='test')
         case_view_tree = self.cs.build_ddx_tree()
 
-        case_view_scroller = Gtk.ScrolledWindow()
-        case_view_scroller.add(case_view_tree)
-        case_view_scroller.set_policy(Gtk.POLICY_NEVER, Gtk.POLICY_AUTOMATIC)
+        # bw class build case_scroller
+        case_view_scroller = self.bw.create_scroller(o_w=200, o_h=400)
 
-        # get measurements for screen size request
-        s_w = Gdk.screen_width()
-        s_h = Gdk.screen_height()
-        width, height = screen_sizer(s_w, s_h, old_width=800, old_height=400)
-        case_view_scroller.set_size_request(width, height)
+        case_view_scroller.add(case_view_tree)
 
         return case_view_scroller
 
@@ -931,41 +840,42 @@ class DdxExam(Gtk.HBox):
     def __init__(self, exam_resources, view_resources, sr):
         super(DdxExam, self).__init__(False, 2)
 
+        # initialize resources
         self.exam_resources = exam_resources
         self.view_resources = view_resources
         self.string_resources = sr
         self.tb = CaseTextBuffer()
+        self.case_text_buffer = casetext.CaseTextBuffer()
+        self.bw = BuildWidgets()
 
-        self.build_ddx_interface()
+        # initialize boxes for packing widgets
+        test_box = Gtk.VBox()
+        hbox = Gtk.HBox()
 
-        self.test_box = Gtk.VBox()
+        # add button_tree
+        b_list = [self.string_resources["make_selection_button"]]
+        f_list = [self.make_selection]
+        button_tree = self.bw.add_horizontal_buttons(button_list=b_list, functions=f_list, f_size=20)
 
-        self.button_tree = self.add_buttons()
+        # initialize case selector
+        ddx_view_scroller, case_text_scroller = self.build_ddx_interface()
 
-        self.hbox = Gtk.HBox()
-        self.hbox.pack_start(self.case_text_scroller, False, False, 10)
-        self.hbox.pack_start(self.ddx_view_scroller, True, True, 0)
-
-        # get adjusted width
-        # screen_width = Gtk.gdk.screen_width()
-        # screen_height = Gtk.gdk.screen_height()
+        hbox.pack_start(case_text_scroller, False, False, 10)
+        hbox.pack_start(ddx_view_scroller, False, False, 0)
 
         # text is not editable and wraps between words
-        text_view = Gtk.TextView(buffer=self.tb)
-        text_view.set_editable(False)
-        text_view.set_wrap_mode(Gtk.WRAP_WORD)
-
-        # width, height = screen_sizer(screen_width, screen_height, old_width=50, old_height=50)
+        o_w = 50
+        o_h = 50
+        text_view = self.bw.create_text_view(o_w, o_h, self.tb)
 
         self.tb.new_case(self.exam_resources["header_list"][0])
 
-        self.test_box.pack_start(text_view, False, False, 10)
-        self.test_box.pack_start(self.hbox, False, False, 0)
-        self.test_box.pack_start(self.button_tree, False, False, 0)
+        test_box.pack_start(text_view, False, False, 10)
+        test_box.pack_start(hbox, False, False, 0)
+        test_box.pack_start(button_tree, False, False, 0)
 
-        self.test_box.show_all()
-
-        self.add(self.test_box)
+        self.add(test_box)
+        self.show_all()
 
     def get_vignette(self):
         # find ddx_list label_info
@@ -1003,8 +913,8 @@ class DdxExam(Gtk.HBox):
                     # add case vignette to scroller
                     current_text, ail_key, block = self.get_vignette()
                     self.case_text_buffer.new_case(current_text)
-                    self.case_text_scroller_vadjustment.set_value(0)
-                    self.case_text_scroller.show_all()
+                    # self.case_text_scroller_vadjustment.set_value(0)
+                    # self.case_text_scroller.show_all()
 
                     self.view_resources['new_case_observer'].alert(ail_key)
 
@@ -1024,74 +934,36 @@ class DdxExam(Gtk.HBox):
             sim_message(self.view_resources['window'], info_string=self.string_resources["no_selection"],
                         secondary_text=self.string_resources["no_string"])
 
-    def build_button(self, label_text):
-        button = Gtk.Button()
-        label = Gtk.Label()
-        label_pre = construct_markup(label_text, font_size=20)
-        label.set_markup(label_pre)
-        label.set_padding(10, 10)
-        button.add(label)
-        return button
-
-    def add_buttons(self):
-
-        button_table = Gtk.Table(rows=2, columns=2)
-        button_table.set_border_width(10)
-        button_table.set_col_spacings(5)
-        button_table.set_row_spacings(5)
-
-        right_button = self.build_button(self.string_resources["make_selection_button"])
-        right_button.connect('clicked', self.make_selection)
-        button_table.attach(right_button, 0, 1, 0, 1, xoptions=False, yoptions=False)
-
-        return button_table
-
     def build_case_text_view(self):
-        self.case_text_buffer = casetext.CaseTextBuffer()
-
         # Case text is not editable and wraps between words
-        self.case_text_view = Gtk.TextView(buffer=self.case_text_buffer)
-        self.case_text_view.set_editable(False)
-        self.case_text_view.set_wrap_mode(Gtk.WRAP_WORD)
+        o_w = 500
+        o_h = 500
+        case_text_view = self.bw.create_text_view(o_w, o_h, self.case_text_buffer)
 
-        # get adjusted width
-        screen_width = Gtk.gdk.screen_width()
-        screen_height = Gtk.gdk.screen_height()
+        case_text_scroller = self.bw.create_text_scroller(o_w, o_h)
 
-        width, height = screen_sizer(screen_width, screen_height, old_width=400, old_height=500)
+        case_text_scroller.add(case_text_view)
 
-        self.case_text_scroller = Gtk.ScrolledWindow()
-        self.case_text_scroller.set_property('hscrollbar-policy', Gtk.POLICY_AUTOMATIC)
-        self.case_text_scroller.set_property('vscrollbar-policy', Gtk.POLICY_AUTOMATIC)
-        self.case_text_scroller.set_size_request(width, height)
-        self.case_text_scroller.set_property('border-width', 1)
-        self.case_text_scroller.add(self.case_text_view)
-        self.case_text_scroller_vadjustment = self.case_text_scroller.get_vadjustment()
+        # case_text_scroller_vadjustment = case_text_scroller.get_vadjustment()
+
+        return case_text_scroller
 
     def build_ddx_interface(self):
-        self.ddx_view_tree = self.build_ddx_selector()
+        ddx_view_tree = self.build_ddx_selector()
 
-        self.ddx_view_scroller = Gtk.ScrolledWindow()
-        self.ddx_view_scroller.add(self.ddx_view_tree)
-        self.ddx_view_scroller.set_policy(Gtk.POLICY_NEVER, Gtk.POLICY_AUTOMATIC)
+        ddx_view_scroller = self.bw.create_scroller(o_w=500, o_h=500)
+        ddx_view_scroller.add(ddx_view_tree)
 
-        # get measurements for screen size request
-        s_w = Gdk.screen_width()
-        s_h = Gdk.screen_height()
-        width, height = screen_sizer(s_w, s_h, old_width=800, old_height=400)
-        self.ddx_view_scroller.set_size_request(width, height)
+        case_text_scroller = self.build_case_text_view()
 
-        self.build_case_text_view()
+        return ddx_view_scroller, case_text_scroller
 
     def build_ddx_selector(self):
         from casetext import CaseText
         # Columns available to rows:
         #   str: name visible in widget
         #   str: text sent in signal
-        self.ddx_tree_store = Gtk.TreeStore(str, str)
-
-        store = self.ddx_tree_store
-        # Top level
+        store = Gtk.TreeStore(str, str)
 
         ddx_names = CaseText().cases.get(525, [])
         ddx_list = []
@@ -1109,24 +981,20 @@ class DdxExam(Gtk.HBox):
         store.append(None, [ddx_list[7], 'Diverticulitis'])
         store.append(None, [ddx_list[8], 'Acute Enteritis'])
 
-        self.ddx_tree_view = Gtk.TreeView(self.ddx_tree_store)
-        tv = self.ddx_tree_view  # alias
-
         # Set up font for display
         s_size = Gdk.screen_width() * Gdk.screen_height()
         if s_size < 1327104:
-            font_s = font_size(s_size, f_size=14)
+            font_s = font_size(s_size, f_size=20)
         else:
             font_s = 14
         font = Pango.FontDescription('normal ' + str(font_s))
-        self.cell = Gtk.CellRendererText()
-        self.cell.set_property('font-desc', font)
+        cell = Gtk.CellRendererText()
+        cell.set_property('font-desc', font)
 
-        tvcolumn = Gtk.TreeViewColumn(self.string_resources["column_header_2"], self.cell)
-        tv.append_column(tvcolumn)
-        tvcolumn.add_attribute(self.cell, 'text', 0)
-        tv.expand_all()
-        tv.connect('cursor-changed', self.on_ddx_tree_selected)
+        # build tree view
+        tv = self.bw.build_tree_view(store, self.on_ddx_tree_selected)
+        self.bw.create_columns(tv, h_list=[self.string_resources["column_header_2"]])
+
         return tv
 
     def on_ddx_tree_selected(self, treeview):

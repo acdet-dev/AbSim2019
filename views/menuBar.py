@@ -1,7 +1,6 @@
 import os
 import i18ntrans2
 import splashscreen
-import dbmigrator
 import config
 from aStringResources import AStringResources
 import logging
@@ -25,7 +24,7 @@ class MenuBar():
 
     def read_menu_xml_list(self, options):
         logging.debug('Attempting to write all locale options to menu bar xml.')
-        menu_xml = 'abMenu.xml'
+        menu_xml = 'views\\abMenu.xml'
         out_menu_xml = app_data_path + '\\outMenu.xml'
         try:
             f1 = open(menu_xml, 'r')
@@ -33,7 +32,7 @@ class MenuBar():
         except FileNotFoundError:
             logging.debug('No menu xml file found.')
 
-        ##add menu options to new menu bar xml file
+        # add menu options to new menu bar xml file
         opt_len = len(options)
 
         i = 0
@@ -45,16 +44,19 @@ class MenuBar():
                 menu_xml_list.insert(i + 8, "      <menuitem action=" + "'" + num_list[i] + "'" + "/>\n\t")
                 choice_list.append(num_list[i])
                 i = i + 1
-            except IndexError:
+            except (IndexError, UnboundLocalError):
                 logging.debug('An error occurred when adding locale menu options.')
-                pass
+                break
 
         f2 = open(out_menu_xml, 'w+')
-        for line in menu_xml_list:
-            f2.write(line)
+        try:
+            for line in menu_xml_list:
+                f2.write(line)
 
-        f1.close()
-        f2.close()
+            f1.close()
+            f2.close()
+        except UnboundLocalError:
+            logging.debug("No menu list created")
 
         return choice_list
 
@@ -71,7 +73,10 @@ class MenuBar():
         uimanager.insert_action_group(action_group)
         menubar = uimanager.get_widget("/MenuBar")
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        box.pack_start(menubar, False, False, 0)
+        try:
+            box.pack_start(menubar, False, False, 0)
+        except TypeError:
+            logging.debug("not packing menu because error occurred")
         return box
 
     def add_ab_menu_actions(self, action_group):
@@ -85,7 +90,7 @@ class MenuBar():
         action_group.add_action(Gtk.Action("ChoicesMenu", string_resources["locales"], None,
                                            None))
 
-        ##Log i18n status
+        # Log i18n status
         logging.debug('Attempting to get i18n locale options.')
 
         self.locale_options = i18ntrans2.get_locale_options()
@@ -157,9 +162,6 @@ class MenuBar():
 
         while Gtk.events_pending():
             Gtk.main_iteration()
-
-        # Perform DB migration to make sure we have the newest version
-        dbmigrator.DBMigrator()
 
         try:
             self.sounds.stop_sound_player()

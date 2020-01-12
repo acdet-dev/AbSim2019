@@ -9,7 +9,7 @@ import observer
 import port_settings
 from views.menuBar import MenuBar
 import simLabels
-from simLabels import construct_markup, screen_sizer
+from simLabels import screen_sizer
 import abnormalitydetection
 import sounds
 import donottouch
@@ -200,15 +200,11 @@ class SensitivityInterface(Gtk.HBox):
 
     def facilitate_transfer(self, new_window, *args):
         from views.handleTransitions import HandleTransitions
-        import dbmigrator
 
         ht = HandleTransitions(self.view_resources["window"])
 
         # setup transfer
         ht.setup_transfer()
-
-        # Perform DB migration to make sure we have the newest version
-        dbmigrator.DBMigrator()
 
         try:
             self.view_resources['sounds'].stop_sound_player()
