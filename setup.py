@@ -110,9 +110,9 @@ drivers = [
 ]
 
 # -- change main.py if needed -- #
-setup(windows=['defineUser.py'], options={ 
+setup(windows=['app.py'], options={
     'py2exe': { 
-        'includes' : ['gi'], 
+        'includes': ['gi'],
         'packages': ['gi', 'encodings', 'cairo'],
     } 
   },
