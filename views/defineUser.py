@@ -42,9 +42,9 @@ class DefineUser(Gtk.Window, MenuBar):
 
         label = bw.build_label(label_text=self.string_resources["welcome_text"])
 
-        b_list = [self.string_resources["faculty_button"], self.string_resources["student_button"]]
-        d_list = [self.string_resources["faculty_description"], self.string_resources["student_description"]]
-        f_list = [self.add_faculty, self.student]
+        b_list = [self.string_resources["student_button"], self.string_resources["faculty_button"]]
+        d_list = [self.string_resources["student_description"], self.string_resources["faculty_description"]]
+        f_list = [self.student, self.add_faculty]
         button_table = bw.add_buttons(button_list=b_list, description_list=d_list, functions=f_list)
 
         widget.pack_start(logo, False, False, 0)
