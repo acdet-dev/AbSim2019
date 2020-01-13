@@ -12,11 +12,13 @@ gi.require_version('Gtk', '3.0')
 from simLabels import font_size
 from gi.repository import Gtk, Gdk
 from i18ntrans2 import _
+from aStringResources import AStringResources
 
 
 class CaseText:
     def __init__(self):
         self.filename = 'cases.json'
+        self.string_resources = AStringResources("case_text").get_by_identifier()
 
         self.cases = {
             # Space 525, "Acute Abdominal Pain Simulator"
@@ -37,7 +39,7 @@ class CaseText:
                                       u"AUSCULTATION reveals: normal bowel sounds."),
 
                         'ddx': 1,
-                        'ddx_name': _(u"Upper Gastrointestinal Etiology"),
+                        'ddx_name': self.string_resources["uge"],
                         'case_id': 'IBW5fG080X0H40',
                         'ailment': 'ugi t',
                         'gender': 'female',
@@ -58,7 +60,7 @@ class CaseText:
                                       u"EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel "
                                       u"sounds."),
                         'ddx': 1,
-                        'ddx_name': _(u"Upper Gastrointestinal Etiology"),
+                        'ddx_name': self.string_resources["uge"],
                         'case_id': 'McW7eC1AWX0H40',
                         'ailment': 'ugi t',
                         'gender': 'male',
@@ -78,7 +80,7 @@ class CaseText:
                                       u"EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel "
                                       u"sounds."),
                         'ddx': 1,
-                        'ddx_name': _(u"Upper Gastrointestinal Etiology"),
+                        'ddx_name': self.string_resources["uge"],
                         'case_id': 'KMWJW0H0WX0H40',
                         'ailment': 'ugi t',
                         'gender': 'male',
@@ -100,7 +102,7 @@ class CaseText:
                                       u"THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. "
                                       u"ABDOMINAL AUSCULTATION reveals: normal bowel sounds."),
                         'ddx': 2,
-                        'ddx_name': _(u"Choledocolithiasis"),
+                        'ddx_name': self.string_resources["choledocolithiasis"],
                         'case_id': 'Mc2802054o0H40',
                         'ailment': 'gallbladder t',
                         'gender': 'male',
@@ -120,7 +122,7 @@ class CaseText:
                                       u"unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
                                       u"AUSCULTATION reveals: decreased bowel sounds."),
                         'ddx': 2,
-                        'ddx_name': _(u"Choledocolithiasis"),
+                        'ddx_name': self.string_resources["choledocolithiasis"],
                         'case_id': 'Ia2103G54Y2180',
                         'ailment': 'gallbladder g',
                         'gender': 'female',
@@ -140,7 +142,7 @@ class CaseText:
                                       u"EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel "
                                       u"sounds."),
                         'ddx': 2,
-                        'ddx_name': _(u"Choledocolithiasis"),
+                        'ddx_name': self.string_resources["choledocolithiasis"],
                         'case_id': 'Ib2002054o2140',
                         'ailment': 'gallbladder g',
                         'gender': 'female',
@@ -162,7 +164,7 @@ class CaseText:
                                       u"unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
                                       u"AUSCULTATION reveals: normal bowel sounds."),
                         'ddx': 3,
-                        'ddx_name': _(u"Pancreatitis"),
+                        'ddx_name': self.string_resources["pancreas"],
                         'case_id': 'b6WG44030X0H40',
                         'ailment': 'pancreas t',
                         'gender': 'male',
@@ -182,7 +184,7 @@ class CaseText:
                                       u"THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. "
                                       u"ABDOMINAL AUSCULTATION reveals: normal bowel sounds."),
                         'ddx': 3,
-                        'ddx_name': _(u"Pancreatitis"),
+                        'ddx_name': self.string_resources["pancreas"],
                         'case_id': 'YdWG4407K10H40',
                         'ailment': 'pancreas t',
                         'gender': 'female',
@@ -202,7 +204,7 @@ class CaseText:
                                       u"THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. "
                                       u"ABDOMINAL AUSCULTATION reveals: normal bowel sounds."),
                         'ddx': 3,
-                        'ddx_name': _(u"Pancreatitis"),
+                        'ddx_name': self.string_resources["pancreas"],
                         'case_id': 'YdWH4407K10H40',
                         'ailment': 'pancreas t',
                         'gender': 'female',
@@ -224,7 +226,7 @@ class CaseText:
                                       u"ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: "
                                       u"normal bowel sounds. "),
                         'ddx': 4,
-                        'ddx_name': _(u"Cholecystitis"),
+                        'ddx_name': self.string_resources["cholecystitis"],
                         'case_id': '8bG800G50Y0H40',
                         'ailment': 'gallbladder t',
                         'gender': 'female',
@@ -244,7 +246,7 @@ class CaseText:
                                       u"unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
                                       u"AUSCULTATION reveals: normal bowel sounds."),
                         'ddx': 4,
-                        'ddx_name': _(u"Cholecystitis"),
+                        'ddx_name': self.string_resources["cholecystitis"],
                         'case_id': '9528480f0Y2140',
                         'ailment': 'gallbladder g',
                         'gender': 'female',
@@ -262,7 +264,7 @@ class CaseText:
                                       u"unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
                                       u"AUSCULTATION reveals: normal bowel sounds."),
                         'ddx': 4,
-                        'ddx_name': _(u"Cholecystitis"),
+                        'ddx_name': self.string_resources["cholecystitis"],
                         'case_id': 'H5280008G20H40',
                         'ailment': 'gallbladder t',
                         'gender': 'female',
@@ -282,7 +284,7 @@ class CaseText:
                                       u"unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
                                       u"AUSCULTATION reveals: normal bowel sounds."),
                         'ddx': 4,
-                        'ddx_name': _(u"Cholecystitis"),
+                        'ddx_name': self.string_resources["cholecystitis"],
                         'case_id': 'Wa29C0Ge0c0H40',
                         'ailment': 'gallbladder t',
                         'gender': 'female',
@@ -305,7 +307,7 @@ class CaseText:
                                       u"unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
                                       u"AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."),
                         'ddx': 5,
-                        'ddx_name': _(u"Mesenteric Infarction"),
+                        'ddx_name': self.string_resources["mi"],
                         'case_id': 'B7800G017a8XeG',
                         'ailment': 'colon g',
                         'gender': 'female',
@@ -325,7 +327,7 @@ class CaseText:
                                       u"EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased "
                                       u"bowel sounds, and an abdominal bruit."),
                         'ddx': 5,
-                        'ddx_name': _(u"Mesenteric Infarction"),
+                        'ddx_name': self.string_resources["mi"],
                         'case_id': 'F7800G01N44He0',
                         'ailment': 'none n',
                         'gender': 'male',
@@ -344,7 +346,7 @@ class CaseText:
                                       u"tachypnea at 25. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION "
                                       u"is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."),
                         'ddx': 5,
-                        'ddx_name': _(u"Mesenteric Infarction"),
+                        'ddx_name': self.string_resources["mi"],
                         'case_id': 'AN8G0G016a8X8G',
                         'ailment': 'colon g',
                         'gender': 'female',
@@ -367,7 +369,7 @@ class CaseText:
                                       u"reveals: mild distention. ABDOMINAL AUSCULTATION reveals: increased bowel "
                                       u"sounds."),
                         'ddx': 6,
-                        'ddx_name': _(u"Small Bowel Obstruction"),
+                        'ddx_name': self.string_resources["sbo"],
                         'case_id': 'D5804S0K2WX1IG',
                         'ailment': 'appendix g',
                         'gender': 'male',
@@ -388,7 +390,7 @@ class CaseText:
                                       u"distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, and the "
                                       u"presence of tympany."),
                         'ddx': 6,
-                        'ddx_name': _(u"Small Bowel Obstruction"),
+                        'ddx_name': self.string_resources["sbo"],
                         'case_id': '95GG4S0H2WWHIW',
                         'ailment': 'appendix t',
                         'gender': 'female',
@@ -409,7 +411,7 @@ class CaseText:
                                       u"EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: "
                                       u"increased bowel sounds, the presence of tympany, and an abdominal bruit."),
                         'ddx': 6,
-                        'ddx_name': _(u"Small Bowel Obstruction"),
+                        'ddx_name': self.string_resources["sbo"],
                         'case_id': '97800y0H6e8HoW',
                         'ailment': 'colon t',
                         'gender': 'female',
@@ -429,7 +431,7 @@ class CaseText:
                                       u"unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
                                       u"AUSCULTATION reveals: decreased bowel sounds."),
                         'ddx': 7,
-                        'ddx_name': _(u"Appendicitis"),
+                        'ddx_name': self.string_resources["app"],
                         'case_id': 'WdG04000G0X180',
                         'ailment': 'appendix g',
                         'gender': 'female',
@@ -446,7 +448,7 @@ class CaseText:
                                       u"unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
                                       u"AUSCULTATION reveals: decreased bowel sounds."),
                         'ddx': 7,
-                        'ddx_name': _(u"Appendicitis"),
+                        'ddx_name': self.string_resources["app"],
                         'case_id': 'ad8040m0G0WH80',
                         'ailment': 'appendix t',
                         'gender': 'male',
@@ -464,7 +466,7 @@ class CaseText:
                                       u"EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased "
                                       u"bowel sounds."),
                         'ddx': 7,
-                        'ddx_name': _(u"Appendicitis"),
+                        'ddx_name': self.string_resources["app"],
                         'case_id': '8d1000m0e0X180',
                         'ailment': 'appendix g',
                         'gender': 'female',
@@ -482,7 +484,7 @@ class CaseText:
                                       u"unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
                                       u"AUSCULTATION reveals: decreased bowel sounds."),
                         'ddx': 7,
-                        'ddx_name': _(u"Appendicitis"),
+                        'ddx_name': self.string_resources["app"],
                         'case_id': 'aF10C0n0G0X180',
                         'ailment': 'appendix g',
                         'gender': 'male',
@@ -503,7 +505,7 @@ class CaseText:
                                       u"THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. "
                                       u"ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."),
                         'ddx': 8,
-                        'ddx_name': _(u"Diverticulitis"),
+                        'ddx_name': self.string_resources["div"],
                         'case_id': 'KN0WGG084W8X80',
                         'ailment': 'colon g',
                         'gender': 'male',
@@ -523,7 +525,7 @@ class CaseText:
                                       u"EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel "
                                       u"sounds."),
                         'ddx': 8,
-                        'ddx_name': _(u"Diverticulitis"),
+                        'ddx_name': self.string_resources["div"],
                         'case_id': 'CN820WGMWa8X40',
                         'ailment': 'colon g',
                         'gender': 'male',
@@ -540,7 +542,7 @@ class CaseText:
                                       u"THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. "
                                       u"ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."),
                         'ddx': 8,
-                        'ddx_name': _(u"Diverticulitis"),
+                        'ddx_name': self.string_resources["div"],
                         'case_id': 'Gd8000W04W8H80',
                         'ailment': 'colon t',
                         'gender': 'female',
@@ -563,7 +565,7 @@ class CaseText:
                                       u"unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
                                       u"AUSCULTATION reveals: increased bowel sounds."),
                         'ddx': 9,
-                        'ddx_name': _(u"Acute Enteritis"),
+                        'ddx_name': self.string_resources["ae"],
                         'case_id': 'G88260OMG44HG0',
                         'ailment': 'none n',
                         'gender': 'female',
@@ -582,7 +584,7 @@ class CaseText:
                                       u"unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
                                       u"AUSCULTATION reveals: normal bowel sounds."),
                         'ddx': 9,
-                        'ddx_name': _(u"Acute Enteritis"),
+                        'ddx_name': self.string_resources["ae"],
                         'case_id': 'K8G260I0804H40',
                         'ailment': 'none n',
                         'gender': 'male',
@@ -601,7 +603,7 @@ class CaseText:
                                       u"unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL "
                                       u"AUSCULTATION reveals: increased bowel sounds."),
                         'ddx': 9,
-                        'ddx_name': _(u"Acute Enteritis"),
+                        'ddx_name': self.string_resources["ae"],
                         'case_id': 'c8W06WN0G04HG0',
                         'ailment': 'none n',
                         'gender': 'male',

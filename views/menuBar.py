@@ -13,7 +13,7 @@ app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2020'
 string_resources = AStringResources("menu_bar").get_by_identifier()
 
 
-class MenuBar():
+class MenuBar:
 
     def read_menu_xml(self):
         menu_xml = app_data_path + '\\outMenu.xml'

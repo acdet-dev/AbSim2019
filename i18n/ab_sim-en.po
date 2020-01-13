@@ -1,17 +1,17 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR ORGANIZATION
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# AbSim English Translation.
+# Copyright (C) 2020 ACDET
+# Sean McCullough <s.mccullough@tcu.edu>, 2020.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"POT-Creation-Date: 2020-01-09 09:38+Central Standard Time\n"
-"PO-Revision-Date: 2020-01-09 09:40-0600\n"
+"Project-Id-Version: AbSim2020\n"
+"POT-Creation-Date: 2020-01-13 14:37+Central Standard Time\n"
+"PO-Revision-Date: 2020-01-13 15:35-0600\n"
+"Last-Translator: Sean McCullough <s.mccullough@tcu.edu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=cp1252\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
-"Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "X-Generator: Poedit 2.2.4\n"
@@ -36,1139 +36,1207 @@ msgstr "Student"
 msgid "Demonstrate proficiency in abdominal palpation through practice and assessments"
 msgstr "Demonstrate proficiency in abdominal palpation through practice and assessments"
 
-#: aStringResources.py:27
-msgid "Please enter the AbSim's initial key to add faculty login."
-msgstr "Please enter the AbSim's initial key to add faculty login."
-
-#: aStringResources.py:28
-msgid "AbSim Initial Key"
-msgstr "AbSim Initial Key"
-
-#: aStringResources.py:29
-msgid "Add Faculty"
-msgstr "Add Faculty"
-
-#: aStringResources.py:30
-msgid "Please enter a user name and password."
-msgstr "Please enter a user name and password."
-
-#: aStringResources.py:31
-msgid "Faculty Added Successfully"
-msgstr "Faculty Added Successfully"
-
-#: aStringResources.py:32
-msgid "Moving to faculty interface."
-msgstr "Moving to faculty interface."
-
-#: aStringResources.py:33
-msgid "Faculty NOT Added"
-msgstr "Faculty NOT Added"
-
-#: aStringResources.py:34
-msgid "Please Re-Enter the Initial Key."
-msgstr "Please Re-Enter the Initial Key."
-
-#: aStringResources.py:35
-msgid "Faculty Login"
-msgstr "Faculty Login"
-
-#: aStringResources.py:36
-msgid "Please enter your user name and password."
-msgstr "Please enter your user name and password."
-
-#: aStringResources.py:37 aStringResources.py:218
-msgid "Login Failed"
-msgstr "Login Failed"
-
-#: aStringResources.py:38
-msgid "Username and Password do not match our records."
-msgstr "Username and Password do not match our records."
-
-#: aStringResources.py:39
-msgid "No info provided or Cancel clicked."
-msgstr "No info provided or Cancel clicked."
-
-#: aStringResources.py:40
-msgid "Please enter the AbSim's initial key to reset faculty login."
-msgstr "Please enter the AbSim's initial key to reset faculty login."
-
-#: aStringResources.py:41
-msgid "Faculty Login Data Deleted"
-msgstr "Faculty Login Data Deleted"
-
-#: aStringResources.py:42
-msgid "To add another faculty member, click \"Faculty.\""
-msgstr "To add another faculty member, click \"Faculty.\""
-
-#: aStringResources.py:48
-msgid "Configure AbSim"
-msgstr "Configure AbSim"
-
-#: aStringResources.py:49
-msgid "Customize Sensor Pad Pressure Settings"
-msgstr "Customize Sensor Pad Pressure Settings"
-
-#: aStringResources.py:50
-msgid "Manage Students"
-msgstr "Manage Students"
-
-#: aStringResources.py:51
-msgid "Provide AbSim Student Information"
-msgstr "Provide AbSim Student Information"
-
-#: aStringResources.py:52
-msgid "Create Assessments"
-msgstr "Create Assessments"
-
-#: aStringResources.py:53
-msgid "Construct Custom Assessments"
-msgstr "Construct Custom Assessments"
-
-#: aStringResources.py:54 aStringResources.py:149 aStringResources.py:228
-msgid "View Assessments"
-msgstr "View Assessments"
-
-#: aStringResources.py:55
-msgid "View Results and Assign Assessments"
-msgstr "View Results and Assign Assessments"
-
-#: aStringResources.py:61
-msgid "AbSim Configuration"
-msgstr "AbSim Configuration"
-
-#: aStringResources.py:62
-msgid "Pressure"
-msgstr "Pressure"
-
-#: aStringResources.py:63
-msgid "Sensitivity"
-msgstr "Sensitivity"
-
-#: aStringResources.py:68
-msgid "Sensitivity Configuration Interface"
-msgstr "Sensitivity Configuration Interface"
-
-#: aStringResources.py:69
-msgid "Set pressure pad sensitivity thresholds:"
-msgstr "Set pressure pad sensitivity thresholds:"
-
-#: aStringResources.py:70
-msgid "(e.g."
-msgstr "(e.g."
-
-#: aStringResources.py:71
-msgid "light"
-msgstr "light"
-
-#: aStringResources.py:72
-msgid "from 5 - 14"
-msgstr "from 5 - 14"
-
-#: aStringResources.py:73
-msgid "deep"
-msgstr "deep"
-
-#: aStringResources.py:74
-msgid "from 15 - 54"
-msgstr "from 15 - 54"
-
-#: aStringResources.py:75
-msgid "too deep"
-msgstr "too deep"
-
-#: aStringResources.py:76
-msgid "> 55)."
-msgstr "> 55)."
-
-#: aStringResources.py:77
-msgid "Click \"Save Sensitivity Settings\" to save your choices."
-msgstr "Click \"Save Sensitivity Settings\" to save your choices."
-
-#: aStringResources.py:78
-msgid "You may view the effects of your changes on the image to the right."
-msgstr "You may view the effects of your changes on the image to the right."
-
-#: aStringResources.py:80
-msgid "If you notice \"ghost\" registers of pressure, click \"Tare / Zero Sensors\"."
-msgstr "If you notice \"ghost\" registers of pressure, click \"Tare / Zero Sensors\"."
-
-#: aStringResources.py:81
-msgid "Tare / Zero Sensors"
-msgstr "Tare / Zero Sensors"
-
-#: aStringResources.py:82
-msgid "Save Sensitivity Settings"
-msgstr "Save Sensitivity Settings"
-
-#: aStringResources.py:87
-msgid "Manage Student Info"
-msgstr "Manage Student Info"
-
-#: aStringResources.py:88
-msgid "Instructions"
-msgstr "Instructions"
-
-#: aStringResources.py:89
-msgid "Manage Sections"
-msgstr "Manage Sections"
-
-#: aStringResources.py:90
-msgid "Loading Student Information"
-msgstr "Loading Student Information"
-
-#: aStringResources.py:91
-msgid "AbSim is set up to parse comma-separated variable files (.csv)."
-msgstr "AbSim is set up to parse comma-separated variable files (.csv)."
-
-#: aStringResources.py:92
-msgid "Please provide AbSim a .csv file with headers as shown below."
-msgstr "Please provide AbSim a .csv file with headers as shown below."
-
-#: aStringResources.py:93
-msgid "If using Microsoft Excel, make sure to save your spreadsheet as a .csv file"
-msgstr "If using Microsoft Excel, make sure to save your spreadsheet as a .csv file"
-
-#: aStringResources.py:94
-msgid "(preferably in UTF-8 encoding)."
-msgstr "(preferably in UTF-8 encoding)."
-
-#: aStringResources.py:95
-msgid "When you are ready, click \"Upload\" to provide AbSim your .csv file."
-msgstr "When you are ready, click \"Upload\" to provide AbSim your .csv file."
-
-#: aStringResources.py:96
-msgid "Upload"
-msgstr "Upload"
-
-#: aStringResources.py:97 aStringResources.py:157
-msgid "View"
-msgstr "View"
-
-#: aStringResources.py:98 aStringResources.py:159
-msgid "Delete"
-msgstr "Delete"
-
-#: aStringResources.py:99 aStringResources.py:123 aStringResources.py:170
-msgid "Section"
-msgstr "Section"
-
-#: aStringResources.py:100
-msgid "Number of Students"
-msgstr "Number of Students"
-
-#: aStringResources.py:101
-msgid "Last Name"
-msgstr "Last Name"
-
-#: aStringResources.py:102
-msgid "First Name"
-msgstr "First Name"
-
-#: aStringResources.py:103
-msgid "ID"
-msgstr "ID"
-
-#: aStringResources.py:104
-msgid "Assessments Taken"
-msgstr "Assessments Taken"
-
-#: aStringResources.py:105
-msgid "Abnormality Average"
-msgstr "Abnormality Average"
-
-#: aStringResources.py:106
-msgid "Case Text Average"
-msgstr "Case Text Average"
-
-#: aStringResources.py:107
-msgid "NA"
-msgstr "NA"
-
-#: aStringResources.py:108
-msgid "Section Data Not Found"
-msgstr "Section Data Not Found"
-
-#: aStringResources.py:109
-msgid "Please check back when you have entered section data."
-msgstr "Please check back when you have entered section data."
-
-#: aStringResources.py:110
-msgid "No Section Selected"
-msgstr "No Section Selected"
-
-#: aStringResources.py:111
-msgid "Please select a section to view, edit, and delete information."
-msgstr "Please select a section to view, edit, and delete information."
-
-#: aStringResources.py:112
-msgid "No Student Selected"
-msgstr "No Student Selected"
-
-#: aStringResources.py:113
-msgid "Please select a student to view, edit, and delete information."
-msgstr "Please select a student to view, edit, and delete information."
-
-#: aStringResources.py:114
-msgid "Delete Information"
-msgstr "Delete Information"
-
-#: aStringResources.py:115
-msgid "Are you sure you wish to delete the selected information?"
-msgstr "Are you sure you wish to delete the selected information?"
-
-#: aStringResources.py:116
-msgid "Information Not Deleted"
-msgstr "Information Not Deleted"
-
-#: aStringResources.py:117
-msgid "AbSim will not delete information and associated data."
-msgstr "AbSim will not delete information and associated data."
-
-#: aStringResources.py:122
-msgid "AbSim File Chooser"
-msgstr "AbSim File Chooser"
-
-#: aStringResources.py:124
-msgid "Class Uploaded Successfully"
-msgstr "Class Uploaded Successfully"
-
-#: aStringResources.py:125
-msgid "Students may now login to view exams you assign."
-msgstr "Students may now login to view exams you assign."
-
-#: aStringResources.py:126
-msgid "Class Upload Failed"
-msgstr "Class Upload Failed"
-
-#: aStringResources.py:127
-msgid "Section information not provided."
-msgstr "Section information not provided."
-
-#: aStringResources.py:128
-msgid "Encoding Error Encountered"
-msgstr "Encoding Error Encountered"
-
-#: aStringResources.py:129
-msgid "Please make sure to save your .csv file in UTF-8 encoding."
-msgstr "Please make sure to save your .csv file in UTF-8 encoding."
-
-#: aStringResources.py:130
-msgid "Any files"
-msgstr "Any files"
-
-#: aStringResources.py:131
-msgid "Text files"
-msgstr "Text files"
-
-#: aStringResources.py:132
-msgid "Please choose a folder"
-msgstr "Please choose a folder"
-
-#: aStringResources.py:137
-msgid "AbSim Assessment Creator"
-msgstr "AbSim Assessment Creator"
-
-#: aStringResources.py:138
-msgid "1. Baseline Assessment"
-msgstr "1. Baseline Assessment"
-
-#: aStringResources.py:139
-msgid "Add Baseline Assessment?"
-msgstr "Add Baseline Assessment?"
-
-#: aStringResources.py:140
-msgid "2. Abnormality Detection Assessment"
-msgstr "2. Abnormality Detection Assessment"
-
-#: aStringResources.py:141
-msgid "3. Case Assessment"
-msgstr "3. Case Assessment"
-
-#: aStringResources.py:142
-msgid "Input Assessment Title"
-msgstr "Input Assessment Title"
-
-#: aStringResources.py:143
-msgid "Save Assessment"
-msgstr "Save Assessment"
-
-#: aStringResources.py:144
-msgid "Assessment"
-msgstr "Assessment"
-
-#: aStringResources.py:150
-msgid "Assessments"
-msgstr "Assessments"
-
-#: aStringResources.py:151 aStringResources.py:229
-msgid "Assessment Title"
-msgstr "Assessment Title"
-
-#: aStringResources.py:152
-msgid "Assigned To"
-msgstr "Assigned To"
-
-#: aStringResources.py:153
-msgid "Completed"
-msgstr "Completed"
-
-#: aStringResources.py:154
-msgid "Baseline Palpation"
-msgstr "Baseline Palpation"
-
-#: aStringResources.py:155 aStringResources.py:257
-msgid "Abnormality Detection"
-msgstr "Abnormality Detection"
-
-#: aStringResources.py:156
-msgid "Case Diagnosis"
-msgstr "Case Diagnosis"
-
-#: aStringResources.py:158
-msgid "Assign"
-msgstr "Assign"
-
-#: aStringResources.py:160
-msgid "Choose Section(s)"
-msgstr "Choose Section(s)"
-
-#: aStringResources.py:161
-msgid "Select section name(s) to display results for that (those) section(s)."
-msgstr "Select section name(s) to display results for that (those) section(s)."
-
-#: aStringResources.py:162
-msgid "Select section name(s) to which to assign assessment."
-msgstr "Select section name(s) to which to assign assessment."
-
-#: aStringResources.py:163
-msgid "Results"
-msgstr "Results"
-
-#: aStringResources.py:164
-msgid "Baseline Assessment:"
-msgstr "Baseline Assessment:"
-
-#: aStringResources.py:165
-msgid "Abnormality Detection:"
-msgstr "Abnormality Detection:"
-
-#: aStringResources.py:166
-msgid "Case Diagnosis:"
-msgstr "Case Diagnosis:"
-
-#: aStringResources.py:167
-msgid "Select assessment to view items assigned."
-msgstr "Select assessment to view items assigned."
-
-#: aStringResources.py:168
-msgid "No Section(s) Selected"
-msgstr "No Section(s) Selected"
-
-#: aStringResources.py:169
-msgid "Please select section(s) to view student performance."
-msgstr "Please select section(s) to view student performance."
-
-#: aStringResources.py:171
-msgid "No Sections Exist"
-msgstr "No Sections Exist"
-
-#: aStringResources.py:172
-msgid "Please add students in previous screen."
-msgstr "Please add students in previous screen."
-
-#: aStringResources.py:173
-msgid "Delete Assessment"
-msgstr "Delete Assessment"
-
-#: aStringResources.py:174
-msgid "Are you sure you wish to delete the selected assessment?"
-msgstr "Are you sure you wish to delete the selected assessment?"
-
-#: aStringResources.py:175
-msgid "Assessment Not Deleted"
-msgstr "Assessment Not Deleted"
-
-#: aStringResources.py:176
-msgid "AbSim will not delete assessment and associated data."
-msgstr "AbSim will not delete assessment and associated data."
-
-#: aStringResources.py:177
-msgid "Assessment Data Not Found"
-msgstr "Assessment Data Not Found"
-
-#: aStringResources.py:178
-msgid "Please check back when students have taken assessments."
-msgstr "Please check back when students have taken assessments."
-
-#: aStringResources.py:179
-msgid "Assessment Assignment Successful"
-msgstr "Assessment Assignment Successful"
-
-#: aStringResources.py:180
-msgid "Students in section(s) assigned may take this assessment."
-msgstr "Students in section(s) assigned may take this assessment."
-
-#: aStringResources.py:181
-msgid "Assessment Already Assigned"
-msgstr "Assessment Already Assigned"
-
-#: aStringResources.py:182
-msgid "The chosen section is already assigned this assessment."
-msgstr "The chosen section is already assigned this assessment."
-
-#: aStringResources.py:183
-msgid "No Assessment Selected"
-msgstr "No Assessment Selected"
-
-#: aStringResources.py:184
-msgid "Please select an assessment to assign, view results, or delete."
-msgstr "Please select an assessment to assign, view results, or delete."
-
-#: aStringResources.py:189
-msgid "Assessment Saved Successfully"
-msgstr "Assessment Saved Successfully"
-
-#: aStringResources.py:190 aStringResources.py:405
-msgid "Students may now take your assessment."
-msgstr "Students may now take your assessment."
-
-#: aStringResources.py:191
-msgid "Assessment Save Failure"
-msgstr "Assessment Save Failure"
-
-#: aStringResources.py:192 aStringResources.py:407
-msgid "Could not save assessment."
-msgstr "Could not save assessment."
-
-#: aStringResources.py:193 aStringResources.py:408
-msgid "Could not save assessment because no assessment title entered."
-msgstr "Could not save assessment because no assessment title entered."
-
-#: aStringResources.py:198
-msgid "No Assessments Taken"
-msgstr "No Assessments Taken"
-
-#: aStringResources.py:199
-msgid "Please check back when students have taken your assessment."
-msgstr "Please check back when students have taken your assessment."
-
-#: aStringResources.py:200
-msgid "Student ID"
-msgstr "Student ID"
-
-#: aStringResources.py:201
-msgid "Score"
-msgstr "Score"
-
-#: aStringResources.py:202
-msgid "Time Elapsed"
-msgstr "Time Elapsed"
-
-#: aStringResources.py:203
-msgid "Assessment Data Exported"
-msgstr "Assessment Data Exported"
-
-#: aStringResources.py:204
-msgid "A CSV file with assessment data was created in AbSim's directory."
-msgstr "A CSV file with assessment data was created in AbSim's directory."
-
-#: aStringResources.py:205
-msgid "Assessment Data Not Exported"
-msgstr "Assessment Data Not Exported"
-
-#: aStringResources.py:206
-msgid "Something went wrong."
-msgstr "Something went wrong."
-
-#: aStringResources.py:207
-msgid "Export to Desktop"
-msgstr "Export to Desktop"
-
-#: aStringResources.py:212
-msgid "Self-directed Learning"
-msgstr "Self-directed Learning"
-
-#: aStringResources.py:213
-msgid "Learn and Practice Abdominal Palpation"
-msgstr "Learn and Practice Abdominal Palpation"
-
-#: aStringResources.py:214
-msgid "View Assignments"
-msgstr "View Assignments"
-
-#: aStringResources.py:215
-msgid "Take Assigned Assessments"
-msgstr "Take Assigned Assessments"
-
-#: aStringResources.py:216
-msgid "Please enter your ID"
-msgstr "Please enter your ID"
-
-#: aStringResources.py:217
-msgid "Student Login"
-msgstr "Student Login"
-
-#: aStringResources.py:219
-msgid "Entered ID does not match our records."
-msgstr "Entered ID does not match our records."
-
-#: aStringResources.py:224
-msgid "AbSim Assignment Viewer"
-msgstr "AbSim Assignment Viewer"
-
-#: aStringResources.py:225
-msgid "Abnormality Assessment"
-msgstr "Abnormality Assessment"
-
-#: aStringResources.py:226
-msgid "Case Text Assessment"
-msgstr "Case Text Assessment"
-
-#: aStringResources.py:227 aStringResources.py:250
-msgid "Baseline Assessment"
-msgstr "Baseline Assessment"
-
-#: aStringResources.py:230 caseselector.py:78
-msgid "Ailment"
-msgstr "Ailment"
-
-#: aStringResources.py:231
-msgid "Welcome to AbSim's Assessment Interface"
-msgstr "Welcome to AbSim's Assessment Interface"
-
-#: aStringResources.py:232
-msgid "Select an assessment and click \"Begin Assessment\" when ready."
-msgstr "Select an assessment and click \"Begin Assessment\" when ready."
-
-#: aStringResources.py:233
-msgid "Begin Assessment"
-msgstr "Begin Assessment"
-
-#: aStringResources.py:234
-msgid "Assessment Not Found."
-msgstr "Assessment Not Found."
-
-#: aStringResources.py:235
-msgid "You may take another assessment if you have more to take."
-msgstr "You may take another assessment if you have more to take."
-
-#: aStringResources.py:236
-msgid "Select Assessment"
-msgstr "Select Assessment"
-
-#: aStringResources.py:237
-msgid "Please select an assessment and click \"Begin Assessment\"."
-msgstr "Please select an assessment and click \"Begin Assessment\"."
-
-#: aStringResources.py:238
-msgid "Assessment Finished"
-msgstr "Assessment Finished"
-
-#: aStringResources.py:239
-msgid "Perform a baseline assessment and click 'OK' when finished."
-msgstr "Perform a baseline assessment and click 'OK' when finished."
-
-#: aStringResources.py:240
-msgid "Ok"
-msgstr "Ok"
-
-#: aStringResources.py:241
-msgid "Make Selection"
-msgstr "Make Selection"
-
-#: aStringResources.py:242
-msgid "No Selection"
-msgstr "No Selection"
-
-#: aStringResources.py:243
-msgid "Please select a case."
-msgstr "Please select a case."
-
-#: aStringResources.py:248
+#: aStringResources.py:26
 msgid "Home"
 msgstr "Home"
 
-#: aStringResources.py:249
+#: aStringResources.py:27
 msgid "System Language"
 msgstr "System Language"
 
+#: aStringResources.py:33
+msgid "Please enter the AbSim's initial key to add faculty login."
+msgstr "Please enter the AbSim's initial key to add faculty login."
+
+#: aStringResources.py:34
+msgid "AbSim Initial Key"
+msgstr "AbSim Initial Key"
+
+#: aStringResources.py:35
+msgid "Add Faculty"
+msgstr "Add Faculty"
+
+#: aStringResources.py:36
+msgid "Please enter a user name and password."
+msgstr "Please enter a user name and password."
+
+#: aStringResources.py:37
+msgid "Faculty Added Successfully"
+msgstr "Faculty Added Successfully"
+
+#: aStringResources.py:38
+msgid "Moving to faculty interface."
+msgstr "Moving to faculty interface."
+
+#: aStringResources.py:39
+msgid "Faculty NOT Added"
+msgstr "Faculty NOT Added"
+
+#: aStringResources.py:40
+msgid "Please Re-Enter the Initial Key."
+msgstr "Please Re-Enter the Initial Key."
+
+#: aStringResources.py:41
+msgid "Faculty Login"
+msgstr "Faculty Login"
+
+#: aStringResources.py:42
+msgid "Please enter your user name and password."
+msgstr "Please enter your user name and password."
+
+#: aStringResources.py:43 aStringResources.py:232
+msgid "Login Failed"
+msgstr "Login Failed"
+
+#: aStringResources.py:44
+msgid "Username and Password do not match our records."
+msgstr "Username and Password do not match our records."
+
+#: aStringResources.py:45
+msgid "No info provided or Cancel clicked."
+msgstr "No info provided or Cancel clicked."
+
+#: aStringResources.py:46
+msgid "Please enter the AbSim's initial key to reset faculty login."
+msgstr "Please enter the AbSim's initial key to reset faculty login."
+
+#: aStringResources.py:47
+msgid "Faculty Login Data Deleted"
+msgstr "Faculty Login Data Deleted"
+
+#: aStringResources.py:48
+msgid "To add another faculty member, click \"Faculty.\""
+msgstr "To add another faculty member, click \"Faculty.\""
+
+#: aStringResources.py:54
+msgid "Settings"
+msgstr "Settings"
+
+#: aStringResources.py:55
+msgid "Customize Sensor Pad Pressure Settings"
+msgstr "Customize Sensor Pad Pressure Settings"
+
+#: aStringResources.py:56 aStringResources.py:164
+msgid "Assessments"
+msgstr "Assessments"
+
+#: aStringResources.py:57
+msgid "Create and Assign Assessments"
+msgstr "Create and Assign Assessments"
+
+#: aStringResources.py:63
+msgid "Enter Student Rosters"
+msgstr "Enter Student Rosters"
+
+#: aStringResources.py:64
+msgid "Provide AbSim Student Information"
+msgstr "Provide AbSim Student Information"
+
+#: aStringResources.py:65
+msgid "Create Assessments"
+msgstr "Create Assessments"
+
+#: aStringResources.py:66
+msgid "Select Test Items to Include on Assessments"
+msgstr "Select Test Items to Include on Assessments"
+
+#: aStringResources.py:67
+msgid "View and Assign Assessments"
+msgstr "View and Assign Assessments"
+
+#: aStringResources.py:68
+msgid "View Created Assessments and Student Results"
+msgstr "View Created Assessments and Student Results"
+
+#: aStringResources.py:69
+msgid "Return to Initial Faculty Screen"
+msgstr "Return to Initial Faculty Screen"
+
+#: aStringResources.py:75
+msgid "AbSim Configuration"
+msgstr "AbSim Configuration"
+
+#: aStringResources.py:76
+msgid "Pressure"
+msgstr "Pressure"
+
+#: aStringResources.py:77
+msgid "Sensitivity"
+msgstr "Sensitivity"
+
+#: aStringResources.py:82
+msgid "Sensitivity Configuration Interface"
+msgstr "Sensitivity Configuration Interface"
+
+#: aStringResources.py:83
+msgid "Set pressure pad sensitivity thresholds:"
+msgstr "Set pressure pad sensitivity thresholds:"
+
+#: aStringResources.py:84
+msgid "(e.g."
+msgstr "(e.g."
+
+#: aStringResources.py:85
+msgid "light"
+msgstr "light"
+
+#: aStringResources.py:86
+msgid "from 5 - 14"
+msgstr "from 5 - 14"
+
+#: aStringResources.py:87
+msgid "deep"
+msgstr "deep"
+
+#: aStringResources.py:88
+msgid "from 15 - 54"
+msgstr "from 15 - 54"
+
+#: aStringResources.py:89
+msgid "too deep"
+msgstr "too deep"
+
+#: aStringResources.py:90
+msgid "> 55)."
+msgstr "> 55)."
+
+#: aStringResources.py:91
+msgid "Click \"Save Sensitivity Settings\" to save your choices."
+msgstr "Click \"Save Sensitivity Settings\" to save your choices."
+
+#: aStringResources.py:92
+msgid "You may view the effects of your changes on the image to the right."
+msgstr "You may view the effects of your changes on the image to the right."
+
+#: aStringResources.py:94
+msgid "If you notice \"ghost\" registers of pressure, click \"Tare / Zero Sensors\"."
+msgstr "If you notice \"ghost\" registers of pressure, click \"Tare / Zero Sensors\"."
+
+#: aStringResources.py:95
+msgid "Tare / Zero Sensors"
+msgstr "Tare / Zero Sensors"
+
+#: aStringResources.py:96
+msgid "Save Sensitivity Settings"
+msgstr "Save Sensitivity Settings"
+
+#: aStringResources.py:101
+msgid "Manage Student Info"
+msgstr "Manage Student Info"
+
+#: aStringResources.py:102
+msgid "Instructions"
+msgstr "Instructions"
+
+#: aStringResources.py:103
+msgid "Manage Sections"
+msgstr "Manage Sections"
+
+#: aStringResources.py:104
+msgid "Loading Student Information"
+msgstr "Loading Student Information"
+
+#: aStringResources.py:105
+msgid "AbSim is set up to parse comma-separated variable files (.csv)."
+msgstr "AbSim is set up to parse comma-separated variable files (.csv)."
+
+#: aStringResources.py:106
+msgid "Please provide AbSim a .csv file with headers as shown below."
+msgstr "Please provide AbSim a .csv file with headers as shown below."
+
+#: aStringResources.py:107
+msgid "If using Microsoft Excel, make sure to save your spreadsheet as a .csv file"
+msgstr "If using Microsoft Excel, make sure to save your spreadsheet as a .csv file"
+
+#: aStringResources.py:108
+msgid "(preferably in UTF-8 encoding)."
+msgstr "(preferably in UTF-8 encoding)."
+
+#: aStringResources.py:109
+msgid "When you are ready, click \"Upload\" to provide AbSim your .csv file."
+msgstr "When you are ready, click \"Upload\" to provide AbSim your .csv file."
+
+#: aStringResources.py:110
+msgid "Upload"
+msgstr "Upload"
+
+#: aStringResources.py:111 aStringResources.py:171
+msgid "View"
+msgstr "View"
+
+#: aStringResources.py:112 aStringResources.py:173
+msgid "Delete"
+msgstr "Delete"
+
+#: aStringResources.py:113 aStringResources.py:137 aStringResources.py:184
+msgid "Section"
+msgstr "Section"
+
+#: aStringResources.py:114
+msgid "Number of Students"
+msgstr "Number of Students"
+
+#: aStringResources.py:115
+msgid "Last Name"
+msgstr "Last Name"
+
+#: aStringResources.py:116
+msgid "First Name"
+msgstr "First Name"
+
+#: aStringResources.py:117
+msgid "ID"
+msgstr "ID"
+
+#: aStringResources.py:118
+msgid "Assessments Taken"
+msgstr "Assessments Taken"
+
+#: aStringResources.py:119
+msgid "Abnormality Average"
+msgstr "Abnormality Average"
+
+#: aStringResources.py:120
+msgid "Case Text Average"
+msgstr "Case Text Average"
+
+#: aStringResources.py:121
+msgid "NA"
+msgstr "NA"
+
+#: aStringResources.py:122
+msgid "Section Data Not Found"
+msgstr "Section Data Not Found"
+
+#: aStringResources.py:123
+msgid "Please check back when you have entered section data."
+msgstr "Please check back when you have entered section data."
+
+#: aStringResources.py:124
+msgid "No Section Selected"
+msgstr "No Section Selected"
+
+#: aStringResources.py:125
+msgid "Please select a section to view, edit, and delete information."
+msgstr "Please select a section to view, edit, and delete information."
+
+#: aStringResources.py:126
+msgid "No Student Selected"
+msgstr "No Student Selected"
+
+#: aStringResources.py:127
+msgid "Please select a student to view, edit, and delete information."
+msgstr "Please select a student to view, edit, and delete information."
+
+#: aStringResources.py:128
+msgid "Delete Information"
+msgstr "Delete Information"
+
+#: aStringResources.py:129
+msgid "Are you sure you wish to delete the selected information?"
+msgstr "Are you sure you wish to delete the selected information?"
+
+#: aStringResources.py:130
+msgid "Information Not Deleted"
+msgstr "Information Not Deleted"
+
+#: aStringResources.py:131
+msgid "AbSim will not delete information and associated data."
+msgstr "AbSim will not delete information and associated data."
+
+#: aStringResources.py:136
+msgid "AbSim File Chooser"
+msgstr "AbSim File Chooser"
+
+#: aStringResources.py:138
+msgid "Class Uploaded Successfully"
+msgstr "Class Uploaded Successfully"
+
+#: aStringResources.py:139
+msgid "Students may now login to view exams you assign."
+msgstr "Students may now login to view exams you assign."
+
+#: aStringResources.py:140
+msgid "Class Upload Failed"
+msgstr "Class Upload Failed"
+
+#: aStringResources.py:141
+msgid "Section information not provided."
+msgstr "Section information not provided."
+
+#: aStringResources.py:142
+msgid "Encoding Error Encountered"
+msgstr "Encoding Error Encountered"
+
+#: aStringResources.py:143
+msgid "Please make sure to save your .csv file in UTF-8 encoding."
+msgstr "Please make sure to save your .csv file in UTF-8 encoding."
+
+#: aStringResources.py:144
+msgid "Any files"
+msgstr "Any files"
+
+#: aStringResources.py:145
+msgid "Text files"
+msgstr "Text files"
+
+#: aStringResources.py:146
+msgid "Please choose a folder"
+msgstr "Please choose a folder"
+
+#: aStringResources.py:151
+msgid "AbSim Assessment Creator"
+msgstr "AbSim Assessment Creator"
+
+#: aStringResources.py:152
+msgid "1. Baseline Assessment"
+msgstr "1. Baseline Assessment"
+
+#: aStringResources.py:153
+msgid "Add Baseline Assessment?"
+msgstr "Add Baseline Assessment?"
+
+#: aStringResources.py:154
+msgid "2. Abnormality Detection Assessment"
+msgstr "2. Abnormality Detection Assessment"
+
+#: aStringResources.py:155
+msgid "3. Case Assessment"
+msgstr "3. Case Assessment"
+
+#: aStringResources.py:156
+msgid "Input Assessment Title"
+msgstr "Input Assessment Title"
+
+#: aStringResources.py:157
+msgid "Save Assessment"
+msgstr "Save Assessment"
+
+#: aStringResources.py:158
+msgid "Assessment"
+msgstr "Assessment"
+
+#: aStringResources.py:163 aStringResources.py:242
+msgid "View Assessments"
+msgstr "View Assessments"
+
+#: aStringResources.py:165 aStringResources.py:243
+msgid "Assessment Title"
+msgstr "Assessment Title"
+
+#: aStringResources.py:166
+msgid "Assigned To"
+msgstr "Assigned To"
+
+#: aStringResources.py:167
+msgid "Completed"
+msgstr "Completed"
+
+#: aStringResources.py:168
+msgid "Baseline Palpation"
+msgstr "Baseline Palpation"
+
+#: aStringResources.py:169 aStringResources.py:276
+msgid "Abnormality Detection"
+msgstr "Abnormality Detection"
+
+#: aStringResources.py:170
+msgid "Case Diagnosis"
+msgstr "Case Diagnosis"
+
+#: aStringResources.py:172
+msgid "Assign"
+msgstr "Assign"
+
+#: aStringResources.py:174
+msgid "Choose Section(s)"
+msgstr "Choose Section(s)"
+
+#: aStringResources.py:175
+msgid "Select section name(s) to display results for that (those) section(s)."
+msgstr "Select section name(s) to display results for that (those) section(s)."
+
+#: aStringResources.py:176
+msgid "Select section name(s) to which to assign assessment."
+msgstr "Select section name(s) to which to assign assessment."
+
+#: aStringResources.py:177
+msgid "Results"
+msgstr "Results"
+
+#: aStringResources.py:178
+msgid "Baseline Assessment:"
+msgstr "Baseline Assessment:"
+
+#: aStringResources.py:179
+msgid "Abnormality Detection:"
+msgstr "Abnormality Detection:"
+
+#: aStringResources.py:180
+msgid "Case Diagnosis:"
+msgstr "Case Diagnosis:"
+
+#: aStringResources.py:181
+msgid "Select assessment to view items assigned."
+msgstr "Select assessment to view items assigned."
+
+#: aStringResources.py:182
+msgid "No Section(s) Selected"
+msgstr "No Section(s) Selected"
+
+#: aStringResources.py:183
+msgid "Please select section(s) to view student performance."
+msgstr "Please select section(s) to view student performance."
+
+#: aStringResources.py:185
+msgid "No Sections Exist"
+msgstr "No Sections Exist"
+
+#: aStringResources.py:186
+msgid "Please add students in previous screen."
+msgstr "Please add students in previous screen."
+
+#: aStringResources.py:187
+msgid "Delete Assessment"
+msgstr "Delete Assessment"
+
+#: aStringResources.py:188
+msgid "Are you sure you wish to delete the selected assessment?"
+msgstr "Are you sure you wish to delete the selected assessment?"
+
+#: aStringResources.py:189
+msgid "Assessment Not Deleted"
+msgstr "Assessment Not Deleted"
+
+#: aStringResources.py:190
+msgid "AbSim will not delete assessment and associated data."
+msgstr "AbSim will not delete assessment and associated data."
+
+#: aStringResources.py:191
+msgid "Assessment Data Not Found"
+msgstr "Assessment Data Not Found"
+
+#: aStringResources.py:192
+msgid "Please check back when students have taken assessments."
+msgstr "Please check back when students have taken assessments."
+
+#: aStringResources.py:193
+msgid "Assessment Assignment Successful"
+msgstr "Assessment Assignment Successful"
+
+#: aStringResources.py:194
+msgid "Students in section(s) assigned may take this assessment."
+msgstr "Students in section(s) assigned may take this assessment."
+
+#: aStringResources.py:195
+msgid "Assessment Already Assigned"
+msgstr "Assessment Already Assigned"
+
+#: aStringResources.py:196
+msgid "The chosen section is already assigned this assessment."
+msgstr "The chosen section is already assigned this assessment."
+
+#: aStringResources.py:197
+msgid "No Assessment Selected"
+msgstr "No Assessment Selected"
+
+#: aStringResources.py:198
+msgid "Please select an assessment to assign, view results, or delete."
+msgstr "Please select an assessment to assign, view results, or delete."
+
+#: aStringResources.py:203
+msgid "Assessment Saved Successfully"
+msgstr "Assessment Saved Successfully"
+
+#: aStringResources.py:204 aStringResources.py:437
+msgid "Students may now take your assessment."
+msgstr "Students may now take your assessment."
+
+#: aStringResources.py:205
+msgid "Assessment Save Failure"
+msgstr "Assessment Save Failure"
+
+#: aStringResources.py:206 aStringResources.py:439
+msgid "Could not save assessment."
+msgstr "Could not save assessment."
+
+#: aStringResources.py:207 aStringResources.py:440
+msgid "Could not save assessment because no assessment title entered."
+msgstr "Could not save assessment because no assessment title entered."
+
+#: aStringResources.py:212
+msgid "No Assessments Taken"
+msgstr "No Assessments Taken"
+
+#: aStringResources.py:213
+msgid "Please check back when students have taken your assessment."
+msgstr "Please check back when students have taken your assessment."
+
+#: aStringResources.py:214
+msgid "Student ID"
+msgstr "Student ID"
+
+#: aStringResources.py:215
+msgid "Score"
+msgstr "Score"
+
+#: aStringResources.py:216
+msgid "Time Elapsed"
+msgstr "Time Elapsed"
+
+#: aStringResources.py:217
+msgid "Assessment Data Exported"
+msgstr "Assessment Data Exported"
+
+#: aStringResources.py:218
+msgid "A CSV file with assessment data was created in AbSim's directory."
+msgstr "A CSV file with assessment data was created in AbSim's directory."
+
+#: aStringResources.py:219
+msgid "Assessment Data Not Exported"
+msgstr "Assessment Data Not Exported"
+
+#: aStringResources.py:220
+msgid "Something went wrong."
+msgstr "Something went wrong."
+
+#: aStringResources.py:221
+msgid "Export to Desktop"
+msgstr "Export to Desktop"
+
+#: aStringResources.py:226
+msgid "Self-directed Learning"
+msgstr "Self-directed Learning"
+
+#: aStringResources.py:227
+msgid "Learn and Practice Abdominal Palpation"
+msgstr "Learn and Practice Abdominal Palpation"
+
+#: aStringResources.py:228
+msgid "Take Assigned Assessment"
+msgstr "Take Assigned Assessment"
+
+#: aStringResources.py:229
+msgid "Complete a variety of assessments using AbSim"
+msgstr "Complete a variety of assessments using AbSim"
+
+#: aStringResources.py:230
+msgid "Please enter your ID"
+msgstr "Please enter your ID"
+
+#: aStringResources.py:231
+msgid "Student Login"
+msgstr "Student Login"
+
+#: aStringResources.py:233
+msgid "Entered ID does not match our records."
+msgstr "Entered ID does not match our records."
+
+#: aStringResources.py:238
+msgid "AbSim Assignment Viewer"
+msgstr "AbSim Assignment Viewer"
+
+#: aStringResources.py:239
+msgid "Abnormality Assessment"
+msgstr "Abnormality Assessment"
+
+#: aStringResources.py:240
+msgid "Case Text Assessment"
+msgstr "Case Text Assessment"
+
+#: aStringResources.py:241 aStringResources.py:269
+msgid "Baseline Assessment"
+msgstr "Baseline Assessment"
+
+#: aStringResources.py:244 caseselector.py:78
+msgid "Ailment"
+msgstr "Ailment"
+
+#: aStringResources.py:245
+msgid "Welcome to AbSim's Assessment Interface"
+msgstr "Welcome to AbSim's Assessment Interface"
+
+#: aStringResources.py:246
+msgid "Select an assessment and click \"Begin Assessment\" when ready."
+msgstr "Select an assessment and click \"Begin Assessment\" when ready."
+
+#: aStringResources.py:247
+msgid "Begin Assessment"
+msgstr "Begin Assessment"
+
+#: aStringResources.py:248
+msgid "Assessment Not Found."
+msgstr "Assessment Not Found."
+
+#: aStringResources.py:249
+msgid "You may take another assessment if you have more to take."
+msgstr "You may take another assessment if you have more to take."
+
+#: aStringResources.py:250
+msgid "Select Assessment"
+msgstr "Select Assessment"
+
 #: aStringResources.py:251
+msgid "Please select an assessment and click \"Begin Assessment\"."
+msgstr "Please select an assessment and click \"Begin Assessment\"."
+
+#: aStringResources.py:252
+msgid "Assessment Finished"
+msgstr "Assessment Finished"
+
+#: aStringResources.py:253
+msgid "Perform a baseline assessment and click 'OK' when finished."
+msgstr "Perform a baseline assessment and click 'OK' when finished."
+
+#: aStringResources.py:254
+msgid "Baseline Evaluation"
+msgstr "Baseline Evaluation"
+
+#: aStringResources.py:255
+msgid "Identify Condition"
+msgstr "Identify Condition"
+
+#: aStringResources.py:256
+msgid "Diagnosis with Case Vignette"
+msgstr "Diagnosis with Case Vignette"
+
+#: aStringResources.py:257
+msgid "Contains"
+msgstr "Contains"
+
+#: aStringResources.py:258
+msgid "Select an assessment to view associated test items."
+msgstr "Select an assessment to view associated test items."
+
+#: aStringResources.py:259
+msgid "Ok"
+msgstr "Ok"
+
+#: aStringResources.py:260
+msgid "Make Selection"
+msgstr "Make Selection"
+
+#: aStringResources.py:261
+msgid "Identify the condition associated with the test item(s)"
+msgstr "Identify the condition associated with the test item(s)"
+
+#: aStringResources.py:262
+msgid "view the case vignette, perform an exam, and enter your diagnosis for the case"
+msgstr "view the case vignette, perform an exam, and enter your diagnosis for the case"
+
+#: aStringResources.py:263
+msgid "No Selection"
+msgstr "No Selection"
+
+#: aStringResources.py:264
+msgid "Please select a case."
+msgstr "Please select a case."
+
+#: aStringResources.py:270
 msgid "Milestone 1:"
 msgstr "Milestone 1:"
 
-#: aStringResources.py:252
+#: aStringResources.py:271
 msgid "Depth of Palpation"
 msgstr "Depth of Palpation"
 
-#: aStringResources.py:253
+#: aStringResources.py:272
 msgid "Milestone 2:"
 msgstr "Milestone 2:"
 
-#: aStringResources.py:254
+#: aStringResources.py:273
 msgid "Surface Area Coverage"
 msgstr "Surface Area Coverage"
 
-#: aStringResources.py:255
+#: aStringResources.py:274
 msgid "Comparative Assessment"
 msgstr "Comparative Assessment"
 
-#: aStringResources.py:256
+#: aStringResources.py:275
 msgid "Milestone 3:"
 msgstr "Milestone 3:"
 
-#: aStringResources.py:258
+#: aStringResources.py:277
 msgid "Milestone 4:"
 msgstr "Milestone 4:"
 
-#: aStringResources.py:259
+#: aStringResources.py:278
 msgid "Self-Assessment with"
 msgstr "Self-Assessment with"
 
-#: aStringResources.py:260
+#: aStringResources.py:279
 msgid "Random Ailments"
 msgstr "Random Ailments"
 
-#: aStringResources.py:261
+#: aStringResources.py:280
 msgid "Milestone 5:"
 msgstr "Milestone 5:"
 
-#: aStringResources.py:262
+#: aStringResources.py:281
 msgid "Diagnosis Integration"
 msgstr "Diagnosis Integration"
 
-#: aStringResources.py:263
+#: aStringResources.py:282
 msgid "with Hx/PE"
 msgstr "with Hx/PE"
 
-#: aStringResources.py:269
+#: aStringResources.py:288
 msgid "Welcome!"
 msgstr "Welcome!"
 
-#: aStringResources.py:270
+#: aStringResources.py:289
 msgid "AbSim will train you on abdominal palpation, a key skill to"
 msgstr "AbSim will train you on abdominal palpation, a key skill to"
 
-#: aStringResources.py:271
+#: aStringResources.py:290
 msgid "assess patients complaining of abdominal pain."
 msgstr "assess patients complaining of abdominal pain."
 
-#: aStringResources.py:272
+#: aStringResources.py:291
 msgid "When you are ready, perform an abdominal exam."
 msgstr "When you are ready, perform an abdominal exam."
 
-#: aStringResources.py:273
+#: aStringResources.py:292
 msgid "Click the button when you're done."
 msgstr "Click the button when you're done."
 
-#: aStringResources.py:274
+#: aStringResources.py:293
 msgid "Reveal completed exam"
 msgstr "Reveal completed exam"
 
-#: aStringResources.py:275
+#: aStringResources.py:294
 msgid "Appendix Region"
 msgstr "Appendix Region"
 
-#: aStringResources.py:276
+#: aStringResources.py:295
 msgid "Colon Region"
 msgstr "Colon Region"
 
-#: aStringResources.py:277
+#: aStringResources.py:296
 msgid "Gallbladder Region"
 msgstr "Gallbladder Region"
 
-#: aStringResources.py:278
+#: aStringResources.py:297
 msgid "Gastric/Epigastric Region"
 msgstr "Gastric/Epigastric Region"
 
-#: aStringResources.py:279
+#: aStringResources.py:298
 msgid "Left Ovary Region"
 msgstr "Left Ovary Region"
 
-#: aStringResources.py:280
+#: aStringResources.py:299
 msgid "Right Ovary Region"
 msgstr "Right Ovary Region"
 
-#: aStringResources.py:281
+#: aStringResources.py:300
 msgid "Pancreatic Region"
 msgstr "Pancreatic Region"
 
-#: aStringResources.py:282
+#: aStringResources.py:301
 msgid "Normal Urinary Bladder"
 msgstr "Normal Urinary Bladder"
 
-#: aStringResources.py:283
+#: aStringResources.py:302
 msgid "Liver Region"
 msgstr "Liver Region"
 
-#: aStringResources.py:284
+#: aStringResources.py:303
 msgid "Splenic Region"
 msgstr "Splenic Region"
 
-#: aStringResources.py:285
+#: aStringResources.py:304
 msgid "Distended Urinary Bladder"
 msgstr "Distended Urinary Bladder"
 
-#: aStringResources.py:286
+#: aStringResources.py:305
 msgid "You may now proceed to Milestone 1"
 msgstr "You may now proceed to Milestone 1"
 
-#: aStringResources.py:287
+#: aStringResources.py:306
 msgid "Now it's time to compare your pre-assessment to your skill after training."
 msgstr "Now it's time to compare your pre-assessment to your skill after training."
 
-#: aStringResources.py:288
+#: aStringResources.py:307
 msgid "Pre-Assessment Coverage"
 msgstr "Pre-Assessment Coverage"
 
-#: aStringResources.py:289
+#: aStringResources.py:308
 msgid "Post-Assessment Coverage"
 msgstr "Post-Assessment Coverage"
 
-#: aStringResources.py:290
+#: aStringResources.py:309
 msgid "Proceed to Abnormality Detection"
 msgstr "Proceed to Abnormality Detection"
 
-#: aStringResources.py:291
+#: aStringResources.py:310
 msgid "Coverage Visualization"
 msgstr "Coverage Visualization"
 
-#: aStringResources.py:292
+#: aStringResources.py:311
 msgid "Detailed Comparison"
 msgstr "Detailed Comparison"
 
-#: aStringResources.py:293
+#: aStringResources.py:312
 msgid "Location Analysis"
 msgstr "Location Analysis"
 
-#: aStringResources.py:294
+#: aStringResources.py:313
 msgid "not palpated"
 msgstr "not palpated"
 
-#: aStringResources.py:295
+#: aStringResources.py:314
 msgid "lightly palpated"
 msgstr "lightly palpated"
 
-#: aStringResources.py:296
+#: aStringResources.py:315
 msgid "deeply palpated"
 msgstr "deeply palpated"
 
-#: aStringResources.py:297
+#: aStringResources.py:316
 msgid "too hard"
 msgstr "too hard"
 
-#: aStringResources.py:302
+#: aStringResources.py:321
 msgid "In this milestone, practice palpating to the correct depth."
 msgstr "In this milestone, practice palpating to the correct depth."
 
-#: aStringResources.py:303
+#: aStringResources.py:322
 msgid "Gray circles indicate"
 msgstr "Gray circles indicate"
 
-#: aStringResources.py:304
+#: aStringResources.py:323
 msgid "appropriate for beginning an abdominal exam,"
 msgstr "appropriate for beginning an abdominal exam,"
 
-#: aStringResources.py:305
+#: aStringResources.py:324
 msgid "but insufficient to detect significant abdominal disorders."
 msgstr "but insufficient to detect significant abdominal disorders."
 
-#: aStringResources.py:306
+#: aStringResources.py:325
 msgid "Blue circles indicate"
 msgstr "Blue circles indicate"
 
-#: aStringResources.py:307
+#: aStringResources.py:326
 msgid "good for detecting serious disorders of the abdomen."
 msgstr "good for detecting serious disorders of the abdomen."
 
-#: aStringResources.py:308
+#: aStringResources.py:327
 msgid "Red circles indicate"
 msgstr "Red circles indicate"
 
-#: aStringResources.py:309
+#: aStringResources.py:328
 msgid "causing unnecessary pain, even in a patient with no abnormalities."
 msgstr "causing unnecessary pain, even in a patient with no abnormalities."
 
-#: aStringResources.py:310
+#: aStringResources.py:329
 msgid "This can result in voluntary guarding for the rest of the exam, leading to"
 msgstr "This can result in voluntary guarding for the rest of the exam, leading to"
 
-#: aStringResources.py:311
+#: aStringResources.py:330
 msgid "confusing findings."
 msgstr "confusing findings."
 
-#: aStringResources.py:312
+#: aStringResources.py:331
 msgid "Instructors may adjust pressure sensitivity in the"
 msgstr "Instructors may adjust pressure sensitivity in the"
 
-#: aStringResources.py:313
+#: aStringResources.py:332
 msgid "Settings > Pressure Sensitivity"
 msgstr "Settings > Pressure Sensitivity"
 
-#: aStringResources.py:314
+#: aStringResources.py:333
 msgid "menu."
 msgstr "menu."
 
-#: aStringResources.py:319
+#: aStringResources.py:338
 msgid "Now that you can palpate to proper depth, practice covering the entire abdomen."
 msgstr "Now that you can palpate to proper depth, practice covering the entire abdomen."
 
-#: aStringResources.py:320
+#: aStringResources.py:339
 msgid "It's better to make several passes instead of covering each centimeter in one pass."
 msgstr "It's better to make several passes instead of covering each centimeter in one pass."
 
-#: aStringResources.py:322
+#: aStringResources.py:341
 msgid "Make several trips around the abdomen to get full coverage."
 msgstr "Make several trips around the abdomen to get full coverage."
 
-#: aStringResources.py:323
+#: aStringResources.py:342
 msgid "Especially ensure you check the marked locations, where abdominal abnormalities are most likely to occur."
 msgstr "Especially ensure you check the marked locations, where abdominal abnormalities are most likely to occur."
 
-#: aStringResources.py:329
+#: aStringResources.py:348
 msgid "You should now understand what a normal abdomen feels like."
 msgstr "You should now understand what a normal abdomen feels like."
 
-#: aStringResources.py:330
+#: aStringResources.py:349
 msgid "For this milestone, familiarize yourself with how these abnormalities feel."
 msgstr "For this milestone, familiarize yourself with how these abnormalities feel."
 
-#: aStringResources.py:331
+#: aStringResources.py:350
 msgid "In the next step, you will identify them using touch and sound."
 msgstr "In the next step, you will identify them using touch and sound."
 
-#: aStringResources.py:336
+#: aStringResources.py:355
 msgid "For this milestone, you will report the findings by feel and sound only."
 msgstr "For this milestone, you will report the findings by feel and sound only."
 
-#: aStringResources.py:337
+#: aStringResources.py:356
 msgid "When you select a finding, you will receive feedback and have a second chance to palpate."
 msgstr "When you select a finding, you will receive feedback and have a second chance to palpate."
 
-#: aStringResources.py:339
+#: aStringResources.py:358
 msgid "When you are confident in eliciting findings, we will integrate patient history and non-palpitory physical findings."
 msgstr "When you are confident in eliciting findings, we will integrate patient history and non-palpitory physical findings."
 
-#: aStringResources.py:341
-msgid "Before moving on, re-familiarize yourself with how this condition feels."
-msgstr "Before moving on, re-familiarize yourself with how this condition feels."
+#: aStringResources.py:360
+msgid "Before moving on"
+msgstr "Before moving on"
 
-#: aStringResources.py:342
+#: aStringResources.py:361
+msgid "re-familiarize yourself with how this condition feels."
+msgstr "re-familiarize yourself with how this condition feels."
+
+#: aStringResources.py:362 aStringResources.py:410
 msgid "Correct"
 msgstr "Correct"
 
-#: aStringResources.py:343
+#: aStringResources.py:363 aStringResources.py:412
 msgid "Incorrect"
 msgstr "Incorrect"
 
-#: aStringResources.py:344
+#: aStringResources.py:364
 msgid "You selected:"
 msgstr "You selected:"
 
-#: aStringResources.py:345
+#: aStringResources.py:365
 msgid "Correct selection:"
 msgstr "Correct selection:"
 
-#: aStringResources.py:346
+#: aStringResources.py:366
 msgid "Unremarkable Abdomen"
 msgstr "Unremarkable Abdomen"
 
-#: aStringResources.py:347 cases.py:32 caseselector.py:25
+#: aStringResources.py:367 cases.py:32 caseselector.py:25
 msgid "No Abnormalities"
 msgstr "No Abnormalities"
 
-#: aStringResources.py:348
+#: aStringResources.py:368
 msgid "Appendix"
 msgstr "Appendix"
 
-#: aStringResources.py:349
+#: aStringResources.py:369
 msgid "Tenderness"
 msgstr "Tenderness"
 
-#: aStringResources.py:350
+#: aStringResources.py:370
 msgid "Appendix Tenderness + Guarding"
 msgstr "Appendix Tenderness + Guarding"
 
-#: aStringResources.py:351
+#: aStringResources.py:371
 msgid "Appendix Tenderness + Rebound Tenderness"
 msgstr "Appendix Tenderness + Rebound Tenderness"
 
-#: aStringResources.py:352
+#: aStringResources.py:372
 msgid "Appendix Tenderness + Guarding + Rebound Tenderness"
 msgstr "Appendix Tenderness + Guarding + Rebound Tenderness"
 
-#: aStringResources.py:353
+#: aStringResources.py:373
 msgid "Bladder"
 msgstr "Bladder"
 
-#: aStringResources.py:354
+#: aStringResources.py:374
 msgid "Bladder Tenderness"
 msgstr "Bladder Tenderness"
 
-#: aStringResources.py:355
+#: aStringResources.py:375
 msgid "Colon"
 msgstr "Colon"
 
-#: aStringResources.py:356
+#: aStringResources.py:376
 msgid "Colon Tenderness"
 msgstr "Colon Tenderness"
 
-#: aStringResources.py:357
+#: aStringResources.py:377
 msgid "Colon Tenderness + Guarding"
 msgstr "Colon Tenderness + Guarding"
 
-#: aStringResources.py:358
+#: aStringResources.py:378
 msgid "Gallbladder"
 msgstr "Gallbladder"
 
-#: aStringResources.py:359
+#: aStringResources.py:379
 msgid "Gallbladder Tenderness + Guarding"
 msgstr "Gallbladder Tenderness + Guarding"
 
-#: aStringResources.py:360
+#: aStringResources.py:380
 msgid "Gastric"
 msgstr "Gastric"
 
-#: aStringResources.py:361 cases.py:41 caseselector.py:42
+#: aStringResources.py:381 cases.py:41 caseselector.py:42
 msgid "Gastric Tenderness"
 msgstr "Gastric Tenderness"
 
-#: aStringResources.py:362
+#: aStringResources.py:382
 msgid "Ovary, Left"
 msgstr "Ovary, Left"
 
-#: aStringResources.py:363
+#: aStringResources.py:383
 msgid "Ovary, Left + Guarding"
 msgstr "Ovary, Left + Guarding"
 
-#: aStringResources.py:364
+#: aStringResources.py:384
 msgid "Ovary, Right"
 msgstr "Ovary, Right"
 
-#: aStringResources.py:365
+#: aStringResources.py:385
 msgid "Ovary, Right + Guarding"
 msgstr "Ovary, Right + Guarding"
 
-#: aStringResources.py:366
+#: aStringResources.py:386
 msgid "Pancreas"
 msgstr "Pancreas"
 
-#: aStringResources.py:367
+#: aStringResources.py:387
 msgid "Organ Enlargement"
 msgstr "Organ Enlargement"
 
-#: aStringResources.py:368
+#: aStringResources.py:388
 msgid "Organs"
 msgstr "Organs"
 
-#: aStringResources.py:369 aStringResources.py:381
+#: aStringResources.py:389 aStringResources.py:413
 msgid "Next Case"
 msgstr "Next Case"
 
-#: aStringResources.py:370 cases.py:48 caseselector.py:61
+#: aStringResources.py:390 cases.py:48 caseselector.py:61
 msgid "Hepatomegaly"
 msgstr "Hepatomegaly"
 
-#: aStringResources.py:371 cases.py:49 caseselector.py:62
+#: aStringResources.py:391 cases.py:49 caseselector.py:62
 msgid "Splenomegaly"
 msgstr "Splenomegaly"
 
-#: aStringResources.py:372 cases.py:50 caseselector.py:63
+#: aStringResources.py:392 cases.py:50 caseselector.py:63
 msgid "Enlarged Urinary Bladder"
 msgstr "Enlarged Urinary Bladder"
 
-#: aStringResources.py:377
-msgid "You chose the"
-msgstr "You chose the"
+#: aStringResources.py:397 prototypetext.py:20
+msgid "Upper Gastrointestinal Etiology"
+msgstr "Upper Gastrointestinal Etiology"
 
-#: aStringResources.py:378
-msgid "best diagnosis"
-msgstr "best diagnosis"
+#: aStringResources.py:398 prototypetext.py:48
+msgid "Choledocolithiasis"
+msgstr "Choledocolithiasis"
 
-#: aStringResources.py:379
-msgid "Best diagnosis"
-msgstr "Best diagnosis"
+#: aStringResources.py:399 prototypetext.py:71
+msgid "Pancreatitis"
+msgstr "Pancreatitis"
 
-#: aStringResources.py:380
-msgid "below"
-msgstr "below"
+#: aStringResources.py:400 prototypetext.py:97
+msgid "Cholecystitis"
+msgstr "Cholecystitis"
 
-#: aStringResources.py:386
+#: aStringResources.py:401 prototypetext.py:119
+msgid "Mesenteric Infarction"
+msgstr "Mesenteric Infarction"
+
+#: aStringResources.py:402 prototypetext.py:146
+msgid "Small Bowel Obstruction"
+msgstr "Small Bowel Obstruction"
+
+#: aStringResources.py:403 prototypetext.py:173
+msgid "Appendicitis"
+msgstr "Appendicitis"
+
+#: aStringResources.py:404 prototypetext.py:194
+msgid "Diverticulitis"
+msgstr "Diverticulitis"
+
+#: aStringResources.py:405 prototypetext.py:215
+msgid "Acute Enteritis"
+msgstr "Acute Enteritis"
+
+#: aStringResources.py:411
+msgid "Best Diagnosis:"
+msgstr "Best Diagnosis:"
+
+#: aStringResources.py:418
 msgid "AbSim is loading..."
 msgstr "AbSim is loading..."
 
-#: aStringResources.py:387
+#: aStringResources.py:419
 msgid "(this might take 30 seconds)"
 msgstr "(this might take 30 seconds)"
 
-#: aStringResources.py:392
+#: aStringResources.py:424
 msgid "Pressure pad is not connected! Please check the USB cable, close software, and turn off AbSim for five seconds."
 msgstr "Pressure pad is not connected! Please check the USB cable, close software, and turn off AbSim for five seconds."
 
-#: aStringResources.py:398
+#: aStringResources.py:430
 msgid "Setting up new case."
 msgstr "Setting up new case."
 
-#: aStringResources.py:399
+#: aStringResources.py:431
 msgid "DO NOT TOUCH!"
 msgstr "DO NOT TOUCH!"
 
-#: aStringResources.py:404
+#: aStringResources.py:436
 msgid "Assessment Saved Successfully!"
 msgstr "Assessment Saved Successfully!"
 
-#: aStringResources.py:406
+#: aStringResources.py:438
 msgid "Assessment Save Failure!"
 msgstr "Assessment Save Failure!"
 
-#: aStringResources.py:413
+#: aStringResources.py:445
 msgid "New locale override"
 msgstr "New locale override"
 
-#: aStringResources.py:414
+#: aStringResources.py:446
 msgid "will take effect after advancing to a new screen."
 msgstr "will take effect after advancing to a new screen."
 
-#: aStringResources.py:419
+#: aStringResources.py:451
 msgid "Reset User Info?"
 msgstr "Reset User Info?"
 
-#: aStringResources.py:420
+#: aStringResources.py:452
 msgid "Would you like to reset the user info provided?"
 msgstr "Would you like to reset the user info provided?"
 
-#: aStringResources.py:425
+#: aStringResources.py:457
 msgid "Password"
 msgstr "Password"
 
-#: aStringResources.py:426
+#: aStringResources.py:458
 msgid "User Name"
 msgstr "User Name"
 
-#: aStringResources.py:427
+#: aStringResources.py:459
 msgid "User Entry"
 msgstr "User Entry"
 
-#: aStringResources.py:432
+#: aStringResources.py:464
 msgid "Go Back"
 msgstr "Go Back"
 
-#: aStringResources.py:435
+#: aStringResources.py:467
 msgid "Palpation"
 msgstr "Palpation"
 
-#: aStringResources.py:436
+#: aStringResources.py:468
 msgid "Not Palpated"
 msgstr "Not Palpated"
 
-#: aStringResources.py:437
+#: aStringResources.py:469
 msgid "Light Palpation"
 msgstr "Light Palpation"
 
-#: aStringResources.py:438
+#: aStringResources.py:470
 msgid "Deep Palpation"
 msgstr "Deep Palpation"
 
-#: aStringResources.py:439
+#: aStringResources.py:471
 msgid "Too Deep"
 msgstr "Too Deep"
 
@@ -1241,271 +1309,233 @@ msgstr "With Rebound Tenderness"
 msgid "With Guarding and Rebound Tenderness"
 msgstr "With Guarding and Rebound Tenderness"
 
-#: casetext.py:26
+#: casetext.py:28
 msgid "HISTORY: A 54 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, mild in nature, a burning sensation, constant, progressive worsening over time, and ongoing for approximately 42 hours prior to presentation. The location is described as epigastric, radiating retrosternally, occurring after meals, and worsening with lying down. She describes the following associated findings: bloody emesis, decreased bowel movements, and prior episodes of similar pain. The patient's past medical history is unremarkable."
 msgstr "HISTORY: A 54 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, mild in nature, a burning sensation, constant, progressive worsening over time, and ongoing for approximately 42 hours prior to presentation. The location is described as epigastric, radiating retrosternally, occurring after meals, and worsening with lying down. She describes the following associated findings: bloody emesis, decreased bowel movements, and prior episodes of similar pain. The patient's past medical history is unremarkable."
 
-#: casetext.py:34
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.4°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
-msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.4°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+#: casetext.py:36
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.4Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.4Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 
-#: casetext.py:40 casetext.py:61 casetext.py:81 prototypetext.py:20
-msgid "Upper Gastrointestinal Etiology"
-msgstr "Upper Gastrointestinal Etiology"
-
-#: casetext.py:46
+#: casetext.py:48
 msgid "HISTORY: A 51 year old male presents for an evaluation of abdominal pain. He describes the pain as acute in onset, moderate to severe, a burning sensation, constant, not worsening over time, and ongoing for approximately 6 hours prior to presentation. The location is described as epigastric, radiating retrosternally, occurring after meals, and worsening with lying down. He describes the following associated findings: episodes of abdominal fullness, bilious emesis, heartburn, and prior episodes of similar pain. The patient's past medical history is positive for the following: ongoing use of aspirin, and alcohol abuse."
 msgstr "HISTORY: A 51 year old male presents for an evaluation of abdominal pain. He describes the pain as acute in onset, moderate to severe, a burning sensation, constant, not worsening over time, and ongoing for approximately 6 hours prior to presentation. The location is described as epigastric, radiating retrosternally, occurring after meals, and worsening with lying down. He describes the following associated findings: episodes of abdominal fullness, bilious emesis, heartburn, and prior episodes of similar pain. The patient's past medical history is positive for the following: ongoing use of aspirin, and alcohol abuse."
 
-#: casetext.py:55
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.8°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
-msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.8°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+#: casetext.py:57
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.8Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.8Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 
-#: casetext.py:67
+#: casetext.py:69
 msgid "HISTORY: A 45 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, constant, not worsening over time, and ongoing for approximately 16 hours prior to presentation. The location is described as epigastric, radiating to the back in mid-line, occurring after meals, and worsening with lying down. He describes the following associated findings: feeling feverish, and acid reflux symptoms. The patient's past medical history is positive for the following: ongoing use of aspirin."
 msgstr "HISTORY: A 45 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, constant, not worsening over time, and ongoing for approximately 16 hours prior to presentation. The location is described as epigastric, radiating to the back in mid-line, occurring after meals, and worsening with lying down. He describes the following associated findings: feeling feverish, and acid reflux symptoms. The patient's past medical history is positive for the following: ongoing use of aspirin."
 
-#: casetext.py:75 casetext.py:520
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.7°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
-msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.7°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+#: casetext.py:77 casetext.py:522
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.7Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 36.7Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 
-#: casetext.py:90
+#: casetext.py:92
 msgid "HISTORY: A 51 year old male presents for an evaluation of abdominal pain. He describes the pain as acute in onset, moderate to severe, constant, not worsening over time, and ongoing for approximately 8 hours prior to presentation. The location is described as right upper quadrant, and radiating to the scapula. He describes the following associated findings: dark urine. The patient's past medical history is positive for the following: a history of gallbladder stones."
 msgstr "HISTORY: A 51 year old male presents for an evaluation of abdominal pain. He describes the pain as acute in onset, moderate to severe, constant, not worsening over time, and ongoing for approximately 8 hours prior to presentation. The location is described as right upper quadrant, and radiating to the scapula. He describes the following associated findings: dark urine. The patient's past medical history is positive for the following: a history of gallbladder stones."
 
-#: casetext.py:97
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.9°C, and tachycardia at 122. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
-msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.9°C, and tachycardia at 122. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+#: casetext.py:99
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.9Â°C, and tachycardia at 122. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.9Â°C, and tachycardia at 122. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 
-#: casetext.py:103 casetext.py:123 casetext.py:143 prototypetext.py:48
-msgid "Choledocolithiasis"
-msgstr "Choledocolithiasis"
-
-#: casetext.py:109
+#: casetext.py:111
 msgid "HISTORY: A 52 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, colicky and intermittent, not worsening over time, and ongoing for approximately 6 hours prior to presentation. The location is described as right upper quadrant, and occurring after meals. She describes the following associated findings: dark urine, acholic stools, and feeling feverish. The patient's past medical history is positive for the following: a history of gallbladder stones."
 msgstr "HISTORY: A 52 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, colicky and intermittent, not worsening over time, and ongoing for approximately 6 hours prior to presentation. The location is described as right upper quadrant, and occurring after meals. She describes the following associated findings: dark urine, acholic stools, and feeling feverish. The patient's past medical history is positive for the following: a history of gallbladder stones."
 
-#: casetext.py:117
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.7°C, and tachycardia at 128. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
-msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.7°C, and tachycardia at 128. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+#: casetext.py:119
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.7Â°C, and tachycardia at 128. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.7Â°C, and tachycardia at 128. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 
-#: casetext.py:129
+#: casetext.py:131
 msgid "HISTORY: A 51 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for approximately 10 hours prior to presentation. The location is described as right upper quadrant. She describes the following associated findings: dark urine. The patient's past medical history is positive for the following: a history of gallbladder stones."
 msgstr "HISTORY: A 51 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for approximately 10 hours prior to presentation. The location is described as right upper quadrant. She describes the following associated findings: dark urine. The patient's past medical history is positive for the following: a history of gallbladder stones."
 
-#: casetext.py:136
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.6°C, and tachycardia at 117. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
-msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.6°C, and tachycardia at 117. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+#: casetext.py:138
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.6Â°C, and tachycardia at 117. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort, and icteric conjunctiva. VITAL SIGNS are remarkable for the following: temperature 36.6Â°C, and tachycardia at 117. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 
-#: casetext.py:152
+#: casetext.py:154
 msgid "HISTORY: A 29 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, constant, not worsening over time, and ongoing for less than 4 hours prior to presentation. The location is described as epigastric, and radiating to the back in mid-line. He describes the following associated findings: nausea and vomiting, and bilious emesis. The patient's past medical history is positive for the following: alcohol abuse."
 msgstr "HISTORY: A 29 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, constant, not worsening over time, and ongoing for less than 4 hours prior to presentation. The location is described as epigastric, and radiating to the back in mid-line. He describes the following associated findings: nausea and vomiting, and bilious emesis. The patient's past medical history is positive for the following: alcohol abuse."
 
-#: casetext.py:159
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 37.4°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
-msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 37.4°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+#: casetext.py:161
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 37.4Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 37.4Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 
-#: casetext.py:165 casetext.py:185 casetext.py:205 prototypetext.py:71
-msgid "Pancreatitis"
-msgstr "Pancreatitis"
-
-#: casetext.py:171
+#: casetext.py:173
 msgid "HISTORY: A 26 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 8 hours prior to presentation. The location is described as epigastric, and radiating to the back in mid-line. She describes the following associated findings: nausea and vomiting, and bilious emesis. The patient's past medical history is positive for the following: a history of gallbladder stones, and alcohol use."
 msgstr "HISTORY: A 26 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 8 hours prior to presentation. The location is described as epigastric, and radiating to the back in mid-line. She describes the following associated findings: nausea and vomiting, and bilious emesis. The patient's past medical history is positive for the following: a history of gallbladder stones, and alcohol use."
 
-#: casetext.py:179
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.2°C, and tachycardia at 113. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
-msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.2°C, and tachycardia at 113. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+#: casetext.py:181
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.2Â°C, and tachycardia at 113. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.2Â°C, and tachycardia at 113. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 
-#: casetext.py:191
+#: casetext.py:193
 msgid "HISTORY: A 33 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 11 hours prior to presentation. The location is described as epigastric, radiating to the back in mid-line, and occurring after meals. She describes the following associated findings: nausea and vomiting, and bilious emesis. The patient's past medical history is positive for the following: a history of gallbladder stones, and alcohol abuse."
 msgstr "HISTORY: A 33 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 11 hours prior to presentation. The location is described as epigastric, radiating to the back in mid-line, and occurring after meals. She describes the following associated findings: nausea and vomiting, and bilious emesis. The patient's past medical history is positive for the following: a history of gallbladder stones, and alcohol abuse."
 
-#: casetext.py:199
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.1°C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
-msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.1°C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+#: casetext.py:201
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.1Â°C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 38.1Â°C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 
-#: casetext.py:214
+#: casetext.py:216
 msgid "HISTORY: A 66 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for approximately 7 hours prior to presentation. The location is described as non-specific, and radiating to the scapula. She describes the following associated findings: feeling feverish. The patient's past medical history is positive for the following: a history of gallbladder stones."
 msgstr "HISTORY: A 66 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for approximately 7 hours prior to presentation. The location is described as non-specific, and radiating to the scapula. She describes the following associated findings: feeling feverish. The patient's past medical history is positive for the following: a history of gallbladder stones."
 
-#: casetext.py:221
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.6°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds. "
-msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.6°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds. "
+#: casetext.py:223
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.6Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds. "
+msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.6Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds. "
 
-#: casetext.py:227 casetext.py:247 casetext.py:265 casetext.py:285
-#: prototypetext.py:97
-msgid "Cholecystitis"
-msgstr "Cholecystitis"
-
-#: casetext.py:233
+#: casetext.py:235
 msgid "HISTORY: A 66 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for less than 3 hours prior to presentation. The location is described as right upper quadrant, and radiating to the scapula. She describes the following associated findings: nausea and vomiting, episodes of abdominal bloating, and prior episodes of similar pain. The patient's past medical history is positive for the following: 3 pregnancies."
 msgstr "HISTORY: A 66 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for less than 3 hours prior to presentation. The location is described as right upper quadrant, and radiating to the scapula. She describes the following associated findings: nausea and vomiting, episodes of abdominal bloating, and prior episodes of similar pain. The patient's past medical history is positive for the following: 3 pregnancies."
 
-#: casetext.py:241
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 36.9°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
-msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 36.9°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+#: casetext.py:243
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 36.9Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient frequently changing positions. VITAL SIGNS are remarkable for the following: temperature 36.9Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 
-#: casetext.py:253
+#: casetext.py:255
 msgid "HISTORY: A 54 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for less than 2 hours prior to presentation. The location is described as right upper quadrant, and radiating to the scapula. She describes the following associated findings: prior episodes of similar pain. The patient's past medical history is unremarkable."
 msgstr "HISTORY: A 54 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for less than 2 hours prior to presentation. The location is described as right upper quadrant, and radiating to the scapula. She describes the following associated findings: prior episodes of similar pain. The patient's past medical history is unremarkable."
 
-#: casetext.py:260
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
-msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+#: casetext.py:262
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 
-#: casetext.py:271
+#: casetext.py:273
 msgid "HISTORY: A 34 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, a burning sensation, colicky and intermittent, not worsening over time, and ongoing for approximately 6 hours prior to presentation. The location is described as right upper quadrant, radiating to the scapula, and occurring after meals. She describes the following associated findings: nausea and vomiting, feeling feverish, and prior episodes of similar pain. The patient's past medical history is positive for the following: cardiac irregularities, and 4 pregnancies."
 msgstr "HISTORY: A 34 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, a burning sensation, colicky and intermittent, not worsening over time, and ongoing for approximately 6 hours prior to presentation. The location is described as right upper quadrant, radiating to the scapula, and occurring after meals. She describes the following associated findings: nausea and vomiting, feeling feverish, and prior episodes of similar pain. The patient's past medical history is positive for the following: cardiac irregularities, and 4 pregnancies."
 
-#: casetext.py:280
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.5°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
-msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.5°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+#: casetext.py:282
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.5Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.5Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 
-#: casetext.py:294
+#: casetext.py:296
 msgid "HISTORY: A 72 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, constant, progressive worsening over time, and ongoing for less than 4 hours prior to presentation. The location is described as peri-umbilical. She describes the following associated findings: decreased bowel movements. The patient's past medical history is positive for the following: cardiac irregularities."
 msgstr "HISTORY: A 72 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, constant, progressive worsening over time, and ongoing for less than 4 hours prior to presentation. The location is described as peri-umbilical. She describes the following associated findings: decreased bowel movements. The patient's past medical history is positive for the following: cardiac irregularities."
 
-#: casetext.py:301
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.5°C, tachycardia at 123, tachypnea at 26, and a blood pressure of 80 over 51. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
-msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.5°C, tachycardia at 123, tachypnea at 26, and a blood pressure of 80 over 51. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
+#: casetext.py:303
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.5Â°C, tachycardia at 123, tachypnea at 26, and a blood pressure of 80 over 51. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
+msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.5Â°C, tachycardia at 123, tachypnea at 26, and a blood pressure of 80 over 51. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
 
-#: casetext.py:308 casetext.py:328 casetext.py:347 prototypetext.py:119
-msgid "Mesenteric Infarction"
-msgstr "Mesenteric Infarction"
-
-#: casetext.py:314
+#: casetext.py:316
 msgid "HISTORY: A 74 year old male presents for an evaluation of abdominal pain. He describes the pain as acute in onset, moderate to severe, constant, progressive worsening over time, and ongoing for less than 5 hours prior to presentation. The location is described as peri-umbilical. He describes the following associated findings: decreased bowel movements. The patient's past medical history is positive for the following: cardiac irregularities."
 msgstr "HISTORY: A 74 year old male presents for an evaluation of abdominal pain. He describes the pain as acute in onset, moderate to severe, constant, progressive worsening over time, and ongoing for less than 5 hours prior to presentation. The location is described as peri-umbilical. He describes the following associated findings: decreased bowel movements. The patient's past medical history is positive for the following: cardiac irregularities."
 
-#: casetext.py:321
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 38.2°C, tachycardia at 128, tachypnea at 24, and a blood pressure of 76 over 54. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
-msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 38.2°C, tachycardia at 128, tachypnea at 24, and a blood pressure of 76 over 54. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
+#: casetext.py:323
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 38.2Â°C, tachycardia at 128, tachypnea at 24, and a blood pressure of 76 over 54. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
+msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 38.2Â°C, tachycardia at 128, tachypnea at 24, and a blood pressure of 76 over 54. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds, and an abdominal bruit."
 
-#: casetext.py:334
+#: casetext.py:336
 msgid "HISTORY: A 75 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 14 hours prior to presentation. The location is described as peri-umbilical, and radiating to the back in mid-line. She describes the following associated findings: decreased bowel movements. The patient's past medical history is positive for the following: cardiac irregularities."
 msgstr "HISTORY: A 75 year old female presents for an evaluation of abdominal pain. She describes the pain as acute in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 14 hours prior to presentation. The location is described as peri-umbilical, and radiating to the back in mid-line. She describes the following associated findings: decreased bowel movements. The patient's past medical history is positive for the following: cardiac irregularities."
 
-#: casetext.py:341
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.9°C, tachycardia at 128, and tachypnea at 25. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
-msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.9°C, tachycardia at 128, and tachypnea at 25. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+#: casetext.py:343
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.9Â°C, tachycardia at 128, and tachypnea at 25. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving, and confusion. VITAL SIGNS are remarkable for the following: temperature 36.9Â°C, tachycardia at 128, and tachypnea at 25. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 
-#: casetext.py:356
+#: casetext.py:358
 msgid "HISTORY: A 70 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for less than 3 hours prior to presentation. The location is described as peri-umbilical. He describes the following associated findings: nausea and vomiting, decreased bowel movements, episodes of abdominal bloating, and bilious emesis. The patient's past medical history is positive for the following: prior abdominal surgery, and a history of gallbladder stones."
 msgstr "HISTORY: A 70 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for less than 3 hours prior to presentation. The location is described as peri-umbilical. He describes the following associated findings: nausea and vomiting, decreased bowel movements, episodes of abdominal bloating, and bilious emesis. The patient's past medical history is positive for the following: prior abdominal surgery, and a history of gallbladder stones."
 
-#: casetext.py:364
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals confusion. VITAL SIGNS are remarkable for the following: temperature 36.3°C, and tachypnea at 23. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: mild distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
-msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals confusion. VITAL SIGNS are remarkable for the following: temperature 36.3°C, and tachypnea at 23. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: mild distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
+#: casetext.py:366
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals confusion. VITAL SIGNS are remarkable for the following: temperature 36.3Â°C, and tachypnea at 23. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: mild distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
+msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals confusion. VITAL SIGNS are remarkable for the following: temperature 36.3Â°C, and tachypnea at 23. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: mild distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
 
-#: casetext.py:370 casetext.py:391 casetext.py:412 prototypetext.py:146
-msgid "Small Bowel Obstruction"
-msgstr "Small Bowel Obstruction"
-
-#: casetext.py:376
+#: casetext.py:378
 msgid "HISTORY: A 66 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for less than 3 hours prior to presentation. The location is described as non-specific, and radiating to the back in mid-line. She describes the following associated findings: nausea and vomiting, decreased bowel movements, episodes of abdominal fullness, and bilious emesis. The patient's past medical history is positive for the following: prior abdominal surgery."
 msgstr "HISTORY: A 66 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, colicky and intermittent, progressive worsening over time, and ongoing for less than 3 hours prior to presentation. The location is described as non-specific, and radiating to the back in mid-line. She describes the following associated findings: nausea and vomiting, decreased bowel movements, episodes of abdominal fullness, and bilious emesis. The patient's past medical history is positive for the following: prior abdominal surgery."
 
-#: casetext.py:384
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 36.3°C, and tachypnea at 26. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, and the presence of tympany."
-msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 36.3°C, and tachypnea at 26. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, and the presence of tympany."
+#: casetext.py:386
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 36.3Â°C, and tachypnea at 26. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, and the presence of tympany."
+msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient continually seeking a position of comfort. VITAL SIGNS are remarkable for the following: temperature 36.3Â°C, and tachypnea at 26. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, and the presence of tympany."
 
-#: casetext.py:397
+#: casetext.py:399
 msgid "HISTORY: A 70 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for less than 4 hours prior to presentation. The location is described as peri-umbilical. She describes the following associated findings: blood with bowel movement, decreased bowel movements, episodes of abdominal bloating, and bilious emesis. The patient's past medical history is positive for the following: prior abdominal surgery."
 msgstr "HISTORY: A 70 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for less than 4 hours prior to presentation. The location is described as peri-umbilical. She describes the following associated findings: blood with bowel movement, decreased bowel movements, episodes of abdominal bloating, and bilious emesis. The patient's past medical history is positive for the following: prior abdominal surgery."
 
-#: casetext.py:405
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.1°C, tachycardia at 117, and tachypnea at 22. THORAX and LUNGS Decreased breath sounds are noted at the bases. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, the presence of tympany, and an abdominal bruit."
-msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.1°C, tachycardia at 117, and tachypnea at 22. THORAX and LUNGS Decreased breath sounds are noted at the bases. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, the presence of tympany, and an abdominal bruit."
+#: casetext.py:407
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.1Â°C, tachycardia at 117, and tachypnea at 22. THORAX and LUNGS Decreased breath sounds are noted at the bases. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, the presence of tympany, and an abdominal bruit."
+msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals an uncomfortable patient constantly moving. VITAL SIGNS are remarkable for the following: temperature 36.1Â°C, tachycardia at 117, and tachypnea at 22. THORAX and LUNGS Decreased breath sounds are noted at the bases. ABDOMINAL EXAM/INSPECTION reveals: sight distention. ABDOMINAL AUSCULTATION reveals: increased bowel sounds, the presence of tympany, and an abdominal bruit."
 
-#: casetext.py:421
+#: casetext.py:423
 msgid "HISTORY: A 32 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 9 hours prior to presentation. The location is described as non-specific. She describes the following associated findings: nausea and vomiting. The patient's past medical history is unremarkable."
 msgstr "HISTORY: A 32 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 9 hours prior to presentation. The location is described as non-specific. She describes the following associated findings: nausea and vomiting. The patient's past medical history is unremarkable."
 
-#: casetext.py:427
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.7°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
-msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.7°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+#: casetext.py:429
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.7Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.7Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 
-#: casetext.py:432 casetext.py:449 casetext.py:467 casetext.py:485
-#: prototypetext.py:173
-msgid "Appendicitis"
-msgstr "Appendicitis"
-
-#: casetext.py:438
+#: casetext.py:440
 msgid "HISTORY: A 27 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 11 hours prior to presentation. The location is described as peri-umbilical. He describes the following associated findings: nausea and vomiting, anorexia, and feeling feverish. The patient's past medical history is unremarkable."
 msgstr "HISTORY: A 27 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 11 hours prior to presentation. The location is described as peri-umbilical. He describes the following associated findings: nausea and vomiting, anorexia, and feeling feverish. The patient's past medical history is unremarkable."
 
-#: casetext.py:444
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
-msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+#: casetext.py:446
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.1Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 
-#: casetext.py:455
+#: casetext.py:457
 msgid "HISTORY: A 67 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 8 hours prior to presentation. The location is described as right lower quadrant. She describes the following associated findings: anorexia, and feeling feverish. The patient's past medical history is unremarkable."
 msgstr "HISTORY: A 67 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 8 hours prior to presentation. The location is described as right lower quadrant. She describes the following associated findings: anorexia, and feeling feverish. The patient's past medical history is unremarkable."
 
-#: casetext.py:461
-msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 38.6°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
-msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 38.6°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+#: casetext.py:463
+msgid "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 38.6Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgstr "PHYSICAL EXAMINATION: The patient's General Appearance reveals a patient who wants to remain very still. VITAL SIGNS are remarkable for the following: temperature 38.6Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 
-#: casetext.py:473
+#: casetext.py:475
 msgid "HISTORY: A 28 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, a burning sensation, constant, progressive worsening over time, and ongoing for approximately 36 hours prior to presentation. The location is described as right lower quadrant. He describes the following associated findings: nausea and vomiting, anorexia, feeling feverish, and heartburn. The patient's past medical history is unremarkable."
 msgstr "HISTORY: A 28 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, a burning sensation, constant, progressive worsening over time, and ongoing for approximately 36 hours prior to presentation. The location is described as right lower quadrant. He describes the following associated findings: nausea and vomiting, anorexia, feeling feverish, and heartburn. The patient's past medical history is unremarkable."
 
-#: casetext.py:480
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
-msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+#: casetext.py:482
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 
-#: casetext.py:494
+#: casetext.py:496
 msgid "HISTORY: A 49 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 16 hours prior to presentation. The location is described as left lower quadrant, and worsening with defecation. He describes the following associated findings: decreased bowel movements, and prior episodes of similar pain. The patient's past medical history is unremarkable."
 msgstr "HISTORY: A 49 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 16 hours prior to presentation. The location is described as left lower quadrant, and worsening with defecation. He describes the following associated findings: decreased bowel movements, and prior episodes of similar pain. The patient's past medical history is unremarkable."
 
-#: casetext.py:501
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.9°C, and tachycardia at 130. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
-msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.9°C, and tachycardia at 130. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+#: casetext.py:503
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.9Â°C, and tachycardia at 130. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.9Â°C, and tachycardia at 130. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 
-#: casetext.py:506 casetext.py:526 casetext.py:543 prototypetext.py:194
-msgid "Diverticulitis"
-msgstr "Diverticulitis"
-
-#: casetext.py:512
+#: casetext.py:514
 msgid "HISTORY: A 67 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 16 hours prior to presentation. The location is described as peri-umbilical. He describes the following associated findings: blood with bowel movement, and feeling feverish. The patient's past medical history is positive for the following: ongoing use of aspirin, prior abdominal surgery, cardiac irregularities, a history of gallbladder stones, and alcohol abuse."
 msgstr "HISTORY: A 67 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 16 hours prior to presentation. The location is described as peri-umbilical. He describes the following associated findings: blood with bowel movement, and feeling feverish. The patient's past medical history is positive for the following: ongoing use of aspirin, prior abdominal surgery, cardiac irregularities, a history of gallbladder stones, and alcohol abuse."
 
-#: casetext.py:532
+#: casetext.py:534
 msgid "HISTORY: A 49 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 11 hours prior to presentation. The location is described as peri-umbilical. She describes the following associated findings: anorexia. The patient's past medical history is unremarkable."
 msgstr "HISTORY: A 49 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, moderate to severe, constant, progressive worsening over time, and ongoing for approximately 11 hours prior to presentation. The location is described as peri-umbilical. She describes the following associated findings: anorexia. The patient's past medical history is unremarkable."
 
-#: casetext.py:538
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.7°C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
-msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.7°C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+#: casetext.py:540
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.7Â°C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
+msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 36.7Â°C, and tachycardia at 114. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: decreased bowel sounds."
 
-#: casetext.py:552
+#: casetext.py:554
 msgid "HISTORY: A 49 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, mild in nature, colicky and intermittent, not worsening over time, and ongoing for approximately 48 hours prior to presentation. The location is described as peri-umbilical. She describes the following associated findings: nausea and vomiting, diarrhea, feeling feverish, and recent foreign travel. The patient's past medical history is positive for the following: ongoing use of non-steroidal medications, prior abdominal surgery, cardiac irregularities, a history of gallbladder stones, and alcohol use."
 msgstr "HISTORY: A 49 year old female presents for an evaluation of abdominal pain. She describes the pain as gradual in onset, mild in nature, colicky and intermittent, not worsening over time, and ongoing for approximately 48 hours prior to presentation. The location is described as peri-umbilical. She describes the following associated findings: nausea and vomiting, diarrhea, feeling feverish, and recent foreign travel. The patient's past medical history is positive for the following: ongoing use of non-steroidal medications, prior abdominal surgery, cardiac irregularities, a history of gallbladder stones, and alcohol use."
 
-#: casetext.py:561
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.2°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
-msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.2°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
+#: casetext.py:563
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.2Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
+msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.2Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
 
-#: casetext.py:566 casetext.py:585 casetext.py:604 prototypetext.py:215
-msgid "Acute Enteritis"
-msgstr "Acute Enteritis"
-
-#: casetext.py:572
+#: casetext.py:574
 msgid "HISTORY: A 51 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, mild in nature, colicky and intermittent, not worsening over time, and ongoing for approximately 30 hours prior to presentation. The location is described as non-specific. He describes the following associated findings: nausea and vomiting, diarrhea, feeling feverish, and exposure to others with nausea and vomiting. The patient's past medical history is positive for the following: ongoing use of aspirin."
 msgstr "HISTORY: A 51 year old male presents for an evaluation of abdominal pain. He describes the pain as gradual in onset, mild in nature, colicky and intermittent, not worsening over time, and ongoing for approximately 30 hours prior to presentation. The location is described as non-specific. He describes the following associated findings: nausea and vomiting, diarrhea, feeling feverish, and exposure to others with nausea and vomiting. The patient's past medical history is positive for the following: ongoing use of aspirin."
 
-#: casetext.py:580
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.6°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
-msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.6°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+#: casetext.py:582
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.6Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
+msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 38.6Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: normal bowel sounds."
 
-#: casetext.py:591
+#: casetext.py:593
 msgid "HISTORY: A 33 year old male presents for an evaluation of abdominal pain. He describes the pain as acute in onset, mild in nature, colicky and intermittent, not worsening over time, and ongoing for approximately 36 hours prior to presentation. The location is described as epigastric. He describes the following associated findings: nausea and vomiting, diarrhea, blood with bowel movement, feeling feverish, a recent bad tasting meal, exposure to others with vomiting and diarrhea, and heartburn. The patient's past medical history is unremarkable."
 msgstr "HISTORY: A 33 year old male presents for an evaluation of abdominal pain. He describes the pain as acute in onset, mild in nature, colicky and intermittent, not worsening over time, and ongoing for approximately 36 hours prior to presentation. The location is described as epigastric. He describes the following associated findings: nausea and vomiting, diarrhea, blood with bowel movement, feeling feverish, a recent bad tasting meal, exposure to others with vomiting and diarrhea, and heartburn. The patient's past medical history is unremarkable."
 
-#: casetext.py:599
-msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.8°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
-msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.8°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
+#: casetext.py:601
+msgid "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.8Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
+msgstr "PHYSICAL EXAMINATION: General Appearance is grossly unremarkable. VITAL SIGNS are remarkable for the following: temperature 37.8Â°C. THORAX and LUNGS are unremarkable. ABDOMINAL EXAM/INSPECTION is unremarkable. ABDOMINAL AUSCULTATION reveals: increased bowel sounds."
 
 #: prototypetext.py:21 prototypetext.py:72 prototypetext.py:98
 #: prototypetext.py:120 prototypetext.py:147 prototypetext.py:174
@@ -1612,8 +1642,8 @@ msgstr "PE:"
 #: prototypetext.py:43 prototypetext.py:65 prototypetext.py:93
 #: prototypetext.py:115 prototypetext.py:136 prototypetext.py:165
 #: prototypetext.py:209
-msgid "Temperature 36.1–37.8°C (97-100°F)"
-msgstr "Temperature 36.1–37.8°C (97-100°F)"
+msgid "Temperature 36.1â€“37.8Â°C (97-100Â°F)"
+msgstr "Temperature 36.1â€“37.8Â°C (97-100Â°F)"
 
 #: prototypetext.py:44 prototypetext.py:91 prototypetext.py:145
 msgid "Tenderness in sub-xyphoid/epigastric area"
@@ -1787,8 +1817,8 @@ msgid "Tenderness in right lower quadrant"
 msgstr "Tenderness in right lower quadrant"
 
 #: prototypetext.py:188 prototypetext.py:231
-msgid "Temperature elevation >37.5 and <38.3°C (99.5 to 100.9°F)"
-msgstr "Temperature elevation >37.5 and <38.3°C (99.5 to 100.9°F)"
+msgid "Temperature elevation >37.5 and <38.3Â°C (99.5 to 100.9Â°F)"
+msgstr "Temperature elevation >37.5 and <38.3Â°C (99.5 to 100.9Â°F)"
 
 #: prototypetext.py:192
 msgid "Guarding in right lower quadrant"

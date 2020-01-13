@@ -6,122 +6,119 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AbSim2020\n"
 "POT-Creation-Date: 2020-01-13 14:37+Central Standard Time\n"
-"PO-Revision-Date: 2020-01-13 15:41-0600\n"
+"PO-Revision-Date: 2020-01-13 14:51-0600\n"
+"Last-Translator: Sean McCullough <s.mccullough@tcu.edu>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=cp1252\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 "Language-Team: \n"
+"Language: en\n"
 "X-Generator: Poedit 2.2.4\n"
-"Last-Translator: \n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"Language: ja_JP\n"
 
 #: aStringResources.py:16
 msgid "Welcome to AbSim"
-msgstr "アブシ AbSim"
+msgstr ""
 
 #: aStringResources.py:17
 msgid "Faculty"
-msgstr "教員"
+msgstr ""
 
 #: aStringResources.py:18
 msgid "Click here to configure AbSim and create assessments"
-msgstr "AbSim を構成し、評価を作成するには、ここをクリッ"
+msgstr ""
 
 #: aStringResources.py:19
 msgid "Student"
-msgstr "学生"
+msgstr ""
 
 #: aStringResources.py:20
-msgid ""
-"Demonstrate proficiency in abdominal palpation through practice and "
-"assessments"
-msgstr "練習と評価を通じて腹部触診の習熟度を実証する"
+msgid "Demonstrate proficiency in abdominal palpation through practice and assessments"
+msgstr ""
 
 #: aStringResources.py:26
 msgid "Home"
-msgstr "セクション"
+msgstr ""
 
 #: aStringResources.py:27
 msgid "System Language"
-msgstr "教員の追加"
+msgstr ""
 
 #: aStringResources.py:33
 msgid "Please enter the AbSim's initial key to add faculty login."
-msgstr "教員ログインを追加するには、AbSimの初期キーを入力してください。"
+msgstr ""
 
 #: aStringResources.py:34
 msgid "AbSim Initial Key"
-msgstr "AbSim 初期キー"
+msgstr ""
 
 #: aStringResources.py:35
 msgid "Add Faculty"
-msgstr "教員の追加"
+msgstr ""
 
 #: aStringResources.py:36
 msgid "Please enter a user name and password."
-msgstr "ユーザー名とパスワードを入力してください。"
+msgstr ""
 
 #: aStringResources.py:37
 msgid "Faculty Added Successfully"
-msgstr "教員 してください"
+msgstr ""
 
 #: aStringResources.py:38
 msgid "Moving to faculty interface."
-msgstr "教員の追加."
+msgstr ""
 
 #: aStringResources.py:39
 msgid "Faculty NOT Added"
-msgstr "教員 してく"
+msgstr ""
 
 #: aStringResources.py:40
 msgid "Please Re-Enter the Initial Key."
-msgstr "教員ログインを追加するにはの初。"
+msgstr ""
 
 #: aStringResources.py:41
 msgid "Faculty Login"
-msgstr "教員の追加"
+msgstr ""
 
 #: aStringResources.py:42
 msgid "Please enter your user name and password."
-msgstr "ユーザー名とパスワードを入力してください。"
+msgstr ""
 
 #: aStringResources.py:43 aStringResources.py:232
 msgid "Login Failed"
-msgstr "教員 してく"
+msgstr ""
 
 #: aStringResources.py:44
 msgid "Username and Password do not match our records."
-msgstr "ユーザー名とパスワードを入力してください。"
+msgstr ""
 
 #: aStringResources.py:45
 msgid "No info provided or Cancel clicked."
-msgstr "ユーザー名とパスワードを入力してください。"
+msgstr ""
 
 #: aStringResources.py:46
 msgid "Please enter the AbSim's initial key to reset faculty login."
-msgstr "ユーザー名とパスワードを入力してください。"
+msgstr ""
 
 #: aStringResources.py:47
 msgid "Faculty Login Data Deleted"
-msgstr "教員 してく"
+msgstr ""
 
 #: aStringResources.py:48
 msgid "To add another faculty member, click \"Faculty.\""
-msgstr "ユーザー名とパスワードを入力してください。"
+msgstr ""
 
 #: aStringResources.py:54
 msgid "Settings"
-msgstr "教員の追加"
+msgstr ""
 
 #: aStringResources.py:55
 msgid "Customize Sensor Pad Pressure Settings"
-msgstr "教員 してください"
+msgstr ""
 
 #: aStringResources.py:56 aStringResources.py:164
 msgid "Assessments"
-msgstr "アセスメント"
+msgstr ""
 
 #: aStringResources.py:57
 msgid "Create and Assign Assessments"
@@ -212,8 +209,7 @@ msgid "You may view the effects of your changes on the image to the right."
 msgstr ""
 
 #: aStringResources.py:94
-msgid ""
-"If you notice \"ghost\" registers of pressure, click \"Tare / Zero Sensors\"."
+msgid "If you notice \"ghost\" registers of pressure, click \"Tare / Zero Sensors\"."
 msgstr ""
 
 #: aStringResources.py:95
@@ -249,8 +245,7 @@ msgid "Please provide AbSim a .csv file with headers as shown below."
 msgstr ""
 
 #: aStringResources.py:107
-msgid ""
-"If using Microsoft Excel, make sure to save your spreadsheet as a .csv file"
+msgid "If using Microsoft Excel, make sure to save your spreadsheet as a .csv file"
 msgstr ""
 
 #: aStringResources.py:108
@@ -275,7 +270,7 @@ msgstr ""
 
 #: aStringResources.py:113 aStringResources.py:137 aStringResources.py:184
 msgid "Section"
-msgstr "セクション"
+msgstr ""
 
 #: aStringResources.py:114
 msgid "Number of Students"
@@ -419,7 +414,7 @@ msgstr ""
 
 #: aStringResources.py:158
 msgid "Assessment"
-msgstr "アセスメント"
+msgstr ""
 
 #: aStringResources.py:163 aStringResources.py:242
 msgid "View Assessments"
@@ -427,7 +422,7 @@ msgstr ""
 
 #: aStringResources.py:165 aStringResources.py:243
 msgid "Assessment Title"
-msgstr "アセスメン アセスメ"
+msgstr ""
 
 #: aStringResources.py:166
 msgid "Assigned To"
@@ -726,9 +721,7 @@ msgid "Identify the condition associated with the test item(s)"
 msgstr ""
 
 #: aStringResources.py:262
-msgid ""
-"view the case vignette, perform an exam, and enter your diagnosis for the "
-"case"
+msgid "view the case vignette, perform an exam, and enter your diagnosis for the case"
 msgstr ""
 
 #: aStringResources.py:263
@@ -860,8 +853,7 @@ msgid "You may now proceed to Milestone 1"
 msgstr ""
 
 #: aStringResources.py:306
-msgid ""
-"Now it's time to compare your pre-assessment to your skill after training."
+msgid "Now it's time to compare your pre-assessment to your skill after training."
 msgstr ""
 
 #: aStringResources.py:307
@@ -937,8 +929,7 @@ msgid "causing unnecessary pain, even in a patient with no abnormalities."
 msgstr ""
 
 #: aStringResources.py:329
-msgid ""
-"This can result in voluntary guarding for the rest of the exam, leading to"
+msgid "This can result in voluntary guarding for the rest of the exam, leading to"
 msgstr ""
 
 #: aStringResources.py:330
@@ -958,15 +949,11 @@ msgid "menu."
 msgstr ""
 
 #: aStringResources.py:338
-msgid ""
-"Now that you can palpate to proper depth, practice covering the entire "
-"abdomen."
+msgid "Now that you can palpate to proper depth, practice covering the entire abdomen."
 msgstr ""
 
 #: aStringResources.py:339
-msgid ""
-"It's better to make several passes instead of covering each centimeter in "
-"one pass."
+msgid "It's better to make several passes instead of covering each centimeter in one pass."
 msgstr ""
 
 #: aStringResources.py:341
@@ -974,9 +961,7 @@ msgid "Make several trips around the abdomen to get full coverage."
 msgstr ""
 
 #: aStringResources.py:342
-msgid ""
-"Especially ensure you check the marked locations, where abdominal "
-"abnormalities are most likely to occur."
+msgid "Especially ensure you check the marked locations, where abdominal abnormalities are most likely to occur."
 msgstr ""
 
 #: aStringResources.py:348
@@ -984,8 +969,7 @@ msgid "You should now understand what a normal abdomen feels like."
 msgstr ""
 
 #: aStringResources.py:349
-msgid ""
-"For this milestone, familiarize yourself with how these abnormalities feel."
+msgid "For this milestone, familiarize yourself with how these abnormalities feel."
 msgstr ""
 
 #: aStringResources.py:350
@@ -993,20 +977,15 @@ msgid "In the next step, you will identify them using touch and sound."
 msgstr ""
 
 #: aStringResources.py:355
-msgid ""
-"For this milestone, you will report the findings by feel and sound only."
+msgid "For this milestone, you will report the findings by feel and sound only."
 msgstr ""
 
 #: aStringResources.py:356
-msgid ""
-"When you select a finding, you will receive feedback and have a second "
-"chance to palpate."
+msgid "When you select a finding, you will receive feedback and have a second chance to palpate."
 msgstr ""
 
 #: aStringResources.py:358
-msgid ""
-"When you are confident in eliciting findings, we will integrate patient "
-"history and non-palpitory physical findings."
+msgid "When you are confident in eliciting findings, we will integrate patient history and non-palpitory physical findings."
 msgstr ""
 
 #: aStringResources.py:360
@@ -1190,9 +1169,7 @@ msgid "(this might take 30 seconds)"
 msgstr ""
 
 #: aStringResources.py:424
-msgid ""
-"Pressure pad is not connected! Please check the USB cable, close software, "
-"and turn off AbSim for five seconds."
+msgid "Pressure pad is not connected! Please check the USB cable, close software, and turn off AbSim for five seconds."
 msgstr ""
 
 #: aStringResources.py:430
@@ -1229,15 +1206,15 @@ msgstr ""
 
 #: aStringResources.py:457
 msgid "Password"
-msgstr "教員の追加"
+msgstr ""
 
 #: aStringResources.py:458
 msgid "User Name"
-msgstr "名とパス"
+msgstr ""
 
 #: aStringResources.py:459
 msgid "User Entry"
-msgstr "ドを入力し"
+msgstr ""
 
 #: aStringResources.py:464
 msgid "Go Back"

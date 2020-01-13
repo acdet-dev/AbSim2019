@@ -226,7 +226,7 @@ class AStringResources:
                 "self_learning_button": _(u"Self-directed Learning"),
                 "self_description": _(u"Learn and Practice Abdominal Palpation"),
                 "view_button": _(u"Take Assigned Assessment"),
-                "view_description": _(u"Complete a variety assessments using AbSim"),
+                "view_description": _(u"Complete a variety of assessments using AbSim"),
                 "request_id": _(u"Please enter your ID"),
                 "login_window": _(u"Student Login"),
                 "login_fail": _(u"Login Failed"),
@@ -359,7 +359,6 @@ class AStringResources:
                                    u"history and non-palpitory physical findings."),
                 "instruction_d": _(u"Before moving on"),
                 "instruction_e": _(u"re-familiarize yourself with how this condition feels."),
-                # figure out spacing, font size, and packing
                 "correct_label": _(u"Correct"),
                 "incorrect_label": _(u"Incorrect"),
                 "chosen_label": _(u"You selected:"),
@@ -393,14 +392,24 @@ class AStringResources:
                 "enlarged": _(u"Enlarged Urinary Bladder")
             }
 
+        elif self.identifier == "case_text":
+            string_resources = {
+                "uge": _(u"Upper Gastrointestinal Etiology"),
+                "choledocolithiasis": _(u"Choledocolithiasis"),
+                "pancreas": _(u"Pancreatitis"),
+                "cholecystitis": _(u"Cholecystitis"),
+                "mi": _(u"Mesenteric Infarction"),
+                "sbo": _(u"Small Bowel Obstruction"),
+                "app": _(u"Appendicitis"),
+                "div": _(u"Diverticulitis"),
+                "ae": _(u"Acute Enteritis")
+            }
+
         elif self.identifier == "ddx_practice":
             string_resources = {
-                "choice_string_1": _(u"You chose the"),
-                "choice_string_2": _(u"best diagnosis"),
-                "best_1": _(u"Best diagnosis"),
-                "best_2": _(u"below"),
-                # change to Incorrect
-                # Best diagnosis is:
+                "choice_string_1": _(u"Correct"),
+                "choice_string_2": _(u"Best Diagnosis:"),
+                "best_1": _(u"Incorrect"),
                 "next_button": _(u"Next Case")
             }
 

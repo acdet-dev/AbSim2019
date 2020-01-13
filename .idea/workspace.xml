@@ -2,24 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d7a6e5a-5cd6-4b6b-9c3f-28fcc3795056" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ailments.py" beforeDir="false" afterPath="$PROJECT_DIR$/ailments.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/caseselector.py" beforeDir="false" afterPath="$PROJECT_DIR$/caseselector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dbmigrator.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbmigrator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/i18ntrans2.py" beforeDir="false" afterPath="$PROJECT_DIR$/i18ntrans2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/baselinemodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/baselinemodel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/exammodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/exammodel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/facultyinfomodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/facultyinfomodel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/studentmodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/studentmodel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/takenmodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/takenmodel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/totake.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/totake.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/palpationgrid.py" beforeDir="false" afterPath="$PROJECT_DIR$/palpationgrid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/assessmentViewer.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/assessmentViewer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/buildWidgets.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/buildWidgets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/managestudents.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/managestudents.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aStringResources.py" beforeDir="false" afterPath="$PROJECT_DIR$/aStringResources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/casetext.py" beforeDir="false" afterPath="$PROJECT_DIR$/casetext.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ddxpractice.py" beforeDir="false" afterPath="$PROJECT_DIR$/ddxpractice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ab_sim-en.po" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ab_sim-en.po" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ab_sim-ja.po" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ab_sim-ja.po" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ab_sim.pot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/en/LC_MESSAGES/ab_sim.mo" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/en/LC_MESSAGES/ab_sim.mo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ja/LC_MESSAGES/ab_sim.mo" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ja/LC_MESSAGES/ab_sim.mo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale.json" beforeDir="false" afterPath="$PROJECT_DIR$/locale.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simLogin.py" beforeDir="false" afterPath="$PROJECT_DIR$/simLogin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/defineUser.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/defineUser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/menuBar.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/menuBar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/viewAssignments.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/viewAssignments.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,67 +24,57 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ailments.py">
+        <entry file="file://$PROJECT_DIR$/aStringResources.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="70" column="47" lean-forward="true" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
+            <state relative-caret-position="7701">
+              <caret line="453" lean-forward="true" selection-start-line="453" selection-end-line="453" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/baselinemodel.py">
+        <entry file="file://$PROJECT_DIR$/i18ntrans2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/takenmodel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-7722">
+              <caret line="68" column="43" selection-start-line="68" selection-start-column="43" selection-end-line="68" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/models/totake.py">
+        <entry file="file://$PROJECT_DIR$/simLogin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
+            <state relative-caret-position="-1177">
+              <caret line="9" column="71" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/defineUser.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="45" selection-start-column="45" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
               <folding>
-                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#0#17#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/exammodel.py">
+        <entry file="file://$PROJECT_DIR$/views/menuBar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/facultyinfomodel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+            <state relative-caret-position="255">
+              <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -99,13 +83,43 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/studentmodel.py">
+        <entry file="file://$PROJECT_DIR$/ddxpractice.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
+            <state relative-caret-position="376">
+              <caret line="85" column="68" selection-start-line="85" selection-start-column="68" selection-end-line="85" selection-end-column="68" />
               <folding>
-                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#54#106#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/simLabels.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="850">
+              <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/selfpractice.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="110" column="92" selection-start-line="110" selection-start-column="92" selection-end-line="110" selection-end-column="99" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/viewAssignments.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-16094">
+              <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -121,25 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self.case_text_scroller</find>
-      <find>self.ddx_view_tree</find>
-      <find>text_view</find>
-      <find>self.ddx_tree_store</find>
-      <find>create_text_view</find>
-      <find>tree_view</find>
-      <find>case_text_scroller_vadjustment</find>
-      <find>800</find>
-      <find>case_text_scroller</find>
-      <find>true, true</find>
-      <find>False, False</find>
-      <find>text_scroller</find>
-      <find>case_text</find>
-      <find>score</find>
-      <find>u2022</find>
-      <find>print</find>
-      <find>vscroll</find>
-      <find>scroller</find>
-      <find>ddx_case</find>
       <find>set</find>
       <find>save_exam</find>
       <find>save_to_db</find>
@@ -151,15 +146,43 @@
       <find>sim_constan</find>
       <find>sim_constants</find>
       <find>app_data</find>
+      <find>diverticuliti</find>
+      <find>_(u&quot;Upper Gastrointestinal Etiology&quot;)</find>
+      <find>_(u&quot;Choledocolithiasis&quot;)</find>
+      <find>_(u&quot;Pancreatitis&quot;)</find>
+      <find>_(u&quot;Cholecystitis&quot;)</find>
+      <find>_(u&quot;Mesenteric Infarction&quot;)</find>
+      <find>_(u&quot;Small Bowel Obstruction&quot;)</find>
+      <find>_(u&quot;Appendicitis&quot;)</find>
+      <find>_(u&quot;Diverticulitis&quot;)</find>
+      <find>_(u&quot;Acute Enteritis&quot;)</find>
+      <find>incorrect</find>
+      <find>case_text</find>
+      <find>best_1</find>
+      <find>system language</find>
+      <find>complete a variety</find>
+      <find>read_menu_xml</find>
+      <find>complete a vari</find>
+      <find>string_resources</find>
+      <find>add_accel_group</find>
     </findStrings>
     <replaceStrings>
       <replace>self.window_resources['section']</replace>
       <replace>string_resources</replace>
       <replace>(sqlite3.InterfaceError, sqlite3.OperationalError)</replace>
-      <replace>self.string_resources</replace>
       <replace>Gdk.Screen.get_default().get_width()</replace>
       <replace>self.bw</replace>
       <replace>AbSim2020</replace>
+      <replace>self.string_resources[&quot;uge&quot;]</replace>
+      <replace>self.string_resources[&quot;choledocolithiasis&quot;]</replace>
+      <replace>self.string_resources[&quot;pancreas&quot;]</replace>
+      <replace>self.string_resources[&quot;cholecystitis&quot;]</replace>
+      <replace>self.string_resources[&quot;mi&quot;]</replace>
+      <replace>self.string_resources[&quot;sbo&quot;]</replace>
+      <replace>self.string_resources[&quot;app&quot;]</replace>
+      <replace>self.string_resources[&quot;div&quot;]</replace>
+      <replace>self.string_resources[&quot;ae&quot;]</replace>
+      <replace>self.string_resources</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -173,13 +196,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/coverageassessment.py" />
-        <option value="$PROJECT_DIR$/depthtrainer.py" />
-        <option value="$PROJECT_DIR$/coveragetrainer.py" />
         <option value="$PROJECT_DIR$/abnormalitydetection.py" />
-        <option value="$PROJECT_DIR$/ddxpractice.py" />
         <option value="$PROJECT_DIR$/donottouch.py" />
-        <option value="$PROJECT_DIR$/simLogin.py" />
         <option value="$PROJECT_DIR$/messages.py" />
         <option value="$PROJECT_DIR$/defineUser.py" />
         <option value="$PROJECT_DIR$/absim_string.pot" />
@@ -195,14 +213,11 @@
         <option value="$PROJECT_DIR$/appp.py" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/splashscreen.py" />
-        <option value="$PROJECT_DIR$/views/defineUser.py" />
         <option value="$PROJECT_DIR$/simLabels.py" />
         <option value="$PROJECT_DIR$/views/simFaculty.py" />
-        <option value="$PROJECT_DIR$/aStringResources.py" />
         <option value="$PROJECT_DIR$/selfpractice.py" />
         <option value="$PROJECT_DIR$/views/sim.py" />
         <option value="$PROJECT_DIR$/views/testCreator.py" />
-        <option value="$PROJECT_DIR$/casetext.py" />
         <option value="$PROJECT_DIR$/views/handleTransitions.py" />
         <option value="$PROJECT_DIR$/views/admin.py" />
         <option value="$PROJECT_DIR$/views/viewPerformance.py" />
@@ -211,7 +226,6 @@
         <option value="$PROJECT_DIR$/views/viewAssignments.py" />
         <option value="$PROJECT_DIR$/views/buildWidgets.py" />
         <option value="$PROJECT_DIR$/views/assessmentViewer.py" />
-        <option value="$PROJECT_DIR$/views/menuBar.py" />
         <option value="$PROJECT_DIR$/ailments.py" />
         <option value="$PROJECT_DIR$/caseselector.py" />
         <option value="$PROJECT_DIR$/config.py" />
@@ -224,6 +238,15 @@
         <option value="$PROJECT_DIR$/models/facultyinfomodel.py" />
         <option value="$PROJECT_DIR$/models/takenmodel.py" />
         <option value="$PROJECT_DIR$/models/totake.py" />
+        <option value="$PROJECT_DIR$/casetext.py" />
+        <option value="$PROJECT_DIR$/locale.json" />
+        <option value="$PROJECT_DIR$/ddxpractice.py" />
+        <option value="$PROJECT_DIR$/aStringResources.py" />
+        <option value="$PROJECT_DIR$/i18n/ab_sim_no_cases.pot" />
+        <option value="$PROJECT_DIR$/i18n/ab_sim_all_text.pot" />
+        <option value="$PROJECT_DIR$/views/menuBar.py" />
+        <option value="$PROJECT_DIR$/views/defineUser.py" />
+        <option value="$PROJECT_DIR$/simLogin.py" />
       </list>
     </option>
   </component>
@@ -249,7 +272,7 @@
             <path>
               <item name="AbSim2019" type="b2602c69:ProjectViewProjectNode" />
               <item name="AbSim2019" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="i18n" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AbSim2019" type="b2602c69:ProjectViewProjectNode" />
@@ -331,13 +354,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561933260794</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Working on translation...">
-      <created>1575993269889</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1575993269889</updated>
     </task>
     <task id="LOCAL-00016" summary="Moved file to correct dir.">
       <created>1575993485954</created>
@@ -675,7 +691,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578872333177</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Finished revisions and screen sizing">
+      <created>1578945408242</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1578945408243</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TodoView">
@@ -704,7 +727,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32405892" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32394367" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -730,7 +753,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updating files to pull strings from resource file." />
     <MESSAGE value="Updated through add students." />
     <MESSAGE value="Finished Faculty side. Need to figure assign" />
     <MESSAGE value="Fixed results side with variable section choices." />
@@ -755,7 +777,8 @@
     <MESSAGE value="redone code through viewPerformance. Now assessmentViewer." />
     <MESSAGE value="Redo code through all of faculty side" />
     <MESSAGE value="Done code revisions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Done code revisions." />
+    <MESSAGE value="Finished revisions and screen sizing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished revisions and screen sizing" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointLogExpression">
@@ -773,104 +796,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/managestudents.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="218" column="24" selection-start-line="218" selection-start-column="24" selection-end-line="218" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assignment.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aStringResources.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="293" column="20" selection-start-line="293" selection-start-column="17" selection-end-line="293" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cases.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-          <folding>
-            <element signature="e#101#114#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/caseselector.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1445">
-          <caret line="85" column="11" selection-start-line="85" selection-start-column="11" selection-end-line="85" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/casetext.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="650" column="13" selection-start-line="650" selection-start-column="13" selection-end-line="650" selection-end-column="13" />
-          <folding>
-            <element signature="e#86#99#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cnc_adjustments.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/menuBar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="56" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coverageassessment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="405" column="16" selection-start-line="405" selection-start-column="16" selection-end-line="405" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coveragetrainer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ddxpractice.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-          <folding>
-            <element signature="e#54#106#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/depthtrainer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="49" column="32" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/donottouch.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -903,13 +828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/i18ntrans2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="68" column="43" selection-start-line="68" selection-start-column="43" selection-end-line="68" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -1042,19 +960,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/simLabels.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/simLogin.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/sounds.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -1104,36 +1009,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/studentmodel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/facultyinfomodel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/exammodel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/baselinemodel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1161,6 +1036,161 @@
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/exammodel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/facultyinfomodel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/studentmodel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cases.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2579">
+          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+          <folding>
+            <element signature="e#101#114#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/casetext.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="230" column="51" selection-start-line="230" selection-start-column="51" selection-end-line="230" selection-end-column="51" />
+          <folding>
+            <element signature="e#86#99#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/locale.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="23" selection-start-column="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/i18n/ab_template.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/viewAssignments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16094">
+          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/selfpractice.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="110" column="92" selection-start-line="110" selection-start-column="92" selection-end-line="110" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ddxpractice.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="85" column="68" selection-start-line="85" selection-start-column="68" selection-end-line="85" selection-end-column="68" />
+          <folding>
+            <element signature="e#54#106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/i18n/ab_sim_no_cases.pot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="618" column="28" selection-start-line="618" selection-start-column="28" selection-end-line="618" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/i18n/ab_sim_all_text.pot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="618" column="29" selection-start-line="618" selection-start-column="29" selection-end-line="618" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/i18ntrans2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7722">
+          <caret line="68" column="43" selection-start-line="68" selection-start-column="43" selection-end-line="68" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aStringResources.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7701">
+          <caret line="453" lean-forward="true" selection-start-line="453" selection-end-line="453" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simLabels.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/menuBar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/defineUser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="45" selection-start-column="45" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simLogin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1177">
+          <caret line="9" column="71" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
         </state>
       </provider>
     </entry>

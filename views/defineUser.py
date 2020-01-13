@@ -1,3 +1,4 @@
+from aStringResources import AStringResources
 import logging
 import time
 from views.sim import UserType
@@ -6,7 +7,6 @@ from views.buildWidgets import BuildWidgets
 from simLogin import get_user_pw
 from messages import sim_message, sim_login_message
 from models import facultyinfomodel
-from aStringResources import AStringResources
 
 from Levenshtein import distance
 import gi

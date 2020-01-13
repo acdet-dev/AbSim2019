@@ -3,12 +3,11 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-from aStringResources import AStringResources
-
-string_resources = AStringResources("simLogin").get_by_identifier()
-
 
 def get_user_pw(parent, message, title='', flag=None):
+    from aStringResources import AStringResources
+
+    string_resources = AStringResources("simLogin").get_by_identifier()
     # Returns user input as a string or None
     # If user does not input text it returns None, NOT AN EMPTY STRING.
     dialogWindow = Gtk.MessageDialog(parent,
