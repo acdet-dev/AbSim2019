@@ -4,6 +4,7 @@
 from math import pi
 import logging
 
+
 class CircleGrid:
     def draw_grid(self, event, area, pressure_list, max):
 

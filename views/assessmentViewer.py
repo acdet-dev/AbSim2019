@@ -291,10 +291,12 @@ class ViewsController:
             for exam in self.exam:
                 num += 1
                 if self.flag == 'ddx':
-                    store_list.extend([exam[0], exam[1], exam[3], exam[7], exam[8]])
+                    score = str(round(float(exam[3]) * 100, 2))
+                    store_list.extend([exam[0], exam[1], score, exam[7], exam[8]])
                     c_c_list = exam[5].split('+')
                 else:
-                    store_list.extend([exam[0], exam[1], exam[2], exam[6], exam[8]])
+                    score = str(round(float(exam[2])*100, 2))
+                    store_list.extend([exam[0], exam[1], score, exam[6], exam[8]])
                     c_c_list = exam[4].split('+')
                 for i in c_c_list:
                     a = i.split('-')[1][8:]

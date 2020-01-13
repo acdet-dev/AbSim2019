@@ -98,23 +98,23 @@ class InstructionPage(Gtk.VBox):
         label_2 = bw.build_label(self.string_resources["label_text_5"], f_size=16, alignment=[0, 0])
 
         # build images
-        ex_image_1 = bw.build_logo(img_string="img/example_class.png")
-        ex_image_2 = bw.build_logo(img_string="img/example_save.png")
+        ex_image_1 = bw.build_pixbuf_logo(img_string="img/example_class.png", o_w=349, o_h=375)
+        ex_image_2 = bw.build_pixbuf_logo(img_string="img/example_save.png", o_w=576, o_h=410)
 
         # initialize box for packing images
         hbox = Gtk.HBox(False, 2)
-        hbox.pack_start(ex_image_1, False, False, 10)
-        hbox.pack_start(ex_image_2, False, False, 10)
+        hbox.pack_start(ex_image_1, False, False, 20)
+        hbox.pack_start(ex_image_2, False, False, 20)
 
         # initialize button table elements
         b_list = [self.string_resources["button_text"], self.string_resources["back_button"]]
         f_list = [self.upload, self.mp.go_back]
-        button_table = bw.add_horizontal_buttons(button_list=b_list, functions=f_list, f_size=16)
+        button_table = bw.add_horizontal_buttons(button_list=b_list, functions=f_list, f_size=16, border_width=10)
 
-        self.pack_start(label_1, False, False, 0)
-        self.pack_start(hbox, False, False, 0)
-        self.pack_start(label_2, False, False, 0)
-        self.pack_start(button_table, False, False, 0)
+        self.pack_start(label_1, False, False, 10)
+        self.pack_start(hbox, False, False, 10)
+        self.pack_start(label_2, False, False, 10)
+        self.pack_start(button_table, False, False, 10)
 
         self.show_all()
 

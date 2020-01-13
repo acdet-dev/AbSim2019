@@ -742,8 +742,8 @@ class CaseExam(Gtk.HBox):
                 self.exam_resources['ddx_end'] = time.time() - self.exam_resources['ddx_start']
                 # self.exam_resources['ab_num'] = self.exam_resources['ab_num'] + self.exam_resources['ddx_num']
                 # self.exam_resources['ab_den'] = self.exam_resources['ab_den'] + self.exam_resources['ddx_den']
-                ab_score = (self.exam_resources['ab_num'] / self.exam_resources['ab_den']) * 100
-                ddx_score = (self.exam_resources['ddx_num'] / self.exam_resources['ddx_den']) * 100
+                ab_score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
+                ddx_score = self.exam_resources['ddx_num'] / self.exam_resources['ddx_den']
 
             elif len(self.exam_resources['ab_answer_list']) > 0 and len(self.exam_resources['ddx_answer_list']) == 0:
                 ab_score = score

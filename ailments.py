@@ -6,6 +6,7 @@ Ailments models the selection and depth of an ailment
 """
 import logging
 
+
 class Ailments:
     
     def __init__(self):
@@ -15,8 +16,6 @@ class Ailments:
         self._SLIGHTLY_DOWN = 20
         self._DOWN = 100
         self._TOO_HARD = 220
-
-
 
         self._depth = 0
         self._state = 'up'
@@ -38,7 +37,7 @@ class Ailments:
     
     def set_active_ailment(self, new_ailment_string):
         new_ailment_list = new_ailment_string.split(' ')
-        if(new_ailment_list[0] in set(self._ailments_array)):
+        if new_ailment_list[0] in set(self._ailments_array):
             self._active_ailment = new_ailment_list[0]
             self._max_depth = 0
             self._pushback = 'p' in new_ailment_list[1]
@@ -55,7 +54,7 @@ class Ailments:
         if new_depth > self._max_depth:
             self._max_depth = new_depth
         new_state = self._calculate_state(new_depth)
-        if (new_state != self.get_state()):
+        if new_state != self.get_state():
             self._state = new_state
             logging.debug("Ailment " + self.get_active_ailment() + ' ' + self._state)
             return True
@@ -63,13 +62,13 @@ class Ailments:
             return False
         
     def _calculate_state(self, new_depth):
-        if(new_depth >= self._DOWN):
-            if(new_depth >= self._TOO_HARD):
+        if new_depth >= self._DOWN:
+            if new_depth >= self._TOO_HARD:
                 return 'too_hard'
             else:
                 return 'down'
         else:
-            if(new_depth >= self._SLIGHTLY_DOWN):
+            if new_depth >= self._SLIGHTLY_DOWN:
                 return 'slightly_down'
             else:
                 return 'up'

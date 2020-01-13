@@ -35,13 +35,15 @@ class BuildWidgets:
 
         return logo
 
-    def build_pixbuf_logo(self, img_string):
+    def build_pixbuf_logo(self, img_string, o_w=400, o_h=600):
         # get screen size
-        # width, height = screen_sizer(self.width, self.height, old_width=200, old_height=300)
+        width, height = screen_sizer(self.width, self.height, old_width=o_w, old_height=o_h)
 
         pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(
             filename=img_string,
-            preserve_aspect_ratio=False)
+            width=width,
+            height=height,
+            preserve_aspect_ratio=True)
         logo = Gtk.Image.new_from_pixbuf(pixbuf)
 
         return logo

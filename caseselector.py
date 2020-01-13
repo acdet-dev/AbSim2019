@@ -83,7 +83,7 @@ class CaseSelector:
         return tv
     
     def on_case_selected(self, button=None):
-        if(button):
+        if button:
             self.current_case = Gtk.Buildable.get_name(button)
         else:
             self.current_case = 'none n'

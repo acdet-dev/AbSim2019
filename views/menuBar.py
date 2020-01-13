@@ -9,7 +9,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2019'
+app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2020'
 string_resources = AStringResources("menu_bar").get_by_identifier()
 
 

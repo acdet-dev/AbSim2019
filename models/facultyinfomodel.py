@@ -2,11 +2,11 @@ import os
 import sqlite3
 import logging
 
-app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2019'
+app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2020'
 
 
 class FacultyInfoModel:
-    def __init__(self, db_filename = app_data_path + '\\faculty_info.db'):
+    def __init__(self, db_filename=app_data_path + '\\faculty_info.db'):
         self.db_filename = db_filename
 
     def connect(self):

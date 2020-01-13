@@ -16,7 +16,7 @@ class Config:
 
         self.app_data = os.getenv('LOCALAPPDATA')
 
-        self.app_data_path = self.app_data + '\\AbSim2019'
+        self.app_data_path = self.app_data + '\\AbSim2020'
 
         self.read_config()
         self.defaults = None
