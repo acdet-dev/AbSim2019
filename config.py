@@ -28,13 +28,14 @@ class Config:
 
         except:
             logging.debug("Can't open file for reading: " + self.filename)
+            logging.debug("Trying from sim rather than app_data")
 
-        try:
-            f = open(self.filename, 'r')
-            logging.debug('reading sim' + self.filename)
-        except:
-            logging.debug("Can't open file for reading: " + self.filename)
-            self.defaults = dict()
+            try:
+                f = open(self.filename, 'r')
+                logging.debug('reading sim' + self.filename)
+            except:
+                logging.debug("Can't open file for reading: " + self.filename)
+                self.defaults = dict()
 
         if f:
             self.defaults = dict(json.load(f))

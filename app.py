@@ -1,5 +1,5 @@
 import dbmigrator
-from views.defineUser import DefineUser
+from defineUser import DefineUser
 import splashscreen
 
 import gi
