@@ -57,8 +57,6 @@ class TareValues():
     def __init__(self, num_pressure_points):
         self.num_pressure_points = num_pressure_points
 
-
-
         filename = 'tare.json'
         self.config = config.Config(filename=filename)
         config_from_file = self.config.read_config()
@@ -298,8 +296,6 @@ class PressurePoint:
         self._state = 'up'
         self._tare = tare_value
         self._index = index
-
-
 
         self._max_depth = 0
         

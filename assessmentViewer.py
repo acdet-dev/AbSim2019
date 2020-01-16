@@ -165,6 +165,14 @@ class ViewsController:
         for i in self.p3.get_children():
             self.p3.remove(i)
 
+    def change_permissions_recursive(self, path, mode):
+        import os
+        for root, dirs, files in os.walk(path, topdown=False):
+            for dir in [os.path.join(root, d) for d in dirs]:
+                os.chmod(dir, mode)
+        for file in [os.path.join(root, f) for f in files]:
+            os.chmod(file, mode)
+
     def export(self, widget):
         import os
         import shutil
@@ -201,9 +209,17 @@ class ViewsController:
                         sim_message(self.window, info_string=self.string_resources["export_failure"],
                                     secondary_text=self.string_resources["export_fail_description"])
                 try:
+                    self.change_permissions_recursive(desktop, 0o777)
                     shutil.copy(file_string, desktop)
-                except Exception:
+                except Exception as e:
                     logging.debug("Cannot write to desktop")
+                    logging.debug(e)
+                    self.change_permissions_recursive(desktop, 0o777)
+                    try:
+                        shutil.copy(file_string, desktop)
+                    except Exception as e:
+                        logging.debug("Still cannot write to desktop")
+                        logging.debug(e)
 
             elif self.flag == 'ddx':
                 file_string = c_dir + '\\' + '_'.join(self.section) + self.exam[0][1] + '_case_text_data.csv'
@@ -226,9 +242,17 @@ class ViewsController:
                         sim_message(self.window, info_string=self.string_resources["export_failure"],
                                     secondary_text=self.string_resources["export_fail_description"])
                 try:
+                    self.change_permissions_recursive(desktop, 0o777)
                     shutil.copy(file_string, desktop)
-                except Exception:
+                except Exception as e:
                     logging.debug("Cannot write to desktop")
+                    logging.debug(e)
+                    self.change_permissions_recursive(desktop, 0o777)
+                    try:
+                        shutil.copy(file_string, desktop)
+                    except Exception as e:
+                        logging.debug("Still cannot write to desktop")
+                        logging.debug(e)
 
         else:
             logging.debug('Could not get exam info because no exams exist.')

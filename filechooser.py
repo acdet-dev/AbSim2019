@@ -53,16 +53,15 @@ class FileChooserWindow(Gtk.Window):
                             for row in readCSV:
                                 self.save_info(s, row[0], row[1], row[2])
 
-                                sim_message(self, info_string=self.string_resources["success_notification"],
-                                            secondary_text=self.string_resources["success_description"])
+                            sim_message(self, info_string=self.string_resources["success_notification"],
+                                        secondary_text=self.string_resources["success_description"])
 
-                                csvfile.close()
-
-                        except IndexError as e:
+                        except (IndexError, ValueError) as e:
                             logging.debug(e)
                             sim_message(self, info_string=self.string_resources["failure_notification"],
                                         secondary_text=self.string_resources["failure_description_2"])
 
+                    csvfile.close()
                 except UnicodeDecodeError:
                     sim_message(self, info_string=self.string_resources["unicode_error"],
                                 secondary_text=self.string_resources["error_description"])

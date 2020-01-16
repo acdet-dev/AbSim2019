@@ -26,15 +26,17 @@ class Config:
             f = open(self.app_data_path + '\\' + self.filename, 'r')
             logging.debug('reading app_data' + self.filename)
 
-        except:
+        except Exception as e:
             logging.debug("Can't open file for reading: " + self.filename)
+            logging.debug(e)
             logging.debug("Trying from sim rather than app_data")
 
             try:
                 f = open(self.filename, 'r')
                 logging.debug('reading sim' + self.filename)
-            except:
+            except Exception:
                 logging.debug("Can't open file for reading: " + self.filename)
+                logging.debug(e)
                 self.defaults = dict()
 
         if f:
@@ -51,8 +53,9 @@ class Config:
             logging.debug('writing values to ' + self.filename)
             write_fh.close()
 
-        except (FileNotFoundError, PermissionError):
+        except Exception:
             logging.debug("Can't open file for writing: " + self.filename)
+            logging.debug(e)
 
     def get_default(self, name):
         logging.debug('getting default locale values')
