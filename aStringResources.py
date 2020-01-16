@@ -64,7 +64,7 @@ class AStringResources:
                 "add_students_description": _(u"Provide AbSim Student Information"),
                 "create_button": _(u"Create Assessments"),
                 "create_description": _(u"Select Test Items to Include on Assessments"),
-                "view_button": _(u"View and Assign Assessments"),  # preview exam
+                "view_button": _(u"View and Assign Assessments"),
                 "view_description": _(u"View Created Assessments and Student Results"),
                 "back_description": _(u"Return to Initial Faculty Screen")
             }
@@ -139,6 +139,7 @@ class AStringResources:
                 "success_description": _(u"Students may now login to view exams you assign."),
                 "failure_notification": _(u"Class Upload Failed"),
                 "failure_description": _(u"Section information not provided."),
+                "failure_description_2": _(u"File format does not match requested format."),
                 "unicode_error": _(u"Encoding Error Encountered"),
                 "error_description": _(u"Please make sure to save your .csv file in UTF-8 encoding."),
                 "any_files": _(u"Any files"),
@@ -226,11 +227,13 @@ class AStringResources:
                 "self_learning_button": _(u"Self-directed Learning"),
                 "self_description": _(u"Learn and Practice Abdominal Palpation"),
                 "view_button": _(u"Take Assigned Assessment"),
-                "view_description": _(u"Complete a variety of assessments using AbSim"),
-                "request_id": _(u"Please enter your ID"),
-                "login_window": _(u"Student Login"),
-                "login_fail": _(u"Login Failed"),
-                "fail_description": _(u"Entered ID does not match our records.")
+                "view_description": _(u"Complete a Variety of Assessments Using AbSim"),
+                "choose_title": _(u"Select Class Section"),
+                "choose_description": _(u"Choose your appropriate class section."),
+                "info_string": _(u"No Section Chosen"),
+                "secondary": _(u"Please choose the section to which you belong."),
+                "no_students_error": _(u"No Sections Exist"),
+                "please_add": _(u"Please wait for your instructor to load class information.")
             }
 
         elif self.identifier == "view_assignments":
@@ -245,23 +248,37 @@ class AStringResources:
                 "welcome_string": _(u"Welcome to AbSim's Assessment Interface"),
                 "instruction_string": _(u'Select an assessment and click "Begin Assessment" when ready.'),
                 "begin_button": _(u"Begin Assessment"),
+                # Fix no exam exists select begin
                 "no_assessment": _(u"Assessment Not Found."),
-                "finish_string": _(u"You may take another assessment if you have more to take."),
+                "finish_string": _(u"You may take another assessment if you have more to take."),  # doesn't need here
+                # ask for section in take assessments button, ask for id in begin exam
+                # on end exam, just go back to begin exam screen
                 "select_button": _(u"Select Assessment"),
                 "select_description": _(u'Please select an assessment and click "Begin Assessment".'),
                 "finish_title": _(u"Assessment Finished"),
-                "baseline_text": _(u"Perform a baseline assessment and click 'OK' when finished."),
-                "base_description": _(u"Baseline Evaluation"),
-                "case_description": _(u"Identify Condition"),
-                "ddx_description": _(u"Diagnosis with Case Vignette"),
-                "final_string": _(u"Contains"),
+                "baseline_text": _(u"Demonstrate your ability to perform a competent abdominal examination"
+                                   u" and click 'OK' when finished."),
+                "base_description": _(u"Demonstrate Competent Abdominal Examination"),
+                "case_description": _(u"Identify Abdominal Scenario(s)"),
+                # sub in string based on length of test items to let them know how many; update on make selection
+                "ddx_description": _(u"Case Vignettes to Diagnose"),
+                "final_string": _(u"will test you on the following circumstances"),
                 "base_text": _(u"Select an assessment to view associated test items."),
                 "ok_button": _(u"Ok"),
                 "make_selection_button": _(u"Make Selection"),
                 "identify_helper": _(u"Identify the condition associated with the test item(s)"),
                 "text_helper": _(u"view the case vignette, perform an exam, and enter your diagnosis for the case"),
+                "completed": _(u"Current Item"),
                 "no_selection": _(u"No Selection"),
-                "no_string": _(u"Please select a case.")
+                "no_string": _(u"Please select a case."),
+                "request_id": _(u"Please provide ID number"),
+                "login_window": _(u"Student Login"),
+                "login_fail": _(u"Login Failed"),
+                "fail_description": _(u"Entered ID does not match AbSim's records."),
+                "exam_taken": _(u"Assessment Already Completed"),
+                "taken_description": _(u"You have taken this assessment; please select another."),
+                "no_selection": _(u"Assessment Not Selected"),
+                "please_select": _(u"Please select an assessment.")
             }
 
         elif self.identifier == "menu":
@@ -408,7 +425,7 @@ class AStringResources:
         elif self.identifier == "ddx_practice":
             string_resources = {
                 "choice_string_1": _(u"Correct"),
-                "choice_string_2": _(u"Best Diagnosis:"),
+                "choice_string_2": _(u"Best Diagnosis is"),
                 "best_1": _(u"Incorrect"),
                 "next_button": _(u"Next Case")
             }

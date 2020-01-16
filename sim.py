@@ -1,4 +1,3 @@
-import logging
 import buildWidgets
 import menuBar
 from aStringResources import AStringResources
@@ -6,8 +5,6 @@ from aStringResources import AStringResources
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
-
-from Levenshtein import distance
 
 
 class UserType(Gtk.Window, menuBar.MenuBar):
@@ -22,9 +19,9 @@ class UserType(Gtk.Window, menuBar.MenuBar):
 
         widget = self.build_bar()
 
-        bw = buildWidgets.BuildWidgets()
+        self.bw = buildWidgets.BuildWidgets()
 
-        logo = bw.build_logo(img_string='img/acdet-logo.gif')
+        logo = self.bw.build_logo(img_string='img/acdet-logo.gif')
 
         if self.usertype == 'student':
             self.string_resources = AStringResources("sim_screen_student").get_by_identifier()
@@ -40,7 +37,7 @@ class UserType(Gtk.Window, menuBar.MenuBar):
             d_list = [self.string_resources["config_description"], self.string_resources["create_description"]]
             f_list = [self.config, self.create_exams]
 
-        button_table = bw.add_buttons(button_list=b_list, description_list=d_list, functions=f_list)
+        button_table = self.bw.add_buttons(button_list=b_list, description_list=d_list, functions=f_list)
 
         widget.pack_start(logo, False, False, 0)
         widget.pack_start(button_table, False, False, 0)
@@ -62,47 +59,34 @@ class UserType(Gtk.Window, menuBar.MenuBar):
         self.facilitate_transfer(new_window=MenuWindow)
         Gdk.threads_leave()
 
-    def get_info(self, student_id):
-        import studentmodel
-
-        self.student_model = studentmodel.StudentModel()
-        # self.allRows = self.faculty_model.get_all(faculty_pw)
-        self.student = self.student_model.get_by_student_id(student_id)
-
     def assigned_assessment(self, widget):
-        from simLogin import get_user_pw
-        from messages import sim_message
+        from sectionTree import SectionTree
+        from messages import sim_message, sim_class_message
         from viewAssignments import ViewAssignments
+        
+        # get section numbers to choose from
+        st = SectionTree(self.bw, [], one_flag=True)
+        bt = st.get_sections()
 
-        credentials = get_user_pw(self, self.string_resources["request_id"], self.string_resources["login_window"],
-                                  flag='initial')
-        if credentials:
-            self.get_info(credentials)
+        st.sec_name = []
 
-            if self.student:
+        if bt:
 
-                try:
-                    # distance(value, str(book['volumeInfo']['title']).lower()) <= 3]
-                    if distance(credentials, self.student[3]) < 1:
-                        logging.debug('Beginning Exam')
-                        self.facilitate_transfer(self.usertype, self.student[0], self.student[1], self.student[2],
-                                                 credentials, new_window=ViewAssignments)
-                    else:
-                        logging.debug('Not beginning exam. Login failure.')
-                        sim_message(self, info_string=self.string_resources["login_fail"],
-                                    secondary_text=self.string_resources["fail_description"])
-                except TypeError as e:
-                    logging.debug('No student found. Passing to login failure message.')
-                    pass
+            s = sim_class_message(self,
+                                  bt,
+                                  st.sec_name,
+                                  info_string=self.string_resources["choose_title"],
+                                  secondary_text=self.string_resources["choose_description"])
+
+            if s:
+                self.facilitate_transfer(self.usertype, s[0], new_window=ViewAssignments)
             else:
-                logging.debug('No student in record.')
-                sim_message(self, info_string=self.string_resources["login_fail"],
-                            secondary_text=self.string_resources["fail_description"])
-                pass
+                sim_message(self, info_string=self.string_resources["info_string"],
+                            secondary_text=self.string_resources["secondary"])
 
         else:
-            sim_message(self, info_string=self.string_resources["login_fail"],
-                        secondary_text=self.string_resources["fail_description"])
+            sim_message(self, info_string=self.string_resources["no_students_error"],
+                        secondary_text=self.string_resources["please_add"])
 
     def create_exams(self, widget):
         from simFaculty import SimFaculty

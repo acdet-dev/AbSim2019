@@ -24,14 +24,18 @@ class PortSettings:
         self.tensioner_command_queue = Queue()
 
         self.find_ports()
-        try:
-            self.initialize_devices(self.list_of_ports)
-        except Exception:
-            logging.debug('could not initialize: trying to reconnect')
-            self.start_pressure_pad_thread()
-            self.start_cnc_thread()
-            self.connect_bladder()
-            self.connect_tensioner()
+
+        if self.list_of_ports:
+            try:
+                self.initialize_devices(self.list_of_ports)
+            except Exception:
+                logging.debug('could not initialize: trying to reconnect')
+                self.start_pressure_pad_thread()
+                self.start_cnc_thread()
+                self.connect_bladder()
+                self.connect_tensioner()
+        else:
+            logging.debug("not connecting; no ports returned")
 
     def find_ports(self):
         time.sleep(3)

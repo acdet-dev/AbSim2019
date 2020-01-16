@@ -172,7 +172,7 @@ class ViewsController:
 
         # get absim current dir and desktop
         c_dir = os.getenv('LOCALAPPDATA') + '\\AbSim2020'
-        desktop = os.getenv('USERPROFILE') + '\\Desktop'
+        desktop = os.environ['USERPROFILE'] + '\\Desktop'
 
         # get headers as list to pass to writer
         heads = [self.string_resources["column_header_1"], self.string_resources["column_header_2"],
@@ -202,7 +202,7 @@ class ViewsController:
                                     secondary_text=self.string_resources["export_fail_description"])
                 try:
                     shutil.copy(file_string, desktop)
-                except PermissionError:
+                except Exception:
                     logging.debug("Cannot write to desktop")
 
             elif self.flag == 'ddx':
@@ -227,7 +227,7 @@ class ViewsController:
                                     secondary_text=self.string_resources["export_fail_description"])
                 try:
                     shutil.copy(file_string, desktop)
-                except PermissionError:
+                except Exception:
                     logging.debug("Cannot write to desktop")
 
         else:

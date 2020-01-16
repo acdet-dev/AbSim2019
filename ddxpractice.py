@@ -79,14 +79,14 @@ class DDXPractice (gtk.HBox):
         self.correct_label = gtk.Label()  # font = 20, bold, fgcolor = #1E9D1C
         self.correct_label.set_justify(gtk.JUSTIFY_LEFT)
         self.correct_label.set_alignment(0, 0)
-        label_text = self.string_resources["choice_string_1"] + "\n" + self.string_resources["choice_string_2"]
+        label_text = self.string_resources["choice_string_1"] + "\n" + self.string_resources["choice_string_2"] + ":"
         label_pre_mark = construct_markup(label_text, font_size=20, weight='bold', fgcolor='#1E9D1C')
         self.correct_label.set_markup(label_pre_mark)
         
         self.incorrect_label = gtk.Label()  # font 20, bold, #000000
         self.incorrect_label.set_justify(gtk.JUSTIFY_LEFT)
         self.incorrect_label.set_alignment(0, 0)
-        label_text = self.string_resources["best_1"] + "\n" + self.string_resources["choice_string_2"]
+        label_text = self.string_resources["best_1"] + "\n" + self.string_resources["choice_string_2"] + ":"
         label_pre_mark = construct_markup(label_text, font_size=20, weight='bold', fgcolor='#FF3333')
         self.incorrect_label.set_markup(label_pre_mark)
         

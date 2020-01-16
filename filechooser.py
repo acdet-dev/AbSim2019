@@ -49,13 +49,19 @@ class FileChooserWindow(Gtk.Window):
                 try:
                     with open(dialog.get_filename(), encoding='utf-8') as csvfile:
                         readCSV = csv.reader(csvfile, delimiter=',')
-                        for row in readCSV:
-                            self.save_info(s, row[0], row[1], row[2])
+                        try:
+                            for row in readCSV:
+                                self.save_info(s, row[0], row[1], row[2])
 
-                    sim_message(self, info_string=self.string_resources["success_notification"],
-                                secondary_text=self.string_resources["success_description"])
+                                sim_message(self, info_string=self.string_resources["success_notification"],
+                                            secondary_text=self.string_resources["success_description"])
 
-                    csvfile.close()
+                                csvfile.close()
+
+                        except IndexError as e:
+                            logging.debug(e)
+                            sim_message(self, info_string=self.string_resources["failure_notification"],
+                                        secondary_text=self.string_resources["failure_description_2"])
 
                 except UnicodeDecodeError:
                     sim_message(self, info_string=self.string_resources["unicode_error"],

@@ -31,15 +31,15 @@ from gi.repository import Gtk, Gdk, GLib, Pango
 
 class ViewAssignments(Gtk.Window):
 
-    def __init__(self, user_type, section, last, first, password):
+    def __init__(self, user_type, section):
         # initialize inherited variables
         self.section = section
         self.user_type = user_type
-        self.last = last
-        self.first = first
-        self.password = password
-        self.exam_title = self.check_exam_by_section()
-        self.exam_info = self.exams_left()
+        self.last = ""
+        self.first = ""
+        self.password = ""
+        self.exam_title_list = self.check_exam_by_section()
+        self.exam_info = ""
         self.string_resources = AStringResources("view_assignments", back_flag=True).get_by_identifier()
 
         # build parent objects for child classes to save to
@@ -95,6 +95,7 @@ class ViewAssignments(Gtk.Window):
             'untouched_ddx': self.untouched_ddx,
             'baseline_model': self.baselinemodel,
             'exam_title': self.exam_title,
+            "exam_title_list": self.exam_title_list,
             'baseline_start': 0,
             'ab_start': 0,
             'ab_end': 0,
@@ -220,7 +221,7 @@ class ViewAssignments(Gtk.Window):
         page.reset_page()
 
     def attach_new_case_observer(self, callback):
-        if self.state_watcher.sensor_pad_is_connected == True:
+        if self.state_watcher.sensor_pad_is_connected:
             self.new_selected_case.connect(callback)
         else:
             logging.debug('not true')
@@ -243,35 +244,6 @@ class ViewAssignments(Gtk.Window):
         tt = ToTake().get_by_section_id(key=self.section)
 
         return tt
-
-    def exams_left(self):
-        # function to only show what exams a student has not taken, to prevent retaking for higher score.
-
-        exam_model = exammodel.ExamModel()
-
-        exam_info = []
-        for title in self.exam_title:
-            exam_info.append(list(exam_model.get_by_exam_id(key=title[0])))
-
-        taken_model = takenmodel.TakenModel()
-
-        taken_list = taken_model.get_by_score_id(key=self.password)
-        baseline_model = baselinemodel.BaselineModel()
-        baseline_list = baseline_model.get_by_score_id(key=self.password)
-
-        if taken_list:
-            for i in range(0, len(taken_list)):
-                for j in exam_info:
-                    if taken_list[i][1] in j:
-                        exam_info.remove(j)
-
-        if baseline_list:
-            for i in range(0, len(baseline_list)):
-                for j in exam_info:
-                    if baseline_list[i][0] in j:
-                        exam_info.remove(j)
-
-        return exam_info
 
     def facilitate_transfer(self, new_window):
         from handleTransitions import HandleTransitions
@@ -296,6 +268,12 @@ class ViewAssignments(Gtk.Window):
         self.facilitate_transfer(UserType)
         # Perform DB migration to make sure we have the newest version
         # dbmigrator.DBMigrator()
+
+    def return_exam(self):
+        self.notebook.get_nth_page(0).show()
+        self.notebook.get_nth_page(1).hide()
+        self.notebook.get_nth_page(2).hide()
+        self.notebook.get_nth_page(3).hide()
 
 
 class ViewTests(Gtk.HBox):
@@ -322,8 +300,8 @@ class ViewTests(Gtk.HBox):
 
         store = Gtk.ListStore(str)
 
-        for i in range(0, len(self.exam_resources['exam_info'])):
-            store.append([self.exam_resources['exam_info'][i][0]])
+        for title in self.exam_resources['exam_title_list']:
+            store.append(title)
 
         return store
 
@@ -343,14 +321,18 @@ class ViewTests(Gtk.HBox):
             base = ''
         if len(case_list_comm) > 0:
             cases = self.string_resources["case_description"]
+            cases_length = len(case_list_comm)
         else:
             cases = ''
+            cases_length = 0
         if len(ddx_cases) > 0:
             ddx = self.string_resources["ddx_description"]
+            ddx_length = len(ddx_cases)
         else:
             ddx = ''
+            ddx_length = 0
 
-        return [base, cases, ddx]
+        return [base, cases, ddx], cases_length, ddx_length
 
     def on_tree_selected(self, treeview):
         selection = treeview.get_selection()
@@ -359,7 +341,7 @@ class ViewTests(Gtk.HBox):
         self.exam_resources['exam_title'] = model.get(iter, 0)[0]
 
         # get buffer text
-        new_text = self.get_buffer_text()
+        new_text, c_length, d_length = self.get_buffer_text()
         i = 0
         header_list = []
         final_string = self.exam_resources["exam_title"] + " " + self.string_resources["final_string"] + ":\n\n"
@@ -371,16 +353,19 @@ class ViewTests(Gtk.HBox):
 
         self.tb.new_case(final_string)
         for header in header_list:
-            if "Baseline" in header:
+            if "Demonstrate" in header:
                 self.view_resources["window"].baseline.tb.new_case(header)
-                # header_list.remove(header)
             if "Identify" in header:
                 self.view_resources["window"].case_exam.tb.new_case(header + ": "
                                                                     + self.string_resources["identify_helper"])
-                # header_list.remove(header)
-            if "Diagnosis" in header:
+                if c_length > 0:
+                    self.view_resources["window"].case_exam.len_tb.new_case(self.string_resources["completed"] + ": "
+                                                                            + str(1) + "/" + str(c_length))
+            if "Vignettes" in header:
                 self.view_resources["window"].ddx_exam.tb.new_case(header + ": " + self.string_resources["text_helper"])
-                # header_list.remove(header)
+                if d_length > 0:
+                    self.view_resources["window"].ddx_exam.len_tb.new_case(self.string_resources["completed"] + ": "
+                                                                           + str(1) + "/" + str(d_length))
 
     def build_interface(self):
         bw = BuildWidgets()
@@ -537,18 +522,119 @@ class ViewTests(Gtk.HBox):
                             secondary_text=self.string_resources["finish_string"])
                 self.view_resources['window'].return_home()
 
+    def exams_left(self, password):
+        # function to only show what exams a student has not taken, to prevent retaking for higher score.
+
+        exam_model = exammodel.ExamModel()
+
+        exam_info = list()
+        exam_info.append(list(exam_model.get_by_exam_id(key=self.exam_resources["exam_title"])))
+
+        taken_model = takenmodel.TakenModel()
+
+        taken_list = taken_model.get_by_score_id(key=password)
+        baseline_model = baselinemodel.BaselineModel()
+        baseline_list = baseline_model.get_by_score_id(key=password)
+
+        if taken_list:
+            for i in range(0, len(taken_list)):
+                for j in exam_info:
+                    if taken_list[i][1] in j:
+                        exam_info.remove(j)
+
+        if baseline_list:
+            for i in range(0, len(baseline_list)):
+                for j in exam_info:
+                    if baseline_list[i][0] in j:
+                        exam_info.remove(j)
+
+        return exam_info
+
+    def parse_and_transition(self, password):
+        # check to see if exam already taken by student
+        untaken = self.exams_left(password)
+        if len(untaken) > 0:
+            # query exam model by one exam title to give AbSim machine commands.
+            ep = examParser.ExamParser(flag='one', title=self.exam_resources['exam_title'])
+            case_info = ep.get_exam_info(ep.flag, ep.title)
+
+            # if empty exam returns empty exam name
+            if case_info[0] == "":
+                sim_message(self.view_resources['window'], info_string=self.string_resources["select_button"],
+                            secondary_text=self.string_resources["select_description"])
+            else:
+                try:
+                    self.exam_resources['case_list'], self.exam_resources['case_title_list'],\
+                        self.exam_resources['baseline_model'], self.exam_resources['baseline_flag'],\
+                        self.exam_resources['ddx_cases'] = ep.parse_exam_info(case_info)
+                    self.exam_resources["password"] = password
+                    self.build_exam_view()
+                    self.view_resources["window"].ddx_exam.len_tb.new_case(self.string_resources["completed"] + ": "
+                                                                           + str(1) + "/"
+                                                                           + str(self.exam_resources['ddx_den']))
+                    self.view_resources["window"].case_exam.len_tb.new_case(self.string_resources["completed"] + ": "
+                                                                            + str(1) + "/"
+                                                                            + str(self.exam_resources['ab_den']))
+                except TypeError:
+                    sim_message(self.view_resources['window'], info_string=self.string_resources["select_button"],
+                                secondary_text=self.string_resources["select_description"])
+        else:
+            sim_message(self.view_resources['window'], info_string=self.string_resources["exam_taken"],
+                        secondary_text=self.string_resources["taken_description"])
+
+    def get_info(self, student_id):
+        import studentmodel
+
+        student_model = studentmodel.StudentModel()
+        # self.allRows = self.faculty_model.get_all(faculty_pw)
+        student = student_model.get_by_student_id(student_id)
+
+        return student
+
+    def check_student_info(self, credentials):
+        if credentials:
+            student = self.get_info(credentials)
+
+            if student:
+
+                try:
+                    # distance(value, str(book['volumeInfo']['title']).lower()) <= 3]
+                    if distance(credentials, student[3]) < 1:
+                        logging.debug('Beginning Exam')
+                        self.parse_and_transition(student[3])
+                    else:
+                        logging.debug('Not beginning exam. Login failure.')
+                        sim_message(self.view_resources['window'], info_string=self.string_resources["login_fail"],
+                                    secondary_text=self.string_resources["fail_description"])
+                except TypeError as e:
+                    logging.debug('No student found. Passing to login failure message.')
+                    pass
+            else:
+                logging.debug('No student in record.')
+                sim_message(self.view_resources['window'], info_string=self.string_resources["login_fail"],
+                            secondary_text=self.string_resources["fail_description"])
+                pass
+
+        else:
+            sim_message(self.view_resources['window'], info_string=self.string_resources["login_fail"],
+                        secondary_text=self.string_resources["fail_description"])
+
+    def get_student_info(self):
+        from simLogin import get_user_pw
+        credentials = get_user_pw(self.view_resources['window'], self.string_resources["request_id"],
+                                  self.string_resources["login_window"], flag='initial')
+
+        return credentials
+
     def begin_exam(self, widget):
-        # query exam model by one exam title to give AbSim machine commands.
-        ep = examParser.ExamParser(flag='one', title=self.exam_resources['exam_title'])
-        case_info = ep.get_exam_info(ep.flag, ep.title)
-        try:
-            self.exam_resources['case_list'], self.exam_resources['case_title_list'],\
-                self.exam_resources['baseline_model'], self.exam_resources['baseline_flag'],\
-                self.exam_resources['ddx_cases'] = ep.parse_exam_info(case_info)
-            self.build_exam_view()
-        except TypeError:
-            sim_message(self.view_resources['window'], info_string=self.string_resources["select_button"],
-                        secondary_text=self.string_resources["select_description"])
+        # ask for student info
+        if self.exam_resources["exam_title"] is not None:
+            creds = self.get_student_info()
+
+            self.check_student_info(creds)
+        else:
+            sim_message(self.view_resources['window'], info_string=self.string_resources["no_selection"],
+                        secondary_text=self.string_resources["please_select"])
 
     def reset_page(self):
         return
@@ -633,7 +719,7 @@ class BaselineTest(Gtk.HBox):
         else:
             sim_message(self.view_resources['window'], info_string=self.string_resources["finish_title"],
                         secondary_text=self.string_resources["finish_string"])
-            self.view_resources['window'].return_home()
+            self.view_resources['window'].return_exam()
 
     def build_exam_interface(self):
         # initialize vbox to pack everything at the end
@@ -647,8 +733,6 @@ class BaselineTest(Gtk.HBox):
         o_w = 50
         o_h = 50
         text_view = bw.create_text_view(o_w, o_h, self.tb)
-
-        self.tb.new_case(self.exam_resources["header_list"][0])
 
         # build label
         base_label = bw.build_label(label_text=self.string_resources["baseline_text"], f_size=20, weight="bold")
@@ -682,7 +766,9 @@ class CaseExam(Gtk.HBox):
         self.exam_resources = exam_resources
         self.view_resources = view_resources
         self.string_resources = sr
+        self.index = 1
         self.tb = CaseTextBuffer()
+        self.len_tb = CaseTextBuffer()
 
         # Build Interface
         self.cs = CaseSelector(self.view_resources['new_case_observer'], flag='test')
@@ -695,18 +781,29 @@ class CaseExam(Gtk.HBox):
         o_h = 50
         text_view = self.bw.create_text_view(o_w, o_h, self.tb)
 
-        self.tb.new_case(self.exam_resources["header_list"][0])
+        len_text_view = self.bw.create_text_view(o_w, o_h, self.len_tb)
 
         b_list = [self.string_resources["make_selection_button"]]
         f_list = [self.make_selection]
         button_tree = self.bw.add_horizontal_buttons(button_list=b_list, functions=f_list, f_size=20)
 
         test_box.pack_start(text_view, False, False, 10)
+        test_box.pack_start(len_text_view, False, False, 10)
         test_box.pack_start(cvs, True, True, 10)
         test_box.pack_start(button_tree, False, False, 0)
 
         self.add(test_box)
         self.show_all()
+
+    def reset_values(self):
+        self.exam_resources["ddx_answer_list"] = []
+        self.exam_resources["student_ddx_list"] = []
+        self.exam_resources["ab_answer_list"] = []
+        self.exam_resources["student_answer_list"] = []
+        self.exam_resources["untouched"] = []
+        self.exam_resources["untouched_ddx"] = []
+        self.exam_resources["ab_num"] = 0
+        self.exam_resources["ddx_num"] = 0
 
     def report_score(self, score, flag=''):
         if flag == 'first_time':
@@ -784,7 +881,9 @@ class CaseExam(Gtk.HBox):
                                  round(self.exam_resources['ab_end']), round(self.exam_resources['ddx_end']), timestr,
                                  self.exam_resources['section'])
 
-            self.view_resources['window'].return_home()
+            self.reset_values()
+
+            self.view_resources['window'].return_exam()
 
     def make_selection(self, choice):
         # in here, we should be able to facilitate transition to other exam
@@ -808,15 +907,19 @@ class CaseExam(Gtk.HBox):
                 # pass new case if we have one
                 try:
                     self.view_resources['new_case_observer'].alert(self.exam_resources['case_list'][0])
+                    self.index += 1
+                    self.len_tb.new_case(self.string_resources["completed"] + ": "
+                                         + str(self.index) + "/" + str(self.exam_resources['ab_den']))
                 except IndexError:
                     score = self.exam_resources['ab_num'] / self.exam_resources['ab_den']
+                    self.index = 1
                     self.report_score(score, flag='first_time')
                     pass
 
             else:
                 sim_message(self.view_resources['window'], info_string=self.string_resources["finish_title"],
                             secondary_text=self.string_resources["finish_string"])
-                self.view_resources['window'].return_home()
+                self.view_resources['window'].return_exam()
                 # logging.debug('exam finished')
                 # sim_message(self, info_string=_(u'Exam Load Failure'),
                 # secondary_text=_(u'AbSim received empty exam list.'))
@@ -846,8 +949,10 @@ class DdxExam(Gtk.HBox):
         self.exam_resources = exam_resources
         self.view_resources = view_resources
         self.string_resources = sr
+        self.index = 1
         self.tb = CaseTextBuffer()
         self.case_text_buffer = casetext.CaseTextBuffer()
+        self.len_tb = CaseTextBuffer()
         self.bw = BuildWidgets()
 
         # initialize boxes for packing widgets
@@ -870,9 +975,10 @@ class DdxExam(Gtk.HBox):
         o_h = 50
         text_view = self.bw.create_text_view(o_w, o_h, self.tb)
 
-        self.tb.new_case(self.exam_resources["header_list"][0])
+        len_text_view = self.bw.create_text_view(o_w, o_h, self.len_tb)
 
         test_box.pack_start(text_view, False, False, 10)
+        test_box.pack_start(len_text_view, False, False, 10)
         test_box.pack_start(hbox, False, False, 0)
         test_box.pack_start(button_tree, False, False, 0)
 
@@ -898,7 +1004,6 @@ class DdxExam(Gtk.HBox):
         # in here, we should be able to facilitate transition to other exam
         if hasattr(self, "current_case"):
             if len(self.exam_resources['ddx_cases']) > 0:
-
                 self.exam_resources['ddx_answer_list'].append(self.exam_resources['ddx_cases'][0])
                 # add student answers to their own list
                 self.exam_resources['student_ddx_list'].append(self.current_case)
@@ -921,14 +1026,21 @@ class DdxExam(Gtk.HBox):
                     self.view_resources['new_case_observer'].alert(ail_key)
 
                     self.view_resources['new_case_block_observer'].alert(ail_key, block)
+
+                    # update text view
+                    self.index += 1
+                    self.len_tb.new_case(self.string_resources["completed"] + ": "
+                                         + str(self.index) + "/" + str(self.exam_resources['ddx_den']))
+
                 except IndexError:
                     score = self.exam_resources['ddx_num'] / self.exam_resources['ddx_den']
+                    self.index = 1
                     self.view_resources['window'].case_exam.report_score(score)
 
             else:
                 sim_message(self.view_resources['window'], info_string=self.string_resources["finish_title"],
                             secondary_text=self.string_resources["finish_string"])
-                self.view_resources['window'].return_home()
+                self.view_resources['window'].return_exam()
                 # logging.debug('exam finished')
                 # sim_message(self, info_string=_(u'Exam Load Failure'),
                 # secondary_text=_(u'AbSim received empty exam list.'))

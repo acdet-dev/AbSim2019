@@ -13,6 +13,7 @@ from takenmodel import TakenModel
 from casetext import CaseTextBuffer
 from messages import sim_class_message, sim_message
 import simLabels
+from sectionTree import SectionTree
 
 
 class ViewPerformance(Gtk.Window, MenuBar):
@@ -154,42 +155,6 @@ class ViewPerformance(Gtk.Window, MenuBar):
 
         return vbox
 
-    def build_button_tree(self, sec_nums):
-        check_button_box = Gtk.VBox()
-
-        for num in sec_nums:
-            button = self.bw.build_check_button(num, self.on_button_toggled, 12, [5, 5])
-            check_button_box.pack_start(button, False, False, 0)
-
-        return check_button_box
-
-    def on_button_toggled(self, button, name):
-        if button.get_active():
-            self.sec_name.append(name)
-        else:
-            self.sec_name.remove(name)
-
-    def get_number_sections(self):
-        """ function to return unique sections of students """
-        from studentmodel import StudentModel
-
-        sm = StudentModel()
-        students = sm.get_all(key="check")
-
-        unique_sections = list(set([i[0] for i in students]))
-
-        return sorted(unique_sections)
-
-    def get_sections(self):
-        section_numbers = self.get_number_sections()
-        if len(section_numbers) > 0:
-            button_tree = self.build_button_tree(section_numbers)
-
-            return button_tree
-
-        else:
-            return None
-
     def assign_to_students_by_section(self, sections):
         """ function to write to_take strings to database for test taking """
         from totake import ToTake
@@ -225,15 +190,16 @@ class ViewPerformance(Gtk.Window, MenuBar):
 
         else:
             # call get sections
-            bt = self.get_sections()
+            st = SectionTree(self.bw, self.sec_name)
+            bt = st.get_sections()
 
-            self.sec_name = []
+            st.sec_name = []
 
             if bt:
 
                 s = sim_class_message(self,
                                       bt,
-                                      self.sec_name,
+                                      st.sec_name,
                                       info_string=self.string_resources["choose_title"],
                                       secondary_text=self.string_resources["choose_sections"])
 
@@ -267,15 +233,17 @@ class ViewPerformance(Gtk.Window, MenuBar):
 
         else:
             # view highlighted exam's scores
-            bt = self.get_sections()
+            # call get sections
+            st = SectionTree(self.bw, self.sec_name)
+            bt = st.get_sections()
 
-            self.sec_name = []
+            st.sec_name = []
 
             if bt:
 
                 s = sim_class_message(self,
                                       bt,
-                                      self.sec_name,
+                                      st.sec_name,
                                       info_string=self.string_resources["choose_title"],
                                       secondary_text=self.string_resources["choose_description"])
 
@@ -301,10 +269,12 @@ class ViewPerformance(Gtk.Window, MenuBar):
         else:
 
             from totake import ToTake
+            from baselinemodel import BaselineModel
             from messages import sim_reset_dialogue
 
             tt = ToTake()
             tm = TakenModel()
+            bm = BaselineModel()
 
             yes_no = sim_reset_dialogue(self, info_string=self.string_resources["warning"],
                                         secondary_text=self.string_resources["warning_message"])
@@ -313,6 +283,7 @@ class ViewPerformance(Gtk.Window, MenuBar):
 
                 # execute delete statements
                 self.exam_info.delete_by_exam_id(key=self.window_resources["exam_id"])
+                bm.delete_by_exam_id(key=self.window_resources["exam_id"])
                 tt.delete_by_exam_id(key=self.window_resources["exam_id"])
                 tm.delete_rows(key=self.window_resources["exam_id"])
 

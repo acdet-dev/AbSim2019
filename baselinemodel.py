@@ -29,7 +29,7 @@ class BaselineModel:
         stmt = "DELETE FROM baseline WHERE exam_name=?"
 
         try:
-            c.execute(stmt, (key.encode(),))
+            c.execute(stmt, (key,))
             db_conn.commit()
         except (sqlite3.InterfaceError, sqlite3.OperationalError):
             logging.debug('Could not delete baseline data table row.')
