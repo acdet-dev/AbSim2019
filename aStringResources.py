@@ -488,7 +488,3 @@ class AStringResources:
             string_resources["too_deep_label"] = _(u"Too Deep")
 
         return string_resources
-
-
-
-

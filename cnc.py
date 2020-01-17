@@ -17,7 +17,7 @@ class CNC(threading.Thread):
 
     def __init__(self, command_queue, state_watcher, port=None, assess=False):
         threading.Thread.__init__(self)
-        #set up class
+        # set up class
         self.config = config.Config('cnc_adjustments.json')
 
         self.daemon = True
@@ -133,7 +133,8 @@ class CNC(threading.Thread):
             # sends last location (colon, appendix, etc) and uses x and y adjustments to put ailment within new range
             gcode = self.get_adjusted_location_gcode(self.last_location_sent)
             self.send_command(gcode)
-        elif command_name is 'emergency_stop':
+        elif command_name == 'emergency_stop':
+            logging.debug("emergency stop happening")
             self.emergency_stop()
         elif command_name in self.base_locations:
             gcode = self.get_adjusted_location_gcode(command_name)
@@ -145,12 +146,20 @@ class CNC(threading.Thread):
             # i18n - print
             logging.debug("cnc.handler does not recognize command ")
 
+    def clear_queue(self):
+        while not self.command_queue.empty():
+            try:
+                self.command_queue.get(False)
+            except Exception as e:
+                continue
+        logging.debug("command queue cleared")
+
     def emergency_stop(self):
         # i18n - print
         logging.debug('Emergency stop!')
         self.send_command(self.gcodes.get('soft_reset'))
-        time.sleep(2)
-        self.command_queue.queue.clear()
+        # time.sleep(2)
+        self.clear_queue()
         self.send_command(self.gcodes.get('kill_alarm_lock'))
         self.send_command(self.gcodes.get('home'))
         self.handler(self.last_location_sent)
@@ -247,8 +256,8 @@ class CNC(threading.Thread):
                     self.port.write(('?\n').encode())
                     in_line1 = self.port.readline()
                     idle = bool('Idle' in in_line1.decode('utf-8'))
-                except Exception:
-                    logging.debug('help')
+                except Exception as e:
+                    logging.debug(e)
                     pass
             time.sleep(1)
 

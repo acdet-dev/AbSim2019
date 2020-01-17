@@ -53,7 +53,7 @@ class Config:
             logging.debug('writing values to ' + self.filename)
             write_fh.close()
 
-        except Exception:
+        except Exception as e:
             logging.debug("Can't open file for writing: " + self.filename)
             logging.debug(e)
 

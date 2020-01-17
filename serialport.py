@@ -95,7 +95,7 @@ class Sensors(threading.Thread):
             if hasattr(self, 'port') and self.port is not None:
                 try:
                     self.read_from_port()
-                except serial.SerialException as e:
+                except Exception as e:
                     logging.debug(e)
                     logging.debug('sensor port failing to read on try read command; setting to none')
                     # self.port.close()
@@ -220,26 +220,44 @@ def list_serial_ports():
 
     result = {}
     for port in ports:
-        if "Bluetooth" not in str(port):
-            try:
-                s_connection = serial.Serial(port.device, 38400, timeout=1)
-                time.sleep(1)
-                initial_read = bytearray(s_connection.read(size=100))
+        logging.info(str(port))
+        try:
+            s_connection = serial.Serial(port.device, 38400, timeout=1, write_timeout=0)
+            s_connection.read(size=100)
+            s_connection.write(b'r')
+            initial_read = bytearray(s_connection.read(size=100))
+            logging.info(initial_read)
+            s_connection.close()
 
-                if 'Grbl'.encode('ascii') in initial_read:
-                    result['G'] = s_connection
-                elif 'P'.encode('ascii') in initial_read:
-                    result['P'] = s_connection
-                elif 'Bladders'.encode('ascii') in initial_read:
-                    result['B'] = s_connection
-                elif 'Tensioner'.encode('ascii') in initial_read:
-                    result['T'] = s_connection
-                else:
-                    s_connection.write('R\n'.encode('ascii'))
-                # device_id = s_connection.read()
+            if "B".encode('ascii') in initial_read:
+                bladder = serial.Serial(port.device, 38400, timeout=1)
+                logging.info("Connected to bladder")
+                bladder.read(size=100)
+                result['B'] = bladder
+            elif "A".encode('ascii') in initial_read:
+                bellows = serial.Serial(port.device, 38400, timeout=1)
+                logging.info("Connected to bellows")
+                bellows.read(size=100)
+                result['A'] = bellows
+            elif "P".encode('ascii') in initial_read:
+                sensor = serial.Serial(port.device, 38400, timeout=1)
+                logging.info("Connected to sensor")
+                sensor.read(size=100)
+                result['S'] = sensor
+            elif "T".encode('ascii') in initial_read:
+                tensioner = serial.Serial(port.device, 38400, timeout=1)
+                logging.info("Connected to tensioner")
+                tensioner.read(size=100)
+                result['T'] = tensioner
+            elif "G".encode('ascii') in initial_read:
+                grbl = serial.Serial(port.device, 38400, timeout=1)
+                logging.info("Connected to grbl")
+                grbl.read(size=100)
+                result['G'] = grbl
 
-            except (OSError, serial.SerialException):
-                logging.debug('Not connecting on first run. Will try reconnect.')
+        except (serial.SerialException, OSError) as e:
+            logging.debug(e)
+            logging.debug(e)
 
     return result
 
@@ -248,27 +266,32 @@ def look_for_device(device_id):
     # Accepts one-letter strings of G, B, P, or T.
     ports = build_platform_port_list()
     patterns = {
-        'G': 'Grbl',
+        'G': 'G',
         'P': 'P',
-        'B': 'Bladders',
-        'T': 'Tensioner',
+        'B': 'B',
+        'T': 'T',
     }
     pattern = patterns[device_id]
 
     for port in ports:
-        if "Bluetooth" not in str(port):
-            try:
-                s_connection = serial.Serial(port.device, 38400, timeout=1)
-                time.sleep(1)
-                initial_read = bytearray(s_connection.read(size=100))
+        logging.info(str(port))
+        try:
+            s_connection = serial.Serial(port.device, 38400, timeout=1, write_timeout=0)
+            initial_read = bytearray(s_connection.read(size=100))
+            logging.info(initial_read)
+            s_connection.close()
 
-                if pattern.encode('ascii') in initial_read:
-                    return s_connection
-                else:
-                    s_connection.close()
+            if pattern.encode('ascii') in initial_read:
+                s_conn = serial.Serial(port.device, 38400, timeout=1)
+                s_conn.read(size=100)
+                logging.info("connected to sensor within reconnect")
+                return s_conn
+            else:
+                s_connection.close()
 
-            except (OSError, serial.SerialException):
-                logging.info("Not connecting to device on reconnect")
+        except (OSError, serial.SerialException) as e:
+            logging.debug(e)
+            logging.info("Not connecting to device " + str(port) + " on reconnect")
 
 
 def build_platform_port_list():

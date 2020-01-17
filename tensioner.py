@@ -137,6 +137,8 @@ class Tensioner(threading.Thread):
                     in_line1 = self.port.readline()
                     idle = bool('Idle' in in_line1.decode('utf-8'))
                 except Exception as e:
+                    logging.debug("tensioner is trying to do things...")
+                    logging.debug(e)
                     pass
             time.sleep(1)
         self.state_watcher.tensioner_is_idle()
@@ -156,9 +158,10 @@ class Tensioner(threading.Thread):
             self.port.write((self.commands.get('who_are_you')).encode())
             in_line1 = self.port.readline()
             return 't' in in_line1
-        except Exception:
+        except Exception as e:
             time.sleep(1)
             logging.debug("connection_is_alive exception")
+            logging.debug(e)
             return False
 
     def reconnect(self):
@@ -173,5 +176,6 @@ class Tensioner(threading.Thread):
                     time.sleep(1)
                     self.port.flush()
                     self.state_watcher.tensioner_connected()
-                except serial.serialutil.SerialException:
+                except Exception as e:
                     logging.debug("Couldn't connect to tensioner")
+                    logging.debug(e)
