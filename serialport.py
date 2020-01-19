@@ -284,7 +284,7 @@ def look_for_device(device_id):
             if pattern.encode('ascii') in initial_read:
                 s_conn = serial.Serial(port.device, 38400, timeout=1)
                 s_conn.read(size=100)
-                logging.info("connected to sensor within reconnect")
+                logging.info("connected to device " + str(port) + " within reconnect")
                 return s_conn
             else:
                 s_connection.close()
