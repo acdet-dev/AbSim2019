@@ -3,15 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0d7a6e5a-5cd6-4b6b-9c3f-28fcc3795056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aStringResources.py" beforeDir="false" afterPath="$PROJECT_DIR$/aStringResources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cnc.py" beforeDir="false" afterPath="$PROJECT_DIR$/cnc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/absim_2020_setup.exe" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/i18n/ab_sim-en.po" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ab_sim-en.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/i18n/ab_sim_all_text.pot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/i18n/ab_sim_no_cases.pot" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/i18n/en/LC_MESSAGES/ab_sim.mo" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/en/LC_MESSAGES/ab_sim.mo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/serialport.py" beforeDir="false" afterPath="$PROJECT_DIR$/serialport.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensioner.py" beforeDir="false" afterPath="$PROJECT_DIR$/tensioner.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +19,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cnc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
+            <state relative-caret-position="5355">
               <caret line="323" column="14" selection-start-line="323" selection-start-column="9" selection-end-line="323" selection-end-column="14" />
               <folding>
                 <element signature="e#54#67#0" expanded="true" />
@@ -37,7 +32,7 @@
         <entry file="file://$PROJECT_DIR$/statewatcher.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
               <folding>
                 <element signature="e#222#255#0" expanded="true" />
               </folding>
@@ -48,7 +43,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/port_settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1122">
+            <state relative-caret-position="1054">
               <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
               <folding>
                 <element signature="e#54#87#0" expanded="true" />
@@ -65,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tensioner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-312">
-              <caret line="71" column="19" lean-forward="true" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
+            <state relative-caret-position="1105">
+              <caret line="71" column="19" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
               <folding>
                 <element signature="e#54#70#0" expanded="true" />
               </folding>
@@ -77,8 +72,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/serialport.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="259" column="28" lean-forward="true" selection-start-line="259" selection-start-column="28" selection-end-line="259" selection-end-column="28" />
+            <state relative-caret-position="120">
+              <caret line="229" column="32" lean-forward="true" selection-start-line="229" selection-start-column="32" selection-end-line="229" selection-end-column="32" />
               <folding>
                 <element signature="e#54#70#0" expanded="true" />
               </folding>
@@ -87,40 +82,40 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/serialbladder.py">
+        <entry file="file://$PROJECT_DIR$/menuBar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="116" column="24" lean-forward="true" selection-start-line="116" selection-start-column="24" selection-end-line="116" selection-end-column="24" />
+            <state relative-caret-position="119">
+              <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/baselinemodel.py">
+        <entry file="file://$PROJECT_DIR$/defineUser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="72" column="46" selection-start-line="72" selection-start-column="46" selection-end-line="72" selection-end-column="46" />
+            <state relative-caret-position="272">
+              <caret line="27" column="69" selection-start-line="27" selection-start-column="69" selection-end-line="27" selection-end-column="69" />
               <folding>
-                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#0#45#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pressurepoints.py">
+        <entry file="file://$PROJECT_DIR$/i18ntrans2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2873">
-              <caret line="169" column="66" selection-start-line="169" selection-start-column="66" selection-end-line="169" selection-end-column="66" />
+            <state relative-caret-position="629">
+              <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/palpationgrid.py">
+        <entry file="file://$PROJECT_DIR$/serialbladder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="59" column="39" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
+            <state relative-caret-position="1904">
+              <caret line="116" column="24" selection-start-line="116" selection-start-column="24" selection-end-line="116" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -136,7 +131,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>read_config</find>
       <find>does not recognize</find>
       <find>prot</find>
       <find>sleep</find>
@@ -166,6 +160,7 @@
       <find>self.command_queue.get(</find>
       <find>not connecting to</find>
       <find>print</find>
+      <find>try</find>
     </findStrings>
     <replaceStrings>
       <replace>self.window_resources['section']</replace>
@@ -347,13 +342,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561933260794</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Fixed views of config screen.">
-      <created>1576106622044</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1576106622044</updated>
     </task>
     <task id="LOCAL-00023" summary="Checked file cancel option.">
       <created>1576164484218</created>
@@ -691,7 +679,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579187682241</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Changed serial connection. Should work now...">
+      <created>1579282912533</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1579282912534</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TodoView">
@@ -720,7 +715,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3289689" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.26022914" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.25893825" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -746,7 +741,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added assessment case where none selected." />
     <MESSAGE value="Add instructions to add students" />
     <MESSAGE value="manage students done. Time to finish strings" />
     <MESSAGE value="Strings through view assignments and menu" />
@@ -771,7 +765,8 @@
     <MESSAGE value="Made changes to setup file and exportation of data." />
     <MESSAGE value="Made Frank's changes..." />
     <MESSAGE value="Added change to desktop permissions/fixed some logic." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added change to desktop permissions/fixed some logic." />
+    <MESSAGE value="Changed serial connection. Should work now..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed serial connection. Should work now..." />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointLogExpression">
@@ -856,13 +851,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/i18n/ab_sim_no_cases.pot" />
     <entry file="file://$PROJECT_DIR$/i18n/ab_sim_all_text.pot" />
-    <entry file="file://$PROJECT_DIR$/i18ntrans2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7722">
-          <caret line="68" column="43" selection-start-line="68" selection-start-column="43" selection-end-line="68" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/simLabels.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
@@ -883,16 +871,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/defineUser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="27" column="69" selection-start-line="27" selection-start-column="69" selection-end-line="27" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -910,13 +888,6 @@
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/menuBar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -1104,39 +1075,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/statewatcher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#222#255#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/observer.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/port_settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
-          <folding>
-            <element signature="e#54#87#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/serialbladder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="116" column="24" lean-forward="true" selection-start-line="116" selection-start-column="24" selection-end-line="116" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cnc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
+        <state relative-caret-position="5355">
           <caret line="323" column="14" selection-start-line="323" selection-start-column="9" selection-end-line="323" selection-end-column="14" />
           <folding>
             <element signature="e#54#67#0" expanded="true" />
@@ -1144,20 +1085,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/statewatcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#222#255#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/port_settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
+          <folding>
+            <element signature="e#54#87#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/observer.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/tensioner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-312">
-          <caret line="71" column="19" lean-forward="true" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
+        <state relative-caret-position="1105">
+          <caret line="71" column="19" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
           <folding>
             <element signature="e#54#70#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/menuBar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/defineUser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="27" column="69" selection-start-line="27" selection-start-column="69" selection-end-line="27" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/serialbladder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1904">
+          <caret line="116" column="24" selection-start-line="116" selection-start-column="24" selection-end-line="116" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/i18ntrans2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/serialport.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="259" column="28" lean-forward="true" selection-start-line="259" selection-start-column="28" selection-end-line="259" selection-end-column="28" />
+        <state relative-caret-position="120">
+          <caret line="229" column="32" lean-forward="true" selection-start-line="229" selection-start-column="32" selection-end-line="229" selection-end-column="32" />
           <folding>
             <element signature="e#54#70#0" expanded="true" />
           </folding>

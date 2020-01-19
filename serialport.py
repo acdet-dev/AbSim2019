@@ -234,11 +234,11 @@ def list_serial_ports():
                 logging.info("Connected to bladder")
                 bladder.read(size=100)
                 result['B'] = bladder
-            elif "A".encode('ascii') in initial_read:
-                bellows = serial.Serial(port.device, 38400, timeout=1)
-                logging.info("Connected to bellows")
-                bellows.read(size=100)
-                result['A'] = bellows
+            elif "G".encode('ascii') in initial_read:
+                grbl = serial.Serial(port.device, 38400, timeout=1)
+                logging.info("Connected to grbl")
+                grbl.read(size=100)
+                result['G'] = grbl
             elif "P".encode('ascii') in initial_read:
                 sensor = serial.Serial(port.device, 38400, timeout=1)
                 logging.info("Connected to sensor")
@@ -249,11 +249,11 @@ def list_serial_ports():
                 logging.info("Connected to tensioner")
                 tensioner.read(size=100)
                 result['T'] = tensioner
-            elif "G".encode('ascii') in initial_read:
-                grbl = serial.Serial(port.device, 38400, timeout=1)
-                logging.info("Connected to grbl")
-                grbl.read(size=100)
-                result['G'] = grbl
+            elif "A".encode('ascii') in initial_read:
+                bellows = serial.Serial(port.device, 38400, timeout=1)
+                logging.info("Connected to bellows")
+                bellows.read(size=100)
+                result['A'] = bellows
 
         except (serial.SerialException, OSError) as e:
             logging.debug(e)
