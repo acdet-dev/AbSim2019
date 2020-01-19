@@ -225,7 +225,7 @@ def list_serial_ports():
             s_connection = serial.Serial(port.device, 38400, timeout=1, write_timeout=0)
             s_connection.read(size=100)
             s_connection.write(b'r')
-            initial_read = bytearray(s_connection.read(size=100))
+            initial_read = bytearray(s_connection.read(size=6))
             logging.info(initial_read)
             s_connection.close()
 

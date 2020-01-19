@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0d7a6e5a-5cd6-4b6b-9c3f-28fcc3795056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/absim_2020_setup.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/i18n/ab_sim-en.po" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ab_sim-en.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/i18n/en/LC_MESSAGES/ab_sim.mo" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/en/LC_MESSAGES/ab_sim.mo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cnc.py" beforeDir="false" afterPath="$PROJECT_DIR$/cnc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/port_settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/port_settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/serialport.py" beforeDir="false" afterPath="$PROJECT_DIR$/serialport.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cnc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5355">
-              <caret line="323" column="14" selection-start-line="323" selection-start-column="9" selection-end-line="323" selection-end-column="14" />
+            <state relative-caret-position="340">
+              <caret line="302" column="27" selection-start-line="302" selection-start-column="27" selection-end-line="302" selection-end-column="27" />
               <folding>
                 <element signature="e#54#67#0" expanded="true" />
               </folding>
@@ -43,8 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/port_settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1054">
-              <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
+            <state relative-caret-position="334">
+              <caret line="81" column="46" lean-forward="true" selection-start-line="81" selection-start-column="46" selection-end-line="81" selection-end-column="46" />
               <folding>
                 <element signature="e#54#87#0" expanded="true" />
               </folding>
@@ -69,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/serialport.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="229" column="32" lean-forward="true" selection-start-line="229" selection-start-column="32" selection-end-line="229" selection-end-column="32" />
+            <state relative-caret-position="167">
+              <caret line="228" column="38" lean-forward="true" selection-start-line="228" selection-start-column="38" selection-end-line="228" selection-end-column="38" />
               <folding>
                 <element signature="e#54#70#0" expanded="true" />
               </folding>
@@ -105,7 +104,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/i18ntrans2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
+            <state relative-caret-position="1088">
               <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
             </state>
           </provider>
@@ -131,10 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>does not recognize</find>
-      <find>prot</find>
-      <find>sleep</find>
-      <find>prot2</find>
       <find>base</find>
       <find>kill_alarm</find>
       <find>cnc</find>
@@ -161,6 +156,10 @@
       <find>not connecting to</find>
       <find>print</find>
       <find>try</find>
+      <find>cn</find>
+      <find>print(self.</find>
+      <find>self.assess</find>
+      <find>failed to reconnect</find>
     </findStrings>
     <replaceStrings>
       <replace>self.window_resources['section']</replace>
@@ -233,7 +232,6 @@
         <option value="$PROJECT_DIR$/viewPerformance.py" />
         <option value="$PROJECT_DIR$/baselinemodel.py" />
         <option value="$PROJECT_DIR$/sim.py" />
-        <option value="$PROJECT_DIR$/port_settings.py" />
         <option value="$PROJECT_DIR$/viewAssignments.py" />
         <option value="$PROJECT_DIR$/assessmentViewer.py" />
         <option value="$PROJECT_DIR$/admin.py" />
@@ -243,8 +241,9 @@
         <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/donottouch.py" />
         <option value="$PROJECT_DIR$/tensioner.py" />
-        <option value="$PROJECT_DIR$/cnc.py" />
+        <option value="$PROJECT_DIR$/port_settings.py" />
         <option value="$PROJECT_DIR$/serialport.py" />
+        <option value="$PROJECT_DIR$/cnc.py" />
       </list>
     </option>
   </component>
@@ -342,20 +341,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561933260794</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Checked file cancel option.">
-      <created>1576164484218</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1576164484218</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Change beta string to 2019">
-      <created>1576165058305</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1576165058305</updated>
     </task>
     <task id="LOCAL-00025" summary="Changed spacing for formatting.">
       <created>1576165233483</created>
@@ -686,7 +671,21 @@
       <option name="project" value="LOCAL" />
       <updated>1579282912534</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="Changed connection string.">
+      <created>1579468495555</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1579468495556</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Changed log string">
+      <created>1579468702684</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1579468702684</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TodoView">
@@ -741,8 +740,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add instructions to add students" />
-    <MESSAGE value="manage students done. Time to finish strings" />
     <MESSAGE value="Strings through view assignments and menu" />
     <MESSAGE value="Strings done through all screens." />
     <MESSAGE value="Strings finally done!" />
@@ -766,7 +763,9 @@
     <MESSAGE value="Made Frank's changes..." />
     <MESSAGE value="Added change to desktop permissions/fixed some logic." />
     <MESSAGE value="Changed serial connection. Should work now..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed serial connection. Should work now..." />
+    <MESSAGE value="Changed connection string." />
+    <MESSAGE value="Changed log string" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed log string" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointLogExpression">
@@ -1075,32 +1074,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cnc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5355">
-          <caret line="323" column="14" selection-start-line="323" selection-start-column="9" selection-end-line="323" selection-end-column="14" />
-          <folding>
-            <element signature="e#54#67#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/statewatcher.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" selection-start-line="9" selection-end-line="9" />
           <folding>
             <element signature="e#222#255#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/port_settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
-          <folding>
-            <element signature="e#54#87#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1135,6 +1114,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/i18ntrans2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1088">
+          <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/serialbladder.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1904">
@@ -1142,19 +1128,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/i18ntrans2.py">
+    <entry file="file://$PROJECT_DIR$/port_settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
+        <state relative-caret-position="334">
+          <caret line="81" column="46" lean-forward="true" selection-start-line="81" selection-start-column="46" selection-end-line="81" selection-end-column="46" />
+          <folding>
+            <element signature="e#54#87#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/serialport.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="229" column="32" lean-forward="true" selection-start-line="229" selection-start-column="32" selection-end-line="229" selection-end-column="32" />
+        <state relative-caret-position="167">
+          <caret line="228" column="38" lean-forward="true" selection-start-line="228" selection-start-column="38" selection-end-line="228" selection-end-column="38" />
           <folding>
             <element signature="e#54#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cnc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="302" column="27" selection-start-line="302" selection-start-column="27" selection-end-line="302" selection-end-column="27" />
+          <folding>
+            <element signature="e#54#67#0" expanded="true" />
           </folding>
         </state>
       </provider>

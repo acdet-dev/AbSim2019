@@ -83,7 +83,7 @@ class PortSettings:
             self.cnc_thread = cnc.CNC(self.cnc_queue, self.state_watcher, self.cnc_port, self.assess)
         else:
             self.state_watcher.cnc_disconnected()
-            self.cnc_thread = cnc.CNC(self.cnc_queue, self.state_watcher, self.assess)
+            self.cnc_thread = cnc.CNC(self.cnc_queue, self.state_watcher, None, self.assess)
         self.cnc_thread.start()
         self.touch_alerter.connect('emergency_stop', self.send_cnc_emergency_stop)
         

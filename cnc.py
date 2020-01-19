@@ -299,7 +299,8 @@ class CNC(threading.Thread):
             self.alert_when_idle(True)
             if self.assess:
                 time.sleep(5)
-        except Exception:
+        except Exception as e:
+            logging.debug(e)
             logging.debug("Couldn't connect to cnc.")
 
 # Testing (Added by Terry Hancock for testing i18n upgrades)
