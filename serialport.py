@@ -145,7 +145,7 @@ class Sensors(threading.Thread):
             self.process_data(data_buffer)
         else:
             self.trashed_frames += 1
-            logging.debug("Frame ending is missing. Trashed frame count: ")
+            logging.debug("Frame ending is missing. Trashed frame count: " + str(self.trashed_frames))
 
     def find_frame_beginning(self):
         edge_finder = array.array('B')
