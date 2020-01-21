@@ -24,6 +24,7 @@ class DefineUser(Gtk.Window, MenuBar):
         # initialize string resources
         self.string_resources = AStringResources("initial").get_by_identifier()
         self.login_resources = AStringResources("faculty_login").get_by_identifier()
+        self.faculty_model = facultyinfomodel.FacultyInfoModel()
 
         # Opening window for AbSim that allows faculty to create a profile and login.
         Gtk.Window.__init__(self, title="AbSim")
@@ -63,13 +64,11 @@ class DefineUser(Gtk.Window, MenuBar):
         return flag
 
     def get_info(self, faculty_pw):
-        self.faculty_model = facultyinfomodel.FacultyInfoModel()
         self.faculty = self.faculty_model.get_by_faculty_pw(faculty_pw)
 
     def save_info(self, faculty_id, faculty_pw):
         # i18n - Time string left as-is
         timestr = time.strftime("%Y%m%d-%H%M%S")
-        self.faculty_model = facultyinfomodel.FacultyInfoModel()
 
         self.faculty_model.save_to_db(faculty_id, faculty_pw, timestr)
 
