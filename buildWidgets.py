@@ -48,7 +48,7 @@ class BuildWidgets:
 
         return logo
 
-    def add_buttons(self, button_list=[], description_list=[], functions=[]):
+    def add_buttons(self, button_list=[], description_list=[], functions=[], h_flag=False):
         # add buttons
         button_table = Gtk.Table(rows=len(button_list), columns=len(description_list))
         button_table.set_border_width(50)
@@ -65,14 +65,20 @@ class BuildWidgets:
             for item in button_list:
                 button = self.build_button(item)
                 button.connect('clicked', functions[i])
-                button_table.attach(button, 0, 1, b_pos_x, b_pos_y, xoptions=False, yoptions=False)
+                if not h_flag:
+                    button_table.attach(button, 0, 1, b_pos_x, b_pos_y, xoptions=False, yoptions=False)
+                else:
+                    button_table.attach(button, b_pos_x, b_pos_y, 0, 1, xoptions=False, yoptions=False)
 
                 if len(description_list) > 0:
                     explanation = Gtk.Label()
                     label_text = description_list[i]
                     label_pre_mark = construct_markup(label_text, font_size=20)
                     explanation.set_markup(label_pre_mark)
-                    button_table.attach(explanation, 1, 2, d_pos_x, d_pos_y)
+                    if not h_flag:
+                        button_table.attach(explanation, 1, 2, d_pos_x, d_pos_y)
+                    else:
+                        button_table.attach(explanation, d_pos_x, d_pos_y, 1, 2)
                     d_pos_x += 1
                     d_pos_y += 1
 
