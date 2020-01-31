@@ -15,7 +15,7 @@ class SimFaculty(Gtk.Window, menuBar.MenuBar):
         self.string_resources = AStringResources("sim_screen_faculty_2", back_flag=True).get_by_identifier()
 
         Gtk.Window.__init__(self, title="AbSim")
-        self.set_icon_from_file('icon.ico')
+        self.set_icon_from_file('img/icon.ico')
         self.maximize()
 
         widget = self.build_bar()

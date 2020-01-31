@@ -13,7 +13,7 @@ class FileChooserWindow(Gtk.Window):
     def __init__(self):
         self.string_resources = AStringResources("file_chooser").get_by_identifier()
         Gtk.Window.__init__(self, title=self.string_resources["window_title"])
-        self.set_icon_from_file("icon.ico")
+        self.set_icon_from_file("img/icon.ico")
         self.on_file_clicked()
 
     def save_info(self, section, last, first, student_id):

@@ -28,7 +28,7 @@ class DefineUser(Gtk.Window, MenuBar):
 
         # Opening window for AbSim that allows faculty to create a profile and login.
         Gtk.Window.__init__(self, title="AbSim")
-        self.set_icon_from_file("icon.ico")
+        self.set_icon_from_file("img/icon.ico")
         self.maximize()
 
         # Using inherited build_bar method from MenuBar to add menu bar to window

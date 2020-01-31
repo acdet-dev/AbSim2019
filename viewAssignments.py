@@ -130,7 +130,7 @@ class ViewAssignments(Gtk.Window):
 
         # make window
         Gtk.Window.__init__(self, title=self.string_resources["window_title"])
-        self.set_icon_from_file('icon.ico')
+        self.set_icon_from_file('img/icon.ico')
         self.maximize()
 
         # Disconnection Error message

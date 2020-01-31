@@ -14,7 +14,7 @@ class UserType(Gtk.Window, menuBar.MenuBar):
         self.password = password
 
         Gtk.Window.__init__(self, title="AbSim")
-        self.set_icon_from_file('icon.ico')
+        self.set_icon_from_file('img/icon.ico')
         self.maximize()
 
         widget = self.build_bar()

@@ -12,7 +12,7 @@ class SplashScreen(Gtk.Window):
     def __init__(self):
         Gtk.Window.__init__(self)
         self.set_title("AbSim")
-        self.set_icon_from_file('icon.ico')
+        self.set_icon_from_file('img/icon.ico')
         self.set_default_size(640, 480)
 
         self.string_resources = AStringResources("splash_screen").get_by_identifier()

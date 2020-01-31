@@ -23,7 +23,7 @@ class TestCreator(Gtk.Window, MenuBar):
 
         # make window
         Gtk.Window.__init__(self, title=self.string_resources["window_title"])
-        self.set_icon_from_file('icon.ico')
+        self.set_icon_from_file('img/icon.ico')
         self.maximize()
 
         # intialize passed class variables

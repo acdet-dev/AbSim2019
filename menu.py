@@ -53,7 +53,7 @@ class MenuWindow(Gtk.Window, menuBar.MenuBar):
 
         # build window
         Gtk.Window.__init__(self, title="AbSim")
-        self.set_icon_from_file('icon.ico')
+        self.set_icon_from_file('img/icon.ico')
         self.maximize()
 
         box = self.build_bar()

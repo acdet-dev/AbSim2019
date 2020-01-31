@@ -44,7 +44,6 @@ class SectionTree:
 
         return sorted(unique_sections)
 
-
     def get_sections(self):
         section_numbers = self.get_number_sections()
         if len(section_numbers) > 0:

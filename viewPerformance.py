@@ -27,7 +27,7 @@ class ViewPerformance(Gtk.Window, MenuBar):
 
         # Make window
         Gtk.Window.__init__(self, title=self.string_resources["window_title"])
-        self.set_icon_from_file('icon.ico')
+        self.set_icon_from_file('img/icon.ico')
         self.maximize()
 
         # get class parameters

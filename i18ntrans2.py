@@ -26,7 +26,7 @@ class MessageDialogWindow(Gtk.Window):
     def TranslationDialog(self, message):
 
         dialogWindow = Gtk.MessageDialog(self, 0, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, message)
-        dialogWindow.set_icon_from_file('icon.ico')
+        dialogWindow.set_icon_from_file('img/icon.ico')
         dialogWindow.show_all()
         dialogWindow.run()
         dialogWindow.destroy()

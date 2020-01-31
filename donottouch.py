@@ -15,7 +15,7 @@ class DoNotTouchWarning(Gtk.Window):
         self.string_resources = AStringResources("dont_touch").get_by_identifier()
         self.connect_signals()
         self.set_title('AbSim')
-        self.set_icon_from_file('icon.ico')
+        self.set_icon_from_file('img/icon.ico')
 
         self.set_modal(True)
         self.set_deletable(False)

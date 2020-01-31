@@ -58,7 +58,7 @@ shutil.copytree('glade', os.path.join('dist', 'glade'))
 shutil.copy('iso-639-3_20070205.tab', 'dist')
 shutil.copy('locale.json', 'dist')
 shutil.copy('cnc_adjustments.json', 'dist')
-shutil.copy('icon.ico', 'dist')
+shutil.copy('img/icon.ico', 'dist\\img')
 shutil.copy('abMenu.xml', 'dist')
 shutil.copy('tare.json', 'dist')
 shutil.copy('sensitivity.json', 'dist')
@@ -122,7 +122,6 @@ setup(windows=['app.py'], options={
     'html/*',
     'drivers/*',
     'glade/*',
-    'icon.ico',
     'locale.json',
     'cnc_adjustments.json'
     ]))
