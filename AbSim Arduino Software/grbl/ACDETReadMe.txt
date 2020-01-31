@@ -1,1 +1,0 @@
-The config.h file to be edited is in C:\Users\Frank\Documents\Arduino\libraries
