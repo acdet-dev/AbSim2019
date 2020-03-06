@@ -51,21 +51,21 @@ class AStringResources:
         elif self.identifier == "sim_screen_faculty":
 
             string_resources = {
-                "config_button": _(u"Settings"),
+                "config_button": _(u"Calibrate Palpatory Depth Settings"),
                 "config_description": _(u"Customize Sensor Pad Pressure Settings"),
-                "create_button": _(u"Assessments"),
-                "create_description": _(u"Create and Assign Assessments"),
+                "create_button": _(u"Create an Examination"),
+                "create_description": _(u"Create Student Roster and Test Items"),
             }
 
         elif self.identifier == "sim_screen_faculty_2":
 
             string_resources = {
-                "add_students_button": _(u"Enter Student Rosters"),
+                "add_students_button": _(u"Enter Student Roster"),
                 "add_students_description": _(u"Provide AbSim Student Information"),
-                "create_button": _(u"Create Assessments"),
-                "create_description": _(u"Select Test Items to Include on Assessments"),
-                "view_button": _(u"View and Assign Assessments"),
-                "view_description": _(u"View Created Assessments and Student Results"),
+                "create_button": _(u"Select Test Items"),
+                "create_description": _(u"Select Test Items to Include on Examination"),
+                "view_button": _(u"View Examination"),
+                "view_description": _(u"Preview Student Test Performance"),
                 "back_description": _(u"Return to Initial Faculty Screen")
             }
 
@@ -149,6 +149,12 @@ class AStringResources:
 
         elif self.identifier == "create_assessments":
             string_resources = {
+                # add Preview Selected Test Items
+                # import newly created exam
+                # enter serial number
+                # use thumb drive
+                # add record excel spreadsheet
+                # add folder lookup for wav bowel sounds
                 "window_title": _(u"AbSim Assessment Creator"),
                 "option_1_title": _(u"1. Baseline Assessment"),
                 "option_1": _(u"Add Baseline Assessment?"),

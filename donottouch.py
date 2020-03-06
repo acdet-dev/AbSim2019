@@ -39,11 +39,13 @@ class DoNotTouchWarning(Gtk.Window):
         self.state_watcher.connect('any_device_busy', self.restart)
 
     def idle(self, event, widget):
+        print("going idle")
         logging.debug("all_devices_idle signal received. Closing do_not_touch.")
         GObject.idle_add(self.spinner.stop)
         GObject.idle_add(self.hide)
 
     def restart(self, new_case='none n', arg1=''):
+        print("restarting")
         GObject.idle_add(self.spinner.start)
         GObject.idle_add(self.show_all)
 
@@ -53,8 +55,9 @@ class TensionerDoNotTouchWarning(DoNotTouchWarning):
         super(TensionerDoNotTouchWarning, self).__init__(state_watcher)
 
     def connect_signals(self):
-        self.state_watcher.connect('tensioner_is_idle', self.idle)
-        self.state_watcher.connect('tensioner_is_busy', self.restart)
+        print("trying without tensioner bullshit")
+        # self.state_watcher.connect('tensioner_is_idle', self.idle)
+        # self.state_watcher.connect('tensioner_is_busy', self.restart)
 
 
 class TouchAlerter(GObject.GObject):
@@ -91,4 +94,6 @@ class TouchAlerter(GObject.GObject):
 
     def currently_touched(self, pressure_list):
         blue_count = sum(point.get_state() in ('down', 'too_hard') for point in pressure_list)
+        if blue_count > 2:
+            print("blue count: {}".format(blue_count))
         return blue_count > 2

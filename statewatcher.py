@@ -97,12 +97,17 @@ class StateWatcher (GObject.GObject):
         self.tensioner_is_connected = False
         self.bladder_is_connected = False
 
-    def cnc_is_idle(self):
+    def cnc_is_idle(self, coming_from=""):
+        print("cnc now idle")
         self.cnc_device_is_idle = True
-        self.alert_if_all_devices_are_idle()
+        if coming_from == "double none":
+            self.alert_if_all_devices_are_idle(s=1.5)
+        else:
+            self.alert_if_all_devices_are_idle()
 
     def cnc_is_busy(self):
         self.cnc_device_is_idle = False
+        print("emitting cnc busy")
         self.emit('any_device_busy', 'now')
 
     def new_pressure_data(self, sensor_data):
@@ -177,30 +182,33 @@ class StateWatcher (GObject.GObject):
             if not self.tensioner_device_is_idle:
                 self.tensioner_device_is_idle = True
 
-                self.alert_if_all_devices_are_idle()
+                # self.alert_if_all_devices_are_idle()
         except AttributeError:
             self.tensioner_device_is_idle = True
-            self.alert_if_all_devices_are_idle()
+            # self.alert_if_all_devices_are_idle()
 
     def tensioner_is_busy(self):
         self.tensioner_device_is_idle = False
         
-        self.emit('any_device_busy', 'now')
+        # self.emit('any_device_busy', 'now')
 
-    def alert_if_all_devices_are_idle(self):
-        need_tensioner_idle = self.tensioner_is_connected
+    def alert_if_all_devices_are_idle(self, s=5.0):
+        print("alerting that all devices idle")
+        # need_tensioner_idle = self.tensioner_is_connected
         need_cnc_idle = self.cnc_is_connected
 
+        """
         if need_tensioner_idle:
             tensioner_ready = self.tensioner_device_is_idle
         else:
             tensioner_ready = True
+        """
 
         if need_cnc_idle:
             cnc_ready = self.cnc_device_is_idle
         else:
             cnc_ready = True
 
-        if tensioner_ready and cnc_ready:
-            t = threading.Timer(5.0, self.emit, ['all_devices_idle', 'now'])
+        if cnc_ready:
+            t = threading.Timer(s, self.emit, ['all_devices_idle', 'now'])
             t.start()

@@ -100,6 +100,7 @@ class Sensors(threading.Thread):
                     logging.debug('sensor port failing to read on try read command; setting to none')
                     # self.port.close()
                     fail_read_counter = 0
+                    read_success = False
                     while fail_read_counter < 4:
                         try:
                             self.read_from_port()
@@ -111,6 +112,7 @@ class Sensors(threading.Thread):
                                           ' times')
                             fail_read_counter += 1
                     if not read_success:
+                        self.port.close()
                         self.port = None
                 self.command = 0
                 try:
@@ -209,7 +211,6 @@ class Sensors(threading.Thread):
         self.port.write(self.commands[command])
 
     def process_data(self, data):
-        logging.debug(data)
         self.state_watcher.new_pressure_data(data)
 
     def reconnect(self):

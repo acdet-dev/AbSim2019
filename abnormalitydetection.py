@@ -38,7 +38,7 @@ class AbnormalityDetection (gtk.HBox):
         self.case_selector_scroller.set_size_request(w, h)
 
         self.label = gtk.Label(u" ")
-        label_text = self.string_resources["instruction_a"] + "\n\n" + self.string_resources["instruction_b"] +\
+        label_text = self.string_resources["instruction_a"] + "\n\n" + self.string_resources["instruction_b"] + " " +\
                      self.string_resources["instruction_c"]
         self.label_pre_mark = construct_markup(label_text, font_size=16)
         self.label.set_markup(self.label_pre_mark)

@@ -98,7 +98,8 @@ class Sounds:
 
     def do_not_palpate(self, arg1):
         time_since_last_played_sound = time.time() - self.time_of_last_played_sound
-        if time_since_last_played_sound > 1:
+        print("time since last sound: {}".format(time_since_last_played_sound))
+        if time_since_last_played_sound > .1:
             self.sound_queue.queue.clear()
             self.sound_queue.put('voices/donotpalpate.wav')
             self.time_of_last_played_sound = time.time()

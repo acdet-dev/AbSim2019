@@ -24,6 +24,7 @@ class CNC(threading.Thread):
         self.command_queue = command_queue
         self.state_watcher = state_watcher
         self.assess = assess
+        self.e_stop_counter = 0
         # X 0-240
         # Y 0-270
         self.gcodes = {
@@ -36,6 +37,7 @@ class CNC(threading.Thread):
 
         #cnc defaults
         self.base_locations = self.config.read_config()
+        self.last_location_sent = ""
 
         '''
         {
@@ -106,9 +108,13 @@ class CNC(threading.Thread):
     def handle_command(self, command):
         if hasattr(self, 'port') and self.port is not None:
             if command:
-                self.port.flush()
-                self.handler(command)
-                self.alert_when_idle()
+                if self.last_location_sent == "none" and command == "none":
+                    print("making cnc idle")
+                    self.state_watcher.cnc_is_idle(coming_from="double none")
+                else:
+                    self.port.flush()
+                    self.handler(command)
+                    self.alert_when_idle()
         else:
             logging.debug('cnc handle command failed. Reconnecting.')
             self.reconnect()
@@ -134,13 +140,18 @@ class CNC(threading.Thread):
             gcode = self.get_adjusted_location_gcode(self.last_location_sent)
             self.send_command(gcode)
         elif command_name == 'emergency_stop':
-            logging.debug("emergency stop happening")
-            self.emergency_stop()
+            print("emergency counter: {}".format(self.e_stop_counter))
+            if self.e_stop_counter < 1:
+                logging.debug("emergency stop happening")
+                self.emergency_stop()
+            else:
+                print("not e-stopping")
         elif command_name in self.base_locations:
             gcode = self.get_adjusted_location_gcode(command_name)
             self.last_location_sent = command_name
             self.send_command(gcode)
         elif command_name in self.gcodes:
+            print("sending home")
             self.send_command(self.gcodes[command_name])
         else:
             # i18n - print
@@ -156,12 +167,15 @@ class CNC(threading.Thread):
 
     def emergency_stop(self):
         # i18n - print
+        self.e_stop_counter += 1
         logging.debug('Emergency stop!')
         self.send_command(self.gcodes.get('soft_reset'))
-        # time.sleep(2)
+        print("soft reset occurred")
         self.clear_queue()
-        self.send_command(self.gcodes.get('kill_alarm_lock'))
+        time.sleep(1)
+        # self.send_command(self.gcodes.get('kill_alarm_lock'))
         self.send_command(self.gcodes.get('home'))
+        time.sleep(3)
         self.handler(self.last_location_sent)
         self.alert_when_idle()
 
@@ -244,29 +258,39 @@ class CNC(threading.Thread):
 
     def alert_when_idle(self, startup=False):
         idle = False
-        while not idle:
-            if hasattr(self, 'port') and self.port is not None:
-                if not startup:
-                    command = self.check_for_command()
-                    self.handle_command(command)
-                    time.sleep(0.5)
-
+        if hasattr(self, 'port') and self.port is not None:
+            if startup:
                 try:
                     self.port.reset_input_buffer()
                     self.port.write(('?\n').encode())
                     in_line1 = self.port.readline()
-                    idle = bool('Idle' in in_line1.decode('utf-8'))
                 except Exception as e:
                     logging.debug(e)
-                    pass
+            else:
+                while not idle:
+                    command = self.check_for_command()
+                    self.handle_command(command)
+                    time.sleep(0.5)
+                    try:
+                        self.port.reset_input_buffer()
+                        self.port.write(('?\n').encode())
+                        in_line1 = self.port.readline()
+                        print(in_line1.decode('utf-8'))
+                        idle = bool('Idle' in in_line1.decode('utf-8'))
+                    except Exception as e:
+                        logging.debug(e)
+                        pass
+                # need to reverse order LIFO rather than FIFO
+                self.state_watcher.cnc_is_idle()
             time.sleep(1)
 
-        self.state_watcher.cnc_is_idle()
+        self.e_stop_counter = 0
 
     def send_command(self, command):
         # Send command over self.port
         self.port.write(str.encode(command))
         self.state_watcher.cnc_is_busy()
+        print("sending command and staying busy")
 
     def connection_is_alive(self):
         try:

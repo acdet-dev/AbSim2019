@@ -17,6 +17,7 @@ class CaseSelector:
         # Columns available to rows:
         #   str: name visible in widget
         #   str: text sent in signal
+        # add arrows to all major selections
         self.ddx_tree_store = Gtk.TreeStore(str, str)
         
         store = self.ddx_tree_store
