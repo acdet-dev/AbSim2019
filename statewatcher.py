@@ -98,7 +98,7 @@ class StateWatcher (GObject.GObject):
         self.bladder_is_connected = False
 
     def cnc_is_idle(self, coming_from=""):
-        print("cnc now idle")
+        logging.info("cnc now idle")
         self.cnc_device_is_idle = True
         if coming_from == "double none":
             self.alert_if_all_devices_are_idle(s=1.5)
@@ -107,7 +107,7 @@ class StateWatcher (GObject.GObject):
 
     def cnc_is_busy(self):
         self.cnc_device_is_idle = False
-        print("emitting cnc busy")
+        logging.info("emitting cnc busy")
         self.emit('any_device_busy', 'now')
 
     def new_pressure_data(self, sensor_data):
@@ -193,7 +193,7 @@ class StateWatcher (GObject.GObject):
         # self.emit('any_device_busy', 'now')
 
     def alert_if_all_devices_are_idle(self, s=5.0):
-        print("alerting that all devices idle")
+        logging.info("alerting that all devices idle")
         # need_tensioner_idle = self.tensioner_is_connected
         need_cnc_idle = self.cnc_is_connected
 
