@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d7a6e5a-5cd6-4b6b-9c3f-28fcc3795056" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cnc.py" beforeDir="false" afterPath="$PROJECT_DIR$/cnc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/donottouch.py" beforeDir="false" afterPath="$PROJECT_DIR$/donottouch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statewatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/statewatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ab_sim-en.po" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ab_sim-en.po" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ab_sim_all_text.pot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ab_sim_no_cases.pot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/en/LC_MESSAGES/ab_sim.mo" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/en/LC_MESSAGES/ab_sim.mo" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,14 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cnc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4709">
-              <caret line="277" column="40" selection-start-line="277" selection-start-column="40" selection-end-line="277" selection-end-column="40" />
-              <folding>
-                <element signature="e#54#67#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="6" column="13" lean-forward="true" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -81,10 +78,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/donottouch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="986">
               <caret line="58" column="62" lean-forward="true" selection-start-line="58" selection-start-column="62" selection-end-line="58" selection-end-column="62" />
             </state>
           </provider>
@@ -313,13 +310,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561933260794</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Remove unnecessary import">
-      <created>1576252238326</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1576252238326</updated>
     </task>
     <task id="LOCAL-00033" summary="Fix remove time import.">
       <created>1576252290742</created>
@@ -657,7 +647,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583524902537</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Removing print statements">
+      <created>1583525505131</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1583525505131</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TodoView">
@@ -713,7 +710,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changing Screens and Strings." />
     <MESSAGE value="Moving Models" />
     <MESSAGE value="Edit model code." />
     <MESSAGE value="Move views and resources" />
@@ -738,7 +734,8 @@
     <MESSAGE value="Moved image files to folder; added trans files to repo." />
     <MESSAGE value="Checked new setup with img dir" />
     <MESSAGE value="fixed emergency stop and do not touch?" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed emergency stop and do not touch?" />
+    <MESSAGE value="Removing print statements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removing print statements" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointLogExpression">
@@ -1083,16 +1080,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cnc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4709">
-          <caret line="277" column="40" selection-start-line="277" selection-start-column="40" selection-end-line="277" selection-end-column="40" />
-          <folding>
-            <element signature="e#54#67#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/serialport.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
@@ -1130,7 +1117,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/donottouch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="986">
           <caret line="58" column="62" lean-forward="true" selection-start-line="58" selection-start-column="62" selection-end-line="58" selection-end-column="62" />
         </state>
       </provider>
@@ -1139,6 +1126,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cnc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" lean-forward="true" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>

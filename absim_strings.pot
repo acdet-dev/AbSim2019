@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-01-17 12:28+Central Standard Time\n"
+"POT-Creation-Date: 2020-03-06 14:12+Central Standard Time\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,7 +83,7 @@ msgstr ""
 msgid "Please enter your user name and password."
 msgstr ""
 
-#: aStringResources.py:43 aStringResources.py:276
+#: aStringResources.py:43 aStringResources.py:282
 msgid "Login Failed"
 msgstr ""
 
@@ -108,23 +108,23 @@ msgid "To add another faculty member, click \"Faculty.\""
 msgstr ""
 
 #: aStringResources.py:54
-msgid "Settings"
+msgid "Calibrate Palpatory Depth Settings"
 msgstr ""
 
 #: aStringResources.py:55
 msgid "Customize Sensor Pad Pressure Settings"
 msgstr ""
 
-#: aStringResources.py:56 aStringResources.py:165
-msgid "Assessments"
+#: aStringResources.py:56
+msgid "Create an Examination"
 msgstr ""
 
 #: aStringResources.py:57
-msgid "Create and Assign Assessments"
+msgid "Create Student Roster and Test Items"
 msgstr ""
 
 #: aStringResources.py:63
-msgid "Enter Student Rosters"
+msgid "Enter Student Roster"
 msgstr ""
 
 #: aStringResources.py:64
@@ -132,19 +132,19 @@ msgid "Provide AbSim Student Information"
 msgstr ""
 
 #: aStringResources.py:65
-msgid "Create Assessments"
+msgid "Select Test Items"
 msgstr ""
 
 #: aStringResources.py:66
-msgid "Select Test Items to Include on Assessments"
+msgid "Select Test Items to Include on Examination"
 msgstr ""
 
 #: aStringResources.py:67
-msgid "View and Assign Assessments"
+msgid "View Examination"
 msgstr ""
 
 #: aStringResources.py:68
-msgid "View Created Assessments and Student Results"
+msgid "Preview Student Test Performance"
 msgstr ""
 
 #: aStringResources.py:69
@@ -259,15 +259,15 @@ msgstr ""
 msgid "Upload"
 msgstr ""
 
-#: aStringResources.py:111 aStringResources.py:172
+#: aStringResources.py:111 aStringResources.py:178
 msgid "View"
 msgstr ""
 
-#: aStringResources.py:112 aStringResources.py:174
+#: aStringResources.py:112 aStringResources.py:180
 msgid "Delete"
 msgstr ""
 
-#: aStringResources.py:113 aStringResources.py:137 aStringResources.py:185
+#: aStringResources.py:113 aStringResources.py:137 aStringResources.py:191
 msgid "Section"
 msgstr ""
 
@@ -387,903 +387,907 @@ msgstr ""
 msgid "Please choose a folder"
 msgstr ""
 
-#: aStringResources.py:152
+#: aStringResources.py:158
 msgid "AbSim Assessment Creator"
 msgstr ""
 
-#: aStringResources.py:153
+#: aStringResources.py:159
 msgid "1. Baseline Assessment"
 msgstr ""
 
-#: aStringResources.py:154
+#: aStringResources.py:160
 msgid "Add Baseline Assessment?"
 msgstr ""
 
-#: aStringResources.py:155
+#: aStringResources.py:161
 msgid "2. Abnormality Detection Assessment"
 msgstr ""
 
-#: aStringResources.py:156
+#: aStringResources.py:162
 msgid "3. Case Assessment"
 msgstr ""
 
-#: aStringResources.py:157
+#: aStringResources.py:163
 msgid "Input Assessment Title"
 msgstr ""
 
-#: aStringResources.py:158
+#: aStringResources.py:164
 msgid "Save Assessment"
 msgstr ""
 
-#: aStringResources.py:159
+#: aStringResources.py:165
 msgid "Assessment"
 msgstr ""
 
-#: aStringResources.py:164 aStringResources.py:245
+#: aStringResources.py:170 aStringResources.py:251
 msgid "View Assessments"
 msgstr ""
 
-#: aStringResources.py:166 aStringResources.py:246
+#: aStringResources.py:171
+msgid "Assessments"
+msgstr ""
+
+#: aStringResources.py:172 aStringResources.py:252
 msgid "Assessment Title"
 msgstr ""
 
-#: aStringResources.py:167
+#: aStringResources.py:173
 msgid "Assigned To"
 msgstr ""
 
-#: aStringResources.py:168
+#: aStringResources.py:174
 msgid "Completed"
 msgstr ""
 
-#: aStringResources.py:169
+#: aStringResources.py:175
 msgid "Baseline Palpation"
 msgstr ""
 
-#: aStringResources.py:170 aStringResources.py:293
+#: aStringResources.py:176 aStringResources.py:299
 msgid "Abnormality Detection"
 msgstr ""
 
-#: aStringResources.py:171
+#: aStringResources.py:177
 msgid "Case Diagnosis"
 msgstr ""
 
-#: aStringResources.py:173
+#: aStringResources.py:179
 msgid "Assign"
 msgstr ""
 
-#: aStringResources.py:175
+#: aStringResources.py:181
 msgid "Choose Section(s)"
 msgstr ""
 
-#: aStringResources.py:176
+#: aStringResources.py:182
 msgid "Select section name(s) to display results for that (those) section(s)."
 msgstr ""
 
-#: aStringResources.py:177
+#: aStringResources.py:183
 msgid "Select section name(s) to which to assign assessment."
 msgstr ""
 
-#: aStringResources.py:178
+#: aStringResources.py:184
 msgid "Results"
 msgstr ""
 
-#: aStringResources.py:179
+#: aStringResources.py:185
 msgid "Baseline Assessment:"
 msgstr ""
 
-#: aStringResources.py:180
+#: aStringResources.py:186
 msgid "Abnormality Detection:"
 msgstr ""
 
-#: aStringResources.py:181
+#: aStringResources.py:187
 msgid "Case Diagnosis:"
 msgstr ""
 
-#: aStringResources.py:182
+#: aStringResources.py:188
 msgid "Select assessment to view items assigned."
 msgstr ""
 
-#: aStringResources.py:183
+#: aStringResources.py:189
 msgid "No Section(s) Selected"
 msgstr ""
 
-#: aStringResources.py:184
+#: aStringResources.py:190
 msgid "Please select section(s) to view student performance."
 msgstr ""
 
-#: aStringResources.py:186 aStringResources.py:235
+#: aStringResources.py:192 aStringResources.py:241
 msgid "No Sections Exist"
 msgstr ""
 
-#: aStringResources.py:187
+#: aStringResources.py:193
 msgid "Please add students in previous screen."
 msgstr ""
 
-#: aStringResources.py:188
+#: aStringResources.py:194
 msgid "Delete Assessment"
 msgstr ""
 
-#: aStringResources.py:189
+#: aStringResources.py:195
 msgid "Are you sure you wish to delete the selected assessment?"
 msgstr ""
 
-#: aStringResources.py:190
+#: aStringResources.py:196
 msgid "Assessment Not Deleted"
 msgstr ""
 
-#: aStringResources.py:191
+#: aStringResources.py:197
 msgid "AbSim will not delete assessment and associated data."
 msgstr ""
 
-#: aStringResources.py:192
+#: aStringResources.py:198
 msgid "Assessment Data Not Found"
 msgstr ""
 
-#: aStringResources.py:193
+#: aStringResources.py:199
 msgid "Please check back when students have taken assessments."
 msgstr ""
 
-#: aStringResources.py:194
+#: aStringResources.py:200
 msgid "Assessment Assignment Successful"
 msgstr ""
 
-#: aStringResources.py:195
+#: aStringResources.py:201
 msgid "Students in section(s) assigned may take this assessment."
 msgstr ""
 
-#: aStringResources.py:196
+#: aStringResources.py:202
 msgid "Assessment Already Assigned"
 msgstr ""
 
-#: aStringResources.py:197
+#: aStringResources.py:203
 msgid "The chosen section is already assigned this assessment."
 msgstr ""
 
-#: aStringResources.py:198
+#: aStringResources.py:204
 msgid "No Assessment Selected"
 msgstr ""
 
-#: aStringResources.py:199
+#: aStringResources.py:205
 msgid "Please select an assessment to assign, view results, or delete."
 msgstr ""
 
-#: aStringResources.py:204
+#: aStringResources.py:210
 msgid "Assessment Saved Successfully"
 msgstr ""
 
-#: aStringResources.py:205 aStringResources.py:454
+#: aStringResources.py:211 aStringResources.py:460
 msgid "Students may now take your assessment."
 msgstr ""
 
-#: aStringResources.py:206
+#: aStringResources.py:212
 msgid "Assessment Save Failure"
 msgstr ""
 
-#: aStringResources.py:207 aStringResources.py:456
+#: aStringResources.py:213 aStringResources.py:462
 msgid "Could not save assessment."
 msgstr ""
 
-#: aStringResources.py:208 aStringResources.py:457
+#: aStringResources.py:214 aStringResources.py:463
 msgid "Could not save assessment because no assessment title entered."
 msgstr ""
 
-#: aStringResources.py:213
+#: aStringResources.py:219
 msgid "No Assessments Taken"
 msgstr ""
 
-#: aStringResources.py:214
+#: aStringResources.py:220
 msgid "Please check back when students have taken your assessment."
 msgstr ""
 
-#: aStringResources.py:215
+#: aStringResources.py:221
 msgid "Student ID"
 msgstr ""
 
-#: aStringResources.py:216
+#: aStringResources.py:222
 msgid "Score"
 msgstr ""
 
-#: aStringResources.py:217
+#: aStringResources.py:223
 msgid "Time Elapsed"
 msgstr ""
 
-#: aStringResources.py:218
+#: aStringResources.py:224
 msgid "Assessment Data Exported"
 msgstr ""
 
-#: aStringResources.py:219
+#: aStringResources.py:225
 msgid "A CSV file with assessment data was created in AbSim's directory."
 msgstr ""
 
-#: aStringResources.py:220
+#: aStringResources.py:226
 msgid "Assessment Data Not Exported"
 msgstr ""
 
-#: aStringResources.py:221
+#: aStringResources.py:227
 msgid "Something went wrong."
 msgstr ""
 
-#: aStringResources.py:222
+#: aStringResources.py:228
 msgid "Export to Desktop"
 msgstr ""
 
-#: aStringResources.py:227
+#: aStringResources.py:233
 msgid "Self-directed Learning"
 msgstr ""
 
-#: aStringResources.py:228
+#: aStringResources.py:234
 msgid "Learn and Practice Abdominal Palpation"
 msgstr ""
 
-#: aStringResources.py:229
+#: aStringResources.py:235
 msgid "Take Assigned Assessment"
 msgstr ""
 
-#: aStringResources.py:230
+#: aStringResources.py:236
 msgid "Complete a Variety of Assessments Using AbSim"
 msgstr ""
 
-#: aStringResources.py:231
+#: aStringResources.py:237
 msgid "Select Class Section"
 msgstr ""
 
-#: aStringResources.py:232
+#: aStringResources.py:238
 msgid "Choose your appropriate class section."
 msgstr ""
 
-#: aStringResources.py:233
+#: aStringResources.py:239
 msgid "No Section Chosen"
 msgstr ""
 
-#: aStringResources.py:234
+#: aStringResources.py:240
 msgid "Please choose the section to which you belong."
 msgstr ""
 
-#: aStringResources.py:236
+#: aStringResources.py:242
 msgid "Please wait for your instructor to load class information."
 msgstr ""
 
-#: aStringResources.py:241
+#: aStringResources.py:247
 msgid "AbSim Assignment Viewer"
 msgstr ""
 
-#: aStringResources.py:242
+#: aStringResources.py:248
 msgid "Abnormality Assessment"
 msgstr ""
 
-#: aStringResources.py:243
+#: aStringResources.py:249
 msgid "Case Text Assessment"
 msgstr ""
 
-#: aStringResources.py:244 aStringResources.py:286
+#: aStringResources.py:250 aStringResources.py:292
 msgid "Baseline Assessment"
 msgstr ""
 
-#: aStringResources.py:247 caseselector.py:78
+#: aStringResources.py:253 caseselector.py:79
 msgid "Ailment"
 msgstr ""
 
-#: aStringResources.py:248
+#: aStringResources.py:254
 msgid "Welcome to AbSim's Assessment Interface"
 msgstr ""
 
-#: aStringResources.py:249
+#: aStringResources.py:255
 msgid "Select an assessment and click \"Begin Assessment\" when ready."
 msgstr ""
 
-#: aStringResources.py:250
+#: aStringResources.py:256
 msgid "Begin Assessment"
 msgstr ""
 
-#: aStringResources.py:252
+#: aStringResources.py:258
 msgid "Assessment Not Found."
 msgstr ""
 
-#: aStringResources.py:253
+#: aStringResources.py:259
 msgid "You may take another assessment if you have more to take."
 msgstr ""
 
-#: aStringResources.py:256
+#: aStringResources.py:262
 msgid "Select Assessment"
 msgstr ""
 
-#: aStringResources.py:257
+#: aStringResources.py:263
 msgid "Please select an assessment and click \"Begin Assessment\"."
 msgstr ""
 
-#: aStringResources.py:258
+#: aStringResources.py:264
 msgid "Assessment Finished"
 msgstr ""
 
-#: aStringResources.py:259
+#: aStringResources.py:265
 msgid "Demonstrate your ability to perform a competent abdominal examination and click 'OK' when finished."
 msgstr ""
 
-#: aStringResources.py:261
+#: aStringResources.py:267
 msgid "Demonstrate Competent Abdominal Examination"
 msgstr ""
 
-#: aStringResources.py:262
+#: aStringResources.py:268
 msgid "Identify Abdominal Scenario(s)"
 msgstr ""
 
-#: aStringResources.py:264
+#: aStringResources.py:270
 msgid "Case Vignettes to Diagnose"
 msgstr ""
 
-#: aStringResources.py:265
+#: aStringResources.py:271
 msgid "will test you on the following circumstances"
 msgstr ""
 
-#: aStringResources.py:266
+#: aStringResources.py:272
 msgid "Select an assessment to view associated test items."
 msgstr ""
 
-#: aStringResources.py:267
+#: aStringResources.py:273
 msgid "Ok"
 msgstr ""
 
-#: aStringResources.py:268
+#: aStringResources.py:274
 msgid "Make Selection"
 msgstr ""
 
-#: aStringResources.py:269
+#: aStringResources.py:275
 msgid "Identify the condition associated with the test item(s)"
 msgstr ""
 
-#: aStringResources.py:270
+#: aStringResources.py:276
 msgid "view the case vignette, perform an exam, and enter your diagnosis for the case"
 msgstr ""
 
-#: aStringResources.py:271
+#: aStringResources.py:277
 msgid "Current Item"
 msgstr ""
 
-#: aStringResources.py:272
+#: aStringResources.py:278
 msgid "No Selection"
 msgstr ""
 
-#: aStringResources.py:273
+#: aStringResources.py:279
 msgid "Please select a case."
 msgstr ""
 
-#: aStringResources.py:274
+#: aStringResources.py:280
 msgid "Please provide ID number"
 msgstr ""
 
-#: aStringResources.py:275
+#: aStringResources.py:281
 msgid "Student Login"
 msgstr ""
 
-#: aStringResources.py:277
+#: aStringResources.py:283
 msgid "Entered ID does not match AbSim's records."
 msgstr ""
 
-#: aStringResources.py:278
+#: aStringResources.py:284
 msgid "Assessment Already Completed"
 msgstr ""
 
-#: aStringResources.py:279
+#: aStringResources.py:285
 msgid "You have taken this assessment; please select another."
 msgstr ""
 
-#: aStringResources.py:280
+#: aStringResources.py:286
 msgid "Assessment Not Selected"
 msgstr ""
 
-#: aStringResources.py:281
+#: aStringResources.py:287
 msgid "Please select an assessment."
 msgstr ""
 
-#: aStringResources.py:287
+#: aStringResources.py:293
 msgid "Milestone 1:"
 msgstr ""
 
-#: aStringResources.py:288
+#: aStringResources.py:294
 msgid "Depth of Palpation"
 msgstr ""
 
-#: aStringResources.py:289
+#: aStringResources.py:295
 msgid "Milestone 2:"
 msgstr ""
 
-#: aStringResources.py:290
+#: aStringResources.py:296
 msgid "Surface Area Coverage"
 msgstr ""
 
-#: aStringResources.py:291
+#: aStringResources.py:297
 msgid "Comparative Assessment"
 msgstr ""
 
-#: aStringResources.py:292
+#: aStringResources.py:298
 msgid "Milestone 3:"
 msgstr ""
 
-#: aStringResources.py:294
+#: aStringResources.py:300
 msgid "Milestone 4:"
 msgstr ""
 
-#: aStringResources.py:295
+#: aStringResources.py:301
 msgid "Self-Assessment with"
 msgstr ""
 
-#: aStringResources.py:296
+#: aStringResources.py:302
 msgid "Random Ailments"
 msgstr ""
 
-#: aStringResources.py:297
+#: aStringResources.py:303
 msgid "Milestone 5:"
 msgstr ""
 
-#: aStringResources.py:298
+#: aStringResources.py:304
 msgid "Diagnosis Integration"
 msgstr ""
 
-#: aStringResources.py:299
+#: aStringResources.py:305
 msgid "with Hx/PE"
 msgstr ""
 
-#: aStringResources.py:305
+#: aStringResources.py:311
 msgid "Welcome!"
 msgstr ""
 
-#: aStringResources.py:306
+#: aStringResources.py:312
 msgid "AbSim will train you on abdominal palpation, a key skill to"
 msgstr ""
 
-#: aStringResources.py:307
+#: aStringResources.py:313
 msgid "assess patients complaining of abdominal pain."
 msgstr ""
 
-#: aStringResources.py:308
+#: aStringResources.py:314
 msgid "When you are ready, perform an abdominal exam."
 msgstr ""
 
-#: aStringResources.py:309
+#: aStringResources.py:315
 msgid "Click the button when you're done."
 msgstr ""
 
-#: aStringResources.py:310
+#: aStringResources.py:316
 msgid "Reveal completed exam"
 msgstr ""
 
-#: aStringResources.py:311
+#: aStringResources.py:317
 msgid "Appendix Region"
 msgstr ""
 
-#: aStringResources.py:312
+#: aStringResources.py:318
 msgid "Colon Region"
 msgstr ""
 
-#: aStringResources.py:313
+#: aStringResources.py:319
 msgid "Gallbladder Region"
 msgstr ""
 
-#: aStringResources.py:314
+#: aStringResources.py:320
 msgid "Gastric/Epigastric Region"
 msgstr ""
 
-#: aStringResources.py:315
+#: aStringResources.py:321
 msgid "Left Ovary Region"
 msgstr ""
 
-#: aStringResources.py:316
+#: aStringResources.py:322
 msgid "Right Ovary Region"
 msgstr ""
 
-#: aStringResources.py:317
+#: aStringResources.py:323
 msgid "Pancreatic Region"
 msgstr ""
 
-#: aStringResources.py:318
+#: aStringResources.py:324
 msgid "Normal Urinary Bladder"
 msgstr ""
 
-#: aStringResources.py:319
+#: aStringResources.py:325
 msgid "Liver Region"
 msgstr ""
 
-#: aStringResources.py:320
+#: aStringResources.py:326
 msgid "Splenic Region"
 msgstr ""
 
-#: aStringResources.py:321
+#: aStringResources.py:327
 msgid "Distended Urinary Bladder"
 msgstr ""
 
-#: aStringResources.py:322
+#: aStringResources.py:328
 msgid "You may now proceed to Milestone 1"
 msgstr ""
 
-#: aStringResources.py:323
+#: aStringResources.py:329
 msgid "Now it's time to compare your pre-assessment to your skill after training."
 msgstr ""
 
-#: aStringResources.py:324
+#: aStringResources.py:330
 msgid "Pre-Assessment Coverage"
 msgstr ""
 
-#: aStringResources.py:325
+#: aStringResources.py:331
 msgid "Post-Assessment Coverage"
 msgstr ""
 
-#: aStringResources.py:326
+#: aStringResources.py:332
 msgid "Proceed to Abnormality Detection"
 msgstr ""
 
-#: aStringResources.py:327
+#: aStringResources.py:333
 msgid "Coverage Visualization"
 msgstr ""
 
-#: aStringResources.py:328
+#: aStringResources.py:334
 msgid "Detailed Comparison"
 msgstr ""
 
-#: aStringResources.py:329
+#: aStringResources.py:335
 msgid "Location Analysis"
 msgstr ""
 
-#: aStringResources.py:330
+#: aStringResources.py:336
 msgid "not palpated"
 msgstr ""
 
-#: aStringResources.py:331
+#: aStringResources.py:337
 msgid "lightly palpated"
 msgstr ""
 
-#: aStringResources.py:332
+#: aStringResources.py:338
 msgid "deeply palpated"
 msgstr ""
 
-#: aStringResources.py:333
+#: aStringResources.py:339
 msgid "too hard"
 msgstr ""
 
-#: aStringResources.py:338
+#: aStringResources.py:344
 msgid "In this milestone, practice palpating to the correct depth."
 msgstr ""
 
-#: aStringResources.py:339
+#: aStringResources.py:345
 msgid "Gray circles indicate"
 msgstr ""
 
-#: aStringResources.py:340
+#: aStringResources.py:346
 msgid "appropriate for beginning an abdominal exam,"
 msgstr ""
 
-#: aStringResources.py:341
+#: aStringResources.py:347
 msgid "but insufficient to detect significant abdominal disorders."
 msgstr ""
 
-#: aStringResources.py:342
+#: aStringResources.py:348
 msgid "Blue circles indicate"
 msgstr ""
 
-#: aStringResources.py:343
+#: aStringResources.py:349
 msgid "good for detecting serious disorders of the abdomen."
 msgstr ""
 
-#: aStringResources.py:344
+#: aStringResources.py:350
 msgid "Red circles indicate"
 msgstr ""
 
-#: aStringResources.py:345
+#: aStringResources.py:351
 msgid "causing unnecessary pain, even in a patient with no abnormalities."
 msgstr ""
 
-#: aStringResources.py:346
+#: aStringResources.py:352
 msgid "This can result in voluntary guarding for the rest of the exam, leading to"
 msgstr ""
 
-#: aStringResources.py:347
+#: aStringResources.py:353
 msgid "confusing findings."
 msgstr ""
 
-#: aStringResources.py:348
+#: aStringResources.py:354
 msgid "Instructors may adjust pressure sensitivity in the"
 msgstr ""
 
-#: aStringResources.py:349
+#: aStringResources.py:355
 msgid "Settings > Pressure Sensitivity"
 msgstr ""
 
-#: aStringResources.py:350
+#: aStringResources.py:356
 msgid "menu."
 msgstr ""
 
-#: aStringResources.py:355
+#: aStringResources.py:361
 msgid "Now that you can palpate to proper depth, practice covering the entire abdomen."
 msgstr ""
 
-#: aStringResources.py:356
+#: aStringResources.py:362
 msgid "It's better to make several passes instead of covering each centimeter in one pass."
 msgstr ""
 
-#: aStringResources.py:358
+#: aStringResources.py:364
 msgid "Make several trips around the abdomen to get full coverage."
 msgstr ""
 
-#: aStringResources.py:359
+#: aStringResources.py:365
 msgid "Especially ensure you check the marked locations, where abdominal abnormalities are most likely to occur."
 msgstr ""
 
-#: aStringResources.py:365
+#: aStringResources.py:371
 msgid "You should now understand what a normal abdomen feels like."
 msgstr ""
 
-#: aStringResources.py:366
+#: aStringResources.py:372
 msgid "For this milestone, familiarize yourself with how these abnormalities feel."
 msgstr ""
 
-#: aStringResources.py:367
+#: aStringResources.py:373
 msgid "In the next step, you will identify them using touch and sound."
 msgstr ""
 
-#: aStringResources.py:372
+#: aStringResources.py:378
 msgid "For this milestone, you will report the findings by feel and sound only."
 msgstr ""
 
-#: aStringResources.py:373
+#: aStringResources.py:379
 msgid "When you select a finding, you will receive feedback and have a second chance to palpate."
 msgstr ""
 
-#: aStringResources.py:375
+#: aStringResources.py:381
 msgid "When you are confident in eliciting findings, we will integrate patient history and non-palpitory physical findings."
 msgstr ""
 
-#: aStringResources.py:377
+#: aStringResources.py:383
 msgid "Before moving on"
 msgstr ""
 
-#: aStringResources.py:378
+#: aStringResources.py:384
 msgid "re-familiarize yourself with how this condition feels."
 msgstr ""
 
-#: aStringResources.py:379 aStringResources.py:427
+#: aStringResources.py:385 aStringResources.py:433
 msgid "Correct"
 msgstr ""
 
-#: aStringResources.py:380 aStringResources.py:429
+#: aStringResources.py:386 aStringResources.py:435
 msgid "Incorrect"
 msgstr ""
 
-#: aStringResources.py:381
+#: aStringResources.py:387
 msgid "You selected:"
 msgstr ""
 
-#: aStringResources.py:382
+#: aStringResources.py:388
 msgid "Correct selection:"
 msgstr ""
 
-#: aStringResources.py:383
+#: aStringResources.py:389
 msgid "Unremarkable Abdomen"
 msgstr ""
 
-#: aStringResources.py:384 cases.py:32 caseselector.py:25
+#: aStringResources.py:390 cases.py:32 caseselector.py:26
 msgid "No Abnormalities"
 msgstr ""
 
-#: aStringResources.py:385
+#: aStringResources.py:391
 msgid "Appendix"
 msgstr ""
 
-#: aStringResources.py:386
+#: aStringResources.py:392
 msgid "Tenderness"
 msgstr ""
 
-#: aStringResources.py:387
+#: aStringResources.py:393
 msgid "Appendix Tenderness + Guarding"
 msgstr ""
 
-#: aStringResources.py:388
+#: aStringResources.py:394
 msgid "Appendix Tenderness + Rebound Tenderness"
 msgstr ""
 
-#: aStringResources.py:389
+#: aStringResources.py:395
 msgid "Appendix Tenderness + Guarding + Rebound Tenderness"
 msgstr ""
 
-#: aStringResources.py:390
+#: aStringResources.py:396
 msgid "Bladder"
 msgstr ""
 
-#: aStringResources.py:391
+#: aStringResources.py:397
 msgid "Bladder Tenderness"
 msgstr ""
 
-#: aStringResources.py:392
+#: aStringResources.py:398
 msgid "Colon"
 msgstr ""
 
-#: aStringResources.py:393
+#: aStringResources.py:399
 msgid "Colon Tenderness"
 msgstr ""
 
-#: aStringResources.py:394
+#: aStringResources.py:400
 msgid "Colon Tenderness + Guarding"
 msgstr ""
 
-#: aStringResources.py:395
+#: aStringResources.py:401
 msgid "Gallbladder"
 msgstr ""
 
-#: aStringResources.py:396
+#: aStringResources.py:402
 msgid "Gallbladder Tenderness + Guarding"
 msgstr ""
 
-#: aStringResources.py:397
+#: aStringResources.py:403
 msgid "Gastric"
 msgstr ""
 
-#: aStringResources.py:398 cases.py:41 caseselector.py:42
+#: aStringResources.py:404 cases.py:41 caseselector.py:43
 msgid "Gastric Tenderness"
 msgstr ""
 
-#: aStringResources.py:399
+#: aStringResources.py:405
 msgid "Ovary, Left"
 msgstr ""
 
-#: aStringResources.py:400
+#: aStringResources.py:406
 msgid "Ovary, Left + Guarding"
 msgstr ""
 
-#: aStringResources.py:401
+#: aStringResources.py:407
 msgid "Ovary, Right"
 msgstr ""
 
-#: aStringResources.py:402
+#: aStringResources.py:408
 msgid "Ovary, Right + Guarding"
 msgstr ""
 
-#: aStringResources.py:403
+#: aStringResources.py:409
 msgid "Pancreas"
 msgstr ""
 
-#: aStringResources.py:404
+#: aStringResources.py:410
 msgid "Organ Enlargement"
 msgstr ""
 
-#: aStringResources.py:405
+#: aStringResources.py:411
 msgid "Organs"
 msgstr ""
 
-#: aStringResources.py:406 aStringResources.py:430
+#: aStringResources.py:412 aStringResources.py:436
 msgid "Next Case"
 msgstr ""
 
-#: aStringResources.py:407 cases.py:48 caseselector.py:61
+#: aStringResources.py:413 cases.py:48 caseselector.py:62
 msgid "Hepatomegaly"
 msgstr ""
 
-#: aStringResources.py:408 cases.py:49 caseselector.py:62
+#: aStringResources.py:414 cases.py:49 caseselector.py:63
 msgid "Splenomegaly"
 msgstr ""
 
-#: aStringResources.py:409 cases.py:50 caseselector.py:63
+#: aStringResources.py:415 cases.py:50 caseselector.py:64
 msgid "Enlarged Urinary Bladder"
 msgstr ""
 
-#: aStringResources.py:414 prototypetext.py:20
+#: aStringResources.py:420 prototypetext.py:20
 msgid "Upper Gastrointestinal Etiology"
 msgstr ""
 
-#: aStringResources.py:415 prototypetext.py:48
+#: aStringResources.py:421 prototypetext.py:48
 msgid "Choledocolithiasis"
 msgstr ""
 
-#: aStringResources.py:416 prototypetext.py:71
+#: aStringResources.py:422 prototypetext.py:71
 msgid "Pancreatitis"
 msgstr ""
 
-#: aStringResources.py:417 prototypetext.py:97
+#: aStringResources.py:423 prototypetext.py:97
 msgid "Cholecystitis"
 msgstr ""
 
-#: aStringResources.py:418 prototypetext.py:119
+#: aStringResources.py:424 prototypetext.py:119
 msgid "Mesenteric Infarction"
 msgstr ""
 
-#: aStringResources.py:419 prototypetext.py:146
+#: aStringResources.py:425 prototypetext.py:146
 msgid "Small Bowel Obstruction"
 msgstr ""
 
-#: aStringResources.py:420 prototypetext.py:173
+#: aStringResources.py:426 prototypetext.py:173
 msgid "Appendicitis"
 msgstr ""
 
-#: aStringResources.py:421 prototypetext.py:194
+#: aStringResources.py:427 prototypetext.py:194
 msgid "Diverticulitis"
 msgstr ""
 
-#: aStringResources.py:422 prototypetext.py:215
+#: aStringResources.py:428 prototypetext.py:215
 msgid "Acute Enteritis"
 msgstr ""
 
-#: aStringResources.py:428
+#: aStringResources.py:434
 msgid "Best Diagnosis is"
 msgstr ""
 
-#: aStringResources.py:435
+#: aStringResources.py:441
 msgid "AbSim is loading..."
 msgstr ""
 
-#: aStringResources.py:436
+#: aStringResources.py:442
 msgid "(this might take 30 seconds)"
 msgstr ""
 
-#: aStringResources.py:441
+#: aStringResources.py:447
 msgid "Pressure pad is not connected! Please check the USB cable, close software, and turn off AbSim for five seconds."
 msgstr ""
 
-#: aStringResources.py:447
+#: aStringResources.py:453
 msgid "Setting up new case."
 msgstr ""
 
-#: aStringResources.py:448
+#: aStringResources.py:454
 msgid "DO NOT TOUCH!"
 msgstr ""
 
-#: aStringResources.py:453
+#: aStringResources.py:459
 msgid "Assessment Saved Successfully!"
 msgstr ""
 
-#: aStringResources.py:455
+#: aStringResources.py:461
 msgid "Assessment Save Failure!"
 msgstr ""
 
-#: aStringResources.py:462
+#: aStringResources.py:468
 msgid "New locale override"
 msgstr ""
 
-#: aStringResources.py:463
+#: aStringResources.py:469
 msgid "will take effect after advancing to a new screen."
 msgstr ""
 
-#: aStringResources.py:468
+#: aStringResources.py:474
 msgid "Reset User Info?"
 msgstr ""
 
-#: aStringResources.py:469
+#: aStringResources.py:475
 msgid "Would you like to reset the user info provided?"
 msgstr ""
 
-#: aStringResources.py:474
+#: aStringResources.py:480
 msgid "Password"
 msgstr ""
 
-#: aStringResources.py:475
+#: aStringResources.py:481
 msgid "User Name"
 msgstr ""
 
-#: aStringResources.py:476
+#: aStringResources.py:482
 msgid "User Entry"
 msgstr ""
 
-#: aStringResources.py:481
+#: aStringResources.py:487
 msgid "Go Back"
 msgstr ""
 
-#: aStringResources.py:484
+#: aStringResources.py:490
 msgid "Palpation"
 msgstr ""
 
-#: aStringResources.py:485
+#: aStringResources.py:491
 msgid "Not Palpated"
 msgstr ""
 
-#: aStringResources.py:486
+#: aStringResources.py:492
 msgid "Light Palpation"
 msgstr ""
 
-#: aStringResources.py:487
+#: aStringResources.py:493
 msgid "Deep Palpation"
 msgstr ""
 
-#: aStringResources.py:488
+#: aStringResources.py:494
 msgid "Too Deep"
 msgstr ""
 
-#: cases.py:33 caseselector.py:28
+#: cases.py:33 caseselector.py:29
 msgid "Appendix Tenderness"
 msgstr ""
 
@@ -1299,7 +1303,7 @@ msgstr ""
 msgid "Appendix Tenderness with Guarding and Rebound Tenderness"
 msgstr ""
 
-#: cases.py:37 caseselector.py:34
+#: cases.py:37 caseselector.py:35
 msgid "Colon, Left Lower Tenderness"
 msgstr ""
 
@@ -1307,7 +1311,7 @@ msgstr ""
 msgid "Colon, Left Lower Tenderness with Guarding"
 msgstr ""
 
-#: cases.py:39 caseselector.py:38
+#: cases.py:39 caseselector.py:39
 msgid "Gallbladder Tenderness"
 msgstr ""
 
@@ -1315,7 +1319,7 @@ msgstr ""
 msgid "Gallbladder Tenderness with Guarding"
 msgstr ""
 
-#: cases.py:42 caseselector.py:45
+#: cases.py:42 caseselector.py:46
 msgid "Ovary, Left Tenderness"
 msgstr ""
 
@@ -1323,7 +1327,7 @@ msgstr ""
 msgid "Ovary, Left Tenderness with Guarding"
 msgstr ""
 
-#: cases.py:44 caseselector.py:49
+#: cases.py:44 caseselector.py:50
 msgid "Ovary, Right Tenderness"
 msgstr ""
 
@@ -1331,24 +1335,24 @@ msgstr ""
 msgid "Ovary, Right Tenderness with Guarding"
 msgstr ""
 
-#: cases.py:46 caseselector.py:53
+#: cases.py:46 caseselector.py:54
 msgid "Pancreas Tenderness"
 msgstr ""
 
-#: cases.py:47 caseselector.py:56
+#: cases.py:47 caseselector.py:57
 msgid "Urinary Bladder Tenderness"
 msgstr ""
 
-#: caseselector.py:29 caseselector.py:35 caseselector.py:39 caseselector.py:46
-#: caseselector.py:50
+#: caseselector.py:30 caseselector.py:36 caseselector.py:40 caseselector.py:47
+#: caseselector.py:51
 msgid "With Guarding"
 msgstr ""
 
-#: caseselector.py:30
+#: caseselector.py:31
 msgid "With Rebound Tenderness"
 msgstr ""
 
-#: caseselector.py:31
+#: caseselector.py:32
 msgid "With Guarding and Rebound Tenderness"
 msgstr ""
 
