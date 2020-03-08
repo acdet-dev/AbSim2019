@@ -598,8 +598,8 @@ class ViewTests(Gtk.HBox):
             if student:
 
                 try:
-                    # distance(value, str(book['volumeInfo']['title']).lower()) <= 3]
-                    if distance(credentials, student[3]) < 1:
+                    # check password and section info
+                    if distance(credentials, student[3]) < 1 and student[0] == self.exam_resources['section']:
                         logging.debug('Beginning Exam')
                         self.parse_and_transition(student[3])
                     else:

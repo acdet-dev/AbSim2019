@@ -173,11 +173,11 @@ class CNC(threading.Thread):
         logging.info("soft reset occurred")
         self.clear_queue()
         time.sleep(1)
-        # self.send_command(self.gcodes.get('kill_alarm_lock'))
         self.send_command(self.gcodes.get('home'))
         time.sleep(3)
-        self.handler(self.last_location_sent)
-        self.alert_when_idle()
+        self.alert_when_idle(True)
+        logging.info("just alerted for startup homing")
+        self.handle_command(self.last_location_sent)
 
     def cnc_home_stop(self):
         logging.debug('home_stop called!')
@@ -260,12 +260,15 @@ class CNC(threading.Thread):
         idle = False
         if hasattr(self, 'port') and self.port is not None:
             if startup:
-                try:
-                    self.port.reset_input_buffer()
-                    self.port.write(('?\n').encode())
-                    in_line1 = self.port.readline()
-                except Exception as e:
-                    logging.debug(e)
+                while not idle:
+                    try:
+                        self.port.reset_input_buffer()
+                        self.port.write(('?\n').encode())
+                        in_line1 = self.port.readline()
+                        logging.info(in_line1.decode('utf-8'))
+                        idle = bool('Idle' in in_line1.decode('utf-8'))
+                    except Exception as e:
+                        logging.debug(e)
             else:
                 while not idle:
                     command = self.check_for_command()

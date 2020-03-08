@@ -85,8 +85,6 @@ class Sounds:
                 if task:
                     self.request_sound(self.questmaster.current_quest, task)
 
-
-
     def check_gender(self, case):
         to_check = generic_sound_quests[case.split(' ', 1)[0]]
         if to_check['female_voice_required']:
@@ -95,10 +93,8 @@ class Sounds:
             gender = ''
         return gender
 
-
     def do_not_palpate(self, arg1):
         time_since_last_played_sound = time.time() - self.time_of_last_played_sound
-        print("time since last sound: {}".format(time_since_last_played_sound))
         if time_since_last_played_sound > .1:
             self.sound_queue.queue.clear()
             self.sound_queue.put('voices/donotpalpate.wav')
@@ -180,7 +176,8 @@ class Sounds:
     def stop_sound_player(self):
         self.sound_player.stop()
         self.sound_player.stopped()
-        
+
+
 class SoundPlayer(threading.Thread):
     def __init__(self, sound_file_queue):
         threading.Thread.__init__(self)
@@ -202,7 +199,6 @@ class SoundPlayer(threading.Thread):
         self.play_sound(None)
         winsound.SND_PURGE
 
-    
     def stop(self):
         self._stop.set()
     
