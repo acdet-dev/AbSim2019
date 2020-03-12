@@ -4,11 +4,6 @@
     <list default="true" id="0d7a6e5a-5cd6-4b6b-9c3f-28fcc3795056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aStringResources.py" beforeDir="false" afterPath="$PROJECT_DIR$/aStringResources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cnc.py" beforeDir="false" afterPath="$PROJECT_DIR$/cnc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/filechooser.py" beforeDir="false" afterPath="$PROJECT_DIR$/filechooser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/managestudents.py" beforeDir="false" afterPath="$PROJECT_DIR$/managestudents.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sectionTree.py" beforeDir="false" afterPath="$PROJECT_DIR$/sectionTree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/studentmodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/studentmodel.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/aStringResources.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="136" column="72" lean-forward="true" selection-start-line="136" selection-start-column="72" selection-end-line="136" selection-end-column="72" />
+            <state relative-caret-position="187">
+              <caret line="161" column="57" selection-start-line="161" selection-start-column="57" selection-end-line="161" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -105,11 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/managestudents.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="434" column="30" lean-forward="true" selection-start-line="434" selection-start-column="30" selection-end-line="434" selection-end-column="30" />
+            <state relative-caret-position="7293">
+              <caret line="429" lean-forward="true" selection-start-line="429" selection-end-line="429" />
             </state>
           </provider>
         </entry>
@@ -236,10 +231,10 @@
         <option value="$PROJECT_DIR$/viewAssignments.py" />
         <option value="$PROJECT_DIR$/cnc.py" />
         <option value="$PROJECT_DIR$/sectionTree.py" />
-        <option value="$PROJECT_DIR$/aStringResources.py" />
         <option value="$PROJECT_DIR$/studentmodel.py" />
         <option value="$PROJECT_DIR$/filechooser.py" />
         <option value="$PROJECT_DIR$/managestudents.py" />
+        <option value="$PROJECT_DIR$/aStringResources.py" />
       </list>
     </option>
   </component>
@@ -342,13 +337,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561933260794</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Added new iss and exe">
-      <created>1576252815737</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1576252815737</updated>
     </task>
     <task id="LOCAL-00036" summary="Begun work on string resources; stopped at end of view.">
       <created>1576864152105</created>
@@ -686,7 +674,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583690605276</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Changed save section model.">
+      <created>1584053292222</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1584053292223</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TodoView">
@@ -742,7 +737,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Move views and resources" />
     <MESSAGE value="Redone code through manage students" />
     <MESSAGE value="redone code through viewPerformance. Now assessmentViewer." />
     <MESSAGE value="Redo code through all of faculty side" />
@@ -767,7 +761,8 @@
     <MESSAGE value="Removing print statements" />
     <MESSAGE value="Adding i18n changes." />
     <MESSAGE value="All signals go!" />
-    <option name="LAST_COMMIT_MESSAGE" value="All signals go!" />
+    <MESSAGE value="Changed save section model." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed save section model." />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointLogExpression">
@@ -1131,13 +1126,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aStringResources.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="136" column="72" lean-forward="true" selection-start-line="136" selection-start-column="72" selection-end-line="136" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/studentmodel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1167,8 +1155,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/managestudents.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="434" column="30" lean-forward="true" selection-start-line="434" selection-start-column="30" selection-end-line="434" selection-end-column="30" />
+        <state relative-caret-position="7293">
+          <caret line="429" lean-forward="true" selection-start-line="429" selection-end-line="429" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aStringResources.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="161" column="57" selection-start-line="161" selection-start-column="57" selection-end-line="161" selection-end-column="57" />
         </state>
       </provider>
     </entry>
