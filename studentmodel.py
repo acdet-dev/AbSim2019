@@ -74,6 +74,27 @@ class StudentModel:
 
         return student_list
 
+    def update_by_section_id(self, var1, var2):
+        db_conn = self.connect()
+        c = db_conn.cursor()
+
+        stmt = '''
+            UPDATE student
+            SET section=?
+            WHERE section=?
+        '''
+
+        try:
+            c.execute(stmt, (var1, var2))
+            db_conn.commit()
+
+        except (IndexError, sqlite3.InterfaceError, sqlite3.OperationalError) as e:
+            logging.debug(e)
+            db_conn.rollback()
+
+        c.close()
+        db_conn.close()
+
     def get_by_student_id(self, key):
         db_conn = self.connect()
         c = db_conn.cursor()

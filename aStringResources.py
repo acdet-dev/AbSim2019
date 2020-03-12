@@ -58,7 +58,8 @@ class AStringResources:
             }
 
         elif self.identifier == "sim_screen_faculty_2":
-
+            # add in student add screen option for designation (MD, DO, PA, ETC) and class year
+            # format section to save as (MD_22).
             string_resources = {
                 "add_students_button": _(u"Enter Student Roster"),
                 "add_students_description": _(u"Provide AbSim Student Information"),
@@ -129,6 +130,11 @@ class AStringResources:
                 "warning_message": _(u"Are you sure you wish to delete the selected information?"),
                 "no_delete": _(u"Information Not Deleted"),
                 "no_delete_message": _(u"AbSim will not delete information and associated data."),
+                "select_designation": _(u"Student Designation"),
+                "select_designation_info": _(u"Select the type of students in the uploaded section."),
+                "designation_fail": _(u"No Selection"),
+                "designation_fail_info": _(u"Please select a section designation."),
+                "designation_types": [_(u"MD"), _(u"DO"), _(u"NP"), _(u"PA"), _(u"RN"), _(u"Other")]
             }
 
         elif self.identifier == "file_chooser":
@@ -155,6 +161,16 @@ class AStringResources:
                 # use thumb drive
                 # add record excel spreadsheet
                 # add folder lookup for wav bowel sounds
+                # Each test creation option its own screen
+                # 1. Palpatory Examination
+                # 2. Abnormality Detection
+                # 3. Diagnose Case Vignettes
+                # AbSim allows you to create 3 different types of assessment and include all or as many of these
+                # different test items on your examination
+                # eliminate section info
+                # potentially put in time limit for taking exam
+                # class year and info (MD, DO, NP, PA, RN, OTHER)
+                # add (MD_22_3.12) for assessment title
                 "window_title": _(u"AbSim Assessment Creator"),
                 "option_1_title": _(u"1. Baseline Assessment"),
                 "option_1": _(u"Add Baseline Assessment?"),

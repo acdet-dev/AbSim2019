@@ -7,9 +7,10 @@ from aStringResources import AStringResources
 import buildWidgets
 import menuBar
 from simLabels import MilestoneNameLabel
-from messages import sim_message, sim_reset_dialogue
+from messages import sim_message, sim_reset_dialogue, sim_class_message
 import logging
 from studentmodel import StudentModel
+from sectionTree import SectionTree
 
 
 class ManageStudents(Gtk.Window, menuBar.MenuBar):
@@ -120,11 +121,14 @@ class InstructionPage(Gtk.VBox):
 
     def upload(self, useless_param):
         from filechooser import FileChooserWindow
-        FileChooserWindow()
-        self.mp.store.clear()
-        new_store = self.mp.create_model()
-        self.mp.no_sections_flag = False
-        self.mp.treeView.set_model(new_store)
+        fcw = FileChooserWindow()
+        fcw.success = fcw.on_file_clicked()
+        if fcw.success:
+            self.mp.initiate_section_creation(fcw.section_name)
+            self.mp.store.clear()
+            new_store = self.mp.create_model()
+            self.mp.no_sections_flag = False
+            self.mp.treeView.set_model(new_store)
 
     def go_back(self):
         self.mp.go_back()
@@ -143,6 +147,9 @@ class ManagePage(Gtk.VBox):
         self.wr["student_info"] = StudentModel()
         self.wr["student_information"] = ""
 
+        # initialize builder class
+        self.bw = buildWidgets.BuildWidgets()
+
         self.store = ''
         self.treeView = ''
 
@@ -157,9 +164,6 @@ class ManagePage(Gtk.VBox):
         self.show_all()
 
     def build_interface(self):
-        # initialize builder class
-        bw = buildWidgets.BuildWidgets()
-
         # make boxes to hold all info
         vbox = Gtk.VBox(False, 8)
         hbox = Gtk.HBox(False, 8)
@@ -168,11 +172,11 @@ class ManagePage(Gtk.VBox):
         self.store = self.create_model()
         self.wr["store2"] = self.create_model2()
 
-        self.treeView = bw.build_tree_view(self.store, self.on_row_change)
-        self.wr["treeView2"] = bw.build_tree_view(self.wr["store2"], self.on_row_change2)
+        self.treeView = self.bw.build_tree_view(self.store, self.on_row_change)
+        self.wr["treeView2"] = self.bw.build_tree_view(self.wr["store2"], self.on_row_change2)
 
-        sw = bw.create_scroller()
-        sw2 = bw.create_scroller()
+        sw = self.bw.create_scroller()
+        sw2 = self.bw.create_scroller()
 
         # add tree view to scrolled window
         sw.add(self.treeView)
@@ -180,17 +184,17 @@ class ManagePage(Gtk.VBox):
 
         # create columns for tree view
         column_header_list = [self.string_resources["column_header"], self.string_resources["column_header_2"]]
-        bw.create_columns(self.treeView, column_header_list)
+        self.bw.create_columns(self.treeView, column_header_list)
 
         column_header_list_2 = [self.string_resources["column_header_3"], self.string_resources["column_header_4"],
                                 self.string_resources["column_header_5"], self.string_resources["column_header_6"],
                                 self.string_resources["column_header_7"], self.string_resources["column_header_8"]]
-        bw.create_columns(self.wr["treeView2"], column_header_list_2)
+        self.bw.create_columns(self.wr["treeView2"], column_header_list_2)
 
         # make lists of buttons
         b_list = [self.string_resources["delete_button"], self.string_resources["back_button"]]
         f_list = [self.delete, self.go_back]
-        button_table = bw.add_horizontal_buttons(button_list=b_list, functions=f_list, f_size=16)
+        button_table = self.bw.add_horizontal_buttons(button_list=b_list, functions=f_list, f_size=16)
 
         hbox.pack_start(sw, False, False, 10)
         hbox.pack_start(sw2, True, True, 10)
@@ -286,6 +290,73 @@ class ManagePage(Gtk.VBox):
     def go_back(self, widget):
         from simFaculty import SimFaculty
         self.facilitate_transfer(SimFaculty, self.wr["user_type"], self.wr["name"], self.wr["password"])
+
+    def update_database(self, f_s, s):
+        self.wr["student_info"].update_by_section_id(f_s, s)
+
+    def initiate_date_chooser(self, designation):
+        from datetime import datetime as dt
+        now = dt.now()
+
+        d_string = now.strftime('%Y-%m-%d')
+        start_date = int(d_string.split("-")[0])
+
+        choices = range(start_date, start_date+11)
+
+        str_choices = [str(c) for c in choices]
+
+        st = SectionTree(self.bw, str_choices, one_flag=True)
+
+        bt = st.build_button_tree(sec_nums=0, custom_flag=True)
+
+        st.sec_name = []
+
+        return_string = ""
+
+        if bt:
+
+            s = sim_class_message(self.wr["window"],
+                                  bt,
+                                  st.sec_name,
+                                  info_string=self.string_resources["select_designation"],
+                                  secondary_text=self.string_resources["select_designation_info"])
+
+            if s:
+                return_string = "%s_%s" % (designation[0], s[0])
+            else:
+                sim_message(self.wr["window"], info_string=self.string_resources["designation_fail"],
+                            secondary_text=self.string_resources["designation_fail_info"])
+                return_string = self.initiate_date_chooser(designation)
+
+        return return_string
+
+    def initiate_section_creation(self, sec):
+        st = SectionTree(self.bw, self.string_resources["designation_types"], one_flag=True)
+
+        bt = st.build_button_tree(sec_nums=0, custom_flag=True)
+
+        st.sec_name = []
+
+        final_string = ""
+
+        if bt:
+
+            s = sim_class_message(self.wr["window"],
+                                  bt,
+                                  st.sec_name,
+                                  info_string=self.string_resources["select_designation"],
+                                  secondary_text=self.string_resources["select_designation_info"])
+
+            if s:
+                final_string = self.initiate_date_chooser(s)
+            else:
+                sim_message(self.wr["window"], info_string=self.string_resources["designation_fail"],
+                            secondary_text=self.string_resources["designation_fail_info"])
+
+                self.initiate_section_creation(sec)
+
+        if final_string != "":
+            self.update_database(final_string, sec)
 
     def check_students(self, section, den_flag=True):
         """ method to return number of students taken out of total students assigned assessment """

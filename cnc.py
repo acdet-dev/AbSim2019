@@ -35,7 +35,7 @@ class CNC(threading.Thread):
             'kill_alarm_lock': '$X\n',
         }
 
-        #cnc defaults
+        # cnc defaults should match triple-quoted dict below
         self.base_locations = self.config.read_config()
         self.last_location_sent = ""
 
@@ -285,9 +285,8 @@ class CNC(threading.Thread):
                         pass
                 # need to reverse order LIFO rather than FIFO
                 self.state_watcher.cnc_is_idle()
+            self.e_stop_counter = 0
             time.sleep(1)
-
-        self.e_stop_counter = 0
 
     def send_command(self, command):
         # Send command over self.port

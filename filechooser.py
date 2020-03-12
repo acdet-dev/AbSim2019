@@ -14,7 +14,8 @@ class FileChooserWindow(Gtk.Window):
         self.string_resources = AStringResources("file_chooser").get_by_identifier()
         Gtk.Window.__init__(self, title=self.string_resources["window_title"])
         self.set_icon_from_file("img/icon.ico")
-        self.on_file_clicked()
+        self.success = False
+        self.section_name = ""
 
     def save_info(self, section, last, first, student_id):
         # i18n - Time string left as-is
@@ -23,6 +24,12 @@ class FileChooserWindow(Gtk.Window):
         student_model = studentmodel.StudentModel()
 
         student_model.save_to_db(section, last, first, student_id, timestr)
+
+    def handleChange(self, dg, c_file=None):
+        if c_file is not None:
+            c_file.close()
+        self.hide()
+        dg.destroy()
 
     def on_file_clicked(self):
         from messages import sim_message
@@ -38,13 +45,20 @@ class FileChooserWindow(Gtk.Window):
             # add section number based on what's in database
             current_students = studentmodel.StudentModel().get_all(key="")
             if len(current_students) < 1:
-                s = self.string_resources["section_title"] + " 1"
+                s = self.string_resources["section_title"] + " " + str(1)
             else:
                 section_list = []
                 for i in current_students:
                     section_list.append(i[0])
-                secs = [int(i.split(' ')[1]) for i in list(set(section_list))]
-                s = self.string_resources["section_title"] + " " + str(max(secs) + 1)
+                if self.string_resources["section_title"] + " " + str(1) in section_list:
+                    try:
+                        secs = [int(i.split(' ')[1]) for i in list(set(section_list))]
+                        s = self.string_resources["section_title"] + " " + str(max(secs) + 1)
+                    except IndexError as e:
+                        logging.debug(e)
+                        s = self.string_resources["section_title"] + " " + str(1)
+                else:
+                    s = self.string_resources["section_title"] + " " + str(1)
             if s:
                 try:
                     with open(dialog.get_filename(), encoding='utf-8') as csvfile:
@@ -56,25 +70,38 @@ class FileChooserWindow(Gtk.Window):
                             sim_message(self, info_string=self.string_resources["success_notification"],
                                         secondary_text=self.string_resources["success_description"])
 
+                            self.section_name = s
+
+                            self.handleChange(dialog, csvfile)
+                            return True
+
                         except (IndexError, ValueError) as e:
                             logging.debug(e)
                             sim_message(self, info_string=self.string_resources["failure_notification"],
                                         secondary_text=self.string_resources["failure_description_2"])
 
-                    csvfile.close()
+                            self.handleChange(dialog, csvfile)
+                            return False
+
                 except UnicodeDecodeError:
                     sim_message(self, info_string=self.string_resources["unicode_error"],
                                 secondary_text=self.string_resources["error_description"])
+
+                    self.handleChange(dialog)
+                    return False
 
             else:
                 sim_message(self, info_string=self.string_resources["failure_notification"],
                             secondary_text=self.string_resources["failure_description"])
 
-            self.hide()
+                self.handleChange(dialog)
+                return False
+
         elif response == Gtk.ResponseType.CANCEL:
             logging.debug("Cancel clicked")
 
-        dialog.destroy()
+            self.handleChange(dialog)
+            return False
 
     def add_filters(self, dialog):
         filter_any = Gtk.FileFilter()

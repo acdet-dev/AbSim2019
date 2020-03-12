@@ -10,13 +10,21 @@ class SectionTree:
         self.b_list = []
         self.flag = one_flag
 
-    def build_button_tree(self, sec_nums):
+    def build_button_tree(self, sec_nums, custom_flag=False):
         check_button_box = Gtk.VBox()
 
-        for num in sec_nums:
-            button = self.bw.build_check_button(num, self.on_button_toggled, 12, [5, 5])
-            check_button_box.pack_start(button, False, False, 0)
-            self.b_list.append(button)
+        if not custom_flag:
+
+            for num in sec_nums:
+                button = self.bw.build_check_button(num, self.on_button_toggled, 12, [5, 5])
+                check_button_box.pack_start(button, False, False, 0)
+                self.b_list.append(button)
+
+        else:
+            for b in self.sec_name:
+                button = self.bw.build_check_button(b, self.on_button_toggled, 12, [5, 5])
+                check_button_box.pack_start(button, False, False, 0)
+                self.b_list.append(button)
 
         return check_button_box
 
