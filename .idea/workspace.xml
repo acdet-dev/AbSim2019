@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d7a6e5a-5cd6-4b6b-9c3f-28fcc3795056" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ViewExams.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testCreation.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCreation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewPerformance.py" beforeDir="false" afterPath="$PROJECT_DIR$/viewPerformance.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aStringResources.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="174" column="53" selection-start-line="174" selection-start-column="53" selection-end-line="174" selection-end-column="53" />
+            <state relative-caret-position="225">
+              <caret line="199" column="31" selection-start-line="199" selection-start-column="17" selection-end-line="199" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -25,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/viewPerformance.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="102" selection-start-line="102" selection-end-line="103" selection-end-column="44" />
+            <state relative-caret-position="-595">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -34,7 +36,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simFaculty.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
+            <state relative-caret-position="663">
               <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -46,7 +48,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testCreator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1066">
+            <state relative-caret-position="699">
               <caret line="191" column="31" selection-start-line="191" selection-start-column="15" selection-end-line="191" selection-end-column="31" />
             </state>
           </provider>
@@ -55,8 +57,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testCreation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="322" column="41" selection-start-line="322" selection-start-column="41" selection-end-line="322" selection-end-column="41" />
+            <state relative-caret-position="272">
+              <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -64,7 +66,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/selfpractice.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
+            <state relative-caret-position="3247">
               <caret line="192" column="33" selection-start-line="192" selection-start-column="26" selection-end-line="192" selection-end-column="33" />
             </state>
           </provider>
@@ -72,15 +74,13 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/buildWidgets.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1402" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/viewAssignments.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
+            <state relative-caret-position="6341">
               <caret line="398" selection-start-line="398" selection-end-line="401" selection-end-column="62" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
@@ -92,7 +92,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sim.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
+            <state relative-caret-position="493">
               <caret line="33" column="42" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -104,8 +104,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/managestudents.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="8" selection-start-line="8" selection-end-line="8" selection-end-column="40" />
+            <state relative-caret-position="281">
+              <caret line="291" column="45" selection-start-line="291" selection-start-column="45" selection-end-line="291" selection-end-column="103" />
             </state>
           </provider>
         </entry>
@@ -121,14 +121,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>emergen</find>
-      <find>emergency</find>
-      <find>add_studnets</find>
-      <find>self.mp</find>
-      <find>StudentModel</find>
-      <find>failure_description</find>
-      <find>fcw</find>
-      <find>bw</find>
       <find>build_button</find>
       <find>simFaculty</find>
       <find>self.wr[&quot;student_info</find>
@@ -151,6 +143,14 @@
       <find>.hide()</find>
       <find>casetext</find>
       <find>self.button_list</find>
+      <find>self.exams</find>
+      <find>self.user_type</find>
+      <find>secondary</find>
+      <find>self.facilitate_transfer</find>
+      <find>self.sec_name</find>
+      <find>results_button</find>
+      <find>self.facilitate</find>
+      <find>tb</find>
     </findStrings>
     <replaceStrings>
       <replace>self.window_resources['section']</replace>
@@ -186,8 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/dbmigrator.py" />
-        <option value="$PROJECT_DIR$/palpationgrid.py" />
         <option value="$PROJECT_DIR$/models/baselinemodel.py" />
         <option value="$PROJECT_DIR$/models/exammodel.py" />
         <option value="$PROJECT_DIR$/models/studentmodel.py" />
@@ -235,6 +233,8 @@
         <option value="$PROJECT_DIR$/simFaculty.py" />
         <option value="$PROJECT_DIR$/testCreator.py" />
         <option value="$PROJECT_DIR$/aStringResources.py" />
+        <option value="$PROJECT_DIR$/ViewExams.py" />
+        <option value="$PROJECT_DIR$/viewExams.py" />
         <option value="$PROJECT_DIR$/viewPerformance.py" />
         <option value="$PROJECT_DIR$/testCreation.py" />
       </list>
@@ -339,13 +339,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561933260794</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Finished Faculty side. Need to figure assign">
-      <created>1577815037662</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1577815037662</updated>
     </task>
     <task id="LOCAL-00040" summary="Fixed results side with variable section choices.">
       <created>1578002904420</created>
@@ -683,7 +676,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584138585988</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="Need to add view option.">
+      <created>1584139068425</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1584139068425</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TodoView">
@@ -699,7 +699,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.11169652" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11169652" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -740,7 +740,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Done code revisions." />
     <MESSAGE value="Finished revisions and screen sizing" />
     <MESSAGE value="Final translation things" />
     <MESSAGE value="Reverse student and faculty buttons." />
@@ -765,7 +764,8 @@
     <MESSAGE value="Removed some comments from resources file." />
     <MESSAGE value="split choices. Made data pull by section too." />
     <MESSAGE value="Worked through logic for creating exams." />
-    <option name="LAST_COMMIT_MESSAGE" value="Worked through logic for creating exams." />
+    <MESSAGE value="Need to add view option." />
+    <option name="LAST_COMMIT_MESSAGE" value="Need to add view option." />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointLogExpression">
@@ -783,13 +783,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/palpationgrid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="34" column="37" lean-forward="true" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PKGBUILD">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1094,20 +1087,40 @@
     <entry file="file://$PROJECT_DIR$/assignment.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/sim.py">
+    <entry file="file://$PROJECT_DIR$/simFaculty.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="42" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+        <state relative-caret-position="663">
+          <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/simFaculty.py">
+    <entry file="file://$PROJECT_DIR$/selfpractice.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
+        <state relative-caret-position="3247">
+          <caret line="192" column="33" selection-start-line="192" selection-start-column="26" selection-end-line="192" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildWidgets.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewAssignments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6341">
+          <caret line="398" selection-start-line="398" selection-end-line="401" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sim.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="33" column="42" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -1116,58 +1129,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/managestudents.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="8" selection-start-line="8" selection-end-line="8" selection-end-column="40" />
+        <state relative-caret-position="281">
+          <caret line="291" column="45" selection-start-line="291" selection-start-column="45" selection-end-line="291" selection-end-column="103" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viewAssignments.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="398" selection-start-line="398" selection-end-line="401" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/viewExams.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/selfpractice.py">
+    <entry file="file://$PROJECT_DIR$/testCreator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="192" column="33" selection-start-line="192" selection-start-column="26" selection-end-line="192" selection-end-column="33" />
+        <state relative-caret-position="699">
+          <caret line="191" column="31" selection-start-line="191" selection-start-column="15" selection-end-line="191" selection-end-column="31" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/buildWidgets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1402" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/aStringResources.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="174" column="53" selection-start-line="174" selection-start-column="53" selection-end-line="174" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testCreator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1066">
-          <caret line="191" column="31" selection-start-line="191" selection-start-column="15" selection-end-line="191" selection-end-column="31" />
+        <state relative-caret-position="225">
+          <caret line="199" column="31" selection-start-line="199" selection-start-column="17" selection-end-line="199" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/viewPerformance.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="102" selection-start-line="102" selection-end-line="103" selection-end-column="44" />
+        <state relative-caret-position="-595">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/testCreation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="322" column="41" selection-start-line="322" selection-start-column="41" selection-end-line="322" selection-end-column="41" />
+        <state relative-caret-position="272">
+          <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
         </state>
       </provider>
     </entry>
