@@ -44,8 +44,8 @@ class SimFaculty(Gtk.Window, menuBar.MenuBar):
         self.facilitate_transfer(new_window=ManageStudents)
 
     def create_exams(self, widget):
-        from testCreator import TestCreator
-        self.facilitate_transfer(new_window=TestCreator)
+        from testCreation import TestCreation
+        self.facilitate_transfer(new_window=TestCreation)
 
     def view_performance(self, widget):
         from viewPerformance import ViewPerformance

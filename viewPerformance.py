@@ -144,9 +144,9 @@ class ViewPerformance(Gtk.Window, MenuBar):
         self.bw.create_columns(tree_view, column_header_list, custom_indices=[0, 6, 7])
 
         # Add navigation buttons
-        b_list = [self.string_resources["assign_button"], self.string_resources["results_button"],
-                  self.string_resources["delete_button"], self.string_resources["back_button"]]
-        f_list = [self.assign, self.results, self.delete, self.go_back]
+        b_list = [self.string_resources["results_button"],
+                  self.string_resources["back_button"]]
+        f_list = [self.results, self.go_back]
         button_tree = self.bw.add_horizontal_buttons(b_list, f_list, f_size=16)
 
         # pack all to vbox
@@ -154,72 +154,6 @@ class ViewPerformance(Gtk.Window, MenuBar):
         vbox.pack_start(button_tree, False, False, 0)
 
         return vbox
-
-    def assign_to_students_by_section(self, sections):
-        """ function to write to_take strings to database for test taking """
-        from totake import ToTake
-
-        # initialize db model
-        tt = ToTake()
-
-        # initialize a flag for return value
-        a_flag = False
-
-        # write assessment title and sec_string to db iteratively
-        for sec in sections:
-            # check in loop to see that not already assigned
-            result = tt.get_by_section_exam_id(key1=sec, key2=self.window_resources["exam_id"])
-            if len(result) > 0:
-                sim_message(self, info_string=self.string_resources["already_assigned"],
-                            secondary_text=self.string_resources["already_description"])
-            else:
-                tt.save_to_db(self.window_resources["exam_id"], sec)
-                a_flag = True
-
-        return a_flag
-
-    def assign(self, widget):
-        """ Assign highlighted exam to section(s) of students """
-        if self.no_exams_flag:
-            sim_message(self, info_string=self.string_resources["no_data"],
-                        secondary_text=self.string_resources["no_data_message"])
-
-        elif self.window_resources["exam_id"] == '':
-            sim_message(self, info_string=self.string_resources["no_assessment_selected"],
-                        secondary_text=self.string_resources["no_assess_description"])
-
-        else:
-            # call get sections
-            st = SectionTree(self.bw, self.sec_name)
-            bt = st.get_sections()
-
-            st.sec_name = []
-
-            if bt:
-
-                s = sim_class_message(self,
-                                      bt,
-                                      st.sec_name,
-                                      info_string=self.string_resources["choose_title"],
-                                      secondary_text=self.string_resources["choose_sections"])
-
-                if s:
-                    assigned_flag = self.assign_to_students_by_section(s)
-
-                    if assigned_flag:
-                        sim_message(self, info_string=self.string_resources["assigned"],
-                                    secondary_text=self.string_resources["assigned_description"])
-                        self.facilitate_transfer(ViewPerformance, self.user_type, self.name, self.password)
-
-                else:
-                    sim_message(self, info_string=self.string_resources["info_string"],
-                                secondary_text=self.string_resources["secondary"])
-
-            else:
-                sim_message(self, info_string=self.string_resources["no_students_error"],
-                            secondary_text=self.string_resources["please_add"])
-
-        return
 
     def results(self, widget):
         from assessmentViewer import AssessmentViewer
@@ -256,42 +190,6 @@ class ViewPerformance(Gtk.Window, MenuBar):
             else:
                 sim_message(self, info_string=self.string_resources["no_students_error"],
                             secondary_text=self.string_resources["please_add"])
-
-    def delete(self, widget):
-        if self.no_exams_flag:
-            sim_message(self, info_string=self.string_resources["no_data"],
-                        secondary_text=self.string_resources["no_data_message"])
-
-        elif self.window_resources["exam_id"] == '':
-            sim_message(self, info_string=self.string_resources["no_assessment_selected"],
-                        secondary_text=self.string_resources["no_assess_description"])
-
-        else:
-
-            from totake import ToTake
-            from baselinemodel import BaselineModel
-            from messages import sim_reset_dialogue
-
-            tt = ToTake()
-            tm = TakenModel()
-            bm = BaselineModel()
-
-            yes_no = sim_reset_dialogue(self, info_string=self.string_resources["warning"],
-                                        secondary_text=self.string_resources["warning_message"])
-
-            if yes_no == "reset":
-
-                # execute delete statements
-                self.exam_info.delete_by_exam_id(key=self.window_resources["exam_id"])
-                bm.delete_by_exam_id(key=self.window_resources["exam_id"])
-                tt.delete_by_exam_id(key=self.window_resources["exam_id"])
-                tm.delete_rows(key=self.window_resources["exam_id"])
-
-                self.facilitate_transfer(ViewPerformance, self.user_type, self.name, self.password)
-
-            else:
-                sim_message(self, info_string=self.string_resources["no_delete"],
-                            secondary_text=self.string_resources["no_delete_message"])
 
     def go_back(self, widget):
         from simFaculty import SimFaculty

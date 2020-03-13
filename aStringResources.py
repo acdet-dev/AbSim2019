@@ -15,10 +15,10 @@ class AStringResources:
             string_resources = {
                 "welcome_text": _(u"Welcome to AbSim"),
                 "faculty_button": _(u"Faculty"),
-                "faculty_description": _(u"Click here to configure AbSim and create assessments"),
+                "faculty_description": _(u"Click here to configure AbSim and create examinations"),
                 "student_button": _(u"Student"),
                 "student_description": _(u"Demonstrate proficiency in abdominal palpation through practice and "
-                                         u"assessments")
+                                         u"examination")
             }
 
         elif self.identifier == "menu_bar":
@@ -63,7 +63,7 @@ class AStringResources:
                 "add_students_description": _(u"Provide AbSim Student Information"),
                 "create_button": _(u"Select Test Items"),
                 "create_description": _(u"Select Test Items to Include on Examination"),
-                "view_button": _(u"View Examination"),
+                "view_button": _(u"View Performance"),
                 "view_description": _(u"Preview Student Test Performance"),
                 "back_description": _(u"Return to Initial Faculty Screen")
             }
@@ -161,54 +161,64 @@ class AStringResources:
                 # different test items on your examination
                 # potentially put in time limit for taking exam
                 # add (MD_22_3.12) for assessment title
-                "window_title": _(u"AbSim Assessment Creator"),
-                "option_1_title": _(u"1. Baseline Assessment"),
-                "option_1": _(u"Add Baseline Assessment?"),
-                "option_2_title": _(u"2. Abnormality Detection Assessment"),
-                "option_3_title": _(u"3. Case Assessment"),
-                "input_title_entry": _(u"Input Assessment Title"),
-                "save_button": _(u"Save Assessment"),
-                "assess_string": _(u"Assessment"),  # add trailing space
+                "window_title": _(u"AbSim Exam Creator"),
+                "option_1_title": _(u"1. Palpatory Examination"),
+                "option_1": _(u"Add Palpatory Examination?"),
+                "option_2_title": _(u"2. Abnormality Detection"),
+                "option_3_title": _(u"3. Diagnose Case Vignettes"),
+                "input_title_entry": _(u"Input Exam Title"),
+                "save_button": _(u"Save Exam"),
+                "next_button": _(u"Save and Continue"),
+                "assess_string": _(u"Exam"),  # add trailing space
+                "nb_tab_1": _(u"Instructions"),
+                "nb_tab_2": _(u"Create Exam"),
+                "nb_tab_3": _(u"View Created Exams"),
+                "palpatory_text": _(u"Palpatory Examination"),  # add 1. in front of this
+                "palpatory_description": _(u"Select whether to add palpatory exam to current exam."),
+                "ab_text": _(u"Abnormality Detection"),
+                "ab_description": _(u"Select abdominal abnormalities (or lack thereof) to include on current exam."),
+                "ddx_text": _(u"Diagnose Case Vignettes"),
+                "ddx_description": _(u"Select cases for students to practice diagnosing with case text.")
             }
 
         elif self.identifier == "view_performance":
             string_resources = {
-                "window_title": _(u"View Assessments"),
-                "notebook_tab_1": _(u"Assessments"),
-                "column_header": _(u"Assessment Title"),
+                "window_title": _(u"View Examination Performance"),
+                "notebook_tab_1": _(u"Examinations"),
+                "column_header": _(u"Exam Title"),
                 "column_header_2": _(u"Assigned To"),
                 "column_header_3": _(u"Completed"),
-                "notebook_tab_2": _(u"Baseline Palpation"),
+                "notebook_tab_2": _(u"Palpatory Examination"),
                 "notebook_tab_3": _(u"Abnormality Detection"),
-                "notebook_tab_4": _(u"Case Diagnosis"),
+                "notebook_tab_4": _(u"Diagnose Case Vignettes"),
                 "view_button": _(u"View"),
                 "assign_button": _(u"Assign"),
                 "delete_button": _(u"Delete"),
                 "choose_title": _(u"Choose Section(s)"),
                 "choose_description": _(u"Select section name(s) to display results for that (those) section(s)."),
-                "choose_sections": _(u"Select section name(s) to which to assign assessment."),
+                "choose_sections": _(u"Select section name(s) to which to assign exams."),
                 "results_button": _(u"Results"),
-                "baseline_text": _(u"Baseline Assessment:"),
+                "baseline_text": _(u"Palpatory Examination:"),
                 "ab_text": _(u"Abnormality Detection:"),
-                "ddx_text": _(u"Case Diagnosis:"),
-                "base_text": _(u"Select assessment to view items assigned."),
+                "ddx_text": _(u"Diagnose Case Vignettes:"),
+                "base_text": _(u"Select examination to view items assigned."),
                 "info_string": _(u"No Section(s) Selected"),
                 "secondary": _(u"Please select section(s) to view student performance."),
                 "section_helper": _(u"Section"),  # add trailing space
                 "no_students_error": _(u"No Sections Exist"),
                 "please_add": _(u"Please add students in previous screen."),
-                "warning": _(u"Delete Assessment"),
-                "warning_message": _(u"Are you sure you wish to delete the selected assessment?"),
-                "no_delete": _(u"Assessment Not Deleted"),
-                "no_delete_message": _(u"AbSim will not delete assessment and associated data."),
-                "no_data": _(u"Assessment Data Not Found"),
-                "no_data_message": _(u"Please check back when students have taken assessments."),
-                "assigned": _(u"Assessment Assignment Successful"),
-                "assigned_description": _(u"Students in section(s) assigned may take this assessment."),
-                "already_assigned": _(u"Assessment Already Assigned"),
-                "already_description": _(u"The chosen section is already assigned this assessment."),
-                "no_assessment_selected": _(u"No Assessment Selected"),
-                "no_assess_description": _(u"Please select an assessment to assign, view results, or delete.")
+                "warning": _(u"Delete Examination"),
+                "warning_message": _(u"Are you sure you wish to delete the selected examination?"),
+                "no_delete": _(u"Examination Not Deleted"),
+                "no_delete_message": _(u"AbSim will not delete exam and associated data."),
+                "no_data": _(u"Exam Data Not Found"),
+                "no_data_message": _(u"Please check back when students have taken exams."),
+                "assigned": _(u"Examination Assignment Successful"),
+                "assigned_description": _(u"Students in section(s) assigned may take this exam."),
+                "already_assigned": _(u"Exam Already Assigned"),
+                "already_description": _(u"The chosen section is already assigned this exam."),
+                "no_assessment_selected": _(u"No Exam Selected"),
+                "no_assess_description": _(u"Please select an exam to assign, view results, or delete.")
             }
 
         elif self.identifier == "exam_model":
@@ -238,8 +248,8 @@ class AStringResources:
             string_resources = {
                 "self_learning_button": _(u"Self-directed Learning"),
                 "self_description": _(u"Learn and Practice Abdominal Palpation"),
-                "view_button": _(u"Take Assigned Assessment"),
-                "view_description": _(u"Complete a Variety of Assessments Using AbSim"),
+                "view_button": _(u"Take Assigned Examinations"),
+                "view_description": _(u"Complete a Variety of Examinations Using AbSim"),
                 "choose_title": _(u"Select Class Section"),
                 "choose_description": _(u"Choose your appropriate class section."),
                 "info_string": _(u"No Section Chosen"),
@@ -250,10 +260,10 @@ class AStringResources:
 
         elif self.identifier == "view_assignments":
             string_resources = {
-                "window_title": _(u"AbSim Assignment Viewer"),
-                "ab_option": _(u"Abnormality Assessment"),
-                "ddx_option": _(u"Case Text Assessment"),
-                "baseline_option": _(u"Baseline Assessment"),
+                "window_title": _(u"AbSim Examination Viewer"),
+                "ab_option": _(u"Abnormalit Detection"),
+                "ddx_option": _(u"Diagnose with Case Vignette"),
+                "baseline_option": _(u"Palpatory Examination"),
                 "view_option": _(u"View Assessments"),
                 "column_header": _(u"Assessment Title"),
                 "column_header_2": _(u"Ailment"),
