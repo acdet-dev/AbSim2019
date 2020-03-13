@@ -324,9 +324,8 @@ class CreatePage(Gtk.VBox):
 
         elif self.counter == 3:
             self.add_to_exam()
-            self.window_resources["notebook"].set_current_page(2)
-            self.window_resources["notebook"].get_nth_page(0).hide()
-            self.window_resources["notebook"].get_nth_page(1).hide()
+            self.facilitate_transfer(self.window_resources['user_type'], self.window_resources['name'],
+                                     self.window_resources['password'], 2, new_window=TestCreation)
 
     def add_to_exam(self):
         exam_model = e.ExamModel()
