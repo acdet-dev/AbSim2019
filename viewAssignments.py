@@ -532,9 +532,9 @@ class ViewTests(Gtk.HBox):
 
         taken_model = takenmodel.TakenModel()
 
-        taken_list = taken_model.get_by_score_id(key=password)
+        taken_list = taken_model.get_by_score_id(key1=password, key2=self.exam_resources["section"])
         baseline_model = baselinemodel.BaselineModel()
-        baseline_list = baseline_model.get_by_score_id(key=password)
+        baseline_list = baseline_model.get_by_score_id(key1=password, key2=self.exam_resources["section"])
 
         if taken_list:
             for i in range(0, len(taken_list)):
@@ -587,7 +587,7 @@ class ViewTests(Gtk.HBox):
 
         student_model = studentmodel.StudentModel()
         # self.allRows = self.faculty_model.get_all(faculty_pw)
-        student = student_model.get_by_student_id(student_id)
+        student = student_model.get_by_student_id(student_id, self.exam_resources['section'])
 
         return student
 
@@ -596,7 +596,6 @@ class ViewTests(Gtk.HBox):
             student = self.get_info(credentials)
 
             if student:
-
                 try:
                     # check password and section info
                     if distance(credentials, student[3]) < 1 and student[0] == self.exam_resources['section']:
@@ -608,12 +607,12 @@ class ViewTests(Gtk.HBox):
                                     secondary_text=self.string_resources["fail_description"])
                 except TypeError as e:
                     logging.debug('No student found. Passing to login failure message.')
-                    pass
+                    sim_message(self.view_resources['window'], info_string=self.string_resources["login_fail"],
+                                secondary_text=self.string_resources["fail_description"])
             else:
                 logging.debug('No student in record.')
                 sim_message(self.view_resources['window'], info_string=self.string_resources["login_fail"],
                             secondary_text=self.string_resources["fail_description"])
-                pass
 
         else:
             sim_message(self.view_resources['window'], info_string=self.string_resources["login_fail"],

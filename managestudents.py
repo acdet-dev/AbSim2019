@@ -214,8 +214,8 @@ class ManagePage(Gtk.VBox):
         result = []
 
         for s in students:
-            info = list(self.wr["student_info"].get_by_student_id(s))
-            scores = tm.get_by_score_id(s)
+            info = list(self.wr["student_info"].get_by_student_id(s, self.wr["section_id"]))
+            scores = tm.get_by_score_id(s, self.wr["section_id"])
             if scores:
                 info.append(str(len(scores)))
             else:
@@ -305,9 +305,9 @@ class ManagePage(Gtk.VBox):
 
         str_choices = [str(c) for c in choices]
 
-        st = SectionTree(self.bw, str_choices, one_flag=True)
+        st = SectionTree(self.bw, [], one_flag=True)
 
-        bt = st.build_button_tree(sec_nums=0, custom_flag=True)
+        bt = st.build_button_tree(sec_nums=str_choices)
 
         st.sec_name = []
 
@@ -331,9 +331,9 @@ class ManagePage(Gtk.VBox):
         return return_string
 
     def initiate_section_creation(self, sec):
-        st = SectionTree(self.bw, self.string_resources["designation_types"], one_flag=True)
+        st = SectionTree(self.bw, [], one_flag=True)
 
-        bt = st.build_button_tree(sec_nums=0, custom_flag=True)
+        bt = st.build_button_tree(sec_nums=self.string_resources["designation_types"])
 
         st.sec_name = []
 

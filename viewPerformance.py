@@ -248,7 +248,7 @@ class ViewPerformance(Gtk.Window, MenuBar):
                                       secondary_text=self.string_resources["choose_description"])
 
                 if s:
-                    AssessmentViewer(sorted(s), self.window_resources, self.bases, self.cases, self.ddxs)
+                    AssessmentViewer(s, self.window_resources, self.bases, self.cases, self.ddxs)
                 else:
                     sim_message(self, info_string=self.string_resources["info_string"],
                                 secondary_text=self.string_resources["secondary"])

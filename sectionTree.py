@@ -10,21 +10,49 @@ class SectionTree:
         self.b_list = []
         self.flag = one_flag
 
-    def build_button_tree(self, sec_nums, custom_flag=False):
-        check_button_box = Gtk.VBox()
+    def add_buttons(self, cbb, secs):
+        for num in secs:
+            button = self.bw.build_check_button(num, self.on_button_toggled, 12, [5, 5])
+            cbb.pack_start(button, False, False, 0)
+            self.b_list.append(button)
 
-        if not custom_flag:
+        return cbb
 
-            for num in sec_nums:
-                button = self.bw.build_check_button(num, self.on_button_toggled, 12, [5, 5])
-                check_button_box.pack_start(button, False, False, 0)
-                self.b_list.append(button)
+    def create_box_add(self, s_nums):
+        c_b_vbox = Gtk.VBox()
+        c_b_part = self.add_buttons(c_b_vbox, s_nums)
+
+        return c_b_part
+
+    def chunks(self, lst, n):
+        """Yield successive n-sized chunks from lst."""
+        for i in range(0, len(lst), n):
+            yield lst[i:i + n]
+
+    def build_button_tree(self, sec_nums):
+        check_len = len(sec_nums)
+
+        if check_len > 3:
+            check_button_box = Gtk.HBox()
+            if 3 < check_len <= 4:
+                chunked = self.chunks(sec_nums, 2)
+
+            elif 4 < check_len <= 9:
+                chunked = self.chunks(sec_nums, 3)
+
+            elif 9 < check_len <= 16:
+                chunked = self.chunks(sec_nums, 4)
+
+            else:
+                chunked = self.chunks(sec_nums, 5)
+
+            for c in chunked:
+                c_b_b = self.create_box_add(c)
+
+                check_button_box.pack_start(c_b_b, False, False, 10)
 
         else:
-            for b in self.sec_name:
-                button = self.bw.build_check_button(b, self.on_button_toggled, 12, [5, 5])
-                check_button_box.pack_start(button, False, False, 0)
-                self.b_list.append(button)
+            check_button_box = self.create_box_add(sec_nums)
 
         return check_button_box
 

@@ -95,18 +95,18 @@ class StudentModel:
         c.close()
         db_conn.close()
 
-    def get_by_student_id(self, key):
+    def get_by_student_id(self, key1, key2):
         db_conn = self.connect()
         c = db_conn.cursor()
 
         stmt = '''
             SELECT section, user_last, user_first, student_id
             FROM student
-            WHERE student_id=?
+            WHERE student_id=? and section=?
         '''
         try:
             # trying to match with datatype not string!
-            c.execute(stmt, (key,))
+            c.execute(stmt, (key1, key2))
             row = c.fetchall()
 
             student = [list(elem) for elem in row]
