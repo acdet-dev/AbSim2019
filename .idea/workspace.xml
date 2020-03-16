@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0d7a6e5a-5cd6-4b6b-9c3f-28fcc3795056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aStringResources.py" beforeDir="false" afterPath="$PROJECT_DIR$/aStringResources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildWidgets.py" beforeDir="false" afterPath="$PROJECT_DIR$/buildWidgets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sectionTree.py" beforeDir="false" afterPath="$PROJECT_DIR$/sectionTree.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testCreation.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCreation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,20 +13,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aStringResources.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1207">
+            <state relative-caret-position="-68">
               <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testCreation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1243">
-              <caret line="543" column="56" selection-start-line="543" selection-start-column="45" selection-end-line="543" selection-end-column="56" />
+            <state relative-caret-position="240">
+              <caret line="291" column="52" selection-start-line="291" selection-start-column="52" selection-end-line="291" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -221,8 +218,8 @@
         <option value="$PROJECT_DIR$/viewPerformance.py" />
         <option value="$PROJECT_DIR$/buildWidgets.py" />
         <option value="$PROJECT_DIR$/sectionTree.py" />
-        <option value="$PROJECT_DIR$/testCreation.py" />
         <option value="$PROJECT_DIR$/aStringResources.py" />
+        <option value="$PROJECT_DIR$/testCreation.py" />
       </list>
     </option>
   </component>
@@ -320,13 +317,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561933260794</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Finalized assignment of assessments. Need to do add students view">
-      <created>1578010043791</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1578010043791</updated>
     </task>
     <task id="LOCAL-00043" summary="Updated exam model to handle no items entered.">
       <created>1578069820461</created>
@@ -664,7 +654,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584143450171</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="Finished Frank's text.">
+      <created>1584397510558</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1584397510559</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TodoView">
@@ -677,15 +674,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1040" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11169652" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21157685" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.15384616" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23240589" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39869988" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -721,7 +718,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Reverse student and faculty buttons." />
     <MESSAGE value="Made small changes to setup file" />
     <MESSAGE value="Made changes to setup file and exportation of data." />
     <MESSAGE value="Made Frank's changes..." />
@@ -746,7 +742,8 @@
     <MESSAGE value="Need to add view option." />
     <MESSAGE value="Added View Option. Need Text from Frank" />
     <MESSAGE value="Fixed Exam Creation Logic." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Exam Creation Logic." />
+    <MESSAGE value="Finished Frank's text." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished Frank's text." />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointLogExpression">
@@ -1137,17 +1134,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testCreation.py">
+    <entry file="file://$PROJECT_DIR$/aStringResources.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1243">
-          <caret line="543" column="56" selection-start-line="543" selection-start-column="45" selection-end-line="543" selection-end-column="56" />
+        <state relative-caret-position="-68">
+          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aStringResources.py">
+    <entry file="file://$PROJECT_DIR$/testCreation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1207">
-          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
+        <state relative-caret-position="240">
+          <caret line="291" column="52" selection-start-line="291" selection-start-column="52" selection-end-line="291" selection-end-column="52" />
         </state>
       </provider>
     </entry>

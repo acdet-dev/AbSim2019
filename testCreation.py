@@ -286,10 +286,10 @@ class CreatePage(Gtk.VBox):
                                                    alignment=[0, 0])
 
         # create scrollers
-        d_scroller = self.bw.create_scroller(o_w=600, o_h=250)
+        d_scroller = self.bw.create_scroller(o_w=550, o_h=250)
         d_scroller.add(depth_box)
 
-        t_scroller = self.bw.create_scroller(o_w=600, o_h=250)
+        t_scroller = self.bw.create_scroller(o_w=550, o_h=250)
         t_scroller.add(thorough_box)
 
         # pack to hbox
