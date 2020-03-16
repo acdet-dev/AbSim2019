@@ -102,6 +102,40 @@ class InstructionPage(Gtk.VBox):
         # initialize passed string resources
         self.string_resources = string_resources
         self.window_resources = wr
+        self.bw = BuildWidgets()
+
+        built_box = self.build_interface()
+
+        self.add(built_box)
+
+        built_box.show_all()
+
+        self.show()
+
+    def build_interface(self):
+        box = Gtk.VBox()
+
+        label = self.bw.build_label(label_text=self.string_resources["header_text"], f_size=20, alignment=[0, 0])
+
+        info_label = self.bw.build_label(label_text=self.string_resources["create_info"], f_size=16, alignment=[0, 0])
+
+        constructed_text = self.string_resources["test_selection_description"] + u":\n\n" + \
+                           u"1.\t" + self.string_resources["test_option_1"] + u"\n" + \
+                           u"2.\t" + self.string_resources["test_option_2"] + u"\n" + \
+                           u"3.\t" + self.string_resources["test_option_3"]
+
+        options_label = self.bw.build_label(label_text=constructed_text, f_size=16, alignment=[0, 0])
+
+        move_on_text = self.bw.build_label(label_text=self.string_resources["create_exam_move"],
+                                           f_size=16,
+                                           alignment=[0, 0])
+
+        box.pack_start(label, False, False, 10)
+        box.pack_start(info_label, False, False, 10)
+        box.pack_start(options_label, False, False, 10)
+        box.pack_start(move_on_text, False, False, 10)
+
+        return box
 
 
 class CreatePage(Gtk.VBox):
@@ -112,6 +146,8 @@ class CreatePage(Gtk.VBox):
         self.string_resources = string_resources
         self.window_resources = wr
         self.label_tb = CaseTextBuffer()
+        self.test_desc_tb = CaseTextBuffer()
+        self.test_desc_tb_2 = CaseTextBuffer()
         self.description_tb = CaseTextBuffer()
         self.check_buttons_tb = CaseTextBuffer()
         self.bw = BuildWidgets()
@@ -135,46 +171,6 @@ class CreatePage(Gtk.VBox):
         self.built_box.show_all()
 
         self.show()
-
-    def add_check_buttons(self, lst, use_case_dict=False):
-        from math import ceil
-
-        check_button_box = Gtk.HBox()
-
-        check_button_half = Gtk.VBox()
-        check_button_o_half = Gtk.VBox()
-
-        if use_case_dict:
-            for i in range(0, ceil(len(lst)/2)):
-                button = self.bw.build_check_button(self.case_dict[lst[i]], function=self.on_button_toggled,
-                                                    f_size=14, padding=[10, 10])
-                check_button_half.pack_start(button, False, False, 0)
-                self.button_list.append(button)
-
-            for j in range(ceil(len(lst)/2), len(lst)):
-                button2 = self.bw.build_check_button(self.case_dict[lst[j]], function=self.on_button_toggled,
-                                                     f_size=14, padding=[10, 10])
-                check_button_o_half.pack_start(button2, False, False, 0)
-                self.button_list.append(button2)
-
-        else:
-            lst = sorted(lst)
-            for i in range(0, ceil(len(lst) / 2)):
-                button = self.bw.build_check_button(label_text=lst[i], function=self.on_button_toggled,
-                                                    f_size=14, padding=[10, 10])
-                check_button_half.add(button)
-                self.button_list.append(button)
-
-            for j in range(ceil(len(lst) / 2), len(lst)):
-                button2 = self.bw.build_check_button(label_text=lst[j], function=self.on_button_toggled,
-                                                     f_size=14, padding=[10, 10])
-                check_button_o_half.add(button2)
-                self.button_list.append(button2)
-
-        check_button_box.pack_start(check_button_half, False, False, 10)
-        check_button_box.pack_start(check_button_o_half, False, False, 10)
-
-        return check_button_box
 
     def build_buttons(self, rows, columns):
         button_table = Gtk.Table(rows=rows, columns=columns, homogeneous=True)
@@ -223,30 +219,106 @@ class CreatePage(Gtk.VBox):
         box = Gtk.VBox()
 
         # initialize and add label buffer text
-        label_buffer_text = "1. {}".format(self.string_resources["palpatory_text"])
+        label_buffer_text = "1. {}".format(self.string_resources["test_option_1"])
 
         self.label_tb.new_case(label_buffer_text)
 
-        label_scroller = self.create_text_view(self.label_tb, 300, 50)
+        label_scroller = self.create_text_view(self.label_tb, 300, 25)
+
+        # intialize label description
+        palp_desc_label_text = self.string_resources["option_1_desc"]
+        palp_desc_label_text_2 = self.string_resources["option_1_desc_2"]
+
+        self.test_desc_tb.new_case(palp_desc_label_text)
+        self.test_desc_tb_2.new_case(palp_desc_label_text_2)
+
+        label_desc = self.create_text_view(self.test_desc_tb, 300, 50)
+        label_desc_2 = self.create_text_view(self.test_desc_tb_2, 300, 50)
+
+        # initialize horizontal labels
+        hbox = Gtk.HBox()
+        depth_box = Gtk.VBox()
+        depth_label_header = self.bw.build_label(label_text=self.string_resources["depth_header"], f_size=14,
+                                                 weight="bold",
+                                                 alignment=[0, 0])
+        depth_label_desc = self.bw.build_label(label_text=self.string_resources["depth_desc"], f_size=14,
+                                               alignment=[0, 0])
+
+        # build images
+        d_image_1 = self.bw.build_pixbuf_logo(img_string="html/dummy_imitation.svg", o_w=200, o_h=200)
+        d_image_2 = self.bw.build_pixbuf_logo(img_string="html/dummy_imitation.svg", o_w=200, o_h=200)
+        d_image_3 = self.bw.build_pixbuf_logo(img_string="html/dummy_imitation.svg", o_w=200, o_h=200)
+
+        # initialize box for packing images
+        d_hbox = Gtk.HBox(False, 2)
+        d_hbox.pack_start(d_image_1, False, False, 10)
+        d_hbox.pack_start(d_image_2, False, False, 10)
+        d_hbox.pack_start(d_image_3, False, False, 10)
+
+        depth_box.pack_start(depth_label_header, False, False, 10)
+        depth_box.pack_start(depth_label_desc, False, False, 10)
+        depth_box.pack_start(d_hbox, False, False, 10)
+
+        thorough_box = Gtk.VBox()
+        thorough_label_header = self.bw.build_label(label_text=self.string_resources["thoroughness_header"], f_size=14,
+                                                    weight="bold",
+                                                    alignment=[0, 0])
+        thorough_label_desc = self.bw.build_label(label_text=self.string_resources["thoroughness_desc"], f_size=14,
+                                                  alignment=[0, 0])
+
+        # build images
+        t_image_1 = self.bw.build_pixbuf_logo(img_string="html/dummy_imitation.svg", o_w=200, o_h=200)
+        t_image_2 = self.bw.build_pixbuf_logo(img_string="html/dummy_imitation.svg", o_w=200, o_h=200)
+        t_image_3 = self.bw.build_pixbuf_logo(img_string="html/dummy_imitation.svg", o_w=200, o_h=200)
+
+        # initialize box for packing images
+        t_hbox = Gtk.HBox(False, 2)
+        t_hbox.pack_start(t_image_1, False, False, 10)
+        t_hbox.pack_start(t_image_2, False, False, 10)
+        t_hbox.pack_start(t_image_3, False, False, 10)
+
+        thorough_box.pack_start(thorough_label_header, False, False, 10)
+        thorough_box.pack_start(thorough_label_desc, False, False, 10)
+        thorough_box.pack_start(t_hbox, False, False, 10)
+
+        # add text
+        depth_thorough_label = self.bw.build_label(label_text=self.string_resources["final_note"], f_size=14,
+                                                   alignment=[0, 0])
+
+        # create scrollers
+        d_scroller = self.bw.create_scroller(o_w=600, o_h=250)
+        d_scroller.add(depth_box)
+
+        t_scroller = self.bw.create_scroller(o_w=600, o_h=250)
+        t_scroller.add(thorough_box)
+
+        # pack to hbox
+        hbox.pack_start(d_scroller, False, False, 10)
+        hbox.pack_start(t_scroller, False, False, 10)
 
         # initialize and add description buffer text
         description_text = self.string_resources["palpatory_description"]
         self.description_tb.new_case(description_text)
 
-        desc_scroller = self.create_text_view(self.description_tb, 300, 50)
+        desc_scroller = self.create_text_view(self.description_tb, 300, 25)
 
         # add check button options
         palpatory_bta = self.build_buttons(1, 1)
 
         # add normal page nav buttons
-        b_list = [self.string_resources["next_button"], self.string_resources["back_button"]]
-        f_list = [self.next_type, self.return_home]
+        b_list = [self.string_resources["next_button"], self.string_resources["restart"],
+                  self.string_resources["back_button"]]
+        f_list = [self.next_type, self.restart, self.return_home]
         button_tree = self.bw.add_horizontal_buttons(button_list=b_list, functions=f_list, f_size=16)
 
-        box.pack_start(label_scroller, False, False, 10)
-        box.pack_start(desc_scroller, False, False, 10)
-        box.pack_start(palpatory_bta, False, False, 10)
-        box.pack_start(button_tree, False, False, 10)
+        box.pack_start(label_scroller, False, False, 5)
+        box.pack_start(label_desc, False, False, 5)
+        box.pack_start(label_desc_2, False, False, 5)
+        box.pack_start(hbox, False, False, 5)
+        box.pack_start(depth_thorough_label, False, False, 5)
+        box.pack_start(desc_scroller, False, False, 5)
+        box.pack_start(palpatory_bta, False, False, 5)
+        box.pack_start(button_tree, False, False, 5)
 
         return box
 
@@ -259,6 +331,10 @@ class CreatePage(Gtk.VBox):
         new_window(*args)
         ht.finish_transfer()
 
+    def restart(self, widget):
+        self.facilitate_transfer(self.window_resources['user_type'], self.window_resources['name'],
+                                 self.window_resources['password'], 1, new_window=TestCreation)
+
     def return_home(self, widget):
         from simFaculty import SimFaculty
         self.facilitate_transfer(self.window_resources['user_type'], self.window_resources['name'],
@@ -269,10 +345,15 @@ class CreatePage(Gtk.VBox):
         box_children = self.built_box.get_children()
 
         # remove current check list
-        self.built_box.remove(box_children[2])
+        if self.counter == 1:
+            self.built_box.remove(box_children[3])
+            self.built_box.remove(box_children[4])
+            self.built_box.remove(box_children[6])
+        else:
+            self.built_box.remove(box_children[4])
 
         # move added check list to second position
-        self.built_box.reorder_child(box_children[-1], 2)
+        self.built_box.reorder_child(box_children[-1], 4)
 
         # show all widgets existing in built_box
         self.built_box.show_all()
@@ -282,20 +363,31 @@ class CreatePage(Gtk.VBox):
 
         if self.counter == 1:
             # initialize and add label buffer text
-            label_bt = "2. {}".format(self.string_resources["ab_text"])
+            label_bt = "2. {}".format(self.string_resources["test_option_2"])
             self.label_tb.new_case(label_bt)
+
+            ab_label = self.string_resources["ab_label_desc"]
+            ab_label_2 = self.string_resources["ab_label_desc_2"]
+
+            self.test_desc_tb.new_case(ab_label)
+            self.test_desc_tb_2.new_case(ab_label_2)
 
             # initialize and add description buffer text
             description_text = self.string_resources["ab_description"]
             self.description_tb.new_case(description_text)
 
             # create abnormality button alignment
-            case_commands = [
+            case_comms = [
                 'none n', 'appendix t', 'appendix g', 'appendix r', 'appendix gr',
                 'bladder t', 'colon t', 'colon g', 'gallbladder t', 'gallbladder g',
                 'ugi t', 'ovary_left t', 'ovary_left g', 'ovary_right t', 'ovary_right g',
                 'pancreas t', 'hepatomegaly n', 'splenomegaly n', 'enlarged_bladder n']
-            abnormality_bta = self.add_check_buttons(lst=case_commands, use_case_dict=True)
+
+            case_commands = [self.case_dict[i] for i in case_comms]
+
+            st = SectionTree(self.bw, [], one_flag=False)
+            abnormality_bta = st.build_button_tree(sec_nums=case_commands, function=self.on_button_toggled)
+
             self.built_box.pack_start(abnormality_bta, False, False, 10)
 
             # remove existing choice tree child and add new
@@ -303,8 +395,14 @@ class CreatePage(Gtk.VBox):
 
         elif self.counter == 2:
             # initialize and add label buffer text
-            label_bt = "3. {}".format(self.string_resources["ddx_text"])
+            label_bt = "3. {}".format(self.string_resources["test_option_3"])
             self.label_tb.new_case(label_bt)
+
+            ddx_label = self.string_resources["ddx_label_desc"]
+            ddx_label_2 = self.string_resources["ddx_label_desc_2"]
+
+            self.test_desc_tb.new_case(ddx_label)
+            self.test_desc_tb_2.new_case(ddx_label_2)
 
             # initialize and add description buffer text
             description_text = self.string_resources["ddx_description"]
@@ -316,7 +414,9 @@ class CreatePage(Gtk.VBox):
                 temp = [i["ddx_name"] for i in j]
                 self.ddx_list.append(temp[0])
 
-            ddx_bta = self.add_check_buttons(lst=self.ddx_list)
+            # use tree class to build button tree
+            st = SectionTree(self.bw, [], one_flag=False)
+            ddx_bta = st.build_button_tree(sec_nums=self.ddx_list, function=self.on_button_toggled)
             self.built_box.pack_start(ddx_bta, False, False, 10)
 
             # remove existing choice tree child and add new
@@ -441,8 +541,8 @@ class ViewExams(Gtk.VBox):
         # Add navigation buttons
         if self.view_flag == "edit":
             b_list = [self.string_resources["assign_button"], self.string_resources["delete_button"],
-                      self.string_resources["back_button"]]
-            f_list = [self.assign, self.delete, self.go_back]
+                      self.string_resources["button_back"], self.string_resources["back_button"]]
+            f_list = [self.assign, self.delete, self.restart, self.go_back]
         else:
             b_list = [self.string_resources["results_button"],
                       self.string_resources["back_button"]]
@@ -454,6 +554,10 @@ class ViewExams(Gtk.VBox):
         vbox.pack_start(button_tree, False, False, 0)
 
         return vbox
+
+    def restart(self, widget):
+        self.facilitate_transfer(TestCreation, self.window_resources["user_type"], self.window_resources["name"],
+                                 self.window_resources["password"], 1)
 
     def results(self, widget):
         from assessmentViewer import AssessmentViewer
@@ -589,7 +693,8 @@ class ViewExams(Gtk.VBox):
                 tt.delete_by_exam_id(key=self.window_resources["exam_id"])
                 tm.delete_rows(key=self.window_resources["exam_id"])
 
-                self.facilitate_transfer(TestCreation, self.window_resources["user_type"], self.window_resources["name"],
+                self.facilitate_transfer(TestCreation, self.window_resources["user_type"],
+                                         self.window_resources["name"],
                                          self.window_resources["password"], 2)
 
             else:
@@ -665,8 +770,8 @@ class ViewExams(Gtk.VBox):
                 # write string to print
                 completed_string = str(num_taken) + "/" + str(num_students)
 
-                case_list_comm, case_title_list, baseline_model, baseline_flag,\
-                    ddx_cases = ep.parse_exam_info(case_info)
+                case_list_comm, case_title_list, baseline_model, baseline_flag, \
+                ddx_cases = ep.parse_exam_info(case_info)
                 if baseline_flag:
                     base = 'yes'
                 else:
@@ -701,8 +806,8 @@ class ViewExams(Gtk.VBox):
             ddx = ddx.split("-")
             ddx = [u"\u2022" + i for i in ddx]
 
-        text = self.string_resources["baseline_text"] + " " + base_string + "\n\n" +\
-               self.string_resources["ab_text"] + "\n" + u"\n".join(case) + "\n\n" +\
+        text = self.string_resources["baseline_text"] + " " + base_string + "\n\n" + \
+               self.string_resources["ab_text"] + "\n" + u"\n".join(case) + "\n\n" + \
                self.string_resources["ddx_text"] + "\n" + u"\n".join(ddx)
 
         return text

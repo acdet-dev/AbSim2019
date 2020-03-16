@@ -10,17 +10,20 @@ class SectionTree:
         self.b_list = []
         self.flag = one_flag
 
-    def add_buttons(self, cbb, secs):
+    def add_buttons(self, cbb, secs, f=""):
         for num in secs:
-            button = self.bw.build_check_button(num, self.on_button_toggled, 12, [5, 5])
+            if f == "":
+                button = self.bw.build_check_button(num, self.on_button_toggled, 12, [5, 5])
+            else:
+                button = self.bw.build_check_button(num, f, 12, [5, 5])
             cbb.pack_start(button, False, False, 0)
             self.b_list.append(button)
 
         return cbb
 
-    def create_box_add(self, s_nums):
+    def create_box_add(self, s_nums, func=""):
         c_b_vbox = Gtk.VBox()
-        c_b_part = self.add_buttons(c_b_vbox, s_nums)
+        c_b_part = self.add_buttons(c_b_vbox, s_nums, func)
 
         return c_b_part
 
@@ -29,7 +32,7 @@ class SectionTree:
         for i in range(0, len(lst), n):
             yield lst[i:i + n]
 
-    def build_button_tree(self, sec_nums):
+    def build_button_tree(self, sec_nums, function=""):
         check_len = len(sec_nums)
 
         if check_len > 3:
@@ -47,12 +50,12 @@ class SectionTree:
                 chunked = self.chunks(sec_nums, 5)
 
             for c in chunked:
-                c_b_b = self.create_box_add(c)
+                c_b_b = self.create_box_add(c, function)
 
                 check_button_box.pack_start(c_b_b, False, False, 10)
 
         else:
-            check_button_box = self.create_box_add(sec_nums)
+            check_button_box = self.create_box_add(sec_nums, function)
 
         return check_button_box
 

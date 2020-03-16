@@ -153,15 +153,8 @@ class AStringResources:
 
         elif self.identifier == "create_assessments":
             string_resources = {
-                # Each test creation option its own screen
-                # 1. Palpatory Examination
-                # 2. Abnormality Detection
-                # 3. Diagnose Case Vignettes
-                # AbSim allows you to create 3 different types of assessment and include all or as many of these
-                # different test items on your examination
-                # potentially put in time limit for taking exam
-                # add (MD_22_3.12) for assessment title
                 "window_title": _(u"AbSim Exam Creator"),
+                "restart": _(u"Restart"),
                 "option_1_title": _(u"1. Palpatory Examination"),
                 "option_1": _(u"Add Palpatory Examination?"),
                 "option_2_title": _(u"2. Abnormality Detection"),
@@ -178,13 +171,83 @@ class AStringResources:
                 "ab_text": _(u"Abnormality Detection"),
                 "ab_description": _(u"Select abdominal abnormalities (or lack thereof) to include on current exam."),
                 "ddx_text": _(u"Diagnose Case Vignettes"),
-                "ddx_description": _(u"Select cases for students to practice diagnosing with case text.")
+                "ddx_description": _(u"Select any from the following list of several common/important "
+                                     u"diseases/disorders which AbSim can simulate as the basis for assessing the "
+                                     u"students' evolving diagnostic capabilities."),
+                "header_text": _(u"New Test Item Selection Screen"),
+                "test_selection_description": _(u"When creating a test, you are free to select any or all three of"
+                                                u" the following test types"),
+                "test_option_1": _(u"Perform a Palpatory Examination of the Abdomen"),
+                "test_option_2": _(u"Identify the Presence or Absence of Abnormal Palpatory Findings"),
+                "test_option_3": _(u"Diagnose Case Vignettes Based upon Their Historical and Palpatory Findings"),
+                "create_exam_move": _(u'Please select the "Create Exam" tab on the left to proceed.'),
+                "create_info": _(u"AbSim software enables faculty to create and administer custom examinations. "
+                                 u"Once created, faculty can assign examinations to students, and AbSim will record "
+                                 u"their results for training and assessment purposes."),
+                "option_1_desc": _(u"Among the several abdominal examination competence milestones students need to "
+                                   u"demonstrate is an examination reflecting palpation that is appropriate in terms "
+                                   u"of both palpatory depth and thoroughness. By selecting this examination item "
+                                   u"type, AbSim will record the depth and thoroughness of abdominal palpatory efforts "
+                                   u"for all students enrolled in this examination."),
+                "option_1_desc_2": _(u"When prompted to perform a palpatory examination of the abdomen, AbSim creates "
+                                     u"a visual recording of the depth and thoroughness of the student’s palpatory "
+                                     u"examination of the abdomen. An explanation of depth and thoroughness "
+                                     u"follows."),
+                "depth_header": _(u"Depth of Palpatory Effort"),
+                "depth_desc": _(u"Depth of palpation will be recorded in terms of a series of three colored dots with: "
+                                u"1) gray dots, representing light palpation, 2) blue dots, representing deep "
+                                u"palpation (the depth needed to detect most abdominal abnormalities), and 3) red "
+                                u"dots, representing palpation which is too deep and likely to elicit signs of "
+                                u"discomfort."),
+                "thoroughness_header": _(u"Thoroughness of Palpatory Effort"),
+                "thoroughness_desc": _(u"Thoroughness will also be recorded via these same dots. However, it is the "
+                                       u"percentage and location of these dots (and in particular) the blue dots, that "
+                                       u"should be used to determine whether the student has demonstrated a competent "
+                                       u"abdominal examination in terms of the thoroughness of their palpation."),
+                "final_note": _(u"AbSim automatically records the percentage of the abdomen that is palpated in terms "
+                                u"of gray, blue and red dots. Faculty can use these visual recordings of depth and "
+                                u"thoroughness to establish criteria by which they can subsequently determine whether "
+                                u"a competent palpatory examination (in terms of depth and thoroughness) has been "
+                                u"demonstrated."),
+                "ab_label_desc": _(u'In addition to performing a competent abdominal palpatory examination, one '
+                                   u'reflecting an appropriate level of depth and thoroughness, another competence '
+                                   u'milestone is the ability to reliably detect the presence or absence of normal '
+                                   u'and abnormal abdominal findings. By selecting this type of test item, the faculty '
+                                   u'has an opportunity to objectively determine whether the student can detect one or '
+                                   u'more of the many "abnormal scenarios" simulated by AbSim.'),
+                "ab_label_desc_2": _(u'Experience suggests that students need 30 – 60 seconds of palpation to '
+                                     u'determine if a given scenario represents a normal or abnormal finding. Knowing '
+                                     u'the amount of time allotted for this examination, select as many scenarios as '
+                                     u'you desire. AbSim will present the selected scenarios to the student in a '
+                                     u'random order, thereby reducing their capacity to "help each other" by reporting '
+                                     u'what they believed were the findings detected during the first, second, third, '
+                                     u'etc. testing scenario.'),
+                "ddx_label_desc": _(u"Among the several abdominal examination competence milestones students need to "
+                                    u"demonstrate is an examination reflecting palpation that is appropriate in terms "
+                                    u"of both palpatory depth and thoroughness. A second competence milestone is the "
+                                    u"reliably detect the presence or absence of normal or abnormal palpatory "
+                                    u"findings. A third competence milestone is the ability to integrate knowledge of "
+                                    u"the historical findings associated with common and/or important abdominal "
+                                    u"disorders with a given case’s palpatory findings."),
+                "ddx_label_desc_2": _(u'By selecting this type of test item, the faculty has an opportunity to '
+                                      u'determine whether the student to demonstrate their evolving diagnostic '
+                                      u'capabilities; the ability to integrate a patient’s historical with their '
+                                      u'evolving physical examination capabilities. '
+                                      u'Experience suggests that students need 60 – 90 seconds of palpation to '
+                                      u'integrate the historical and physical findings associated with a given '
+                                      u'case-based vignette and render a diagnosis. AbSim will present the selected '
+                                      u'case vignettes to the student in a random order, thereby reducing their '
+                                      u'capacity to "help each other" by reporting what they believed were the '
+                                      u'findings detected during the first, second, third, etc. case vignette. '
+                                      u'Knowing the amount of time allotted for this examination, select as many '
+                                      u'scenarios as you desire.'),
             }
 
         elif self.identifier == "view_performance":
             string_resources = {
                 "window_title": _(u"View Examination Performance"),
                 "notebook_tab_1": _(u"Examinations"),
+                "button_back": _(u"Create New Exam"),
                 "column_header": _(u"Exam Title"),
                 "column_header_2": _(u"Assigned To"),
                 "column_header_3": _(u"Completed"),
@@ -270,11 +333,8 @@ class AStringResources:
                 "welcome_string": _(u"Welcome to AbSim's Assessment Interface"),
                 "instruction_string": _(u'Select an assessment and click "Begin Assessment" when ready.'),
                 "begin_button": _(u"Begin Assessment"),
-                # Fix no exam exists select begin
                 "no_assessment": _(u"Assessment Not Found."),
                 "finish_string": _(u"You may take another assessment if you have more to take."),  # doesn't need here
-                # ask for section in take assessments button, ask for id in begin exam
-                # on end exam, just go back to begin exam screen
                 "select_button": _(u"Select Assessment"),
                 "select_description": _(u'Please select an assessment and click "Begin Assessment".'),
                 "finish_title": _(u"Assessment Finished"),
@@ -282,7 +342,6 @@ class AStringResources:
                                    u" and click 'OK' when finished."),
                 "base_description": _(u"Demonstrate Competent Abdominal Examination"),
                 "case_description": _(u"Identify Abdominal Scenario(s)"),
-                # sub in string based on length of test items to let them know how many; update on make selection
                 "ddx_description": _(u"Case Vignettes to Diagnose"),
                 "final_string": _(u"will test you on the following circumstances"),
                 "base_text": _(u"Select an assessment to view associated test items."),
