@@ -1,3 +1,8 @@
+"""
+Utility function to transfer pot text quickly.
+Runs out of AbSim. Included in project for storage purposes.
+"""
+
 with open("C:\\Users\\Steve\\PyCharmProjects\\AbSim2019\\absim_strings.pot", "r+") as f1:
 	s_list = f1.readlines()
 	substring = 'msgid "'
