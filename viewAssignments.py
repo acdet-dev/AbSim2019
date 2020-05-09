@@ -1114,7 +1114,7 @@ class DdxExam(Gtk.HBox):
         selection = treeview.get_selection()
         (model, iter) = selection.get_selected()
 
-        self.current_case = model.get(iter, 1)[0]
+        self.current_case = model.get(iter, 0)[0]
 
     def reset_page(self):
 
