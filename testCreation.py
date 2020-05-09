@@ -209,19 +209,20 @@ class CreatePage(Gtk.VBox):
         elif name in list(self.case_dict.values()):
             if button.get_active():
                 self.case_list.append(list(self.case_dict.keys())[list(self.case_dict.values()).index(name)])
-                self.title_list.append(name)
+                self.title_list.append(list(self.case_dict.values())[list(self.case_dict.values()).index(name)])
+
             else:
                 self.case_list.remove(list(self.case_dict.keys())[list(self.case_dict.values()).index(name)])
-                self.title_list.remove(name)
+                self.title_list.remove(list(self.case_dict.values())[list(self.case_dict.values()).index(name)])
 
         elif name in self.ddx_list:
             saved_name = self.get_ailment_english(name)
             if button.get_active():
                 self.ddx_case_list.append(saved_name)
-                self.ddx_title_list.append('ddx' + '_' + name)
+                self.ddx_title_list.append('ddx' + '_' + saved_name)
             else:
                 self.ddx_case_list.remove(saved_name)
-                self.ddx_title_list.remove('ddx' + '_' + name)
+                self.ddx_title_list.remove('ddx' + '_' + saved_name)
 
     def create_text_view(self, tb, o_w=300, o_h=300):
         # create text view
@@ -418,9 +419,6 @@ class CreatePage(Gtk.VBox):
                 exam_name = self.string_resources["assess_string"] + "_" + str(max(nums) + 1)
             case_string = '+'.join(self.case_list)
             title_string = '+'.join(self.title_list)
-
-            print(case_string)
-            print(title_string)
 
             exam_model.save_to_db(self.window_resources['window'], exam_name, case_string, title_string, timestr)
 
@@ -732,7 +730,7 @@ class ViewExams(Gtk.VBox):
 
                 case_list_comm, case_title_list, baseline_model, baseline_flag, \
                 ddx_cases = ep.parse_exam_info(case_info)
-                print(case_info)
+
                 if baseline_flag:
                     base = 'yes'
                 else:

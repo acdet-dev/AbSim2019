@@ -30,7 +30,6 @@ class ExamParser():
 
     def parse_exam_info(self, case_list):
         # find out what is on exam
-        print(case_list)
         if len(case_list) > 1:
             case_list_comm = case_list[1].split('+')
             case_title_list = case_list[2].split('+')
@@ -51,14 +50,10 @@ class ExamParser():
             baseline_flag = False
 
         # find ddx items
-        ddx_indices =\
-            [i for i, x in enumerate(case_title_list) if 'ddx_' in x]
-        try:
-            ddx_cases = \
-                [case_list_comm[j] for j in ddx_indices]
-            for k in ddx_cases:
-                case_list_comm.remove(k)
-        except IndexError:
-            logging.debug('no ddx exams given')
+        ddx_cases = [case[4:] for case in case_title_list if 'ddx_' in case]
+        print(ddx_cases)
+        print(case_list_comm)
+        case_list_comm = case_list_comm[:len(case_list_comm)-len(ddx_cases)]
+        print(case_list_comm)
 
         return case_list_comm, case_title_list, baseline_model, baseline_flag, ddx_cases
