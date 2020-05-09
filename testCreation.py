@@ -185,6 +185,19 @@ class CreatePage(Gtk.VBox):
 
         return button_table_alignment
 
+    def get_ailment_english(self, key):
+        constant_ailment = {self.ddx_list[0]: 'Upper Gastrointestinal Etiology',
+                            self.ddx_list[1]: 'Choledocolithiasis',
+                            self.ddx_list[2]: 'Pancreatitis',
+                            self.ddx_list[3]: 'Cholecystitis',
+                            self.ddx_list[4]: 'Mesenteric Infarction',
+                            self.ddx_list[5]: 'Small Bowel Obstruction',
+                            self.ddx_list[6]: 'Appendicitis',
+                            self.ddx_list[7]: 'Diverticulitis',
+                            self.ddx_list[8]: 'Acute Enteritis'}
+
+        return constant_ailment[key]
+
     def on_button_toggled(self, button, name):
         if name == "Add Palpatory Examination?":
             if button.get_active():
@@ -202,11 +215,12 @@ class CreatePage(Gtk.VBox):
                 self.title_list.remove(name)
 
         elif name in self.ddx_list:
+            saved_name = self.get_ailment_english(name)
             if button.get_active():
-                self.ddx_case_list.append(name)
+                self.ddx_case_list.append(saved_name)
                 self.ddx_title_list.append('ddx' + '_' + name)
             else:
-                self.ddx_case_list.remove(name)
+                self.ddx_case_list.remove(saved_name)
                 self.ddx_title_list.remove('ddx' + '_' + name)
 
     def create_text_view(self, tb, o_w=300, o_h=300):
@@ -352,6 +366,7 @@ class CreatePage(Gtk.VBox):
 
             # create abnormality button alignment
             ddx_names = CaseText().cases.get(525, [])
+
             for j in ddx_names:
                 temp = [i["ddx_name"] for i in j]
                 self.ddx_list.append(temp[0])
@@ -403,6 +418,9 @@ class CreatePage(Gtk.VBox):
                 exam_name = self.string_resources["assess_string"] + "_" + str(max(nums) + 1)
             case_string = '+'.join(self.case_list)
             title_string = '+'.join(self.title_list)
+
+            print(case_string)
+            print(title_string)
 
             exam_model.save_to_db(self.window_resources['window'], exam_name, case_string, title_string, timestr)
 
@@ -714,6 +732,7 @@ class ViewExams(Gtk.VBox):
 
                 case_list_comm, case_title_list, baseline_model, baseline_flag, \
                 ddx_cases = ep.parse_exam_info(case_info)
+                print(case_info)
                 if baseline_flag:
                     base = 'yes'
                 else:

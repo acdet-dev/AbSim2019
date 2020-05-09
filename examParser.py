@@ -30,6 +30,7 @@ class ExamParser():
 
     def parse_exam_info(self, case_list):
         # find out what is on exam
+        print(case_list)
         if len(case_list) > 1:
             case_list_comm = case_list[1].split('+')
             case_title_list = case_list[2].split('+')
