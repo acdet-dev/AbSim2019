@@ -28,7 +28,13 @@ class ExamParser():
 
         return exam_info
 
-    def parse_exam_info(self, case_list):
+    def parse_exam_info(self, case_list, leave_trans=False):
+        from LanguageConversion import LanguageConversion
+        from cases import Cases
+
+        pretty = Cases().pretty_ailment_names
+        lc = LanguageConversion()
+
         # find out what is on exam
         if len(case_list) > 1:
             case_list_comm = case_list[1].split('+')
@@ -50,10 +56,18 @@ class ExamParser():
             baseline_flag = False
 
         # find ddx items
-        ddx_cases = [case[4:] for case in case_title_list if 'ddx_' in case]
-        print(ddx_cases)
-        print(case_list_comm)
-        case_list_comm = case_list_comm[:len(case_list_comm)-len(ddx_cases)]
-        print(case_list_comm)
+        ddx_cases = [lc.ddx_to_new_lang(case[4:], "value") for case in case_title_list if 'ddx_' in case]
 
-        return case_list_comm, case_title_list, baseline_model, baseline_flag, ddx_cases
+        case_list_comm = case_list_comm[:len(case_list_comm)-len(ddx_cases)]
+
+        case_title_list = [pretty[i] for i in case_list_comm if len(case_list_comm) > 0]
+
+        if not leave_trans:
+            title_parts = self.title.split('_')
+
+            e_title = lc.exam_string_to_new_lang(title_parts[0]) + '_' + title_parts[1]
+
+        else:
+            e_title = self.title
+
+        return case_list_comm, case_title_list, baseline_model, baseline_flag, ddx_cases, e_title

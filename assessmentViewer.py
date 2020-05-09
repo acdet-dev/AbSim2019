@@ -15,6 +15,7 @@ import logging
 import gi
 from collections import OrderedDict
 from aStringResources import AStringResources
+from LanguageConversion import LanguageConversion
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
@@ -188,6 +189,7 @@ class ViewsController:
         heads.extend(self.header_list)
 
         if len(self.exam) > 0:
+            print(self.exam)
             if self.flag == 'ab':
                 file_string = c_dir + '\\' + '_'.join(self.section) + self.exam[0][1] + '_abnormality_data.csv'
                 with open(file_string, 'w+', newline='') as outcsv:

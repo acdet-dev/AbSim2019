@@ -161,6 +161,9 @@ class CreatePage(Gtk.VBox):
         self.title_list = []
         self.ddx_case_list = []
         self.ddx_title_list = []
+        self.base_dict = {
+            self.string_resources["option_1"]: "Add Palpatory Examination?"
+        }
 
         self.counter = 0
 
@@ -185,44 +188,50 @@ class CreatePage(Gtk.VBox):
 
         return button_table_alignment
 
-    def get_ailment_english(self, key):
-        constant_ailment = {self.ddx_list[0]: 'Upper Gastrointestinal Etiology',
-                            self.ddx_list[1]: 'Choledocolithiasis',
-                            self.ddx_list[2]: 'Pancreatitis',
-                            self.ddx_list[3]: 'Cholecystitis',
-                            self.ddx_list[4]: 'Mesenteric Infarction',
-                            self.ddx_list[5]: 'Small Bowel Obstruction',
-                            self.ddx_list[6]: 'Appendicitis',
-                            self.ddx_list[7]: 'Diverticulitis',
-                            self.ddx_list[8]: 'Acute Enteritis'}
+    def get_ailment_english(self, key, flag):
+        from LanguageConversion import LanguageConversion
 
-        return constant_ailment[key]
+        lc = LanguageConversion()
+
+        if flag == "case":
+            result = lc.case_to_new_lang(key)
+
+        else:
+            result = lc.ddx_to_new_lang(key)
+
+        return result
 
     def on_button_toggled(self, button, name):
-        if name == "Add Palpatory Examination?":
+        if name in list(self.case_dict.values()):
+            case = list(self.case_dict.keys())[list(self.case_dict.values()).index(name)]
+            saved_title = self.get_ailment_english(case, "case")
+
             if button.get_active():
-                self.baseline_flag = True
-
+                self.case_list.append(case)
+                self.title_list.append(saved_title)
             else:
-                self.baseline_flag = False
-
-        elif name in list(self.case_dict.values()):
-            if button.get_active():
-                self.case_list.append(list(self.case_dict.keys())[list(self.case_dict.values()).index(name)])
-                self.title_list.append(list(self.case_dict.values())[list(self.case_dict.values()).index(name)])
-
-            else:
-                self.case_list.remove(list(self.case_dict.keys())[list(self.case_dict.values()).index(name)])
-                self.title_list.remove(list(self.case_dict.values())[list(self.case_dict.values()).index(name)])
+                self.case_list.remove(case)
+                self.title_list.remove(saved_title)
 
         elif name in self.ddx_list:
-            saved_name = self.get_ailment_english(name)
+            saved_name = self.get_ailment_english(name, "ddx")
             if button.get_active():
                 self.ddx_case_list.append(saved_name)
                 self.ddx_title_list.append('ddx' + '_' + saved_name)
             else:
                 self.ddx_case_list.remove(saved_name)
                 self.ddx_title_list.remove('ddx' + '_' + saved_name)
+
+        else:
+            try:
+                if self.base_dict[name] == "Add Palpatory Examination?":
+                    if button.get_active():
+                        self.baseline_flag = True
+
+                    else:
+                        self.baseline_flag = False
+            except KeyError:
+                pass
 
     def create_text_view(self, tb, o_w=300, o_h=300):
         # create text view
@@ -414,9 +423,9 @@ class CreatePage(Gtk.VBox):
             exam_num = self.get_number_exams(exam_model)
             nums = [int(i.split('_')[1]) for i in exam_num]
             if len(exam_num) < 1:
-                exam_name = self.string_resources["assess_string"] + "_1"
+                exam_name = "Exam" + "_1"
             else:
-                exam_name = self.string_resources["assess_string"] + "_" + str(max(nums) + 1)
+                exam_name = "Exam" + "_" + str(max(nums) + 1)
             case_string = '+'.join(self.case_list)
             title_string = '+'.join(self.title_list)
 
@@ -531,6 +540,7 @@ class ViewExams(Gtk.VBox):
             # view highlighted exam's scores
             # call get sections
             st = SectionTree(self.bw, self.sec_name)
+
             bt = st.get_sections()
 
             st.sec_name = []
@@ -708,7 +718,7 @@ class ViewExams(Gtk.VBox):
         from exammodel import ExamModel
         from examParser import ExamParser
 
-        store = Gtk.ListStore(str, str, str, str, str, str, str, str)
+        store = Gtk.ListStore(str, str, str, str, str, str, str, str, str)
         self.exam_info = ExamModel()
         self.exams = self.exam_info.get_all(key='check')
 
@@ -729,7 +739,7 @@ class ViewExams(Gtk.VBox):
                 completed_string = str(num_taken) + "/" + str(num_students)
 
                 case_list_comm, case_title_list, baseline_model, baseline_flag, \
-                ddx_cases = ep.parse_exam_info(case_info)
+                ddx_cases, exam_title = ep.parse_exam_info(case_info)
 
                 if baseline_flag:
                     base = 'yes'
@@ -743,8 +753,8 @@ class ViewExams(Gtk.VBox):
                     ddx = 'yes'
                 else:
                     ddx = 'no'
-                store.append([exam[0], base, cases, ddx, "-".join(case_title_list),
-                              "-".join(ddx_cases), ", ".join(a_t), completed_string])
+                store.append([exam_title, base, cases, ddx, "-".join(case_title_list),
+                              "-".join(ddx_cases), ", ".join(a_t), completed_string, ep.title])
         else:
             logging.debug('No assessments returned')
             self.no_exams_flag = True
@@ -774,7 +784,7 @@ class ViewExams(Gtk.VBox):
     def on_row_change(self, treeview):
         selection = treeview.get_selection()
         (model, iter) = selection.get_selected()
-        self.window_resources['exam_id'] = model.get(iter, 0)[0]
+        self.window_resources['exam_id'] = model.get(iter, 8)[0]
         self.bases = model.get(iter, 1)[0]
         self.cases = model.get(iter, 2)[0]
         self.ddxs = model.get(iter, 3)[0]

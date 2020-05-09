@@ -295,13 +295,18 @@ class ViewTests(Gtk.HBox):
         self.show()
 
     def create_store(self):
+        from LanguageConversion import LanguageConversion
         # Columns available to rows:
         #   str: name of exam
 
-        store = Gtk.ListStore(str)
+        lc = LanguageConversion()
+
+        store = Gtk.ListStore(str, str)
 
         for title in self.exam_resources['exam_title_list']:
-            store.append(title)
+            title_parts = title[0].split('_')
+            e_title = lc.exam_string_to_new_lang(title_parts[0]) + '_' + title_parts[1]
+            store.append([e_title, title[0]])
 
         return store
 
@@ -313,7 +318,7 @@ class ViewTests(Gtk.HBox):
         case_info = ep.get_exam_info(ep.flag, ep.title)
 
         # get info into individual lists
-        case_list_comm, case_title_list, baseline_model, baseline_flag, ddx_cases = ep.parse_exam_info(case_info)
+        case_list_comm, case_title_list, baseline_model, baseline_flag, ddx_cases, e_title = ep.parse_exam_info(case_info)
 
         if baseline_flag:
             base = self.string_resources["base_description"]
@@ -338,13 +343,14 @@ class ViewTests(Gtk.HBox):
         selection = treeview.get_selection()
         (model, iter) = selection.get_selected()
 
-        self.exam_resources['exam_title'] = model.get(iter, 0)[0]
+        self.exam_resources['exam_title'] = model.get(iter, 1)[0]
+        translated_title = model.get(iter, 0)[0]
 
         # get buffer text
         new_text, c_length, d_length = self.get_buffer_text()
         i = 0
         header_list = []
-        final_string = self.exam_resources["exam_title"] + " " + self.string_resources["final_string"] + ":\n\n"
+        final_string = translated_title + " " + self.string_resources["final_string"] + ":\n\n"
         for text in new_text:
             if text != '':
                 i += 1
@@ -566,7 +572,9 @@ class ViewTests(Gtk.HBox):
                 try:
                     self.exam_resources['case_list'], self.exam_resources['case_title_list'],\
                         self.exam_resources['baseline_model'], self.exam_resources['baseline_flag'],\
-                        self.exam_resources['ddx_cases'] = ep.parse_exam_info(case_info)
+                        self.exam_resources['ddx_cases'], \
+                        self.exam_resources['exam_title'] = ep.parse_exam_info(case_info, leave_trans=True)
+
                     self.exam_resources["password"] = password
                     self.build_exam_view()
                     self.view_resources["window"].ddx_exam.len_tb.new_case(self.string_resources["completed"] + ": "
@@ -805,6 +813,10 @@ class CaseExam(Gtk.HBox):
         self.exam_resources["ddx_num"] = 0
 
     def report_score(self, score, flag=''):
+        from LanguageConversion import LanguageConversion
+
+        lc = LanguageConversion()
+
         if flag == 'first_time':
             self.exam_resources['ab_end'] = time.time() - self.exam_resources['ab_start']
         if len(self.exam_resources['ddx_cases']) > 0:
@@ -863,7 +875,8 @@ class CaseExam(Gtk.HBox):
             ddx_ind_list = [self.exam_resources['ddx_answer_list'].index(elem) for elem in self.exam_resources['untouched_ddx']]
             ans_ddx_ind_list = [self.exam_resources['ddx_answer_list'][i] for i in ddx_ind_list]
             stu_ddx_ind_list = [self.exam_resources['student_ddx_list'][i] for i in ddx_ind_list]
-            ddx_correct_chosen = ['correct: ' + x + '-' + 'chosen: ' + y for x, y in zip(ans_ddx_ind_list, stu_ddx_ind_list)]
+            ddx_correct_chosen = ['correct: ' + lc.ddx_to_new_lang(x) + '-' + 'chosen: ' +
+                                  y for x, y in zip(ans_ddx_ind_list, stu_ddx_ind_list)]
 
             # correct_chosen.extend(ddx_correct_chosen)
 
@@ -873,6 +886,12 @@ class CaseExam(Gtk.HBox):
 
             ab_correct_chosen_string = '+'.join(ab_correct_chosen)
             ddx_correct_chosen_string = '+'.join(ddx_correct_chosen)
+
+            print(ab_correct_chosen)
+            print(ddx_correct_chosen_string)
+            print(self.exam_resources['exam_title'])
+            print(self.exam_resources['password'])
+            print(self.exam_resources['section'])
 
             # save score data to db
             exam_data.save_to_db(self.exam_resources['password'], self.exam_resources['exam_title'], ab_score,
