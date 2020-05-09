@@ -235,66 +235,9 @@ class CreatePage(Gtk.VBox):
         label_desc = self.create_text_view(self.test_desc_tb, 300, 50)
         label_desc_2 = self.create_text_view(self.test_desc_tb_2, 300, 50)
 
-        # initialize horizontal labels
-        hbox = Gtk.HBox()
-        depth_box = Gtk.VBox()
-        depth_label_header = self.bw.build_label(label_text=self.string_resources["depth_header"], f_size=14,
-                                                 weight="bold",
-                                                 alignment=[0, 0])
-        depth_label_desc = self.bw.build_label(label_text=self.string_resources["depth_desc"], f_size=14,
-                                               alignment=[0, 0])
-
-        # build images
-        d_image_1 = self.bw.build_pixbuf_logo(img_string="html/dummy_imitation.svg", o_w=200, o_h=200)
-        d_image_2 = self.bw.build_pixbuf_logo(img_string="html/dummy_imitation.svg", o_w=200, o_h=200)
-        d_image_3 = self.bw.build_pixbuf_logo(img_string="html/dummy_imitation.svg", o_w=200, o_h=200)
-
-        # initialize box for packing images
-        d_hbox = Gtk.HBox(False, 2)
-        d_hbox.pack_start(d_image_1, False, False, 10)
-        d_hbox.pack_start(d_image_2, False, False, 10)
-        d_hbox.pack_start(d_image_3, False, False, 10)
-
-        depth_box.pack_start(depth_label_header, False, False, 10)
-        depth_box.pack_start(depth_label_desc, False, False, 10)
-        depth_box.pack_start(d_hbox, False, False, 10)
-
-        thorough_box = Gtk.VBox()
-        thorough_label_header = self.bw.build_label(label_text=self.string_resources["thoroughness_header"], f_size=14,
-                                                    weight="bold",
-                                                    alignment=[0, 0])
-        thorough_label_desc = self.bw.build_label(label_text=self.string_resources["thoroughness_desc"], f_size=14,
-                                                  alignment=[0, 0])
-
-        # build images
-        t_image_1 = self.bw.build_pixbuf_logo(img_string="html/dummy_imitation.svg", o_w=200, o_h=200)
-        t_image_2 = self.bw.build_pixbuf_logo(img_string="html/dummy_imitation.svg", o_w=200, o_h=200)
-        t_image_3 = self.bw.build_pixbuf_logo(img_string="html/dummy_imitation.svg", o_w=200, o_h=200)
-
-        # initialize box for packing images
-        t_hbox = Gtk.HBox(False, 2)
-        t_hbox.pack_start(t_image_1, False, False, 10)
-        t_hbox.pack_start(t_image_2, False, False, 10)
-        t_hbox.pack_start(t_image_3, False, False, 10)
-
-        thorough_box.pack_start(thorough_label_header, False, False, 10)
-        thorough_box.pack_start(thorough_label_desc, False, False, 10)
-        thorough_box.pack_start(t_hbox, False, False, 10)
-
         # add text
         depth_thorough_label = self.bw.build_label(label_text=self.string_resources["final_note"], f_size=14,
                                                    alignment=[0, 0])
-
-        # create scrollers
-        d_scroller = self.bw.create_scroller(o_w=550, o_h=250)
-        d_scroller.add(depth_box)
-
-        t_scroller = self.bw.create_scroller(o_w=550, o_h=250)
-        t_scroller.add(thorough_box)
-
-        # pack to hbox
-        hbox.pack_start(d_scroller, False, False, 10)
-        hbox.pack_start(t_scroller, False, False, 10)
 
         # initialize and add description buffer text
         description_text = self.string_resources["palpatory_description"]
@@ -314,7 +257,6 @@ class CreatePage(Gtk.VBox):
         box.pack_start(label_scroller, False, False, 5)
         box.pack_start(label_desc, False, False, 5)
         box.pack_start(label_desc_2, False, False, 5)
-        box.pack_start(hbox, False, False, 5)
         box.pack_start(depth_thorough_label, False, False, 5)
         box.pack_start(desc_scroller, False, False, 5)
         box.pack_start(palpatory_bta, False, False, 5)
@@ -348,12 +290,12 @@ class CreatePage(Gtk.VBox):
         if self.counter == 1:
             self.built_box.remove(box_children[3])
             self.built_box.remove(box_children[4])
-            self.built_box.remove(box_children[6])
+            self.built_box.remove(box_children[5])
         else:
-            self.built_box.remove(box_children[4])
+            self.built_box.remove(box_children[3])
 
         # move added check list to second position
-        self.built_box.reorder_child(box_children[-1], 4)
+        self.built_box.reorder_child(box_children[-1], 3)
 
         # show all widgets existing in built_box
         self.built_box.show_all()

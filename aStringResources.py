@@ -193,19 +193,11 @@ class AStringResources:
                                      u"a visual recording of the depth and thoroughness of the student’s palpatory "
                                      u"examination of the abdomen. An explanation of depth and thoroughness "
                                      u"follows."),
-                "depth_header": _(u"Depth of Palpatory Effort"),
-                "depth_desc": _(u"Depth of palpation will be recorded in terms of a series of three colored dots with: "
-                                u"1) gray dots, representing light palpation, 2) blue dots, representing deep "
+                "final_note": _(u"AbSim automatically records the percentage of the abdomen that is palpated in terms "
+                                "of 1) gray dots, representing light palpation, 2) blue dots, representing deep "
                                 u"palpation (the depth needed to detect most abdominal abnormalities), and 3) red "
                                 u"dots, representing palpation which is too deep and likely to elicit signs of "
-                                u"discomfort."),
-                "thoroughness_header": _(u"Thoroughness of Palpatory Effort"),
-                "thoroughness_desc": _(u"Thoroughness will also be recorded via these same dots. However, it is the "
-                                       u"percentage and location of these dots (and in particular) the blue dots, that "
-                                       u"should be used to determine whether the student has demonstrated a competent "
-                                       u"abdominal examination in terms of the thoroughness of their palpation."),
-                "final_note": _(u"AbSim automatically records the percentage of the abdomen that is palpated in terms "
-                                u"of gray, blue and red dots. Faculty can use these visual recordings of depth and "
+                                u"discomfort. Faculty can use these visual recordings of depth and "
                                 u"thoroughness to establish criteria by which they can subsequently determine whether "
                                 u"a competent palpatory examination (in terms of depth and thoroughness) has been "
                                 u"demonstrated."),

@@ -43,11 +43,11 @@ class SectionTree:
             elif 4 < check_len <= 9:
                 chunked = self.chunks(sec_nums, 3)
 
-            elif 9 < check_len <= 16:
+            elif 9 < check_len <= 14:
                 chunked = self.chunks(sec_nums, 4)
 
             else:
-                chunked = self.chunks(sec_nums, 5)
+                chunked = self.chunks(sec_nums, 10)
 
             for c in chunked:
                 c_b_b = self.create_box_add(c, function)
