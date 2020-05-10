@@ -23,6 +23,14 @@ class MilestoneNameLabel(Gtk.Label):
         end = u"</span>"
         self.set_markup(beginning + text + end)
         self.set_padding(5, 5)
+        width_char = round(25*screen_size/1076408)
+        if width_char > 30:
+            width_char = 35
+        elif width_char < 20:
+            width_char = 20
+        self.set_width_chars(width_char)
+        self.set_line_wrap(True)
+        self.set_line_wrap_mode(Gtk.WrapMode.WORD)
 
 
 class DisconnectWarning(Gtk.HBox):
