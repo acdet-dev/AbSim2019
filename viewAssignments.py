@@ -358,16 +358,23 @@ class ViewTests(Gtk.HBox):
                 final_string += str(i) + ". " + text + "\n"
 
         self.tb.new_case(final_string)
+
+        header_dict = {
+            self.string_resources["base_description"]: "Demonstrate Competent Abdominal Examination",
+            self.string_resources["case_description"]: "Identify Abdominal Scenario(s)",
+            self.string_resources["ddx_description"]: "Case Vignettes to Diagnose"
+        }
+
         for header in header_list:
-            if "Demonstrate" in header:
+            if "Demonstrate" in header_dict[header[3:]]:
                 self.view_resources["window"].baseline.tb.new_case(header)
-            if "Identify" in header:
+            if "Identify" in header_dict[header[3:]]:
                 self.view_resources["window"].case_exam.tb.new_case(header + ": "
                                                                     + self.string_resources["identify_helper"])
                 if c_length > 0:
                     self.view_resources["window"].case_exam.len_tb.new_case(self.string_resources["completed"] + ": "
                                                                             + str(1) + "/" + str(c_length))
-            if "Vignettes" in header:
+            if "Vignettes" in header_dict[header[3:]]:
                 self.view_resources["window"].ddx_exam.tb.new_case(header + ": " + self.string_resources["text_helper"])
                 if d_length > 0:
                     self.view_resources["window"].ddx_exam.len_tb.new_case(self.string_resources["completed"] + ": "
@@ -886,12 +893,6 @@ class CaseExam(Gtk.HBox):
 
             ab_correct_chosen_string = '+'.join(ab_correct_chosen)
             ddx_correct_chosen_string = '+'.join(ddx_correct_chosen)
-
-            print(ab_correct_chosen)
-            print(ddx_correct_chosen_string)
-            print(self.exam_resources['exam_title'])
-            print(self.exam_resources['password'])
-            print(self.exam_resources['section'])
 
             # save score data to db
             exam_data.save_to_db(self.exam_resources['password'], self.exam_resources['exam_title'], ab_score,

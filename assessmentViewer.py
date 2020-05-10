@@ -15,7 +15,6 @@ import logging
 import gi
 from collections import OrderedDict
 from aStringResources import AStringResources
-from LanguageConversion import LanguageConversion
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
@@ -189,25 +188,29 @@ class ViewsController:
         heads.extend(self.header_list)
 
         if len(self.exam) > 0:
-            print(self.exam)
             if self.flag == 'ab':
                 file_string = c_dir + '\\' + '_'.join(self.section) + self.exam[0][1] + '_abnormality_data.csv'
-                with open(file_string, 'w+', newline='') as outcsv:
-                    writer = csv.DictWriter(outcsv, fieldnames=heads)
-                    writer.writeheader()
-                    partial_dict = OrderedDict()
+                with open(file_string, 'w+', newline='', encoding='utf-8') as outcsv:
                     try:
-                        for j in range(0, len(self.exam)):
-                            partial_dict[heads[0]] = self.exam[j][0]
-                            partial_dict[heads[1]] = self.exam[j][2]
-                            partial_dict[heads[2]] = self.exam[j][6]
-                            for i in range(0, len(self.final_data_list)):
-                                partial_dict[list(self.final_data_list[i][j].keys())[0]] =\
-                                    list(self.final_data_list[i][j].values())[0]
-                            writer.writerow(partial_dict)
-                        sim_message(self.window, info_string=self.string_resources["export_title"],
-                                    secondary_text=self.string_resources["export_description"])
-                    except TypeError:
+                        writer = csv.DictWriter(outcsv, fieldnames=heads)
+                        writer.writeheader()
+                        partial_dict = OrderedDict()
+                        try:
+                            for j in range(0, len(self.exam)):
+                                partial_dict[heads[0]] = self.exam[j][0]
+                                partial_dict[heads[1]] = self.exam[j][2]
+                                partial_dict[heads[2]] = self.exam[j][6]
+                                for i in range(0, len(self.final_data_list)):
+                                    partial_dict[list(self.final_data_list[i][j].keys())[0]] =\
+                                        list(self.final_data_list[i][j].values())[0]
+                                writer.writerow(partial_dict)
+                            sim_message(self.window, info_string=self.string_resources["export_title"],
+                                        secondary_text=self.string_resources["export_description"])
+                        except TypeError:
+                            sim_message(self.window, info_string=self.string_resources["export_failure"],
+                                        secondary_text=self.string_resources["export_fail_description"])
+                    except UnicodeEncodeError as e:
+
                         sim_message(self.window, info_string=self.string_resources["export_failure"],
                                     secondary_text=self.string_resources["export_fail_description"])
                 try:
@@ -225,22 +228,26 @@ class ViewsController:
 
             elif self.flag == 'ddx':
                 file_string = c_dir + '\\' + '_'.join(self.section) + self.exam[0][1] + '_case_text_data.csv'
-                with open(file_string, 'w+', newline='') as outcsv:
-                    writer = csv.DictWriter(outcsv, fieldnames=heads)
-                    writer.writeheader()
-                    partial_dict = OrderedDict()
+                with open(file_string, 'w+', newline='', encoding='utf-8') as outcsv:
                     try:
-                        for j in range(0, len(self.exam)):
-                            partial_dict[heads[0]] = self.exam[j][0]
-                            partial_dict[heads[1]] = self.exam[j][3]
-                            partial_dict[heads[2]] = self.exam[j][7]
-                            for i in range(0, len(self.final_data_list)):
-                                partial_dict[list(self.final_data_list[i][j].keys())[0]] =\
-                                    list(self.final_data_list[i][j].values())[0]
-                            writer.writerow(partial_dict)
-                        sim_message(self.window, info_string=self.string_resources["export_title"],
-                                    secondary_text=self.string_resources["export_description"])
-                    except TypeError:
+                        writer = csv.DictWriter(outcsv, fieldnames=heads)
+                        writer.writeheader()
+                        partial_dict = OrderedDict()
+                        try:
+                            for j in range(0, len(self.exam)):
+                                partial_dict[heads[0]] = self.exam[j][0]
+                                partial_dict[heads[1]] = self.exam[j][3]
+                                partial_dict[heads[2]] = self.exam[j][7]
+                                for i in range(0, len(self.final_data_list)):
+                                    partial_dict[list(self.final_data_list[i][j].keys())[0]] =\
+                                        list(self.final_data_list[i][j].values())[0]
+                                writer.writerow(partial_dict)
+                            sim_message(self.window, info_string=self.string_resources["export_title"],
+                                        secondary_text=self.string_resources["export_description"])
+                        except TypeError:
+                            sim_message(self.window, info_string=self.string_resources["export_failure"],
+                                        secondary_text=self.string_resources["export_fail_description"])
+                    except UnicodeEncodeError as e:
                         sim_message(self.window, info_string=self.string_resources["export_failure"],
                                     secondary_text=self.string_resources["export_fail_description"])
                 try:
