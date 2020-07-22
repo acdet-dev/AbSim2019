@@ -7,6 +7,7 @@ from buildWidgets import BuildWidgets
 from simLogin import get_user_pw
 from messages import sim_message, sim_login_message
 import facultyinfomodel
+from EntityVO import EntityVO
 
 from Levenshtein import distance
 import gi
@@ -25,6 +26,7 @@ class DefineUser(Gtk.Window, MenuBar):
         self.string_resources = AStringResources("initial").get_by_identifier()
         self.login_resources = AStringResources("faculty_login").get_by_identifier()
         self.faculty_model = facultyinfomodel.FacultyInfoModel()
+        self.entityVO = EntityVO()
 
         # Opening window for AbSim that allows faculty to create a profile and login.
         Gtk.Window.__init__(self, title="AbSim")
@@ -84,9 +86,9 @@ class DefineUser(Gtk.Window, MenuBar):
                                           flag='add')
 
                 if credentials:
-                    faculty_id = credentials[0].encode('utf-8')
-                    faculty_pw = credentials[1].encode('utf-8')
-                    self.save_info(faculty_id.strip(), faculty_pw.strip())
+                    self.entityVO.set_user_name(credentials[0].encode('utf-8').strip())
+                    self.entityVO.set_password(credentials[1].encode('utf-8').strip())
+                    self.save_info(self.entityVO.userName, self.entityVO.password)
 
                     sim_message(self, info_string=self.login_resources["add_success_notification"],
                                 secondary_text=self.login_resources["login_cleared"])
