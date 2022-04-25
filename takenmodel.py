@@ -95,7 +95,7 @@ class TakenModel:
         c.close()
         db_conn.close()
 
-    def get_by_score_id(self, key1, key2):
+    def get_by_score_id(self, key):
 
         db_conn = self.connect()
         c = db_conn.cursor()
@@ -103,11 +103,11 @@ class TakenModel:
         stmt = '''
             SELECT student_id, exam_title, ab_score, ddx_score, ab_answers, ddx_answers, ab_et, ddx_et, timein, section
             FROM assessed
-            WHERE student_id=? and section=?
+            WHERE student_id=?
         '''
         try:
             # trying to match with datatype not string!
-            c.execute(stmt, (key1, key2))
+            c.execute(stmt, (key,))
             row = c.fetchall()
             assessed = [list(elem) for elem in row]
             logging.debug('Got assessment by score_id!')

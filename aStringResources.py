@@ -15,10 +15,10 @@ class AStringResources:
             string_resources = {
                 "welcome_text": _(u"Welcome to AbSim"),
                 "faculty_button": _(u"Faculty"),
-                "faculty_description": _(u"Click here to configure AbSim and create examinations"),
+                "faculty_description": _(u"Click here to configure AbSim and create assessments"),
                 "student_button": _(u"Student"),
                 "student_description": _(u"Demonstrate proficiency in abdominal palpation through practice and "
-                                         u"examination")
+                                         u"assessments")
             }
 
         elif self.identifier == "menu_bar":
@@ -58,12 +58,13 @@ class AStringResources:
             }
 
         elif self.identifier == "sim_screen_faculty_2":
+
             string_resources = {
                 "add_students_button": _(u"Enter Student Roster"),
                 "add_students_description": _(u"Provide AbSim Student Information"),
                 "create_button": _(u"Select Test Items"),
                 "create_description": _(u"Select Test Items to Include on Examination"),
-                "view_button": _(u"View Performance"),
+                "view_button": _(u"View Examination"),
                 "view_description": _(u"Preview Student Test Performance"),
                 "back_description": _(u"Return to Initial Faculty Screen")
             }
@@ -128,11 +129,6 @@ class AStringResources:
                 "warning_message": _(u"Are you sure you wish to delete the selected information?"),
                 "no_delete": _(u"Information Not Deleted"),
                 "no_delete_message": _(u"AbSim will not delete information and associated data."),
-                "select_designation": _(u"Student Designation"),
-                "select_designation_info": _(u"Select the type of students in the uploaded section."),
-                "designation_fail": _(u"No Selection"),
-                "designation_fail_info": _(u"Please select a section designation."),
-                "designation_types": [_(u"MD"), _(u"DO"), _(u"NP"), _(u"PA"), _(u"RN"), _(u"Other")]
             }
 
         elif self.identifier == "file_chooser":
@@ -153,135 +149,60 @@ class AStringResources:
 
         elif self.identifier == "create_assessments":
             string_resources = {
-                "window_title": _(u"AbSim Exam Creator"),
-                "restart": _(u"Restart"),
-                "option_1_title": _(u"1. Palpatory Examination"),
-                "option_1": _(u"Add Palpatory Examination?"),
-                "option_2_title": _(u"2. Abnormality Detection"),
-                "option_3_title": _(u"3. Diagnose Case Vignettes"),
-                "input_title_entry": _(u"Input Exam Title"),
-                "save_button": _(u"Save Exam"),
-                "next_button": _(u"Save and Continue"),
-                "assess_string": _(u"Exam"),  # add trailing space
-                "nb_tab_1": _(u"Instructions"),
-                "nb_tab_2": _(u"Create Exam"),
-                "nb_tab_3": _(u"View Created Exams"),
-                "palpatory_text": _(u"Palpatory Examination"),  # add 1. in front of this
-                "palpatory_description": _(u"Select whether to add palpatory exam to current exam."),
-                "ab_text": _(u"Abnormality Detection"),
-                "ab_description": _(u"Select abdominal abnormalities (or lack thereof) to include on current exam."),
-                "ddx_text": _(u"Diagnose Case Vignettes"),
-                "ddx_description": _(u"Select any from the following list of several common/important "
-                                     u"diseases/disorders which AbSim can simulate as the basis for assessing the "
-                                     u"students' evolving diagnostic capabilities."),
-                "header_text": _(u"New Test Item Selection Screen"),
-                "test_selection_description": _(u"When creating a test, you are free to select any or all three of"
-                                                u" the following test types"),
-                "test_option_1": _(u"Perform a Palpatory Examination of the Abdomen"),
-                "test_option_2": _(u"Identify the Presence or Absence of Abnormal Palpatory Findings"),
-                "test_option_3": _(u"Diagnose Case Vignettes Based upon Their Historical and Palpatory Findings"),
-                "create_exam_move": _(u'Please select the "Create Exam" tab on the left to proceed.'),
-                "create_info": _(u"AbSim software enables faculty to create and administer custom examinations. "
-                                 u"Once created, faculty can assign examinations to students, and AbSim will record "
-                                 u"their results for training and assessment purposes."),
-                "option_1_desc": _(u"Among the several abdominal examination competence milestones students need to "
-                                   u"demonstrate is an examination reflecting palpation that is appropriate in terms "
-                                   u"of both palpatory depth and thoroughness. By selecting this examination item "
-                                   u"type, AbSim will record the depth and thoroughness of abdominal palpatory efforts "
-                                   u"for all students enrolled in this examination."),
-                "option_1_desc_2": _(u"When prompted to perform a palpatory examination of the abdomen, AbSim creates "
-                                     u"a visual recording of the depth and thoroughness of the student’s palpatory "
-                                     u"examination of the abdomen. An explanation of depth and thoroughness "
-                                     u"follows."),
-                "depth_header": _(u"Depth of Palpatory Effort"),
-                "depth_desc": _(u"Depth of palpation will be recorded in terms of a series of three colored dots with: "
-                                u"1) gray dots, representing light palpation, 2) blue dots, representing deep "
-                                u"palpation (the depth needed to detect most abdominal abnormalities), and 3) red "
-                                u"dots, representing palpation which is too deep and likely to elicit signs of "
-                                u"discomfort."),
-                "thoroughness_header": _(u"Thoroughness of Palpatory Effort"),
-                "thoroughness_desc": _(u"Thoroughness will also be recorded via these same dots. However, it is the "
-                                       u"percentage and location of these dots (and in particular) the blue dots, that "
-                                       u"should be used to determine whether the student has demonstrated a competent "
-                                       u"abdominal examination in terms of the thoroughness of their palpation."),
-                "final_note": _(u"AbSim automatically records the percentage of the abdomen that is palpated in terms "
-                                u"of gray, blue and red dots. Faculty can use these visual recordings of depth and "
-                                u"thoroughness to establish criteria by which they can subsequently determine whether "
-                                u"a competent palpatory examination (in terms of depth and thoroughness) has been "
-                                u"demonstrated."),
-                "ab_label_desc": _(u'In addition to performing a competent abdominal palpatory examination, one '
-                                   u'reflecting an appropriate level of depth and thoroughness, another competence '
-                                   u'milestone is the ability to reliably detect the presence or absence of normal '
-                                   u'and abnormal abdominal findings. By selecting this type of test item, the faculty '
-                                   u'has an opportunity to objectively determine whether the student can detect one or '
-                                   u'more of the many "abnormal scenarios" simulated by AbSim.'),
-                "ab_label_desc_2": _(u'Experience suggests that students need 30 – 60 seconds of palpation to '
-                                     u'determine if a given scenario represents a normal or abnormal finding. Knowing '
-                                     u'the amount of time allotted for this examination, select as many scenarios as '
-                                     u'you desire. AbSim will present the selected scenarios to the student in a '
-                                     u'random order, thereby reducing their capacity to "help each other" by reporting '
-                                     u'what they believed were the findings detected during the first, second, third, '
-                                     u'etc. testing scenario.'),
-                "ddx_label_desc": _(u"Among the several abdominal examination competence milestones students need to "
-                                    u"demonstrate is an examination reflecting palpation that is appropriate in terms "
-                                    u"of both palpatory depth and thoroughness. A second competence milestone is the "
-                                    u"reliably detect the presence or absence of normal or abnormal palpatory "
-                                    u"findings. A third competence milestone is the ability to integrate knowledge of "
-                                    u"the historical findings associated with common and/or important abdominal "
-                                    u"disorders with a given case’s palpatory findings."),
-                "ddx_label_desc_2": _(u'By selecting this type of test item, the faculty has an opportunity to '
-                                      u'determine whether the student to demonstrate their evolving diagnostic '
-                                      u'capabilities; the ability to integrate a patient’s historical with their '
-                                      u'evolving physical examination capabilities. '
-                                      u'Experience suggests that students need 60 – 90 seconds of palpation to '
-                                      u'integrate the historical and physical findings associated with a given '
-                                      u'case-based vignette and render a diagnosis. AbSim will present the selected '
-                                      u'case vignettes to the student in a random order, thereby reducing their '
-                                      u'capacity to "help each other" by reporting what they believed were the '
-                                      u'findings detected during the first, second, third, etc. case vignette. '
-                                      u'Knowing the amount of time allotted for this examination, select as many '
-                                      u'scenarios as you desire.'),
+                # add Preview Selected Test Items
+                # import newly created exam
+                # enter serial number
+                # use thumb drive
+                # add record excel spreadsheet
+                # add folder lookup for wav bowel sounds
+                "window_title": _(u"AbSim Assessment Creator"),
+                "option_1_title": _(u"1. Baseline Assessment"),
+                "option_1": _(u"Add Baseline Assessment?"),
+                "option_2_title": _(u"2. Abnormality Detection Assessment"),
+                "option_3_title": _(u"3. Case Assessment"),
+                "input_title_entry": _(u"Input Assessment Title"),
+                "save_button": _(u"Save Assessment"),
+                "assess_string": _(u"Assessment"),  # add trailing space
             }
 
         elif self.identifier == "view_performance":
             string_resources = {
-                "window_title": _(u"View Examination Performance"),
-                "notebook_tab_1": _(u"Examinations"),
-                "button_back": _(u"Create New Exam"),
-                "column_header": _(u"Exam Title"),
+                "window_title": _(u"View Assessments"),
+                "notebook_tab_1": _(u"Assessments"),
+                "column_header": _(u"Assessment Title"),
                 "column_header_2": _(u"Assigned To"),
                 "column_header_3": _(u"Completed"),
-                "notebook_tab_2": _(u"Palpatory Examination"),
+                "notebook_tab_2": _(u"Baseline Palpation"),
                 "notebook_tab_3": _(u"Abnormality Detection"),
-                "notebook_tab_4": _(u"Diagnose Case Vignettes"),
+                "notebook_tab_4": _(u"Case Diagnosis"),
                 "view_button": _(u"View"),
                 "assign_button": _(u"Assign"),
                 "delete_button": _(u"Delete"),
                 "choose_title": _(u"Choose Section(s)"),
                 "choose_description": _(u"Select section name(s) to display results for that (those) section(s)."),
-                "choose_sections": _(u"Select section name(s) to which to assign exams."),
+                "choose_sections": _(u"Select section name(s) to which to assign assessment."),
                 "results_button": _(u"Results"),
-                "baseline_text": _(u"Palpatory Examination:"),
+                "baseline_text": _(u"Baseline Assessment:"),
                 "ab_text": _(u"Abnormality Detection:"),
-                "ddx_text": _(u"Diagnose Case Vignettes:"),
-                "base_text": _(u"Select examination to view items assigned."),
+                "ddx_text": _(u"Case Diagnosis:"),
+                "base_text": _(u"Select assessment to view items assigned."),
                 "info_string": _(u"No Section(s) Selected"),
                 "secondary": _(u"Please select section(s) to view student performance."),
                 "section_helper": _(u"Section"),  # add trailing space
                 "no_students_error": _(u"No Sections Exist"),
                 "please_add": _(u"Please add students in previous screen."),
-                "warning": _(u"Delete Examination"),
-                "warning_message": _(u"Are you sure you wish to delete the selected examination?"),
-                "no_delete": _(u"Examination Not Deleted"),
-                "no_delete_message": _(u"AbSim will not delete exam and associated data."),
-                "no_data": _(u"Exam Data Not Found"),
-                "no_data_message": _(u"Please check back when students have taken exams."),
-                "assigned": _(u"Examination Assignment Successful"),
-                "assigned_description": _(u"Students in section(s) assigned may take this exam."),
-                "already_assigned": _(u"Exam Already Assigned"),
-                "already_description": _(u"The chosen section is already assigned this exam."),
-                "no_assessment_selected": _(u"No Exam Selected"),
-                "no_assess_description": _(u"Please select an exam to assign, view results, or delete.")
+                "warning": _(u"Delete Assessment"),
+                "warning_message": _(u"Are you sure you wish to delete the selected assessment?"),
+                "no_delete": _(u"Assessment Not Deleted"),
+                "no_delete_message": _(u"AbSim will not delete assessment and associated data."),
+                "no_data": _(u"Assessment Data Not Found"),
+                "no_data_message": _(u"Please check back when students have taken assessments."),
+                "assigned": _(u"Assessment Assignment Successful"),
+                "assigned_description": _(u"Students in section(s) assigned may take this assessment."),
+                "already_assigned": _(u"Assessment Already Assigned"),
+                "already_description": _(u"The chosen section is already assigned this assessment."),
+                "no_assessment_selected": _(u"No Assessment Selected"),
+                "no_assess_description": _(u"Please select an assessment to assign, view results, or delete.")
             }
 
         elif self.identifier == "exam_model":
@@ -311,8 +232,8 @@ class AStringResources:
             string_resources = {
                 "self_learning_button": _(u"Self-directed Learning"),
                 "self_description": _(u"Learn and Practice Abdominal Palpation"),
-                "view_button": _(u"Take Assigned Examinations"),
-                "view_description": _(u"Complete a Variety of Examinations Using AbSim"),
+                "view_button": _(u"Take Assigned Assessment"),
+                "view_description": _(u"Complete a Variety of Assessments Using AbSim"),
                 "choose_title": _(u"Select Class Section"),
                 "choose_description": _(u"Choose your appropriate class section."),
                 "info_string": _(u"No Section Chosen"),
@@ -323,18 +244,21 @@ class AStringResources:
 
         elif self.identifier == "view_assignments":
             string_resources = {
-                "window_title": _(u"AbSim Examination Viewer"),
-                "ab_option": _(u"Abnormalit Detection"),
-                "ddx_option": _(u"Diagnose with Case Vignette"),
-                "baseline_option": _(u"Palpatory Examination"),
+                "window_title": _(u"AbSim Assignment Viewer"),
+                "ab_option": _(u"Abnormality Assessment"),
+                "ddx_option": _(u"Case Text Assessment"),
+                "baseline_option": _(u"Baseline Assessment"),
                 "view_option": _(u"View Assessments"),
                 "column_header": _(u"Assessment Title"),
                 "column_header_2": _(u"Ailment"),
                 "welcome_string": _(u"Welcome to AbSim's Assessment Interface"),
                 "instruction_string": _(u'Select an assessment and click "Begin Assessment" when ready.'),
                 "begin_button": _(u"Begin Assessment"),
+                # Fix no exam exists select begin
                 "no_assessment": _(u"Assessment Not Found."),
                 "finish_string": _(u"You may take another assessment if you have more to take."),  # doesn't need here
+                # ask for section in take assessments button, ask for id in begin exam
+                # on end exam, just go back to begin exam screen
                 "select_button": _(u"Select Assessment"),
                 "select_description": _(u'Please select an assessment and click "Begin Assessment".'),
                 "finish_title": _(u"Assessment Finished"),
@@ -342,6 +266,7 @@ class AStringResources:
                                    u" and click 'OK' when finished."),
                 "base_description": _(u"Demonstrate Competent Abdominal Examination"),
                 "case_description": _(u"Identify Abdominal Scenario(s)"),
+                # sub in string based on length of test items to let them know how many; update on make selection
                 "ddx_description": _(u"Case Vignettes to Diagnose"),
                 "final_string": _(u"will test you on the following circumstances"),
                 "base_text": _(u"Select an assessment to view associated test items."),

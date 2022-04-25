@@ -25,8 +25,6 @@ class BuildWidgets:
         if len(alignment) > 0:
             use_label.set_alignment(alignment[0], alignment[1])
 
-        use_label.set_line_wrap(True)
-
         return use_label
 
     def build_logo(self, img_string):

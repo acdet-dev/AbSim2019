@@ -14,9 +14,7 @@ from buildWidgets import BuildWidgets
 
 
 class TestCreator(Gtk.Window, MenuBar):
-    """
-    test making window. Allows faculty to create and assign tests
-    """
+    '''test making window. Allows faculty to create and assign tests'''
 
     def __init__(self, user_type, name, password):
 

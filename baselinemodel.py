@@ -178,7 +178,7 @@ class BaselineModel:
 
         return exam_list
 
-    def get_by_score_id(self, key1, key2):
+    def get_by_score_id(self, key):
 
         db_conn = self.connect()
         c = db_conn.cursor()
@@ -186,11 +186,11 @@ class BaselineModel:
         stmt = '''
             SELECT last_name, first_name, exam_name, student_id, not_up, up, down, hard, coverage, et, time_in, section
             FROM baseline
-            WHERE student_id=? and section=?
+            WHERE student_id=?
         '''
         try:
             # trying to match with datatype not string!
-            c.execute(stmt, (key1, key2))
+            c.execute(stmt, (key,))
             row = c.fetchall()
             baseline = [list(elem) for elem in row]
             logging.debug('Got assessment by score_id!')
