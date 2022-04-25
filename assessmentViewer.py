@@ -179,7 +179,7 @@ class ViewsController:
         import csv
 
         # get absim current dir and desktop
-        c_dir = os.getenv('LOCALAPPDATA') + '\\AbSim2020'
+        c_dir = os.getenv('LOCALAPPDATA') + '\\AbSim2020_Zh_Cn'
         desktop = os.environ['USERPROFILE'] + '\\Desktop'
 
         # get headers as list to pass to writer
@@ -190,7 +190,7 @@ class ViewsController:
         if len(self.exam) > 0:
             if self.flag == 'ab':
                 file_string = c_dir + '\\' + '_'.join(self.section) + self.exam[0][1] + '_abnormality_data.csv'
-                with open(file_string, 'w+', newline='') as outcsv:
+                with open(file_string, 'w+', newline='', encoding='UTF-8') as outcsv:
                     writer = csv.DictWriter(outcsv, fieldnames=heads)
                     writer.writeheader()
                     partial_dict = OrderedDict()
@@ -223,7 +223,7 @@ class ViewsController:
 
             elif self.flag == 'ddx':
                 file_string = c_dir + '\\' + '_'.join(self.section) + self.exam[0][1] + '_case_text_data.csv'
-                with open(file_string, 'w+', newline='') as outcsv:
+                with open(file_string, 'w+', newline='', encoding='UTF-8') as outcsv:
                     writer = csv.DictWriter(outcsv, fieldnames=heads)
                     writer.writeheader()
                     partial_dict = OrderedDict()
@@ -469,7 +469,7 @@ class ViewBaselineAssessments:
         import csv
 
         # get relevant dirs
-        c_dir = os.getenv('LOCALAPPDATA') + '\\AbSim2020'
+        c_dir = os.getenv('LOCALAPPDATA') + '\\AbSim2020_Zh_Cn'
         desktop = os.getenv('USERPROFILE') + '\\Desktop'
 
         # create file string

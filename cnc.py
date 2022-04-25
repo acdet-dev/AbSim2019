@@ -69,15 +69,15 @@ class CNC(threading.Thread):
             logging.debug('cnc has port')
             self.connect()
         else:
-            logging.debug('no port on startup')
+            logging.error('no port on startup')
 
     def disconnect(self):
         try:
-            logging.debug('disconnecting from ports')
+            logging.info('disconnecting from ports')
             self.port.close()
             self.state_watcher.cnc_disconnected()
         except (OSError, serial.SerialException):
-            logging.debug('no ports to close or delete?')
+            logging.warning('no ports to close or delete?')
 
     def run(self):
         i = 1
@@ -88,11 +88,11 @@ class CNC(threading.Thread):
                 time.sleep(1)
             else:
                 while i < 4:
-                    logging.debug('reconnect loop hit cnc.')
+                    logging.warning('reconnect loop hit cnc.')
                     self.reconnect()
                     i = i + 1
                     time.sleep(1)
-                logging.debug('failed to reconnect')
+                logging.error('failed to reconnect')
                 self.state_watcher.cnc_disconnected()
                 self.state_watcher.cnc_is_idle()
                 self.stop()
@@ -116,7 +116,7 @@ class CNC(threading.Thread):
                     self.handler(command)
                     self.alert_when_idle()
         else:
-            logging.debug('cnc handle command failed. Reconnecting.')
+            logging.warning('cnc handle command failed. Reconnecting.')
             self.reconnect()
             if command:
                 self.alert_when_idle()
@@ -142,10 +142,10 @@ class CNC(threading.Thread):
         elif command_name == 'emergency_stop':
             logging.info("emergency counter: {}".format(self.e_stop_counter))
             if self.e_stop_counter < 1:
-                logging.debug("emergency stop happening")
+                logging.warning("emergency stop happening")
                 self.emergency_stop()
             else:
-                logging.info("not e-stopping")
+                logging.waring("not e-stopping")
         elif command_name in self.base_locations:
             gcode = self.get_adjusted_location_gcode(command_name)
             self.last_location_sent = command_name
@@ -155,7 +155,7 @@ class CNC(threading.Thread):
             self.send_command(self.gcodes[command_name])
         else:
             # i18n - print
-            logging.debug("cnc.handler does not recognize command ")
+            logging.warning("cnc.handler does not recognize command ")
 
     def clear_queue(self):
         while not self.command_queue.empty():
@@ -163,7 +163,7 @@ class CNC(threading.Thread):
                 self.command_queue.get(False)
             except Exception as e:
                 continue
-        logging.debug("command queue cleared")
+        logging.info("command queue cleared")
 
     def emergency_stop(self):
         # i18n - print
@@ -265,10 +265,10 @@ class CNC(threading.Thread):
                         self.port.reset_input_buffer()
                         self.port.write(('?\n').encode())
                         in_line1 = self.port.readline()
-                        logging.info(in_line1.decode('utf-8'))
+                        # logging.info(in_line1.decode('utf-8'))
                         idle = bool('Idle' in in_line1.decode('utf-8'))
                     except Exception as e:
-                        logging.debug(e)
+                        logging.error(e)
             else:
                 while not idle:
                     command = self.check_for_command()
@@ -278,10 +278,10 @@ class CNC(threading.Thread):
                         self.port.reset_input_buffer()
                         self.port.write(('?\n').encode())
                         in_line1 = self.port.readline()
-                        logging.info(in_line1.decode('utf-8'))
+                        # logging.info(in_line1.decode('utf-8'))
                         idle = bool('Idle' in in_line1.decode('utf-8'))
                     except Exception as e:
-                        logging.debug(e)
+                        logging.error(e)
                         pass
                 # need to reverse order LIFO rather than FIFO
                 self.state_watcher.cnc_is_idle()
@@ -293,7 +293,7 @@ class CNC(threading.Thread):
         # Send command over self.port
         self.port.write(str.encode(command))
         self.state_watcher.cnc_is_busy()
-        logging.info("sending command and staying busy")
+        logging.debug("sending command and staying busy")
 
     def connection_is_alive(self):
         try:
@@ -306,13 +306,13 @@ class CNC(threading.Thread):
             return False
 
     def reconnect(self):
-        logging.debug('attempting to reconnect cnc.')
+        logging.info('attempting to reconnect cnc.')
         if hasattr(self, 'port') and self.port is not None:
             self.port.close()
         self.port = None
         cnc_connection = serialport.look_for_device('G')
         if cnc_connection:
-            logging.debug("reconnected to cnc")
+            logging.info("reconnected to cnc")
             self.port = cnc_connection
             self.connect()
 
@@ -327,8 +327,8 @@ class CNC(threading.Thread):
             if self.assess:
                 time.sleep(5)
         except Exception as e:
-            logging.debug(e)
-            logging.debug("Couldn't connect to cnc.")
+            logging.error(e)
+            logging.error("Couldn't connect to cnc.")
 
 # Testing (Added by Terry Hancock for testing i18n upgrades)
 #

@@ -59,7 +59,7 @@ class Sensors(threading.Thread):
             while i < 4:
                 self.reconnect()
                 if self.port is not None:
-                    logging.debug('sensor connected after ' + str(i) + ' times.')
+                    logging.info('sensor connected after ' + str(i) + ' times.')
                     i = 7
                 else:
                     i = i + 1
@@ -67,7 +67,7 @@ class Sensors(threading.Thread):
             if self.port is not None:
                 pass
             else:
-                logging.debug('failed to reconnect pressure pad. Stopping device thread')
+                logging.error('failed to reconnect pressure pad. Stopping device thread')
                 self.stop()
 
     def connect_signals(self):
@@ -81,7 +81,7 @@ class Sensors(threading.Thread):
             self.port.write('B\n'.encode('ascii'))
             self.state_watcher.sensor_pad_connected()
         except serial.serialutil.SerialException:
-            logging.debug('could not connect sensor pad')
+            logging.error('could not connect sensor pad')
 
     def idle(self, event, widget):
         try:
@@ -96,8 +96,8 @@ class Sensors(threading.Thread):
                 try:
                     self.read_from_port()
                 except Exception as e:
-                    logging.debug(e)
-                    logging.debug('sensor port failing to read on try read command; setting to none')
+                    logging.error(e)
+                    logging.warning('sensor port failing to read on try read command; setting to none')
                     # self.port.close()
                     fail_read_counter = 0
                     read_success = False
@@ -107,8 +107,8 @@ class Sensors(threading.Thread):
                             fail_read_counter = 5
                             read_success = True
                         except Exception as e:
-                            logging.debug(e)
-                            logging.debug('sensor port failing to read on fail block ' + str(fail_read_counter) +
+                            logging.warning(e)
+                            logging.warning('sensor port failing to read on fail block ' + str(fail_read_counter) +
                                           ' times')
                             fail_read_counter += 1
                     if not read_success:
@@ -122,7 +122,7 @@ class Sensors(threading.Thread):
                 if self.command:
                     self.send_command(self.command)
             else:
-                logging.debug('Sensor reconnect loop hit.')
+                logging.info('Sensor reconnect loop hit.')
                 self.reconnect()
                 if hasattr(self, 'port') and self.port is not None:
                     self.state_watcher.sensor_pad_connected()
@@ -132,7 +132,7 @@ class Sensors(threading.Thread):
                     self.stop()
 
         if hasattr(self, 'port') and self.port is not None:
-            logging.debug('closing sensor pad port on run loop end.')
+            logging.info('closing sensor pad port on run loop end.')
             self.port.close()
             self.state_watcher.sensor_pad_disconnected()
 
@@ -154,12 +154,12 @@ class Sensors(threading.Thread):
         data_buffer.fromstring(self.port.read(size=144))
         gottime = time.time()
         if gottime - timer > 4:
-            logging.debug("Timed out trying to read data.")
+            logging.warning("Timed out trying to read data.")
         if self.frame_ending_is_there():
             self.process_data(data_buffer)
         else:
             self.trashed_frames += 1
-            logging.debug("Frame ending is missing. Trashed frame count: " + str(self.trashed_frames))
+            logging.warning("Frame ending is missing. Trashed frame count: " + str(self.trashed_frames))
 
     def find_frame_beginning(self):
         edge_finder = array.array('B')
@@ -185,17 +185,17 @@ class Sensors(threading.Thread):
                             # break inner loop
                             in_byte = None
                     else:
-                        logging.debug("Timed out trying to find pressure pad frame beginning.")
+                        logging.warning("Timed out trying to find pressure pad frame beginning.")
                         self.state_watcher.sensor_pad_disconnected()
                         self.stop()
                     looped = looped + 1
             else:
-                logging.debug("Timed out trying to find pressure pad frame beginning.")
+                logging.error("Timed out trying to find pressure pad frame beginning.")
                 self.state_watcher.sensor_pad_disconnected()
                 self.stop()
 
             if looped > 288:
-                logging.debug("Looping way too much to find frame beginning. Problem.")
+                logging.error("Looping way too much to find frame beginning. Problem.")
                 self.state_watcher.sensor_pad_disconnected()
                 self.stop()
 
@@ -270,8 +270,8 @@ def list_serial_ports():
                 result['A'] = bellows
 
         except (serial.SerialException, OSError) as e:
-            logging.debug(e)
-            logging.debug(e)
+            logging.error(e)
+            logging.error(e)
 
     return result
 
@@ -304,8 +304,8 @@ def look_for_device(device_id):
                 s_connection.close()
 
         except (OSError, serial.SerialException) as e:
-            logging.debug(e)
-            logging.info("Not connecting to device " + str(port) + " on reconnect")
+            logging.error(e)
+            logging.error("Not connecting to device " + str(port) + " on reconnect")
 
 
 def build_platform_port_list():

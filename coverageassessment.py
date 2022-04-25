@@ -595,11 +595,11 @@ class ComparativeLocationCoverageAnalysisView(gtk.Table):
 
     def fill_objective_labels(self):
         objective_names = [
-            string_resources["light_label"].split(" ")[0] + "\n" + string_resources["light_label"].split(" ")[1],
-            string_resources["deep_label"].split(" ")[0] + "\n" + string_resources["deep_label"].split(" ")[1],
+            string_resources["light_label"],
+            string_resources["deep_label"],
             string_resources["too_deep_label"],
-            string_resources["light_label"].split(" ")[0] + "\n" + string_resources["light_label"].split(" ")[1],
-            string_resources["deep_label"].split(" ")[0] + "\n" + string_resources["deep_label"].split(" ")[1],
+            string_resources["light_label"],
+            string_resources["deep_label"],
             string_resources["too_deep_label"]
         ]
         for x in range(0, 6):

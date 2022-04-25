@@ -8,7 +8,7 @@ import sqlite3
 import logging
 import os
 
-app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2020'
+app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2020_Zh_Cn'
 
 class DBMigrator:
     def __init__(self, db_filename = app_data_path + '\\faculty_info.db'):

@@ -206,7 +206,7 @@ class ViewAssignments(Gtk.Window):
             self.hide_disconnection_warning(signal_source='hi')
 
         else:
-            logging.debug('cnc port not found')
+            logging.warning('cnc port not found')
             self.show_disconnection_warning(self.state_watcher)
 
         self.attach_new_case_observer(self.port_settings.new_case_selected)
@@ -224,7 +224,7 @@ class ViewAssignments(Gtk.Window):
         if self.state_watcher.sensor_pad_is_connected:
             self.new_selected_case.connect(callback)
         else:
-            logging.debug('not true')
+            logging.warning('sensor pad not connected')
 
     def show_do_not_touch_modal(self, widget):
         # Gtk.threads_enter()
@@ -256,7 +256,7 @@ class ViewAssignments(Gtk.Window):
             self.sounds.stop_sound_player()
             self.port_settings.stop_devices()
         except AttributeError:
-            logging.debug('attributes necessary for stopping devices not made yet')
+            logging.warning('attributes necessary for stopping devices not made yet')
 
         new_window(self.user_type)
 
@@ -426,7 +426,7 @@ class ViewTests(Gtk.HBox):
         ddx_list = self.exam_resources['text_dict'].cases.get(525, [])
         indices = [i for i, x in enumerate(ddx_list)]
 
-        relevant = [ddx_list[j] for j in indices if ddx_list[j][0]['ddx_name'] == self.exam_resources['ddx_cases'][0]]
+        relevant = [ddx_list[j] for j in indices if ddx_list[j][0]['db_name'] == self.exam_resources['ddx_cases'][0]]
 
         rand_index = random.randint(0, len(relevant[0]) - 1)
         random_rel = relevant[0][rand_index]
@@ -600,17 +600,17 @@ class ViewTests(Gtk.HBox):
                 try:
                     # check password and section info
                     if distance(credentials, student[3]) < 1 and student[0] == self.exam_resources['section']:
-                        logging.debug('Beginning Exam')
+                        logging.info('Beginning Exam')
                         self.parse_and_transition(student[3])
                     else:
-                        logging.debug('Not beginning exam. Login failure.')
+                        logging.warning('Not beginning exam. Login failure.')
                         sim_message(self.view_resources['window'], info_string=self.string_resources["login_fail"],
                                     secondary_text=self.string_resources["fail_description"])
                 except TypeError as e:
-                    logging.debug('No student found. Passing to login failure message.')
+                    logging.warning('No student found. Passing to login failure message.')
                     pass
             else:
-                logging.debug('No student in record.')
+                logging.warning('No student in record.')
                 sim_message(self.view_resources['window'], info_string=self.string_resources["login_fail"],
                             secondary_text=self.string_resources["fail_description"])
                 pass
@@ -990,7 +990,7 @@ class DdxExam(Gtk.HBox):
         ddx_list = self.exam_resources['text_dict'].cases.get(525, [])
         indices = [i for i, x in enumerate(ddx_list)]
 
-        relevant = [ddx_list[j] for j in indices if ddx_list[j][0]['ddx_name'] == self.exam_resources['ddx_cases'][0]]
+        relevant = [ddx_list[j] for j in indices if ddx_list[j][0]['db_name'] == self.exam_resources['ddx_cases'][0]]
 
         rand_index = random.randint(0, len(relevant[0]) - 1)
         random_rel = relevant[0][rand_index]

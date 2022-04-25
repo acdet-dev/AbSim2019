@@ -11,6 +11,7 @@ from buildWidgets import BuildWidgets
 import exammodel
 from takenmodel import TakenModel
 from casetext import CaseTextBuffer
+from casetext import CaseText
 from messages import sim_class_message, sim_message
 import simLabels
 from sectionTree import SectionTree
@@ -392,8 +393,14 @@ class ViewPerformance(Gtk.Window, MenuBar):
             cases = case.split("-")
             case = [u"\u2022" + i for i in cases if "ddx_" not in i]
         if len(ddx) > 0:
+            ddx_names = CaseText().cases.get(525, [])
+            ddx_label_dict = {}
+            for name in ddx_names:
+                temp_db_name = [i["db_name"] for i in name]
+                temp_ddx_name = [i["ddx_name"] for i in name]
+                ddx_label_dict[temp_db_name[0]] = temp_ddx_name[0]
             ddx = ddx.split("-")
-            ddx = [u"\u2022" + i for i in ddx]
+            ddx = [u"\u2022" + ddx_label_dict[i] for i in ddx]
 
         text = self.string_resources["baseline_text"] + " " + base_string + "\n\n" +\
                self.string_resources["ab_text"] + "\n" + u"\n".join(case) + "\n\n" +\

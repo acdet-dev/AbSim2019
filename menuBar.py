@@ -9,7 +9,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2020'
+app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2020_Zh_Cn'
 string_resources = AStringResources("menu_bar").get_by_identifier()
 
 
@@ -30,7 +30,7 @@ class MenuBar:
             f1 = open(menu_xml, 'r')
             menu_xml_list = f1.readlines()
         except FileNotFoundError:
-            logging.debug('No menu xml file found.')
+            logging.error('No menu xml file found.')
 
         # add menu options to new menu bar xml file
         opt_len = len(options)
@@ -45,7 +45,7 @@ class MenuBar:
                 choice_list.append(num_list[i])
                 i = i + 1
             except (IndexError, UnboundLocalError):
-                logging.debug('An error occurred when adding locale menu options.')
+                logging.error('An error occurred when adding locale menu options.')
                 break
 
         f2 = open(out_menu_xml, 'w+')
@@ -56,7 +56,7 @@ class MenuBar:
             f1.close()
             f2.close()
         except UnboundLocalError:
-            logging.debug("No menu list created")
+            logging.error("No menu list created")
 
         return choice_list
 
@@ -76,7 +76,7 @@ class MenuBar:
         try:
             box.pack_start(menubar, False, False, 0)
         except TypeError:
-            logging.debug("not packing menu because error occurred")
+            logging.error("not packing menu because error occurred")
         return box
 
     def add_ab_menu_actions(self, action_group):
@@ -91,7 +91,7 @@ class MenuBar:
                                            None))
 
         # Log i18n status
-        logging.debug('Attempting to get i18n locale options.')
+        logging.info('Attempting to get i18n locale options.')
 
         self.locale_options = i18ntrans2.get_locale_options()
 
@@ -149,7 +149,7 @@ class MenuBar:
             self.sounds.stop_sound_player()
             self.port_settings.stop_devices()
         except AttributeError:
-            logging.debug('attributes necessary for stopping devices not made yet')
+            logging.error('attributes necessary for stopping devices not made yet')
 
         splash_screen.hide()
         Gtk.main_quit()
@@ -167,7 +167,7 @@ class MenuBar:
             self.sounds.stop_sound_player()
             self.port_settings.stop_devices()
         except AttributeError:
-            logging.debug('attributes necessary for stopping devices not made yet')
+            logging.error('attributes necessary for stopping devices not made yet')
 
         defineUser.DefineUser()
         splash_screen.hide()

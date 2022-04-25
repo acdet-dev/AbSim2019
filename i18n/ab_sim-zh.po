@@ -1,0 +1,1383 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-09-21 20:53+Central Daylight Time\n"
+"PO-Revision-Date: 2021-09-26 10:20-0500\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 2.2.4\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: zh_CN\n"
+
+#: aStringResources.py:16
+msgid "Welcome to AbSim"
+msgstr "欢迎来到AbSim"
+
+#: aStringResources.py:17
+msgid "Faculty"
+msgstr "教师"
+
+#: aStringResources.py:18
+msgid "Click here to configure AbSim and create assessments"
+msgstr "点击此处，配置AbSim和创建评估"
+
+#: aStringResources.py:19
+msgid "Student"
+msgstr "学生"
+
+#: aStringResources.py:20
+msgid ""
+"Demonstrate proficiency in abdominal palpation through practice and "
+"assessments"
+msgstr "通过训练和评估熟练掌握腹部触诊"
+
+#: aStringResources.py:26
+msgid "Home"
+msgstr "主页"
+
+#: aStringResources.py:27
+msgid "System Language"
+msgstr "系统语言"
+
+#: aStringResources.py:33
+msgid "Please enter the AbSim's initial key to add faculty login."
+msgstr "请点击AbSim的启动键以添加教师登录。"
+
+#: aStringResources.py:34
+msgid "AbSim Initial Key"
+msgstr "AbSim启动键"
+
+#: aStringResources.py:35
+msgid "Add Faculty"
+msgstr "添加教师"
+
+#: aStringResources.py:36
+msgid "Please enter a user name and password."
+msgstr "请输入一个用户名和密码。"
+
+#: aStringResources.py:37
+msgid "Faculty Added Successfully"
+msgstr "教师添加成功"
+
+#: aStringResources.py:38
+msgid "Moving to faculty interface."
+msgstr "转到教师界面。"
+
+#: aStringResources.py:39
+msgid "Faculty NOT Added"
+msgstr "教师未添加"
+
+#: aStringResources.py:40
+msgid "Please Re-Enter the Initial Key."
+msgstr "请重新点击启动键。"
+
+#: aStringResources.py:41
+msgid "Faculty Login"
+msgstr "教师登录"
+
+#: aStringResources.py:42
+msgid "Please enter your user name and password."
+msgstr "请输入你的用户名和密码。"
+
+#: aStringResources.py:43 aStringResources.py:282
+msgid "Login Failed"
+msgstr "登录失败"
+
+#: aStringResources.py:44
+msgid "Username and Password do not match our records."
+msgstr "用户名和密码不匹配。"
+
+#: aStringResources.py:45
+msgid "No info provided or Cancel clicked."
+msgstr "无信息或已点击取消。"
+
+#: aStringResources.py:46
+msgid "Please enter the AbSim's initial key to reset faculty login."
+msgstr "请点击AbSim的启动键以重置教师登录。"
+
+#: aStringResources.py:47
+msgid "Faculty Login Data Deleted"
+msgstr "教师登录数据删除"
+
+#: aStringResources.py:48
+msgid "To add another faculty member, click \"Faculty.\""
+msgstr "添加其他教师，点击“教师”。"
+
+#: aStringResources.py:54
+msgid "Calibrate Palpatory Depth Settings"
+msgstr "设置"
+
+#: aStringResources.py:55
+msgid "Customize Sensor Pad Pressure Settings"
+msgstr "自定义传感垫压力设置"
+
+#: aStringResources.py:56
+msgid "Create an Examination"
+msgstr "评估"
+
+#: aStringResources.py:57
+msgid "Create Student Roster and Test Items"
+msgstr "创建和分配评估"
+
+#: aStringResources.py:63
+msgid "Enter Student Roster"
+msgstr "输入学生名册"
+
+#: aStringResources.py:64
+msgid "Provide AbSim Student Information"
+msgstr "提供AbSim学生信息"
+
+#: aStringResources.py:65
+msgid "Select Test Items"
+msgstr "创建评估"
+
+#: aStringResources.py:66
+msgid "Select Test Items to Include on Examination"
+msgstr "选择评估测试项目"
+
+#: aStringResources.py:67
+msgid "View Examination"
+msgstr "查看和分配评估"
+
+#: aStringResources.py:68
+msgid "Preview Student Test Performance"
+msgstr "查看创建的评估和学生成绩"
+
+#: aStringResources.py:69
+msgid "Return to Initial Faculty Screen"
+msgstr "返回初始教师界面"
+
+#: aStringResources.py:75
+msgid "AbSim Configuration"
+msgstr "AbSim配置"
+
+#: aStringResources.py:76
+msgid "Pressure"
+msgstr "压力"
+
+#: aStringResources.py:77
+msgid "Sensitivity"
+msgstr "感应"
+
+#: aStringResources.py:82
+msgid "Sensitivity Configuration Interface"
+msgstr "感应配置界面"
+
+#: aStringResources.py:83
+msgid "Set pressure pad sensitivity thresholds:"
+msgstr "设置压力垫感应阈值:"
+
+#: aStringResources.py:84
+msgid "(e.g."
+msgstr "（例如"
+
+#: aStringResources.py:85
+msgid "light"
+msgstr "浅"
+
+#: aStringResources.py:86
+msgid "from 5 - 14"
+msgstr "从5-14"
+
+#: aStringResources.py:87
+msgid "deep"
+msgstr "深"
+
+#: aStringResources.py:88
+msgid "from 15 - 54"
+msgstr "从15-54"
+
+#: aStringResources.py:89
+msgid "too deep"
+msgstr "太深"
+
+#: aStringResources.py:90
+msgid "> 55)."
+msgstr "> 55)。"
+
+#: aStringResources.py:91
+msgid "Click \"Save Sensitivity Settings\" to save your choices."
+msgstr "点击“保存感应设置”保存你的选项。"
+
+#: aStringResources.py:92
+msgid "You may view the effects of your changes on the image to the right."
+msgstr "你可以在右侧图像上查看更改后的效果。"
+
+#: aStringResources.py:94
+msgid ""
+"If you notice \"ghost\" registers of pressure, click \"Tare / Zero Sensors\"."
+msgstr "如果你设置“幽灵”压力，点击“皮重/零传感器”。"
+
+#: aStringResources.py:95
+msgid "Tare / Zero Sensors"
+msgstr "皮重/零传感器"
+
+#: aStringResources.py:96
+msgid "Save Sensitivity Settings"
+msgstr "保存感应设置"
+
+#: aStringResources.py:101
+msgid "Manage Student Info"
+msgstr "管理学生信息"
+
+#: aStringResources.py:102
+msgid "Instructions"
+msgstr "提示"
+
+#: aStringResources.py:103
+msgid "Manage Sections"
+msgstr "管控区"
+
+#: aStringResources.py:104
+msgid "Loading Student Information"
+msgstr "加载学生信息"
+
+#: aStringResources.py:105
+msgid "AbSim is set up to parse comma-separated variable files (.csv)."
+msgstr "设置AbSim为可解析逗号分隔的变量文件(.csv)。"
+
+#: aStringResources.py:106
+msgid "Please provide AbSim a .csv file with headers as shown below."
+msgstr "请为AbSim提供如下所示的.csv文件。"
+
+#: aStringResources.py:107
+msgid ""
+"If using Microsoft Excel, make sure to save your spreadsheet as a .csv file"
+msgstr "如果使用Microsoft Excel，请确保将电子表格保存为.csv文件"
+
+#: aStringResources.py:108
+msgid "(preferably in UTF-8 encoding)."
+msgstr "(最好是UTF-8编码)。"
+
+#: aStringResources.py:109
+msgid "When you are ready, click \"Upload\" to provide AbSim your .csv file."
+msgstr "当你准备好，点击“上传”，为AbSim提供你的.csv文件。"
+
+#: aStringResources.py:110
+msgid "Upload"
+msgstr "上传"
+
+#: aStringResources.py:111 aStringResources.py:178
+msgid "View"
+msgstr "查看"
+
+#: aStringResources.py:112 aStringResources.py:180
+msgid "Delete"
+msgstr "删除"
+
+#: aStringResources.py:113 aStringResources.py:137 aStringResources.py:191
+msgid "Section"
+msgstr "区"
+
+#: aStringResources.py:114
+msgid "Number of Students"
+msgstr "学生数量"
+
+#: aStringResources.py:115
+msgid "Last Name"
+msgstr "名"
+
+#: aStringResources.py:116
+msgid "First Name"
+msgstr "姓"
+
+#: aStringResources.py:117
+msgid "ID"
+msgstr "ID"
+
+#: aStringResources.py:118
+msgid "Assessments Taken"
+msgstr "已评估"
+
+#: aStringResources.py:119
+msgid "Abnormality Average"
+msgstr "异常均值"
+
+#: aStringResources.py:120
+msgid "Case Text Average"
+msgstr "病例文本均值"
+
+#: aStringResources.py:121
+msgid "NA"
+msgstr "NA"
+
+#: aStringResources.py:122
+msgid "Section Data Not Found"
+msgstr "未找到分区信息"
+
+#: aStringResources.py:123
+msgid "Please check back when you have entered section data."
+msgstr "当你已输入分区数据时，请返回检查。"
+
+#: aStringResources.py:124
+msgid "No Section Selected"
+msgstr "未选择区"
+
+#: aStringResources.py:125
+msgid "Please select a section to view, edit, and delete information."
+msgstr "请选择一个区查看，编辑，和删除信息。"
+
+#: aStringResources.py:126
+msgid "No Student Selected"
+msgstr "未选择学生"
+
+#: aStringResources.py:127
+msgid "Please select a student to view, edit, and delete information."
+msgstr "请选择一个学生查看，编辑和删除信息。"
+
+#: aStringResources.py:128
+msgid "Delete Information"
+msgstr "删除信息"
+
+#: aStringResources.py:129
+msgid "Are you sure you wish to delete the selected information?"
+msgstr "你确定你希望删除所选信息？"
+
+#: aStringResources.py:130
+msgid "Information Not Deleted"
+msgstr "信息未删除"
+
+#: aStringResources.py:131
+msgid "AbSim will not delete information and associated data."
+msgstr "AbSim不会删除信息和相关数据"
+
+#: aStringResources.py:136
+msgid "AbSim File Chooser"
+msgstr "AbSim文件选择器"
+
+#: aStringResources.py:138
+msgid "Class Uploaded Successfully"
+msgstr "班级上传成功"
+
+#: aStringResources.py:139
+msgid "Students may now login to view exams you assign."
+msgstr "学生现在可以登录查看你分配的考试。"
+
+#: aStringResources.py:140
+msgid "Class Upload Failed"
+msgstr "班级上传失败"
+
+#: aStringResources.py:141
+msgid "Section information not provided."
+msgstr "未提供分区信息。"
+
+#: aStringResources.py:142
+msgid "File format does not match requested format."
+msgstr "班级上传失败"
+
+#: aStringResources.py:143
+msgid "Encoding Error Encountered"
+msgstr "遇到编码错误"
+
+#: aStringResources.py:144
+msgid "Please make sure to save your .csv file in UTF-8 encoding."
+msgstr "请确保用UTF-8编码保存.csv文件。"
+
+#: aStringResources.py:145
+msgid "Any files"
+msgstr "任何文件"
+
+#: aStringResources.py:146
+msgid "Text files"
+msgstr "文本文件"
+
+#: aStringResources.py:147
+msgid "Please choose a folder"
+msgstr "请选择一个文件夹"
+
+#: aStringResources.py:158
+msgid "AbSim Assessment Creator"
+msgstr "AbSim评估创建"
+
+#: aStringResources.py:159
+msgid "1. Baseline Assessment"
+msgstr "1.基准评估"
+
+#: aStringResources.py:160
+msgid "Add Baseline Assessment?"
+msgstr "添加基准评估？"
+
+#: aStringResources.py:161
+msgid "2. Abnormality Detection Assessment"
+msgstr "2.异常检测评估"
+
+#: aStringResources.py:162
+msgid "3. Case Assessment"
+msgstr "3.病例评估"
+
+#: aStringResources.py:163
+msgid "Input Assessment Title"
+msgstr "输入评估标题"
+
+#: aStringResources.py:164
+msgid "Save Assessment"
+msgstr "保存评估"
+
+#: aStringResources.py:165
+msgid "Assessment"
+msgstr "评估"
+
+#: aStringResources.py:170 aStringResources.py:251
+msgid "View Assessments"
+msgstr "查看评估"
+
+#: aStringResources.py:171
+msgid "Assessments"
+msgstr "评估"
+
+#: aStringResources.py:172 aStringResources.py:252
+msgid "Assessment Title"
+msgstr "评估标题"
+
+#: aStringResources.py:173
+msgid "Assigned To"
+msgstr "分配到"
+
+#: aStringResources.py:174
+msgid "Completed"
+msgstr "完成"
+
+#: aStringResources.py:175
+msgid "Baseline Palpation"
+msgstr "触诊基准"
+
+#: aStringResources.py:176 aStringResources.py:299
+msgid "Abnormality Detection"
+msgstr "异常检测"
+
+#: aStringResources.py:177
+msgid "Case Diagnosis"
+msgstr "病例诊断"
+
+#: aStringResources.py:179
+msgid "Assign"
+msgstr "分配"
+
+#: aStringResources.py:181
+msgid "Choose Section(s)"
+msgstr "选择区"
+
+#: aStringResources.py:182
+msgid "Select section name(s) to display results for that (those) section(s)."
+msgstr "选择区名称以显示该区结果。"
+
+#: aStringResources.py:183
+msgid "Select section name(s) to which to assign assessment."
+msgstr "选择要分配评估的区名称。"
+
+#: aStringResources.py:184
+msgid "Results"
+msgstr "结果"
+
+#: aStringResources.py:185
+msgid "Baseline Assessment:"
+msgstr "基准评估："
+
+#: aStringResources.py:186
+msgid "Abnormality Detection:"
+msgstr "异常检测："
+
+#: aStringResources.py:187
+msgid "Case Diagnosis:"
+msgstr "病例诊断："
+
+#: aStringResources.py:188
+msgid "Select assessment to view items assigned."
+msgstr "选择评估以查看分配的项目。"
+
+#: aStringResources.py:189
+msgid "No Section(s) Selected"
+msgstr "未选择区"
+
+#: aStringResources.py:190
+msgid "Please select section(s) to view student performance."
+msgstr "请选择区以查看学生成绩。"
+
+#: aStringResources.py:192 aStringResources.py:241
+msgid "No Sections Exist"
+msgstr "无保存的区"
+
+#: aStringResources.py:193
+msgid "Please add students in previous screen."
+msgstr "请在之前界面中添加学生。"
+
+#: aStringResources.py:194
+msgid "Delete Assessment"
+msgstr "删除评估"
+
+#: aStringResources.py:195
+msgid "Are you sure you wish to delete the selected assessment?"
+msgstr "你确定你想删除已选择的评估？"
+
+#: aStringResources.py:196
+msgid "Assessment Not Deleted"
+msgstr "评估未删除"
+
+#: aStringResources.py:197
+msgid "AbSim will not delete assessment and associated data."
+msgstr "AbSim不会删除评估和相关数据。"
+
+#: aStringResources.py:198
+msgid "Assessment Data Not Found"
+msgstr "未找到评估数据"
+
+#: aStringResources.py:199
+msgid "Please check back when students have taken assessments."
+msgstr "学生完成评估后，请及时查阅。"
+
+#: aStringResources.py:200
+msgid "Assessment Assignment Successful"
+msgstr "评估分配成功"
+
+#: aStringResources.py:201
+msgid "Students in section(s) assigned may take this assessment."
+msgstr "分配区的学生将会参加此评估。"
+
+#: aStringResources.py:202
+msgid "Assessment Already Assigned"
+msgstr "已分配评估"
+
+#: aStringResources.py:203
+msgid "The chosen section is already assigned this assessment."
+msgstr "已选区域已分配此评估。"
+
+#: aStringResources.py:204
+msgid "No Assessment Selected"
+msgstr "未选择评估"
+
+#: aStringResources.py:205
+msgid "Please select an assessment to assign, view results, or delete."
+msgstr "请选择一个评估分配，查看结果，或删除。"
+
+#: aStringResources.py:210
+msgid "Assessment Saved Successfully"
+msgstr "评估保存成功"
+
+#: aStringResources.py:211 aStringResources.py:460
+msgid "Students may now take your assessment."
+msgstr "学生现在可以进行评估。"
+
+#: aStringResources.py:212
+msgid "Assessment Save Failure"
+msgstr "评估保存失败"
+
+#: aStringResources.py:213 aStringResources.py:462
+msgid "Could not save assessment."
+msgstr "不能保存评估。"
+
+#: aStringResources.py:214 aStringResources.py:463
+msgid "Could not save assessment because no assessment title entered."
+msgstr "由于没有输入评估标题，无法保存评估。"
+
+#: aStringResources.py:219
+msgid "No Assessments Taken"
+msgstr "未进行评估"
+
+#: aStringResources.py:220
+msgid "Please check back when students have taken your assessment."
+msgstr "学生完成评估后，请及时查阅。"
+
+#: aStringResources.py:221
+msgid "Student ID"
+msgstr "学生ID"
+
+#: aStringResources.py:222
+msgid "Score"
+msgstr "分数"
+
+#: aStringResources.py:223
+msgid "Time Elapsed"
+msgstr "时间到"
+
+#: aStringResources.py:224
+msgid "Assessment Data Exported"
+msgstr "评估数据导出"
+
+#: aStringResources.py:225
+msgid "A CSV file with assessment data was created in AbSim's directory."
+msgstr "在AbSim的目录中创建了一个带评估数据的CSV文件。"
+
+#: aStringResources.py:226
+msgid "Assessment Data Not Exported"
+msgstr "评估数据未导出"
+
+#: aStringResources.py:227
+msgid "Something went wrong."
+msgstr "出错了。"
+
+#: aStringResources.py:228
+msgid "Export to Desktop"
+msgstr "导出到桌面"
+
+#: aStringResources.py:233
+msgid "Self-directed Learning"
+msgstr "自主学习"
+
+#: aStringResources.py:234
+msgid "Learn and Practice Abdominal Palpation"
+msgstr "学习和练习腹部触诊"
+
+#: aStringResources.py:235
+msgid "Take Assigned Assessment"
+msgstr "进行评估"
+
+#: aStringResources.py:236
+msgid "Complete a Variety of Assessments Using AbSim"
+msgstr "使用AbSim完成多种评估"
+
+#: aStringResources.py:237
+msgid "Select Class Section"
+msgstr "选择班级部门"
+
+#: aStringResources.py:238
+msgid "Choose your appropriate class section."
+msgstr "选择适当的类部分。"
+
+#: aStringResources.py:239
+msgid "No Section Chosen"
+msgstr "未选择任何节"
+
+#: aStringResources.py:240
+msgid "Please choose the section to which you belong."
+msgstr "请选择属于自己的部分。"
+
+#: aStringResources.py:242
+msgid "Please wait for your instructor to load class information."
+msgstr "请等待您的讲师加载课堂信息。"
+
+#: aStringResources.py:247
+msgid "AbSim Assignment Viewer"
+msgstr "AbSim分配查看器"
+
+#: aStringResources.py:248
+msgid "Abnormality Assessment"
+msgstr "异常评估"
+
+#: aStringResources.py:249
+msgid "Case Text Assessment"
+msgstr "病例文本评估"
+
+#: aStringResources.py:250 aStringResources.py:292
+msgid "Baseline Assessment"
+msgstr "基准评估"
+
+#: aStringResources.py:253 caseselector.py:79
+msgid "Ailment"
+msgstr "疾病"
+
+#: aStringResources.py:254
+msgid "Welcome to AbSim's Assessment Interface"
+msgstr "欢迎来到AbSim评估界面"
+
+#: aStringResources.py:255
+msgid "Select an assessment and click \"Begin Assessment\" when ready."
+msgstr "选择一个评估，点击“开始评估”。"
+
+#: aStringResources.py:256
+msgid "Begin Assessment"
+msgstr "开始评估"
+
+#: aStringResources.py:258
+msgid "Assessment Not Found."
+msgstr "未发现评估。"
+
+#: aStringResources.py:259
+msgid "You may take another assessment if you have more to take."
+msgstr "你可以继续选择另一个评估。"
+
+#: aStringResources.py:262
+msgid "Select Assessment"
+msgstr "选择评估"
+
+#: aStringResources.py:263
+msgid "Please select an assessment and click \"Begin Assessment\"."
+msgstr "请选择一个评估，点击“开始评估”。"
+
+#: aStringResources.py:264
+msgid "Assessment Finished"
+msgstr "评估完成"
+
+#: aStringResources.py:265
+msgid ""
+"Demonstrate your ability to perform a competent abdominal examination and "
+"click 'OK' when finished."
+msgstr "实施一个基准评估，结束后点击“OK\\\"。"
+
+#: aStringResources.py:267
+msgid "Demonstrate Competent Abdominal Examination"
+msgstr "基准评估"
+
+#: aStringResources.py:268
+msgid "Identify Abdominal Scenario(s)"
+msgstr "识别条件"
+
+#: aStringResources.py:270
+msgid "Case Vignettes to Diagnose"
+msgstr "病例简介的诊断"
+
+#: aStringResources.py:271
+msgid "will test you on the following circumstances"
+msgstr "组成"
+
+#: aStringResources.py:272
+msgid "Select an assessment to view associated test items."
+msgstr "选择一个评估，查看相关测试项目。"
+
+#: aStringResources.py:273
+msgid "Ok"
+msgstr "Ok"
+
+#: aStringResources.py:274
+msgid "Make Selection"
+msgstr "制定选项"
+
+#: aStringResources.py:275
+msgid "Identify the condition associated with the test item(s)"
+msgstr "确定与测试项目相关的条件"
+
+#: aStringResources.py:276
+msgid ""
+"view the case vignette, perform an exam, and enter your diagnosis for the "
+"case"
+msgstr "查看病情简报，实施考试，进入病例诊断"
+
+#: aStringResources.py:277
+msgid "Current Item"
+msgstr "当前项目"
+
+#: aStringResources.py:278
+msgid "No Selection"
+msgstr "无选项"
+
+#: aStringResources.py:279
+msgid "Please select a case."
+msgstr "选择一个病例。"
+
+#: aStringResources.py:280
+msgid "Please provide ID number"
+msgstr "请输入你的ID"
+
+#: aStringResources.py:281
+msgid "Student Login"
+msgstr "学生登录"
+
+#: aStringResources.py:283
+msgid "Entered ID does not match AbSim's records."
+msgstr "输入ID不符。"
+
+#: aStringResources.py:284
+msgid "Assessment Already Completed"
+msgstr "评估已完成"
+
+#: aStringResources.py:285
+msgid "You have taken this assessment; please select another."
+msgstr "您已接受此评估;请选择另一个。"
+
+#: aStringResources.py:286
+msgid "Assessment Not Selected"
+msgstr "未选定评估"
+
+#: aStringResources.py:287
+msgid "Please select an assessment."
+msgstr "请选择评估。"
+
+#: aStringResources.py:293
+msgid "Milestone 1:"
+msgstr "里程碑1："
+
+#: aStringResources.py:294
+msgid "Depth of Palpation"
+msgstr "触诊深度"
+
+#: aStringResources.py:295
+msgid "Milestone 2:"
+msgstr "里程碑2："
+
+#: aStringResources.py:296
+msgid "Surface Area Coverage"
+msgstr "表面范围"
+
+#: aStringResources.py:297
+msgid "Comparative Assessment"
+msgstr "比较评估"
+
+#: aStringResources.py:298
+msgid "Milestone 3:"
+msgstr "里程碑3："
+
+#: aStringResources.py:300
+msgid "Milestone 4:"
+msgstr "里程碑4："
+
+#: aStringResources.py:301
+msgid "Self-Assessment with"
+msgstr "自我评估"
+
+#: aStringResources.py:302
+msgid "Random Ailments"
+msgstr "随机疾病"
+
+#: aStringResources.py:303
+msgid "Milestone 5:"
+msgstr "里程碑5："
+
+#: aStringResources.py:304
+msgid "Diagnosis Integration"
+msgstr "集成诊断"
+
+#: aStringResources.py:305
+msgid "with Hx/PE"
+msgstr "Hx/PE"
+
+#: aStringResources.py:311
+msgid "Welcome!"
+msgstr "欢迎！"
+
+#: aStringResources.py:312
+msgid "AbSim will train you on abdominal palpation, a key skill to"
+msgstr "AbSim 将会训练你的腹部触诊技巧"
+
+#: aStringResources.py:313
+msgid "assess patients complaining of abdominal pain."
+msgstr "评估患者腹部疼痛主诉。"
+
+#: aStringResources.py:314
+msgid "When you are ready, perform an abdominal exam."
+msgstr "准备好后，实施腹部检查。"
+
+#: aStringResources.py:315
+msgid "Click the button when you're done."
+msgstr "当你完成后，点击此按钮。"
+
+#: aStringResources.py:316
+msgid "Reveal completed exam"
+msgstr "显示完成的考试"
+
+#: aStringResources.py:317
+msgid "Appendix Region"
+msgstr "阑尾区"
+
+#: aStringResources.py:318
+msgid "Colon Region"
+msgstr "结肠区"
+
+#: aStringResources.py:319
+msgid "Gallbladder Region"
+msgstr "胆囊区"
+
+#: aStringResources.py:320
+msgid "Gastric/Epigastric Region"
+msgstr "胃/腹上区"
+
+#: aStringResources.py:321
+msgid "Left Ovary Region"
+msgstr "左卵巢区"
+
+#: aStringResources.py:322
+msgid "Right Ovary Region"
+msgstr "右卵巢区"
+
+#: aStringResources.py:323
+msgid "Pancreatic Region"
+msgstr "胰腺区"
+
+#: aStringResources.py:324
+msgid "Normal Urinary Bladder"
+msgstr "正常膀胱"
+
+#: aStringResources.py:325
+msgid "Liver Region"
+msgstr "肝区"
+
+#: aStringResources.py:326
+msgid "Splenic Region"
+msgstr "脾区"
+
+#: aStringResources.py:327
+msgid "Distended Urinary Bladder"
+msgstr "膨胀膀胱"
+
+#: aStringResources.py:328
+msgid "You may now proceed to Milestone 1"
+msgstr "你现在可以进入里程碑1"
+
+#: aStringResources.py:329
+msgid ""
+"Now it's time to compare your pre-assessment to your skill after training."
+msgstr "现在是时候比较你的预评估和训练后的技能评估了。"
+
+#: aStringResources.py:330
+msgid "Pre-Assessment Coverage"
+msgstr "预评估"
+
+#: aStringResources.py:331
+msgid "Post-Assessment Coverage"
+msgstr "后评估"
+
+#: aStringResources.py:332
+msgid "Proceed to Abnormality Detection"
+msgstr "进行异常检测"
+
+#: aStringResources.py:333
+msgid "Coverage Visualization"
+msgstr "范围可视化"
+
+#: aStringResources.py:334
+msgid "Detailed Comparison"
+msgstr "细节对比"
+
+#: aStringResources.py:335
+msgid "Location Analysis"
+msgstr "位置分析"
+
+#: aStringResources.py:336
+msgid "not palpated"
+msgstr "未触及"
+
+#: aStringResources.py:337
+msgid "lightly palpated"
+msgstr "浅部触诊"
+
+#: aStringResources.py:338
+msgid "deeply palpated"
+msgstr "深部触诊"
+
+#: aStringResources.py:339
+msgid "too hard"
+msgstr "太硬"
+
+#: aStringResources.py:344
+msgid "In this milestone, practice palpating to the correct depth."
+msgstr "此里程碑，练习触诊的正确深度。"
+
+#: aStringResources.py:345
+msgid "Gray circles indicate"
+msgstr "灰色圈表示"
+
+#: aStringResources.py:346
+msgid "appropriate for beginning an abdominal exam,"
+msgstr "适合进行腹部检查，"
+
+#: aStringResources.py:347
+msgid "but insufficient to detect significant abdominal disorders."
+msgstr "但不足以发现明显的腹部疾病。"
+
+#: aStringResources.py:348
+msgid "Blue circles indicate"
+msgstr "蓝色圈表示"
+
+#: aStringResources.py:349
+msgid "good for detecting serious disorders of the abdomen."
+msgstr "对腹部严重疾病的诊断很有帮助。"
+
+#: aStringResources.py:350
+msgid "Red circles indicate"
+msgstr "红色圈表示"
+
+#: aStringResources.py:351
+msgid "causing unnecessary pain, even in a patient with no abnormalities."
+msgstr "引起不必要的疼痛，即使患者无异常。"
+
+#: aStringResources.py:352
+msgid ""
+"This can result in voluntary guarding for the rest of the exam, leading to"
+msgstr "这会引起余下检查的自主紧张，导致"
+
+#: aStringResources.py:353
+msgid "confusing findings."
+msgstr "疑点。"
+
+#: aStringResources.py:354
+msgid "Instructors may adjust pressure sensitivity in the"
+msgstr "教师可调整压力感应"
+
+#: aStringResources.py:355
+msgid "Settings > Pressure Sensitivity"
+msgstr "设置 > 压力感应"
+
+#: aStringResources.py:356
+msgid "menu."
+msgstr "菜单。"
+
+#: aStringResources.py:361
+msgid ""
+"Now that you can palpate to proper depth, practice covering the entire "
+"abdomen."
+msgstr "现在你可以触到合适深度，练习整个腹部。"
+
+#: aStringResources.py:362
+msgid ""
+"It's better to make several passes instead of covering each centimeter in "
+"one pass."
+msgstr "最好多次通过，而不是一次涵盖每一厘米。"
+
+#: aStringResources.py:364
+msgid "Make several trips around the abdomen to get full coverage."
+msgstr "绕腹几圈，完全覆盖。"
+
+#: aStringResources.py:365
+msgid ""
+"Especially ensure you check the marked locations, where abdominal "
+"abnormalities are most likely to occur."
+msgstr "特别确保检查标记位置，那些最可能发生腹部异常的部位。"
+
+#: aStringResources.py:371
+msgid "You should now understand what a normal abdomen feels like."
+msgstr "现在你应该知道正常腹部触诊的感觉。"
+
+#: aStringResources.py:372
+msgid ""
+"For this milestone, familiarize yourself with how these abnormalities feel."
+msgstr "此里程碑，熟悉触诊的异常感觉。"
+
+#: aStringResources.py:373
+msgid "In the next step, you will identify them using touch and sound."
+msgstr "下一步，你将运用触觉和声音来辨别它们。"
+
+#: aStringResources.py:378
+msgid ""
+"For this milestone, you will report the findings by feel and sound only."
+msgstr "此里程碑，你将只通过感觉和声音报告发现。"
+
+#: aStringResources.py:379
+msgid ""
+"When you select a finding, you will receive feedback and have a second "
+"chance to palpate."
+msgstr "当你选择一个发现时，你会收到反馈，并有第二次触诊机会。"
+
+#: aStringResources.py:381
+msgid ""
+"When you are confident in eliciting findings, we will integrate patient "
+"history and non-palpitory physical findings."
+msgstr "当你对诊断结果有信心时，我们将整合病史和非触诊体征。"
+
+#: aStringResources.py:383
+msgid "Before moving on"
+msgstr "继续前"
+
+#: aStringResources.py:384
+msgid "re-familiarize yourself with how this condition feels."
+msgstr "再次熟悉这种感觉。"
+
+#: aStringResources.py:385 aStringResources.py:433
+msgid "Correct"
+msgstr "正确"
+
+#: aStringResources.py:386 aStringResources.py:435
+msgid "Incorrect"
+msgstr "错误"
+
+#: aStringResources.py:387
+msgid "You selected:"
+msgstr "你选择了："
+
+#: aStringResources.py:388
+msgid "Correct selection:"
+msgstr "正确选项："
+
+#: aStringResources.py:389
+msgid "Unremarkable Abdomen"
+msgstr "普通腹部"
+
+#: aStringResources.py:390 cases.py:32 caseselector.py:26
+msgid "No Abnormalities"
+msgstr "无异常"
+
+#: aStringResources.py:391
+msgid "Appendix"
+msgstr "阑尾"
+
+#: aStringResources.py:392
+msgid "Tenderness"
+msgstr "压痛"
+
+#: aStringResources.py:393
+msgid "Appendix Tenderness + Guarding"
+msgstr "阑尾压痛+紧张"
+
+#: aStringResources.py:394
+msgid "Appendix Tenderness + Rebound Tenderness"
+msgstr "阑尾压痛+反跳痛"
+
+#: aStringResources.py:395
+msgid "Appendix Tenderness + Guarding + Rebound Tenderness"
+msgstr "阑尾压痛+紧张+反跳痛"
+
+#: aStringResources.py:396
+msgid "Bladder"
+msgstr "膀胱"
+
+#: aStringResources.py:397
+msgid "Bladder Tenderness"
+msgstr "膀胱压痛"
+
+#: aStringResources.py:398
+msgid "Colon"
+msgstr "结肠"
+
+#: aStringResources.py:399
+msgid "Colon Tenderness"
+msgstr "结肠压痛"
+
+#: aStringResources.py:400
+msgid "Colon Tenderness + Guarding"
+msgstr "结肠压痛+紧张"
+
+#: aStringResources.py:401
+msgid "Gallbladder"
+msgstr "胆囊"
+
+#: aStringResources.py:402
+msgid "Gallbladder Tenderness + Guarding"
+msgstr "胆囊压痛+紧张"
+
+#: aStringResources.py:403
+msgid "Gastric"
+msgstr "胃"
+
+#: aStringResources.py:404 cases.py:41 caseselector.py:43
+msgid "Gastric Tenderness"
+msgstr "胃压痛"
+
+#: aStringResources.py:405
+msgid "Ovary, Left"
+msgstr "卵巢，左"
+
+#: aStringResources.py:406
+msgid "Ovary, Left + Guarding"
+msgstr "卵巢，左+紧张"
+
+#: aStringResources.py:407
+msgid "Ovary, Right"
+msgstr "卵巢，右"
+
+#: aStringResources.py:408
+msgid "Ovary, Right + Guarding"
+msgstr "卵巢，右+紧张"
+
+#: aStringResources.py:409
+msgid "Pancreas"
+msgstr "胰腺"
+
+#: aStringResources.py:410
+msgid "Organ Enlargement"
+msgstr "器官肿大"
+
+#: aStringResources.py:411
+msgid "Organs"
+msgstr "器官"
+
+#: aStringResources.py:412 aStringResources.py:436
+msgid "Next Case"
+msgstr "下一个病例"
+
+#: aStringResources.py:413 cases.py:48 caseselector.py:62
+msgid "Hepatomegaly"
+msgstr "肝肿大"
+
+#: aStringResources.py:414 cases.py:49 caseselector.py:63
+msgid "Splenomegaly"
+msgstr "脾肿大"
+
+#: aStringResources.py:415 cases.py:50 caseselector.py:64
+msgid "Enlarged Urinary Bladder"
+msgstr "膀胱膨大"
+
+#: aStringResources.py:420 prototypetext.py:20
+msgid "Upper Gastrointestinal Etiology"
+msgstr "上消化道病变"
+
+#: aStringResources.py:421 prototypetext.py:48
+msgid "Choledocolithiasis"
+msgstr "胆总管石病"
+
+#: aStringResources.py:422 prototypetext.py:71
+msgid "Pancreatitis"
+msgstr "胰腺炎"
+
+#: aStringResources.py:423 prototypetext.py:97
+msgid "Cholecystitis"
+msgstr "胆囊炎"
+
+#: aStringResources.py:424 prototypetext.py:119
+msgid "Mesenteric Infarction"
+msgstr "肠系膜梗塞"
+
+#: aStringResources.py:425 prototypetext.py:146
+msgid "Small Bowel Obstruction"
+msgstr "小肠梗阻"
+
+#: aStringResources.py:426 prototypetext.py:173
+msgid "Appendicitis"
+msgstr "阑尾炎"
+
+#: aStringResources.py:427 prototypetext.py:194
+msgid "Diverticulitis"
+msgstr "憩室炎"
+
+#: aStringResources.py:428 prototypetext.py:215
+msgid "Acute Enteritis"
+msgstr "急性肠炎"
+
+#: aStringResources.py:434
+msgid "Best Diagnosis is"
+msgstr "最好的诊断"
+
+#: aStringResources.py:441
+msgid "AbSim is loading..."
+msgstr "AbSim正在加载..."
+
+#: aStringResources.py:442
+msgid "(this might take 30 seconds)"
+msgstr "(可能需要30s)"
+
+#: aStringResources.py:447
+msgid ""
+"Pressure pad is not connected! Please check the USB cable, close software, "
+"and turn off AbSim for five seconds."
+msgstr "压力垫未连接!请检查USB线，关闭软件，关闭AbSim 5秒。"
+
+#: aStringResources.py:453
+msgid "Setting up new case."
+msgstr "设置新病例。"
+
+#: aStringResources.py:454
+msgid "DO NOT TOUCH!"
+msgstr "请勿触摸！"
+
+#: aStringResources.py:459
+msgid "Assessment Saved Successfully!"
+msgstr "评估保存成功！"
+
+#: aStringResources.py:461
+msgid "Assessment Save Failure!"
+msgstr "评估保存失败！"
+
+#: aStringResources.py:468
+msgid "New locale override"
+msgstr "新区覆盖"
+
+#: aStringResources.py:469
+msgid "will take effect after advancing to a new screen."
+msgstr "将在移到新界面后生效。"
+
+#: aStringResources.py:474
+msgid "Reset User Info?"
+msgstr "重置用户信息？"
+
+#: aStringResources.py:475
+msgid "Would you like to reset the user info provided?"
+msgstr "你想重置提供的用户信息吗?"
+
+#: aStringResources.py:480
+msgid "Password"
+msgstr "密码"
+
+#: aStringResources.py:481
+msgid "User Name"
+msgstr "用户名"
+
+#: aStringResources.py:482
+msgid "User Entry"
+msgstr "用户输入"
+
+#: aStringResources.py:487
+msgid "Go Back"
+msgstr "返回"
+
+#: aStringResources.py:490
+msgid "Palpation"
+msgstr "触诊"
+
+#: aStringResources.py:491
+msgid "Not Palpated"
+msgstr "未触及"
+
+#: aStringResources.py:492
+msgid "Light Palpation"
+msgstr "浅部触诊"
+
+#: aStringResources.py:493
+msgid "Deep Palpation"
+msgstr "深部触诊"
+
+#: aStringResources.py:494
+msgid "Too Deep"
+msgstr "太深"
+
+#: cases.py:33 caseselector.py:29
+msgid "Appendix Tenderness"
+msgstr "阑尾压痛"
+
+#: cases.py:34
+msgid "Appendix Tenderness with Guarding"
+msgstr "阑尾压痛伴紧张"
+
+#: cases.py:35
+msgid "Appendix Tenderness with Rebound Tenderness"
+msgstr "阑尾压痛伴反跳痛"
+
+#: cases.py:36
+msgid "Appendix Tenderness with Guarding and Rebound Tenderness"
+msgstr "阑尾压痛伴紧张和反跳痛"
+
+#: cases.py:37 caseselector.py:35
+msgid "Colon, Left Lower Tenderness"
+msgstr "结肠，左下压痛"
+
+#: cases.py:38
+msgid "Colon, Left Lower Tenderness with Guarding"
+msgstr "结肠，左下压痛伴紧张"
+
+#: cases.py:39 caseselector.py:39
+msgid "Gallbladder Tenderness"
+msgstr "胆囊压痛"
+
+#: cases.py:40
+msgid "Gallbladder Tenderness with Guarding"
+msgstr "胆囊压痛伴紧张"
+
+#: cases.py:42 caseselector.py:46
+msgid "Ovary, Left Tenderness"
+msgstr "卵巢，左压痛"
+
+#: cases.py:43
+msgid "Ovary, Left Tenderness with Guarding"
+msgstr "卵巢，左压痛伴紧张"
+
+#: cases.py:44 caseselector.py:50
+msgid "Ovary, Right Tenderness"
+msgstr "卵巢，右压痛"
+
+#: cases.py:45
+msgid "Ovary, Right Tenderness with Guarding"
+msgstr "卵巢，右压痛伴紧张"
+
+#: cases.py:46 caseselector.py:54
+msgid "Pancreas Tenderness"
+msgstr "胰腺压痛"
+
+#: cases.py:47 caseselector.py:57
+msgid "Urinary Bladder Tenderness"
+msgstr "膀胱压痛"
+
+#: caseselector.py:30 caseselector.py:36 caseselector.py:40 caseselector.py:47
+#: caseselector.py:51
+msgid "With Guarding"
+msgstr "伴紧张"
+
+#: caseselector.py:31
+msgid "With Rebound Tenderness"
+msgstr "伴反跳痛"
+
+#: caseselector.py:32
+msgid "With Guarding and Rebound Tenderness"
+msgstr "伴紧张和反跳痛"

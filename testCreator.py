@@ -257,6 +257,8 @@ class DdxExam(Gtk.VBox):
         self.ddx_case_list = []
         self.ddx_title_list = []
         self.button_list = []
+        self.ddx_dict_list = {}
+        self.ddx_name_list = []
 
         # initialize builder class
         bw = BuildWidgets()
@@ -267,21 +269,22 @@ class DdxExam(Gtk.VBox):
         self.pack_start(label, False, False, 10)
 
         ddx_names = CaseText().cases.get(525, [])
-        ddx_list = []
         for j in ddx_names:
-            temp = [i["ddx_name"] for i in j]
-            ddx_list.append(temp[0])
+            temp_db_name = [i["db_name"] for i in j]
+            temp_ddx_name = [i["ddx_name"] for i in j]
+            self.ddx_dict_list[temp_ddx_name[0]] = temp_db_name[0]
+            self.ddx_name_list.append(temp_ddx_name[0])
 
-        ddx_answer_box = self.build_answer_box(ddx_list, bw)
+        ddx_answer_box = self.build_answer_box(bw)
 
         self.pack_start(ddx_answer_box, False, False, 10)
 
-    def build_answer_box(self, ddx_list, builder):
+    def build_answer_box(self, builder):
         answer_box = Gtk.VButtonBox()
         answer_box.set_layout(3)
         answer_box.set_spacing(0)
-        for i in range(0, len(ddx_list)):
-            button = builder.build_check_button(label_text=ddx_list[i], function=self.on_button_toggled,
+        for i in range(0, len(self.ddx_name_list)):
+            button = builder.build_check_button(label_text=self.ddx_name_list[i], function=self.on_button_toggled,
                                                 f_size=14, padding=[10, 10])
             answer_box.add(button)
             self.button_list.append(button)
@@ -290,9 +293,9 @@ class DdxExam(Gtk.VBox):
     def on_button_toggled(self, button, name):
         if button.get_active():
             state = "on"
-            self.ddx_case_list.append(name)
-            self.ddx_title_list.append('ddx' + '_' + name)
+            self.ddx_case_list.append(self.ddx_dict_list[name])
+            self.ddx_title_list.append('ddx' + '_' + self.ddx_dict_list[name])
         else:
             state = "off"
-            self.ddx_case_list.remove(name)
-            self.ddx_title_list.remove('ddx' + '_' + name)
+            self.ddx_case_list.remove(self.ddx_dict_list[name])
+            self.ddx_title_list.remove('ddx' + '_' + self.ddx_dict_list[name])

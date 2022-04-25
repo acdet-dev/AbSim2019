@@ -3,7 +3,7 @@ import os
 import sqlite3
 from aStringResources import AStringResources
 
-app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2020'
+app_data_path = os.getenv('LOCALAPPDATA') + '\\AbSim2020_Zh_Cn'
 
 
 class ExamModel:

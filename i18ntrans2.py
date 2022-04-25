@@ -20,7 +20,7 @@ class MessageDialogWindow(Gtk.Window):
 
         self.wlang = wlang
         self.hide()
-        self.message = "Absim failed to load " + self.wlang + " ; defaulting to English."
+        self.message = "Absim failed to load " + self.wlang + " ; defaulting to Chinese."
         self.TranslationDialog(self.message)
 
     def TranslationDialog(self, message):
@@ -36,12 +36,12 @@ class MessageDialogWindow(Gtk.Window):
 path = os.getcwd()
 
 app_data = os.getenv('LOCALAPPDATA')
-if not os.path.exists(app_data + '\\AbSim2020'):
-    os.mkdir(app_data + '\\AbSim2020')
-    shutil.copy(path + '\\locale.json', app_data + '\\AbSim2020\\locale.json')
-    shutil.copy(path + '\\tare.json', app_data + '\\AbSim2020\\tare.json')
-    shutil.copy(path + '\\sensitivity.json', app_data + '\\AbSim2020\\sensitivity.json')
-    shutil.copy(path + '\\cnc_adjustments.json', app_data + '\\AbSim2020\\cnc_adjustments.json')
+if not os.path.exists(app_data + '\\AbSim2020_Zh_Cn'):
+    os.mkdir(app_data + '\\AbSim2020_Zh_Cn')
+    shutil.copy(path + '\\locale.json', app_data + '\\AbSim2020_Zh_Cn\\locale.json')
+    shutil.copy(path + '\\tare.json', app_data + '\\AbSim2020_Zh_Cn\\tare.json')
+    shutil.copy(path + '\\sensitivity.json', app_data + '\\AbSim2020_Zh_Cn\\sensitivity.json')
+    shutil.copy(path + '\\cnc_adjustments.json', app_data + '\\AbSim2020_Zh_Cn\\cnc_adjustments.json')
 
 loglevels = { 'CRITICAL': logging.CRITICAL,
               'ERROR': logging.ERROR,
@@ -50,7 +50,7 @@ loglevels = { 'CRITICAL': logging.CRITICAL,
               'DEBUG': logging.DEBUG}
 
 loglevel = os.getenv('ABSIMLOG', 'WARNING')
-logging.basicConfig(filename=app_data + '\\AbSim2020\\log.txt', filemode='w', level=logging.DEBUG)
+logging.basicConfig(filename=app_data + '\\AbSim2020_Zh_Cn\\log.txt', filemode='w', level=logging.INFO)
 
 # Load our locale override setting (persistent from last run of program)
 locale_config = config.Config("locale.json")
@@ -66,11 +66,11 @@ source = os.getcwd()
 
 '''
 app_data = os.getenv('LOCALAPPDATA')
-if not os.path.exists(app_data + '\\AbSim2020\\i18n'):
-    shutil.copytree(os.path.join(source, 'i18n'), app_data + '\\AbSim2020\\i18n')
+if not os.path.exists(app_data + '\\AbSim2020_Zh_Cn\\i18n'):
+    shutil.copytree(os.path.join(source, 'i18n'), app_data + '\\AbSim2020_Zh_Cn\\i18n')
 
-if os.path.exists(app_data + '\\AbSim2020\\i18n'):
-    source = app_data + '\\AbSim2020'
+if os.path.exists(app_data + '\\AbSim2020_Zh_Cn\\i18n'):
+    source = app_data + '\\AbSim2020_Zh_Cn'
 '''
 # Reset the locale to system default.
 locale.setlocale(locale.LC_ALL, '')
@@ -142,6 +142,7 @@ def locale_tab():
       ('tr', 'TR', 'UTF-8', 'Turkish', 'Turkey', '1254'),
       ('uk', 'UA', 'UTF-8', 'Ukrainian', 'Ukraine', '1251'),
       ('vi', 'VN', 'UTF-8', 'Vietnamese', 'Viet Nam', '1258'),
+      ('zh', 'CN', 'UTF-8', 'Chinese (Simplified)', 'China', '936'),
       ('zh', 'CN', 'UTF-8', 'Chinese', 'China', '936'),
       ('zh', 'TW', 'UTF-8', 'Chinese', 'Taiwan', '950')]
 
@@ -206,7 +207,7 @@ def _detect_windows_locale(win2iso_full, iso2win_full, win2iso_loc, iso2win_loc,
         logging.debug("i18ntrans:235:Detected Locale Preferences.")
         return locale_preferences
     except IndexError:
-        logging.debug('Could not get preferences on first pass. Trying different mapping.')
+        logging.warning('Could not get preferences on first pass. Trying different mapping.')
         result = [(key, value) for key, value in win2iso_lang.items() if key.startswith(wlang)]
         try:
             full = result[0][0].split('_')
@@ -215,17 +216,16 @@ def _detect_windows_locale(win2iso_full, iso2win_full, win2iso_loc, iso2win_loc,
             const = '_'.join(const_list)  # fr_CA
             wloc = iso2win_loc[loc]  # Canada
             lang = wlang  # fr
-            wlang = iso2win[lang]
             wenc = iso2win_enc[wlang]  # 932
             enc = win2iso_enc[lang]  # UTF-8
 
             # List of locales in decreasing order of preference, with any omitted mappings left out:
             locale_preferences = [e for e in (lang, loc, enc, wlang, wloc, wenc) if e is not None]
-            logging.debug("i18ntrans:235:Detected Locale Preferences.")
+            logging.info("i18ntrans:235:Detected Locale Preferences.")
 
             return locale_preferences
         except IndexError:
-            logging.debug('Could not get preferences on second pass. Trying different mapping.')
+            logging.warning('Could not get preferences on second pass. Trying different mapping.')
             result = [(key, value) for key, value in iso2win_full.items() if key.startswith(wlang)]
             try:
                 full = result[0][0].split('_') #[fr, CA]
@@ -260,8 +260,8 @@ def _detect_windows_locale(win2iso_full, iso2win_full, win2iso_loc, iso2win_loc,
                             full = result[0][0].split('_')
 
                         except IndexError:
-                            logging.debug("i18ntrans did not work. Defaulting to English.")
-                            locale_preferences = ['en', 'US', 'UTF-8', 'English', 'United States', '1252']
+                            logging.warning("i18ntrans did not work. Defaulting to Chinese (Simplified).")
+                            locale_preferences = ['zh', 'CN', 'UTF-8', 'Chinese (Simplified)', 'China', '936']
                             return locale_preferences
 
 
@@ -336,7 +336,7 @@ def get_locale_options():
             options.append( (prefix + language_s + country_s, mo[0]) )
     except TypeError:
 
-        logging.debug('No language binaries to be found.')
+        logging.error('No language binaries to be found.')
 
     if locale_override is None:
       options.append( ('*Automatic', None))
@@ -406,7 +406,7 @@ def _parse_locale_iso_spec(spec):
     #m = lo_re.match()
     if m:
         g = m.groupdict()
-        logging.debug("i18ntrans:175:Parse Locale ISO: " + repr(g))
+        logging.info("i18ntrans:175:Parse Locale ISO: " + repr(g))
         return( g.get('language', None), g.get('country',  None), g.get('encoding', None) )
     else:
         raise TypeError
@@ -432,7 +432,7 @@ def _expand_iso_spec(spec):
 
 
 def set_locale(loc_prefs):
-    logging.debug("Attempting to set locale to" + repr(loc_prefs))
+    logging.info("Attempting to set locale to" + repr(loc_prefs))
     # Get the source directory to load configuration files:
     #source = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
     i18n = os.path.join(source, 'i18n')
@@ -441,10 +441,10 @@ def set_locale(loc_prefs):
         t = gettext.translation('ab_sim', os.path.join(source, 'i18n'), [loc_prefs[0]])
         logging.debug('gettext translation object created for lang: ' + loc_prefs[0])
     except FileNotFoundError:
-        logging.debug("No translation file found for target language; defaulting to English")
+        logging.warning("No translation file found for target language; defaulting to Chinese")
         wlang = loc_prefs[3]
         MessageDialogWindow(wlang)
-        loc_prefs = ['en', 'US', 'UTF-8', 'English', 'United States', '1252']
+        loc_prefs = ['zh', 'CN', 'UTF-8', 'Chinese (Simplified)', 'China', '936']
         t = gettext.translation('ab_sim', os.path.join(source, 'i18n'), [loc_prefs[0]])
 
     t.install()
@@ -468,24 +468,24 @@ def set_locale(loc_prefs):
         logging.debug("i18ntrans:316:('ab_sim'). Done.")
         #cloc = locale.getlocale(locale.LC_ALL)
     except locale.Error:
-        logging.debug("i18ntrans:319:Unable to bind text domain for Glade UI.")
-        logging.debug("i18ntrans:320:Some on-screen messages will not be translated.")
+        logging.error("i18ntrans:319:Unable to bind text domain for Glade UI.")
+        logging.error("i18ntrans:320:Some on-screen messages will not be translated.")
 
     # To maximize compatibility, try permutations of ISO and Windows locales to
     # find one that works
 
     loc = expanded_loc_prefs[1]
     try:
-      logging.debug("i18ntrans:327:Print trying locale (%s)...")
+      logging.debug("i18ntrans:327:Print trying locale %s.")
       os.putenv('LANG', loc)
       locale.setlocale(locale.LC_ALL, '') #IT WORKS!!!!!!!
-      logging.debug("i18ntrans:330:Done.")
+      logging.info("i18ntrans:330:Done.")
     except locale.Error:
-      logging.debug('Locale error encountered.')
+      logging.error('Locale error encountered.')
       #continue
     else:
-      logging.debug("i18ntrans:335:Successfully set locale")
-      logging.debug("i18ntrans:336:Check system locale is done.")
+      logging.info("i18ntrans:335:Successfully set locale")
+      logging.info("i18ntrans:336:Check system locale is done.")
       #break
     os.environ['LANG'] = loc
     logging.debug("i18ntrans:339:LANG")
